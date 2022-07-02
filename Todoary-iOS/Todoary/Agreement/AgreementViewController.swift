@@ -22,6 +22,37 @@ class AgreementViewController : UIViewController {
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .subtitle)
     }
+    
+    //약관내용
+    
+    let contentScrollView = UIScrollView().then{
+        $0.backgroundColor = .white
+        $0.showsVerticalScrollIndicator = true
+        $0.isScrollEnabled = true
+        $0.indicatorStyle = .black
+    }
+    
+    let agreeLabel = UILabel().then{
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.text = "약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의약관동의"
+    }
+    
+    //약관내용 박스
+    
+    let agreeBox = UIImageView().then{
+        $0.image = UIImage(named: "agreeBox")
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
+    
+    //약관 체크버튼
+    
+    let agreeCheckBnt = UIButton().then{
+        $0.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        
+    }
+    
 
     //버튼
     let confirmButton = UIButton().then{

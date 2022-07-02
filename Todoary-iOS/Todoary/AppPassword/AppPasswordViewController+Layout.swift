@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 extension UIView{
-    func addSubview(){
-        
-    }
+
 }
 
 extension AppPasswordViewController {
@@ -19,6 +17,16 @@ extension AppPasswordViewController {
         
         self.view.addSubview(appPwTitle)
         self.view.addSubview(appPwtext)
+        
+        self.view.addSubview(inputNotPassword1)
+        self.view.addSubview(inputNotPassword2)
+        self.view.addSubview(inputNotPassword3)
+        self.view.addSubview(inputNotPassword4)
+        
+        self.view.addSubview(inputPassword1)
+        self.view.addSubview(inputPassword2)
+        self.view.addSubview(inputPassword3)
+        self.view.addSubview(inputPassword4)
         
         self.view.addSubview(nemberBtn1)
         self.view.addSubview(nemberBtn2)
@@ -36,6 +44,7 @@ extension AppPasswordViewController {
 
     func setUpConstraint(){
         
+        //text
         appPwTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(140)
             make.leading.equalToSuperview().offset(161)
@@ -47,7 +56,71 @@ extension AppPasswordViewController {
             make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
+        
+        //inputNotPassword img
+        inputNotPassword1.snp.makeConstraints{ make in
+            make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.left.equalToSuperview().offset(91)
+
+        }
+        
+        inputNotPassword2.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputNotPassword1.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPassword1)
+
+        }
+        
+        inputNotPassword3.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputNotPassword2.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPassword2)
+        }
+        
+        inputNotPassword4.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputNotPassword3.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPassword3)
+        }
+        
+        //inputPassword img
+        
+        inputPassword1.snp.makeConstraints{ make in
+            make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.left.equalToSuperview().offset(91)
+        }
+        
+        inputPassword2.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputPassword1.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPassword1)
+
+        }
+        
+        inputPassword3.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputPassword2.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPassword2)
+        }
+        
+        inputPassword4.snp.makeConstraints{ make in
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+            make.leading.equalTo(inputPassword3.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPassword3)
+        
+        
     
+        //button
         nemberBtn1.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(452)
             make.width.equalTo(10)
@@ -124,5 +197,8 @@ extension AppPasswordViewController {
             make.height.equalTo(26.13)
             make.centerY.equalTo(nemberBtn0)
         }
+
+    }
 }
+
 }

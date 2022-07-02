@@ -14,7 +14,7 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - UIComponenets
 
-    //텍스트
+    //text
 
     let appPwTitle = UILabel().then{
         $0.text = "암호 입력"
@@ -28,10 +28,44 @@ class AppPasswordViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body1)
     }
     
-    //비밀번호 이미지
+   
+    // input not password
+    let inputNotPassword1 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPassword2 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPassword3 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPassword4 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    
+    //input password
+    let inputPassword1 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPassword2 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPassword3 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPassword4 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
 
-
-    //버튼
+    //button
     
     let nemberBtn1 =  UIButton().then{
         $0.setTitle( "1", for: .normal)
