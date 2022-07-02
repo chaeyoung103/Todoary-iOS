@@ -29,4 +29,11 @@ extension UIColor{
         blue: 141/255,
         alpha: 1
     )
+    
+    static let numberBtnColor = UIColor(
+        red: 255/255,
+        green: 255/255,
+        blue: 255/255,
+        alpha: 0
+    )
 }
