@@ -30,37 +30,37 @@ class AppPasswordViewController : UIViewController {
     
    
     // input not password
-    let inputNotPassword1 = UIImageView().then{
+    let inputNotPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
     
-    let inputNotPassword2 = UIImageView().then{
+    let inputNotPw2 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
     
-    let inputNotPassword3 = UIImageView().then{
+    let inputNotPw3 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
     
-    let inputNotPassword4 = UIImageView().then{
+    let inputNotPw4 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
     
     
     //input password
-    let inputPassword1 = UIImageView().then{
+    let inputPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
     }
     
-    let inputPassword2 = UIImageView().then{
+    let inputPw2 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
     }
     
-    let inputPassword3 = UIImageView().then{
+    let inputPw3 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
     }
     
-    let inputPassword4 = UIImageView().then{
+    let inputPw4 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
     }
     
@@ -138,7 +138,7 @@ class AppPasswordViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let deletBnt = UIButton().then{
+    let deletBtn = UIButton().then{
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill

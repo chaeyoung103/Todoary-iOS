@@ -18,11 +18,12 @@ extension AgreementViewController {
     func setUpView(){
         
         self.view.addSubview(agreeTitle)
-        self.view.addSubview(confirmButton)
+        self.view.addSubview(confirmBtn)
         
-        self.view.addSubview(contentScrollView)
-        self.view.addSubview(agreeBox)
-        self.view.addSubview(agreeLabel)
+        self.view.addSubview(agreeAllCheckBtn)
+        self.view.addSubview(agreeAllCheckText)
+        
+       
         
     }
     
@@ -35,35 +36,26 @@ extension AgreementViewController {
         }
         
         
-        //약관내용 박스
+        //약관 체크버튼
         
-        agreeBox.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(175)
-            make.leading.equalToSuperview().offset(38)
-            make.centerX.equalTo(agreeTitle)
-            make.top.equalTo(agreeTitle.snp.bottom).offset(11)
-        }
-
-        //약관내용
-        contentScrollView.snp.makeConstraints{ make in
-            make.width.equalTo(281)
-            make.height.equalTo(415)
-            make.top.equalTo(agreeBox.snp.top).offset(26)
-            make.centerX.equalTo(agreeTitle)
+        agreeAllCheckBtn.snp.makeConstraints{ make in
+            make.width.equalTo(22)
+            make.height.equalTo(22)
+            make.left.equalToSuperview().offset(55)
+            make.top.equalTo(agreeTitle.snp.bottom).offset(9)
         }
         
-        contentScrollView.addSubview(agreeLabel)
-        
-        agreeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentScrollView)
-            make.width.equalTo(contentScrollView).multipliedBy(0.85)
-            make.centerX.equalTo(contentScrollView)
-            make.bottom.equalTo(contentScrollView)
+        agreeAllCheckText.snp.makeConstraints{ make in
+            make.width.equalTo(58)
+            make.height.equalTo(19)
+            make.leading.equalTo(agreeAllCheckBtn.snp.trailing).offset(7)
+            make.centerY.equalTo(agreeAllCheckBtn)
+            
         }
         
         
         //button
-        confirmButton.snp.makeConstraints{ make in
+        confirmBtn.snp.makeConstraints{ make in
             make.bottom.equalToSuperview().offset(-47)
             make.leading.equalToSuperview().offset(26)
             make.trailing.equalToSuperview().offset(-26)

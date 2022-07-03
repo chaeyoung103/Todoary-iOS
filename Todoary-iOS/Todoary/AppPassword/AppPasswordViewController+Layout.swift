@@ -18,15 +18,15 @@ extension AppPasswordViewController {
         self.view.addSubview(appPwTitle)
         self.view.addSubview(appPwtext)
         
-        self.view.addSubview(inputNotPassword1)
-        self.view.addSubview(inputNotPassword2)
-        self.view.addSubview(inputNotPassword3)
-        self.view.addSubview(inputNotPassword4)
+        self.view.addSubview(inputNotPw1)
+        self.view.addSubview(inputNotPw2)
+        self.view.addSubview(inputNotPw3)
+        self.view.addSubview(inputNotPw4)
         
-        self.view.addSubview(inputPassword1)
-        self.view.addSubview(inputPassword2)
-        self.view.addSubview(inputPassword3)
-        self.view.addSubview(inputPassword4)
+        self.view.addSubview(inputPw1)
+        self.view.addSubview(inputPw2)
+        self.view.addSubview(inputPw3)
+        self.view.addSubview(inputPw4)
         
         self.view.addSubview(nemberBtn1)
         self.view.addSubview(nemberBtn2)
@@ -38,7 +38,7 @@ extension AppPasswordViewController {
         self.view.addSubview(nemberBtn8)
         self.view.addSubview(nemberBtn9)
         self.view.addSubview(nemberBtn0)
-        self.view.addSubview(deletBnt)
+        self.view.addSubview(deletBtn)
         
     }
 
@@ -58,7 +58,7 @@ extension AppPasswordViewController {
         }
         
         //inputNotPassword img
-        inputNotPassword1.snp.makeConstraints{ make in
+        inputNotPw1.snp.makeConstraints{ make in
             make.top.equalTo(appPwtext.snp.bottom).offset(92)
             make.width.equalTo(40)
             make.height.equalTo(40)
@@ -66,57 +66,57 @@ extension AppPasswordViewController {
 
         }
         
-        inputNotPassword2.snp.makeConstraints{ make in
+        inputNotPw2.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputNotPassword1.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPassword1)
+            make.leading.equalTo(inputNotPw1.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPw1)
 
         }
         
-        inputNotPassword3.snp.makeConstraints{ make in
+        inputNotPw3.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputNotPassword2.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPassword2)
+            make.leading.equalTo(inputNotPw2.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPw2)
         }
         
-        inputNotPassword4.snp.makeConstraints{ make in
+        inputNotPw4.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputNotPassword3.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPassword3)
+            make.leading.equalTo(inputNotPw3.snp.trailing).offset(16)
+            make .centerY.equalTo(inputNotPw3)
         }
         
         //inputPassword img
         
-        inputPassword1.snp.makeConstraints{ make in
+        inputPw1.snp.makeConstraints{ make in
             make.top.equalTo(appPwtext.snp.bottom).offset(92)
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.left.equalToSuperview().offset(91)
         }
         
-        inputPassword2.snp.makeConstraints{ make in
+        inputPw2.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputPassword1.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPassword1)
+            make.leading.equalTo(inputPw1.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPw1)
 
         }
         
-        inputPassword3.snp.makeConstraints{ make in
+        inputPw3.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputPassword2.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPassword2)
+            make.leading.equalTo(inputPw2.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPw2)
         }
         
-        inputPassword4.snp.makeConstraints{ make in
+        inputPw4.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.leading.equalTo(inputPassword3.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPassword3)
+            make.leading.equalTo(inputPw3.snp.trailing).offset(16)
+            make .centerY.equalTo(inputPw3)
         
         
     
@@ -191,7 +191,7 @@ extension AppPasswordViewController {
             make.centerX.equalTo(nemberBtn8)
         }
         
-        deletBnt.snp.makeConstraints{ make in
+        deletBtn.snp.makeConstraints{ make in
             make.leading.equalTo(nemberBtn0.snp.trailing).offset(81)
             make.width.equalTo(28)
             make.height.equalTo(26.13)
