@@ -15,9 +15,9 @@ class AgreementViewController : UIViewController {
     //MARK: - UIComponenets
     
     //navigationView
-    let agreeNavigationView = NavigationView().then {
-        $0.navigationTitle.text = "약관동의"
-    }
+   // let agreeNavigationView = NavigationView().then {
+       // $0.navigationTitle.text = "약관동의"
+    //}
 
     //MARK: -  //텍스트
 
@@ -39,7 +39,7 @@ class AgreementViewController : UIViewController {
         $0.setTitleColor(.headline, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .body1)
         $0.setUnderline()
-        $0.addTarget(self, action: #selector(privacyTitle), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(privacyTitleDIdTab), for: .touchUpInside)
     }
     
     let useServiceTitle = UIButton().then{
@@ -144,13 +144,12 @@ class AgreementViewController : UIViewController {
   
     //MARK: - checkBtndidCheck
     
-    @objc func privacyTitle(_ sender: UIButton) {
-           guard let nextVC = self.storyboard?.instantiateViewController(identifier: "PrivacyTextViewController") as? PrivacyTextViewController else { return }
-           
-           nextVC.modalTransitionStyle = .coverVertical
-           nextVC.modalPresentationStyle = .custom
-           
-           self.present(nextVC, animated: false, completion: nil)
+    @objc func privacyTitleDIdTab() {
+        let PrivacyTextViewController = PrivacyTextViewController()
+        PrivacyTextViewController.modalTransitionStyle = .coverVertical
+        PrivacyTextViewController.modalPresentationStyle = .fullScreen
+        
+           self.present(PrivacyTextViewController, animated: false, completion: nil)
        }
     
     

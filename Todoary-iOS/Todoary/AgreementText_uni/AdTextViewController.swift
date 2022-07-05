@@ -17,9 +17,9 @@ class AdTextViewController : UIViewController {
     //MARK: - UIComponenets
     
     //navigationView
-    let adNavigationView = NavigationView().then {
-        $0.navigationTitle.text = "광고성 정보 수신동의"
-    }
+   // let adNavigationView = NavigationView().then {
+     //   $0.navigationTitle.text = "광고성 정보 수신동의"
+   // }
     
     //약관내용
 

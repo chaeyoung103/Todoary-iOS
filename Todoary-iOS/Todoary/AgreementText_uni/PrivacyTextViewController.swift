@@ -16,9 +16,9 @@ class PrivacyTextViewController : UIViewController {
     //MARK: - UIComponenets
     
     //navigationView
-    let PrivacyNavigationView = NavigationView().then {
-        $0.navigationTitle.text = "개인정보 취급방침"
-    }
+   // let PrivacyNavigationView = NavigationView().then {
+   //     $0.navigationTitle.text = "개인정보 취급방침"
+  //  }
     
     
     //약관내용

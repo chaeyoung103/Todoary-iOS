@@ -16,7 +16,7 @@ extension UseServiceViewController {
     
     func setUpView(){
         
-        self.view.addSubview(UseServiceNavigationView)
+     //   self.view.addSubview(UseServiceNavigationView)
         
         self.view.addSubview(contentScrollView)
         self.view.addSubview(UseServiceText)
@@ -27,11 +27,11 @@ extension UseServiceViewController {
     func setUpConstraint(){
         
         //navigationView
-        UseServiceNavigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+      //  UseServiceNavigationView.snp.makeConstraints{ make in
+         //   make.top.equalToSuperview()
+         //   make.leading.trailing.equalToSuperview()
             
-        }
+      //  }
         
     //약관내용
         contentScrollView.snp.makeConstraints{ make in

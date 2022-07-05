@@ -16,7 +16,7 @@ extension AdTextViewController {
     
     func setUpView(){
         
-        self.view.addSubview(adNavigationView)
+     //   self.view.addSubview(adNavigationView)
         
         self.view.addSubview(contentScrollView)
         self.view.addSubview(AdText)
@@ -27,11 +27,11 @@ extension AdTextViewController {
     func setUpConstraint(){
         
         //navigationView
-        adNavigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            
-        }
+      //  adNavigationView.snp.makeConstraints{ make in
+       //     make.top.equalToSuperview()
+        //    make.leading.trailing.equalToSuperview()
+        //
+   //     }
         
         
     //약관내용
