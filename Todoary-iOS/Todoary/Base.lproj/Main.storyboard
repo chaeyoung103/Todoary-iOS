@@ -71,7 +71,7 @@
         <!--Privacy Text View Controller-->
         <scene sceneID="q2a-zl-XVi">
             <objects>
-                <viewController id="56W-7l-OU1" customClass="PrivacyTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyTextViewController" id="56W-7l-OU1" customClass="PrivacyTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hqt-d9-cFt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

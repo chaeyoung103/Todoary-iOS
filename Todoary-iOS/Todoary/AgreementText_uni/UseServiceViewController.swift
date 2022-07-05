@@ -10,26 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-//lineHeight 설정
-extension UILabel {
-     func setUseServiceTextWithLineHeight(text: String?, lineHeight: CGFloat){
-        if let text = text {
-            let style = NSMutableParagraphStyle()
-            style.maximumLineHeight = lineHeight
-            style.minimumLineHeight = lineHeight
-
-            let attributes: [NSAttributedString.Key: Any] = [
-                .paragraphStyle: style,
-                .baselineOffset: (lineHeight - font.lineHeight) / 4
-            ]
-            
-            let attrString = NSAttributedString(string: text,
-                                                attributes: attributes)
-            self.attributedText = attrString
-        }
-    }
-}
-
 
 class UseServiceViewController : UIViewController {
     
@@ -54,7 +34,7 @@ class UseServiceViewController : UIViewController {
         $0.textAlignment = .left
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .body1)
-        $0.setUseServiceTextWithLineHeight(
+        $0.setTextWithLineHeight(
             text: "서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관서비스이용약관",
             lineHeight: 21)
     
