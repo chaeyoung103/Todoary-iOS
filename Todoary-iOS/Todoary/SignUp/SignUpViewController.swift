@@ -314,10 +314,6 @@ class SignUpViewController: UIViewController {
             
             let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             
-<<<<<<< HEAD
-=======
-            alert.setTitle()
->>>>>>> 3b089b7eada1bd19b268a131658102f2453b2c89
             alert.addAction(alertAction)
             self.present(alert, animated: true, completion: nil)
             
@@ -356,12 +352,7 @@ class SignUpViewController: UIViewController {
     
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
-<<<<<<< HEAD
 //        self.navigationController?.pushViewController(TestViewController(), animated: true)
-=======
-        print("click")
-        self.navigationController?.pushViewController(TestViewController(), animated: true)
->>>>>>> 3b089b7eada1bd19b268a131658102f2453b2c89
     }
     
     
