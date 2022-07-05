@@ -21,15 +21,21 @@
 		572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0A286EC06100D1FAA0 /* UIColor.swift */; };
 		572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0D286EC10500D1FAA0 /* UIFont.swift */; };
 		572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */; };
-		572E5B16286ED60C00D1FAA0 /* AppleSDGothicNeoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 572E5B13286ED60C00D1FAA0 /* AppleSDGothicNeoB.ttf */; };
-		572E5B17286ED60C00D1FAA0 /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 572E5B14286ED60C00D1FAA0 /* AppleSDGothicNeoM.ttf */; };
-		572E5B18286ED60C00D1FAA0 /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 572E5B15286ED60C00D1FAA0 /* AppleSDGothicNeoSB.ttf */; };
 		572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */; };
 		5B93D8A67A229AA6C9BB8AB4 /* Pods_Todoary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70BFA075BC3082433B39DDB /* Pods_Todoary.framework */; };
+		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
+		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */; };
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
+		E081F49A2872FC3D0059B7E0 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081F4992872FC3D0059B7E0 /* NavigationView.swift */; };
+		E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */; };
+		E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */; };
+		E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */; };
+		E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */; };
+		E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */; };
+		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,17 +76,22 @@
 		572E5B0A286EC06100D1FAA0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		572E5B0D286EC10500D1FAA0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		572E5B13286ED60C00D1FAA0 /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
-		572E5B14286ED60C00D1FAA0 /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
-		572E5B15286ED60C00D1FAA0 /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
 		572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		838439C8F09B9E7FFC421176 /* Pods_Todoary_TodoaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary_TodoaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70BFA075BC3082433B39DDB /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E005DE76287019AC00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgreementViewController.swift; path = ../../../../Documents/AgreementViewController.swift; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
+		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
+		E081F4992872FC3D0059B7E0 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextViewController.swift; sourceTree = "<group>"; };
+		E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyTextViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UseServiceViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceViewController.swift; sourceTree = "<group>"; };
+		E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
 		E55EFE0725C14803EBD9E70B /* Pods_TodoaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0738BD694AE7415B196AF3F /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		FCDF29F353924A8A0975F3D2 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,18 +163,17 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
-				E005DE78287019B100814C79 /* Agreement */,
-				E005DE72287018EA00814C79 /* AppPassword */,
-				E0F2821A28702633004C106A /* UIColor */,
-				572E5B0C286EC09900D1FAA0 /* UIFont */,
+				E02E7FA1287461760006F6FA /* CommonSource */,
+				E0C4BD5B2871F6D700FDEA0E /* AgreementText_uni */,
+				E005DE78287019B100814C79 /* Agreement_uni */,
+				E005DE72287018EA00814C79 /* AppPassword_uni */,
 				572E5B09286EC04800D1FAA0 /* SignUp */,
 				572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */,
 				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
 				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
-				E005DE76287019AC00814C79 /* AgreementViewController.swift */,
 				572E5ADF286EBDCC00D1FAA0 /* Main.storyboard */,
-				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
+				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 				572E5AE7286EBDCE00D1FAA0 /* Info.plist */,
 			);
 			path = Todoary;
@@ -195,17 +205,6 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		572E5B0C286EC09900D1FAA0 /* UIFont */ = {
-			isa = PBXGroup;
-			children = (
-				572E5B13286ED60C00D1FAA0 /* AppleSDGothicNeoB.ttf */,
-				572E5B14286ED60C00D1FAA0 /* AppleSDGothicNeoM.ttf */,
-				572E5B15286ED60C00D1FAA0 /* AppleSDGothicNeoSB.ttf */,
-				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
-			);
-			path = UIFont;
-			sourceTree = "<group>";
-		};
 		6A3FCFB70B60E27C91CA609E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,30 +215,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E005DE72287018EA00814C79 /* AppPassword */ = {
+		E005DE72287018EA00814C79 /* AppPassword_uni */ = {
 			isa = PBXGroup;
 			children = (
 				E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */,
 				E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */,
 			);
-			path = AppPassword;
+			path = AppPassword_uni;
 			sourceTree = "<group>";
 		};
-		E005DE78287019B100814C79 /* Agreement */ = {
+		E005DE78287019B100814C79 /* Agreement_uni */ = {
 			isa = PBXGroup;
 			children = (
 				E005DE79287019BD00814C79 /* AgreementViewController.swift */,
 				E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */,
 			);
-			path = Agreement;
+			path = Agreement_uni;
 			sourceTree = "<group>";
 		};
-		E0F2821A28702633004C106A /* UIColor */ = {
+		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
+				E081F4992872FC3D0059B7E0 /* NavigationView.swift */,
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
+				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
+				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
-			path = UIColor;
+			path = CommonSource;
+			sourceTree = "<group>";
+		};
+		E02E7FA2287462ED0006F6FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E02E7FA32874631D0006F6FA /* UILabel.swift */,
+				E02E7FA52874637C0006F6FA /* UIButton.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0C4BD5B2871F6D700FDEA0E /* AgreementText_uni */ = {
+			isa = PBXGroup;
+			children = (
+				E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */,
+				E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */,
+				E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */,
+				E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */,
+				E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */,
+				E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */,
+			);
+			path = AgreementText_uni;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,12 +375,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572E5B18286ED60C00D1FAA0 /* AppleSDGothicNeoSB.ttf in Resources */,
-				572E5B16286ED60C00D1FAA0 /* AppleSDGothicNeoB.ttf in Resources */,
 				572E5AE6286EBDCE00D1FAA0 /* LaunchScreen.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
-				572E5B17286ED60C00D1FAA0 /* AppleSDGothicNeoM.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,13 +506,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
+				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
+				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
+				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
+				E081F49A2872FC3D0059B7E0 /* NavigationView.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
+				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
+				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
+				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
+				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
 				E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,

@@ -36,4 +36,11 @@ extension UIColor{
         blue: 255/255,
         alpha: 0
     )
+    
+    static let noticeRed = UIColor(
+        red: 254/255,
+        green: 46/255,
+        blue: 46/255,
+        alpha: 1
+    )
 }

@@ -14,7 +14,7 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - UIComponenets
 
-    //텍스트
+    //text
 
     let appPwTitle = UILabel().then{
         $0.text = "암호 입력"
@@ -28,10 +28,44 @@ class AppPasswordViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body1)
     }
     
-    //비밀번호 이미지
+   
+    // input not password
+    let inputNotPw1 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPw2 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPw3 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    let inputNotPw4 = UIImageView().then{
+        $0.image = UIImage(named: "inputNotPassword")
+    }
+    
+    
+    //input password
+    let inputPw1 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPw2 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPw3 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
+    let inputPw4 = UIImageView().then{
+        $0.image = UIImage(named: "inputPassword")
+    }
+    
 
-
-    //버튼
+    //button
     
     let nemberBtn1 =  UIButton().then{
         $0.setTitle( "1", for: .normal)
@@ -104,7 +138,7 @@ class AppPasswordViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let deletBnt = UIButton().then{
+    let deletBtn = UIButton().then{
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill
