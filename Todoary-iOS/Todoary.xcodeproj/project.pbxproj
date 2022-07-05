@@ -33,6 +33,8 @@
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
+		E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */; };
+		E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */; };
 		E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */; };
 		E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */; };
 		E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */; };
@@ -92,6 +94,8 @@
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
+		E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HolaStoryboard.storyboard; sourceTree = "<group>"; };
+		E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SsoyaStoryboard.storyboard; sourceTree = "<group>"; };
 		E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextViewController.swift; sourceTree = "<group>"; };
 		E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyTextViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UseServiceViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 			children = (
 				572E5ADF286EBDCC00D1FAA0 /* Main.storyboard */,
 				E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */,
+				E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */,
+				E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */,
 				572E5AD8286EBDCC00D1FAA0 /* Todoary */,
 				572E5AEF286EBDCF00D1FAA0 /* TodoaryTests */,
 				572E5AF9286EBDCF00D1FAA0 /* TodoaryUITests */,
@@ -386,8 +392,10 @@
 			files = (
 				E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */,
 				572E5AE6286EBDCE00D1FAA0 /* LaunchScreen.storyboard in Resources */,
+				E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
+				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
