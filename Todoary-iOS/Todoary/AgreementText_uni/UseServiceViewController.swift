@@ -16,9 +16,9 @@ class UseServiceViewController : UIViewController {
     //MARK: - UIComponenets
     
     //navigationView
-    let UseServiceNavigationView = NavigationView().then {
-        $0.navigationTitle.text = "서비스 이용약관"
-    }
+    //let UseServiceNavigationView = NavigationView().then {
+       // $0.navigationTitle.text = "서비스 이용약관"
+   // }
     
     //약관내용
 
