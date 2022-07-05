@@ -7,26 +7,16 @@
 
 import UIKit
 
-extension UIView{
-    func addSubviews(){
-        
-    }
-}
-
 extension SignUpViewController {
     
     func setUpView(){
         
-        self.view.addSubview(navigationBar)
+//        self.view.addSubview(navigationView)
 
         self.view.addSubview(idTitle)
         self.view.addSubview(idTextField)
         self.view.addSubview(idBorderLine)
-
-        self.view.addSubview(emailSignLabel)
-        self.view.addSubview(emailLabel)
-        self.view.addSubview(emailBorderLine)
-        self.view.addSubview(emailArrowButton)
+        self.view.addSubview(idCanUseLabel)
 
         self.view.addSubview(idCertificationButton)
 
@@ -38,10 +28,11 @@ extension SignUpViewController {
         self.view.addSubview(pwTitle)
         self.view.addSubview(pwTextField)
         self.view.addSubview(pwBorderLine)
+        self.view.addSubview(pwInvalidLabel)
         
-        self.view.addSubview(pwCertificationField)
+        self.view.addSubview(pwCertificationTextField)
         self.view.addSubview(pwCertificationBorderLine)
-        self.view.addSubview(pwInCorrectLabel)
+        self.view.addSubview(pwIncorrectLabel)
         
         self.view.addSubview(nameTitle)
         self.view.addSubview(nameTextField)
@@ -57,57 +48,36 @@ extension SignUpViewController {
     
     func setUpConstraint(){
         
-        navigationBar.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.height.equalTo(50)
-        }
+//        navigationView.snp.makeConstraints{ make in
+//            make.top.equalToSuperview()
+//            make.leading.trailing.equalToSuperview()
+//        }
 
         //id
         idTitle.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(156)
+//            make.top.equalTo(navigationView.snp.bottom).offset(72)
+            make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(38)
         }
 
         idTextField.snp.makeConstraints{ make in
             make.top.equalTo(idTitle.snp.bottom).offset(16)
-            make.width.equalTo(112)
+            make.width.equalTo(261)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
         }
         
         idBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(143)
             make.height.equalTo(1)
-            make.leading.equalTo(idTextField.snp.leading)
-            make.bottom.equalTo(idTextField.snp.bottom).offset(2)
+            make.leading.equalTo(idTextField)
+            make.trailing.equalToSuperview().offset(-38)
+            make.bottom.equalTo(idTextField).offset(2)
         }
         
-        emailSignLabel.snp.makeConstraints{ make in
-            make.leading.equalTo(idBorderLine.snp.trailing).offset(7)
-            make.width.equalTo(21)
+        idCanUseLabel.snp.makeConstraints{ make in
             make.height.equalTo(20)
-            make.centerY.equalTo(idTextField)
-        }
-        
-        emailLabel.snp.makeConstraints{ make in
-            make.width.equalTo(112)
-            make.centerY.equalTo(idTextField)
-            make.height.equalTo(20)
-            make.leading.equalTo(emailSignLabel.snp.trailing).offset(5)
-        }
-        
-        emailBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(143)
-            make.height.equalTo(1)
-            make.leading.equalTo(emailLabel.snp.leading).offset(-3)
-            make.bottom.equalTo(emailLabel.snp.bottom).offset(2)
-        }
-        
-        emailArrowButton.snp.makeConstraints{ make in
-            make.width.equalTo(13)
-            make.height.equalTo(7)
-            make.leading.equalTo(emailLabel.snp.trailing).offset(10)
-            make.centerY.equalTo(idTextField)
+            make.top.equalTo(idBorderLine.snp.bottom).offset(6)
+            make.leading.equalTo(idTitle)
         }
         
         idCertificationButton.snp.makeConstraints{ make in
@@ -119,7 +89,7 @@ extension SignUpViewController {
         
         //certification
         certificationTitle.snp.makeConstraints{ make in
-            make.top.equalTo(idBorderLine.snp.bottom).offset(36)
+            make.top.equalTo(idCanUseLabel.snp.bottom).offset(10)
             make.leading.equalTo(idTitle)
         }
 
@@ -127,13 +97,12 @@ extension SignUpViewController {
             make.top.equalTo(certificationTitle.snp.bottom).offset(16)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
-            make.width.equalTo(261)
+            make.width.equalTo(idTextField)
         }
         
         certificationBorderLine.snp.makeConstraints{ make in
             make.height.equalTo(1)
-            make.leading.equalTo(idTextField.snp.leading)
-            make.trailing.equalToSuperview().offset(-38)
+            make.leading.trailing.equalTo(idBorderLine)
             make.bottom.equalTo(certificationTextField.snp.bottom).offset(2)
         }
         
@@ -141,7 +110,7 @@ extension SignUpViewController {
             make.width.equalTo(65)
             make.height.equalTo(22)
             make.trailing.equalToSuperview().offset(-40)
-            make.top.equalTo(emailBorderLine.snp.bottom).offset(35)
+            make.top.equalTo(idBorderLine.snp.bottom).offset(35)
         }
         
         //password
@@ -154,46 +123,48 @@ extension SignUpViewController {
             make.top.equalTo(pwTitle.snp.bottom).offset(17)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.width.equalTo(idTextField)
         }
         
         pwBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(certificationBorderLine)
             make.height.equalTo(1)
-            make.leading.equalTo(idTextField.snp.leading)
+            make.leading.trailing.equalTo(idBorderLine)
             make.bottom.equalTo(pwTextField.snp.bottom).offset(2)
         }
         
-        pwCertificationField.snp.makeConstraints{ make in
+        pwInvalidLabel.snp.makeConstraints{ make in
+            make.top.equalTo(pwBorderLine.snp.bottom).offset(7)
+            make.leading.equalTo(idTextField.snp.leading)
+        }
+        
+        pwCertificationTextField.snp.makeConstraints{ make in
             make.top.equalTo(pwBorderLine.snp.bottom).offset(41)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.width.equalTo(idTextField)
         }
         
         pwCertificationBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(certificationBorderLine)
             make.height.equalTo(1)
-            make.leading.equalTo(idTextField.snp.leading)
-            make.bottom.equalTo(pwCertificationField.snp.bottom).offset(2)
+            make.leading.trailing.equalTo(idBorderLine)
+            make.bottom.equalTo(pwCertificationTextField.snp.bottom).offset(2)
         }
         
-        pwInCorrectLabel.snp.makeConstraints{ make in
+        pwIncorrectLabel.snp.makeConstraints{ make in
             make.top.equalTo(pwCertificationBorderLine.snp.bottom).offset(7)
             make.leading.equalTo(idTextField.snp.leading)
         }
         
         //name
         nameTitle.snp.makeConstraints{ make in
-            make.top.equalTo(pwInCorrectLabel).offset(45)
+            make.top.equalTo(pwIncorrectLabel).offset(45)
             make.leading.equalTo(idTitle)
         }
         
         nameTextField.snp.makeConstraints{ make in
             make.top.equalTo(nameTitle.snp.bottom).offset(16)
-            make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.leading.trailing.equalTo(idBorderLine)
         }
         
         nameBorderLine.snp.makeConstraints{ make in
@@ -213,18 +184,18 @@ extension SignUpViewController {
             make.top.equalTo(nickNameTitle.snp.bottom).offset(16)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.width.equalTo(idTextField)
         }
         
         nickNameBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(certificationBorderLine)
+            make.leading.trailing.equalTo(idBorderLine)
             make.height.equalTo(1)
-            make.leading.equalTo(idTextField)
             make.bottom.equalTo(nickNameTextField.snp.bottom).offset(2)
         }
         
         //button
         nextButton.snp.makeConstraints{ make in
+            make.top.equalTo(nickNameBorderLine.snp.bottom).offset(45)
             make.bottom.equalToSuperview().offset(-47)
             make.leading.equalToSuperview().offset(26)
             make.trailing.equalToSuperview().offset(-26)
