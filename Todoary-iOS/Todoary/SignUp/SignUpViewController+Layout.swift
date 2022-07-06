@@ -11,7 +11,7 @@ extension SignUpViewController {
     
     func setUpView(){
         
-//        self.view.addSubview(navigationView)
+        self.view.addSubview(navigationView)
 
         self.view.addSubview(idTitle)
         self.view.addSubview(idTextField)
@@ -48,15 +48,14 @@ extension SignUpViewController {
     
     func setUpConstraint(){
         
-//        navigationView.snp.makeConstraints{ make in
-//            make.top.equalToSuperview()
-//            make.leading.trailing.equalToSuperview()
-//        }
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
 
         //id
         idTitle.snp.makeConstraints{ make in
-//            make.top.equalTo(navigationView.snp.bottom).offset(72)
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(navigationView.snp.bottom).offset(72)
             make.leading.equalToSuperview().offset(38)
         }
 

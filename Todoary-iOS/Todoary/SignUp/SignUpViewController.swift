@@ -56,9 +56,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-//    let navigationView = NavigationView().then{
-//        $0.navigationTitle.text = "회원가입"
-//    }
+    var navigationView : NavigationView!
     
     //id
     let idTitle = UILabel().then{
@@ -199,7 +197,7 @@ class SignUpViewController: UIViewController {
     }
 
     let nextButton = UIButton().then{
-//        $0.isEnabled = false
+        $0.isEnabled = false
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
@@ -211,10 +209,16 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
+            $0.navigationTitle.text = "회원가입"
+        }
 
         setUpView()
         setUpConstraint()
         textFieldAddRecognizer()
+        
+        self.view.backgroundColor = .white
     
     }
 
