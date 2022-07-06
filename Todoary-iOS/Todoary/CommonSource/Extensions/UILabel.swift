@@ -26,6 +26,16 @@ extension UILabel {
             self.attributedText = attrString
         }
     }
+    
+    func addLetterSpacing(_ value: Double = 0.28){
+        if let labelText = text, labelText.isEmpty == false{
+            let attributedString = NSMutableAttributedString(string: labelText)
+            attributedString.addAttribute(.kern,
+                                          value: value,
+                                          range: NSRange(location: 0, length: attributedString.length-1))
+            attributedText = attributedString
+        }
+    }
 }
 
 
