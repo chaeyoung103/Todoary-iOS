@@ -61,8 +61,9 @@ class SignUpViewController: UIViewController {
     //id
     let idTitle = UILabel().then{
         $0.text = "아이디"
+        $0.backgroundColor = .red
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .header)
+        $0.labelTypeSetting(type: .header)
     }
     
     let idTextField = UITextField().then{
