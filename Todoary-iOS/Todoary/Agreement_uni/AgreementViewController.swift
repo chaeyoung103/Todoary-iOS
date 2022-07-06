@@ -47,7 +47,6 @@ class AgreementViewController : UIViewController {
         $0.setTitleColor(.headline, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .body1)
         $0.setUnderline()
-     //   $0.addTarget(self, action: #selector(), for: .touchUpInside)
     }
     
     let adTitle = UIButton().then{
@@ -65,21 +64,23 @@ class AgreementViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .body1)
         $0.titleLabel?.textAlignment = .left
         $0.setUnderline()
-        //$0.addTarget(self, action: #selector(), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(allcheckBtndidnotcheck), for: .touchUpInside)
     }
 
 
     //MARK: - //약관 체크버튼
     
     let allCheckBtn = UIButton().then{
-        $0.setImage(UIImage(named: "check_box"), for: .normal)
+        $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+        $0.addTarget(self, action: #selector(allcheckBtndidcheck), for: .touchUpInside)
     }
     
     let privacyCheckBtn = UIButton().then{
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(privacydidCheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(allcheckBtndidnotcheck), for: .touchUpInside)
         
     }
     
@@ -87,18 +88,21 @@ class AgreementViewController : UIViewController {
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(useServicedidCheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(allcheckBtndidnotcheck), for: .touchUpInside)
     }
     
     let adCheckBtn = UIButton().then{
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(ADdidCheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(allcheckBtndidnotcheck), for: .touchUpInside)
     }
     
     let locationCheckBtn = UIButton().then{
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(locationdidCheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(allcheckBtndidnotcheck), for: .touchUpInside)
     }
 
     
@@ -146,7 +150,7 @@ class AgreementViewController : UIViewController {
     
     @objc func privacyTitleDIdTab() {
         let PrivacyTextViewController = PrivacyTextViewController()
-        PrivacyTextViewController.modalTransitionStyle = .coverVertical
+        PrivacyTextViewController.modalTransitionStyle = .flipHorizontal
         PrivacyTextViewController.modalPresentationStyle = .fullScreen
         
            self.present(PrivacyTextViewController, animated: false, completion: nil)
@@ -174,9 +178,29 @@ class AgreementViewController : UIViewController {
         if locationCheckBtn.isSelected{ locationCheckBtn.isSelected = false
             } else {locationCheckBtn.isSelected = true}
     }
-    //@objc func allcheckBtndidcheck () {
-      //  if
     
+    @objc func allcheckBtndidcheck () {
+        if allCheckBtn.isSelected {
+            allCheckBtn.isSelected = false
+            locationCheckBtn.isSelected = false
+            adCheckBtn.isSelected = false
+            useServiceCheckBtn.isSelected = false
+            privacyCheckBtn.isSelected = false
+        } else { allCheckBtn.isSelected = true
+            allCheckBtn.isSelected = true
+            locationCheckBtn.isSelected = true
+            adCheckBtn.isSelected = true
+            useServiceCheckBtn.isSelected = true
+            privacyCheckBtn.isSelected = true}
+        }
+    
+    @objc func allcheckBtndidnotcheck () {
+        if locationCheckBtn.isSelected == true,
+            adCheckBtn.isSelected == true,
+            useServiceCheckBtn.isSelected == true,
+            privacyCheckBtn.isSelected == true {
+            allCheckBtn.isSelected = true
+        } else { allCheckBtn.isSelected = false }
 }
-
+}
 

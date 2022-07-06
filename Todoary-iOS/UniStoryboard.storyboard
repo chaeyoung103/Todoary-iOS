@@ -11,7 +11,7 @@
         <!--App Password View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="AppPasswordViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AppPasswordViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Agreement View Controller-->
         <scene sceneID="yqL-v4-yTX">
             <objects>
-                <viewController id="Ez9-kM-gQk" customClass="AgreementViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Ez9-kM-gQk" customClass="AgreementViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gFh-8h-4CN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
         <!--Privacy Text View Controller-->
         <scene sceneID="jrk-Wg-4za">
             <objects>
-                <viewController id="WZf-Df-MTH" customClass="PrivacyTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="WZf-Df-MTH" customClass="PrivacyTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ziG-KZ-Mj2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
         <!--Use Service View Controller-->
         <scene sceneID="ZEX-5s-A8G">
             <objects>
-                <viewController id="qr5-HT-Dpj" customClass="UseServiceViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="qr5-HT-Dpj" customClass="UseServiceViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yp1-E0-RBo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
         <!--Ad Text View Controller-->
         <scene sceneID="EsT-bt-zth">
             <objects>
-                <viewController id="QaK-hJ-DhZ" customClass="AdTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="QaK-hJ-DhZ" customClass="AdTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cFC-Em-nU9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
