@@ -61,7 +61,6 @@ class SignUpViewController: UIViewController {
     //id
     let idTitle = UILabel().then{
         $0.text = "아이디"
-        $0.backgroundColor = .red
         $0.textColor = .headline
         $0.labelTypeSetting(type: .header)
     }
@@ -96,7 +95,7 @@ class SignUpViewController: UIViewController {
     let certificationTitle = UILabel().then{
         $0.text = "인증코드 입력"
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .header)
+        $0.labelTypeSetting(type: .header)
         
     }
 
@@ -123,7 +122,7 @@ class SignUpViewController: UIViewController {
     let pwTitle = UILabel().then{
         $0.text = "비밀번호"
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .header)
+        $0.labelTypeSetting(type: .header)
     }
 
     let pwTextField = UITextField().then{
@@ -165,7 +164,7 @@ class SignUpViewController: UIViewController {
     let nameTitle = UILabel().then{
         $0.text = "이름"
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .header)
+        $0.labelTypeSetting(type: .header)
     }
 
     let nameTextField = UITextField().then{
@@ -183,7 +182,7 @@ class SignUpViewController: UIViewController {
     let nickNameTitle = UILabel().then{
         $0.text = "닉네임"
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .header)
+        $0.labelTypeSetting(type: .header)
     }
 
     let nickNameTextField = UITextField().then{

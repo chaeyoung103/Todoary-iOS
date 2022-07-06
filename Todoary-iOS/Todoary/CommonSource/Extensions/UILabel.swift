@@ -148,7 +148,6 @@ extension UILabel {
             
             switch type{
             case .header, .subtitle:
-                value = 10
                 break
             case .body1:
                 value = 0.28
