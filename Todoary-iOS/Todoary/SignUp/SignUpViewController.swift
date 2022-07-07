@@ -62,14 +62,12 @@ class SignUpViewController: UIViewController {
     let idTitle = UILabel().then{
         $0.text = "아이디"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
     
     let idTextField = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
     }
     
     let idBorderLine = UIView().then{
@@ -79,7 +77,7 @@ class SignUpViewController: UIViewController {
     let idCertificationButton = UIButton().then{
         $0.setTitle("인증하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
         
@@ -87,7 +85,7 @@ class SignUpViewController: UIViewController {
     }
     
     let idCanUseLabel = UILabel().then{
-        $0.font = UIFont.nbFont(type: .sub1)
+        $0.labelTypeSetting(type: .sub1)
         $0.isHidden = true
     }
     
@@ -95,14 +93,12 @@ class SignUpViewController: UIViewController {
     let certificationTitle = UILabel().then{
         $0.text = "인증코드 입력"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
         
     }
 
     let certificationTextField = UITextField().then{
-        $0.textColor = .headline
-        $0.setPlaceholderColor()
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
     }
 
     let certificationBorderLine = UIView().then{
@@ -112,7 +108,7 @@ class SignUpViewController: UIViewController {
     let certificationOkButton = UIButton().then{
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
         $0.addTarget(self, action: #selector(certificationOKBtnDidClicked(_:)), for: .touchUpInside)
@@ -122,31 +118,29 @@ class SignUpViewController: UIViewController {
     let pwTitle = UILabel().then{
         $0.text = "비밀번호"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
     let pwTextField = UITextField().then{
         $0.placeholder = "영문, 숫자 포함 8자리 이상"
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
+        $0.isSecureTextEntry = true
     }
 
     let pwBorderLine = UIView().then{
         $0.backgroundColor = .todoaryGrey
     }
     
-    let pwInvalidLabel = UILabel().then{
-        $0.text = "*영문, 숫자 포함 8자리 이상"
+    let pwCanUseLabel = UILabel().then{
+        $0.text = "*영문, 숫자 포함 8자리 이상 "
         $0.textColor = .noticeRed
-        $0.font = UIFont.nbFont(type: .sub1)
+        $0.labelTypeSetting(type: .sub1)
         $0.isHidden = true
     }
 
     let pwCertificationTextField = UITextField().then{
-        $0.font = UIFont.nbFont(type: .body2)
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
+        $0.textFieldTypeSetting()
+        $0.isSecureTextEntry = true
     }
 
     let pwCertificationBorderLine = UIView().then{
@@ -154,9 +148,9 @@ class SignUpViewController: UIViewController {
     }
 
     let pwIncorrectLabel = UILabel().then{
-        $0.text = "비밀번호가 일치하지 않습니다"
+        $0.text = "비밀번호가 일치하지 않습니다."
         $0.textColor = .noticeRed
-        $0.font = UIFont.nbFont(type: .sub1)
+        $0.labelTypeSetting(type: .sub1)
         $0.isHidden = true
     }
 
@@ -164,36 +158,46 @@ class SignUpViewController: UIViewController {
     let nameTitle = UILabel().then{
         $0.text = "이름"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
     let nameTextField = UITextField().then{
         $0.placeholder = "이름을 입력해주세요"
-        $0.font = UIFont.nbFont(type: .body2)
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
+        $0.textFieldTypeSetting()
     }
 
     let nameBorderLine = UIView().then{
         $0.backgroundColor = .todoaryGrey
     }
+    
+    let nameCanUseLabel = UILabel().then{
+        $0.text = "*8자 이하의 한글 또는 영어로만 가능합니다."
+        $0.textColor = .todoaryGrey
+        $0.labelTypeSetting(type: .sub1)
+        $0.isHidden = true
+    }
 
     //nickname
-    let nickNameTitle = UILabel().then{
+    let nicknameTitle = UILabel().then{
         $0.text = "닉네임"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
-    let nickNameTextField = UITextField().then{
+    let nicknameTextField = UITextField().then{
         $0.placeholder = "Todoary에서 사용하실 닉네임을 알려주세요"
-        $0.setPlaceholderColor()
-        $0.font = UIFont.nbFont(type: .body2)
-        $0.textColor = .headline
+        $0.textFieldTypeSetting()
     }
 
-    let nickNameBorderLine = UIView().then{
+    let nicknameBorderLine = UIView().then{
         $0.backgroundColor = .todoaryGrey
+    }
+    
+    let nicknameCanUseLabel = UILabel().then{
+        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+        $0.textColor = .todoaryGrey
+        $0.labelTypeSetting(type: .sub1)
+        $0.isHidden = true
     }
 
     let nextButton = UIButton().then{
@@ -201,7 +205,7 @@ class SignUpViewController: UIViewController {
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .button1)
+        $0.buttonTypeSetting(type: .button1)
         $0.layer.cornerRadius = 52/2
         $0.addTarget(self, action: #selector(nextButtonDidClicked(_:)), for: .touchUpInside)
     }
@@ -236,7 +240,7 @@ class SignUpViewController: UIViewController {
     
     func textFieldAddRecognizer(){
         
-        let tfChangedArray = [idTextField, nameTextField,nickNameTextField,certificationTextField, pwCertificationTextField]
+        let tfChangedArray = [idTextField, nameTextField,nicknameTextField,certificationTextField, pwCertificationTextField]
         
         tfChangedArray.forEach{ each in
             each.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
@@ -259,6 +263,7 @@ class SignUpViewController: UIViewController {
             isValidCertiCode = true
             return
         case pwCertificationTextField:
+            
             let bool = (sender.text == passwd)
             isValidPasswdCheck = bool
             
@@ -269,12 +274,24 @@ class SignUpViewController: UIViewController {
             }
             return
         case nameTextField:
+            
             isValidName = text.isValidName()
-            name = text
+            if(isValidName){
+                nameCanUseLabel.isHidden = true
+                name = text
+            }else{
+                nameCanUseLabel.isHidden = false
+            }
             return
-        case nickNameTextField:
+        case nicknameTextField:
+            
             isValidNickname = text.isValidNickname()
-            nickname = text
+            if(isValidNickname){
+                nicknameCanUseLabel.isHidden = true
+                nickname = text
+            }else{
+                nicknameCanUseLabel.isHidden = false
+            }
             return
         default:
             fatalError("Missing Textfield")
@@ -290,7 +307,7 @@ class SignUpViewController: UIViewController {
         case pwTextField:
             isValidPasswd = text.isValidPassword()
             if(!isValidPasswd){
-                pwInvalidLabel.isHidden = false
+                pwCanUseLabel.isHidden = false
             }
             passwd = text
             return
