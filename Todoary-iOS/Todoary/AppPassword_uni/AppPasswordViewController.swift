@@ -50,18 +50,22 @@ class AppPasswordViewController : UIViewController {
     //input password
     let inputPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
+        $0.isHidden = true
     }
     
     let inputPw2 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
+        $0.isHidden = true
     }
     
     let inputPw3 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
+        $0.isHidden = true
     }
     
     let inputPw4 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
+        $0.isHidden = true
     }
     
 
@@ -72,6 +76,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
     }
     
     let nemberBtn2 =  UIButton().then{
@@ -79,6 +84,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
     }
     
         
@@ -142,6 +148,7 @@ class AppPasswordViewController : UIViewController {
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill
+        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
@@ -151,5 +158,12 @@ class AppPasswordViewController : UIViewController {
         setUpView()
         setUpConstraint()
     }
-
+    
+    @objc func nemberBtndidTab() {
+        if deletBtn.isTouchInside {
+            inputPw1.isHidden = true
+        }else { inputPw1.isHidden = false}
+    }
 }
+
+

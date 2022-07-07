@@ -129,13 +129,13 @@ class AgreementViewController : UIViewController {
     //MARK: -  확인 버튼(동의를 마치면 활성화)
     
     let confirmBtn = UIButton().then{
+        $0.isEnabled = false
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .buttonColor
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
         $0.layer.cornerRadius = 52/2
-        $0.isUserInteractionEnabled = false
-        $0.addTarget(self, action: #selector(privacyTitleDIdTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialagreementdidcheck), for: .touchUpInside)
     }
     
     //MARK: - viewDidLoad
@@ -143,6 +143,7 @@ class AgreementViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
 
         setUpView()
         setUpConstraint()
@@ -216,15 +217,10 @@ class AgreementViewController : UIViewController {
         //MARK: - essentialagreementdidcheck
         
         @objc func essentialagreementdidcheck() {
-            if privacyCheckBtn.isSelected == true,
-               useServiceCheckBtn.isSelected == true {
-                
+            if privacyCheckBtn.isSelected  {
                 confirmBtn.isEnabled = true
-                
             }else{
                 confirmBtn.isEnabled = false
             }
         }
     }
-
-
