@@ -40,12 +40,14 @@ class PwFindViewController: UIViewController {
     
     let idTf = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
+        $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
     }
     
     let idNoticeLb = UILabel().then{
-        $0.text = "*가입시 등록했던 이메일을 입력해주세요"
+        $0.text = "*가입시 등록했던 이메일을 입력해주세요 "
         $0.textColor = .todoaryGrey
+        $0.labelTypeSetting(type: .sub1)
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
@@ -96,6 +98,7 @@ class PwFindViewController: UIViewController {
     let pwTf = UITextField().then{
         $0.placeholder = "영문, 숫자 포함 8자리 이상"
         $0.isSecureTextEntry = true
+        $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
@@ -106,13 +109,15 @@ class PwFindViewController: UIViewController {
     
     let pwNoticeLb = UILabel().then{
         $0.isHidden = true
-        $0.text = "*영문, 숫자 포함 8자리 이상 입력해주세요"
+        $0.text = "*영문, 숫자 포함 8자리 이상 입력해주세요 "
+        $0.labelTypeSetting(type: .sub1)
         $0.textColor = .noticeRed
         $0.font = UIFont.nbFont(type: .sub1)
     }
 
     let pwCertificationTf = UITextField().then{
         $0.placeholder = "비밀번호 재입력"
+        $0.setPlaceholderColor()
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
@@ -124,7 +129,8 @@ class PwFindViewController: UIViewController {
     
     let pwCertificationNoticeLb = UILabel().then{
         $0.isHidden = true
-        $0.text = "*비밀번호가 일치하지 않습니다"
+        $0.text = "*비밀번호가 일치하지 않습니다 "
+        $0.labelTypeSetting(type: .sub1)
         $0.textColor = .noticeRed
         $0.font = UIFont.nbFont(type: .sub1)
     }
