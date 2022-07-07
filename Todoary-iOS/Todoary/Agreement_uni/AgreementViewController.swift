@@ -219,6 +219,8 @@ class AgreementViewController : UIViewController {
         @objc func essentialagreementdidcheck() {
             if privacyCheckBtn.isSelected  {
                 confirmBtn.isEnabled = true
+                
+                print("확인")
             }else{
                 confirmBtn.isEnabled = false
             }
