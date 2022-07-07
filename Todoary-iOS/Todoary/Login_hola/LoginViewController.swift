@@ -12,6 +12,12 @@ import Then
 
 class LoginViewController: UIViewController {
     
+    var isPwEnabled = false{
+        didSet{
+            self.pwSearchBtnEnabled()
+        }
+    }
+    
     
     //MARK: - UIComponenets
     
@@ -19,11 +25,13 @@ class LoginViewController: UIViewController {
     let idTitle = UILabel().then{
         $0.text = "아이디"
         $0.textColor = .headline
+        $0.labelTypeSetting(type: .header)
         $0.font = UIFont.nbFont(type: .subtitle)
     }
     
     let idTf = UITextField().then{
         $0.placeholder = "가입하신 이메일을 입력해주세요"
+        $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
     }
     
@@ -41,6 +49,7 @@ class LoginViewController: UIViewController {
 
     let pwTf = UITextField().then{
         $0.placeholder = "비밀번호를 입력해주세요"
+        $0.setPlaceholderColor()
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
     }
@@ -52,6 +61,7 @@ class LoginViewController: UIViewController {
     let autoLoginTitle = UILabel().then{
         $0.textAlignment = .center
         $0.text = "자동로그인"
+        $0.labelTypeSetting(type: .header)
         $0.textColor = .todoaryGrey
         $0.font = UIFont.nbFont(type: .body2)
     }
@@ -87,6 +97,7 @@ class LoginViewController: UIViewController {
     }
     
     let pwSearchBtn = UIButton().then{
+        $0.isEnabled = false
         $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.todoaryGrey, for: .normal)
@@ -115,19 +126,30 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(signUpViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
         }
+    @objc func pwSearchBtnEnabled() {
+        if isPwEnabled {
+            pwSearchBtn.isEnabled = true
+        }
+        else {
+            pwSearchBtn.isEnabled = false
+        }
+    }
     
     @objc func pwSearchBtnDidTab() {
+        
         let pwFindViewController = PwFindViewController()
         navigationController?.pushViewController(pwFindViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
-        }
+                }
     
     @objc func autoLoginBtnDidTab() {
         if autoLoginBtn.isSelected {
             autoLoginBtn.isSelected = false
+            isPwEnabled = false
         }
         else {
             autoLoginBtn.isSelected = true
+            isPwEnabled = true
         }
     }
     
