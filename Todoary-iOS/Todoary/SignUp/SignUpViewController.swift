@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController {
     let idTitle = UILabel().then{
         $0.text = "아이디"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
     
     let idTextField = UITextField().then{
@@ -77,7 +77,6 @@ class SignUpViewController: UIViewController {
     let idCertificationButton = UIButton().then{
         $0.setTitle("인증하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-//        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
         $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
@@ -94,12 +93,11 @@ class SignUpViewController: UIViewController {
     let certificationTitle = UILabel().then{
         $0.text = "인증코드 입력"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
         
     }
 
     let certificationTextField = UITextField().then{
-        $0.textColor = .headline
         $0.textFieldTypeSetting()
     }
 
@@ -110,7 +108,6 @@ class SignUpViewController: UIViewController {
     let certificationOkButton = UIButton().then{
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-//        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
         $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
@@ -121,7 +118,7 @@ class SignUpViewController: UIViewController {
     let pwTitle = UILabel().then{
         $0.text = "비밀번호"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
     let pwTextField = UITextField().then{
@@ -135,14 +132,13 @@ class SignUpViewController: UIViewController {
     }
     
     let pwCanUseLabel = UILabel().then{
-        $0.text = "*영문, 숫자 포함 8자리 이상"
+        $0.text = "*영문, 숫자 포함 8자리 이상 "
         $0.textColor = .noticeRed
         $0.labelTypeSetting(type: .sub1)
         $0.isHidden = true
     }
 
     let pwCertificationTextField = UITextField().then{
-        $0.font = UIFont.nbFont(type: .body2)
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
     }
@@ -162,13 +158,12 @@ class SignUpViewController: UIViewController {
     let nameTitle = UILabel().then{
         $0.text = "이름"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
     let nameTextField = UITextField().then{
         $0.placeholder = "이름을 입력해주세요"
         $0.textFieldTypeSetting()
-        $0.textColor = .headline
     }
 
     let nameBorderLine = UIView().then{
@@ -186,7 +181,7 @@ class SignUpViewController: UIViewController {
     let nicknameTitle = UILabel().then{
         $0.text = "닉네임"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
+        $0.labelTypeSetting(type: .subtitle)
     }
 
     let nicknameTextField = UITextField().then{
