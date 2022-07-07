@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-//lineHeight 설정
 extension UILabel {
     
      func setTextWithLineHeight(text: String?, lineHeight: CGFloat){
@@ -94,6 +93,8 @@ extension UILabel {
         case .sub1:
             lineHeight = 14.4
             break
+        case .acceptTerm:
+            lineHeight = 21
         default:
             return attributedString
         }
@@ -147,11 +148,7 @@ extension UILabel {
             var value: Double = 0
             
             switch type{
-            case .header, .subtitle:
-                break
-            case .body1:
-                value = 0.28
-            case .body2:
+            case .body1, .body2, .acceptTerm:
                 value = 0.28
             case .sub1:
                 value = 0.36
