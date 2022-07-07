@@ -85,7 +85,7 @@ extension SignUpViewController {
         idCertificationButton.snp.makeConstraints{ make in
             make.width.equalTo(65)
             make.height.equalTo(22)
-            make.trailing.equalToSuperview().offset(-35)
+            make.trailing.equalToSuperview().offset(-40)
             make.top.equalTo(navigationView.snp.bottom).offset(66)
         }
         

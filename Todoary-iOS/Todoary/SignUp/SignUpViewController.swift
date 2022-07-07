@@ -67,9 +67,7 @@ class SignUpViewController: UIViewController {
     
     let idTextField = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
     }
     
     let idBorderLine = UIView().then{
@@ -79,7 +77,8 @@ class SignUpViewController: UIViewController {
     let idCertificationButton = UIButton().then{
         $0.setTitle("인증하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+//        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
         
@@ -101,8 +100,7 @@ class SignUpViewController: UIViewController {
 
     let certificationTextField = UITextField().then{
         $0.textColor = .headline
-        $0.setPlaceholderColor()
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
     }
 
     let certificationBorderLine = UIView().then{
@@ -112,7 +110,8 @@ class SignUpViewController: UIViewController {
     let certificationOkButton = UIButton().then{
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+//        $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
         $0.addTarget(self, action: #selector(certificationOKBtnDidClicked(_:)), for: .touchUpInside)
@@ -127,9 +126,7 @@ class SignUpViewController: UIViewController {
 
     let pwTextField = UITextField().then{
         $0.placeholder = "영문, 숫자 포함 8자리 이상"
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
     }
 
@@ -146,8 +143,7 @@ class SignUpViewController: UIViewController {
 
     let pwCertificationTextField = UITextField().then{
         $0.font = UIFont.nbFont(type: .body2)
-        $0.setPlaceholderColor()
-        $0.textColor = .headline
+        $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
     }
 
@@ -171,8 +167,7 @@ class SignUpViewController: UIViewController {
 
     let nameTextField = UITextField().then{
         $0.placeholder = "이름을 입력해주세요"
-        $0.font = UIFont.nbFont(type: .body2)
-        $0.setPlaceholderColor()
+        $0.textFieldTypeSetting()
         $0.textColor = .headline
     }
 
@@ -196,9 +191,7 @@ class SignUpViewController: UIViewController {
 
     let nicknameTextField = UITextField().then{
         $0.placeholder = "Todoary에서 사용하실 닉네임을 알려주세요"
-        $0.setPlaceholderColor()
-        $0.font = UIFont.nbFont(type: .body2)
-        $0.textColor = .headline
+        $0.textFieldTypeSetting()
     }
 
     let nicknameBorderLine = UIView().then{
@@ -217,7 +210,7 @@ class SignUpViewController: UIViewController {
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .button1)
+        $0.buttonTypeSetting(type: .button1)
         $0.layer.cornerRadius = 52/2
         $0.addTarget(self, action: #selector(nextButtonDidClicked(_:)), for: .touchUpInside)
     }
