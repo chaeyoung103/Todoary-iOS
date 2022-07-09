@@ -16,7 +16,10 @@ extension PrivacyTextViewController {
     
     func setUpView(){
         
-//        self.view.addSubview(PrivacyNavigationView)
+        
+        self.view.addSubview(contentView)
+        
+        self.view.addSubview(navigationView)
         
         self.view.addSubview(contentScrollView)
         self.view.addSubview(privacyText)
@@ -27,13 +30,22 @@ extension PrivacyTextViewController {
     func setUpConstraint(){
         
         //navigationView
-      //  PrivacyNavigationView.snp.makeConstraints{ make in
-       //     make.top.equalToSuperview()
-          //  make.leading.trailing.equalToSuperview()
-         
-       // }
+
         
     //약관내용
+        
+        
+        contentView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+        
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
         contentScrollView.snp.makeConstraints{ make in
             make.width.equalTo(318)
             make.height.equalTo(687)

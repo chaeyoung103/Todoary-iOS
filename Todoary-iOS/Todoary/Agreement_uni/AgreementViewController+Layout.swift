@@ -17,7 +17,7 @@ extension AgreementViewController {
     
     func setUpView(){
         
-    //    self.view.addSubview(agreeNavigationView)
+        self.view.addSubview(navigationView)
         
         self.view.addSubview(agreeTitle)
         
@@ -49,12 +49,10 @@ extension AgreementViewController {
     
     func setUpConstraint(){
         
-        //navigationView
-      //  agreeNavigationView.snp.makeConstraints{ make in
-        //    make.top.equalToSuperview()
-       //     make.leading.trailing.equalToSuperview()
-            
-        //}
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+        }
         
         //Title
         agreeTitle.snp.makeConstraints{ make in

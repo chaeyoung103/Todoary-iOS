@@ -12,12 +12,18 @@ import Then
 
 class AgreementViewController : UIViewController {
     
+    var isconfirmBtnEnabled = false{
+        didSet{
+            self.confirmBtnEnabled()
+        }
+    }
+    
     //MARK: - UIComponenets
     
-    //navigationView
-   // let agreeNavigationView = NavigationView().then {
-       // $0.navigationTitle.text = "약관동의"
-    //}
+    
+    //MARK: - navigationView
+    
+    var navigationView:NavigationView!
 
     //MARK: - 텍스트
 
@@ -48,6 +54,7 @@ class AgreementViewController : UIViewController {
         $0.setTitleColor(.headline, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .body1)
         $0.setUnderline()
+        $0.addTarget(self, action: #selector(useServiceTitleDIdTab), for: .touchUpInside)
     }
     
     let adTitle = UIButton().then{
@@ -56,6 +63,7 @@ class AgreementViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .body1)
         $0.titleLabel?.textAlignment = .left
         $0.setUnderline()
+        $0.addTarget(self, action: #selector(ADTitleDIdTab), for: .touchUpInside)
     }
     
     let locationTitle = UIButton().then{
@@ -67,12 +75,13 @@ class AgreementViewController : UIViewController {
     }
 
 
-    //MARK: - 약관 체크버튼
+    //MARK: - 약관 체크버튼 (필수 동의를 해야만 확인버튼을 누를수 있음)
     
     let allCheckBtn = UIButton().then{
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(allcheckBtndidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
     
     let privacyCheckBtn = UIButton().then{
@@ -80,6 +89,7 @@ class AgreementViewController : UIViewController {
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(privacydidCheck), for: .touchUpInside)
         $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
     
     let useServiceCheckBtn = UIButton().then{
@@ -87,6 +97,7 @@ class AgreementViewController : UIViewController {
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(useServicedidCheck), for: .touchUpInside)
         $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
     
     let adCheckBtn = UIButton().then{
@@ -94,6 +105,7 @@ class AgreementViewController : UIViewController {
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(ADdidCheck), for: .touchUpInside)
         $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
     
     let locationCheckBtn = UIButton().then{
@@ -101,6 +113,7 @@ class AgreementViewController : UIViewController {
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.addTarget(self, action: #selector(locationdidCheck), for: .touchUpInside)
         $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
 
     
@@ -126,7 +139,7 @@ class AgreementViewController : UIViewController {
         $0.backgroundColor = .todoaryGrey
     }
     
-    //MARK: -  확인 버튼(동의를 마치면 활성화)
+    //MARK: -  확인 버튼(필수 동의를 마치면 활성화)
     
     let confirmBtn = UIButton().then{
         $0.isEnabled = false
@@ -135,7 +148,7 @@ class AgreementViewController : UIViewController {
         $0.backgroundColor = .buttonColor
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
         $0.layer.cornerRadius = 52/2
-        $0.addTarget(self, action: #selector(essentialagreementdidcheck), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(confirmBtnDidTab), for: .touchUpInside)
     }
     
     //MARK: - viewDidLoad
@@ -143,6 +156,10 @@ class AgreementViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
+            $0.navigationTitle.text = "약관동의"
+        }
         
 
         setUpView()
@@ -153,14 +170,26 @@ class AgreementViewController : UIViewController {
     
     @objc func privacyTitleDIdTab() {
         let PrivacyTextViewController = PrivacyTextViewController()
-        PrivacyTextViewController.modalTransitionStyle = .flipHorizontal
-        PrivacyTextViewController.modalPresentationStyle = .fullScreen
-        
-           self.present(PrivacyTextViewController, animated: false, completion: nil)
+        navigationController?.pushViewController(PrivacyTextViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+       }
+    
+    @objc func useServiceTitleDIdTab() {
+        let UseServiceViewController = UseServiceViewController()
+        navigationController?.pushViewController(UseServiceViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+       }
+    
+    @objc func ADTitleDIdTab() {
+        let AdTextViewController = AdTextViewController()
+        navigationController?.pushViewController(AdTextViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
        }
     
     
-    //MARK: - checkBtndidCheck
+    
+    
+    //MARK: - eachCheckBtndidCheck
     
     @objc func privacydidCheck() {
         if privacyCheckBtn.isSelected{ privacyCheckBtn.isSelected = false
@@ -182,6 +211,8 @@ class AgreementViewController : UIViewController {
             } else {locationCheckBtn.isSelected = true}
     }
     
+    //MARK: - allCheckBtndidCheck
+    
     @objc func allcheckBtndidcheck() {
         if allCheckBtn.isSelected {
             
@@ -202,10 +233,10 @@ class AgreementViewController : UIViewController {
         }
     
     @objc func allagreementdidcheck() {
-        if  privacyCheckBtn.isSelected == true,
-            useServiceCheckBtn.isSelected == true,
-            adCheckBtn.isSelected == true,
-            locationCheckBtn.isSelected == true {
+        if  privacyCheckBtn.isSelected == true
+            && useServiceCheckBtn.isSelected == true
+            && adCheckBtn.isSelected == true
+            && locationCheckBtn.isSelected == true {
             
             allCheckBtn.isSelected = true
             
@@ -216,13 +247,34 @@ class AgreementViewController : UIViewController {
         
         //MARK: - essentialagreementdidcheck
         
-        @objc func essentialagreementdidcheck() {
-            if privacyCheckBtn.isSelected  {
-                confirmBtn.isEnabled = true
-                
-                print("확인")
+    @objc func confirmBtnEnabled() {
+        if isconfirmBtnEnabled{
+           confirmBtn.isEnabled = true
             }else{
                 confirmBtn.isEnabled = false
             }
         }
+    
+    @objc func confirmBtnDidTab() {
+        let PrivacyTextViewController = PrivacyTextViewController()
+        
+        navigationController?.pushViewController(PrivacyTextViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+        }
+    
+    @objc func essentialCheckBtnDidTab() {
+        if privacyCheckBtn.isSelected == false ||
+           useServiceCheckBtn.isSelected == false
+        {
+           isconfirmBtnEnabled = false
+        }else{
+            isconfirmBtnEnabled = true
+        }
     }
+        
+    @objc func backBtnDidTab() {
+        self.navigationController?.popViewController(animated: true)
+        }
+    }
+
+
