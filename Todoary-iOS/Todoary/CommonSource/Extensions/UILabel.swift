@@ -31,7 +31,7 @@ extension UILabel {
         case .header:
             lineHeight = 21.6
             break
-        case .subtitle:
+        case .subtitle, .tableCell:
             lineHeight = 19.2
             break
         case .body1, .body2:
@@ -69,6 +69,8 @@ extension UILabel {
             value = 0.28
         case .sub1:
             value = 0.36
+        case .tableCell:
+            value = 0.32
         default:
             break
         }
