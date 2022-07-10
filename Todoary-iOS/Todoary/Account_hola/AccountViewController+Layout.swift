@@ -58,10 +58,10 @@ extension AccountViewController {
         }
         
         profileChangeBtn.snp.makeConstraints{ make in
-            make.bottom.equalToSuperview().offset(-33.67)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(171)
-            make.height.equalTo(25)
+            make.top.equalToSuperview().offset(165)
+            make.trailing.equalToSuperview().offset(-50)
+            make.width.equalTo(78)
+            make.height.equalTo(26)
         }
     }
 }
