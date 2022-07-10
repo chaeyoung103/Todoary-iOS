@@ -49,6 +49,7 @@
 		E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */; };
 		E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC0287B1C570064CADA /* SettingAgreementViewController.swift */; };
 		E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC2287B1C670064CADA /* SettingAgreementViewController + Layout.swift */; };
+		E0AB9EC6287B304D0064CADA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC5287B304D0064CADA /* SettingTableViewCell.swift */; };
 		E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */; };
 		E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */; };
 		E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */; };
@@ -132,6 +133,7 @@
 		E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0AB9EC0287B1C570064CADA /* SettingAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewController.swift; sourceTree = "<group>"; };
 		E0AB9EC2287B1C670064CADA /* SettingAgreementViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingAgreementViewController + Layout.swift"; sourceTree = "<group>"; };
+		E0AB9EC5287B304D0064CADA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingTableViewCell.swift; path = ../../../../../Documents/SettingTableViewCell.swift; sourceTree = "<group>"; };
 		E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HolaStoryboard.storyboard; sourceTree = "<group>"; };
 		E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SsoyaStoryboard.storyboard; sourceTree = "<group>"; };
 		E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextViewController.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */,
 				E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */,
+				E0AB9EC5287B304D0064CADA /* SettingTableViewCell.swift */,
 			);
 			path = Settung_uni;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
+				E0AB9EC6287B304D0064CADA /* SettingTableViewCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
@@ -886,7 +890,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -916,7 +920,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
