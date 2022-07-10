@@ -32,6 +32,8 @@
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
+		AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CF287B34B30056932A /* ProfileViewController.swift */; };
+		AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */; };
 		ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD00F28749F520029D5CE /* LoginViewController.swift */; };
 		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
@@ -114,6 +116,8 @@
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		AC9128CF287B34B30056932A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD00F28749F520029D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128CE287B34830056932A /* Profile_hola */,
 				E0AB9EC4287B1C900064CADA /* 1주차 */,
 				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
 				E0AB9EBE287B1C100064CADA /* Home_uni */,
@@ -296,6 +301,15 @@
 				AC9128CC287AFE620056932A /* AccountTableViewCell.swift */,
 			);
 			path = Account_hola;
+			sourceTree = "<group>";
+		};
+		AC9128CE287B34830056932A /* Profile_hola */ = {
+			isa = PBXGroup;
+			children = (
+				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
+				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
+			);
+			path = Profile_hola;
 			sourceTree = "<group>";
 		};
 		ACACD00E28749F360029D5CE /* Login_hola */ = {
@@ -659,6 +673,7 @@
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
+				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
@@ -670,6 +685,7 @@
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
+				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
