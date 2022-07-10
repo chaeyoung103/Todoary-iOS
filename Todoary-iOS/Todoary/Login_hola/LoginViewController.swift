@@ -146,10 +146,6 @@ class LoginViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-    @objc func backBtnDidTab() {
-        self.navigationController?.popViewController(animated: true)
-        }
-    
     //MARK: - Helpers
 
 }
