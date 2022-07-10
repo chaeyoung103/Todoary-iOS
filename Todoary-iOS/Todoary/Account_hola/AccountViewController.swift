@@ -13,10 +13,6 @@ class AccountViewController : UIViewController {
     
     //MARK: - UIComponenets
     
-    let contentView = UIView().then{
-        $0.backgroundColor = .white
-    }
-    
     //navigation bar
     var navigationView : NavigationView!
     
@@ -92,6 +88,8 @@ class AccountViewController : UIViewController {
             $0.dataSource = self
         }
 
+        self.view.backgroundColor = .white
+        
         setUpView()
         setUpConstraint()
     }
@@ -128,8 +126,4 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("TableViewCell Error")
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            print("select \(indexPath.row)")
-        }
 }

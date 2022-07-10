@@ -51,37 +51,39 @@ class SettingViewController : UIViewController {
 
 //MARK: - Helpers
 
-extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
+extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
 
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
-}
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 8
+    }
 
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "accountTableViewCell", for: indexPath) as? AccountTableViewCell else{
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? AccountTableViewCell else{
         return UITableViewCell()
     }
     
     switch indexPath.row{
     case 0:
-        cell.title.text = "비밀번호 재설정"
+        cell.title.text = "알림"
         return cell
     case 1:
-        cell.title.text = "로그아웃"
-        cell.nextBtn.isHidden = true
+        cell.title.text = "화면"
         return cell
     case 2:
-        cell.title.text = "계정 삭제하기"
-        cell.title.textColor = .deleteRed
-        cell.nextBtn.isHidden = true
+        cell.title.text = "계정"
         return cell
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
     default:
         fatalError("TableViewCell Error")
+        }
     }
-}
 
-func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select \(indexPath.row)")
+        }
     }
-}

@@ -11,8 +11,6 @@ extension AccountViewController {
     
     func setUpView(){
         
-        self.view.addSubview(contentView)
-        
         self.view.addSubview(navigationView)
         
         self.view.addSubview(profileImage)
@@ -31,13 +29,6 @@ extension AccountViewController {
     }
     
     func setUpConstraint(){
-        
-        //background
-        contentView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
-        }
         
         //navigation bar
         navigationView.snp.makeConstraints{ make in
@@ -91,7 +82,7 @@ extension AccountViewController {
         //tableView
         tableView.snp.makeConstraints{ make in
             make.top.equalTo(accountBorderLine.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
