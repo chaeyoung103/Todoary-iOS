@@ -12,13 +12,6 @@ import Then
 
 class LoginViewController: UIViewController {
     
-    var isPwEnabled = false{
-        didSet{
-            self.pwSearchBtnEnabled()
-        }
-    }
-    
-    
     //MARK: - UIComponenets
     
     //id
@@ -97,7 +90,6 @@ class LoginViewController: UIViewController {
     }
     
     let pwSearchBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.todoaryGrey, for: .normal)
@@ -126,14 +118,6 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(signUpViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
         }
-    @objc func pwSearchBtnEnabled() {
-        if isPwEnabled {
-            pwSearchBtn.isEnabled = true
-        }
-        else {
-            pwSearchBtn.isEnabled = false
-        }
-    }
     
     @objc func pwSearchBtnDidTab() {
         
@@ -145,11 +129,9 @@ class LoginViewController: UIViewController {
     @objc func autoLoginBtnDidTab() {
         if autoLoginBtn.isSelected {
             autoLoginBtn.isSelected = false
-            isPwEnabled = false
         }
         else {
             autoLoginBtn.isSelected = true
-            isPwEnabled = true
         }
     }
     
