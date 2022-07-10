@@ -43,7 +43,7 @@ extension UIFont {
         case .body1:
             return UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!
         case .body2:
-            return UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!
+            return UIFont(name: "AppleSDGothicNeo-Semibold", size: 14)!
         case .sub1:
             return UIFont(name: "AppleSDGothicNeo-Medium", size: 12 )!
         case .button1:
