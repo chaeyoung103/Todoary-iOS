@@ -79,7 +79,7 @@ extension LoginViewController {
             make.trailing.equalTo(pwBorderLine)
             make.width.equalTo(22)
             make.height.equalTo(22)
-            make.centerY.equalTo(autoLoginTitle).offset(-1)
+            make.centerY.equalTo(autoLoginTitle).offset(1)
             
         }
         
