@@ -36,18 +36,20 @@ class PwFindViewController: UIViewController {
         $0.text = "아이디"
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .subtitle)
+        $0.addLetterSpacing(spacing: 0.32)
     }
     
     let idTf = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
         $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting(type: .body1)
     }
     
     let idNoticeLb = UILabel().then{
         $0.text = "*가입시 등록했던 이메일을 입력해주세요 "
         $0.textColor = .todoaryGrey
-        $0.labelTypeSetting(type: .sub1)
+        $0.addLetterSpacing(spacing: 0.36)
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
@@ -59,6 +61,7 @@ class PwFindViewController: UIViewController {
         $0.setTitle("인증하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
         $0.addTarget(self, action: #selector(idCertificationBtnDidTab), for: .touchUpInside)
@@ -69,6 +72,7 @@ class PwFindViewController: UIViewController {
         $0.text = "인증코드 입력"
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .subtitle)
+        $0.addLetterSpacing(spacing: 0.32)
         
     }
 
@@ -84,6 +88,7 @@ class PwFindViewController: UIViewController {
         $0.setTitle("확인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
     }
@@ -93,6 +98,7 @@ class PwFindViewController: UIViewController {
         $0.text = "비밀번호 재설정"
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .subtitle)
+        $0.addLetterSpacing(spacing: 0.32)
     }
 
     let pwTf = UITextField().then{
@@ -100,6 +106,7 @@ class PwFindViewController: UIViewController {
         $0.isSecureTextEntry = true
         $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting(type: .body1)
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
 
@@ -120,6 +127,7 @@ class PwFindViewController: UIViewController {
         $0.setPlaceholderColor()
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
+        $0.textFieldTypeSetting(type: .body1)
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
 

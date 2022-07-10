@@ -17,6 +17,8 @@ extension AccountViewController {
         
         self.view.addSubview(profileImage)
         self.view.addSubview(nickName)
+        self.view.addSubview(introduce)
+        self.view.addSubview(profileChangeBtn)
 
 
     
@@ -48,6 +50,18 @@ extension AccountViewController {
         nickName.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(155)
             make.leading.equalTo(profileImage.snp.trailing).offset(20)
+        }
+        
+        introduce.snp.makeConstraints{ make in
+            make.top.equalTo(nickName.snp.bottom).offset(10)
+            make.leading.equalTo(nickName.snp.leading)
+        }
+        
+        profileChangeBtn.snp.makeConstraints{ make in
+            make.bottom.equalToSuperview().offset(-33.67)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(171)
+            make.height.equalTo(25)
         }
     }
 }

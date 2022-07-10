@@ -20,11 +20,13 @@ class LoginViewController: UIViewController {
         $0.textColor = .headline
         $0.labelTypeSetting(type: .header)
         $0.font = UIFont.nbFont(type: .subtitle)
+        $0.labelTypeSetting(type: .tableCell)
     }
     
     let idTf = UITextField().then{
         $0.placeholder = "가입하신 이메일을 입력해주세요"
         $0.setPlaceholderColor()
+        $0.textFieldTypeSetting(type: .body1)
         $0.font = UIFont.nbFont(type: .body2)
     }
     
@@ -38,11 +40,13 @@ class LoginViewController: UIViewController {
         $0.text = "비밀번호"
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .subtitle)
+        $0.labelTypeSetting(type: .tableCell)
     }
 
     let pwTf = UITextField().then{
         $0.placeholder = "비밀번호를 입력해주세요"
         $0.setPlaceholderColor()
+        $0.textFieldTypeSetting(type: .body1)
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
     }
@@ -54,7 +58,7 @@ class LoginViewController: UIViewController {
     let autoLoginTitle = UILabel().then{
         $0.textAlignment = .center
         $0.text = "자동로그인"
-        $0.labelTypeSetting(type: .header)
+        $0.addLetterSpacing(spacing: 0.28)
         $0.textColor = .todoaryGrey
         $0.font = UIFont.nbFont(type: .body2)
     }
