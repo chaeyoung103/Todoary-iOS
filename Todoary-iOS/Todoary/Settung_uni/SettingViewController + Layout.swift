@@ -33,8 +33,39 @@ extension  SettingViewController{
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-322)
+            make.bottom.equalTo(versionBorderLine1.snp.top).offset(-200)
         }
+        
+        //version
+        
+        versionBorderLine1.snp.makeConstraints{make in
+            make.height.equalTo(1)
+            make .width.equalTo(328)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(versionBorderLine2.snp.top).offset(-50)
+        }
+        
+        versionText.snp.makeConstraints{make in
+            make.width.equalTo(29)
+            make.height.equalTo(19)
+            make.leading.equalTo(versionBorderLine1)
+            make.top.equalTo(versionBorderLine1.snp.bottom).offset(16)
+        }
+        
+        versionNum.snp.makeConstraints{make in
+            make.width.equalTo(21)
+            make.height.equalTo(19)
+            make.trailing.equalTo(versionBorderLine1)
+            make.top.equalTo(versionBorderLine1.snp.bottom).offset(16)
+        }
+        
+        versionBorderLine2.snp.makeConstraints{make in
+            make.height.equalTo(1)
+            make .width.equalTo(328)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-70)
+        }
+        
         
     }
 }
