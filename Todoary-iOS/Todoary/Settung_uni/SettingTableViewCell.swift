@@ -15,10 +15,14 @@ class SettingTableViewCell: UITableViewCell {
         $0.backgroundColor = .white
     }
     
+    let img = UIImageView().then{
+        $0.image = UIImage(named: "lock")
+    }
+    
     let title = UILabel().then{
         $0.text = "알림"
         $0.textColor = .black
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.font = UIFont.nbFont(type: .tableCell)
     }
     
     let nextBtn = UIButton().then{
@@ -44,6 +48,7 @@ class SettingTableViewCell: UITableViewCell {
     
     private func setUpView(){
         self.contentView.addSubview(main)
+        self.main.addSubview(img)
         self.main.addSubview(title)
         self.main.addSubview(nextBtn)
         self.main.addSubview(borderLine)
@@ -60,8 +65,13 @@ class SettingTableViewCell: UITableViewCell {
             make.width.equalToSuperview()
         }
         
-        title.snp.makeConstraints{ make in
+        img.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(31)
+            make.centerY.equalToSuperview()
+        }
+        
+        title.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(66)
             make.centerY.equalToSuperview()
         }
         

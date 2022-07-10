@@ -51,6 +51,9 @@ class SettingViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+        
         navigationView = NavigationView(frame: .zero , self.navigationController!).then{
             $0.navigationTitle.text = "설정"
         }
@@ -82,41 +85,46 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? AccountTableViewCell else{
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else{
         return UITableViewCell()
     }
     
     switch indexPath.row{
     case 0:
         cell.title.text = "알림"
+        cell.img.image = UIImage(named: "alarm")
         return cell
     case 1:
         cell.title.text = "화면"
+        cell.img.image = UIImage(named: "screen")
         return cell
     case 2:
         cell.title.text = "계정"
+        cell.img.image = UIImage(named: "account")
         return cell
     case 3:
         cell.title.text = "암호"
+        cell.img.image = UIImage(named: "lock")
         return cell
     case 4:
         cell.title.text = "Todoary 가이드"
+        cell.img.image = UIImage(named: "help")
         return cell
     case 5:
         cell.title.text = "약관 및 정책"
+        cell.img.image = UIImage(named: "document")
         return cell
     case 6:
         cell.title.text = "문의하기"
+        cell.img.image = UIImage(named: "feedback")
         return cell
     case 7:
         cell.title.text = "리뷰 남기기 "
+        cell.img.image = UIImage(named: "review")
         return cell
     default:
         fatalError("TableViewCell Error")
         }
-    }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select \(indexPath.row)")
-        }
     }
+}
