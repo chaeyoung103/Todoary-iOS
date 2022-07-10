@@ -24,10 +24,6 @@ class PwFindViewController: UIViewController {
     
     //MARK: - UIComponenets
     
-    let contentView = UIView().then{
-        $0.backgroundColor = .white
-    }
-    
     //navigation bar
     var navigationView:NavigationView!
     
@@ -161,6 +157,7 @@ class PwFindViewController: UIViewController {
         navigationView = NavigationView(frame: .zero , self.navigationController!).then{
             $0.navigationTitle.text = "비밀번호 재설정"
         }
+        self.view.backgroundColor = .white
 
         setUpView()
         setUpConstraint()

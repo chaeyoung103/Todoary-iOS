@@ -60,7 +60,7 @@
         <!--Account View Controller-->
         <scene sceneID="RPQ-Lz-fGH">
             <objects>
-                <viewController storyboardIdentifier="AccountViewController" id="9bA-xW-xTq" customClass="AccountViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewController" modalPresentationStyle="fullScreen" id="9bA-xW-xTq" customClass="AccountViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ayk-qW-HlD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
