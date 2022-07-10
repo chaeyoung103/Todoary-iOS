@@ -71,6 +71,7 @@ class LoginViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .button2)
         $0.layer.cornerRadius = 51/2
+        $0.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
     }
     
     let appleBtn = UIButton().then{
@@ -133,6 +134,12 @@ class LoginViewController: UIViewController {
         else {
             autoLoginBtn.isSelected = true
         }
+    }
+    
+    @objc func loginBtnDidTab() {
+        let accountViewController = AccountViewController()
+        navigationController?.pushViewController(accountViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
     
     @objc func backBtnDidTab() {
