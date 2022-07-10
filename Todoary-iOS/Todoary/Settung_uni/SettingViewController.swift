@@ -24,7 +24,27 @@ class SettingViewController : UIViewController {
     //tableView
     var tableView : UITableView!
     
-    //t
+    //version
+    
+    let versionBorderLine1 = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let versionText = UILabel().then{
+        $0.text = "버전"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionNum = UILabel().then{
+        $0.text = "1.0"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionBorderLine2 = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
     
     //MARK: - Lifecycles
     
@@ -46,6 +66,9 @@ class SettingViewController : UIViewController {
         setUpConstraint()
     }
     
+    @objc func backBtnDidTab() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -74,10 +97,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
         cell.title.text = "계정"
         return cell
     case 3:
+        cell.title.text = "암호"
+        return cell
     case 4:
+        cell.title.text = "Todoary 가이드"
+        return cell
     case 5:
+        cell.title.text = "약관 및 정책"
+        return cell
     case 6:
+        cell.title.text = "문의하기"
+        return cell
     case 7:
+        cell.title.text = "리뷰 남기기 "
+        return cell
     default:
         fatalError("TableViewCell Error")
         }
