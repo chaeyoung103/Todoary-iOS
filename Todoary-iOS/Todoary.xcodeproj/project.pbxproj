@@ -23,6 +23,8 @@
 		574913A9287AAF1F00381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */; };
 		574913AB287AAF3600381BCD /* AlarmSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */; };
 		574913AD287AAF6700381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */; };
+		574913B0287ABF3F00381BCD /* AskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AF287ABF3F00381BCD /* AskTableViewController.swift */; };
+		574913B2287ABFB500381BCD /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -90,6 +92,8 @@
 		574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
+		574913AF287ABF3F00381BCD /* AskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskTableViewController.swift; sourceTree = "<group>"; };
+		574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -248,11 +252,21 @@
 		574913A7287AAE3F00381BCD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				574913AE287ABF0A00381BCD /* Cell */,
 				574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */,
 				574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */,
-				574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */,
+				574913AF287ABF3F00381BCD /* AskTableViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		574913AE287ABF0A00381BCD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */,
+				574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		ACACD00E28749F360029D5CE /* Login_hola */ = {
@@ -579,8 +593,10 @@
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
+				574913B2287ABFB500381BCD /* DefaultTableViewCell.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
+				574913B0287ABF3F00381BCD /* AskTableViewController.swift in Sources */,
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				574913AD287AAF6700381BCD /* AlarmSettingTableViewCell.swift in Sources */,
