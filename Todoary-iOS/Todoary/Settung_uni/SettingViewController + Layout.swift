@@ -15,7 +15,10 @@ extension  SettingViewController{
         self.view.addSubview(navigationView)
         self.view.addSubview(tableView)
         
-        
+        self.view.addSubview(versionBorderLine1)
+        self.view.addSubview(versionText)
+        self.view.addSubview(versionNum)
+        self.view.addSubview(versionBorderLine2)
     }
     
     func setUpConstraint(){
@@ -24,6 +27,13 @@ extension  SettingViewController{
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
+        }
+        
+        //tableView
+        tableView.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(135)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(322)
         }
         
     }

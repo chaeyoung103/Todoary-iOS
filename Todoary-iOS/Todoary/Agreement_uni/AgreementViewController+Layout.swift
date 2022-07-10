@@ -9,10 +9,6 @@ import UIKit
 import SnapKit
 
 
-extension UIView {
-
-}
-
 extension AgreementViewController {
     
     func setUpView(){
