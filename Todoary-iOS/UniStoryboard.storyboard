@@ -102,6 +102,21 @@
             </objects>
             <point key="canvasLocation" x="864" y="80"/>
         </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="WCg-7Z-W5A">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" id="wBB-H9-0Za" customClass="SettingViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YAF-g5-RrD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vnI-aw-rgl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IlL-K1-kgz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864" y="810"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
