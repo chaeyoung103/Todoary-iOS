@@ -157,6 +157,9 @@ class AgreementViewController : UIViewController {
         
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+        
         navigationView = NavigationView(frame: .zero , self.navigationController!).then{
             $0.navigationTitle.text = "약관동의"
         }

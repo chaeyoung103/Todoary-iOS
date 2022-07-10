@@ -201,7 +201,7 @@ class SignUpViewController: UIViewController {
     }
 
     let nextButton = UIButton().then{
-        $0.isEnabled = false
+//        $0.isEnabled = false
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
@@ -373,7 +373,7 @@ class SignUpViewController: UIViewController {
     
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
-//        self.navigationController?.pushViewController(TestViewController(), animated: true)
+        self.navigationController?.pushViewController(AgreementViewController(), animated: true)
     }
     
     
