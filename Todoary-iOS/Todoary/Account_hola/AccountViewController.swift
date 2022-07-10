@@ -99,8 +99,8 @@ class AccountViewController : UIViewController {
     
     @objc func profileChangeBtnDidTab() {
         
-        let pwFindViewController = PwFindViewController()
-        navigationController?.pushViewController(pwFindViewController, animated: true)
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
                 }
     
