@@ -44,4 +44,28 @@ extension UIColor{
         alpha: 1
     )
     
+    static let silver_225 = UIColor(
+        red: 225/255,
+        green: 225/255,
+        blue: 225/255,
+        alpha: 1)
+    
+    static let silver_217 = UIColor(
+        red: 217/255,
+        green: 217/255,
+        blue: 217/255,
+        alpha: 1)
+    
+    static let silver_115 = UIColor(
+        red: 116/255,
+        green: 115/255,
+        blue: 115/255,
+        alpha: 1)
+    
+    static let deleteRed = UIColor(
+        red: 254/255,
+        green: 46/255,
+        blue: 46/255,
+        alpha: 1
+    )
 }
