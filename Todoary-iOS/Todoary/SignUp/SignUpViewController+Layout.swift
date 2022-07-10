@@ -57,7 +57,7 @@ extension SignUpViewController {
 
         //id
         idTitle.snp.makeConstraints{ make in
-            make.top.equalTo(navigationView.snp.bottom).offset(70)
+            make.top.equalToSuperview().offset(132)
             make.leading.equalToSuperview().offset(38)
             make.height.equalTo(20)
         }
@@ -215,7 +215,6 @@ extension SignUpViewController {
         
         //button
         nextButton.snp.makeConstraints{ make in
-            make.top.equalTo(nicknameCanUseLabel.snp.bottom).offset(28)
             make.bottom.equalToSuperview().offset(-47)
             make.leading.equalToSuperview().offset(26)
             make.trailing.equalToSuperview().offset(-26)
