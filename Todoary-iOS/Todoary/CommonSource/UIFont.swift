@@ -62,7 +62,7 @@ extension UIFont {
     }
     
     static func nbFont(ofSize fontSize: CGFloat, weight: NBWeight = .medium, type: FontType = .apple) -> UIFont {
-        return UIFont(name: "\(type.rawValue)-\(weight.rawValue)", size: fontSize)!
+        return UIFont(name: "\(type)-\(weight)", size: fontSize)!
     }
     
 }
