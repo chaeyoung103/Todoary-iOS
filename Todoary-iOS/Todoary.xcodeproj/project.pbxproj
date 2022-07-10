@@ -20,14 +20,6 @@
 		572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0D286EC10500D1FAA0 /* UIFont.swift */; };
 		572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */; };
 		572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */; };
-<<<<<<< HEAD
-		574913A9287AAF1F00381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */; };
-		574913AB287AAF3600381BCD /* AlarmSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */; };
-		574913AD287AAF6700381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */; };
-		574913B0287ABF3F00381BCD /* AskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913AF287ABF3F00381BCD /* AskTableViewController.swift */; };
-		574913B2287ABFB500381BCD /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */; };
-=======
->>>>>>> 9211cc4db0b1cf26ba74238e4d8953e49aa98e4d
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
