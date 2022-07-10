@@ -24,6 +24,8 @@
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
+		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
+		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD00F28749F520029D5CE /* LoginViewController.swift */; };
 		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
@@ -84,14 +86,6 @@
 		572E5B0D286EC10500D1FAA0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+Layout.swift"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
-		574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSettingViewController+Layout.swift"; sourceTree = "<group>"; };
-		574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
-		574913AF287ABF3F00381BCD /* AskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskTableViewController.swift; sourceTree = "<group>"; };
-		574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 9211cc4db0b1cf26ba74238e4d8953e49aa98e4d
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -99,6 +93,8 @@
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary_TodoaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD00F28749F520029D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +199,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128C7287AD5830056932A /* Account_hola */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
 				E005DE72287018EA00814C79 /* AppPassword_uni */,
 				E005DE78287019B100814C79 /* Agreement_uni */,
@@ -246,29 +243,15 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		574913A7287AAE3F00381BCD /* Setting */ = {
+		AC9128C7287AD5830056932A /* Account_hola */ = {
 			isa = PBXGroup;
 			children = (
-				574913AE287ABF0A00381BCD /* Cell */,
-				574913A8287AAF1F00381BCD /* AlarmSettingViewController.swift */,
-				574913AA287AAF3600381BCD /* AlarmSettingViewController+Layout.swift */,
-				574913AF287ABF3F00381BCD /* AskTableViewController.swift */,
+				AC9128C8287AD5A80056932A /* AccountViewController.swift */,
+				AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */,
 			);
-			path = Setting;
+			path = Account_hola;
 			sourceTree = "<group>";
 		};
-		574913AE287ABF0A00381BCD /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				574913AC287AAF6700381BCD /* AlarmSettingTableViewCell.swift */,
-				574913B1287ABFB500381BCD /* DefaultTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-=======
->>>>>>> 9211cc4db0b1cf26ba74238e4d8953e49aa98e4d
 		ACACD00E28749F360029D5CE /* Login_hola */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,7 +573,9 @@
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
+				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
+				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				574913B2287ABFB500381BCD /* DefaultTableViewCell.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
