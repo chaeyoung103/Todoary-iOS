@@ -29,6 +29,7 @@ class HomeViewController : UIViewController {
         super.viewDidLoad()
     
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
         
         setUpView()
         setUpConstraint()
