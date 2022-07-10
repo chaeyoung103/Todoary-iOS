@@ -14,8 +14,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
     let cellTitle = UILabel().then{
         $0.labelTypeSetting(type: .tableCell)
         $0.text = "Todoary 알림"
-        
-        $0.font = UIFont.nbFont(ofSize: 11, weight: .semibold)
     }
     
     let alarmSwitch = UISwitch()
@@ -54,6 +52,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
         
         self.contentView.snp.makeConstraints{ make in
             make.height.equalTo(50)
+            make.width.equalToSuperview()
         }
         
         backView.snp.makeConstraints{ make in
@@ -69,6 +68,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(27)
             make.width.equalTo(44)
+            make.centerY.equalToSuperview().offset(-1)
         }
         
         separatorLine.snp.makeConstraints{ make in
@@ -77,5 +77,10 @@ class AlarmSettingTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(1)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+          contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
 }

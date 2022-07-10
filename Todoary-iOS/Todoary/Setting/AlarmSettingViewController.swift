@@ -42,7 +42,21 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return AlarmSettingTableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath) as? AlarmSettingTableViewCell else{
+            return UITableViewCell()
+        }
+        
+        switch indexPath.row{
+        case 0:
+            cell.cellTitle.text = "Todoary 알림"
+            return cell
+        case 1:
+            cell.cellTitle.text = "하루기록 알림"
+            return cell
+        default:
+            fatalError("TableViewCell Error")
+        }
     }
     
     
