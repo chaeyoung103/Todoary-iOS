@@ -304,8 +304,8 @@
 		E005DE72287018EA00814C79 /* AppPassword_uni */ = {
 			isa = PBXGroup;
 			children = (
-				E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */,
 				E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */,
+				E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */,
 			);
 			path = AppPassword_uni;
 			sourceTree = "<group>";
