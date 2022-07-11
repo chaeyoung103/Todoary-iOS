@@ -24,27 +24,6 @@ class SettingAgreementViewController : UIViewController {
     //tableView
     var tableView : UITableView!
     
-    //version
-    let versionBorderLine1 = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
-    
-    let versionText = UILabel().then{
-        $0.text = "버전"
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .tableCell)
-    }
-    
-    let versionNum = UILabel().then{
-        $0.text = "1.0"
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .tableCell)
-    }
-    
-    let versionBorderLine2 = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
-    
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -54,12 +33,12 @@ class SettingAgreementViewController : UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "설정"
+            $0.navigationTitle.text = "약관 및 정책"
         }
         
         tableView = UITableView().then{
             $0.separatorStyle = .none
-            $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
+            $0.register(SettingAgreementViewController.self, forCellReuseIdentifier: "SettingAgreementViewCell")
             $0.delegate = self
             $0.dataSource = self
         }
@@ -76,51 +55,29 @@ class SettingAgreementViewController : UIViewController {
 
 //MARK: - Helpers
 
-extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
+extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 8
+    return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else{
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingAgreementViewCell", for: indexPath) as? SettingTableViewCell else{
         return UITableViewCell()
     }
     
     switch indexPath.row{
     case 0:
-        cell.title.text = "알림"
-        cell.img.image = UIImage(named: "alarm")
+        cell.title.text = "개인 정보 취급방침"
         return cell
     case 1:
-        cell.title.text = "화면"
-        cell.img.image = UIImage(named: "screen")
+        cell.title.text = "서비스 이용약관"
         return cell
     case 2:
-        cell.title.text = "계정"
-        cell.img.image = UIImage(named: "account")
+        cell.title.text = "광고성 정보 수신"
         return cell
-    case 3:
-        cell.title.text = "암호"
-        cell.img.image = UIImage(named: "lock")
-        return cell
-    case 4:
-        cell.title.text = "Todoary 가이드"
-        cell.img.image = UIImage(named: "help")
-        return cell
-    case 5:
-        cell.title.text = "약관 및 정책"
-        cell.img.image = UIImage(named: "document")
-        return cell
-    case 6:
-        cell.title.text = "문의하기"
-        cell.img.image = UIImage(named: "feedback")
-        return cell
-    case 7:
-        cell.title.text = "리뷰 남기기 "
-        cell.img.image = UIImage(named: "review")
-        return cell
+        
     default:
         fatalError("TableViewCell Error")
         }
