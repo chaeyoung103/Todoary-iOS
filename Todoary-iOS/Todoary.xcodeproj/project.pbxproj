@@ -229,11 +229,11 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
-				AC9128CE287B34830056932A /* Profile_hola */,
 				E0AB9EC4287B1C900064CADA /* 1주차 */,
-				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
 				E0AB9EBE287B1C100064CADA /* Home_uni */,
 				E0AB9EB5287B1B480064CADA /* Settung_uni */,
+				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
+				AC9128CE287B34830056932A /* Profile_hola */,
 				574913B5287ADEF300381BCD /* Setting */,
 				AC9128C7287AD5830056932A /* Account_hola */,
 				E02E7FA1287461760006F6FA /* CommonSource */,

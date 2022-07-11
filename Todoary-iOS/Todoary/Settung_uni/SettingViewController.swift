@@ -25,9 +25,8 @@ class SettingViewController : UIViewController {
     var tableView : UITableView!
     
     //version
-    
     let versionBorderLine1 = UIView().then{
-        $0.backgroundColor = .todoaryGrey
+        $0.backgroundColor = .silver_225
     }
     
     let versionText = UILabel().then{
@@ -43,7 +42,7 @@ class SettingViewController : UIViewController {
     }
     
     let versionBorderLine2 = UIView().then{
-        $0.backgroundColor = .todoaryGrey
+        $0.backgroundColor = .silver_225
     }
     
     //MARK: - Lifecycles
