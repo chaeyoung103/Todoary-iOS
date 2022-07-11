@@ -9,5 +9,11 @@ import UIKit
 
 extension ScreenSettingViewController {
 
+    func setUpView(){
+        
+    }
     
+    func setUpConstraint(){
+        
+    }
 }

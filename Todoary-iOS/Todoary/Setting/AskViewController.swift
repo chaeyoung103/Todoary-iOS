@@ -28,6 +28,9 @@ class AskViewController: UIViewController {
             
             $0.separatorStyle = .none
         }
+        
+        setUpView()
+        setUpConstraint()
     }
 
 
@@ -40,7 +43,20 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return DefaultTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "askSettingCell", for: indexPath) as? DefaultTableViewCell else{
+            fatalError()
+        }
+        
+        switch indexPath.row{
+        case 0:
+            cell.cellTitle.text = "이메일"
+            return cell
+        case 1:
+            cell.cellTitle.text = "인스타"
+            return cell
+        default:
+            fatalError("invalid table view index")
+        }
     }
     
     

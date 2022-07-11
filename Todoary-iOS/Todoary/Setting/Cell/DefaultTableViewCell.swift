@@ -13,7 +13,6 @@ class DefaultTableViewCell: UITableViewCell {
     
     let cellTitle = UILabel().then{
         $0.labelTypeSetting(type: .tableCell)
-        $0.text = "이메일"
     }
     
     let arrowImage = UIImageView().then{
@@ -26,6 +25,9 @@ class DefaultTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setUpView()
+        setUpConstraint()
     }
     
     required init?(coder: NSCoder) {
