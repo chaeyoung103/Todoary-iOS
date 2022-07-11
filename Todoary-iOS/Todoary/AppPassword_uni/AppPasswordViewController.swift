@@ -28,8 +28,7 @@ class AppPasswordViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body1)
     }
     
-   
-    // input not password
+    //MARK: - input not password
     let inputNotPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
@@ -46,8 +45,7 @@ class AppPasswordViewController : UIViewController {
         $0.image = UIImage(named: "inputNotPassword")
     }
     
-    
-    //input password
+    //MARK: - input password
     let inputPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputPassword")
         $0.isHidden = true
@@ -68,87 +66,88 @@ class AppPasswordViewController : UIViewController {
         $0.isHidden = true
     }
     
-
+    //MARK: - numbutton
     //button
     
-    let nemberBtn1 =  UIButton().then{
+    let numBtn1 =  UIButton().then{
         $0.setTitle( "1", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
-        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
     }
     
-    let nemberBtn2 =  UIButton().then{
+    let numBtn2 =  UIButton().then{
         $0.setTitle( "2", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
-        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
     }
     
         
-    let nemberBtn3 =  UIButton().then{
+    let numBtn3 =  UIButton().then{
         $0.setTitle( "3", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
         
-    let nemberBtn4 =  UIButton().then{
+    let numBtn4 =  UIButton().then{
         $0.setTitle( "4", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
 
-    let nemberBtn5 =  UIButton().then{
+    let numBtn5 =  UIButton().then{
         $0.setTitle( "5", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let nemberBtn6 =  UIButton().then{
+    let numBtn6 =  UIButton().then{
         $0.setTitle( "6", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let nemberBtn7 =  UIButton().then{
+    let numBtn7 =  UIButton().then{
         $0.setTitle( "7", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let nemberBtn8 =  UIButton().then{
+    let numBtn8 =  UIButton().then{
         $0.setTitle( "8", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let nemberBtn9 =  UIButton().then{
+    let numBtn9 =  UIButton().then{
         $0.setTitle( "9", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
     
-    let nemberBtn0 =  UIButton().then{
+    let numBtn0 =  UIButton().then{
         $0.setTitle( "0", for: .normal)
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
     }
-    
+ 
+    //MARK: - UIComponenets
     let deletBtn = UIButton().then{
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill
-        $0.addTarget(self, action: #selector(nemberBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
@@ -159,7 +158,7 @@ class AppPasswordViewController : UIViewController {
         setUpConstraint()
     }
     
-    @objc func nemberBtndidTab() {
+    @objc func numBtndidTab() {
         if deletBtn.isTouchInside {
             inputPw1.isHidden = true
         }else { inputPw1.isHidden = false}
