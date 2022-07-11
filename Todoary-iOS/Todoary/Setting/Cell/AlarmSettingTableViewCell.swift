@@ -23,7 +23,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
     
     let infoBtn = UIButton().then{
         $0.setImage(UIImage(named: "help"), for: .normal)
-        $0.addTarget(self, action: #selector(infoBtnDidClicked(_:)), for: .touchUpInside)
     }
     
     let separatorLine = UIView().then{
@@ -36,6 +35,11 @@ class AlarmSettingTableViewCell: UITableViewCell {
         
         setUpView()
         setUpConstraint()
+        
+//        let tapGesture = CellButtonTapGesture(target: self, action: #selector(buttonDidClicked))
+//        tapGesture.caller = infoBtn
+//        infoBtn.addGestureRecognizer(tapGesture)
+    
     }
     
     required init?(coder: NSCoder) {
@@ -93,9 +97,10 @@ class AlarmSettingTableViewCell: UITableViewCell {
         super.layoutSubviews()
           contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
-    
-    @objc
-    func infoBtnDidClicked(_ sender: UIButton){
-        print("?")
-    }
+
 }
+
+class CellButtonTapGesture: UITapGestureRecognizer{
+    var caller: Int?
+}
+
