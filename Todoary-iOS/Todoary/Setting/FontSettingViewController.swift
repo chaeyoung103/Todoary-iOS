@@ -8,22 +8,77 @@
 import UIKit
 
 class FontSettingViewController: UIViewController {
-
+    
+    var navigationView: NavigationView!
+    
+    var tableView: UITableView!
+    
+    var currentFontIndex : IndexPath = [0,0]
+    
+    var currentFontCell : FontSettingTableViewCell?
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+        
+        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
+            $0.navigationTitle.text = "글꼴"
+        }
+        
+        tableView = UITableView().then{
+            $0.delegate = self
+            $0.dataSource = self
+            
+            $0.separatorStyle = .none
+            
+            $0.register(FontSettingTableViewCell.self, forCellReuseIdentifier: "fontSettingCell")
+        }
+        
+        setUpView()
+        setUpConstraint()
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension FontSettingViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell: FontSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "fontSettingCell", for: indexPath) as? FontSettingTableViewCell else{
+            return UITableViewCell()
+        }
+        
+        cell.cellTitle.text = "글꼴\(indexPath.row+1)"
+        
+        //초기 세팅
+        if(currentFontIndex == indexPath){
+            cell.radioButton.isSelected = true
+            currentFontCell = cell
+        }
+        return cell
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(currentFontIndex != indexPath){
+            
+            //이전 select cell 해제
+            currentFontCell?.radioButton.isSelected = false
+            
+            //새로운 cell 선택
+            let newCell = tableView.cellForRow(at: indexPath) as? FontSettingTableViewCell
+            newCell?.radioButton.isSelected = true
+            currentFontIndex = indexPath
+            currentFontCell = newCell
+        }
     }
-    */
-
+    
 }

@@ -16,13 +16,19 @@ class ScreenSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-//
-//        }
-//
-//        tableView = UITableView().then{
-//
-//        }
+        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
+            $0.navigationTitle.text = "화면"
+        }
+
+        tableView = UITableView().then{
+            $0.delegate = self
+            $0.dataSource = self
+            
+            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "screenSettingCell")
+            
+            $0.separatorStyle = .none
+            
+        }
         
         setUpView()
         setUpConstraint()
@@ -38,6 +44,34 @@ extension ScreenSettingViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return DefaultTableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "screenSettingCell", for: indexPath) as? DefaultTableViewCell else{
+            fatalError()
+        }
+        
+        switch indexPath.row{
+        case 0:
+            cell.cellTitle.text = "글꼴"
+            return cell
+        case 1:
+            cell.cellTitle.text = "화면테마"
+            return cell
+        default:
+            fatalError("TableView Cell indexing Error")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row{
+        case 0:
+            print("?")
+            self.navigationController?.pushViewController(FontSettingViewController(), animated: true)
+            return
+        case 1:
+            print("!")
+            return
+        default:
+            return
+        }
     }
 }
