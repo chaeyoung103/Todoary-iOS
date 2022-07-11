@@ -25,6 +25,9 @@ class DefaultTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setUpView()
+        setUpConstraint()
     }
     
     required init?(coder: NSCoder) {
@@ -36,9 +39,39 @@ class DefaultTableViewCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         backView.addSubview(cellTitle)
+        backView.addSubview(arrowImage)
+        backView.addSubview(separatorLine)
     }
     
     func setUpConstraint(){
+        
+        self.contentView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
+        self.backView.snp.makeConstraints{ make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+        self.cellTitle.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(31)
+        }
+        
+        self.arrowImage.snp.makeConstraints{ make in
+            make.trailing.equalToSuperview().offset(-31)
+            make.width.equalTo(7)
+            make.height.equalTo(12)
+            make.centerY.equalToSuperview().offset(-1)
+        }
+        
+        self.separatorLine.snp.makeConstraints{ make in
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+            make.leading.equalToSuperview().offset(31)
+            make.trailing.equalToSuperview().offset(-31)
+        }
         
     }
     
