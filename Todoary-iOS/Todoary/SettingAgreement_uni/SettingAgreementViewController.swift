@@ -38,7 +38,7 @@ class SettingAgreementViewController : UIViewController {
         
         tableView = UITableView().then{
             $0.separatorStyle = .none
-            $0.register(SettingAgreementViewController.self, forCellReuseIdentifier: "SettingAgreementViewCell")
+            $0.register(SettingAgreementViewCell.self, forCellReuseIdentifier: "SettingAgreementViewCell")
             $0.delegate = self
             $0.dataSource = self
         }
@@ -63,7 +63,7 @@ extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingAgreementViewCell", for: indexPath) as? SettingTableViewCell else{
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingAgreementViewCell", for: indexPath) as? SettingAgreementViewCell else{
         return UITableViewCell()
     }
     

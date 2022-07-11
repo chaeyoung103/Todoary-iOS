@@ -13,6 +13,33 @@ import Then
 class AppPasswordViewController : UIViewController {
     
     //MARK: - UIComponenets
+    
+    var password: String = ""
+    
+    var inputPw1Fill = false{
+        didSet{
+            self.validatePw1Fill()
+        }
+    }
+    
+    var inputPw2Fill = false{
+        didSet{
+            self.validatePw2Fill()
+        }
+    }
+    
+    var inputPw3Fill = false{
+        didSet{
+            self.validatePw3Fill()
+        }
+    }
+    
+    var inputPw4Fill = false{
+        didSet{
+            self.validatePw4Fill()
+        }
+    }
+    
 
     //text
 
@@ -158,10 +185,57 @@ class AppPasswordViewController : UIViewController {
         setUpConstraint()
     }
     
+    
+    func validatePw1Fill(){
+        if inputPw1Fill
+        { inputPw1.isHidden = false
+        }else{ inputPw1.isHidden = true
+        }
+    }
+    
+    func validatePw2Fill(){
+        if inputPw2Fill
+        { inputPw2.isHidden = false
+        }else{ inputPw2.isHidden = true
+        }
+    }
+    
+    func validatePw3Fill(){
+        if inputPw3Fill
+        { inputPw3.isHidden = false
+        }else{ inputPw3.isHidden = true
+        }
+    }
+    
+    func validatePw4Fill(){
+        if inputPw4Fill
+        { inputPw4.isHidden = false
+        }else{ inputPw4.isHidden = true
+        }
+    }
+    
+    
     @objc func numBtndidTab() {
-        if deletBtn.isTouchInside {
-            inputPw1.isHidden = true
-        }else { inputPw1.isHidden = false}
+        if numBtn1.isTouchInside
+        && numBtn2.isTouchInside
+        && numBtn3.isTouchInside {
+            inputPw1Fill = false
+        }
+        else if inputPw1Fill == true {
+            inputPw2Fill = true
+        }
+        else if inputPw2Fill == true {
+            inputPw3Fill = true
+        }
+        else if inputPw3Fill ==  true {
+            inputPw4Fill = true
+        } else {
+            inputPw1Fill = false
+            inputPw2Fill = false
+            inputPw3Fill = false
+            inputPw4Fill = false
+            
+        }
     }
 }
 
