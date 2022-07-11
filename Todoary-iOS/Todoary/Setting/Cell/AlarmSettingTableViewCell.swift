@@ -21,6 +21,11 @@ class AlarmSettingTableViewCell: UITableViewCell {
 //
 //    }
     
+    let infoBtn = UIButton().then{
+        $0.setImage(UIImage(named: "help"), for: .normal)
+        $0.addTarget(self, action: #selector(infoBtnDidClicked(_:)), for: .touchUpInside)
+    }
+    
     let separatorLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
@@ -42,9 +47,8 @@ class AlarmSettingTableViewCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         self.backView.addSubview(cellTitle)
-        
         self.backView.addSubview(alarmSwitch)
-        
+        self.backView.addSubview(infoBtn)
         self.backView.addSubview(separatorLine)
     }
     
@@ -71,6 +75,12 @@ class AlarmSettingTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview().offset(-1)
         }
         
+        infoBtn.snp.makeConstraints{ make in
+            make.width.height.equalTo(16.67)
+            make.centerY.equalTo(cellTitle)
+            make.leading.equalTo(cellTitle.snp.trailing).offset(6.67)
+        }
+        
         separatorLine.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(31)
@@ -82,5 +92,10 @@ class AlarmSettingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
           contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+    }
+    
+    @objc
+    func infoBtnDidClicked(_ sender: UIButton){
+        print("?")
     }
 }

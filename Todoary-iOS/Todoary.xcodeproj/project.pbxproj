@@ -20,6 +20,7 @@
 		572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0D286EC10500D1FAA0 /* UIFont.swift */; };
 		572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */; };
 		572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */; };
+		572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */; };
 		574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */; };
 		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 		572E5B0D286EC10500D1FAA0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+Layout.swift"; sourceTree = "<group>"; };
+		572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AskViewController+Layout.swift"; sourceTree = "<group>"; };
 		574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */,
 				574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */,
 				57B36ECC287AFAD400378E16 /* AskViewController.swift */,
+				572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
+				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
