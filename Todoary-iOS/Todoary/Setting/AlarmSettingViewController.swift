@@ -13,7 +13,7 @@ class AlarmSettingViewController: UIViewController {
     
     var tableView : UITableView!
     
-    var currentInfoView: UILabel?
+    var currentInfoView: UIView?
     
 
     override func viewDidLoad() {
@@ -43,13 +43,10 @@ class AlarmSettingViewController: UIViewController {
     
     @objc
     func showInfoMessage(_ sender: CellButtonTapGesture){
-    
-        let messageLabel = UILabel().then{
-            $0.backgroundColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
-            $0.layer.cornerRadius = 10
-        }
         
-        self.view.addSubview(messageLabel)
+        let messageView = InfoMessageView()
+        
+        self.view.addSubview(messageView)
         
         let offset : Double!
         if(sender.caller == 0){
@@ -58,14 +55,12 @@ class AlarmSettingViewController: UIViewController {
             offset = 213
         }
         
-        messageLabel.snp.makeConstraints{ make in
+        messageView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(offset)
-            make.width.equalTo(137)
-            make.height.equalTo(53)
             make.leading.equalToSuperview().offset(67)
         }
         
-        currentInfoView = messageLabel
+        currentInfoView = messageView
         
 //        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseOut, animations: {
 //            messageLabel.alpha = 0.0
