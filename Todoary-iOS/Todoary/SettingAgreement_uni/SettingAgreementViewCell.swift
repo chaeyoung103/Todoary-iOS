@@ -9,11 +9,10 @@ import Foundation
 import UIKit
 
 class SettingAgreementViewCell: UITableViewCell {
+    static let identifier = "SettingAgreementViewCell"
     
-    let backView = UIView()
-    
-    let cellTitle = UILabel().then{
-        $0.labelTypeSetting(type: .tableCell)
+    let main = UIView().then{
+        $0.backgroundColor = .white
     }
     
     let title = UILabel().then{
@@ -22,15 +21,16 @@ class SettingAgreementViewCell: UITableViewCell {
         $0.font = UIFont.nbFont(type: .tableCell)
     }
     
-    let arrowImage = UIImageView().then{
-        $0.image = UIImage(named: "next_btn")
+    let nextBtn = UIButton().then{
+        $0.setImage(UIImage(named: "next_btn"), for: .normal)
     }
     
-    let separatorLine = UIView().then{
+    let borderLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setUpView()
@@ -41,14 +41,13 @@ class SettingAgreementViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpView(){
-        
-        self.contentView.addSubview(backView)
-        
-        backView.addSubview(cellTitle)
-        backView.addSubview(arrowImage)
-        backView.addSubview(separatorLine)
+    private func setUpView(){
+        self.contentView.addSubview(main)
+        self.main.addSubview(title)
+        self.main.addSubview(nextBtn)
+        self.main.addSubview(borderLine)
     }
+    
     
     func setUpConstraint(){
         
@@ -57,29 +56,34 @@ class SettingAgreementViewCell: UITableViewCell {
             make.height.equalTo(50)
         }
         
-        self.backView.snp.makeConstraints{ make in
+        self.main.snp.makeConstraints{ make in
             make.leading.trailing.top.bottom.equalToSuperview()
         }
         
-        self.cellTitle.snp.makeConstraints{ make in
+        self.title.snp.makeConstraints{ make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(31)
         }
         
-        self.arrowImage.snp.makeConstraints{ make in
+        self.nextBtn.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-31)
             make.width.equalTo(7)
             make.height.equalTo(12)
             make.centerY.equalToSuperview().offset(-1)
         }
         
-        self.separatorLine.snp.makeConstraints{ make in
+        self.borderLine.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
             make.height.equalTo(1)
             make.leading.equalToSuperview().offset(31)
             make.trailing.equalToSuperview().offset(-31)
         }
         
+    }
+    
+    override func layoutSubviews() {
+            super.layoutSubviews()
+              contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     
 }
