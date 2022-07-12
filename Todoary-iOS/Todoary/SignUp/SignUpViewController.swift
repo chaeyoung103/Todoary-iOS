@@ -201,7 +201,7 @@ class SignUpViewController: UIViewController {
     }
 
     let nextButton = UIButton().then{
-//        $0.isEnabled = false
+        $0.isEnabled = false
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
@@ -308,6 +308,8 @@ class SignUpViewController: UIViewController {
             isValidPasswd = text.isValidPassword()
             if(!isValidPasswd){
                 pwCanUseLabel.isHidden = false
+            }else{
+                pwCanUseLabel.isHidden = true
             }
             passwd = text
             return
