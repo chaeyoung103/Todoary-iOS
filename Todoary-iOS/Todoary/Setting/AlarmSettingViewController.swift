@@ -62,13 +62,6 @@ class AlarmSettingViewController: UIViewController {
         
         currentInfoView = messageView
         
-//        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseOut, animations: {
-//            messageLabel.alpha = 0.0
-//        }, completion: { (isCompleted) in
-//            messageLabel.removeFromSuperview()
-//        })
-
-        
     }
 }
 
