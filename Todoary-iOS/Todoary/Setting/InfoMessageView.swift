@@ -15,7 +15,7 @@ class InfoMessageView: UIView {
         $0.layer.shadowRadius = 5.0
         $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
         $0.layer.shadowOffset = CGSize(width: 0, height: 1)
-        $0.layer.shadowOpacity = 0.65
+        $0.layer.shadowOpacity = 0.5
         $0.layer.masksToBounds = false
     }
     
