@@ -93,7 +93,9 @@ class ProfileViewController : UIViewController {
     //MARK: - Actions
     @objc func imagePickerDidTab(_ sender: Any) {
         
-        
+        PHPhotoLibrary.requestAuthorization { (state) in
+            print(state)
+        }
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -102,10 +104,7 @@ class ProfileViewController : UIViewController {
             self.profileImage.image = UIImage(named: "profile")
         })
         let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: {(UIAlertAction) in
-            // 앨범접근
-            PHPhotoLibrary.requestAuthorization { (state) in
-                print(state)
-            }
+            
             if self.PhotoAuth() {
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
@@ -126,15 +125,6 @@ class ProfileViewController : UIViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    @objc func albumSelectBtnDidTab(_ sender: Any) {
-        if PhotoAuth() {
-            self.imagePickerController.sourceType = .photoLibrary
-            self.present(self.imagePickerController, animated: true, completion: nil)
-        } else {
-            AuthSettingOpen(AuthString: "앨범")
-        }
     }
     
     //MARK: - Helpers
