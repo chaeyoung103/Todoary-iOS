@@ -14,32 +14,9 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - UIComponenets
     
-    var password: String = ""
+    var passwordArr : [String] = []
     
-    var inputPw1Fill = false{
-        didSet{
-            self.validatePw1Fill()
-        }
-    }
-    
-    var inputPw2Fill = false{
-        didSet{
-            self.validatePw2Fill()
-        }
-    }
-    
-    var inputPw3Fill = false{
-        didSet{
-            self.validatePw3Fill()
-        }
-    }
-    
-    var inputPw4Fill = false{
-        didSet{
-            self.validatePw4Fill()
-        }
-    }
-    
+    var password : String = "1234"
 
     //text
 
@@ -53,6 +30,14 @@ class AppPasswordViewController : UIViewController {
         $0.text = "암호를 입력해 주세요"
         $0.textColor = .headline
         $0.font = UIFont.nbFont(type: .body1)
+        $0.isHidden = false
+    }
+    
+    let pwnotcorrect = UILabel().then {
+        $0.text = "다시 입력해 주세요"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .body1)
+        $0.isHidden = true
     }
     
     //MARK: - input not password
@@ -101,7 +86,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
-        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn2 =  UIButton().then{
@@ -109,7 +94,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
-        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
         
@@ -118,6 +103,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
         
     let numBtn4 =  UIButton().then{
@@ -125,6 +111,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
 
     let numBtn5 =  UIButton().then{
@@ -132,6 +119,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn6 =  UIButton().then{
@@ -139,6 +127,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn7 =  UIButton().then{
@@ -146,6 +135,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn8 =  UIButton().then{
@@ -153,6 +143,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn9 =  UIButton().then{
@@ -160,6 +151,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
     let numBtn0 =  UIButton().then{
@@ -167,6 +159,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
  
     //MARK: - UIComponenets
@@ -174,7 +167,7 @@ class AppPasswordViewController : UIViewController {
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill
-        $0.addTarget(self, action: #selector(numBtndidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(deletBtndidtab), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
@@ -186,57 +179,77 @@ class AppPasswordViewController : UIViewController {
     }
     
     
-    func validatePw1Fill(){
-        if inputPw1Fill
-        { inputPw1.isHidden = false
-        }else{ inputPw1.isHidden = true
-        }
-    }
+       //MARK: - numbtndidtab
     
-    func validatePw2Fill(){
-        if inputPw2Fill
-        { inputPw2.isHidden = false
-        }else{ inputPw2.isHidden = true
-        }
-    }
-    
-    func validatePw3Fill(){
-        if inputPw3Fill
-        { inputPw3.isHidden = false
-        }else{ inputPw3.isHidden = true
-        }
-    }
-    
-    func validatePw4Fill(){
-        if inputPw4Fill
-        { inputPw4.isHidden = false
-        }else{ inputPw4.isHidden = true
-        }
-    }
-    
-    
-    @objc func numBtndidTab() {
-        if numBtn1.isTouchInside
-        && numBtn2.isTouchInside
-        && numBtn3.isTouchInside {
-            inputPw1Fill = false
-        }
-        else if inputPw1Fill == true {
-            inputPw2Fill = true
-        }
-        else if inputPw2Fill == true {
-            inputPw3Fill = true
-        }
-        else if inputPw3Fill ==  true {
-            inputPw4Fill = true
-        } else {
-            inputPw1Fill = false
-            inputPw2Fill = false
-            inputPw3Fill = false
-            inputPw4Fill = false
+    @objc func numBtndidtab(sender : UIButton) {
+        let numdigit = sender.currentTitle!
+        passwordArr.append(numdigit)
+        
+        let pwarraycount = passwordArr.count
+        
+        switch pwarraycount {
+        case 1 :
+            inputPw1.isHidden = false
+
+        case 2 :
+            inputPw2.isHidden = false
+
+        case 3 :
+            inputPw3.isHidden = false
+     
+        case 4 :
+            inputPw4.isHidden = false
+            
+            let pw = passwordArr.joined(separator: "")
+            if password == pw {
+                self.navigationController?.pushViewController(HomeViewController(), animated: true)
+               // print("다음")
+            } else {
+                passwordArr.removeAll()
+                appPwtext.isHidden = true
+                pwnotcorrect.isHidden = false
+                
+                inputPw1.isHidden = true
+                inputPw2.isHidden = true
+                inputPw3.isHidden = true
+                inputPw4.isHidden = true
+            }
+        default:
+            return
             
         }
     }
+    
+    @objc
+    func deletBtndidtab(sender : UIButton) {
+        
+        let pwarraycount = passwordArr.count
+        
+        if deletBtn.isTouchInside {
+            switch pwarraycount {
+        case 4 :
+            inputPw4.isHidden = true
+            passwordArr.removeLast()
+            print(passwordArr)
+        case 3 :
+            inputPw3.isHidden = true
+            passwordArr.removeLast()
+                print(passwordArr)
+        case 2 :
+            inputPw2.isHidden = true
+            passwordArr.removeLast()
+                print(passwordArr)
+        case 1 :
+            inputPw1.isHidden = true
+            passwordArr.removeLast()
+                print(passwordArr)
+
+        default :
+            return
+            }
+        }
+    }
 }
+
 
 
