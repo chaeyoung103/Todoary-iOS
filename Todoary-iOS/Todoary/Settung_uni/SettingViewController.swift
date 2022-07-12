@@ -13,10 +13,6 @@ import Then
 class SettingViewController : UIViewController {
     
     //MARK: - UIComponenets
-
-    let contentView = UIView().then{
-        $0.backgroundColor = .white
-    }
     
     //navigation bar
     var navigationView : NavigationView!
@@ -60,6 +56,7 @@ class SettingViewController : UIViewController {
         tableView = UITableView().then{
             $0.separatorStyle = .none
             $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
+            
             $0.delegate = self
             $0.dataSource = self
         }
@@ -125,5 +122,19 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
         fatalError("TableViewCell Error")
         }
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row{
+        case 5:
+            print("?")
+            self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+            return
+        case 1:
+            print("!")
+            return
+        default:
+            return
+        }
     }
 }
