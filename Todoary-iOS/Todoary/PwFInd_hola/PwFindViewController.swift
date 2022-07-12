@@ -188,7 +188,7 @@ class PwFindViewController: UIViewController {
     }
     
     @objc func idCertificationBtnDidTab() {
-        let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)

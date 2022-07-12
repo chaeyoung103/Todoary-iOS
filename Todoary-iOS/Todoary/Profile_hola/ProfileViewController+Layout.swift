@@ -44,6 +44,8 @@ extension ProfileViewController {
         imagePicker.snp.makeConstraints{ make in
             make.top.equalTo(profileImage.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
+            make.width.equalTo(54)
+            make.height.equalTo(17)
         }
         
         nickNameTitle.snp.makeConstraints{ make in
