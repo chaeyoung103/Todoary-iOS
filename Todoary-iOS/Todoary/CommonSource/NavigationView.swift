@@ -11,7 +11,7 @@ class NavigationView: UIView {
     
     let navigationController: UINavigationController!
 
-    let backBtn = UIButton().then{
+    lazy var backBtn = UIButton().then{
         $0.setImage(UIImage(named: "back_arrow"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonDidClicked(_:)), for: .touchUpInside)
     }
@@ -29,6 +29,8 @@ class NavigationView: UIView {
 
         setUpView()
         setUpConstraint()
+        
+        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {

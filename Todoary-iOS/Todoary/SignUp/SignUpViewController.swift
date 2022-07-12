@@ -217,13 +217,14 @@ class SignUpViewController: UIViewController {
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "회원가입"
         }
+        
+        self.navigationController?.navigationBar.isHidden = true
 
         setUpView()
         setUpConstraint()
         textFieldAddRecognizer()
         
         self.view.backgroundColor = .white
-    
     }
 
     func validateUserInput(){
@@ -258,6 +259,9 @@ class SignUpViewController: UIViewController {
         case idTextField:
             isValidEmail = text.isValidEmail()
             email = text
+            
+            //for debug
+            print(navigationView.backBtn.allTargets)
             return
         case certificationTextField:
             isValidCertiCode = true
@@ -320,7 +324,6 @@ class SignUpViewController: UIViewController {
     
     @objc
     func certificationBtnDidClicked(_ sender: UIButton){
-        
         //이메일 중복 여부 확인
         idCanUseLabel.isHidden = false
         
