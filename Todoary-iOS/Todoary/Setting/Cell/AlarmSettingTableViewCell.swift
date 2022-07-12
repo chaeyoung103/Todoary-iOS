@@ -17,9 +17,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
     }
     
     let alarmSwitch = UISwitch()
-//        .then{
-//
-//    }
     
     let infoBtn = UIButton().then{
         $0.setImage(UIImage(named: "help"), for: .normal)
@@ -35,10 +32,6 @@ class AlarmSettingTableViewCell: UITableViewCell {
         
         setUpView()
         setUpConstraint()
-        
-//        let tapGesture = CellButtonTapGesture(target: self, action: #selector(buttonDidClicked))
-//        tapGesture.caller = infoBtn
-//        infoBtn.addGestureRecognizer(tapGesture)
     
     }
     
