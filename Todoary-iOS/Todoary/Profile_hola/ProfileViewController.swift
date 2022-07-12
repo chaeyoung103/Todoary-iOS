@@ -102,17 +102,14 @@ class ProfileViewController : UIViewController {
             self.profileImage.image = UIImage(named: "profile")
         })
         let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: {(UIAlertAction) in
-            // 앨범접근
-            PHPhotoLibrary.requestAuthorization { (state) in
-                print(state)
-            }
+            
             if self.PhotoAuth() {
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.delegate = self //3
                 self.present(imagePicker, animated: true, completion: nil)
             } else {
-                self.AuthSettingOpen(AuthString: "앨범")
+                self.AuthSettingOpen(AuthString: "사진")
             }
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -126,15 +123,6 @@ class ProfileViewController : UIViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    @objc func albumSelectBtnDidTab(_ sender: Any) {
-        if PhotoAuth() {
-            self.imagePickerController.sourceType = .photoLibrary
-            self.present(self.imagePickerController, animated: true, completion: nil)
-        } else {
-            AuthSettingOpen(AuthString: "앨범")
-        }
     }
     
     //MARK: - Helpers
@@ -180,8 +168,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func AuthSettingOpen(AuthString: String) {
         let AppName = "Todoary"
-        let message = "\(AppName)이(가) \(AuthString) 접근 허용되어 있지않습니다.\r\n 설정화면으로 가시겠습니까?"
-        let alert = UIAlertController(title: "설정", message: message, preferredStyle: .alert)
+        let message = "\(AppName)이(가) \(AuthString)에 접근할 수 없습니다.\r\n 설정화면으로 가시겠습니까?"
+        let alert = UIAlertController(title: "권한 설정하기", message: message, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .destructive) { (UIAlertAction) in
             self.dismiss(animated: true, completion: nil)}
         let confirm = UIAlertAction(title: "확인", style: .default) { (UIAlertAction) in

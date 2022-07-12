@@ -104,6 +104,13 @@ class AccountViewController : UIViewController {
         navigationController?.isNavigationBarHidden = true
                 }
     
+    @objc func cellDidTab() {
+        
+        let pwFindViewController = PwFindViewController()
+        navigationController?.pushViewController(pwFindViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+                }
+    
     //MARK: - Helpers
 }
 
@@ -119,9 +126,14 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         
+        let tapGesture = CellButtonTapGesture(target: self, action: #selector(cellDidTab))
+        tapGesture.caller = indexPath.row
+        
         switch indexPath.row{
         case 0:
             cell.title.text = "비밀번호 재설정"
+            cell.main.addGestureRecognizer(tapGesture)
+            cell.nextBtn.addTarget(self, action: #selector(cellDidTab), for: .touchUpInside)
             return cell
         case 1:
             cell.title.text = "로그아웃"
