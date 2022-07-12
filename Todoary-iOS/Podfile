@@ -11,6 +11,8 @@ target 'Todoary' do
 
   pod 'Then'
 
+  pod 'skpsmtpmessage'
+
   target 'TodoaryTests' do
     inherit! :search_paths
     # Pods for testing

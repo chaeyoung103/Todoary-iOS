@@ -1,20 +1,24 @@
 PODS:
+  - skpsmtpmessage (0.0.1)
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
+  - skpsmtpmessage
   - SnapKit (~> 5.6.0)
   - Then
 
 SPEC REPOS:
   trunk:
+    - skpsmtpmessage
     - SnapKit
     - Then
 
 SPEC CHECKSUMS:
+  skpsmtpmessage: f6e913380c784dd8d4a9f83c8790a302445a5e05
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 8466755988e1edbf1e983dac9c2c12cbf9679bfa
+PODFILE CHECKSUM: 7146670b00c10bcde6ca115bc8adb4f057463a3e
 
 COCOAPODS: 1.11.3
