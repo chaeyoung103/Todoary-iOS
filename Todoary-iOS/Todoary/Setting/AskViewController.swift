@@ -21,6 +21,8 @@ class AskViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
 
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "문의하기"
@@ -49,7 +51,7 @@ class AskViewController: UIViewController {
         
         for i in 0...4 {
             menuArray.append(UIAction(title: titleArray[i],
-                                    image: UIImage(named: "lock"),
+                                    image: UIImage(named: "email"),
                                     handler:{ (title) in
                 self.sendAskEmail(category: title.title)
                 print(title.title)
