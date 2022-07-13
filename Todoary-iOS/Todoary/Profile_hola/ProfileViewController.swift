@@ -32,7 +32,7 @@ class ProfileViewController : UIViewController {
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .semibold)
-        $0.contentVerticalAlignment = .center
+        $0.titleLabel?.textAlignment = .justified
         $0.layer.borderColor = UIColor.silver_115.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 26/2
@@ -195,7 +195,7 @@ extension UITextField {
 
 extension UITextView {
     func addLeftPadding() {
-        self.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: self.frame.height)
+        self.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 0, right: 10)
         self.scrollIndicatorInsets = self.textContainerInset
     }
 }
