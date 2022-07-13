@@ -30,6 +30,8 @@ class NavigationView: UIView {
 
         setUpView()
         setUpConstraint()
+        
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

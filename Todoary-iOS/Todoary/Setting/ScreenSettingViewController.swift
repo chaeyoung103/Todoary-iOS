@@ -16,6 +16,8 @@ class ScreenSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
+        
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "화면"
         }

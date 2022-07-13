@@ -39,6 +39,8 @@ class AlarmSettingViewController: UIViewController {
         viewTapGesture.delegate = self
         self.view.addGestureRecognizer(viewTapGesture)
         
+        self.view.backgroundColor = .white
+        
     }
     
     @objc
