@@ -31,7 +31,7 @@ class ProfileViewController : UIViewController {
         $0.setTitle("사진 변경", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .semibold)
         $0.contentVerticalAlignment = .center
         $0.layer.borderColor = UIColor.silver_115.cgColor
         $0.layer.borderWidth = 1
@@ -64,8 +64,9 @@ class ProfileViewController : UIViewController {
     }
     
     let introduceTf = UITextView().then{
-        $0.text = "가가가가가가가가가가가가가가가"
+        $0.text = "가가가가가가가가가가가가가가가가가가가가가ㅏ까ㅏ가가가가가"
         $0.font = UIFont.nbFont(type: .tableCell)
+        $0.addLeftPadding()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
@@ -189,6 +190,13 @@ extension UITextField {
         leftimage.image = image
         self.leftView = leftimage
         self.leftViewMode = .always
+    }
+}
+
+extension UITextView {
+    func addLeftPadding() {
+        self.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: self.frame.height)
+        self.scrollIndicatorInsets = self.textContainerInset
     }
 }
 

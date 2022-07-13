@@ -35,7 +35,7 @@ class AccountViewController : UIViewController {
     }
     
     let introduce = UILabel().then{
-        $0.text = "가가가가가가가가가가가가가가가"
+        $0.text = "가가가가가가가가가가가가가가가가가가가가각가ㅏ가가가가가가가가ㅏ가"
         $0.textColor = .black
         $0.addLetterSpacing(spacing: 0.28)
         $0.font = UIFont.nbFont(type: .body1)
@@ -45,8 +45,8 @@ class AccountViewController : UIViewController {
         $0.setTitle("프로필 변경", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 11, weight: .semibold)
-        $0.contentVerticalAlignment = .center
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 13, weight: .semibold)
+        $0.titleLabel?.textAlignment = .natural
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_115.cgColor
         $0.layer.cornerRadius = 31/2
