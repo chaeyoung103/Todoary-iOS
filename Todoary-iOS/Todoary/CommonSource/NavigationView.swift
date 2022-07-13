@@ -12,6 +12,8 @@ class NavigationView: UIView {
     let navigationController: UINavigationController!
 
     lazy var backBtn = UIButton().then{
+        $0.tintColor = .white
+        $0.backgroundColor = .white
         $0.setImage(UIImage(named: "back_arrow"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonDidClicked(_:)), for: .touchUpInside)
     }
@@ -47,10 +49,9 @@ class NavigationView: UIView {
         }
         
         backBtn.snp.makeConstraints{ make in
-            make.leading.equalToSuperview().offset(22)
-            make.width.equalTo(9)
-            make.height.equalTo(17)
-            make.bottom.equalToSuperview().offset(-7)
+            make.leading.equalToSuperview().offset(10)
+            make.width.height.equalTo(36)
+            make.bottom.equalToSuperview().offset(2)
         }
         
         navigationTitle.snp.makeConstraints{ make in
