@@ -6,12 +6,6 @@
 	<array>
 		<string></string>
 	</array>
-	<key>item2</key>
-	<string>AppleSDGothicNeoM.ttf</string>
-	<key>item1</key>
-	<string>AppleSDGothicNeoSB.ttf</string>
-	<key>item0</key>
-	<string>AppleSDGothicNeoB.ttf</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -31,7 +25,11 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>사진 기능을 사용하려면 &apos;사진/비디오&apos; 접근권한을 허용해야 합니다.</string>
+	<key>item0</key>
+	<string>AppleSDGothicNeoB.ttf</string>
+	<key>item1</key>
+	<string>AppleSDGothicNeoSB.ttf</string>
+	<key>item2</key>
+	<string>AppleSDGothicNeoM.ttf</string>
 </dict>
 </plist>

@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import MessageUI
+import AVFAudio
 
 class AskViewController: UIViewController {
     
     var navigationView: NavigationView!
     
     var tableView : UITableView!
+    
+    let emailHiddenButton = UIButton().then{
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +37,33 @@ class AskViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        menuItemInit()
     }
-
+    
+    func menuItemInit(){
+        
+        var menuArray: [UIAction] = []
+        
+        let titleArray = ["버그신고","계정문의","피드백","기능추가","기타"]
+        
+        for i in 0...4 {
+            menuArray.append(UIAction(title: titleArray[i],
+                                    image: UIImage(named: "lock"),
+                                    handler:{ (title) in
+                self.sendAskEmail(category: title.title)
+                print(title.title)
+            }))
+        }
+        
+        print(menuArray)
+        
+        emailHiddenButton.menu = UIMenu(title: "",
+                                        options: .displayInline,
+                                        children: menuArray)
+        
+        emailHiddenButton.showsMenuAsPrimaryAction = true
+    }
 
 }
 
@@ -50,6 +81,10 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row{
         case 0:
             cell.cellTitle.text = "이메일"
+            cell.backView.addSubview(emailHiddenButton)
+            emailHiddenButton.snp.makeConstraints{ make in
+                make.leading.trailing.top.bottom.equalToSuperview()
+            }
             return cell
         case 1:
             cell.cellTitle.text = "인스타"
@@ -59,5 +94,48 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row{
+        case 1:
+            guard let url = URL(string: "https://www.instagram.com/Todoary_official/"), UIApplication.shared.canOpenURL(url) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            return
+        default:
+            return
+        }
+    }
     
+}
+
+extension AskViewController: MFMailComposeViewControllerDelegate{
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendAskEmail(category: String){
+        
+        if !MFMailComposeViewController.canSendMail(){
+            print("Mail services are not available")
+            showSendMailErrorAlert()
+            return
+        }
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        composeVC.setToRecipients(["feedback@todoary.com"])
+        composeVC.setSubject(category)
+        composeVC.setMessageBody("BODY", isHTML: false)
+        
+        self.present(composeVC, animated: true, completion: nil)
+        
+    }
+    
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "기기 내 메일 앱 설정을 확인해주세요.", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        sendMailErrorAlert.addAction(confirmAction)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
 }

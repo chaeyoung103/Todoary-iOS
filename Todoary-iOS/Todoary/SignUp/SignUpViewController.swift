@@ -368,7 +368,7 @@ class SignUpViewController: UIViewController {
             alertTitle = "인증코드가 일치하지 않습니다."
         }
         
-        let alert = UIAlertController(title: alertTitle, message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         
         alert.addAction(alertAction)

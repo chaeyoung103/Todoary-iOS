@@ -923,6 +923,7 @@
 				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -953,6 +954,7 @@
 				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
