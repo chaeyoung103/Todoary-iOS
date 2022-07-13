@@ -39,6 +39,7 @@ class SettingAgreementViewController : UIViewController {
         tableView = UITableView().then{
             $0.separatorStyle = .none
             $0.register(SettingAgreementViewCell.self, forCellReuseIdentifier: "SettingAgreementViewCell")
+            
             $0.delegate = self
             $0.dataSource = self
         }
@@ -63,7 +64,7 @@ extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingAgreementViewCell", for: indexPath) as? SettingAgreementViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingAgreementViewCell", for: indexPath) as? SettingAgreementViewCell else{
         return UITableViewCell()
     }
     
@@ -81,6 +82,22 @@ extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSo
     default:
         fatalError("TableViewCell Error")
         }
-
     }
-}
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row{
+        case 0:
+            self.navigationController?.pushViewController(PrivacyTextViewController(), animated: true)
+            return
+        case 1:
+            self.navigationController?.pushViewController(UseServiceViewController(), animated: true)
+            return
+        case 2:
+            self.navigationController?.pushViewController(AdTextViewController(), animated: true)
+            return
+        default:
+            return
+            }
+        }
+    }
+

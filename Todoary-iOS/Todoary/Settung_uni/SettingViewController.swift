@@ -126,12 +126,29 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row{
-        case 5:
-            print("?")
-            self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+        case 0:
+            self.navigationController?.pushViewController(AlarmSettingViewController(), animated: true)
             return
         case 1:
-            print("!")
+            self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
+            return
+        case 2:
+            self.navigationController?.pushViewController(AccountViewController(), animated: true)
+            return
+        case 3:
+           // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+            return
+        case 4:
+           // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+            return
+        case 5:
+            self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+            return
+        case 6:
+            self.navigationController?.pushViewController(AskViewController(), animated: true)
+            return
+        case 7:
+            //self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
             return
         default:
             return
