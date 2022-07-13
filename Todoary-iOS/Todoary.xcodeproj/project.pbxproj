@@ -30,6 +30,7 @@
 		574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */; };
 		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
+		57502F47287EA29100C36804 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57502F46287EA29100C36804 /* UITextView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -120,6 +121,7 @@
 		574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
+		57502F46287EA29100C36804 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				576ED6B32874902A007389CD /* UITextField.swift */,
 				E02E7FA32874631D0006F6FA /* UILabel.swift */,
 				E02E7FA52874637C0006F6FA /* UIButton.swift */,
+				57502F46287EA29100C36804 /* UITextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
+				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
