@@ -46,7 +46,7 @@ extension UITextView {
         style.maximumLineHeight = lineHeight
         style.minimumLineHeight = lineHeight
         
-        style.lineSpacing = lineHeight
+//        style.lineSpacing = lineHeight
         
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: style,
