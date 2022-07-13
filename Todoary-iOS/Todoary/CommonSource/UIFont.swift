@@ -20,6 +20,7 @@ enum TextStyles {
     case numberBtn
     case acceptTerm
     case tableCell
+    case textField
 }
 
 enum NBWeight: String {
@@ -57,6 +58,8 @@ extension UIFont {
         case .acceptTerm:
             return UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!
         case .tableCell:
+            return UIFont(name: "AppleSDGothicNeo-Medium", size: 16)!
+        case .textField:
             return UIFont(name: "AppleSDGothicNeo-Medium", size: 16)!
         }
     }
