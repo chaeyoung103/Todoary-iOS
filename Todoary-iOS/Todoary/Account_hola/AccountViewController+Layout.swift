@@ -52,6 +52,8 @@ extension AccountViewController {
         introduce.snp.makeConstraints{ make in
             make.top.equalTo(nickName.snp.bottom).offset(10)
             make.leading.equalTo(nickName.snp.leading)
+            make.width.equalTo(190)
+            make.height.equalTo(17)
         }
         
         profileChangeBtn.snp.makeConstraints{ make in

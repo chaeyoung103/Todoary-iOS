@@ -29,9 +29,10 @@ class ProfileViewController : UIViewController {
     
     let imagePicker = UIButton().then{
         $0.setTitle("사진 변경", for: .normal)
-        $0.backgroundColor = .silver_115
-        $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.silver_115, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.contentVerticalAlignment = .center
         $0.layer.borderColor = UIColor.silver_115.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 26/2
@@ -195,13 +196,13 @@ extension UITextField {
 }
 
 //extension UIAlertController {
-//    
+//
 //    func setBackgroundColor(color: UIColor) {
 //        if let bgView = self.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
 //            contentView.backgroundColor = color
 //        }
 //    }
-//    
+//
 //    // Set tint color of UIAlertController
 //    func setTint(color: UIColor) {
 //        self.view.tintColor = color

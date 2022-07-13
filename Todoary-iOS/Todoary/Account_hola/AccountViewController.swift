@@ -49,7 +49,7 @@ class AccountViewController : UIViewController {
         $0.contentVerticalAlignment = .center
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_115.cgColor
-        $0.layer.cornerRadius = 26/2
+        $0.layer.cornerRadius = 31/2
         $0.addTarget(self, action: #selector(profileChangeBtnDidTab), for: .touchUpInside)
     }
     
