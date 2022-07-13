@@ -12,8 +12,7 @@ class NavigationView: UIView {
     let navigationController: UINavigationController!
 
     lazy var backBtn = UIButton().then{
-        $0.tintColor = .white
-        $0.backgroundColor = .white
+        
         $0.setImage(UIImage(named: "back_arrow"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonDidClicked(_:)), for: .touchUpInside)
     }
