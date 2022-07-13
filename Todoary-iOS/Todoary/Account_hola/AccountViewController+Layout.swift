@@ -46,7 +46,7 @@ extension AccountViewController {
         
         nickName.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(155)
-            make.leading.equalTo(profileImage.snp.trailing).offset(20)
+            make.leading.equalTo(profileImage.snp.trailing).offset(17)
         }
         
         introduce.snp.makeConstraints{ make in
@@ -55,15 +55,15 @@ extension AccountViewController {
         }
         
         profileChangeBtn.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(165)
-            make.trailing.equalToSuperview().offset(-50)
-            make.width.equalTo(78)
-            make.height.equalTo(26)
+            make.top.equalTo(introduce.snp.bottom).offset(38)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(118)
+            make.height.equalTo(31)
         }
         
         //account
         accountTitle.snp.makeConstraints{ make in
-            make.top.equalTo(profileImage.snp.bottom).offset(52)
+            make.top.equalTo(profileChangeBtn.snp.bottom).offset(41)
             make.leading.equalToSuperview().offset(31)
         }
         
