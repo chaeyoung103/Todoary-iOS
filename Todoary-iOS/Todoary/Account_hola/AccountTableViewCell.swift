@@ -10,6 +10,8 @@ import UIKit
 class AccountTableViewCell: UITableViewCell {
     static let identifier = "accountTableViewCell"
     
+    //MARK: - UIComponents
+    
     let main = UIView().then{
         $0.backgroundColor = .white
     }
@@ -27,6 +29,8 @@ class AccountTableViewCell: UITableViewCell {
     let borderLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
+    
+    //MARK: - Lifecycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
             
@@ -47,6 +51,8 @@ class AccountTableViewCell: UITableViewCell {
         self.main.addSubview(nextBtn)
         self.main.addSubview(borderLine)
     }
+    
+    //MARK: - UIContraints
     
     private func setUpConstraint(){
         self.contentView.snp.makeConstraints{ make in

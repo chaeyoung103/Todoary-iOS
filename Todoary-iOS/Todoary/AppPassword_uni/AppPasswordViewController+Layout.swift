@@ -13,6 +13,7 @@ extension AppPasswordViewController {
         
         self.view.addSubview(appPwTitle)
         self.view.addSubview(appPwtext)
+        self.view.addSubview(pwnotcorrect)
         
         self.view.addSubview(inputNotPw1)
         self.view.addSubview(inputNotPw2)
@@ -49,6 +50,13 @@ extension AppPasswordViewController {
         appPwtext.snp.makeConstraints{ make in
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
             make.width.equalTo(120)
+            make.height.equalTo(17)
+            make.centerX.equalTo(appPwTitle)
+        }
+        
+        pwnotcorrect.snp.makeConstraints{ make in
+            make.top.equalTo(appPwTitle.snp.bottom).offset(16)
+            make.width.equalTo(107)
             make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
