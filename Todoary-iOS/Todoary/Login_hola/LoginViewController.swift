@@ -81,6 +81,7 @@ class LoginViewController: UIViewController {
     let appleBtn = UIButton().then{
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
         $0.layer.cornerRadius = 51/2
+        $0.addTarget(self, action: #selector(appleBtnDidTab), for: .touchUpInside)
     }
     
     let signUpBtn = UIButton().then{
@@ -143,6 +144,12 @@ class LoginViewController: UIViewController {
     @objc func loginBtnDidTab() {
         let accountViewController = AccountViewController()
         navigationController?.pushViewController(accountViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func appleBtnDidTab() {
+        let askViewController = AskViewController()
+        navigationController?.pushViewController(askViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
     }
     
