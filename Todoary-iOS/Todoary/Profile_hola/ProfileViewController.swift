@@ -85,7 +85,6 @@ class ProfileViewController : UIViewController {
         self.view.backgroundColor = .white
         
         nickNameTf.addLeftPadding()
-        introduceTf.addLeftPadding()
         
         setUpView()
         setUpConstraint()
