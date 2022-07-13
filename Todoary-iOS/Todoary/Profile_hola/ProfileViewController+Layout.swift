@@ -42,10 +42,10 @@ extension ProfileViewController {
         }
         
         imagePicker.snp.makeConstraints{ make in
-            make.top.equalTo(profileImage.snp.bottom).offset(10)
+            make.top.equalTo(profileImage.snp.bottom).offset(14)
             make.centerX.equalToSuperview()
-            make.width.equalTo(54)
-            make.height.equalTo(17)
+            make.width.equalTo(82)
+            make.height.equalTo(26)
         }
         
         nickNameTitle.snp.makeConstraints{ make in
@@ -69,7 +69,7 @@ extension ProfileViewController {
             make.top.equalTo(introduceTitle.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(32)
             make.width.equalTo(327)
-            make.height.equalTo(45)
+            make.height.equalTo(67)
         }
         
         

@@ -73,6 +73,7 @@ class LoginViewController: UIViewController {
         $0.setTitle("로그인", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.textAlignment = .center
         $0.titleLabel?.font = UIFont.nbFont(type: .button2)
         $0.layer.cornerRadius = 51/2
         $0.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
@@ -81,6 +82,7 @@ class LoginViewController: UIViewController {
     let appleBtn = UIButton().then{
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
         $0.layer.cornerRadius = 51/2
+        $0.addTarget(self, action: #selector(appleBtnDidTab), for: .touchUpInside)
     }
     
     let signUpBtn = UIButton().then{
@@ -88,6 +90,7 @@ class LoginViewController: UIViewController {
         $0.backgroundColor = .white
         $0.setTitleColor(.todoaryGrey, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .button2)
+        $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.buttonColor.cgColor
         $0.layer.cornerRadius = 51/2
@@ -99,6 +102,7 @@ class LoginViewController: UIViewController {
         $0.backgroundColor = .white
         $0.setTitleColor(.todoaryGrey, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .subButton)
+        $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.todoaryGrey.cgColor
         $0.layer.cornerRadius = 25/2
@@ -143,6 +147,12 @@ class LoginViewController: UIViewController {
     @objc func loginBtnDidTab() {
         let accountViewController = AccountViewController()
         navigationController?.pushViewController(accountViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func appleBtnDidTab() {
+        let askViewController = AskViewController()
+        navigationController?.pushViewController(askViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
     }
     

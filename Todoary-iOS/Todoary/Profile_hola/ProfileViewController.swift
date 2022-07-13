@@ -30,8 +30,12 @@ class ProfileViewController : UIViewController {
     let imagePicker = UIButton().then{
         $0.setTitle("사진 변경", for: .normal)
         $0.backgroundColor = .white
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.setTitleColor(.silver_115, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .semibold)
+        $0.titleLabel?.textAlignment = .justified
+        $0.layer.borderColor = UIColor.silver_115.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 26/2
         $0.addTarget(self, action: #selector(imagePickerDidTab), for: .touchUpInside)
     }
     
@@ -43,7 +47,7 @@ class ProfileViewController : UIViewController {
     }
     
     let nickNameTf = UITextField().then{
-        $0.text = "베어"
+        $0.text = "일이삼사오육칠팔구십"
         $0.textFieldTypeSetting(type: .tableCell)
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.borderStyle = .none
@@ -59,11 +63,11 @@ class ProfileViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body2)
     }
     
-    let introduceTf = UITextField().then{
-        $0.text = "J가 되고싶은 P"
-        $0.textFieldTypeSetting(type: .tableCell)
+    let introduceTf = UITextView().then{
+        $0.text = "가가가가가가가가가가가가가가가가가가가가가ㅏ까ㅏ가가가가가"
         $0.font = UIFont.nbFont(type: .tableCell)
-        $0.borderStyle = .none
+        $0.addLeftPadding()
+        $0.textViewTypeSetting()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
@@ -83,7 +87,6 @@ class ProfileViewController : UIViewController {
         self.view.backgroundColor = .white
         
         nickNameTf.addLeftPadding()
-        introduceTf.addLeftPadding()
         
         setUpView()
         setUpConstraint()
@@ -113,10 +116,6 @@ class ProfileViewController : UIViewController {
             }
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-        alert.setBackgroundColor(color: UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 8/10))
-        alert.setTint(color: .black)
-        
         
         alert.addAction(removeAction)
         alert.addAction(albumSelectAction)
@@ -195,16 +194,23 @@ extension UITextField {
     }
 }
 
-extension UIAlertController {
-    
-    func setBackgroundColor(color: UIColor) {
-        if let bgView = self.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
-            contentView.backgroundColor = color
-        }
-    }
-    
-    // Set tint color of UIAlertController
-    func setTint(color: UIColor) {
-        self.view.tintColor = color
+extension UITextView {
+    func addLeftPadding() {
+        self.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 0, right: 10)
+        self.scrollIndicatorInsets = self.textContainerInset
     }
 }
+
+//extension UIAlertController {
+//
+//    func setBackgroundColor(color: UIColor) {
+//        if let bgView = self.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
+//            contentView.backgroundColor = color
+//        }
+//    }
+//
+//    // Set tint color of UIAlertController
+//    func setTint(color: UIColor) {
+//        self.view.tintColor = color
+//    }
+//}
