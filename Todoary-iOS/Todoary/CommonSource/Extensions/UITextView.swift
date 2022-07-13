@@ -40,7 +40,7 @@ extension UITextView {
     
     private func setTextWithLineHeight(attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
         
-        let lineHeight: Double = 19.2
+        let lineHeight: CGFloat = 19.2
         
         let style = NSMutableParagraphStyle()
         style.maximumLineHeight = lineHeight
@@ -50,9 +50,9 @@ extension UITextView {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: style,
-//            .baselineOffset: (lineHeight - font.lineHeight) / 4
+            .baselineOffset: (lineHeight - font!.lineHeight) / 4
         ]
-        
+       
         attributedString.addAttributes(attributes,
                                        range: NSRange(location: 0,
                                                       length: attributedString.length-1))
