@@ -67,6 +67,7 @@ class ProfileViewController : UIViewController {
         $0.text = "가가가가가가가가가가가가가가가가가가가가가ㅏ까ㅏ가가가가가"
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.addLeftPadding()
+        $0.textViewTypeSetting()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
