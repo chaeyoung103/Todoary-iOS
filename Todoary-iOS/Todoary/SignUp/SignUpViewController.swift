@@ -174,7 +174,7 @@ class SignUpViewController: UIViewController {
         $0.text = "*8자 이하의 한글 또는 영어로만 가능합니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
-        $0.isHidden = true
+//        $0.isHidden = false
     }
 
     //nickname
@@ -197,7 +197,7 @@ class SignUpViewController: UIViewController {
         $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
-        $0.isHidden = true
+//        $0.isHidden = true
     }
 
     let nextButton = UIButton().then{
@@ -241,13 +241,18 @@ class SignUpViewController: UIViewController {
     
     func textFieldAddRecognizer(){
         
-        let tfChangedArray = [idTextField, nameTextField,nicknameTextField,certificationTextField, pwCertificationTextField]
+//        let tfChangedArray = [idTextField, certificationTextField, pwCertificationTextField, nameTextField, nicknameTextField]
+        let tfChangedArray = [idTextField, certificationTextField, pwCertificationTextField]
         
         tfChangedArray.forEach{ each in
             each.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
         }
         
-        pwTextField.addTarget(self, action: #selector(textFieldDidEditingEnd(_:)), for: .editingDidEnd)
+        let tfEditedEndArray = [pwTextField, nameTextField, nicknameTextField]
+        
+        tfEditedEndArray.forEach{ each in
+            each.addTarget(self, action: #selector(textFieldDidEditingEnd(_:)), for: .editingDidEnd)
+        }
     }
     
     @objc
@@ -277,26 +282,12 @@ class SignUpViewController: UIViewController {
                 pwIncorrectLabel.isHidden = false
             }
             return
-        case nameTextField:
-            
-            isValidName = text.isValidName()
-            if(isValidName){
-                nameCanUseLabel.isHidden = true
-                name = text
-            }else{
-                nameCanUseLabel.isHidden = false
-            }
-            return
-        case nicknameTextField:
-            
-            isValidNickname = text.isValidNickname()
-            if(isValidNickname){
-                nicknameCanUseLabel.isHidden = true
-                nickname = text
-            }else{
-                nicknameCanUseLabel.isHidden = false
-            }
-            return
+//        case nameTextField:
+//            nameCanUseLabel.isHidden = false
+//            return
+//        case nicknameTextField:
+//            nicknameCanUseLabel.isHidden = false
+//            return
         default:
             fatalError("Missing Textfield")
         }
@@ -316,6 +307,25 @@ class SignUpViewController: UIViewController {
                 pwCanUseLabel.isHidden = true
             }
             passwd = text
+            return
+        case nameTextField:
+            isValidName = text.isValidName()
+            if(isValidName){
+                nameCanUseLabel.isHidden = true
+                name = text
+            }else{
+                nameCanUseLabel.isHidden = false
+            }
+            return
+        case nicknameTextField:
+            
+            isValidNickname = text.isValidNickname()
+            if(isValidNickname){
+                nicknameCanUseLabel.isHidden = true
+                nickname = text
+            }else{
+                nicknameCanUseLabel.isHidden = false
+            }
             return
         default:
             fatalError("Missing Textfield")
