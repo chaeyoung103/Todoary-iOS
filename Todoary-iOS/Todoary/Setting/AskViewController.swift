@@ -49,7 +49,7 @@ class AskViewController: UIViewController {
         
         for i in 0...4 {
             menuArray.append(UIAction(title: titleArray[i],
-                                    image: UIImage(named: "lock"),
+                                    image: UIImage(named: "email"),
                                     handler:{ (title) in
                 self.sendAskEmail(category: title.title)
                 print(title.title)
