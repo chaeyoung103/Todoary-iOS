@@ -63,11 +63,9 @@ class ProfileViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body2)
     }
     
-    let introduceTf = UITextField().then{
+    let introduceTf = UITextView().then{
         $0.text = "가가가가가가가가가가가가가가가"
-        $0.textFieldTypeSetting(type: .tableCell)
         $0.font = UIFont.nbFont(type: .tableCell)
-        $0.borderStyle = .none
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
