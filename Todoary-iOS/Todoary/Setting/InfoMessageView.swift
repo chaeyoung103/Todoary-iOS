@@ -19,18 +19,26 @@ class InfoMessageView: UIView {
         $0.layer.masksToBounds = false
     }
     
+    let messageLabel = UILabel().then{
+        $0.font = UIFont.nbFont(ofSize: 11, weight: .semibold)
+        $0.numberOfLines = 0
+        $0.setTextWithLineHeight(lineHeight: 13.2)
+        $0.addLetterSpacing(spacing: 0.22)
+        $0.textColor = .black
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
         self.addSubview(silverView)
-        
-        self.snp.makeConstraints{ make in
-            make.width.equalTo(137)
-            make.height.equalTo(53)
-        }
+        self.addSubview(messageLabel)
         
         silverView.snp.makeConstraints{ make in
             make.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+        messageLabel.snp.makeConstraints{ make in
+            make.centerX.centerY.equalToSuperview()
         }
     }
     

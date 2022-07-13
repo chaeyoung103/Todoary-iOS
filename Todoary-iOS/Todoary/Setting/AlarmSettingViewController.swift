@@ -48,14 +48,39 @@ class AlarmSettingViewController: UIViewController {
         
         self.view.addSubview(messageView)
         
-        let offset : Double!
-        if(sender.caller == 0){
+        var offset = 0
+        
+        switch sender.caller{
+        case 0:
             offset = 163
-        }else{
+            messageView.messageLabel.text = """
+            Todo list의 시간 알림입니다.
+            알림을 해제하면 모든 Todo list
+            알림을 받으실 수 없습니다.
+            """
+            break
+        case 1:
             offset = 213
+            messageView.messageLabel.text = """
+            하루를 매일 기록할 수 있도록 도와주는
+            알림입니다. 매일 설정한 시간에 알람이
+            올 수 있도록 설정할 수 있습니다.
+            """
+            break
+        case 2:
+            offset = 263
+            messageView.messageLabel.text = """
+            일주일 동안 기록을 하지 않으면
+            Todoary가 알려줍니다.
+            """
+            break
+        default:
+            return
         }
         
         messageView.snp.makeConstraints{ make in
+            make.width.equalTo(messageView.messageLabel.snp.width).offset(32)
+            make.height.equalTo(messageView.messageLabel.snp.height).offset(22)
             make.top.equalToSuperview().offset(offset)
             make.leading.equalToSuperview().offset(67)
         }
@@ -68,7 +93,7 @@ class AlarmSettingViewController: UIViewController {
 extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,6 +113,9 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         case 1:
             cell.cellTitle.text = "하루기록 알림"
+            return cell
+        case 2:
+            cell.cellTitle.text = "리마인드 알림"
             return cell
         default:
             fatalError("TableViewCell Error")

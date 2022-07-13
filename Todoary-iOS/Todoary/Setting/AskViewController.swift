@@ -56,12 +56,11 @@ class AskViewController: UIViewController {
             }))
         }
         
-        print(menuArray)
-        
         emailHiddenButton.menu = UIMenu(title: "",
                                         options: .displayInline,
                                         children: menuArray)
         
+        //long-touch 아닌 단순 터치시 띄우도록 수정
         emailHiddenButton.showsMenuAsPrimaryAction = true
     }
 
