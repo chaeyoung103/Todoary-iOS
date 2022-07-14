@@ -56,6 +56,7 @@ class SettingViewController : UIViewController {
         tableView = UITableView().then{
             $0.separatorStyle = .none
             $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
+            $0.isScrollEnabled = false
             
             $0.delegate = self
             $0.dataSource = self
