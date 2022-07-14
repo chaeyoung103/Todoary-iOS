@@ -32,19 +32,16 @@ class AskViewController: UIViewController {
             $0.delegate = self
             $0.dataSource = self
             
-            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "askSettingCell")
-            
+            $0.isScrollEnabled = false
             $0.separatorStyle = .none
+            
+            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "askSettingCell")
         }
         
         setUpView()
         setUpConstraint()
         
         menuItemInit()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        print("???")
     }
     
     func menuItemInit(){

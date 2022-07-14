@@ -33,6 +33,7 @@ class FontSettingViewController: UIViewController {
             $0.dataSource = self
             
             $0.separatorStyle = .none
+            $0.isScrollEnabled = false
             
             $0.register(FontSettingTableViewCell.self, forCellReuseIdentifier: "fontSettingCell")
         }
