@@ -18,7 +18,9 @@ class SettingViewController : UIViewController {
     var navigationView : NavigationView!
     
     //tableView
-    var tableView : UITableView!
+    var tableView = UITableView().then{
+        $0.isScrollEnabled = false
+    }
     
     //version
     let versionBorderLine1 = UIView().then{
