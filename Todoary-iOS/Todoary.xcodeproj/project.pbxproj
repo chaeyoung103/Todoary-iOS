@@ -151,7 +151,7 @@
 		E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewCell.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
-		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController + Layout.swift"; sourceTree = "<group>"; };
@@ -928,7 +928,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				DEVELOPMENT_TEAM = JF2K83LQ27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
