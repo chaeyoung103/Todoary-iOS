@@ -42,6 +42,10 @@ class AskViewController: UIViewController {
         
         menuItemInit()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        print("???")
+    }
     
     func menuItemInit(){
         
@@ -96,10 +100,15 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch indexPath.row{
         case 1:
+            
             guard let url = URL(string: "https://www.instagram.com/Todoary_official/"), UIApplication.shared.canOpenURL(url) else { return }
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
+            //인스타그램 주소 갔다가 다시 돌아왔을 때 클릭(select) 표시 제거
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         default:
             return
