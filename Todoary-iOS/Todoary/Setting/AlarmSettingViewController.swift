@@ -29,6 +29,7 @@ class AlarmSettingViewController: UIViewController {
             $0.register(AlarmSettingTableViewCell.self, forCellReuseIdentifier: "alarmSettingCell")
             $0.delegate = self
             $0.dataSource = self
+            $0.isScrollEnabled = false
         }
         
         setUpView()
