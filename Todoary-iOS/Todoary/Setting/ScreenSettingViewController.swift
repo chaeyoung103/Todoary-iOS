@@ -26,10 +26,10 @@ class ScreenSettingViewController: UIViewController {
             $0.delegate = self
             $0.dataSource = self
             
-            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "screenSettingCell")
-            
+            $0.isScrollEnabled = false
             $0.separatorStyle = .none
             
+            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "screenSettingCell")
         }
         
         setUpView()
