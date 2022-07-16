@@ -25,15 +25,13 @@ class TodoListBottomSheetViewController: UIViewController {
             $0.delegate = self
             $0.dataSource = self
             
-            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-            
             $0.separatorStyle = .none
+            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
             
             $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
         }
         
         setUpView()
-        
         setUpConstraint()
     }
     
@@ -70,6 +68,10 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         
         return cell
     }
+    
+
+    
+    
     
     
     

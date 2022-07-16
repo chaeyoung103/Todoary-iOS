@@ -19,6 +19,8 @@ class TodoListTableViewCell: UITableViewCell {
     let checkBox = UIButton().then{
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
         $0.setImage(UIImage(named: "check_box"), for: .selected)
+        
+        $0.backgroundColor = .red
     }
     
     let titleLabel = UILabel().then{
@@ -26,6 +28,8 @@ class TodoListTableViewCell: UITableViewCell {
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
+        
+        $0.backgroundColor = .red
     }
     
     let categoryButton = UIButton().then{
@@ -85,26 +89,16 @@ class TodoListTableViewCell: UITableViewCell {
         
         self.selectedBackgroundView = selectedBackView
         
-        
-        self.backgroundColor = .red
-        self.contentView.backgroundColor = .green
-        
     }
     
     func setUpConstraint(){
         
-//        self.snp.makeConstraints{ make in
-////            make.leading.equalToSuperview().offset(32)
-////            make.trailing.equalToSuperview().offset(-30)
-//            make.width.equalTo(328)
-//            make.height.equalTo(60)
-//        }
-        
         self.contentView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-30)
-            make.height.equalTo(60)
-            make.centerY.equalToSuperview()
+            make.height.equalTo(75)
+            make.top.equalToSuperview().offset(7.5)
+            make.bottom.equalToSuperview().offset(-7.5)
         }
         
         checkBox.snp.makeConstraints{ make in
@@ -151,10 +145,5 @@ class TodoListTableViewCell: UITableViewCell {
             make.bottom.equalTo(-22.46)
         }
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
-    }
+
 }
