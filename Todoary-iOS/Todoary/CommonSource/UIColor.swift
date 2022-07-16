@@ -68,4 +68,40 @@ extension UIColor{
         blue: 46/255,
         alpha: 1
     )
+    
+    
+    static let sunday = UIColor(
+        red: 215/255,
+        green: 0/255,
+        blue: 0/255,
+        alpha: 1
+    )
+    
+    static let saturday = UIColor(
+        red: 0/255,
+        green: 177/255,
+        blue: 233/255,
+        alpha: 1
+    )
+    
+    static let calendarSelectColor = UIColor(
+        red: 134/255,
+        green: 182/255,
+        blue: 255/255,
+        alpha: 1
+    )
+    
+    static let calendarExistColor = UIColor(
+        red: 193/255,
+        green: 217/255,
+        blue: 254/255,
+        alpha: 1
+    )
+    
+    static let summaryTitle = UIColor(
+        red: 50/255,
+        green: 115/255,
+        blue: 214/255,
+        alpha: 1
+    )
 }

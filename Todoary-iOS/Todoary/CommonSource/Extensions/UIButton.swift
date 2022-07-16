@@ -54,5 +54,20 @@ extension UIButton {
         return attributedString
     }
     
+    func addLetterSpacing(spacing: CGFloat){
+        
+        if let labelText = titleLabel?.text, labelText.isEmpty == false{
+            
+            let attributedString = NSMutableAttributedString(string: labelText)
+            
+            attributedString.addAttribute(.kern,
+                                          value: spacing,
+                                          range: NSRange(location: 0,
+                                                         length: attributedString.length-1))
+            
+            titleLabel?.attributedText = attributedString
+        }
+    }
+    
     
 }
