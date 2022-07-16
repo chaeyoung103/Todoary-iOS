@@ -9,4 +9,22 @@ import UIKit
 
 class TodoListTableViewCell: UITableViewCell {
 
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setUpView()
+        setUpConstraint()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setUpView(){
+        
+    }
+    
+    func setUpConstraint(){
+        
+    }
 }
