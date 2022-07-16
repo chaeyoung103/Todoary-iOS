@@ -18,9 +18,8 @@ class TodoListTableViewCell: UITableViewCell {
     
     let checkBox = UIButton().then{
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
-        $0.setImage(UIImage(named: "check_box"), for: .selected)
-        
-        $0.backgroundColor = .red
+        $0.setImage(UIImage(named: "todo_check"), for: .selected)
+        $0.addTarget(self, action: #selector(checkBoxDidClicked(_:)), for: .touchUpInside)
     }
     
     let titleLabel = UILabel().then{
@@ -28,34 +27,32 @@ class TodoListTableViewCell: UITableViewCell {
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
-        
-        $0.backgroundColor = .red
     }
     
     let categoryButton = UIButton().then{
         $0.setTitle("운동", for: .normal)
+        $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
         $0.addLetterSpacing(spacing: 0.24)
+        $0.layer.borderColor = UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1).cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 21/2
+        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
+//        $0.backgroundColor = .red
     }
     
     let pinImage = UIImageView().then{
-        $0.image = UIImage(named: "document")
+        $0.image = UIImage(named: "push_pin")
     }
     
     let alarmImage = UIImageView().then{
-        $0.image = UIImage(named: "document")
+        $0.image = UIImage(named: "notifications")
     }
     
     let timeLabel = UILabel().then{
         $0.text = "AM 7:00"
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
         $0.addLetterSpacing(spacing: -0.26)
-        $0.textAlignment = .right
-    }
-    
-    let stackView = UIStackView().then{
-        $0.axis = .horizontal
-        $0.spacing = 2
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -78,14 +75,13 @@ class TodoListTableViewCell: UITableViewCell {
     
     func setUpView(){
         
-        stackView.addArrangedSubview(pinImage)
-        stackView.addArrangedSubview(alarmImage)
-        stackView.addArrangedSubview(timeLabel)
-        
         self.contentView.addSubview(checkBox)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(categoryButton)
-        self.contentView.addSubview(stackView)
+        
+        self.contentView.addSubview(pinImage)
+        self.contentView.addSubview(alarmImage)
+        self.contentView.addSubview(timeLabel)
         
         self.selectedBackgroundView = selectedBackView
         
@@ -104,19 +100,21 @@ class TodoListTableViewCell: UITableViewCell {
         checkBox.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.leading.equalToSuperview().offset(19)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(18)
+            make.bottom.equalToSuperview().offset(-18)
         }
         
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
-            make.top.equalToSuperview().offset(20.09)
-            make.bottom.equalToSuperview().offset(-23.89)
+//            make.top.equalToSuperview().offset(20.09)
+//            make.bottom.equalToSuperview().offset(-23.89)
+            make.centerY.equalTo(checkBox)
         }
         
         categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(46)
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
-            make.trailing.equalTo(stackView.snp.leading).offset(-7)
+            make.trailing.equalTo(pinImage.snp.leading).offset(-7)
             make.top.equalToSuperview().offset(21)
             make.bottom.equalToSuperview().offset(-18)
         }
@@ -125,25 +123,36 @@ class TodoListTableViewCell: UITableViewCell {
         pinImage.snp.makeConstraints{ make in
             make.width.equalTo(14)
             make.height.equalTo(13.2)
+            make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
+            make.top.equalToSuperview().offset(24.34)
+            make.bottom.equalToSuperview().offset(-22.46)
         }
-        
         
         alarmImage.snp.makeConstraints{ make in
             make.width.equalTo(14)
             make.height.equalTo(13.2)
+            make.trailing.equalToSuperview().offset(-69)
+            make.centerY.equalToSuperview()
         }
-        
         
         timeLabel.snp.makeConstraints{ make in
-            
-        }
-        
-        
-        stackView.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-18)
-            make.top.equalTo(23.4)
-            make.bottom.equalTo(-22.46)
+            make.top.equalToSuperview().offset(23.4)
+            make.bottom.equalToSuperview().offset(-22.46)
+            make.lastBaseline.equalTo(alarmImage)
         }
+        
     }
 
+    @objc
+    func checkBoxDidClicked(_ sender: UIButton){
+        
+        sender.isSelected.toggle()
+        
+//        if(sender.isSelected){
+//
+//        }else{
+//
+//        }
+    }
 }
