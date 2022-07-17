@@ -9,16 +9,19 @@ import UIKit
 
 class HiddenSettingView: UIView {
     
-    let settingButton = UIButton().then{
+    lazy var settingButton = UIButton().then{
         $0.setImage(UIImage(named: "settings"), for: .normal)
+        $0.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
     }
     
-    let deleteButton = UIButton().then{
+    lazy var deleteButton = UIButton().then{
         $0.setImage(UIImage(named: "trash"), for: .normal)
+        $0.addTarget(self, action: #selector(deleteButtonDidClicked(_:)), for: .touchUpInside)
     }
     
-    let pinButton = UIButton().then{
+    lazy var pinButton = UIButton().then{
         $0.setImage(UIImage(named: "push_pin_big"), for: .normal)
+        $0.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let borderLine = UIView().then{
@@ -41,6 +44,21 @@ class HiddenSettingView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    func settingButtonDidClicked(_ sender : UIButton){
+        print("setting button did clicked")
+    }
+    
+    @objc
+    func deleteButtonDidClicked(_ sender : UIButton){
+        print("delete button did clicked")
+    }
+    
+    @objc
+    func pinButtonDidClicked(_ sender : UIButton){
+        print("pin button did clicked")
     }
     
     func setUpView(){

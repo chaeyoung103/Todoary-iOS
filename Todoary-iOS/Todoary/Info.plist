@@ -10,7 +10,7 @@
 	<string>cprknwdarqtsvkgl</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string></string>
+		<string>AppleSDGothicNeoEB.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

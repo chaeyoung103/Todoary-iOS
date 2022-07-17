@@ -18,7 +18,7 @@ class TodoListTableViewCell: UITableViewCell {
     
     //tableCell UI
     let checkBox = UIButton().then{
-        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+        $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
         $0.setImage(UIImage(named: "todo_check"), for: .selected)
         $0.addTarget(self, action: #selector(checkBoxDidClicked(_:)), for: .touchUpInside)
     }
@@ -56,12 +56,14 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     let backView = UIView().then{
+        $0.layer.borderWidth = 0.5
         $0.backgroundColor = .white
     }
     
     let hiddenView = HiddenSettingView()
     
     //MARK: - Properties
+    
     var originalCenter = CGPoint()
     var deleteOnDragRelease = false
 
@@ -77,10 +79,10 @@ class TodoListTableViewCell: UITableViewCell {
         setUpConstraint()
         
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        
+//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(sender:)))
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -97,6 +99,147 @@ class TodoListTableViewCell: UITableViewCell {
 //        }else{
 //
 //        }
+    }
+    
+    weak var delegate : MWSwipeableTableViewCellDelegate?
+    
+    var animationOptions : UIView.AnimationOptions = [.allowUserInteraction, .beginFromCurrentState]
+    var animationDuration : TimeInterval = 0.5
+    var animationDelay : TimeInterval = 0
+    var animationSpingDamping : CGFloat = 0.5
+    var animationInitialVelocity : CGFloat = 1
+    
+    private weak var leftWidthConstraint : NSLayoutConstraint!
+    private weak var rightWidthConstraint : NSLayoutConstraint!
+    
+    var buttonWidth :CGFloat = 105 {
+        didSet(val) {
+            if let r = self.rightWidthConstraint {
+                r.constant = self.buttonWidth
+            }
+            if let l = self.leftWidthConstraint {
+                l.constant = self.buttonWidth
+            }
+        }
+    }
+    
+    let leftWidth : CGFloat = 58
+    let rightWidth : CGFloat = 105
+    
+    private weak var panRecognizer : UIPanGestureRecognizer!
+    private weak var buttonCancelTap : UITapGestureRecognizer!
+    
+    private var beginPoint : CGPoint = .zero
+
+}
+
+protocol MWSwipeableTableViewCellDelegate : NSObjectProtocol {
+    func swipeableTableViewCellDidRecognizeSwipe(cell : TodoListTableViewCell)
+    func swipeableTableViewCellDidTapLeftButton(cell : TodoListTableViewCell)
+    func swipeableTableViewCellDidTapRightButton(cell : TodoListTableViewCell)
+}
+
+extension TodoListTableViewCell{
+
+
+    @objc
+    func didTap(_ sender : UITapGestureRecognizer) {
+        UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
+            self.contentView.frame.origin.x = 0
+        }, completion: nil)
+    }
+/*
+    @objc func didPan(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+//            hiddenSettingViewShow()
+            self.delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
+            self.beginPoint = sender.location(in: self)
+            self.beginPoint.x -= self.contentView.frame.origin.x
+
+        case .changed:
+            let now = sender.location(in: self)
+            let distX = now.x - self.beginPoint.x
+            if distX <= 0 {
+                let d = max(distX,-(self.contentView.frame.size.width-self.buttonWidth))
+                if d > -self.buttonWidth*2 || self.rightButton != nil || self.contentView.frame.origin.x > 0 {
+                    self.contentView.frame.origin.x = d
+                }
+                else {
+                    sender.isEnabled = false
+                    sender.isEnabled = true
+                }
+            }
+            else {
+                let d = min(distX,self.contentView.frame.size.width-self.buttonWidth)
+                if d < self.buttonWidth*2 || self.leftButton != nil || self.contentView.frame.origin.x < 0 {
+                    self.contentView.frame.origin.x = d
+                }
+                else {
+                    sender.isEnabled = false
+                    sender.isEnabled = true
+                }
+            }
+
+        default:
+            delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
+            let offset = self.contentView.frame.origin.x
+            if offset > self.buttonWidth && self.leftButton != nil {
+                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
+                    self.contentView.frame.origin.x = self.buttonWidth
+                }, completion: nil)
+            }
+            else if -offset > self.buttonWidth && self.rightButton != nil {
+                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
+                    self.contentView.frame.origin.x = -self.buttonWidth
+                }, completion: nil)
+            }
+            else {
+                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
+                    self.contentView.frame.origin.x = 0
+                }, completion: nil)
+            }
+        }
+    }
+*/
+    func closeButtonsIfShown(animated:Bool = true) -> Bool {
+        if self.contentView.frame.origin.x != 0 {
+            if animated {
+                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
+                    self.contentView.frame.origin.x = 0
+                    self.panRecognizer.isEnabled = false
+                    self.panRecognizer.isEnabled = true
+                }, completion: nil)
+            }
+            else {
+                self.contentView.frame.origin.x = 0
+                self.panRecognizer.isEnabled = false
+                self.panRecognizer.isEnabled = true
+
+            }
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+    @objc func didTapButton(_ sender:UIButton!) {
+//        if let d = delegate {
+//            if let l = self.leftButton {
+//                if sender == l {
+//                    print("left button clicked")
+//                    d.swipeableTableViewCellDidTapLeftButton(cell: self)
+//                }
+//            }
+//            if let r = self.rightButton {
+//                if sender == r {
+//                    print("right button clicked")
+//                    d.swipeableTableViewCellDidTapRightButton(cell: self)
+//                }
+//            }
+//        }
+        self.closeButtonsIfShown(animated: true)
     }
 }
 
@@ -122,7 +265,7 @@ extension TodoListTableViewCell{
               width: bounds.size.width, height: bounds.size.height)
           if !deleteOnDragRelease {
             // if the item is not being deleted, snap back to the original location
-              UIView.animate(withDuration: 0.2, animations: {self.frame = originalFrame})
+              UIView.animate(withDuration: 0.5, animations: {self.frame = originalFrame})
           }
         }
     }
@@ -151,4 +294,5 @@ extension TodoListTableViewCell{
             make.bottom.equalTo(self.contentView)
         }
     }
+    
 }
