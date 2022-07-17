@@ -97,6 +97,7 @@ class TodoListTableViewCell: UITableViewCell {
         backView.layer.cornerRadius = 20
         hiddenView.layer.cornerRadius = 20
         
+        
         setUpView()
         setUpConstraint()
         
