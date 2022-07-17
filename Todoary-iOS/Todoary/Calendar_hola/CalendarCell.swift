@@ -10,7 +10,9 @@ import UIKit
 class CalendarCell : UICollectionViewCell {
     
     let dateLabel = UILabel().then{
-        $0.text = "MON"
+        $0.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+        $0.layer.cornerRadius = 12
+        $0.text = "월"
         $0.textAlignment = .center
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 13, weight: .semibold)
@@ -31,6 +33,8 @@ class CalendarCell : UICollectionViewCell {
     private func setConstraint() {
         dateLabel.snp.makeConstraints{ make in
             make.center.equalToSuperview()
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
       }
     
