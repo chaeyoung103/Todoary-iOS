@@ -56,7 +56,6 @@ class HiddenSettingView: UIView {
     
     func setUpConstraint(){
 
-        
         self.snp.makeConstraints{ make in
             make.height.equalTo(60)
         }

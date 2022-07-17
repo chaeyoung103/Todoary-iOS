@@ -48,9 +48,7 @@ class TodoListBottomSheetViewController: UIViewController {
         }
         
         tableView.snp.makeConstraints{ make in
-//            make.leading.trailing.equalToSuperview()
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-30)
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(todoListTitle.snp.bottom).offset(16)
             make.bottom.equalToSuperview()
         }
@@ -71,43 +69,43 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    //leading
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let pin = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            print("Share 클릭 됨")
-            success(true)
-        }
-
-        pin.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        pin.image = UIImage(named: "push_pin_big")
-//        delete.backgroundColor = .white
-
-        return UISwipeActionsConfiguration(actions: [pin])
-    }
-    
-    //trailing
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
-        let setting = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            print("Like 클릭 됨")
-            success(true)
-        }
-
-        setting.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        setting.image = UIImage(named: "settings")
-
-
-        let delete = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            print("Share 클릭 됨")
-            success(true)
-        }
-
-        delete.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        delete.image = UIImage(named: "trash")
-//        delete.backgroundColor = .white
-
-        return UISwipeActionsConfiguration(actions: [delete, setting])
-    }
+//    //leading
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let pin = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+//            print("Share 클릭 됨")
+//            success(true)
+//        }
+//
+//        pin.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//        pin.image = UIImage(named: "push_pin_big")
+////        delete.backgroundColor = .white
+//
+//        return UISwipeActionsConfiguration(actions: [pin])
+//    }
+//
+//    //trailing
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//        let setting = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+//            print("Like 클릭 됨")
+//            success(true)
+//        }
+//
+//        setting.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//        setting.image = UIImage(named: "settings")
+//
+//
+//        let delete = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+//            print("Share 클릭 됨")
+//            success(true)
+//        }
+//
+//        delete.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//        delete.image = UIImage(named: "trash")
+////        delete.backgroundColor = .white
+//
+//        return UISwipeActionsConfiguration(actions: [delete, setting])
+//    }
 
     
     //trailing
