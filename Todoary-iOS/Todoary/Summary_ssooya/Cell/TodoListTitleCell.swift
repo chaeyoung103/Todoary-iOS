@@ -14,6 +14,10 @@ class TodoListTitleCell: UITableViewCell {
     let backView = UIView().then{
         $0.backgroundColor = .transparent
     }
+    
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = .transparent
+    }
 
     let todoListTitle = PaddingLabel().then{
         $0.text = "TODO LIST"
@@ -42,6 +46,7 @@ class TodoListTitleCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .transparent
+        self.selectedBackgroundView = selectedBackView
         
         setUpView()
         setUpConstraint()

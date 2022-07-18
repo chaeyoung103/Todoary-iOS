@@ -13,6 +13,10 @@ class DiaryTitleCell: UITableViewCell {
         $0.backgroundColor = .transparent
     }
     
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = .transparent
+    }
+    
     let diaryTitle = PaddingLabel().then{
         $0.text = "DIARY"
         $0.font = UIFont.nbFont(ofSize: 12, weight: .extraBold)
@@ -31,6 +35,7 @@ class DiaryTitleCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .transparent
+        self.selectedBackgroundView = selectedBackView
         
         //set view
         self.contentView.addSubview(backView)
