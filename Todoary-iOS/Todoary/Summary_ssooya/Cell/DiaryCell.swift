@@ -16,6 +16,10 @@ class DiaryCell: UITableViewCell {
         $0.layer.cornerRadius = 20
     }
     
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = .transparent
+    }
+    
     let diaryTitle = UILabel().then{
         $0.font = UIFont.nbFont(ofSize: 13, weight: .extraBold)
         $0.text = "(제목)"
@@ -44,6 +48,7 @@ class DiaryCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .transparent
+        self.selectedBackgroundView = selectedBackView
         
         setUpView()
         setUpConstraint()
