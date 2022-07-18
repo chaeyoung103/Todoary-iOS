@@ -271,20 +271,13 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
-				AC9859C72882909F009FC2F8 /* Calendar_hola */,
-				574A6FEA28826CDD003C8F99 /* Summary */,
-				E0AB9EC4287B1C900064CADA /* 1주차 */,
-				E0AB9EBE287B1C100064CADA /* Home_uni */,
-				E0AB9EB5287B1B480064CADA /* Settung_uni */,
-				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
-				AC9128CE287B34830056932A /* Profile_hola */,
-				574913B5287ADEF300381BCD /* Setting */,
-				AC9128C7287AD5830056932A /* Account_hola */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
-				572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */,
-				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
-				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
-				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
+				E0AB9EC4287B1C900064CADA /* 1week */,
+				E05C0BF128851AE300812099 /* 2week */,
+				574A6FEA28826CDD003C8F99 /* Summary_ssooya */,
+				E0AB9EBE287B1C100064CADA /* Home_uni_hola */,
+				AC9859C72882909F009FC2F8 /* Calendar_hola */,
+				E05C0BF228851B7100812099 /* SupportingFile */,
 				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 				572E5AE7286EBDCE00D1FAA0 /* Info.plist */,
 			);
@@ -334,7 +327,7 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		574A6FEA28826CDD003C8F99 /* Summary */ = {
+		574A6FEA28826CDD003C8F99 /* Summary_ssooya */ = {
 			isa = PBXGroup;
 			children = (
 				574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */,
@@ -344,7 +337,7 @@
 				574A703D2884F725003C8F99 /* DiaryView.swift */,
 				574A703F2885085D003C8F99 /* TestViewController.swift */,
 			);
-			path = Summary;
+			path = Summary_ssooya;
 			sourceTree = "<group>";
 		};
 		57B36ECB287AFA9D00378E16 /* Cell */ = {
@@ -370,6 +363,7 @@
 		AC9128CE287B34830056932A /* Profile_hola */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -448,6 +442,28 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E05C0BF128851AE300812099 /* 2week */ = {
+			isa = PBXGroup;
+			children = (
+				AC9128CE287B34830056932A /* Profile_hola */,
+				574913B5287ADEF300381BCD /* Setting */,
+				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
+				E0AB9EB5287B1B480064CADA /* Settung_uni */,
+			);
+			path = 2week;
+			sourceTree = "<group>";
+		};
+		E05C0BF228851B7100812099 /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
+				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
+				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
+				572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */,
+			);
+			name = SupportingFile;
+			sourceTree = "<group>";
+		};
 		E0AB9EB5287B1B480064CADA /* Settung_uni */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,13 +474,13 @@
 			path = Settung_uni;
 			sourceTree = "<group>";
 		};
-		E0AB9EBE287B1C100064CADA /* Home_uni */ = {
+		E0AB9EBE287B1C100064CADA /* Home_uni_hola */ = {
 			isa = PBXGroup;
 			children = (
 				E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */,
 				E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */,
 			);
-			path = Home_uni;
+			path = Home_uni_hola;
 			sourceTree = "<group>";
 		};
 		E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */ = {
@@ -477,7 +493,7 @@
 			path = SettingAgreement_uni;
 			sourceTree = "<group>";
 		};
-		E0AB9EC4287B1C900064CADA /* 1주차 */ = {
+		E0AB9EC4287B1C900064CADA /* 1week */ = {
 			isa = PBXGroup;
 			children = (
 				E005DE72287018EA00814C79 /* AppPassword_uni */,
@@ -487,7 +503,7 @@
 				ACACD01328749F760029D5CE /* PwFInd_hola */,
 				ACACD00E28749F360029D5CE /* Login_hola */,
 			);
-			name = "1주차";
+			name = 1week;
 			sourceTree = "<group>";
 		};
 		E0C4BD5B2871F6D700FDEA0E /* AgreementText_uni */ = {
