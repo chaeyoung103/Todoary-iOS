@@ -9,7 +9,14 @@ import UIKit
 
 class TodoListBottomSheetViewController: UIViewController {
     
+    let sheetLine = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 5/2
+    }
+    
     var tableView : UITableView!
+    
+    //MARK: - Properties
     
     let todoListCount : Int = 5
     
@@ -48,15 +55,24 @@ class TodoListBottomSheetViewController: UIViewController {
     }
     
     func setUpView(){
+        self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
     }
     
     func setUpConstraint(){
         
+        sheetLine.snp.makeConstraints{ make in
+            make.width.equalTo(46)
+            make.height.equalTo(5)
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(172)
+            make.trailing.equalToSuperview().offset(-172)
+        }
+        
         tableView.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview().offset(23)
-            make.bottom.equalToSuperview().offset(-73)
+            make.bottom.equalToSuperview()
         }
     
     }
@@ -99,17 +115,22 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
         
         let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
         
-        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 100.0)
-        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
-        let detent3: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test3", constant: 300.0)
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
         
-        controller.detents = [detent1, detent2, detent3, .medium(), .large()]
-        controller.prefersGrabberVisible = true
+        let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2") ?? .medium
+        
+        controller.detents = [detent1, detent2]
+        controller.preferredCornerRadius = 30
+        controller.largestUndimmedDetentIdentifier = detentIdentifier
+        controller.prefersScrollingExpandsWhenScrolledToEdge = false
+        
         
         return controller
     }
     
     func setUpSheetVC(){
+
         isModalInPresentation = true
         modalPresentationStyle = .custom
         transitioningDelegate = self

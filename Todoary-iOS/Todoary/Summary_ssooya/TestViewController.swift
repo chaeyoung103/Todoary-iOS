@@ -9,6 +9,14 @@ import UIKit
 
 class TestViewController: UIViewController {
 
+    @IBAction func button1(_ sender: Any) {
+        print("1")
+    }
+    
+    @IBAction func button2(_ sender: Any) {
+        print("2")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,13 +27,6 @@ class TestViewController: UIViewController {
         
         let viewControllerToPresent = TodoListBottomSheetViewController()
         
-//        if let sheet = viewControllerToPresent.sheetPresentationController {
-//            sheet.detents = [.medium(),.large()]
-//            sheet.largestUndimmedDetentIdentifier = .medium
-//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//            sheet.prefersEdgeAttachedInCompactHeight = true
-//            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-//        }
         viewControllerToPresent.loadViewIfNeeded()
         present(viewControllerToPresent, animated: true, completion: nil)
     }
