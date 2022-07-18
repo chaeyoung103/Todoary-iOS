@@ -28,6 +28,7 @@ class ProfileViewController : UIViewController {
     }
     
     let imagePicker = UIButton().then{
+        $0.titleEdgeInsets = UIEdgeInsets(top: 1.5, left: 0, bottom: 0, right: 0)
         $0.setTitle("사진 변경", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
@@ -199,6 +200,13 @@ extension UITextView {
         self.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 0, right: 10)
         self.scrollIndicatorInsets = self.textContainerInset
     }
+}
+
+class AddPaddingButtton : UIButton
+{
+    var padding = UIEdgeInsets(top: 1.5, left: 10, bottom: 0, right: 10)
+    
+ 
 }
 
 //extension UIAlertController {

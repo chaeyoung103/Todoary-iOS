@@ -59,7 +59,6 @@ extension HomeViewController {
         nickname.snp.makeConstraints{ make in
             make.top.equalTo(profileImage)
             make.leading.equalTo(profileImage.snp.trailing).offset(10)
-            make.width.equalTo(55)
             make.height.equalTo(21)
         }
         
@@ -75,12 +74,12 @@ extension HomeViewController {
         
         previousMonthBtn.snp.makeConstraints{ make in
             make.centerY.equalTo(year_Month)
-            make.leading.equalTo(year_Month.snp.trailing).offset(141)
+            make.trailing.equalTo(nextMonthBtn.snp.leading).offset(-13)
         }
         
         nextMonthBtn.snp.makeConstraints{ make in
             make.centerY.equalTo(year_Month)
-            make.leading.equalTo(previousMonthBtn.snp.trailing).offset(13)
+            make.trailing.equalToSuperview().offset(-33)
         }
         
         collectionView.snp.makeConstraints{ make in

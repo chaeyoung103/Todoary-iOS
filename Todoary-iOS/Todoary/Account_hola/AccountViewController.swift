@@ -42,6 +42,7 @@ class AccountViewController : UIViewController {
     }
     
     let profileChangeBtn = UIButton().then{
+        $0.titleEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
         $0.setTitle("프로필 변경", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
