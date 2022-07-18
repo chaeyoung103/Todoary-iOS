@@ -40,6 +40,7 @@
 		574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704428852523003C8F99 /* TodoListTitleCell.swift */; };
 		574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704628852543003C8F99 /* DiaryTitleCell.swift */; };
 		574A70492885255B003C8F99 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70482885255B003C8F99 /* DiaryCell.swift */; };
+		574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704A28852F9B003C8F99 /* DiaryBannerCell.swift */; };
 		57502F47287EA29100C36804 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57502F46287EA29100C36804 /* UITextView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
@@ -144,6 +145,7 @@
 		574A704428852523003C8F99 /* TodoListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTitleCell.swift; sourceTree = "<group>"; };
 		574A704628852543003C8F99 /* DiaryTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTitleCell.swift; sourceTree = "<group>"; };
 		574A70482885255B003C8F99 /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		574A704A28852F9B003C8F99 /* DiaryBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryBannerCell.swift; sourceTree = "<group>"; };
 		57502F46287EA29100C36804 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				574A704428852523003C8F99 /* TodoListTitleCell.swift */,
 				574A704628852543003C8F99 /* DiaryTitleCell.swift */,
 				574A70482885255B003C8F99 /* DiaryCell.swift */,
+				574A704A28852F9B003C8F99 /* DiaryBannerCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
+				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,

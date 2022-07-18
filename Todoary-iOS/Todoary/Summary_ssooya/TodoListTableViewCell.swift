@@ -39,6 +39,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2
         $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
+        $0.isEnabled = false
     }
     
     let pinImage = UIImageView().then{
