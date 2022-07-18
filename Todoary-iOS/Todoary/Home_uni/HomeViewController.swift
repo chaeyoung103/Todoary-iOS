@@ -16,7 +16,13 @@ class HomeViewController : UIViewController {
     var cal = Calendar.current
     let dateFormatterYear = DateFormatter()
     let dateFormatterMonth = DateFormatter()
-    var Month : Int = 0
+    let dateFormatterDate = DateFormatter()
+    var today : Int = 0
+    var month_component : Int = 0
+    var year_component : Int = 0
+    var month : Int = 0
+    var year : Int = 0
+    var emptyDay : Int = 0
     var components = DateComponents()
     var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
