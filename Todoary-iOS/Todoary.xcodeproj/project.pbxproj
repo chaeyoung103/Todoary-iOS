@@ -52,6 +52,7 @@
 		AC9859C6287DC219009FC2F8 /* MailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859C5287DC219009FC2F8 /* MailSender.swift */; };
 		AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859C8288290C8009FC2F8 /* Calendar.swift */; };
 		AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CA288334AC009FC2F8 /* CalendarCell.swift */; };
+		AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CC288505C5009FC2F8 /* WeekCell.swift */; };
 		ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD00F28749F520029D5CE /* LoginViewController.swift */; };
 		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
@@ -155,6 +156,7 @@
 		AC9859C5287DC219009FC2F8 /* MailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSender.swift; sourceTree = "<group>"; };
 		AC9859C8288290C8009FC2F8 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		AC9859CA288334AC009FC2F8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		AC9859CC288505C5009FC2F8 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		ACACD00F28749F520029D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			children = (
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				AC9859CA288334AC009FC2F8 /* CalendarCell.swift */,
+				AC9859CC288505C5009FC2F8 /* WeekCell.swift */,
 			);
 			path = Calendar_hola;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
 				574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
+				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
