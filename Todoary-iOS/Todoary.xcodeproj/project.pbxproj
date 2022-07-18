@@ -35,6 +35,8 @@
 		574A70362883C670003C8F99 /* HiddenSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70352883C670003C8F99 /* HiddenSettingView.swift */; };
 		574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */; };
 		574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */; };
+		574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703B2884F39E003C8F99 /* PaddingLabel.swift */; };
+		574A703E2884F725003C8F99 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703D2884F725003C8F99 /* DiaryView.swift */; };
 		57502F47287EA29100C36804 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57502F46287EA29100C36804 /* UITextView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
@@ -134,6 +136,8 @@
 		574A70352883C670003C8F99 /* HiddenSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSettingView.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
+		574A703B2884F39E003C8F99 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		574A703D2884F725003C8F99 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		57502F46287EA29100C36804 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */,
 				574A70352883C670003C8F99 /* HiddenSettingView.swift */,
 				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
+				574A703D2884F725003C8F99 /* DiaryView.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
+				574A703B2884F39E003C8F99 /* PaddingLabel.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -749,6 +755,7 @@
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
+				574A703E2884F725003C8F99 /* DiaryView.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
@@ -773,6 +780,7 @@
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
