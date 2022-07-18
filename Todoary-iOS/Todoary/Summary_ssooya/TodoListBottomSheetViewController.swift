@@ -9,28 +9,7 @@ import UIKit
 
 class TodoListBottomSheetViewController: UIViewController {
     
-    let todoListTitle = PaddingLabel().then{
-        $0.text = "TODO LIST"
-        $0.font = UIFont.nbFont(ofSize: 12, weight: .extraBold)
-        $0.textColor = .summaryTitle
-        $0.addLetterSpacing(spacing: 0.24)
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 24/2
-        $0.clipsToBounds = true
-    }
-    
     var tableView : UITableView!
-    
-    let diaryTitle = PaddingLabel().then{
-        $0.text = "DIARY"
-        $0.font = UIFont.nbFont(ofSize: 12, weight: .extraBold)
-        $0.textColor = .summaryTitle
-        $0.addLetterSpacing(spacing: 0.24)
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 24/2
-        $0.clipsToBounds = true
-
-    }
     
     lazy var writeDiaryBanner = PaddingLabel(padding: UIEdgeInsets(top: 16, left: 19, bottom: 17, right: 25)).then{
         $0.text = "오늘의 일기를 작성해주세요!"
@@ -64,13 +43,15 @@ class TodoListBottomSheetViewController: UIViewController {
             $0.separatorStyle = .none
             $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
             
+            $0.register(TodoListTitleCell.self, forCellReuseIdentifier: TodoListTitleCell.cellIdentifier)
             $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
+            $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
+            $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier)
             
         }
         
         setUpView()
         setUpConstraint()
-        diaryViewSetting()
         
         //MARK: - header section padding 문제 해결 못함..
 //        if #available(iOS 15, *) {
@@ -79,34 +60,19 @@ class TodoListBottomSheetViewController: UIViewController {
     }
     
     func setUpView(){
-        
-        self.view.addSubview(todoListTitle)
         self.view.addSubview(tableView)
-        self.view.addSubview(diaryTitle)
     }
     
     func setUpConstraint(){
         
-        todoListTitle.snp.makeConstraints{ make in
-            make.leading.equalToSuperview().offset(32)
-            make.top.equalToSuperview().offset(33)
-            make.height.equalTo(24)
-        }
-        
         tableView.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(todoListTitle.snp.bottom).offset(8.5)
-            make.height.equalTo(75*(todoListCount+1))
+            make.top.equalToSuperview().offset(23)
+            make.bottom.equalToSuperview().offset(-73)
         }
-//        tableView.backgroundColor = .red
-        
-        diaryTitle.snp.makeConstraints{ make in
-            make.leading.equalToSuperview().offset(35)
-            make.top.equalTo(tableView.snp.bottom).offset(36.5)
-            make.height.equalTo(24)
-        }
-    }
     
+    }
+/*
     func diaryViewSetting(){
         
         if(isDiaryExist){
@@ -129,18 +95,31 @@ class TodoListBottomSheetViewController: UIViewController {
             }
         }
     }
-
+ */
 }
 
 extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoListCount
+        return todoListCount + 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
+        let rowCount = tableView.numberOfRows(inSection: 0)
+        
+        let cell: UITableViewCell!
+        
+        switch indexPath.row{
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
+        case rowCount - 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
+        case rowCount - 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath)
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
+        }
         
         return cell
     }
