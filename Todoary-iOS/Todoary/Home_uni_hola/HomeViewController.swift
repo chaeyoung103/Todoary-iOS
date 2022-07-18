@@ -47,10 +47,11 @@ class HomeViewController : UIViewController {
     
     //profile
     
-    let profileImage = UIImageView().then {
-        $0.image = UIImage(named: "home_profile")
+    let profileImage = UIButton().then {
+        $0.setImage(UIImage(named: "home_profile"),for: .normal)
         $0.layer.cornerRadius = 40/2
         $0.clipsToBounds = true
+        $0.addTarget(self, action: #selector(profileBtnDidTap), for: .touchUpInside)
     }
     
     let nickname = paddingLabel().then{
@@ -118,11 +119,15 @@ class HomeViewController : UIViewController {
     
     //MARK: - settingBtnDidTab
     
-    @objc
-    func settingBtnDidTap(_ sender: UIButton){
+    @objc func settingBtnDidTap(_ sender: UIButton){
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
-
+    @objc func profileBtnDidTap() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
 }
 
 class paddingLabel: UILabel {

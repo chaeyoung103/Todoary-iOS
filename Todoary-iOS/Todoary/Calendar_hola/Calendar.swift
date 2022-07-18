@@ -82,14 +82,25 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
             cell.dateLabel.text = days[indexPath.row]
-            cell.dateLabel.layer.backgroundColor = UIColor.white.cgColor
+            cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
             cell.dateLabel.textColor = .black
             
             if self.year == year_component && self.month == month_component {
                 if today == (indexPath.row - emptyDay) {
-                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
                     cell.dateLabel.textColor = .white
+                    cell.layer.shadowRadius = 3.0
+                    cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+                    cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+                    cell.layer.shadowOpacity = 1
+                    cell.layer.masksToBounds = false
                     print(today)
+                }else if today+1 == (indexPath.row - emptyDay) {
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.textColor = .black
+                }else if today-1 == (indexPath.row - emptyDay) {
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.textColor = .black
                 }else {
                     cell.dateLabel.textColor = .black
                 }
