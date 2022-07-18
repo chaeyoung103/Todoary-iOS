@@ -20,8 +20,6 @@ class TodoListBottomSheetViewController: UIViewController {
     
         super.viewDidLoad()
         
-        isModalInPresentation = true
-        
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
 
         tableView = UITableView().then{
@@ -41,6 +39,7 @@ class TodoListBottomSheetViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
+        setUpSheetVC()
         
         //MARK: - header section padding 문제 해결 못함..
 //        if #available(iOS 15, *) {
@@ -92,4 +91,27 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         return cell
     }
 
+}
+
+extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
+        
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 100.0)
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 200.0)
+        let detent3: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test3", constant: 300.0)
+        
+        controller.detents = [detent1, detent2, detent3, .medium(), .large()]
+        controller.prefersGrabberVisible = true
+        
+        return controller
+    }
+    
+    func setUpSheetVC(){
+        isModalInPresentation = true
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
 }

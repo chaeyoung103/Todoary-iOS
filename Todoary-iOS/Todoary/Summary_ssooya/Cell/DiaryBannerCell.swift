@@ -15,6 +15,10 @@ class DiaryBannerCell: UITableViewCell {
         $0.backgroundColor = .transparent
     }
     
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = .transparent
+    }
+    
     let writeDiaryBanner = PaddingLabel(padding: UIEdgeInsets(top: 16, left: 19, bottom: 17, right: 25)).then{
         $0.text = "오늘의 일기를 작성해주세요!"
         $0.font = UIFont.nbFont(ofSize: 13, weight: .extraBold)
@@ -28,6 +32,7 @@ class DiaryBannerCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .transparent
+        self.selectedBackgroundView = selectedBackView
         
         //set view
         self.contentView.addSubview(backView)
