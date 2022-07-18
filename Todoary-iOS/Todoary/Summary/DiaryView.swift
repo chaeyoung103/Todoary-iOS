@@ -18,6 +18,7 @@ class DiaryView: UIView {
         $0.font = UIFont.nbFont(ofSize: 13, weight: .extraBold)
         $0.text = "(제목)"
         $0.textColor = .black
+        $0.numberOfLines = 1
         $0.addLetterSpacing(spacing: 0.26)
     }
     

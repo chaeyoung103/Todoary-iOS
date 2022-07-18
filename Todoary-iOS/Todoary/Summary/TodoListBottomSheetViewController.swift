@@ -33,7 +33,7 @@ class TodoListBottomSheetViewController: UIViewController {
     }
     
     lazy var writeDiaryBanner = PaddingLabel(padding: UIEdgeInsets(top: 16, left: 19, bottom: 17, right: 25)).then{
-        $0.text = "오늘의 일기를 작성해주세요! 🖌"
+        $0.text = "오늘의 일기를 작성해주세요!"
         $0.font = UIFont.nbFont(ofSize: 13, weight: .extraBold)
         $0.addLetterSpacing(spacing: 0.26)
         $0.backgroundColor = .white
@@ -52,6 +52,8 @@ class TodoListBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
     
         super.viewDidLoad()
+        
+        isModalInPresentation = true
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
 
