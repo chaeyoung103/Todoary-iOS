@@ -26,6 +26,7 @@ enum NBWeight: String {
     case bold = "Bold"
     case semibold = "SemiBold"
     case medium = "Medium"
+    case extraBold = "EB00"
 }
 
 enum FontType: String {
@@ -62,7 +63,11 @@ extension UIFont {
     }
     
     static func nbFont(ofSize fontSize: CGFloat, weight: NBWeight = .medium, type: FontType = .apple) -> UIFont {
-        return UIFont(name: "\(type.rawValue)-\(weight.rawValue)", size: fontSize)!
+        if(weight == .extraBold){
+            return UIFont(name: "\(type.rawValue)\(weight.rawValue)", size: fontSize)!
+        }else{
+            return UIFont(name: "\(type.rawValue)-\(weight.rawValue)", size: fontSize)!
+        }
     }
     
 }

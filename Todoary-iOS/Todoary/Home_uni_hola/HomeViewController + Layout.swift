@@ -20,7 +20,7 @@ extension HomeViewController {
         self.view.addSubview(nickname)
         self.view.addSubview(introduce)
         
-        self.view.addSubview(calendarTitle)
+        self.view.addSubview(year_Month)
         self.view.addSubview(previousMonthBtn)
         self.view.addSubview(nextMonthBtn)
         
@@ -34,10 +34,10 @@ extension HomeViewController {
         
         //settingBtn
         settingBtn.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(60)
-            make.trailing.equalToSuperview().offset(-9)
-            make.width.equalTo(33)
-            make.height.equalTo(33)
+            make.top.equalToSuperview().offset(52)
+            make.trailing.equalToSuperview().offset(-25)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
         }
         
         //logo
@@ -59,35 +59,34 @@ extension HomeViewController {
         nickname.snp.makeConstraints{ make in
             make.top.equalTo(profileImage)
             make.leading.equalTo(profileImage.snp.trailing).offset(10)
-            make.width.equalTo(55)
             make.height.equalTo(21)
         }
         
         introduce.snp.makeConstraints{ make in
             make.top.equalTo(nickname.snp.bottom).offset(4)
-            make.leading.equalTo(nickname)
+            make.leading.equalTo(profileImage.snp.trailing).offset(12)
         }
         
-        //calendar
-        calendarTitle.snp.makeConstraints{ make in
-            make.top.equalTo(profileImage.snp.bottom).offset(25)
+        year_Month.snp.makeConstraints{ make in
+            make.top.equalTo(profileImage.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(45)
         }
         
         previousMonthBtn.snp.makeConstraints{ make in
-            make.centerX.equalTo(calendarTitle)
-            make.leading.equalTo(calendarTitle.snp.trailing).offset(141)
+            make.centerY.equalTo(year_Month)
+            make.trailing.equalTo(nextMonthBtn.snp.leading).offset(-13)
         }
         
         nextMonthBtn.snp.makeConstraints{ make in
-            make.centerX.equalTo(calendarTitle)
-            make.leading.equalTo(previousMonthBtn.snp.trailing).offset(13)
+            make.centerY.equalTo(year_Month)
+            make.trailing.equalToSuperview().offset(-33)
         }
         
         collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(nextMonthBtn.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-338)
+            make.top.equalTo(nextMonthBtn.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(312)
+            make.bottom.equalToSuperview().offset(-330)
         }
         
         

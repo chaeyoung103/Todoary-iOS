@@ -34,6 +34,10 @@
 		574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */; };
 		574A70362883C670003C8F99 /* HiddenSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70352883C670003C8F99 /* HiddenSettingView.swift */; };
 		574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */; };
+		574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */; };
+		574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703B2884F39E003C8F99 /* PaddingLabel.swift */; };
+		574A703E2884F725003C8F99 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703D2884F725003C8F99 /* DiaryView.swift */; };
+		574A70402885085D003C8F99 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703F2885085D003C8F99 /* TestViewController.swift */; };
 		57502F47287EA29100C36804 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57502F46287EA29100C36804 /* UITextView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
@@ -49,6 +53,7 @@
 		AC9859C6287DC219009FC2F8 /* MailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859C5287DC219009FC2F8 /* MailSender.swift */; };
 		AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859C8288290C8009FC2F8 /* Calendar.swift */; };
 		AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CA288334AC009FC2F8 /* CalendarCell.swift */; };
+		AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CC288505C5009FC2F8 /* WeekCell.swift */; };
 		ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD00F28749F520029D5CE /* LoginViewController.swift */; };
 		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
@@ -131,6 +136,10 @@
 		574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBottomSheetViewController.swift; sourceTree = "<group>"; };
 		574A70352883C670003C8F99 /* HiddenSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSettingView.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
+		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
+		574A703B2884F39E003C8F99 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		574A703D2884F725003C8F99 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		574A703F2885085D003C8F99 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		57502F46287EA29100C36804 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -149,6 +158,7 @@
 		AC9859C5287DC219009FC2F8 /* MailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSender.swift; sourceTree = "<group>"; };
 		AC9859C8288290C8009FC2F8 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		AC9859CA288334AC009FC2F8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		AC9859CC288505C5009FC2F8 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		ACACD00F28749F520029D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
@@ -261,20 +271,13 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
-				AC9859C72882909F009FC2F8 /* Calendar_hola */,
-				574A6FEA28826CDD003C8F99 /* Summary */,
-				E0AB9EC4287B1C900064CADA /* 1주차 */,
-				E0AB9EBE287B1C100064CADA /* Home_uni */,
-				E0AB9EB5287B1B480064CADA /* Settung_uni */,
-				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
-				AC9128CE287B34830056932A /* Profile_hola */,
-				574913B5287ADEF300381BCD /* Setting */,
-				AC9128C7287AD5830056932A /* Account_hola */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
-				572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */,
-				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
-				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
-				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
+				E0AB9EC4287B1C900064CADA /* 1week */,
+				E05C0BF128851AE300812099 /* 2week */,
+				574A6FEA28826CDD003C8F99 /* Summary_ssooya */,
+				E0AB9EBE287B1C100064CADA /* Home_uni_hola */,
+				AC9859C72882909F009FC2F8 /* Calendar_hola */,
+				E05C0BF228851B7100812099 /* SupportingFile */,
 				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 				572E5AE7286EBDCE00D1FAA0 /* Info.plist */,
 			);
@@ -324,15 +327,17 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		574A6FEA28826CDD003C8F99 /* Summary */ = {
+		574A6FEA28826CDD003C8F99 /* Summary_ssooya */ = {
 			isa = PBXGroup;
 			children = (
 				574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */,
 				574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */,
 				574A70352883C670003C8F99 /* HiddenSettingView.swift */,
 				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
+				574A703D2884F725003C8F99 /* DiaryView.swift */,
+				574A703F2885085D003C8F99 /* TestViewController.swift */,
 			);
-			path = Summary;
+			path = Summary_ssooya;
 			sourceTree = "<group>";
 		};
 		57B36ECB287AFA9D00378E16 /* Cell */ = {
@@ -358,6 +363,7 @@
 		AC9128CE287B34830056932A /* Profile_hola */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -369,6 +375,7 @@
 			children = (
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				AC9859CA288334AC009FC2F8 /* CalendarCell.swift */,
+				AC9859CC288505C5009FC2F8 /* WeekCell.swift */,
 			);
 			path = Calendar_hola;
 			sourceTree = "<group>";
@@ -413,9 +420,11 @@
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
+				574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */,
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
+				574A703B2884F39E003C8F99 /* PaddingLabel.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -433,6 +442,28 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E05C0BF128851AE300812099 /* 2week */ = {
+			isa = PBXGroup;
+			children = (
+				AC9128CE287B34830056932A /* Profile_hola */,
+				574913B5287ADEF300381BCD /* Setting */,
+				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
+				E0AB9EB5287B1B480064CADA /* Settung_uni */,
+			);
+			path = 2week;
+			sourceTree = "<group>";
+		};
+		E05C0BF228851B7100812099 /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
+				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
+				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
+				572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */,
+			);
+			name = SupportingFile;
+			sourceTree = "<group>";
+		};
 		E0AB9EB5287B1B480064CADA /* Settung_uni */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,13 +474,13 @@
 			path = Settung_uni;
 			sourceTree = "<group>";
 		};
-		E0AB9EBE287B1C100064CADA /* Home_uni */ = {
+		E0AB9EBE287B1C100064CADA /* Home_uni_hola */ = {
 			isa = PBXGroup;
 			children = (
 				E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */,
 				E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */,
 			);
-			path = Home_uni;
+			path = Home_uni_hola;
 			sourceTree = "<group>";
 		};
 		E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */ = {
@@ -462,7 +493,7 @@
 			path = SettingAgreement_uni;
 			sourceTree = "<group>";
 		};
-		E0AB9EC4287B1C900064CADA /* 1주차 */ = {
+		E0AB9EC4287B1C900064CADA /* 1week */ = {
 			isa = PBXGroup;
 			children = (
 				E005DE72287018EA00814C79 /* AppPassword_uni */,
@@ -472,7 +503,7 @@
 				ACACD01328749F760029D5CE /* PwFInd_hola */,
 				ACACD00E28749F360029D5CE /* Login_hola */,
 			);
-			name = "1주차";
+			name = 1week;
 			sourceTree = "<group>";
 		};
 		E0C4BD5B2871F6D700FDEA0E /* AgreementText_uni */ = {
@@ -603,6 +634,7 @@
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
 				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
+				574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +774,7 @@
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
+				574A703E2884F725003C8F99 /* DiaryView.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
@@ -766,7 +799,9 @@
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
+				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
@@ -782,6 +817,7 @@
 				576ED6B228749021007389CD /* String.swift in Sources */,
 				574A70362883C670003C8F99 /* HiddenSettingView.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
+				574A70402885085D003C8F99 /* TestViewController.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,

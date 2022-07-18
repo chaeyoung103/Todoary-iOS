@@ -12,7 +12,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     //MARK: - UIcomponents
     func initView() {
         
-        dateFormatter.dateFormat = "yyyy년MM월"
+        dateFormatterYear.dateFormat = "yyyy"
+        dateFormatterMonth.dateFormat = "MM"
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
         components.day = 1
@@ -26,7 +27,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
         weekdayAdding = 2 - firstWeekday
         
-        self.calendarTitle.text = dateFormatter.string(from: firstDayOfMonth!)
+        self.Month = Int(dateFormatterMonth.string(from: firstDayOfMonth!))!
+        self.year_Month.text = dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.Month)+"월"
         
         self.days.removeAll()
         for day in weekdayAdding...daysCountInMonth {
@@ -37,6 +39,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 43, height: 42)
+        }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -52,24 +58,38 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as? CalendarCell
         
         switch indexPath.section {
         case 0:
-            cell?.dateLabel.text = weeks[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! WeekCell
+            if indexPath.row == 0 {
+                cell.weekLabel.textColor = .sunday
+            } else if indexPath.row == 6 {
+                cell.weekLabel.textColor = .saturday
+            } else {
+                cell.weekLabel.textColor = .black
+            }
+            cell.weekLabel.text = weeks[indexPath.row]
+            
+            return cell
         default:
-            cell?.dateLabel.text = days[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
+            cell.dateLabel.text = days[indexPath.row]
+            
+            return cell
         }
-        
-        if indexPath.row % 7 == 0 {
-            cell?.dateLabel.textColor = .sunday
-        } else if indexPath.row % 7 == 6 {
-            cell?.dateLabel.textColor = .saturday
-        } else {
-            cell?.dateLabel.textColor = .black
-        }
-        
-        return cell!
+    }
+    
+    @objc func prevBtnDidTap() {
+        components.month = components.month! - 1
+        self.calculation()
+        self.collectionView.reloadData()
+    }
+    
+    @objc func nextBtnDidTap() {
+        components.month = components.month! + 1
+        self.calculation()
+        self.collectionView.reloadData()
     }
     
     
