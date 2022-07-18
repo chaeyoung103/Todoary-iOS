@@ -9,7 +9,14 @@ import UIKit
 
 class TodoListBottomSheetViewController: UIViewController {
     
+    let sheetLine = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 5/2
+    }
+    
     var tableView : UITableView!
+    
+    //MARK: - Properties
     
     let todoListCount : Int = 5
     
@@ -19,8 +26,6 @@ class TodoListBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        
-        isModalInPresentation = true
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
 
@@ -41,6 +46,7 @@ class TodoListBottomSheetViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
+        setUpSheetVC()
         
         //MARK: - header section padding 문제 해결 못함..
 //        if #available(iOS 15, *) {
@@ -49,15 +55,24 @@ class TodoListBottomSheetViewController: UIViewController {
     }
     
     func setUpView(){
+        self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
     }
     
     func setUpConstraint(){
         
+        sheetLine.snp.makeConstraints{ make in
+            make.width.equalTo(46)
+            make.height.equalTo(5)
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(172)
+            make.trailing.equalToSuperview().offset(-172)
+        }
+        
         tableView.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview().offset(23)
-            make.bottom.equalToSuperview().offset(-73)
+            make.bottom.equalToSuperview()
         }
     
     }
@@ -92,4 +107,32 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         return cell
     }
 
+}
+
+extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
+        
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
+        
+        let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2") ?? .medium
+        
+        controller.detents = [detent1, detent2]
+        controller.preferredCornerRadius = 30
+        controller.largestUndimmedDetentIdentifier = detentIdentifier
+        controller.prefersScrollingExpandsWhenScrolledToEdge = false
+        
+        
+        return controller
+    }
+    
+    func setUpSheetVC(){
+
+        isModalInPresentation = true
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
 }
