@@ -64,9 +64,6 @@ class TodoListTableViewCell: UITableViewCell {
         $0.backgroundColor = .white
     }
     
-//    let indexPath : IndexPath!
-//    let tableView : UITableView!
-    
     lazy var hiddenLeftView = HiddenLeftButtonView().then{
         $0.pinButton.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
     }
@@ -128,9 +125,9 @@ class TodoListTableViewCell: UITableViewCell {
         setUpView()
         setUpConstraint()
         
-        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         
-//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
         
@@ -145,12 +142,13 @@ class TodoListTableViewCell: UITableViewCell {
     func checkBoxDidClicked(_ sender: UIButton){
         
         sender.isSelected.toggle()
-        
-//        if(sender.isSelected){
-//
-//        }else{
-//
-//        }
+        /*
+        if(sender.isSelected){
+
+        }else{
+
+        }
+         */
     }
     
     weak var delegate : MWSwipeableTableViewCellDelegate?
@@ -442,6 +440,7 @@ extension TodoListTableViewCell{
             
             //if 고정되면, 버튼 2개만 front 함수 통해 앞으로 빼기 -> left, right에 따라 버튼 visibility 조절 필요
             self.superview?.superview?.bringSubviewToFront(hiddenRightView)
+            self.superview?.superview?.bringSubviewToFront(hiddenLeftView)
 
             hiddenView.snp.makeConstraints{ make in
                 make.leading.equalToSuperview().offset(32)
@@ -477,6 +476,7 @@ extension TodoListTableViewCell{
         hiddenView.removeFromSuperview()
         hiddenRightView.removeFromSuperview()
         hiddenLeftView.removeFromSuperview()
+        isViewAdd = false
         
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
@@ -486,6 +486,11 @@ extension TodoListTableViewCell{
     
     @objc
     func pinButtonDidClicked(_ sender : UIButton){
+        
+        hiddenView.removeFromSuperview()
+        hiddenRightView.removeFromSuperview()
+        hiddenLeftView.removeFromSuperview()
+        isViewAdd = false
         
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
