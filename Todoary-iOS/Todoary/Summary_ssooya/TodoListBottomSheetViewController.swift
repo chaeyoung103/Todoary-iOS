@@ -22,12 +22,15 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = true
+    
+    let tableViewBackView = UIView()
 
     override func viewDidLoad() {
     
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
+        self.view.isUserInteractionEnabled = true
 
         tableView = UITableView().then{
             $0.delegate = self
@@ -43,6 +46,9 @@ class TodoListBottomSheetViewController: UIViewController {
             isDiaryExist ? $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier) : $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
             
         }
+        
+        tableView.backgroundView = tableViewBackView
+        tableViewBackView.backgroundColor = .red
         
         setUpView()
         setUpConstraint()
@@ -73,6 +79,10 @@ class TodoListBottomSheetViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview().offset(23)
             make.bottom.equalToSuperview()
+        }
+        
+        tableViewBackView.snp.makeConstraints{ make in
+            make.leading.trailing.top.bottom.equalTo(tableView)
         }
     
     }
