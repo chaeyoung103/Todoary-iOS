@@ -474,25 +474,25 @@ extension TodoListTableViewCell{
         hiddenRightView.removeFromSuperview()
         hiddenLeftView.removeFromSuperview()
         
-        guard let index = getCellIndexPath() else{
+        guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
         }
-        cellDelegate?.willDeleteCell(index)
+        cellDelegate?.willDeleteCell(indexPath)
     }
     
     @objc
     func pinButtonDidClicked(_ sender : UIButton){
         
-        guard let index = getCellIndexPath() else{
+        guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
         }
         
-        cellDelegate?.willPinCell(index)
+        cellDelegate?.willPinCell(indexPath)
     }
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
-    func willDeleteCell(_ index: IndexPath)
-    func willPinCell(_ index: IndexPath)
+    func willDeleteCell(_ indexPath: IndexPath)
+    func willPinCell(_ indexPath: IndexPath)
     func willMoveSettingCell()
 }

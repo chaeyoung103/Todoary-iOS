@@ -22,6 +22,11 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = true
+    
+    //더미 데이터
+    let dumyData = ["AM 7:00","AM 10:00","PM 2:00","PM 4:00","PM 6:00"]
+    
+    var pinData = [false, false, false, false, false]
 
     override func viewDidLoad() {
     
@@ -105,6 +110,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 fatalError()
             }
             cell.cellDelegate = self
+            cell.timeLabel.text = dumyData[indexPath.row-1]
             return cell
         }
         return cell
@@ -114,14 +120,15 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
-    func willDeleteCell(_ index: IndexPath){
+    func willDeleteCell(_ indexPath: IndexPath){
         
         self.todoListCount -= 1
-        self.tableView.deleteRows(at: [index], with: .fade)
+        self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
-    func willPinCell(_ index: IndexPath){
+    func willPinCell(_ indexPath: IndexPath){
         
+//        tableView.moveRow(at: indexPath, to: <#T##IndexPath#>)
     }
     
     func willMoveSettingCell(){
@@ -155,4 +162,5 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
         modalPresentationStyle = .custom
         transitioningDelegate = self
     }
+    
 }
