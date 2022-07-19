@@ -98,6 +98,8 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print("reuse??")
+        
         let rowCount = tableView.numberOfRows(inSection: 0)
         
         let cell: UITableViewCell!
@@ -116,6 +118,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 fatalError()
             }
             cell.cellDelegate = self
+            cell.titleLabel.text = "아침 산책"
             cell.timeLabel.text = dumyData[indexPath.row-1]
             cell.isPin = pinData[indexPath.row-1]
             cell.isAlarm = alarmData[indexPath.row-1]

@@ -493,6 +493,14 @@ extension TodoListTableViewCell{
         
         cellDelegate?.willPinCell(indexPath)
     }
+    
+    override func prepareForReuse() {
+        pinImage.removeFromSuperview()
+        alarmImage.removeFromSuperview()
+        categoryButton.removeFromSuperview()
+        titleLabel.text = ""
+        timeLabel.text = ""
+    }
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
