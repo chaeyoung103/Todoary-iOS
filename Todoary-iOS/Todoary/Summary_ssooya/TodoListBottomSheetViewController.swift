@@ -145,6 +145,13 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
         if(!willChangeData.pin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
+            let alertTitle = "고정은 2개까지만 가능합니다."
+            
+            let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
