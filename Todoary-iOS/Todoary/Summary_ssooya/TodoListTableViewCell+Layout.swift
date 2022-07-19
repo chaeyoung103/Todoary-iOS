@@ -10,15 +10,11 @@ import Foundation
 extension TodoListTableViewCell{
     
     func setUpView(){
-    
+        
         self.contentView.addSubview(backView)
         
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
-        self.backView.addSubview(categoryButton)
-        
-        self.backView.addSubview(pinImage)
-        self.backView.addSubview(alarmImage)
         self.backView.addSubview(timeLabel)
         
         self.selectedBackgroundView = selectedBackView
@@ -48,43 +44,101 @@ extension TodoListTableViewCell{
         
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
-//            make.top.equalToSuperview().offset(20.09)
-//            make.bottom.equalToSuperview().offset(-23.89)
             make.centerY.equalTo(checkBox)
-        }
-        
-        categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
-            make.height.equalTo(21)
-            make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-            make.top.equalToSuperview().offset(21)
-            make.bottom.equalToSuperview().offset(-18)
-        }
-        
-        
-        pinImage.snp.makeConstraints{ make in
-            make.width.equalTo(14)
-            make.height.equalTo(13.2)
-            make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
-            make.top.equalToSuperview().offset(24.34)
-            make.bottom.equalToSuperview().offset(-22.46)
-        }
-        
-        alarmImage.snp.makeConstraints{ make in
-            make.width.equalTo(14)
-            make.height.equalTo(13.2)
-            make.trailing.equalToSuperview().offset(-69)
-            make.centerY.equalToSuperview()
-            make.top.equalToSuperview().offset(23.4)
-            make.bottom.equalToSuperview().offset(-23.4)
         }
         
         timeLabel.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-18)
             make.top.equalToSuperview().offset(23.4)
             make.bottom.equalToSuperview().offset(-22.46)
-            make.lastBaseline.equalTo(alarmImage)
+            //            make.lastBaseline.equalTo(alarmImage)
         }
         
+    }
+    
+    //default 아닌 view
+    func setUpViewByCase(){
+        if(isAlarm){
+            
+            self.backView.addSubview(alarmImage)
+            alarmImage.snp.makeConstraints{ make in
+                make.width.equalTo(14)
+                make.height.equalTo(13.2)
+                make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
+                make.centerY.equalToSuperview()
+                make.top.equalToSuperview().offset(23.4)
+                make.bottom.equalToSuperview().offset(-23.4)
+                make.lastBaseline.equalTo(timeLabel)
+            }
+            
+            if(isPin){
+                pinImageConstraint()
+                pinImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
+                }
+                
+                if(hasCategory){
+                    categoryConstraint()
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                }
+            }else{
+                if(hasCategory){
+                    categoryConstraint()
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
+                    }
+                }
+            }
+            
+        }else{
+            if(isPin){
+                pinImageConstraint()
+                pinImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
+                }
+                if(hasCategory){
+                    categoryConstraint()
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                }
+            }else{
+                if(hasCategory){
+                    categoryConstraint()
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func pinImageConstraint(){
+        
+        self.backView.addSubview(pinImage)
+        
+        pinImage.snp.makeConstraints{ make in
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.top.equalToSuperview().offset(24.34)
+            make.bottom.equalToSuperview().offset(-22.46)
+            make.lastBaseline.equalTo(timeLabel).offset(-1)
+        }
+    }
+    
+    func categoryConstraint(){
+        
+        self.backView.addSubview(categoryButton)
+        
+        categoryButton.snp.makeConstraints{ make in
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+            make.height.equalTo(21)
+//            make.top.equalToSuperview().offset(21)
+//            make.bottom.equalToSuperview().offset(-18)
+            make.centerY.equalToSuperview()
+        }
     }
 }

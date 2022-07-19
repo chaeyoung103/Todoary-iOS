@@ -106,6 +106,11 @@ class TodoListTableViewCell: UITableViewCell {
 //        }
 //    }
     
+    //MARK: - CellData
+    var isPin : Bool!
+    var isAlarm : Bool!
+    var hasCategory : Bool!
+    
     //MARK: - Properties
     
     var originalCenter = CGPoint()
@@ -122,7 +127,6 @@ class TodoListTableViewCell: UITableViewCell {
      
         setUpView()
         setUpConstraint()
-//        getTableVeiwAndCellIndexPath()
         
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         

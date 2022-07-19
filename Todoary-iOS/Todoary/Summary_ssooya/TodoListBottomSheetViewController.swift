@@ -18,15 +18,20 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //MARK: - Properties
     
-    var todoListCount : Int = 5
+//    var todoListCount : Int = 5
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = true
     
     //더미 데이터
-    let dumyData = ["AM 7:00","AM 10:00","PM 2:00","PM 4:00","PM 6:00"]
+    var dumyData = ["AM 7:00","AM 10:00","AM 10:30","AM 11:00"
+                    ,"PM 2:00","PM 4:00","PM 11:00","PM 12:00"]
     
-    var pinData = [false, false, false, false, false]
+    var pinData = [false, true, false, false, true,true, false, true]
+    
+    var alarmData = [false, false, true, false, true,false, true, true]
+    
+    var categoryData = [false, false, false, true, false,true, true, true]
 
     override func viewDidLoad() {
     
@@ -35,6 +40,7 @@ class TodoListBottomSheetViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
 
         tableView = UITableView().then{
+            
             $0.delegate = self
             $0.dataSource = self
             
@@ -76,7 +82,7 @@ class TodoListBottomSheetViewController: UIViewController {
         
         tableView.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(23)
+            make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview()
         }
     
@@ -87,7 +93,7 @@ class TodoListBottomSheetViewController: UIViewController {
 extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoListCount + 3
+        return pinData.count + 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +117,10 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             }
             cell.cellDelegate = self
             cell.timeLabel.text = dumyData[indexPath.row-1]
+            cell.isPin = pinData[indexPath.row-1]
+            cell.isAlarm = alarmData[indexPath.row-1]
+            cell.hasCategory = categoryData[indexPath.row-1]
+            cell.setUpViewByCase()
             return cell
         }
         return cell
@@ -122,7 +132,10 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func willDeleteCell(_ indexPath: IndexPath){
         
-        self.todoListCount -= 1
+        dumyData.remove(at: indexPath.row-1)
+        pinData.remove(at: indexPath.row-1)
+        alarmData.remove(at: indexPath.row-1)
+        categoryData.remove(at: indexPath.row-1)
         self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
