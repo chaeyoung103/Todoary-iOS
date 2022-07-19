@@ -35,17 +35,7 @@ class HiddenRightButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc
-    func settingButtonDidClicked(_ sender : UIButton){
-        print("setting button did clicked")
-    }
-    
-    @objc
-    func deleteButtonDidClicked(_ sender : UIButton){
-        print("delete button did clicked")
-    }
-    
+
     func setUpView(){
         
         self.addSubview(transparentView)
@@ -124,11 +114,6 @@ class HiddenLeftButtonView: UIView{
             make.leading.equalToSuperview().offset(18)
             make.centerY.equalToSuperview()
         }
-    }
-    
-    @objc
-    func pinButtonDidClicked(_ sender : UIButton){
-        print("pin button did clicked")
     }
     
     required init?(coder: NSCoder) {

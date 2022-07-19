@@ -18,19 +18,16 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //MARK: - Properties
     
-    let todoListCount : Int = 5
+    var todoListCount : Int = 5
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = true
-    
-    let tableViewBackView = UIView()
 
     override func viewDidLoad() {
     
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
-        self.view.isUserInteractionEnabled = true
 
         tableView = UITableView().then{
             $0.delegate = self
@@ -46,9 +43,6 @@ class TodoListBottomSheetViewController: UIViewController {
             isDiaryExist ? $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier) : $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
             
         }
-        
-        tableView.backgroundView = tableViewBackView
-        tableViewBackView.backgroundColor = .red
         
         setUpView()
         setUpConstraint()
@@ -80,10 +74,6 @@ class TodoListBottomSheetViewController: UIViewController {
             make.top.equalToSuperview().offset(23)
             make.bottom.equalToSuperview()
         }
-        
-        tableViewBackView.snp.makeConstraints{ make in
-            make.leading.trailing.top.bottom.equalTo(tableView)
-        }
     
     }
  
@@ -111,12 +101,32 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             let identifier = isDiaryExist ? DiaryCell.cellIdentifier : DiaryBannerCell.cellIdentifier
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
+                fatalError()
+            }
+            cell.cellDelegate = self
+            return cell
         }
-        
         return cell
     }
 
+}
+
+extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
+    
+    func willDeleteCell(_ index: IndexPath){
+        
+        self.todoListCount -= 1
+        self.tableView.deleteRows(at: [index], with: .fade)
+    }
+    
+    func willPinCell(_ index: IndexPath){
+        
+    }
+    
+    func willMoveSettingCell(){
+        
+    }
 }
 
 extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{
@@ -128,7 +138,7 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
         let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
         let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
         
-        let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2") ?? .medium
+        let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2")
         
         controller.detents = [detent1, detent2]
         controller.preferredCornerRadius = 30

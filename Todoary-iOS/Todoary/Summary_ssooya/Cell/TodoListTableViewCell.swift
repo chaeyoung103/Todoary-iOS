@@ -12,6 +12,8 @@ class TodoListTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "todoListCell"
     
+    weak var cellDelegate : SelectedTableViewCellDeliver?
+    
     let selectedBackView = UIView().then{
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
@@ -58,11 +60,21 @@ class TodoListTableViewCell: UITableViewCell {
     
     let backView = UIView().then{
         $0.layer.borderWidth = 0.5
+        $0.layer.cornerRadius = 20
         $0.backgroundColor = .white
     }
     
-    lazy var hiddenLeftView = HiddenLeftButtonView()
-    lazy var hiddenRightView = HiddenRightButtonView()
+//    let indexPath : IndexPath!
+//    let tableView : UITableView!
+    
+    lazy var hiddenLeftView = HiddenLeftButtonView().then{
+        $0.pinButton.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
+    }
+    
+    lazy var hiddenRightView = HiddenRightButtonView().then{
+        $0.settingButton.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
+        $0.deleteButton.addTarget(self, action: #selector(deleteButtonDidClicked(_:)), for: .touchUpInside)
+    }
     
     lazy var hiddenView = UIView().then{
         $0.backgroundColor = .white
@@ -94,21 +106,6 @@ class TodoListTableViewCell: UITableViewCell {
 //        }
 //    }
     
-    @objc
-    func settingButtonDidClicked(_ sender : UIButton){
-        print("setting button did clicked")
-    }
-    
-    @objc
-    func deleteButtonDidClicked(_ sender : UIButton){
-        print("delete button did clicked")
-    }
-    
-    @objc
-    func pinButtonDidClicked(_ sender : UIButton){
-        print("pin button did clicked")
-    }
-    
     //MARK: - Properties
     
     var originalCenter = CGPoint()
@@ -122,17 +119,17 @@ class TodoListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        
-        backView.layer.cornerRadius = 20
      
         setUpView()
         setUpConstraint()
+//        getTableVeiwAndCellIndexPath()
         
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         
 //        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
+        
         
     }
     
@@ -382,6 +379,7 @@ extension TodoListTableViewCell{
 
     @objc
     func handlePan(_ recognizer: UIPanGestureRecognizer){
+        
 
         if(recognizer.state == .began){
             originalCenter = center
@@ -416,10 +414,20 @@ extension TodoListTableViewCell{
         return false
     }
     
+}
+
+
+//사용 확정 메서드 임시 모음
+extension TodoListTableViewCell{
+    
+    func getCellIndexPath() -> IndexPath?{
+        return (self.superview as? UITableView)?.indexPath(for: self)
+    }
+
     func hiddenSettingViewShow(){
 
         if(!isViewAdd){
-
+            
             self.superview?.superview?.addSubview(hiddenView)
             self.superview?.superview?.addSubview(hiddenLeftView)
             self.superview?.superview?.addSubview(hiddenRightView)
@@ -454,4 +462,37 @@ extension TodoListTableViewCell{
         }
     }
     
+    @objc
+    func settingButtonDidClicked(_ sender : UIButton){
+        print("setting button did clicked")
+    }
+    
+    @objc
+    func deleteButtonDidClicked(_ sender : UIButton){
+        
+        hiddenView.removeFromSuperview()
+        hiddenRightView.removeFromSuperview()
+        hiddenLeftView.removeFromSuperview()
+        
+        guard let index = getCellIndexPath() else{
+            fatalError("indexPath casting error")
+        }
+        cellDelegate?.willDeleteCell(index)
+    }
+    
+    @objc
+    func pinButtonDidClicked(_ sender : UIButton){
+        
+        guard let index = getCellIndexPath() else{
+            fatalError("indexPath casting error")
+        }
+        
+        cellDelegate?.willPinCell(index)
+    }
+}
+
+protocol SelectedTableViewCellDeliver: AnyObject{
+    func willDeleteCell(_ index: IndexPath)
+    func willPinCell(_ index: IndexPath)
+    func willMoveSettingCell()
 }
