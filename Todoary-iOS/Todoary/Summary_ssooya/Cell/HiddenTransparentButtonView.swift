@@ -1,35 +1,28 @@
 //
-//  HiddenSettingView.swift
+//  HiddenTransparentButtonView.swift
 //  Todoary
 //
-//  Created by 박지윤 on 2022/07/17.
+//  Created by 박지윤 on 2022/07/19.
 //
 
 import UIKit
 
-class HiddenSettingView: UIView {
+class HiddenRightButtonView: UIView {
     
     lazy var settingButton = UIButton().then{
         $0.setImage(UIImage(named: "settings"), for: .normal)
-        $0.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     lazy var deleteButton = UIButton().then{
         $0.setImage(UIImage(named: "trash"), for: .normal)
-        $0.addTarget(self, action: #selector(deleteButtonDidClicked(_:)), for: .touchUpInside)
-    }
-    
-    lazy var pinButton = UIButton().then{
-        $0.setImage(UIImage(named: "push_pin_big"), for: .normal)
-        $0.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let borderLine = UIView().then{
         $0.backgroundColor = UIColor(red: 191/255, green: 191/255, blue: 191/255, alpha: 1)
     }
     
-    let hiddenView = UIView().then{
-        $0.backgroundColor = .white
+    let transparentView = UIView().then{
+        $0.backgroundColor = .transparent
     }
     
     override init(frame: CGRect) {
@@ -37,9 +30,6 @@ class HiddenSettingView: UIView {
         
         setUpView()
         setUpConstraint()
-        
-        hiddenView.layer.cornerRadius = 20
-        hiddenView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -56,19 +46,13 @@ class HiddenSettingView: UIView {
         print("delete button did clicked")
     }
     
-    @objc
-    func pinButtonDidClicked(_ sender : UIButton){
-        print("pin button did clicked")
-    }
-    
     func setUpView(){
         
-        self.addSubview(hiddenView)
-        
-        self.hiddenView.addSubview(pinButton)
-        self.hiddenView.addSubview(settingButton)
-        self.hiddenView.addSubview(deleteButton)
-        self.hiddenView.addSubview(borderLine)
+        self.addSubview(transparentView)
+    
+        transparentView.addSubview(settingButton)
+        transparentView.addSubview(deleteButton)
+        transparentView.addSubview(borderLine)
         
     }
     
@@ -76,18 +60,11 @@ class HiddenSettingView: UIView {
 
         self.snp.makeConstraints{ make in
             make.height.equalTo(60)
+            make.width.equalTo(105)
         }
 
-        hiddenView.snp.makeConstraints{ make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.top.bottom.equalToSuperview()
-        }
-        
-        pinButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(28)
-            make.leading.equalToSuperview().offset(18)
-            make.centerY.equalToSuperview()
+        transparentView.snp.makeConstraints{ make in
+            make.top.bottom.leading.trailing.equalToSuperview()
         }
         
         settingButton.snp.makeConstraints{ make in
@@ -109,6 +86,53 @@ class HiddenSettingView: UIView {
             make.trailing.equalTo(deleteButton.snp.leading).offset(-10)
         }
         
+    }
+}
+
+
+class HiddenLeftButtonView: UIView{
+    
+    lazy var pinButton = UIButton().then{
+        $0.setImage(UIImage(named: "push_pin_big"), for: .normal)
+    }
+    
+    let transparentView = UIView().then{
+        $0.backgroundColor = .transparent
+    }
+    
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        self.addSubview(transparentView)
+    
+        transparentView.addSubview(pinButton)
+        
+        self.snp.makeConstraints{ make in
+            make.height.equalTo(60)
+            make.width.equalTo(58)
+        }
+
+        transparentView.snp.makeConstraints{ make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+        }
+        
+        pinButton.snp.makeConstraints{ make in
+            make.width.height.equalTo(28)
+            make.leading.equalToSuperview().offset(18)
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    @objc
+    func pinButtonDidClicked(_ sender : UIButton){
+        print("pin button did clicked")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

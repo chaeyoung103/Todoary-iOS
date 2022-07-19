@@ -31,10 +31,12 @@ class TodoListTitleCell: UITableViewCell {
     
     let addPlanButton = UIButton().then{
         $0.setImage(UIImage(named: "todo_plus"), for: .normal)
+        $0.addTarget(self, action: #selector(addPlanButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let moveCategoryButton = UIButton().then{
         $0.setImage(UIImage(named: "category"), for: .normal)
+        $0.addTarget(self, action: #selector(moveCategoryButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let buttonStackView = UIStackView().then{
@@ -54,6 +56,16 @@ class TodoListTitleCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    func addPlanButtonDidClicked(_ sender: UIButton){
+        print("add plan button did cliked")
+    }
+    
+    @objc
+    func moveCategoryButtonDidClicked(_ sender: UIButton){
+        print("move category button did cliked")
     }
     
     func setUpView(){

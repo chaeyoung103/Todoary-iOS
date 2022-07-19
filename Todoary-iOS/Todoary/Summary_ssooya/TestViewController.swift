@@ -8,14 +8,6 @@
 import UIKit
 
 class TestViewController: UIViewController {
-
-    @IBAction func button1(_ sender: Any) {
-        print("1")
-    }
-    
-    @IBAction func button2(_ sender: Any) {
-        print("2")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
