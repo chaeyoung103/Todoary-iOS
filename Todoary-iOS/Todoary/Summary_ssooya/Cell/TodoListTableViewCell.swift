@@ -39,6 +39,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2
         $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
+        $0.isEnabled = false
     }
     
     let pinImage = UIImageView().then{
@@ -60,7 +61,17 @@ class TodoListTableViewCell: UITableViewCell {
         $0.backgroundColor = .white
     }
     
-    let hiddenView = HiddenSettingView()
+    lazy var hiddenLeftView = HiddenLeftButtonView()
+    lazy var hiddenRightView = HiddenRightButtonView()
+    
+    lazy var hiddenView = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 20
+        
+        $0.snp.makeConstraints{ make in
+            make.height.equalTo(60)
+        }
+    }
 //    {
 //        willSet(val){
 //            if let l = self.hiddenView{
@@ -83,6 +94,21 @@ class TodoListTableViewCell: UITableViewCell {
 //        }
 //    }
     
+    @objc
+    func settingButtonDidClicked(_ sender : UIButton){
+        print("setting button did clicked")
+    }
+    
+    @objc
+    func deleteButtonDidClicked(_ sender : UIButton){
+        print("delete button did clicked")
+    }
+    
+    @objc
+    func pinButtonDidClicked(_ sender : UIButton){
+        print("pin button did clicked")
+    }
+    
     //MARK: - Properties
     
     var originalCenter = CGPoint()
@@ -98,13 +124,13 @@ class TodoListTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         
         backView.layer.cornerRadius = 20
-        
+     
         setUpView()
         setUpConstraint()
         
-//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         
-        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
         
@@ -395,10 +421,30 @@ extension TodoListTableViewCell{
         if(!isViewAdd){
 
             self.superview?.superview?.addSubview(hiddenView)
+            self.superview?.superview?.addSubview(hiddenLeftView)
+            self.superview?.superview?.addSubview(hiddenRightView)
+            
+            self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
+            self.superview?.superview?.sendSubviewToBack(hiddenRightView)
             self.superview?.superview?.sendSubviewToBack(hiddenView)
+            
+            //if 고정되면, 버튼 2개만 front 함수 통해 앞으로 빼기 -> left, right에 따라 버튼 visibility 조절 필요
+            self.superview?.superview?.bringSubviewToFront(hiddenRightView)
 
             hiddenView.snp.makeConstraints{ make in
                 make.leading.equalToSuperview().offset(32)
+                make.trailing.equalToSuperview().offset(-30)
+                make.top.equalTo(self.contentView)
+                make.bottom.equalTo(self.contentView)
+            }
+            
+            hiddenLeftView.snp.makeConstraints{ make in
+                make.leading.equalToSuperview().offset(32)
+                make.top.equalTo(self.contentView)
+                make.bottom.equalTo(self.contentView)
+            }
+            
+            hiddenRightView.snp.makeConstraints{ make in
                 make.trailing.equalToSuperview().offset(-30)
                 make.top.equalTo(self.contentView)
                 make.bottom.equalTo(self.contentView)

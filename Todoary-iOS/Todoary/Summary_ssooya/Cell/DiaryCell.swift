@@ -1,5 +1,5 @@
 //
-//  DiaryView.swift
+//  DiaryCell.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/07/18.
@@ -7,11 +7,17 @@
 
 import UIKit
 
-class DiaryView: UIView {
+class DiaryCell: UITableViewCell {
+    
+    static let cellIdentifier = "diaryCell"
     
     let backView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
+    }
+    
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = .transparent
     }
     
     let diaryTitle = UILabel().then{
@@ -36,11 +42,13 @@ class DiaryView: UIView {
     }
     
     //image 등록 여부에 따른 view 구성 differ
-    let isImageExist = true
-    
-    override init(frame: CGRect) {
+    let isImageExist = false
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        super.init(frame: .zero)
+        self.backgroundColor = .transparent
+        self.selectedBackgroundView = selectedBackView
         
         setUpView()
         setUpConstraint()
@@ -48,8 +56,6 @@ class DiaryView: UIView {
         if(isImageExist){
             imageViewSetting()
         }
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -67,7 +73,10 @@ class DiaryView: UIView {
     func setUpConstraint(){
         
         backView.snp.makeConstraints{ make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(diaryTextView.snp.height).offset(63)
         }
         
@@ -109,5 +118,4 @@ class DiaryView: UIView {
             make.bottom.equalToSuperview().offset(-15)
         }
     }
-
 }
