@@ -139,11 +139,11 @@ extension TodoListTableViewCell{
 
         let translation = recognizer.translation(in: self)
         let superView = self.superview?.superview
-        print(frame.origin.x)
         
         if(recognizer.state == .began){
+            print("began,", translation.x)
             originalCenter = center
-            hiddenSettingViewShow()
+            hiddenSettingViewShow(translation.x)
         }
         if (recognizer.state == .changed){
             
@@ -226,6 +226,8 @@ extension TodoListTableViewCell{
                 self.removeHiddenViews()
             }
         })
+        
+        isClamp = false
     }
     
 }
@@ -237,20 +239,12 @@ extension TodoListTableViewCell{
         return (self.superview as? UITableView)?.indexPath(for: self)
     }
 
-    func hiddenSettingViewShow(){
+    func hiddenSettingViewShow(_ translation: CGFloat){
 
-        if(!isViewAdd){
+        if(!isViewAdd && !isClamp){
             
             self.superview?.superview?.addSubview(hiddenView)
-            self.superview?.superview?.addSubview(hiddenLeftView)
-            self.superview?.superview?.addSubview(hiddenRightView)
             
-            self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
-            self.superview?.superview?.sendSubviewToBack(hiddenRightView)
-            self.superview?.superview?.sendSubviewToBack(hiddenView)
-            
-            //if 고정되면, 버튼 2개만 front 함수 통해 앞으로 빼기 -> left, right에 따라 버튼 visibility 조절 필요
-
             hiddenView.snp.makeConstraints{ make in
                 make.leading.equalToSuperview().offset(32)
                 make.trailing.equalToSuperview().offset(-30)
@@ -258,18 +252,30 @@ extension TodoListTableViewCell{
                 make.bottom.equalTo(self.contentView)
             }
             
-            hiddenLeftView.snp.makeConstraints{ make in
-                make.leading.equalToSuperview().offset(32)
-                make.top.equalTo(self.contentView)
-                make.bottom.equalTo(self.contentView)
+            if(translation < 0){
+                
+                self.superview?.superview?.addSubview(hiddenRightView)
+                self.superview?.superview?.sendSubviewToBack(hiddenRightView)
+                
+                hiddenRightView.snp.makeConstraints{ make in
+                    make.trailing.equalToSuperview().offset(-30)
+                    make.top.equalTo(self.contentView)
+                    make.bottom.equalTo(self.contentView)
+                }
+                
+            }else{
+                
+                self.superview?.superview?.addSubview(hiddenLeftView)
+                self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
+                
+                hiddenLeftView.snp.makeConstraints{ make in
+                    make.leading.equalToSuperview().offset(32)
+                    make.top.equalTo(self.contentView)
+                    make.bottom.equalTo(self.contentView)
+                }
             }
             
-            hiddenRightView.snp.makeConstraints{ make in
-                make.trailing.equalToSuperview().offset(-30)
-                make.top.equalTo(self.contentView)
-                make.bottom.equalTo(self.contentView)
-            }
-
+            self.superview?.superview?.sendSubviewToBack(hiddenView)
             isViewAdd = true
         }
     }
@@ -325,214 +331,3 @@ protocol SelectedTableViewCellDeliver: AnyObject{
     func cellWillMoveSettingVC()
     func cellWillClamp(_ indexPath: IndexPath)
 }
-
-/*
-@objc
-func handlePan(_ recognizer: UIPanGestureRecognizer){
-    
-
-    if(recognizer.state == .began){
-        originalCenter = center
-        hiddenSettingViewShow()
-    }
-    if (recognizer.state == .changed){
-        let translation = recognizer.translation(in: self)
-        center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
-        // has the user dragged the item far enough to initiate a delete/complete?
-        deleteOnDragRelease = frame.origin.x < -frame.size.width / 3.0
-    }
-    if recognizer.state == .ended {
-      // the frame this cell had before user dragged it
-      let originalFrame = CGRect(x: 0, y: frame.origin.y,
-          width: bounds.size.width, height: bounds.size.height)
-      if !deleteOnDragRelease {
-        // if the item is not being deleted, snap back to the original location
-          UIView.animate(withDuration: 0.4, animations: {self.frame = originalFrame})
-      }
-    }
-}
-*/
- 
-/*
-    @objc func didPan(_ sender: UIPanGestureRecognizer) {
-
-        switch sender.state {
-        case .began:
-            hiddenSettingViewShow()
-            self.delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
-            self.beginPoint = sender.location(in: self)
-            self.beginPoint.x -= self.contentView.frame.origin.x
-
-        case .changed:
-            let now = sender.location(in: self)
-            let distX = now.x - self.beginPoint.x
-
-            if (distX <= 0) {
-                print("right?")
-                let d = max(distX,-(self.contentView.frame.size.width-self.rightWidth))
-
-                if d > -self.rightWidth*2 || isViewAdd || self.contentView.frame.origin.x > 0 {
-                    self.contentView.frame.origin.x = d
-                }
-                else {
-                    sender.isEnabled = false
-                    sender.isEnabled = true
-                }
-            }
-            else {
-                print("left?")
-                let d = min(distX,self.contentView.frame.size.width-self.leftWidth)
-                if d < self.leftWidth*2 || isViewAdd || self.contentView.frame.origin.x < 0 {
-                    self.contentView.frame.origin.x = d
-                }
-                else {
-                    sender.isEnabled = false
-                    sender.isEnabled = true
-                }
-            }
-
-        default:
-            delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
-            let offset = self.contentView.frame.origin.x
-
-            if offset > self.leftWidth && isViewAdd {
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = self.leftWidth
-                }, completion: nil)
-            }
-            else if -offset > self.rightWidth && isViewAdd {
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = -self.rightWidth
-                }, completion: nil)
-            }
-            else {
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = 0
-                }, completion: nil)
-            }
-        }
-    }
-*/
-
-/*
-func closeButtonsIfShown(animated:Bool = true) -> Bool {
-    
-    hiddenView.removeFromSuperview()
-    hiddenRightView.removeFromSuperview()
-    hiddenLeftView.removeFromSuperview()
-    isViewAdd = false
-    
-    if self.contentView.frame.origin.x != 0 {
-        if animated {
-            UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                self.contentView.frame.origin.x = 0
-//                    self.panRecognizer.isEnabled = false
-//                    self.panRecognizer.isEnabled = true
-            }, completion: nil)
-        }
-        else {
-            print("!!!!!!")
-            self.contentView.frame.origin.x = 0
-//                self.panRecognizer.isEnabled = false
-//                self.panRecognizer.isEnabled = true
-
-        }
-        return true
-    }
-    else {
-        print("???????")
-        return false
-    }
-}
-*/
-
-/*
-extension TodoListTableViewCell{
-
-
-    @objc
-    func didTap(_ sender : UITapGestureRecognizer) {
-        print("tap?")
-        UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-            self.contentView.frame.origin.x = 0
-        }, completion: nil)
-    }
-    
-    @objc func didPan(_ sender: UIPanGestureRecognizer) {
-        
-        switch sender.state {
-        case .began:
-            print("began")
-            hiddenSettingViewShow()
-            self.delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
-            self.beginPoint = sender.location(in: self)
-            self.beginPoint.x -= self.contentView.frame.origin.x
-
-        case .changed:
-            print("changed")
-            let now = sender.location(in: self)
-            print(now)
-            let distX = now.x - self.beginPoint.x
-//            let distX = translation.x
-            print(distX)
-            let transition = sender.translation(in: self).x
-            
-//            if (distX <= 0 ) {
-            if (transition <= 0 ) {
-                print("right?")
-                let d = max(distX,-(self.contentView.frame.size.width-self.rightWidth ))
-                print(d)
-                print(self.contentView.frame.size.width-self.rightWidth)
-                if d > -self.rightWidth*2 || hiddenView != nil || self.contentView.frame.origin.x > 0 {
-                    print("right move?")
-                    self.contentView.frame.origin.x = d
-                }
-                else {
-                    print("stop?")
-                    sender.isEnabled = false
-                    sender.isEnabled = true
-                }
-            }
-            else {
-                print("left?")
-                let d = min(distX,self.contentView.frame.size.width-self.leftWidth)
-                print(d)
-                print(self.contentView.frame.size.width-self.leftWidth)
-                if d < self.leftWidth*2 || hiddenView != nil || self.contentView.frame.origin.x < 0 {
-                    print("left move?")
-                    self.contentView.frame.origin.x = d
-                }
-                else {
-                    sender.isEnabled = false
-                    sender.isEnabled = true
-                }
-            }
-
-        default:
-            print("end")
-            delegate?.swipeableTableViewCellDidRecognizeSwipe(cell: self)
-            let offset = self.contentView.frame.origin.x
-            print(offset)
-            if offset > self.leftWidth && isViewAdd {
-                print("left end")
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = self.leftWidth
-                }, completion: nil)
-            }
-            else if -offset > self.rightWidth && isViewAdd {
-                print("right end")
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = -self.rightWidth
-                }, completion: nil)
-            }
-            else {
-                print("what?")
-                UIView.animate(withDuration: self.animationDuration, delay: self.animationDelay, usingSpringWithDamping: self.animationSpingDamping, initialSpringVelocity: self.animationInitialVelocity, options: self.animationOptions, animations: { () -> Void in
-                    self.contentView.frame.origin.x = 0
-                }, completion: nil)
-            }
-        }
-    }
-    
-}
-*/
