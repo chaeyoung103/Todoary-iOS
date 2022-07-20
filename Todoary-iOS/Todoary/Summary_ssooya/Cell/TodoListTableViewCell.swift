@@ -153,10 +153,8 @@ extension TodoListTableViewCell{
             center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
     
             if(frame.origin.x > 0){ //왼쪽 view
-//                superView?.bringSubviewToFront(hiddenLeftView)
                 isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-//                superView?.bringSubviewToFront(hiddenRightView)
                 isClamp = frame.origin.x < -rightWidth * 1.2 && isViewAdd != .left
             }
         }
@@ -216,7 +214,30 @@ extension TodoListTableViewCell{
         isViewAdd = .none
     }
     
+    /*
+     cellWillMoveOriginalPosition
+     
+     @indexPath : pin button 클릭한 경우에만 indexPath 전달 통해 animation 종료 후 delegate 실행 되도록 함
+     */
+    
     func cellWillMoveOriginalPosition(){
+        
+        let originalFrame = CGRect(x: 0, y: frame.origin.y,
+                                   width: bounds.size.width, height: bounds.size.height)
+        
+        moveBackHiddenView()
+        UIView.animate(withDuration: 0.25,
+                       animations: { self.frame = originalFrame },
+                       completion: { done in
+            if(done){
+                self.removeHiddenViews()
+            }
+        })
+        
+        isClamp = false
+    }
+    
+    func cellWillMoveOriginalPosition(_ indexPath : IndexPath){
         
         let originalFrame = CGRect(x: 0, y: frame.origin.y,
                                    width: bounds.size.width, height: bounds.size.height)
@@ -228,6 +249,7 @@ extension TodoListTableViewCell{
                        completion: { done in
             if(done){
                 self.removeHiddenViews()
+                self.delegate?.cellWillPin(indexPath)
             }
         })
         
@@ -252,7 +274,6 @@ extension TodoListTableViewCell{
             self.superview?.superview?.addSubview(hiddenView)
             self.superview?.superview?.addSubview(hiddenRightView)
             self.superview?.superview?.addSubview(hiddenLeftView)
-            
             
             self.superview?.superview?.sendSubviewToBack(hiddenRightView)
             self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
@@ -310,9 +331,9 @@ extension TodoListTableViewCell{
             fatalError("indexPath casting error")
         }
         
-        cellWillMoveOriginalPosition()
+        cellWillMoveOriginalPosition(indexPath)
         
-        delegate?.cellWillPin(indexPath)
+//        delegate?.cellWillPin(indexPath)
     }
     
     override func prepareForReuse() {
