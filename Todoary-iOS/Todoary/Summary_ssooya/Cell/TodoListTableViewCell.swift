@@ -38,7 +38,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.addLetterSpacing(spacing: 0.3)
     }
     
-    let categoryButton = UIButton().then{
+    lazy var categoryButton = UIButton().then{
         $0.setTitle("운동", for: .normal)
         $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
@@ -50,11 +50,11 @@ class TodoListTableViewCell: UITableViewCell {
         $0.isEnabled = false
     }
     
-    let pinImage = UIImageView().then{
+    lazy var pinImage = UIImageView().then{
         $0.image = UIImage(named: "push_pin")
     }
     
-    let alarmImage = UIImageView().then{
+    lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
     }
     
@@ -102,6 +102,11 @@ class TodoListTableViewCell: UITableViewCell {
     var isAlarm : Bool!
     var hasCategory : Bool!
     
+    //MARK: - Properties(for swipe)
+    
+    let leftWidth : CGFloat = 58
+    let rightWidth : CGFloat = 105
+    
     //hiddenView addSubView 되었는지 아닌지 확인 용도
     var isViewAdd : CurrentHidden = .none
     
@@ -127,24 +132,17 @@ class TodoListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    //MARK: - Properties(for swipe)
-    
-//    weak var delegate : MWSwipeableTableViewCellDelegate?
-    
-    var animationOptions : UIView.AnimationOptions = [.allowUserInteraction, .beginFromCurrentState]
-    var animationDuration : TimeInterval = 0.5
-    var animationDelay : TimeInterval = 0
-    var animationSpingDamping : CGFloat = 0.5
-    var animationInitialVelocity : CGFloat = 1
-    
-    let leftWidth : CGFloat = 58
-    let rightWidth : CGFloat = 105
-
-    private var beginPoint : CGPoint = .zero
+    override func prepareForReuse() {
+        pinImage.removeFromSuperview()
+        alarmImage.removeFromSuperview()
+        categoryButton.removeFromSuperview()
+        titleLabel.text = ""
+        timeLabel.text = ""
+    }
     
 }
 
+//for cell swipe
 extension TodoListTableViewCell{
 
     @objc
@@ -335,22 +333,10 @@ extension TodoListTableViewCell{
     
     @objc
     func pinButtonDidClicked(_ sender : UIButton){
-        
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
         }
-        
         cellWillMoveOriginalPosition(indexPath)
-        
-//        delegate?.cellWillPin(indexPath)
-    }
-    
-    override func prepareForReuse() {
-        pinImage.removeFromSuperview()
-        alarmImage.removeFromSuperview()
-        categoryButton.removeFromSuperview()
-        titleLabel.text = ""
-        timeLabel.text = ""
     }
 }
 

@@ -16,13 +16,22 @@ class TodoListBottomSheetViewController: UIViewController {
     
     var tableView : UITableView!
     
+    let addButton = UIButton().then{
+        $0.backgroundColor = .summaryTitle
+        $0.layer.cornerRadius = 70/2
+        $0.layer.shadowRadius = 10.0
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowOpacity = 1
+        $0.layer.masksToBounds = false
+        $0.addTarget(self, action: #selector(addButtonDidClicked), for: .touchUpInside)
+    }
     //MARK: - Properties
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = true
     
     //더미 데이터
-
     var summaryData : [SummaryData] = [
         SummaryData(time: "AM 7:00", pin: false, alarm: false, category: false),
         SummaryData(time: "AM 10:00", pin: true, alarm: false, category: false),
@@ -36,16 +45,6 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
-    
-    let addButton = UIButton().then{
-        $0.backgroundColor = .summaryTitle
-        $0.layer.cornerRadius = 70/2
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-    }
     
     override func viewDidLoad() {
     
@@ -72,25 +71,17 @@ class TodoListBottomSheetViewController: UIViewController {
             
         }
         
+        dataArraySortByPin()
+        
         setUpView()
         setUpConstraint()
         setUpSheetVC()
-        
-        dataArraySortByPin()
-        
-        self.view.addSubview(addButton)
-        
-        addButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(70)
-            make.bottom.equalToSuperview().offset(-89)
-            make.trailing.equalToSuperview().offset(-27)
-        }
-        
     }
     
     func setUpView(){
         self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
+        self.view.addSubview(addButton)
     }
     
     func setUpConstraint(){
@@ -108,7 +99,18 @@ class TodoListBottomSheetViewController: UIViewController {
             make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview()
         }
+        
+        addButton.snp.makeConstraints{ make in
+            make.width.height.equalTo(70)
+            make.bottom.equalToSuperview().offset(-89)
+            make.trailing.equalToSuperview().offset(-27)
+        }
     
+    }
+    
+    @objc
+    func addButtonDidClicked(){
+        print("clicked")
     }
     
     @objc
@@ -146,7 +148,6 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
                 fatalError()
             }
-            
             let data = summaryData[indexPath.row-1]
             cell.delegate = self
             cell.titleLabel.text = "아침 산책"
@@ -165,10 +166,8 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func cellWillDelete(_ indexPath: IndexPath){
-        
         summaryData.remove(at: indexPath.row-1)
         self.tableView.deleteRows(at: [indexPath], with: .fade)
-        
     }
     
     func cellWillPin(_ indexPath: IndexPath){
@@ -261,7 +260,6 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
     }
     
     func setUpSheetVC(){
-
         isModalInPresentation = true
         modalPresentationStyle = .custom
         transitioningDelegate = self

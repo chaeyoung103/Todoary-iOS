@@ -136,8 +136,6 @@ extension TodoListTableViewCell{
         categoryButton.snp.makeConstraints{ make in
             make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
-//            make.top.equalToSuperview().offset(21)
-//            make.bottom.equalToSuperview().offset(-18)
             make.centerY.equalToSuperview()
         }
     }

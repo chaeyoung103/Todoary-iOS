@@ -338,7 +338,6 @@
 			children = (
 				574A70432885250D003C8F99 /* Cell */,
 				574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */,
-				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
 				574A703F2885085D003C8F99 /* TestViewController.swift */,
 				574A704C28853C36003C8F99 /* UISheetPresentationControllerDetent+Private.h */,
 				574A704D28853CA8003C8F99 /* CustomSPCDetent-Bridging-Header.h */,
@@ -351,6 +350,7 @@
 			children = (
 				574A704E28865FEE003C8F99 /* HiddenTransparentButtonView.swift */,
 				574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */,
+				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
 				574A704428852523003C8F99 /* TodoListTitleCell.swift */,
 				574A704628852543003C8F99 /* DiaryTitleCell.swift */,
 				574A70482885255B003C8F99 /* DiaryCell.swift */,
