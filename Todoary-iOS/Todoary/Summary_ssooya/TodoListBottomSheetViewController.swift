@@ -32,6 +32,9 @@ class TodoListBottomSheetViewController: UIViewController {
                                        SummaryData(time: "PM 11:00", pin: false, alarm: true, category: true),
                                        SummaryData(time: "PM 11:30", pin: false, alarm: true, category: true)]
     
+    //clamp cell
+    var clampCell : IndexPath = [0,-1] //default 값
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -114,7 +117,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             }
             
             let data = summaryData[indexPath.row-1]
-            cell.cellDelegate = self
+            cell.delegate = self
             cell.titleLabel.text = "아침 산책"
             cell.timeLabel.text = data.time
             cell.isPin = data.pin
@@ -168,8 +171,24 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         tableView.reloadData()
     }
     
-    func willMoveSettingCell(){
+    func willMoveSettingVC(){
         
+    }
+    
+    func willClampCell(_ indexPath: IndexPath){
+        
+        //1. 기존 고정 cell 존재 여부 점검 (row 값 -1인지 아닌지)
+        if(clampCell == indexPath){
+            return
+        }else if(clampCell.row != -1){
+        //2. -1 아닐 경우 -> 이미 고정되어 있는 cell 존재 -> 고정 풀기
+            guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else{
+                return
+            }
+            cell.cellWillMoveOriginalPosition()
+        }
+        //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
+        clampCell = indexPath
     }
     
     func getPinnedCount() -> Int{
@@ -206,7 +225,6 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
         controller.preferredCornerRadius = 30
         controller.largestUndimmedDetentIdentifier = detentIdentifier
         controller.prefersScrollingExpandsWhenScrolledToEdge = false
-        
         
         return controller
     }
