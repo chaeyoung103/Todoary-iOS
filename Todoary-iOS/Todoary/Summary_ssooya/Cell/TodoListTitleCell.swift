@@ -19,22 +19,31 @@ class TodoListTitleCell: UITableViewCell {
         $0.backgroundColor = .transparent
     }
 
-    let todoListTitle = PaddingLabel().then{
+    let todoListTitle = UILabel().then{
         $0.text = "TODO LIST"
         $0.font = UIFont.nbFont(ofSize: 12, weight: .extraBold)
         $0.textColor = .summaryTitle
         $0.addLetterSpacing(spacing: 0.24)
+    }
+    
+    let titleBackgroundView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 24/2
-        $0.clipsToBounds = true
+        $0.layer.shadowRadius = 10.0
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowOpacity = 1
+        $0.layer.masksToBounds = false
     }
     
     let addPlanButton = UIButton().then{
         $0.setImage(UIImage(named: "todo_plus"), for: .normal)
+        $0.addTarget(self, action: #selector(addPlanButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let moveCategoryButton = UIButton().then{
         $0.setImage(UIImage(named: "category"), for: .normal)
+        $0.addTarget(self, action: #selector(moveCategoryButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     let buttonStackView = UIStackView().then{
@@ -56,6 +65,16 @@ class TodoListTitleCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    func addPlanButtonDidClicked(_ sender: UIButton){
+        print("add plan button did cliked")
+    }
+    
+    @objc
+    func moveCategoryButtonDidClicked(_ sender: UIButton){
+        print("move category button did cliked")
+    }
+    
     func setUpView(){
         
         self.contentView.addSubview(backView)
@@ -63,7 +82,8 @@ class TodoListTitleCell: UITableViewCell {
         buttonStackView.addArrangedSubview(addPlanButton)
         buttonStackView.addArrangedSubview(moveCategoryButton)
         
-        backView.addSubview(todoListTitle)
+        backView.addSubview(titleBackgroundView)
+        titleBackgroundView.addSubview(todoListTitle)
         backView.addSubview(buttonStackView)
         
     }
@@ -80,8 +100,16 @@ class TodoListTitleCell: UITableViewCell {
         }
         
         todoListTitle.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
+        }
+        
+        titleBackgroundView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(32)
             make.bottom.equalToSuperview().offset(-16)
+            make.width.equalTo(84)
+            make.height.equalTo(24)
         }
         
         buttonStackView.snp.makeConstraints{ make in
