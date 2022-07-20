@@ -37,6 +37,11 @@ class TodoListBottomSheetViewController: UIViewController {
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
     
+    let button = UIButton().then{
+        $0.backgroundColor = .summaryTitle
+        $0.layer.cornerRadius = 70/2
+    }
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -67,6 +72,14 @@ class TodoListBottomSheetViewController: UIViewController {
         setUpSheetVC()
         
         dataArraySortByPin()
+        
+        self.view.addSubview(button)
+        
+        button.snp.makeConstraints{ make in
+            make.width.height.equalTo(70)
+            make.bottom.equalToSuperview().offset(-89)
+            make.trailing.equalToSuperview().offset(-27)
+        }
         
     }
     
