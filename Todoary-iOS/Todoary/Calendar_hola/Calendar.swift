@@ -84,6 +84,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.text = days[indexPath.row]
             cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
             cell.dateLabel.textColor = .black
+            cell.layer.shadowRadius = 0
+            cell.layer.shadowColor = UIColor.transparent.cgColor
+            cell.layer.shadowOpacity = 0
             
             if self.year == year_component && self.month == month_component {
                 if today == (indexPath.row - emptyDay) {
