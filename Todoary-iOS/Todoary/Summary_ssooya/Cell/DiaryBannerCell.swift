@@ -67,7 +67,7 @@ class DiaryBannerCell: UITableViewCell {
         
         writeDiaryBanner.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(19)
-            make.top.equalToSuperview().offset(16)
+            make.centerY.equalToSuperview()
             make.bottom.equalToSuperview().offset(17)
         }
     }

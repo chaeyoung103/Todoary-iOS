@@ -37,9 +37,14 @@ class TodoListBottomSheetViewController: UIViewController {
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
     
-    let button = UIButton().then{
+    let addButton = UIButton().then{
         $0.backgroundColor = .summaryTitle
         $0.layer.cornerRadius = 70/2
+        $0.layer.shadowRadius = 10.0
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowOpacity = 1
+        $0.layer.masksToBounds = false
     }
     
     override func viewDidLoad() {
@@ -73,9 +78,9 @@ class TodoListBottomSheetViewController: UIViewController {
         
         dataArraySortByPin()
         
-        self.view.addSubview(button)
+        self.view.addSubview(addButton)
         
-        button.snp.makeConstraints{ make in
+        addButton.snp.makeConstraints{ make in
             make.width.height.equalTo(70)
             make.bottom.equalToSuperview().offset(-89)
             make.trailing.equalToSuperview().offset(-27)
