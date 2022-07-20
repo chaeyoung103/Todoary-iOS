@@ -104,7 +104,6 @@ class TodoListTableViewCell: UITableViewCell {
         
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         
-//        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
 
@@ -147,8 +146,8 @@ extension TodoListTableViewCell{
             hiddenSettingViewShow()
         }
         if (recognizer.state == .changed){
+            
             center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
-            // has the user dragged the item far enough to initiate a delete/complete?
     
             if(frame.origin.x > 0){ //왼쪽 view
                 superView?.bringSubviewToFront(hiddenLeftView)
@@ -159,14 +158,15 @@ extension TodoListTableViewCell{
             }
         }
         if recognizer.state == .ended {
-            // the frame this cell had before user dragged it
             if !isClamp {
                 cellWillMoveOriginalPosition()
             }else{
+                
                 guard let indexPath = getCellIndexPath() else{
                     fatalError("indexPath casting error")
                 }
-                delegate?.willClampCell(indexPath)
+                delegate?.cellWillClamp(indexPath)
+                
                 let clampFrame : CGRect!
                 if(translation.x < 0){
                     clampFrame = CGRect(x: -rightWidth, y: frame.origin.y,
@@ -295,7 +295,7 @@ extension TodoListTableViewCell{
 
         cellWillMoveOriginalPosition()
         
-        delegate?.willDeleteCell(indexPath)
+        delegate?.cellWillDelete(indexPath)
     }
     
     @objc
@@ -307,7 +307,7 @@ extension TodoListTableViewCell{
         
         cellWillMoveOriginalPosition()
         
-        delegate?.willPinCell(indexPath)
+        delegate?.cellWillPin(indexPath)
     }
     
     override func prepareForReuse() {
@@ -320,10 +320,10 @@ extension TodoListTableViewCell{
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
-    func willDeleteCell(_ indexPath: IndexPath)
-    func willPinCell(_ indexPath: IndexPath)
-    func willMoveSettingVC()
-    func willClampCell(_ indexPath: IndexPath)
+    func cellWillDelete(_ indexPath: IndexPath)
+    func cellWillPin(_ indexPath: IndexPath)
+    func cellWillMoveSettingVC()
+    func cellWillClamp(_ indexPath: IndexPath)
 }
 
 /*

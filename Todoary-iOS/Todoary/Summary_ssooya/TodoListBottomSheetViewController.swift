@@ -23,14 +23,16 @@ class TodoListBottomSheetViewController: UIViewController {
     
     //더미 데이터
 
-    var summaryData : [SummaryData] = [SummaryData(time: "AM 7:00", pin: false, alarm: false, category: false),
-                                       SummaryData(time: "AM 10:00", pin: true, alarm: false, category: false),
-                                       SummaryData(time: "AM 10:30", pin: false, alarm: true, category: false),
-                                       SummaryData(time: "AM 11:00", pin: false, alarm: false, category: true),
-                                       SummaryData(time: "PM 2:00", pin: true, alarm: true, category: true),
-                                       SummaryData(time: "PM 4:00", pin: false, alarm: false, category: false),
-                                       SummaryData(time: "PM 11:00", pin: false, alarm: true, category: true),
-                                       SummaryData(time: "PM 11:30", pin: false, alarm: true, category: true)]
+    var summaryData : [SummaryData] = [
+        SummaryData(time: "AM 7:00", pin: false, alarm: false, category: false),
+        SummaryData(time: "AM 10:00", pin: true, alarm: false, category: false),
+        SummaryData(time: "AM 10:30", pin: false, alarm: true, category: false),
+        SummaryData(time: "AM 11:00", pin: false, alarm: false, category: true),
+        SummaryData(time: "PM 2:00", pin: true, alarm: true, category: true),
+        SummaryData(time: "PM 4:00", pin: false, alarm: false, category: false),
+        SummaryData(time: "PM 11:00", pin: false, alarm: true, category: true),
+        SummaryData(time: "PM 11:30", pin: false, alarm: true, category: true)
+    ]
     
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
@@ -54,6 +56,9 @@ class TodoListBottomSheetViewController: UIViewController {
             $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
             isDiaryExist ? $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier) : $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellWillMoveToOriginalPosition))
+            $0.addGestureRecognizer(tapGesture)
             
         }
         
@@ -86,6 +91,14 @@ class TodoListBottomSheetViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     
+    }
+    
+    @objc
+    func cellWillMoveToOriginalPosition(){
+        guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else{
+                return
+        }
+        cell.cellWillMoveOriginalPosition()
     }
  
 }
@@ -133,14 +146,14 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
-    func willDeleteCell(_ indexPath: IndexPath){
+    func cellWillDelete(_ indexPath: IndexPath){
         
         summaryData.remove(at: indexPath.row-1)
         self.tableView.deleteRows(at: [indexPath], with: .fade)
         
     }
     
-    func willPinCell(_ indexPath: IndexPath){
+    func cellWillPin(_ indexPath: IndexPath){
         
         let pinnedCount: Int = getPinnedCount()
         
@@ -171,11 +184,11 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         tableView.reloadData()
     }
     
-    func willMoveSettingVC(){
+    func cellWillMoveSettingVC(){
         
     }
     
-    func willClampCell(_ indexPath: IndexPath){
+    func cellWillClamp(_ indexPath: IndexPath){
         
         //1. 기존 고정 cell 존재 여부 점검 (row 값 -1인지 아닌지)
         if(clampCell == indexPath){
