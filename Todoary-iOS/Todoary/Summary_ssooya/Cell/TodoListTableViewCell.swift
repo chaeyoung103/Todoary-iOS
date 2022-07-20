@@ -140,6 +140,8 @@ extension TodoListTableViewCell{
         let translation = recognizer.translation(in: self)
         let superView = self.superview?.superview
         
+        print("position, ",frame.origin.x, translation.x, isClamp)
+        
         if(recognizer.state == .began){
             print("began,", translation.x)
             originalCenter = center
@@ -161,14 +163,13 @@ extension TodoListTableViewCell{
             if !isClamp {
                 cellWillMoveOriginalPosition()
             }else{
-                
                 guard let indexPath = getCellIndexPath() else{
                     fatalError("indexPath casting error")
                 }
                 delegate?.cellWillClamp(indexPath)
                 
                 let clampFrame : CGRect!
-                if(translation.x < 0){
+                if(frame.origin.x < 0){
                     clampFrame = CGRect(x: -rightWidth, y: frame.origin.y,
                                             width: bounds.size.width, height: bounds.size.height)
                     UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
