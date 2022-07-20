@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+enum CurrentHidden{
+    case none
+    case left
+    case right
+}
+
 class TodoListTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "todoListCell"
@@ -88,7 +94,7 @@ class TodoListTableViewCell: UITableViewCell {
     var hasCategory : Bool!
     
     //hiddenView addSubView 되었는지 아닌지 확인 용도
-    var isViewAdd = false
+    var isViewAdd : CurrentHidden = .none
     
     var originalCenter = CGPoint()
     var isClamp = false
@@ -106,8 +112,6 @@ class TodoListTableViewCell: UITableViewCell {
         
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
-
-        
     }
     
     required init?(coder: NSCoder) {
@@ -140,10 +144,7 @@ extension TodoListTableViewCell{
         let translation = recognizer.translation(in: self)
         let superView = self.superview?.superview
         
-        print("position, ",frame.origin.x, translation.x, isClamp)
-        
         if(recognizer.state == .began){
-            print("began,", translation.x)
             originalCenter = center
             hiddenSettingViewShow(translation.x)
         }
@@ -152,11 +153,11 @@ extension TodoListTableViewCell{
             center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
     
             if(frame.origin.x > 0){ //왼쪽 view
-                superView?.bringSubviewToFront(hiddenLeftView)
-                isClamp = frame.origin.x > leftWidth * 1.5
+//                superView?.bringSubviewToFront(hiddenLeftView)
+                isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-                superView?.bringSubviewToFront(hiddenRightView)
-                isClamp = frame.origin.x < -rightWidth * 1.2
+//                superView?.bringSubviewToFront(hiddenRightView)
+                isClamp = frame.origin.x < -rightWidth * 1.2 && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {
@@ -172,10 +173,12 @@ extension TodoListTableViewCell{
                 if(frame.origin.x < 0){
                     clampFrame = CGRect(x: -rightWidth, y: frame.origin.y,
                                             width: bounds.size.width, height: bounds.size.height)
+                    superView?.bringSubviewToFront(hiddenRightView)
                     UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }else{
                     clampFrame = CGRect(x: leftWidth, y: frame.origin.y,
                                                 width: bounds.size.width, height: bounds.size.height)
+                    superView?.bringSubviewToFront(hiddenLeftView)
                     UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
                 }
                 
@@ -210,7 +213,7 @@ extension TodoListTableViewCell{
         hiddenRightView.removeFromSuperview()
         hiddenLeftView.removeFromSuperview()
         
-        isViewAdd = false
+        isViewAdd = .none
     }
     
     func cellWillMoveOriginalPosition(){
@@ -239,12 +242,21 @@ extension TodoListTableViewCell{
     func getCellIndexPath() -> IndexPath?{
         return (self.superview as? UITableView)?.indexPath(for: self)
     }
-
+    
     func hiddenSettingViewShow(_ translation: CGFloat){
 
-        if(!isViewAdd && !isClamp){
+        if(isViewAdd == .none && !isClamp){
+            
+            isViewAdd = translation < 0 ? .right : .left
             
             self.superview?.superview?.addSubview(hiddenView)
+            self.superview?.superview?.addSubview(hiddenRightView)
+            self.superview?.superview?.addSubview(hiddenLeftView)
+            
+            
+            self.superview?.superview?.sendSubviewToBack(hiddenRightView)
+            self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
+            self.superview?.superview?.sendSubviewToBack(hiddenView)
             
             hiddenView.snp.makeConstraints{ make in
                 make.leading.equalToSuperview().offset(32)
@@ -253,31 +265,17 @@ extension TodoListTableViewCell{
                 make.bottom.equalTo(self.contentView)
             }
             
-            if(translation < 0){
-                
-                self.superview?.superview?.addSubview(hiddenRightView)
-                self.superview?.superview?.sendSubviewToBack(hiddenRightView)
-                
-                hiddenRightView.snp.makeConstraints{ make in
-                    make.trailing.equalToSuperview().offset(-30)
-                    make.top.equalTo(self.contentView)
-                    make.bottom.equalTo(self.contentView)
-                }
-                
-            }else{
-                
-                self.superview?.superview?.addSubview(hiddenLeftView)
-                self.superview?.superview?.sendSubviewToBack(hiddenLeftView)
-                
-                hiddenLeftView.snp.makeConstraints{ make in
-                    make.leading.equalToSuperview().offset(32)
-                    make.top.equalTo(self.contentView)
-                    make.bottom.equalTo(self.contentView)
-                }
+            hiddenRightView.snp.makeConstraints{ make in
+                make.trailing.equalToSuperview().offset(-30)
+                make.top.equalTo(self.contentView)
+                make.bottom.equalTo(self.contentView)
             }
             
-            self.superview?.superview?.sendSubviewToBack(hiddenView)
-            isViewAdd = true
+            hiddenLeftView.snp.makeConstraints{ make in
+                make.leading.equalToSuperview().offset(32)
+                make.top.equalTo(self.contentView)
+                make.bottom.equalTo(self.contentView)
+            }
         }
     }
     
