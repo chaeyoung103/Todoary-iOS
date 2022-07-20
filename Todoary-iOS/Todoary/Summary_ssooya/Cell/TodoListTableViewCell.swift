@@ -25,7 +25,7 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     //tableCell UI
-    let checkBox = UIButton().then{
+    lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
         $0.setImage(UIImage(named: "todo_check"), for: .selected)
         $0.addTarget(self, action: #selector(checkBoxDidClicked(_:)), for: .touchUpInside)
@@ -104,14 +104,14 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-    let leftWidth : CGFloat = 58
-    let rightWidth : CGFloat = 105
+    lazy var leftWidth : CGFloat = 58
+    lazy var rightWidth : CGFloat = 105
     
     //hiddenView addSubView 되었는지 아닌지 확인 용도
-    var isViewAdd : CurrentHidden = .none
+    lazy var isViewAdd : CurrentHidden = .none
     
-    var originalCenter = CGPoint()
-    var isClamp = false
+    lazy var originalCenter = CGPoint()
+    lazy var isClamp = false
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -235,10 +235,8 @@ extension TodoListTableViewCell{
         moveBackHiddenView()
         UIView.animate(withDuration: 0.25,
                        animations: { self.frame = originalFrame },
-                       completion: { done in
-            if(done){
+                       completion: { _ in
                 self.removeHiddenViews()
-            }
         })
         
         isClamp = false
@@ -253,11 +251,9 @@ extension TodoListTableViewCell{
         
         UIView.animate(withDuration: 0.25,
                        animations: { self.frame = originalFrame },
-                       completion: { done in
-            if(done){
+                       completion: { _ in
                 self.removeHiddenViews()
                 self.delegate?.cellWillPin(indexPath)
-            }
         })
         
         isClamp = false
@@ -265,7 +261,6 @@ extension TodoListTableViewCell{
     
 }
 
-//사용 확정 메서드 임시 모음
 extension TodoListTableViewCell{
     
     func getCellIndexPath() -> IndexPath?{
@@ -314,8 +309,6 @@ extension TodoListTableViewCell{
     
     @objc
     func settingButtonDidClicked(_ sender : UIButton){
-        print("setting button did clicked")
-        
         cellWillMoveOriginalPosition()
     }
     
