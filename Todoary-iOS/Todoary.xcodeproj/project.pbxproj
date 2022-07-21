@@ -382,7 +382,6 @@
 		AC9128CE287B34830056932A /* Profile_hola */ = {
 			isa = PBXGroup;
 			children = (
-				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -463,6 +462,7 @@
 		E05C0BF128851AE300812099 /* 2week */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CE287B34830056932A /* Profile_hola */,
 				574913B5287ADEF300381BCD /* Setting */,
 				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
