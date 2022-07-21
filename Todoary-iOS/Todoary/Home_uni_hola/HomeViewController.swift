@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class HomeViewController : UIViewController {
+class HomeViewController : UIViewController , UITextFieldDelegate {
     
     let now = Date()
     var cal = Calendar.current
@@ -71,10 +71,29 @@ class HomeViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
-    let year_Month = UILabel().then{
-        $0.text = "2020년7월"
+    
+    let toolBar = UIToolbar().then {
+        $0.sizeToFit()
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(onPickDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let btnCancel = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(onPickCancel))
+        $0.setItems([btnCancel , space , btnDone], animated: true)
+        $0.isUserInteractionEnabled = true
+    }
+    
+    let datePicker = UIDatePicker().then{
+        $0.datePickerMode = .date
+        $0.preferredDatePickerStyle = .wheels
+        $0.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
+        $0.locale = Locale(identifier: "ko_KR")
+    }
+    
+    let year_Month = UITextField().then{
+        $0.text = "1999년 7월"
         $0.textColor = .black
         $0.font = UIFont.nbFont(type: .header)
+        $0.tintColor = .clear
+        
     }
     
     let previousMonthBtn = UIButton().then{
@@ -114,6 +133,10 @@ class HomeViewController : UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
         self.collectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "calendarCell")
+        self.year_Month.delegate = self
+        self.year_Month.inputView = self.datePicker
+        self.year_Month.inputAccessoryView = self.toolBar
+
     }
 
     
@@ -128,6 +151,29 @@ class HomeViewController : UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    // datePicker.addTarget의 selector에 지정된 메서드
+    @objc func datePickerValueDidChange(_ datePicker: UIDatePicker) {
+        let formatter = DateFormatter() // Date 타입과 관련된 포맷터
+        formatter.dateFormat = "yyyy년 MM월 dd일(EEEEE)" // 요일을 한글자만
+        formatter.locale = Locale(identifier: "ko_KR")
+    }
+    
+    @objc func onPickDone() {
+        print("돼?")
+        components.year = cal.component(.year, from: datePicker.date)
+        components.month = cal.component(.month, from: datePicker.date)
+        self.calculation()
+        self.collectionView.reloadData()
+        year_Month.resignFirstResponder() /// 피커뷰 내림
+    }
+         
+    @objc func onPickCancel() {
+        year_Month.resignFirstResponder() /// 피커뷰 내림
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return false
+        }
 }
 
 class paddingLabel: UILabel {
