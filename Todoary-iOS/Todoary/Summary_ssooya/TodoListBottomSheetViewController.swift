@@ -18,6 +18,7 @@ class TodoListBottomSheetViewController: UIViewController {
     
     let addButton = UIButton().then{
         $0.backgroundColor = .summaryTitle
+        $0.setImage(UIImage(named: "pencil"), for: .normal)
         $0.layer.cornerRadius = 70/2
         $0.layer.shadowRadius = 10.0
         $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
@@ -26,6 +27,7 @@ class TodoListBottomSheetViewController: UIViewController {
         $0.layer.masksToBounds = false
         $0.addTarget(self, action: #selector(addButtonDidClicked), for: .touchUpInside)
     }
+    
     //MARK: - Properties
     
     //for 다이어리 작성했을 때 view 구성
@@ -105,6 +107,8 @@ class TodoListBottomSheetViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-52.52)
             make.trailing.equalToSuperview().offset(-27)
         }
+        
+        
     
     }
     
