@@ -71,11 +71,11 @@ extension AccountViewController {
         
         userAccount.snp.makeConstraints{ make in
             make.centerY.equalTo(accountTitle)
-            make.leading.equalTo(accountTitle.snp.trailing).offset(187)
+            make.trailing.equalToSuperview().offset(-31)
         }
         
         accountBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(328)
+            make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(1)
             make.leading.equalTo(accountTitle.snp.leading)
             make.top.equalTo(accountTitle.snp.bottom).offset(17)

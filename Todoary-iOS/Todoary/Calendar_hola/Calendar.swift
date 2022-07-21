@@ -14,6 +14,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         dateFormatterYear.dateFormat = "yyyy"
         dateFormatterMonth.dateFormat = "MM"
+        dateFormatterDate.dateFormat = "dd"
+        self.year = Int(dateFormatterYear.string(from: now))!
+        self.month = Int(dateFormatterMonth.string(from: now))!
+        self.today = Int(dateFormatterDate.string(from: now))!
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
         components.day = 1
@@ -26,9 +30,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let firstWeekday = cal.component(.weekday, from: firstDayOfMonth!)
         daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
         weekdayAdding = 2 - firstWeekday
+        emptyDay = 0 - weekdayAdding
         
-        self.Month = Int(dateFormatterMonth.string(from: firstDayOfMonth!))!
-        self.year_Month.text = dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.Month)+"월"
+        self.month_component = Int(dateFormatterMonth.string(from: firstDayOfMonth!))!
+        self.year_component = Int(dateFormatterYear.string(from: firstDayOfMonth!))!
+        self.year_Month.text = dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월"
+        
         
         self.days.removeAll()
         for day in weekdayAdding...daysCountInMonth {
@@ -75,6 +82,32 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
             cell.dateLabel.text = days[indexPath.row]
+            cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
+            cell.dateLabel.textColor = .black
+            cell.layer.shadowRadius = 0
+            cell.layer.shadowColor = UIColor.transparent.cgColor
+            cell.layer.shadowOpacity = 0
+            
+            if self.year == year_component && self.month == month_component {
+                if today == (indexPath.row - emptyDay) {
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
+                    cell.dateLabel.textColor = .white
+                    cell.layer.shadowRadius = 3.0
+                    cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+                    cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+                    cell.layer.shadowOpacity = 1
+                    cell.layer.masksToBounds = false
+                    print(today)
+                }else if today+1 == (indexPath.row - emptyDay) {
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.textColor = .black
+                }else if today-1 == (indexPath.row - emptyDay) {
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.textColor = .black
+                }else {
+                    cell.dateLabel.textColor = .black
+                }
+            }
             
             return cell
         }

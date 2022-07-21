@@ -105,11 +105,30 @@ class AccountViewController : UIViewController {
         navigationController?.isNavigationBarHidden = true
                 }
     
-    @objc func cellDidTab() {
-        
+    @objc func pwFindCellDidTab() {
         let pwFindViewController = PwFindViewController()
         navigationController?.pushViewController(pwFindViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
+                }
+    
+    @objc func logoutCellDidTab() {
+        let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
+        let no = UIAlertAction(title: "아니오", style: .default)
+        let yes = UIAlertAction(title: "네", style: .cancel)
+        alert.addAction(no)
+        alert.addAction(yes)
+        
+        self.present(alert, animated: true, completion: nil)
+                }
+    
+    @objc func accountDeleteCellDidTab() {
+        let alert = UIAlertController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.", preferredStyle: .alert)
+        let no = UIAlertAction(title: "아니오", style: .default)
+        let yes = UIAlertAction(title: "네", style: .cancel)
+        alert.addAction(no)
+        alert.addAction(yes)
+        
+        self.present(alert, animated: true, completion: nil)
                 }
     
     //MARK: - Helpers
@@ -127,22 +146,30 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         
-        let tapGesture = CellButtonTapGesture(target: self, action: #selector(cellDidTab))
-        tapGesture.caller = indexPath.row
+        let tapPwFind = CellButtonTapGesture(target: self, action: #selector(pwFindCellDidTab))
+        tapPwFind.caller = indexPath.row
+        
+        let tapLogout = CellButtonTapGesture(target: self, action: #selector(logoutCellDidTab))
+        tapLogout.caller = indexPath.row
+        
+        let tapAccountDelete = CellButtonTapGesture(target: self, action: #selector(accountDeleteCellDidTab))
+        tapAccountDelete.caller = indexPath.row
         
         switch indexPath.row{
         case 0:
             cell.title.text = "비밀번호 재설정"
-            cell.main.addGestureRecognizer(tapGesture)
-            cell.nextBtn.addTarget(self, action: #selector(cellDidTab), for: .touchUpInside)
+            cell.main.addGestureRecognizer(tapPwFind)
+            cell.nextBtn.addTarget(self, action: #selector(pwFindCellDidTab), for: .touchUpInside)
             return cell
         case 1:
             cell.title.text = "로그아웃"
+            cell.main.addGestureRecognizer(tapLogout)
             cell.nextBtn.isHidden = true
             return cell
         case 2:
             cell.title.text = "계정 삭제하기"
             cell.title.textColor = .deleteRed
+            cell.main.addGestureRecognizer(tapAccountDelete)
             cell.nextBtn.isHidden = true
             return cell
         default:

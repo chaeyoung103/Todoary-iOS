@@ -16,7 +16,13 @@ class HomeViewController : UIViewController {
     var cal = Calendar.current
     let dateFormatterYear = DateFormatter()
     let dateFormatterMonth = DateFormatter()
-    var Month : Int = 0
+    let dateFormatterDate = DateFormatter()
+    var today : Int = 0
+    var month_component : Int = 0
+    var year_component : Int = 0
+    var month : Int = 0
+    var year : Int = 0
+    var emptyDay : Int = 0
     var components = DateComponents()
     var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
@@ -41,10 +47,11 @@ class HomeViewController : UIViewController {
     
     //profile
     
-    let profileImage = UIImageView().then {
-        $0.image = UIImage(named: "home_profile")
+    let profileImage = UIButton().then {
+        $0.setImage(UIImage(named: "home_profile"),for: .normal)
         $0.layer.cornerRadius = 40/2
         $0.clipsToBounds = true
+        $0.addTarget(self, action: #selector(profileBtnDidTap), for: .touchUpInside)
     }
     
     let nickname = paddingLabel().then{
@@ -112,11 +119,15 @@ class HomeViewController : UIViewController {
     
     //MARK: - settingBtnDidTab
     
-    @objc
-    func settingBtnDidTap(_ sender: UIButton){
+    @objc func settingBtnDidTap(_ sender: UIButton){
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
-
+    @objc func profileBtnDidTap() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
 }
 
 class paddingLabel: UILabel {
