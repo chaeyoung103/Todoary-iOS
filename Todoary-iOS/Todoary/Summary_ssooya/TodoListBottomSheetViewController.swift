@@ -102,7 +102,7 @@ class TodoListBottomSheetViewController: UIViewController {
         
         addButton.snp.makeConstraints{ make in
             make.width.height.equalTo(70)
-            make.bottom.equalToSuperview().offset(-89)
+            make.bottom.equalToSuperview().offset(-52.52)
             make.trailing.equalToSuperview().offset(-27)
         }
     
