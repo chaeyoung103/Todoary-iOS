@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct SingUpModel: Decodable{
+    var isSuccess: Bool
+    var code: Int
+    var messsage : String?
+}
+
