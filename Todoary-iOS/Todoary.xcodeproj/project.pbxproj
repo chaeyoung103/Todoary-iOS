@@ -92,6 +92,39 @@
 		E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */; };
 		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
 		E0F9987E288A441F0051C7AA /* AutoLoginInput_uni.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9987D288A441F0051C7AA /* AutoLoginInput_uni.swift */; };
+		E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99880288A57640051C7AA /* PwFindModel.swift */; };
+		E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99882288A57760051C7AA /* PwFindInput.swift */; };
+		E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99884288A57850051C7AA /* PwFindDataManager.swift */; };
+		E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99887288A57C70051C7AA /* ProfileDataManager.swift */; };
+		E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99889288A57D60051C7AA /* ProfileInput.swift */; };
+		E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9988B288A57EB0051C7AA /* ProfileModel.swift */; };
+		E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9988E288A58160051C7AA /* ProfileImgDataManager.swift */; };
+		E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99890288A58260051C7AA /* ProfileImgInput.swift */; };
+		E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99892288A58320051C7AA /* ProfileImgModel.swift */; };
+		E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99895288A58650051C7AA /* ProfileImgDeleteDataManager.swift */; };
+		E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99897288A58870051C7AA /* ProfileImgDeleteModel.swift */; };
+		E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99899288A589A0051C7AA /* ProfileImgDeleteInput.swift */; };
+		E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9989C288A591D0051C7AA /* GetProfileDataManager.swift */; };
+		E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9989E288A592E0051C7AA /* GetProfileModel.swift */; };
+		E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A0288A59400051C7AA /* GetProfileInput.swift */; };
+		E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A3288A59A80051C7AA /* UserDeleteDataManager.swift */; };
+		E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A5288A59B70051C7AA /* UserDeleteModel.swift */; };
+		E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A7288A683E0051C7AA /* UserDeleteInput.swift */; };
+		E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */; };
+		E0F998AD288A69330051C7AA /* AlarmTodoInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */; };
+		E0F998AF288A69600051C7AA /* AlarmTodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */; };
+		E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */; };
+		E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */; };
+		E0F998B7288A69DD0051C7AA /* AlarmDiaryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */; };
+		E0F998BA288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */; };
+		E0F998BC288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */; };
+		E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */; };
+		E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */; };
+		E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C3288A6AF80051C7AA /* SignoutModel.swift */; };
+		E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C5288A6B010051C7AA /* SignoutInput.swift */; };
+		E0F998C9288A6B310051C7AA /* AdDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C8288A6B310051C7AA /* AdDataManger.swift */; };
+		E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CA288A6B460051C7AA /* AdModel.swift */; };
+		E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CC288A6B590051C7AA /* AdInput.swift */; };
 		E54C4D9FA6602FAE88B10C99 /* Pods_Todoary_TodoaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */; };
 		FE8D4ADF330D2D49EAEDF342 /* Pods_Todoary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */; };
 /* End PBXBuildFile section */
@@ -212,6 +245,39 @@
 		E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
 		E0F9987D288A441F0051C7AA /* AutoLoginInput_uni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginInput_uni.swift; sourceTree = "<group>"; };
+		E0F99880288A57640051C7AA /* PwFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindModel.swift; sourceTree = "<group>"; };
+		E0F99882288A57760051C7AA /* PwFindInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindInput.swift; sourceTree = "<group>"; };
+		E0F99884288A57850051C7AA /* PwFindDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindDataManager.swift; sourceTree = "<group>"; };
+		E0F99887288A57C70051C7AA /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
+		E0F99889288A57D60051C7AA /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
+		E0F9988B288A57EB0051C7AA /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		E0F9988E288A58160051C7AA /* ProfileImgDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgDataManager.swift; sourceTree = "<group>"; };
+		E0F99890288A58260051C7AA /* ProfileImgInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgInput.swift; sourceTree = "<group>"; };
+		E0F99892288A58320051C7AA /* ProfileImgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgModel.swift; sourceTree = "<group>"; };
+		E0F99895288A58650051C7AA /* ProfileImgDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgDeleteDataManager.swift; sourceTree = "<group>"; };
+		E0F99897288A58870051C7AA /* ProfileImgDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgDeleteModel.swift; sourceTree = "<group>"; };
+		E0F99899288A589A0051C7AA /* ProfileImgDeleteInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgDeleteInput.swift; sourceTree = "<group>"; };
+		E0F9989C288A591D0051C7AA /* GetProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileDataManager.swift; sourceTree = "<group>"; };
+		E0F9989E288A592E0051C7AA /* GetProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileModel.swift; sourceTree = "<group>"; };
+		E0F998A0288A59400051C7AA /* GetProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileInput.swift; sourceTree = "<group>"; };
+		E0F998A3288A59A80051C7AA /* UserDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteDataManager.swift; sourceTree = "<group>"; };
+		E0F998A5288A59B70051C7AA /* UserDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteModel.swift; sourceTree = "<group>"; };
+		E0F998A7288A683E0051C7AA /* UserDeleteInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteInput.swift; sourceTree = "<group>"; };
+		E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoDataManager.swift; sourceTree = "<group>"; };
+		E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoInput.swift; sourceTree = "<group>"; };
+		E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoModel.swift; sourceTree = "<group>"; };
+		E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryDataManager.swift; sourceTree = "<group>"; };
+		E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryModel.swift; sourceTree = "<group>"; };
+		E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryInput.swift; sourceTree = "<group>"; };
+		E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindDataManager.swift; sourceTree = "<group>"; };
+		E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindModel.swift; sourceTree = "<group>"; };
+		E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindInput.swift; sourceTree = "<group>"; };
+		E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutDataManager.swift; sourceTree = "<group>"; };
+		E0F998C3288A6AF80051C7AA /* SignoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutModel.swift; sourceTree = "<group>"; };
+		E0F998C5288A6B010051C7AA /* SignoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutInput.swift; sourceTree = "<group>"; };
+		E0F998C8288A6B310051C7AA /* AdDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDataManger.swift; sourceTree = "<group>"; };
+		E0F998CA288A6B460051C7AA /* AdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdModel.swift; sourceTree = "<group>"; };
+		E0F998CC288A6B590051C7AA /* AdInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInput.swift; sourceTree = "<group>"; };
 		E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -338,6 +404,9 @@
 		574913B5287ADEF300381BCD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998B8288A69EC0051C7AA /* AlarmRemindManager */,
+				E0F998B0288A69700051C7AA /* AlarmDiaryDataManager */,
+				E0F998A9288A68B70051C7AA /* AlarmTodoDataManager */,
 				57B36ECB287AFA9D00378E16 /* Cell */,
 				574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */,
 				574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */,
@@ -421,6 +490,8 @@
 		AC9128C7287AD5830056932A /* Account_hola */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
+				E0F998A2288A59740051C7AA /* UserDeleteDataManager */,
 				AC9128C8287AD5A80056932A /* AccountViewController.swift */,
 				AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */,
 				AC9128CC287AFE620056932A /* AccountTableViewCell.swift */,
@@ -431,6 +502,10 @@
 		AC9128CE287B34830056932A /* Profile_hola */ = {
 			isa = PBXGroup;
 			children = (
+				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
+				E0F99894288A58410051C7AA /* ProfileImgDeleteDataManager */,
+				E0F9988D288A57F50051C7AA /* ProfileImgDataManager */,
+				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -461,6 +536,7 @@
 		ACACD01328749F760029D5CE /* PwFInd_hola */ = {
 			isa = PBXGroup;
 			children = (
+				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				ACACD01428749F880029D5CE /* PwFindViewController.swift */,
 				ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */,
 				AC9859C5287DC219009FC2F8 /* MailSender.swift */,
@@ -480,6 +556,7 @@
 		E005DE78287019B100814C79 /* Agreement_uni */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998C7288A6B120051C7AA /* AdDataManger */,
 				E005DE79287019BD00814C79 /* AgreementViewController.swift */,
 				E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */,
 			);
@@ -586,6 +663,116 @@
 				E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */,
 			);
 			path = AgreementText_uni;
+			sourceTree = "<group>";
+		};
+		E0F9987F288A57070051C7AA /* PwFindDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F99880288A57640051C7AA /* PwFindModel.swift */,
+				E0F99884288A57850051C7AA /* PwFindDataManager.swift */,
+				E0F99882288A57760051C7AA /* PwFindInput.swift */,
+			);
+			path = PwFindDataManager;
+			sourceTree = "<group>";
+		};
+		E0F99886288A57AC0051C7AA /* ProfileDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F99887288A57C70051C7AA /* ProfileDataManager.swift */,
+				E0F99889288A57D60051C7AA /* ProfileInput.swift */,
+				E0F9988B288A57EB0051C7AA /* ProfileModel.swift */,
+			);
+			path = ProfileDataManager;
+			sourceTree = "<group>";
+		};
+		E0F9988D288A57F50051C7AA /* ProfileImgDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F9988E288A58160051C7AA /* ProfileImgDataManager.swift */,
+				E0F99892288A58320051C7AA /* ProfileImgModel.swift */,
+				E0F99890288A58260051C7AA /* ProfileImgInput.swift */,
+			);
+			path = ProfileImgDataManager;
+			sourceTree = "<group>";
+		};
+		E0F99894288A58410051C7AA /* ProfileImgDeleteDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F99895288A58650051C7AA /* ProfileImgDeleteDataManager.swift */,
+				E0F99897288A58870051C7AA /* ProfileImgDeleteModel.swift */,
+				E0F99899288A589A0051C7AA /* ProfileImgDeleteInput.swift */,
+			);
+			path = ProfileImgDeleteDataManager;
+			sourceTree = "<group>";
+		};
+		E0F9989B288A58D40051C7AA /* GetProfileDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F9989C288A591D0051C7AA /* GetProfileDataManager.swift */,
+				E0F9989E288A592E0051C7AA /* GetProfileModel.swift */,
+				E0F998A0288A59400051C7AA /* GetProfileInput.swift */,
+			);
+			path = GetProfileDataManager;
+			sourceTree = "<group>";
+		};
+		E0F998A2288A59740051C7AA /* UserDeleteDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998A3288A59A80051C7AA /* UserDeleteDataManager.swift */,
+				E0F998A7288A683E0051C7AA /* UserDeleteInput.swift */,
+				E0F998A5288A59B70051C7AA /* UserDeleteModel.swift */,
+			);
+			path = UserDeleteDataManager;
+			sourceTree = "<group>";
+		};
+		E0F998A9288A68B70051C7AA /* AlarmTodoDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */,
+				E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */,
+				E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */,
+			);
+			path = AlarmTodoDataManager;
+			sourceTree = "<group>";
+		};
+		E0F998B0288A69700051C7AA /* AlarmDiaryDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */,
+				E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */,
+				E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */,
+			);
+			path = AlarmDiaryDataManager;
+			sourceTree = "<group>";
+		};
+		E0F998B8288A69EC0051C7AA /* AlarmRemindManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */,
+				E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */,
+				E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */,
+			);
+			path = AlarmRemindManager;
+			sourceTree = "<group>";
+		};
+		E0F998BF288A6A9C0051C7AA /* SignoutDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */,
+				E0F998C3288A6AF80051C7AA /* SignoutModel.swift */,
+				E0F998C5288A6B010051C7AA /* SignoutInput.swift */,
+			);
+			path = SignoutDataManager;
+			sourceTree = "<group>";
+		};
+		E0F998C7288A6B120051C7AA /* AdDataManger */ = {
+			isa = PBXGroup;
+			children = (
+				E0F998C8288A6B310051C7AA /* AdDataManger.swift */,
+				E0F998CA288A6B460051C7AA /* AdModel.swift */,
+				E0F998CC288A6B590051C7AA /* AdInput.swift */,
+			);
+			path = AdDataManger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -832,18 +1019,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
+				E0F998C9288A6B310051C7AA /* AdDataManger.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
+				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
+				E0F998BA288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift in Sources */,
+				E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */,
+				E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
+				E0F998AD288A69330051C7AA /* AlarmTodoInput.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
+				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
+				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
+				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
+				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
+				E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */,
+				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
+				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
@@ -853,6 +1053,7 @@
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
+				E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
 				5750364E288A3ECE006A9070 /* SignUpModel.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
@@ -862,44 +1063,63 @@
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
+				E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
 				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
+				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
+				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
+				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
+				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
+				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
+				E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
 				574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */,
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
+				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
+				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				E0F998B7288A69DD0051C7AA /* AlarmDiaryInput.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
+				E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
+				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				E0F9987E288A441F0051C7AA /* AutoLoginInput_uni.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
+				E0F998BC288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
+				E0F998AF288A69600051C7AA /* AlarmTodoModel.swift in Sources */,
 				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
+				E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
 				E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */,
+				E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */,
 				574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */,
 				576ED6B228749021007389CD /* String.swift in Sources */,
 				5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */,
+				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				574A70402885085D003C8F99 /* TestViewController.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,
+				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
+				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,
