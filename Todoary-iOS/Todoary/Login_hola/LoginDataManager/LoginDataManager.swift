@@ -17,10 +17,9 @@ class LoginDataManager{
                     UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
                     UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
                     print("로그인 성공")
-                    print(result.result?.token?.accessToken)
                     
-                    let signUpViewController = SignUpViewController()
-                    viewController.navigationController?.pushViewController(signUpViewController, animated: true)
+                    let homeViewController = HomeViewController()
+                    viewController.navigationController?.pushViewController(homeViewController, animated: true)
                     viewController.navigationController?.isNavigationBarHidden = true
                     
                 }else {

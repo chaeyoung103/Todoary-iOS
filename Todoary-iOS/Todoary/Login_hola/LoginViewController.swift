@@ -122,11 +122,10 @@ class LoginViewController: UIViewController {
     //MARK: - Actions
     
     @objc func signUpBtnDidTab() {
-        
-        let loginInput = LoginInput(email: idTf.text, password: pwTf.text)
-        LoginDataManager().loginDataManager(self,loginInput)
-        }
-    
+        let signUpViewController = SignUpViewController()
+        navigationController?.pushViewController(signUpViewController, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
     @objc func pwSearchBtnDidTab() {
         
         let pwFindViewController = PwFindViewController()
@@ -144,9 +143,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginBtnDidTab() {
-        let accountViewController = AccountViewController()
-        navigationController?.pushViewController(accountViewController, animated: true)
-        navigationController?.isNavigationBarHidden = true
+        let loginInput = LoginInput(email: idTf.text, password: pwTf.text)
+        LoginDataManager().loginDataManager(self,loginInput)
     }
     
     @objc func appleBtnDidTab() {
