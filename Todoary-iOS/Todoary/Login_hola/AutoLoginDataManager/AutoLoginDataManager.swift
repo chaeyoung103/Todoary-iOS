@@ -8,7 +8,7 @@
 import Alamofire
 
 class AutoLoginDataManager {
-    func auto(_ veiwController : LoginViewController,
+    func autologin(_ veiwController : LoginViewController,
               _ parameter : AutoLoginInput) {
         
         //통신
@@ -20,7 +20,10 @@ class AutoLoginDataManager {
             switch response.result {
             case .success(let result) :
                 print("DEBUG: ", result)
-
+                veiwController.AutoLoginAPI(result)
+                UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
+                UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                
             case .failure(let error) :
                 print(error.localizedDescription)
             }
@@ -28,4 +31,6 @@ class AutoLoginDataManager {
     }
 }
     
-
+extension LoginViewController {
+    func
+}
