@@ -31,7 +31,7 @@ class TodoListBottomSheetViewController: UIViewController {
     //MARK: - Properties
     
     //for 다이어리 작성했을 때 view 구성
-    let isDiaryExist = true
+    let isDiaryExist = false
     
     //더미 데이터
     var summaryData : [SummaryData] = [
