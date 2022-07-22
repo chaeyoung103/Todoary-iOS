@@ -14,6 +14,8 @@ class ProfileViewController : UIViewController {
     
     let imagePickerController = UIImagePickerController()
     
+    var isphoto = false
+    
     //MARK: - UIComponenets
     
     //navigation bar
@@ -105,9 +107,10 @@ class ProfileViewController : UIViewController {
                                             {(UIAlertAction) in
             self.profileImage.image = UIImage(named: "profile")
         })
-        let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: {(UIAlertAction) in
+        let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: { [self](UIAlertAction) in
+            self.isphoto = self.PhotoAuth()
             
-            if self.PhotoAuth() {
+            if self.isphoto {
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.delegate = self //3
@@ -208,17 +211,3 @@ class AddPaddingButtton : UIButton
     
  
 }
-
-//extension UIAlertController {
-//
-//    func setBackgroundColor(color: UIColor) {
-//        if let bgView = self.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
-//            contentView.backgroundColor = color
-//        }
-//    }
-//
-//    // Set tint color of UIAlertController
-//    func setTint(color: UIColor) {
-//        self.view.tintColor = color
-//    }
-//}

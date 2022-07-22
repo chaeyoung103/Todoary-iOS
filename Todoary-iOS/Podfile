@@ -13,6 +13,8 @@ target 'Todoary' do
 
   pod 'skpsmtpmessage'
 
+  pod 'Alamofire'
+
   target 'TodoaryTests' do
     inherit! :search_paths
     # Pods for testing

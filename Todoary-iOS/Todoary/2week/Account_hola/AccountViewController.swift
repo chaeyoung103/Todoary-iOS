@@ -47,7 +47,6 @@ class AccountViewController : UIViewController {
         $0.backgroundColor = .white
         $0.setTitleColor(.silver_115, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 13, weight: .semibold)
-        $0.titleLabel?.textAlignment = .natural
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_115.cgColor
         $0.layer.cornerRadius = 31/2
