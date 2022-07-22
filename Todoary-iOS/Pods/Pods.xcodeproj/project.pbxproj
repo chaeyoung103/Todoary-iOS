@@ -187,7 +187,7 @@
 		9B124C753089B1D55D719D6728FEFD63 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Sources/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		9C08E230C14F300885238EB23BED6FB1 /* skpsmtpmessage-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "skpsmtpmessage-Info.plist"; sourceTree = "<group>"; };
 		9D50EB539C1CDA5CCA7055DBB4B55A4B /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E64B7BD8069C20195A082446DF462F7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Sources/ConstraintPriority.swift; sourceTree = "<group>"; };
 		A0291396996A1BA51218D45583204F6A /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Sources/LayoutConstraint.swift; sourceTree = "<group>"; };
 		A0D95ADE001284ADB08554A1516BA241 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Sources/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		C0E35E86DD7B71594F6455ED4ABE3EDA /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Sources/ConstraintInsets.swift; sourceTree = "<group>"; };
 		C226020DE17F669777580E7679EEC598 /* Pods-Todoary-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Todoary-acknowledgements.plist"; sourceTree = "<group>"; };
 		C4640B63B1B9F630E78C16467BF24198 /* Pods-Todoary-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Todoary-Info.plist"; sourceTree = "<group>"; };
-		C504DBC91BDB127674D1AC6CF35A7703 /* Pods-Todoary */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Todoary"; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C504DBC91BDB127674D1AC6CF35A7703 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68501D252EAC7819DE0220237CCA43D /* skpsmtpmessage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = skpsmtpmessage.modulemap; sourceTree = "<group>"; };
 		CC27B7F5EE4D218B60BDDEEF422BBEC1 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64Additions.m"; path = "SMTPLibrary/NSData+Base64Additions.m"; sourceTree = "<group>"; };
 		CCA9E0E40C44D953957CA7FC7C608F56 /* skpsmtpmessage */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = skpsmtpmessage; path = skpsmtpmessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,7 +302,6 @@
 				E1BC8C6393F0A565FE7367F112F20EED /* Then.swift */,
 				D313894331DE98066770F378AF1C194B /* Support Files */,
 			);
-			name = Then;
 			path = Then;
 			sourceTree = "<group>";
 		};
@@ -319,7 +318,7 @@
 		38AB49A8D9729BFC3656AEF3973CC8CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C504DBC91BDB127674D1AC6CF35A7703 /* Pods-Todoary */,
+				C504DBC91BDB127674D1AC6CF35A7703 /* Pods_Todoary.framework */,
 				BAB3C840EB2310C6FAC91ADA3E1A5208 /* Pods-Todoary-TodoaryUITests */,
 				776D99018618AE1152078045E80AD8C2 /* Pods-TodoaryTests */,
 				CCA9E0E40C44D953957CA7FC7C608F56 /* skpsmtpmessage */,
@@ -470,7 +469,6 @@
 				DCBF3FE20E079120A8305DE3FAF8103F /* UILayoutSupport+Extensions.swift */,
 				3A6D0AD754EC2006D6007AC28A0368B8 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -489,7 +487,6 @@
 				4DBD1942E36E6FE5935A2ECE02201590 /* SKPSMTPMessage.m */,
 				5C4DF8F15324001DAF947B2687AA8EBB /* Support Files */,
 			);
-			name = skpsmtpmessage;
 			path = skpsmtpmessage;
 			sourceTree = "<group>";
 		};
@@ -596,7 +593,7 @@
 			);
 			name = "Pods-Todoary";
 			productName = Pods_Todoary;
-			productReference = C504DBC91BDB127674D1AC6CF35A7703 /* Pods-Todoary */;
+			productReference = C504DBC91BDB127674D1AC6CF35A7703 /* Pods_Todoary.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */ = {

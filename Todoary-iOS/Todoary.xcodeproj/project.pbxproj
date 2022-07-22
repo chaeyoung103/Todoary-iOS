@@ -34,7 +34,6 @@
 		574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */; };
 		574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */; };
 		574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */; };
-		574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703B2884F39E003C8F99 /* PaddingLabel.swift */; };
 		574A70402885085D003C8F99 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703F2885085D003C8F99 /* TestViewController.swift */; };
 		574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704428852523003C8F99 /* TodoListTitleCell.swift */; };
 		574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704628852543003C8F99 /* DiaryTitleCell.swift */; };
@@ -139,7 +138,6 @@
 		574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBottomSheetViewController.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
-		574A703B2884F39E003C8F99 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		574A703F2885085D003C8F99 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		574A704428852523003C8F99 /* TodoListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTitleCell.swift; sourceTree = "<group>"; };
 		574A704628852543003C8F99 /* DiaryTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTitleCell.swift; sourceTree = "<group>"; };
@@ -340,7 +338,6 @@
 			children = (
 				574A70432885250D003C8F99 /* Cell */,
 				574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */,
-				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
 				574A703F2885085D003C8F99 /* TestViewController.swift */,
 				574A704C28853C36003C8F99 /* UISheetPresentationControllerDetent+Private.h */,
 				574A704D28853CA8003C8F99 /* CustomSPCDetent-Bridging-Header.h */,
@@ -353,6 +350,7 @@
 			children = (
 				574A704E28865FEE003C8F99 /* HiddenTransparentButtonView.swift */,
 				574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */,
+				574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */,
 				574A704428852523003C8F99 /* TodoListTitleCell.swift */,
 				574A704628852543003C8F99 /* DiaryTitleCell.swift */,
 				574A70482885255B003C8F99 /* DiaryCell.swift */,
@@ -384,7 +382,6 @@
 		AC9128CE287B34830056932A /* Profile_hola */ = {
 			isa = PBXGroup;
 			children = (
-				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -445,7 +442,6 @@
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
-				574A703B2884F39E003C8F99 /* PaddingLabel.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -466,6 +462,7 @@
 		E05C0BF128851AE300812099 /* 2week */ = {
 			isa = PBXGroup;
 			children = (
+				AC9128C7287AD5830056932A /* Account_hola */,
 				AC9128CE287B34830056932A /* Profile_hola */,
 				574913B5287ADEF300381BCD /* Setting */,
 				E0AB9EBF287B1C290064CADA /* SettingAgreement_uni */,
@@ -823,7 +820,6 @@
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
-				574A703C2884F3A1003C8F99 /* PaddingLabel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
@@ -1026,9 +1022,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JF2K83LQ27;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
@@ -1043,8 +1040,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ssooya.Todoary;
+				PRODUCT_BUNDLE_IDENTIFIER = Todoary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Summary_ssooya/CustomSPCDetent-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1075,7 +1073,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ssooya.Todoary;
+				PRODUCT_BUNDLE_IDENTIFIER = Todoary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Summary_ssooya/CustomSPCDetent-Bridging-Header.h";

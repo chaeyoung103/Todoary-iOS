@@ -86,7 +86,7 @@ extension HomeViewController {
             make.top.equalTo(nextMonthBtn.snp.bottom)
             make.centerX.equalToSuperview()
             make.width.equalTo(312)
-            make.bottom.equalToSuperview().offset(-330)
+            make.bottom.equalToSuperview().offset(-300)
         }
         
         
