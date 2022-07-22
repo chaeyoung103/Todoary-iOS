@@ -19,6 +19,7 @@ extension ProfileViewController {
         self.view.addSubview(nickNameTf)
         self.view.addSubview(introduceTitle)
         self.view.addSubview(introduceTf)
+        self.view.addSubview(confirmBtn)
         
 
 
@@ -70,6 +71,14 @@ extension ProfileViewController {
             make.leading.equalToSuperview().offset(32)
             make.width.equalTo(327)
             make.height.equalTo(67)
+        }
+        
+        //button
+        confirmBtn.snp.makeConstraints{ make in
+            make.bottom.equalToSuperview().offset(-47)
+            make.leading.equalToSuperview().offset(26)
+            make.trailing.equalToSuperview().offset(-26)
+            make.height.equalTo(52)
         }
         
         

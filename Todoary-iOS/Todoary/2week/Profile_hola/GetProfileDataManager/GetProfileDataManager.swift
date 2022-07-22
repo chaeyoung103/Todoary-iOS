@@ -6,7 +6,7 @@
 //
 
 import Alamofire
-import Foundation
+
 class GetProfileDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]

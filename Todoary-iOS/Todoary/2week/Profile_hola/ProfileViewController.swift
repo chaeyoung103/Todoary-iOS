@@ -76,7 +76,14 @@ class ProfileViewController : UIViewController {
         $0.layer.cornerRadius = 10
     }
     
-    
+    let confirmBtn = UIButton().then{
+        $0.setTitle("확인", for: .normal)
+        $0.backgroundColor = .buttonColor
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(type: .button1)
+        $0.layer.cornerRadius = 52/2
+        $0.addTarget(self, action: #selector(confirmBtnDidTab), for: .touchUpInside)
+    }
     
     //MARK: - Lifecycles
     
@@ -128,6 +135,12 @@ class ProfileViewController : UIViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func confirmBtnDidTab() {
+        let profileInput = ProfileInput(nickName: nickNameTf.text, introduce: introduceTf.text)
+        ProfileDataManager().profileDataManager(self,profileInput)
+        print("확인버튼")
     }
     
     //MARK: - Helpers
