@@ -10,8 +10,8 @@ import Alamofire
 
 class SignUpDataManager{
     
-    func posts(_ viewController: SignUpViewController, email: SignUpInput){
-        AF.request("http://todoary.com:9000/auth/signup", method: .post, parameters: email, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: SingUpModel.self) { response in
+    func posts(_ viewController: SignUpViewController, email: String){
+        AF.request("http://todoary.com:9000/auth/email/duplication", method: .get, parameters: ["email":email], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
             case .success(let result):
                 if result.isSuccess{

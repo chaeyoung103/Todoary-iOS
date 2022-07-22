@@ -309,7 +309,6 @@ class SignUpViewController: UIViewController {
             }
             return
         case nicknameTextField:
-            
             isValidNickname = text.isValidNickname()
             if(isValidNickname){
                 nicknameCanUseLabel.isHidden = true
@@ -330,8 +329,7 @@ class SignUpViewController: UIViewController {
         
         if(isValidEmail){
             //이메일 중복 여부 확인
-            let emailData = SignUpInput(email: self.email)
-            SignUpDataManager().posts(self, email: emailData)
+            SignUpDataManager().posts(self, email: self.email)
             print("API - email 중복 검사 요청")
         }else{
             idCanUseLabel.text = "*이메일 형식이 올바르지 않습니다."
@@ -361,7 +359,7 @@ class SignUpViewController: UIViewController {
     
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
-        
+
         let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd)
         
         SignUpDataManager().posts(self, userData)
@@ -391,6 +389,7 @@ extension SignUpViewController{
         }else if(code == 2017){
             idCanUseLabel.text = "*이미 사용중인 이메일입니다."
             idCanUseLabel.textColor = .noticeRed
+            isValidEmail = false
         }
     }
 }
