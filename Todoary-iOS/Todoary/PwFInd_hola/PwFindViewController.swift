@@ -146,6 +146,7 @@ class PwFindViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
         $0.layer.cornerRadius = 52/2
+        $0.addTarget(self, action: #selector(passWordChangeButtonDidClicked), for: .touchUpInside)
     }
     
     
@@ -180,7 +181,10 @@ class PwFindViewController: UIViewController {
         case pwCertificationTf:
             pwCertificationNoticeLb.isHidden = false
             if text == self.password {
+                isValidPw = true
                 pwCertificationNoticeLb.isHidden = true
+            }else{
+                isValidPw = false
             }
         default:
             fatalError("Missing TextField...")
@@ -188,11 +192,20 @@ class PwFindViewController: UIViewController {
     }
     
     @objc func idCertificationBtnDidTab() {
+
         MailSender.shared.sendEmail()
+        
         let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func passWordChangeButtonDidClicked(){
+        
+        let pwData = PwFindInput(newPassword: self.password)
+        
+        PwFindDataManager().patch(self, pwData)
     }
     
     //MARK: - Helpers

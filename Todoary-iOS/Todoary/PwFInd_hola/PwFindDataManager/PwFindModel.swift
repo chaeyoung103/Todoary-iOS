@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct PwFindModel: Decodable{
+    var isSuccess: Bool
+    var code: Int
+    var messsage : String?
+    var result: String?
+}
