@@ -12,3 +12,4 @@ struct SingUpModel: Decodable{
     var code: Int
     var messsage : String?
 }
+

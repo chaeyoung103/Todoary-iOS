@@ -10,7 +10,6 @@ import Alamofire
 
 class SignUpDataManager{
     
-//    _ viewController: SignUpViewController,
     func posts(_ viewController: SignUpViewController, email: SignUpInput){
         AF.request("http://todoary.com:9000/auth/signup", method: .post, parameters: email, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
@@ -28,7 +27,7 @@ class SignUpDataManager{
         AF.request("http://todoary.com:9000/auth/signup", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
             case .success(let result):
-                if result.isSuccess{
+                if result.isSuccess && result.code == 1000{
                     print("성공")
                     viewController.navigationController?.pushViewController(AgreementViewController(), animated: true)
                 }else{
