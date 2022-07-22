@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct SingUpInput: Encodable{
+    
+    var username: String?
+    var nickname: String?
+    var email: String?
+    var password: String?
+}
