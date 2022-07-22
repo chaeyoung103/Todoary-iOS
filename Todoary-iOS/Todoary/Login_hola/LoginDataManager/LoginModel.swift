@@ -13,7 +13,7 @@ struct LoginModel : Decodable {
 }
 
 struct LoginResult : Decodable {
-    var token : [Token]?
+    var token : Token?
 }
 
 struct Token : Decodable {
