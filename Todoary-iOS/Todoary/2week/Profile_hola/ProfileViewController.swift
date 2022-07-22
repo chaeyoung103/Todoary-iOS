@@ -94,6 +94,8 @@ class ProfileViewController : UIViewController {
         setUpView()
         setUpConstraint()
         
+        GetProfileDataManager().getProfileDataManger(self)
+        
     }
     
     //MARK: - Actions
@@ -195,6 +197,13 @@ extension UITextField {
         leftimage.image = image
         self.leftView = leftimage
         self.leftViewMode = .always
+    }
+}
+
+extension ProfileViewController {
+    func successAPI(_ result : GetProfileResult) {
+        nickNameTf.text = result.introduce
+        introduceTf.text = result.nickname
     }
 }
 
