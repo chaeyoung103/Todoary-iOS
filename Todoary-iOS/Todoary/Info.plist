@@ -41,13 +41,8 @@
 	<string>AppleSDGothicNeoM.ttf</string>
     <key>NSAppTransportSecurity</key>
     <dict>
-<<<<<<< HEAD
-        <key>NSAllowsArbitraryLoadsInWebContent</key>
-        <true/>
-=======
       <key>NSAllowsArbitraryLoads</key>
       <true/>
->>>>>>> Develop
     </dict>
 </dict>
 </plist>
