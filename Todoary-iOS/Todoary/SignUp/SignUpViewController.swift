@@ -362,7 +362,7 @@ class SignUpViewController: UIViewController {
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
         
-        let userData = SignUpInput(email: self.email, password: self.passwd, username: self.name, nickname: self.nickname)
+        let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd)
         
         SignUpDataManager().posts(self, userData)
     }
