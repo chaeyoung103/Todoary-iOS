@@ -14,14 +14,18 @@ class LoginDataManager{
             switch response.result {
             case .success(let result):
                 if result.isSuccess {
-                    UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
-                    UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
-                    print("로그인 성공")
-                    
-                    let homeViewController = HomeViewController()
-                    viewController.navigationController?.pushViewController(homeViewController, animated: true)
-                    viewController.navigationController?.isNavigationBarHidden = true
-                    
+                    switch result.code{
+                    case 1000:
+                        UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
+                        UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                        print("로그인 성공")
+                        
+                        let homeViewController = HomeViewController()
+                        viewController.navigationController?.pushViewController(homeViewController, animated: true)
+                        viewController.navigationController?.isNavigationBarHidden = true
+                    default:
+                        print(result.message)
+                    }
                 }else {
                     print(result.message)
                 }

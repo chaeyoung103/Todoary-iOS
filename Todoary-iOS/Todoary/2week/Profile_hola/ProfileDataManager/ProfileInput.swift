@@ -5,4 +5,7 @@
 //  Created by 예리 on 2022/07/22.
 //
 
-import Foundation
+struct ProfileInput : Encodable {
+    var nickName : String?
+    var introduce : String?
+}
