@@ -174,7 +174,6 @@ class SignUpViewController: UIViewController {
         $0.text = "*8자 이하의 한글 또는 영어로만 가능합니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
-//        $0.isHidden = false
     }
 
     //nickname
@@ -197,7 +196,6 @@ class SignUpViewController: UIViewController {
         $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
-//        $0.isHidden = true
     }
 
     let nextButton = UIButton().then{
@@ -241,7 +239,6 @@ class SignUpViewController: UIViewController {
     
     func textFieldAddRecognizer(){
         
-//        let tfChangedArray = [idTextField, certificationTextField, pwCertificationTextField, nameTextField, nicknameTextField]
         let tfChangedArray = [idTextField, certificationTextField, pwCertificationTextField]
         
         tfChangedArray.forEach{ each in
@@ -282,12 +279,6 @@ class SignUpViewController: UIViewController {
                 pwIncorrectLabel.isHidden = false
             }
             return
-//        case nameTextField:
-//            nameCanUseLabel.isHidden = false
-//            return
-//        case nicknameTextField:
-//            nicknameCanUseLabel.isHidden = false
-//            return
         default:
             fatalError("Missing Textfield")
         }
@@ -334,32 +325,14 @@ class SignUpViewController: UIViewController {
     
     @objc
     func certificationBtnDidClicked(_ sender: UIButton){
-        //이메일 중복 여부 확인
+        
         idCanUseLabel.isHidden = false
         
         if(isValidEmail){
-            
-            /*
-            if() 사용가능 이메일 점검 조건문 추가
-             */
-            idCanUseLabel.text = "*사용 가능한 이메일입니다."
-            idCanUseLabel.textColor = .todoaryGrey
-            
-            //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
-            let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: "", preferredStyle: .alert)
-            
-            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            
-            alert.addAction(alertAction)
-            self.present(alert, animated: true, completion: nil)
-            
-            /*
-            else{
-                idCanUseLabel.text = "*이미 사용중인 이메일입니다."
-                idCanUseLabel.textColor = .problemRed
-            }
-             */
-            
+            //이메일 중복 여부 확인
+            let emailData = SignUpInput(email: self.email)
+            SignUpDataManager().posts(self, email: emailData)
+            print("API - email 중복 검사 요청")
         }else{
             idCanUseLabel.text = "*이메일 형식이 올바르지 않습니다."
             idCanUseLabel.textColor = .noticeRed
@@ -388,9 +361,36 @@ class SignUpViewController: UIViewController {
     
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
-        self.navigationController?.pushViewController(AgreementViewController(), animated: true)
+        
+        let userData = SignUpInput(email: self.email, password: self.passwd, username: self.name, nickname: self.nickname)
+        
+        SignUpDataManager().posts(self, userData)
     }
     
-    
+}
 
+extension SignUpViewController{
+    
+    func checkApiResultCode(_ code: Int){
+        
+        if(code == 1000) { //사용가능 이메일 점검 조건문 추가
+            
+            idCanUseLabel.text = "*사용 가능한 이메일입니다."
+            idCanUseLabel.textColor = .todoaryGrey
+            
+            MailSender.shared.sendEmail()
+            
+            //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
+            let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: "", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
+            
+        }else if(code == 2017){
+            idCanUseLabel.text = "*이미 사용중인 이메일입니다."
+            idCanUseLabel.textColor = .noticeRed
+        }
+    }
 }
