@@ -136,6 +136,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.year_Month.delegate = self
         self.year_Month.inputView = self.datePicker
         self.year_Month.inputAccessoryView = self.toolBar
+        
+        GetProfileDataManager().getProfileDataManger(self)
 
     }
 
@@ -174,6 +176,14 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
             return false
         }
 }
+
+extension HomeViewController {
+    func successAPI(_ result : GetProfileResult) {
+        nickname.text = result.introduce
+        introduce.text = result.nickname
+    }
+}
+
 
 class paddingLabel: UILabel {
     var padding = UIEdgeInsets(top: 1.5, left: 10, bottom: 0, right: 10)
