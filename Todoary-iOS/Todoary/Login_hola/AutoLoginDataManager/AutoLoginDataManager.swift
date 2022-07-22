@@ -20,9 +20,12 @@ class AutoLoginDataManager {
             switch response.result {
             case .success(let result) :
                 print("DEBUG: ", result)
-               // veiwController.AutoLoginAPI(result)
                 UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
                 UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                
+                let homeViewController = HomeViewController()
+                veiwController.navigationController?.pushViewController(homeViewController, animated: true)
+                veiwController.navigationController?.isNavigationBarHidden = true
                 
             case .failure(let error) :
                 print(error.localizedDescription)

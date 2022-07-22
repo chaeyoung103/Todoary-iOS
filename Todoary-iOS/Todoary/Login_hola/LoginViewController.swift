@@ -12,6 +12,8 @@ import Then
 
 class LoginViewController: UIViewController {
     
+    var validateAutoLogin = false
+    
     //MARK: - UIComponenets
     
     //id
@@ -117,9 +119,12 @@ class LoginViewController: UIViewController {
 
         setUpView()
         setUpConstraint()
+        //setupData()
+        
     }
-    
+
     //MARK: - Actions
+        
     
     @objc func signUpBtnDidTab() {
         let signUpViewController = SignUpViewController()
@@ -136,15 +141,26 @@ class LoginViewController: UIViewController {
     @objc func autoLoginBtnDidTab() {
         if autoLoginBtn.isSelected {
             autoLoginBtn.isSelected = false
+            validateAutoLogin = false
         }
         else {
             autoLoginBtn.isSelected = true
+            validateAutoLogin = true
         }
     }
     
     @objc func loginBtnDidTab() {
-        let loginInput = LoginInput(email: idTf.text, password: pwTf.text)
-        LoginDataManager().loginDataManager(self,loginInput)
+        if validateAutoLogin == false {
+            let loginInput = LoginInput(email: idTf.text, password: pwTf.text)
+            LoginDataManager().loginDataManager(self,loginInput)
+        } else {
+            // 자동로그인을 눌렀을 때
+            let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
+            AutoLoginDataManager() .autologin(self,autoLoginInput)
+            
+            
+        }
+      
     }
     
     @objc func appleBtnDidTab() {
@@ -152,8 +168,22 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(askViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
     }
+        
+        
     
     //MARK: - Helpers
+    
+    private func setupData() {
+        if  (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
+            let homeViewController = HomeViewController()
+            navigationController?.pushViewController(homeViewController, animated: true)
+            navigationController?.isNavigationBarHidden = true
+        } else {
+            let LoginViewController = LoginViewController()
+            navigationController?.pushViewController(LoginViewController, animated: true)
+            navigationController?.isNavigationBarHidden = true
+        }
+    }
 
 }
 

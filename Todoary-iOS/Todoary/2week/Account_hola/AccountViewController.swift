@@ -113,12 +113,20 @@ class AccountViewController : UIViewController {
     @objc func logoutCellDidTab() {
         let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
         let no = UIAlertAction(title: "아니오", style: .default)
-        let yes = UIAlertAction(title: "네", style: .cancel)
+        let yes = UIAlertAction(title: "네", style: .cancel){(_) in
+        let LoginViewController = LoginViewController()
+            SignoutDataManager().signout(self)
+            self.navigationController?.pushViewController(LoginViewController, animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
+            
         alert.addAction(no)
         alert.addAction(yes)
         
         self.present(alert, animated: true, completion: nil)
-                }
+    }
+
+
     
     @objc func accountDeleteCellDidTab() {
         let alert = UIAlertController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.", preferredStyle: .alert)
