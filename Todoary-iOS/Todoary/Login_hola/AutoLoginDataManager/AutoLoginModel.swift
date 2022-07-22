@@ -19,7 +19,3 @@ struct AutoLoginModelReult : Decodable {
     var token : Token?
 }
 
-struct Token : Decodable {
-    var accessToken : String?
-    var refreshToken : String?
-}

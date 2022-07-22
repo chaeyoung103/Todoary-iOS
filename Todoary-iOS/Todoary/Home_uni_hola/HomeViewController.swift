@@ -159,7 +159,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     @objc func onPickDone() {
-        print("돼?")
         components.year = cal.component(.year, from: datePicker.date)
         components.month = cal.component(.month, from: datePicker.date)
         self.calculation()
