@@ -15,6 +15,7 @@ class SignUpDataManager{
             switch response.result {
             case .success(let result):
                 if result.isSuccess{
+                    print("success??")
                     viewController.checkApiResultCode(result.code)
                 }
             case .failure(let error):
