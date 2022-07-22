@@ -122,7 +122,7 @@
 		E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */; };
 		E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C3288A6AF80051C7AA /* SignoutModel.swift */; };
 		E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C5288A6B010051C7AA /* SignoutInput.swift */; };
-		E0F998C9288A6B310051C7AA /* AdDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C8288A6B310051C7AA /* AdDataManger.swift */; };
+		E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C8288A6B310051C7AA /* AdDataManager.swift */; };
 		E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CA288A6B460051C7AA /* AdModel.swift */; };
 		E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CC288A6B590051C7AA /* AdInput.swift */; };
 		E54C4D9FA6602FAE88B10C99 /* Pods_Todoary_TodoaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */; };
@@ -275,7 +275,7 @@
 		E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutDataManager.swift; sourceTree = "<group>"; };
 		E0F998C3288A6AF80051C7AA /* SignoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutModel.swift; sourceTree = "<group>"; };
 		E0F998C5288A6B010051C7AA /* SignoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutInput.swift; sourceTree = "<group>"; };
-		E0F998C8288A6B310051C7AA /* AdDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDataManger.swift; sourceTree = "<group>"; };
+		E0F998C8288A6B310051C7AA /* AdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDataManager.swift; sourceTree = "<group>"; };
 		E0F998CA288A6B460051C7AA /* AdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdModel.swift; sourceTree = "<group>"; };
 		E0F998CC288A6B590051C7AA /* AdInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInput.swift; sourceTree = "<group>"; };
 		E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,7 +556,7 @@
 		E005DE78287019B100814C79 /* Agreement_uni */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998C7288A6B120051C7AA /* AdDataManger */,
+				E0F998C7288A6B120051C7AA /* AdDataManager */,
 				E005DE79287019BD00814C79 /* AgreementViewController.swift */,
 				E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */,
 			);
@@ -765,14 +765,14 @@
 			path = SignoutDataManager;
 			sourceTree = "<group>";
 		};
-		E0F998C7288A6B120051C7AA /* AdDataManger */ = {
+		E0F998C7288A6B120051C7AA /* AdDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998C8288A6B310051C7AA /* AdDataManger.swift */,
+				E0F998C8288A6B310051C7AA /* AdDataManager.swift */,
 				E0F998CA288A6B460051C7AA /* AdModel.swift */,
 				E0F998CC288A6B590051C7AA /* AdInput.swift */,
 			);
-			path = AdDataManger;
+			path = AdDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1019,7 +1019,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
-				E0F998C9288A6B310051C7AA /* AdDataManger.swift in Sources */,
+				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
