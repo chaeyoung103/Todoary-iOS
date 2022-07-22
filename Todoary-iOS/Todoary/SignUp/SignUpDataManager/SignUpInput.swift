@@ -9,9 +9,9 @@ import Foundation
 
 struct SignUpInput: Encodable{
     
-    var username: String?
-    var nickname: String?
     var email: String?
+    var name: String?
+    var nickname: String?
     var password: String?
     
     //email 유효성 검사용 생성자
@@ -20,11 +20,11 @@ struct SignUpInput: Encodable{
     }
     
     //회원가입용 생성자
-    init(email: String, password: String, username: String, nickname: String) {
+    init(email: String, name: String, nickname: String, password: String) {
         self.email = email
-        self.password = password
-        self.username = username
+        self.name = name
         self.nickname = nickname
+        self.password = password
     }
     
 }
