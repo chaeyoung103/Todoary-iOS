@@ -47,7 +47,6 @@
 		57503652288A3FB7006A9070 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503651288A3FB7006A9070 /* LoginInput.swift */; };
 		57503654288A3FC9006A9070 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503653288A3FC9006A9070 /* LoginModel.swift */; };
 		57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503655288A3FD4006A9070 /* LoginDataManager.swift */; };
-		57503658288A3FE6006A9070 /* AutoLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503657288A3FE6006A9070 /* AutoLoginInput.swift */; };
 		5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503659288A3FF8006A9070 /* AutoLoginModel.swift */; };
 		5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365B288A4007006A9070 /* AutoLoginDataManager.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
@@ -92,6 +91,7 @@
 		E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */; };
 		E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */; };
 		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
+		E0F9987E288A441F0051C7AA /* AutoLoginInput_uni.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F9987D288A441F0051C7AA /* AutoLoginInput_uni.swift */; };
 		E54C4D9FA6602FAE88B10C99 /* Pods_Todoary_TodoaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */; };
 		FE8D4ADF330D2D49EAEDF342 /* Pods_Todoary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */; };
 /* End PBXBuildFile section */
@@ -162,7 +162,6 @@
 		57503651288A3FB7006A9070 /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		57503653288A3FC9006A9070 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		57503655288A3FD4006A9070 /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
-		57503657288A3FE6006A9070 /* AutoLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginInput.swift; sourceTree = "<group>"; };
 		57503659288A3FF8006A9070 /* AutoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginModel.swift; sourceTree = "<group>"; };
 		5750365B288A4007006A9070 /* AutoLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginDataManager.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceViewController.swift; sourceTree = "<group>"; };
 		E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
+		E0F9987D288A441F0051C7AA /* AutoLoginInput_uni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginInput_uni.swift; sourceTree = "<group>"; };
 		E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -401,9 +401,9 @@
 		57503650288A3F98006A9070 /* AutoLoginDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				57503657288A3FE6006A9070 /* AutoLoginInput.swift */,
 				57503659288A3FF8006A9070 /* AutoLoginModel.swift */,
 				5750365B288A4007006A9070 /* AutoLoginDataManager.swift */,
+				E0F9987D288A441F0051C7AA /* AutoLoginInput_uni.swift */,
 			);
 			path = AutoLoginDataManager;
 			sourceTree = "<group>";
@@ -846,7 +846,6 @@
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
-				57503658288A3FE6006A9070 /* AutoLoginInput.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
@@ -883,6 +882,7 @@
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
+				E0F9987E288A441F0051C7AA /* AutoLoginInput_uni.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
