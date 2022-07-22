@@ -112,7 +112,7 @@ extension LoginViewController {
         }
         
         pwSearchBtn.snp.makeConstraints{ make in
-//            make.top.equalTo(signUpBtn.snp.bottom).offset(24)
+            make.top.equalTo(signUpBtn.snp.bottom).offset(24)
             make.bottom.equalToSuperview().offset(-33.67)
             make.centerX.equalToSuperview()
             make.width.equalTo(171)
