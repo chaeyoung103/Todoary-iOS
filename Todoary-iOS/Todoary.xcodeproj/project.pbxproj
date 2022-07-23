@@ -52,6 +52,7 @@
 		5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365E288BE33F006A9070 /* CategoryViewController.swift */; };
 		57503661288BE380006A9070 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButton.swift */; };
 		57503663288BE3A0006A9070 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */; };
+		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -203,6 +204,7 @@
 		5750365E288BE33F006A9070 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		57503660288BE380006A9070 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -367,8 +369,8 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
-				5750365D288BE322006A9070 /* Category */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
+				5750365D288BE322006A9070 /* Category */,
 				E0AB9EC4287B1C900064CADA /* 1week */,
 				E05C0BF128851AE300812099 /* 2week */,
 				574A6FEA28826CDD003C8F99 /* Summary_ssooya */,
@@ -587,6 +589,7 @@
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
+				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -1059,6 +1062,7 @@
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
 				E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */,
+				57503665288BE42C006A9070 /* CategoryColor.swift in Sources */,
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
