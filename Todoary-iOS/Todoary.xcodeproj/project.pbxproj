@@ -50,7 +50,7 @@
 		5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503659288A3FF8006A9070 /* AutoLoginModel.swift */; };
 		5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365B288A4007006A9070 /* AutoLoginDataManager.swift */; };
 		5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365E288BE33F006A9070 /* CategoryViewController.swift */; };
-		57503661288BE380006A9070 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButton.swift */; };
+		57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */; };
 		57503663288BE3A0006A9070 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */; };
 		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
@@ -202,7 +202,7 @@
 		57503659288A3FF8006A9070 /* AutoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginModel.swift; sourceTree = "<group>"; };
 		5750365B288A4007006A9070 /* AutoLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginDataManager.swift; sourceTree = "<group>"; };
 		5750365E288BE33F006A9070 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		57503660288BE380006A9070 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
@@ -490,7 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
-				57503660288BE380006A9070 /* CategoryButton.swift */,
+				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
 				57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */,
 			);
 			path = Category;
@@ -1041,7 +1041,7 @@
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
-				57503661288BE380006A9070 /* CategoryButton.swift in Sources */,
+				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
