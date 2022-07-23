@@ -164,8 +164,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func appleBtnDidTab() {
-        let askViewController = AskViewController()
-        navigationController?.pushViewController(askViewController, animated: true)
+        let todoSettingViewController = TodoSettingViewController()
+        navigationController?.pushViewController(todoSettingViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
     }
         

@@ -65,6 +65,8 @@
 		AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */; };
 		AC5E27CD288C38290056EC69 /* TodoCategoryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */; };
 		AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */; };
+		AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D4288C68920056EC69 /* EmailCheckDataManager.swift */; };
+		AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D7288C68DB0056EC69 /* EmailCheckModel.swift */; };
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
@@ -226,6 +228,8 @@
 		AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryViewController.swift; sourceTree = "<group>"; };
 		AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoCategoryViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCalendarBottomSheetViewController.swift; sourceTree = "<group>"; };
+		AC5E27D4288C68920056EC69 /* EmailCheckDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckDataManager.swift; sourceTree = "<group>"; };
+		AC5E27D7288C68DB0056EC69 /* EmailCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckModel.swift; sourceTree = "<group>"; };
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -532,6 +536,15 @@
 			path = TodoSetting;
 			sourceTree = "<group>";
 		};
+		AC5E27D6288C68980056EC69 /* EmailCheckDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC5E27D4288C68920056EC69 /* EmailCheckDataManager.swift */,
+				AC5E27D7288C68DB0056EC69 /* EmailCheckModel.swift */,
+			);
+			path = EmailCheckDataManager;
+			sourceTree = "<group>";
+		};
 		AC9128C7287AD5830056932A /* Account_hola */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +594,7 @@
 		ACACD01328749F760029D5CE /* PwFInd_hola */ = {
 			isa = PBXGroup;
 			children = (
+				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
 				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				ACACD01428749F880029D5CE /* PwFindViewController.swift */,
 				ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */,
@@ -1067,6 +1081,7 @@
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
+				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
@@ -1169,6 +1184,7 @@
 				5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
+				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				574A70402885085D003C8F99 /* TestViewController.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,

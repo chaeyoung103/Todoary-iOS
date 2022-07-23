@@ -138,7 +138,7 @@ class ProfileViewController : UIViewController {
     }
     
     @objc func confirmBtnDidTab() {
-        let profileInput = ProfileInput(nickName: nickNameTf.text, introduce: introduceTf.text)
+        let profileInput = ProfileInput(nickname: nickNameTf.text, introduce: introduceTf.text)
         ProfileDataManager().profileDataManager(self,profileInput)
         print("확인버튼")
     }
