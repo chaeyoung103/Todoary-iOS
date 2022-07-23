@@ -49,6 +49,11 @@
 		57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503655288A3FD4006A9070 /* LoginDataManager.swift */; };
 		5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503659288A3FF8006A9070 /* AutoLoginModel.swift */; };
 		5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365B288A4007006A9070 /* AutoLoginDataManager.swift */; };
+		5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750365E288BE33F006A9070 /* CategoryViewController.swift */; };
+		57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */; };
+		57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */; };
+		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
+		57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -197,6 +202,11 @@
 		57503655288A3FD4006A9070 /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		57503659288A3FF8006A9070 /* AutoLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginModel.swift; sourceTree = "<group>"; };
 		5750365B288A4007006A9070 /* AutoLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginDataManager.swift; sourceTree = "<group>"; };
+		5750365E288BE33F006A9070 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodoTableViewCell.swift; sourceTree = "<group>"; };
+		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
+		57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryViewController+Layout.swift"; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -362,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				E02E7FA1287461760006F6FA /* CommonSource */,
+				5750365D288BE322006A9070 /* Category */,
 				E0AB9EC4287B1C900064CADA /* 1week */,
 				E05C0BF128851AE300812099 /* 2week */,
 				574A6FEA28826CDD003C8F99 /* Summary_ssooya */,
@@ -477,6 +488,17 @@
 			path = AutoLoginDataManager;
 			sourceTree = "<group>";
 		};
+		5750365D288BE322006A9070 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
+				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
+				57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */,
+				57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		57B36ECB287AFA9D00378E16 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +592,7 @@
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
+				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -1021,6 +1044,7 @@
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
+				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
@@ -1034,12 +1058,15 @@
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
+				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
 				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
+				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
 				E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */,
+				57503665288BE42C006A9070 /* CategoryColor.swift in Sources */,
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
@@ -1121,6 +1148,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
+				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,
 				572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,
 				AC9859C6287DC219009FC2F8 /* MailSender.swift in Sources */,
