@@ -214,9 +214,9 @@ extension UITextField {
 }
 
 extension ProfileViewController {
-    func successAPI(_ result : GetProfileResult) {
-        nickNameTf.text = result.introduce
-        introduceTf.text = result.nickname
+    func successAPI_profile(_ result : GetProfileResult) {
+        nickNameTf.text = result.nickname
+        introduceTf.text = result.introduce
     }
 }
 
