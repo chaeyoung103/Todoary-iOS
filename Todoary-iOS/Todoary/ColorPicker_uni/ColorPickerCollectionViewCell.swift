@@ -6,17 +6,56 @@
 //
 
 import UIKit
+import UIKit
+import SnapKit
+import Then
 
 class ColorPickerCollectionViewCell: UICollectionViewCell {
-    struct let identifier = "ColorPickerCollectionViewCell"
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let identifier = "ColorPickerCollectionViewCell"
+    
+    let colorBtn = UIButton().then{
+        $0.backgroundColor = UIColor.category1
+        //원형버튼 만들기
+        $0.layer.cornerRadius = 35/2
     }
     
-    public func setupData(){
-        //색상 업로드
+    let colorBtnpick = UIView().then{
+        $0.layer.borderWidth = 2
+        $0.layer.cornerRadius = 45/2
+        $0.layer.borderColor = UIColor.category1.cgColor
+    }
+    
+    //layout
+    
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+        
+        setUpContentView()
+        setUpConstraint()
     }
 
-}
+    
+        func setUpContentView(){
+            
+            contentView.addSubview(colorBtn)
+            contentView.addSubview(colorBtnpick)
+        }
+            
+        
+        func setUpConstraint(){
+            
+            colorBtn.snp.makeConstraints{ make in
+                make.width.height.equalTo(35)
+            }
+            
+//            colorBtnpick.snp.makeConstraints{ make in
+//                make.width.height.equalTo(45)
+//                make.centerX.centerY.equalTo(colorBtn)
+//            }
+        }
+            
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+

@@ -647,8 +647,8 @@
 			children = (
 				E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */,
 				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
-				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
 				E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */,
+				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
 			);
 			path = ColorPicker_uni;
 			sourceTree = "<group>";
