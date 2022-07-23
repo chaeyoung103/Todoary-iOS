@@ -93,6 +93,8 @@ class AccountViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        GetProfileDataManager().getProfileAccountDataManger(self)
     }
     
     //MARK: - Actions
@@ -142,6 +144,12 @@ class AccountViewController : UIViewController {
     }
     
     //MARK: - Helpers
+    
+    func successAPI_account(_ result : GetProfileResult) {
+        nickName.text = result.nickname
+        introduce.text = result.introduce
+        userAccount.text = result.email
+    }
 }
 
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource{

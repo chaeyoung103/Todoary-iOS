@@ -60,6 +60,13 @@
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
+		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
+		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
+		AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */; };
+		AC5E27CD288C38290056EC69 /* TodoCategoryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */; };
+		AC5E27CF288C38AC0056EC69 /* TodoAlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CE288C38AC0056EC69 /* TodoAlarmSettingViewController.swift */; };
+		AC5E27D1288C38C30056EC69 /* TodoAlarmSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D0288C38C30056EC69 /* TodoAlarmSettingViewController+Layout.swift */; };
+		AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */; };
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
@@ -216,6 +223,13 @@
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary_TodoaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingViewController.swift; sourceTree = "<group>"; };
+		AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryViewController.swift; sourceTree = "<group>"; };
+		AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoCategoryViewController+Layout.swift"; sourceTree = "<group>"; };
+		AC5E27CE288C38AC0056EC69 /* TodoAlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlarmSettingViewController.swift; sourceTree = "<group>"; };
+		AC5E27D0288C38C30056EC69 /* TodoAlarmSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoAlarmSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCalendarBottomSheetViewController.swift; sourceTree = "<group>"; };
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -371,6 +385,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				AC5E27C5288C359E0056EC69 /* TodoSetting */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
 				5750365D288BE322006A9070 /* Category */,
 				E0AB9EC4287B1C900064CADA /* 1week */,
@@ -507,6 +522,20 @@
 				572E9AC0287BC90A00F915DF /* FontSettingTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
+			isa = PBXGroup;
+			children = (
+				AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */,
+				AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */,
+				AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */,
+				AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */,
+				AC5E27CE288C38AC0056EC69 /* TodoAlarmSettingViewController.swift */,
+				AC5E27D0288C38C30056EC69 /* TodoAlarmSettingViewController+Layout.swift */,
+				AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */,
+			);
+			path = TodoSetting;
 			sourceTree = "<group>";
 		};
 		AC9128C7287AD5830056932A /* Account_hola */ = {
@@ -1072,6 +1101,7 @@
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
+				AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
@@ -1102,13 +1132,16 @@
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
+				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
+				AC5E27D1288C38C30056EC69 /* TodoAlarmSettingViewController+Layout.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
 				574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */,
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
+				AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
@@ -1128,6 +1161,8 @@
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
 				E0F998BC288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
+				AC5E27CF288C38AC0056EC69 /* TodoAlarmSettingViewController.swift in Sources */,
+				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
 				E0F998AF288A69600051C7AA /* AlarmTodoModel.swift in Sources */,
 				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
@@ -1148,6 +1183,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
+				AC5E27CD288C38290056EC69 /* TodoCategoryViewController+Layout.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,
 				572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,
