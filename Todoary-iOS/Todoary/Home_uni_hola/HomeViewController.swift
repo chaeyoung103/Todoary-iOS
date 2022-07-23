@@ -137,7 +137,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.year_Month.inputView = self.datePicker
         self.year_Month.inputAccessoryView = self.toolBar
         
-        GetProfileDataManager().getProfileDataManger(self)
+        GetProfileDataManager().getProfileHomeDataManger(self)
 
     }
 
@@ -172,16 +172,14 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         year_Month.resignFirstResponder() /// 피커뷰 내림
     }
     
+    func successAPI_home(_ result : GetProfileResult) {
+        nickname.text = result.nickname
+        introduce.text = result.introduce
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             return false
         }
-}
-
-extension HomeViewController {
-    func successAPI(_ result : GetProfileResult) {
-        nickname.text = result.introduce
-        introduce.text = result.nickname
-    }
 }
 
 
