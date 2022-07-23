@@ -83,6 +83,10 @@
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
+		E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */; };
+		E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */; };
+		E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */; };
+		E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */; };
 		E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */; };
 		E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */; };
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
@@ -250,6 +254,10 @@
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
+		E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController + layout.swift"; sourceTree = "<group>"; };
+		E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionView.swift; sourceTree = "<group>"; };
 		E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewCell.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +393,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				E0439AB9288C57A30075CBF0 /* ColorPicker_uni */,
 				AC5E27C5288C359E0056EC69 /* TodoSetting */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
 				5750365D288BE322006A9070 /* Category */,
@@ -645,6 +654,17 @@
 				57502F46287EA29100C36804 /* UITextView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0439AB9288C57A30075CBF0 /* ColorPicker_uni */ = {
+			isa = PBXGroup;
+			children = (
+				E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */,
+				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
+				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
+				E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */,
+			);
+			path = ColorPicker_uni;
 			sourceTree = "<group>";
 		};
 		E05C0BF128851AE300812099 /* 2week */ = {
@@ -1123,6 +1143,7 @@
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
 				5750364E288A3ECE006A9070 /* SignUpModel.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
+				E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */,
 				5750364C288A3EC0006A9070 /* SignUpDataManager.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
@@ -1161,6 +1182,7 @@
 				E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
+				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				E0F9987E288A441F0051C7AA /* AutoLoginInput_uni.swift in Sources */,
@@ -1177,12 +1199,14 @@
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
 				E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
+				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,
 				E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */,
 				E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */,
 				574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */,
 				576ED6B228749021007389CD /* String.swift in Sources */,
 				5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
+				E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				574A70402885085D003C8F99 /* TestViewController.swift in Sources */,
