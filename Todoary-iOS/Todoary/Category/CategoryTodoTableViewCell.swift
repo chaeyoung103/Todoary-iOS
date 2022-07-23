@@ -7,6 +7,7 @@
 
 import UIKit
 
-class CategoryTableViewCell: UIButton {
+class CategoryTodoTableViewCell: UITableViewCell {
 
+    static let cellIdentifier = "todoCell"
 }

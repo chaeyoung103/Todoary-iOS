@@ -8,5 +8,7 @@
 import UIKit
 
 class CategoryButtonCollectionViewCell: UICollectionViewCell {
+    
+    static let cellIdentifier = "categoryButtonCell"
 
 }
