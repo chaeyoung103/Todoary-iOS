@@ -111,4 +111,11 @@ extension UIColor{
         blue: 0/255,
         alpha: 0
     )
+    
+    static let timeColor = UIColor(
+        red: 72/255,
+        green: 72/255,
+        blue: 72/255,
+        alpha: 1
+    )
 }
