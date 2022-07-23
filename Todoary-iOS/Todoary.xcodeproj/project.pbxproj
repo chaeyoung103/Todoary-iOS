@@ -53,6 +53,7 @@
 		57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */; };
 		57503663288BE3A0006A9070 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */; };
 		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
+		57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -205,6 +206,7 @@
 		57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
+		57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryViewController+Layout.swift"; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
 				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
 				57503662288BE3A0006A9070 /* CategoryTableViewCell.swift */,
+				57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1058,6 +1061,7 @@
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
 				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
+				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
