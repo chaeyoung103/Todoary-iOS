@@ -15,9 +15,10 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         $0.setTitleColor(.white, for: .selected)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 14, weight: .bold)
         $0.addLetterSpacing(spacing: 0.28)
+        $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.addTarget(self, action: #selector(categoryButtonDidClicked(_:)), for: .touchUpInside)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right: 16)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
         $0.layer.cornerRadius = 26/2
     }
     
@@ -32,16 +33,14 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         self.snp.makeConstraints{ make in
             make.width.height.equalTo(categoryBtn)
         }
-        
         self.contentView.snp.makeConstraints{ make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
         
         categoryBtn.snp.makeConstraints{ make in
-            make.width.equalTo(categoryBtn.titleLabel!.snp.width).offset(32)
-            make.height.equalTo(26)
+//            make.width.equalTo(categoryBtn.titleLabel!.snp.width).offset(32)
+//            make.height.equalTo(26)
             make.leading.trailing.top.bottom.equalToSuperview()
-            make.height.equalToSuperview()
         }
     }
     

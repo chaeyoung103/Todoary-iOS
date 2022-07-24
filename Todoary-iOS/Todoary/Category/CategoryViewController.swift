@@ -42,13 +42,10 @@ class CategoryViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.isUserInteractionEnabled = true
-        }
+        navigationView = NavigationView(frame: .zero, self.navigationController!)
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.estimatedItemSize = CGSize(width: 57, height: 26)
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
@@ -115,7 +112,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryTitle.count
@@ -129,9 +126,22 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.setBtnAttribute(title: categoryTitle[indexPath.row], color: categoryColor[indexPath.row])
         
-        cell.updateConstraints()
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let tmpLabel = UILabel()
+        tmpLabel.text = categoryTitle[indexPath.row]
+        
+        if(categoryTitle[indexPath.row].count > 2){
+            tmpLabel.then{
+                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+                $0.addLetterSpacing(spacing: 0.28)
+            }
+        }
+        
+        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
 }
 
