@@ -94,7 +94,7 @@ class AccountViewController : UIViewController {
         setUpView()
         setUpConstraint()
         
-        GetProfileDataManager().getProfileAccountDataManger(self)
+        GetProfileDataManager().getProfileDataManger(self)
     }
     
     //MARK: - Actions

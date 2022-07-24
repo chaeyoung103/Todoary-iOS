@@ -142,7 +142,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.year_Month.inputView = self.datePicker
         self.year_Month.inputAccessoryView = self.toolBar
         
-        GetProfileDataManager().getProfileHomeDataManger(self)
+        GetProfileDataManager().getProfileDataManger(self)
 
     }
 
