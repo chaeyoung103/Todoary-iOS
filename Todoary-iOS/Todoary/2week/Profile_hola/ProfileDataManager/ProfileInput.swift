@@ -6,6 +6,6 @@
 //
 
 struct ProfileInput : Encodable {
-    var nickName : String?
+    var nickname : String?
     var introduce : String?
 }
