@@ -16,7 +16,11 @@ class ProfileDataManager {
             switch response.result {
             case .success(let result):
                 if result.isSuccess {
-                    print("프로필수정성공")
+                    if result.code == 1000{
+                        print("프로필수정성공")
+                    }else{
+                        print(result.message)
+                    }
                 }else {
                     print(result.message)
                 }

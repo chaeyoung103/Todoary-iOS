@@ -73,15 +73,17 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     
     let toolBar = UIToolbar().then {
+        $0.backgroundColor = .white
         $0.sizeToFit()
-        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(onPickDone))
+        let btnDone = UIBarButtonItem(title: "확인", style: .plain, target: self, action: #selector(onPickDone))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let btnCancel = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(onPickCancel))
+        let btnCancel = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onPickCancel))
         $0.setItems([btnCancel , space , btnDone], animated: true)
         $0.isUserInteractionEnabled = true
     }
     
     let datePicker = UIDatePicker().then{
+        $0.backgroundColor = .clear
         $0.datePickerMode = .date
         $0.preferredDatePickerStyle = .wheels
         $0.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
@@ -124,6 +126,9 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
+        toolBar.subviews.first?.backgroundColor = .white
+        datePicker.subviews.first?.backgroundColor = .white
+        datePicker.subviews.first?.subviews.first?.backgroundColor = .white
         
         setUpView()
         setUpConstraint()
@@ -184,7 +189,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
 
 
 class paddingLabel: UILabel {
-    var padding = UIEdgeInsets(top: 1.5, left: 10, bottom: 0, right: 10)
+    var padding = UIEdgeInsets(top: 1.5, left: 5, bottom: 0, right: 5)
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: padding))
