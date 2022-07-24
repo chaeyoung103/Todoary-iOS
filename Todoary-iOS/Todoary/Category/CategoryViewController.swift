@@ -19,11 +19,6 @@ class CategoryViewController: UIViewController {
 
     var tableView : UITableView!
 
-    let todoAddBtn = UIButton()
-//        .then{
-//
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +46,7 @@ class CategoryViewController: UIViewController {
             $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
+            $0.register(NewTodoAddBtnTableViewCell.self, forCellReuseIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
         }
         
         setUpView()
@@ -63,11 +59,16 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CategoryTodoTableViewCell()
+        if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
+            return CategoryTodoTableViewCell()
+        }
+        else{
+            return NewTodoAddBtnTableViewCell()
+        }
     }
 }
 
