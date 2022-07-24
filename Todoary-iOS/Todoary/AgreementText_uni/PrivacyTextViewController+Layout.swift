@@ -28,8 +28,6 @@ extension PrivacyTextViewController {
         
     
     func setUpConstraint(){
-        
-        //navigationView
 
         
     //약관내용
