@@ -34,14 +34,14 @@ class CategoryTodoTableViewCell: UITableViewCell {
         $0.textColor = .timeColor
     }
     
-    let timeLabel = UILabel().then{
+    lazy var timeLabel = UILabel().then{
         $0.text = "AM 7:00"
         $0.textAlignment = .right
         $0.textColor = .timeColor
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
     }
     
-    let alarmImage = UIImageView().then{
+    lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
 //        $0.isHidden = true
     }
@@ -68,12 +68,22 @@ class CategoryTodoTableViewCell: UITableViewCell {
         $0.layer.masksToBounds = false
     }
     
+    let selectedView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    
+    //MARK: - Properties
+    
+    var categoryList : [String]!
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.selectedBackgroundView = selectedView
+        
         setUpView()
-        setUpCategory()
         setUpConstraint()
+//        setUpTimeStack()
     }
     
     required init?(coder: NSCoder) {
@@ -88,26 +98,17 @@ class CategoryTodoTableViewCell: UITableViewCell {
         backView.addSubview(checkBox)
         backView.addSubview(todoTitle)
         backView.addSubview(timeStack)
-        
-        timeView.addSubview(timeLabel)
-        timeView.addSubview(alarmImage)
-        
-        timeStack.addArrangedSubview(dateLabel)
-        timeStack.addArrangedSubview(timeView)
-        
     }
     
-    func setUpCategory(){
+    func setUpCategory(_ categoryList : [String]){
         
-        let category = ["운동","취미","대외활동"]
-        
-        let category2 = ["가나다라마바","가나다라마바","가나다라마바"]
-        
-        category2.forEach{ each in
-            lazy var button = CategoryLabel()
-            button.setTitle(each, for: .normal)
-            categoryStack.addArrangedSubview(button)
-        }
+        self.categoryList = categoryList
+
+            categoryList.forEach{ each in
+                lazy var button = CategoryLabel()
+                button.setTitle(each, for: .normal)
+                categoryStack.addArrangedSubview(button)
+            }
     }
     
     func setUpConstraint(){
@@ -155,23 +156,60 @@ class CategoryTodoTableViewCell: UITableViewCell {
             make.height.equalTo(14.14)
         }
         
-        timeView.snp.makeConstraints{ make in
-            make.width.equalTo(71)
-            make.height.equalTo(14.14)
+    }
+    
+    func setUpTimeStack(){
+        
+        timeStack.addArrangedSubview(dateLabel)
+        
+        if(getCategoryTextCount() > 12){
+            timeStack.snp.makeConstraints{ make in
+                make.top.equalToSuperview().offset(48)
+            }
+        } else if(timeLabel.text != ""){
+            
+            timeView.addSubview(timeLabel)
+            timeView.addSubview(alarmImage)
+            
+            timeStack.addArrangedSubview(timeView)
+            
+            timeView.snp.makeConstraints{ make in
+                make.width.equalTo(71)
+                make.height.equalTo(14.14)
+            }
+            
+            timeLabel.snp.makeConstraints{ make in
+                make.top.bottom.leading.trailing.equalToSuperview()
+            }
+            
+            alarmImage.snp.makeConstraints{ make in
+                make.width.equalTo(14)
+                make.height.equalTo(13.2)
+                make.leading.equalToSuperview().offset(6)
+                make.top.equalToSuperview()
+            }
+            
+            timeStack.snp.makeConstraints{ make in
+                make.top.equalToSuperview().offset(29)
+            }
+            
+        }else{
+            timeStack.snp.makeConstraints{ make in
+//                make.bottom.equalToSuperview().offset(-22.86)
+                make.top.equalToSuperview().offset(51)
+            }
+        }
+    }
+    
+    func getCategoryTextCount() -> Int{
+        
+        var sum = 0
+        
+        categoryList.forEach{ each in
+            sum = sum + each.count
         }
         
-        timeLabel.snp.makeConstraints{ make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        alarmImage.snp.makeConstraints{ make in
-            make.width.equalTo(14)
-            make.height.equalTo(13.2)
-            make.leading.equalToSuperview().offset(6)
-            make.lastBaseline.equalTo(timeLabel)
-            make.top.equalToSuperview()
-        }
-        
+        return sum
     }
 
     @objc
@@ -199,8 +237,10 @@ class CategoryLabel: UIButton{
         self.setTitle("운동", for: .normal)
         self.titleEdgeInsets = UIEdgeInsets(top: 4, left: 11, bottom: 3, right: 11)
         self.layer.borderWidth = 1
-        self.setTitleColor(.category1, for: .normal)
+        self.layer.borderColor = UIColor.category14.cgColor
+        self.setTitleColor(.category14, for: .normal)
         self.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
+        self.layer.cornerRadius = 21/2
     }
     
     func setUpConstraint(){

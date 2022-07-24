@@ -16,7 +16,8 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 14, weight: .bold)
         $0.addLetterSpacing(spacing: 0.28)
         $0.layer.borderWidth = 1
-        $0.setTitleColor(UIColor.category1, for: .normal)
+        $0.layer.borderColor = UIColor.category14.cgColor
+        $0.setTitleColor(UIColor.category14, for: .normal)
         $0.setTitleColor(UIColor.white, for: .selected)
         $0.addTarget(self, action: #selector(categoryButtonDidClicked(_:)), for: .touchUpInside)
         $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right: 16)
