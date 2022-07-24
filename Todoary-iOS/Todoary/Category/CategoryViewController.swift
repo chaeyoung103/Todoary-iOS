@@ -11,8 +11,9 @@ class CategoryViewController: UIViewController {
     
     var navigationView : NavigationView!
 
-    let trashButton = UIButton().then{
-        $0.setImage(UIImage(named: "setting"), for: .normal)
+    lazy var trashButton = UIButton().then{
+        $0.setImage(UIImage(named: "category_trash"), for: .normal)
+        $0.addTarget(self, action: #selector(trashButtonDidClicked), for: .touchUpInside)
     }
 
     var collectionView : UICollectionView!
@@ -30,11 +31,16 @@ class CategoryViewController: UIViewController {
     ]
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
         
-        navigationView = NavigationView(frame: .zero, self.navigationController!)
+        self.navigationController?.navigationBar.isHidden = true
+        
+        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
+            $0.isUserInteractionEnabled = true
+        }
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -57,11 +63,21 @@ class CategoryViewController: UIViewController {
             
             $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
             $0.register(NewTodoAddBtnTableViewCell.self, forCellReuseIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
+            
         }
         
         setUpView()
         setUpConstraint()
 
+    }
+    
+    @objc
+    func trashButtonDidClicked(){
+        if(tableView.isEditing){
+            tableView.setEditing(false, animated: true)
+        }else{
+            tableView.setEditing(true, animated: true)
+        }
     }
 
 }

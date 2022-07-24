@@ -10,9 +10,10 @@ import Foundation
 extension CategoryViewController{
     
     func setUpView(){
-        self.view.addSubview(navigationView)
+
         self.view.addSubview(collectionView)
         self.view.addSubview(tableView)
+        self.view.addSubview(navigationView)
         
         navigationView.addSubview(trashButton)
     }
@@ -26,7 +27,7 @@ extension CategoryViewController{
         trashButton.snp.makeConstraints{ make in
             make.width.equalTo(61)
             make.height.equalTo(55)
-            make.top.bottom.equalToSuperview().offset(-2)
+            make.bottom.equalToSuperview().offset(2)
             make.trailing.equalToSuperview().offset(-19)
         }
         

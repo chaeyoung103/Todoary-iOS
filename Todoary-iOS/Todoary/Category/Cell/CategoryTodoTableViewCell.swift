@@ -217,6 +217,9 @@ class CategoryTodoTableViewCell: UITableViewCell {
         sender.isSelected.toggle()
     }
     
+    func deleteView(){
+    }
+    
     
 }
 
