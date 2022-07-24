@@ -27,6 +27,7 @@
 		572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABE287BC4E600F915DF /* FontSettingViewController+Layout.swift */; };
 		572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AC0287BC90A00F915DF /* FontSettingTableViewCell.swift */; };
 		572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AC2287C643000F915DF /* InfoMessageView.swift */; };
+		573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */; };
 		574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */; };
 		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
@@ -187,6 +188,7 @@
 		572E9ABE287BC4E600F915DF /* FontSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontSettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		572E9AC0287BC90A00F915DF /* FontSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingTableViewCell.swift; sourceTree = "<group>"; };
 		572E9AC2287C643000F915DF /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
+		573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoAddBtnTableViewCell.swift; sourceTree = "<group>"; };
 		574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -432,6 +434,16 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		573844B8288CEFCC009529CD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
+				57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */,
+				573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		574913B5287ADEF300381BCD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,9 +523,8 @@
 		5750365D288BE322006A9070 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				573844B8288CEFCC009529CD /* Cell */,
 				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
-				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
-				57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */,
 				57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */,
 			);
 			path = Category;
@@ -1118,6 +1129,7 @@
 				AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
+				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
