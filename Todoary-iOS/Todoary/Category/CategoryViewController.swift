@@ -48,6 +48,7 @@ class CategoryViewController: UIViewController {
             $0.dataSource = self
             
             $0.separatorStyle = .none
+            $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
         }
