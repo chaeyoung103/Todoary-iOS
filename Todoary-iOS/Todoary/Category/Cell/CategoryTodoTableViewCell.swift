@@ -74,7 +74,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var categoryList : [String]!
+    var categoryList : [String:UIColor]!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,7 +83,6 @@ class CategoryTodoTableViewCell: UITableViewCell {
         
         setUpView()
         setUpConstraint()
-//        setUpTimeStack()
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +92,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
     func setUpView(){
         
         self.contentView.addSubview(backView)
+//        self.addSubview(backView)
         
         backView.addSubview(categoryStack)
         backView.addSubview(checkBox)
@@ -100,13 +100,13 @@ class CategoryTodoTableViewCell: UITableViewCell {
         backView.addSubview(timeStack)
     }
     
-    func setUpCategory(_ categoryList : [String]){
+    func setUpCategory(_ categoryList : [String:UIColor]){
         
         self.categoryList = categoryList
 
             categoryList.forEach{ each in
                 lazy var button = CategoryLabel()
-                button.setTitle(each, for: .normal)
+                button.setTitle(each.key, for: .normal)
                 categoryStack.addArrangedSubview(button)
             }
     }
@@ -116,12 +116,19 @@ class CategoryTodoTableViewCell: UITableViewCell {
         self.contentView.snp.makeConstraints{ make in
             make.height.equalTo(todoTitle.snp.height).offset(68+20)
             make.top.bottom.equalToSuperview()
+//            make.leading.equalToSuperview()
+//            make.trailing.equalToSuperview()
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-30)
         }
         
+//        self.contentView.backgroundColor = .green
+//        self.backgroundColor = .blue
+        
         backView.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview()
+//            make.leading.equalToSuperview().offset(32)
+//            make.trailing.equalToSuperview().offset(-30)
             make.top.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
         }
@@ -206,7 +213,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         var sum = 0
         
         categoryList.forEach{ each in
-            sum = sum + each.count
+            sum = sum + each.key.count
         }
         
         return sum
@@ -216,10 +223,6 @@ class CategoryTodoTableViewCell: UITableViewCell {
     func checkBoxDidClicked(_ sender: UIButton){
         sender.isSelected.toggle()
     }
-    
-    func deleteView(){
-    }
-    
     
 }
 

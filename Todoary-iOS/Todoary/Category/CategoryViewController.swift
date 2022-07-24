@@ -23,12 +23,16 @@ class CategoryViewController: UIViewController {
     //dumy data
     
     let todoData = [
-        CategoryTodo(categories: ["가나다라마바","가나다라마바","가나다라마바"], title: "운동", date: "7월 20일", time: "AM 7:00"),
-        CategoryTodo(categories: ["운동"], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil),
-        CategoryTodo(categories: ["운동", "대외활동"], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00"),
-        CategoryTodo(categories: ["운동", "대외활동","공부"], title: "아침 산책", date: "7월 20일", time: nil),
-        CategoryTodo(categories: [], title: "아침 산책", date: "7월 20일", time: nil)
+        CategoryTodo(categories: ["가나다라마바":.category1,"가다다라마바":.category8,"가라다라마바":.category5], title: "운동", date: "7월 20일", time: "AM 7:00"),
+        CategoryTodo(categories: ["운동":.category13], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil),
+        CategoryTodo(categories: ["운동":.category6, "대외활동":.category1], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00"),
+        CategoryTodo(categories: ["운동":.category8, "대외활동":.category3,"공부":.category6], title: "아침 산책", date: "7월 20일", time: nil),
+        CategoryTodo(categories: [:], title: "아침 산책", date: "7월 20일", time: nil)
     ]
+
+    
+    let categoryTitle = ["운동","대외활동","공부","가나다라마바"]
+    let categoryColor = [UIColor.category1, .category6, .category4, .category13]
 
     override func viewDidLoad() {
         
@@ -108,24 +112,32 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
     }
+    
 }
 
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return categoryTitle.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
+            fatalError()
+        }
+        
+        cell.setBtnAttribute(title: categoryTitle[indexPath.row], color: categoryColor[indexPath.row])
+        
+        cell.updateConstraints()
+        
         return cell
     }
 }
 
 
 struct CategoryTodo{
-    var categories : [String]
+    var categories : [String:UIColor]
     var title : String?
     var date : String?
     var time : String?
