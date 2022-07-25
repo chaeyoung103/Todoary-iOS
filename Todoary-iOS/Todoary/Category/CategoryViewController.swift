@@ -20,9 +20,12 @@ class CategoryViewController: UIViewController {
 
     var tableView : UITableView!
     
+    var isEditingMode = false
+
+    
     //dumy data
     
-    let todoData = [
+    var todoData = [
         CategoryTodo(categories: ["가나다라마바":.category1,"가다다라마바":.category8,"가라다라마바":.category5], title: "운동", date: "7월 20일", time: "AM 7:00"),
         CategoryTodo(categories: ["운동":.category13], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil),
         CategoryTodo(categories: ["운동":.category6, "대외활동":.category1], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00"),
@@ -74,16 +77,36 @@ class CategoryViewController: UIViewController {
     
     @objc
     func trashButtonDidClicked(){
-        if(tableView.isEditing){
-            tableView.setEditing(false, animated: true)
+        
+        let leading: Int!
+        let trailing: Int!
+        
+        if(isEditingMode){
+            leading = 32
+            trailing = -30
         }else{
-            tableView.setEditing(true, animated: true)
+            leading = 58
+            trailing = -4
         }
+        
+        var i = 0
+        while(i < todoData.count){
+            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else{
+                fatalError()
+            }
+            cell.contentView.snp.updateConstraints{ make in
+                make.leading.equalToSuperview().offset(leading)
+                make.trailing.equalToSuperview().offset(trailing)
+            }
+            cell.deleteButton.isHidden.toggle()
+            i = i + 1
+        }
+        isEditingMode.toggle()
     }
 
 }
 
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, TableViewEditModeProtocol{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoData.count + 1
@@ -101,6 +124,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             cell.timeLabel.text = cellData.time ?? ""
             cell.setUpCategory(cellData.categories)
             cell.setUpTimeStack()
+            cell.delegate = self
             return cell
         } else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
@@ -110,6 +134,20 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if(indexPath.row == todoData.count){
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
+    func deleteBtnDidClicked(indexPath : IndexPath){
+        todoData.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+
 }
 
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

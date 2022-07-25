@@ -41,8 +41,6 @@ extension CategoryViewController{
         tableView.snp.makeConstraints{ make in
             make.top.equalTo(collectionView.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview()
-            make.bottom.equalToSuperview()
-            
         }
     }
 }
