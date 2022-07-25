@@ -21,6 +21,8 @@ class CategoryViewController: UIViewController {
     var tableView : UITableView!
     
     var isEditingMode = false
+    
+    var currentCategory : CategoryButtonCollectionViewCell!
 
     
     //dumy data
@@ -150,7 +152,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Ta
 
 }
 
-extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryButtonSelect{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryTitle.count
@@ -163,7 +165,12 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         cell.setBtnAttribute(title: categoryTitle[indexPath.row], color: categoryColor[indexPath.row])
+        cell.delegate = self
         
+        if(indexPath.row == 0){
+            cell.buttonIsSelected()
+            currentCategory = cell
+        }
         return cell
     }
     
@@ -181,6 +188,13 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
+    
+    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell){
+        currentCategory.buttonIsNotSelected()
+        currentCategory.categoryBtn.isSelected = false
+        currentCategory = cell
+    }
+    
 }
 
 

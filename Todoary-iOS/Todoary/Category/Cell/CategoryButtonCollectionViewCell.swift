@@ -11,6 +11,8 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "categoryButtonCell"
     
+    var delegate: CategoryButtonSelect?
+    
     lazy var categoryBtn = UIButton().then{
         $0.setTitleColor(.white, for: .selected)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 14, weight: .bold)
@@ -61,20 +63,24 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     
     @objc
     func categoryButtonDidClicked(_ sender: UIButton){
-        if(categoryBtn.isSelected){
-            buttonIsNotSelected()
-        }else{
+        if(!categoryBtn.isSelected){
+            delegate?.newCategoryDidSelected(cell: self)
             buttonIsSelected()
         }
-        categoryBtn.isSelected.toggle()
     }
     
     func buttonIsSelected(){
         categoryBtn.backgroundColor = categoryColor
+        categoryBtn.isSelected.toggle()
     }
     
     func buttonIsNotSelected(){
         categoryBtn.layer.borderColor = categoryColor.cgColor
         categoryBtn.backgroundColor = .white
+//        categoryBtn.isSelected.toggle()
     }
+}
+
+protocol CategoryButtonSelect{
+    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell)
 }
