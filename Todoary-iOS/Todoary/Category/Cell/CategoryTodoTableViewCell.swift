@@ -45,7 +45,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
-//        $0.isHidden = true
+        $0.isHidden = true
     }
     
     let categoryStack = UIStackView().then{
@@ -98,11 +98,21 @@ class CategoryTodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /*
+
     override func prepareForReuse() {
         
+        todoTitle.text = ""
+        dateLabel.text = ""
+        timeLabel.text = ""
+        
+        alarmImage.isHidden = true
+        
+        timeView.removeFromSuperview()
+        
+        categoryStack.arrangedSubviews.forEach{ each in
+            each.removeFromSuperview()
+        }
     }
-     */
     
     func setUpView(){
         
@@ -114,6 +124,8 @@ class CategoryTodoTableViewCell: UITableViewCell {
         backView.addSubview(checkBox)
         backView.addSubview(todoTitle)
         backView.addSubview(timeStack)
+        
+        timeStack.addArrangedSubview(dateLabel)
     }
     
     func setUpCategory(_ categoryList : [String:UIColor]){
@@ -164,6 +176,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         timeStack.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-18)
             make.leading.equalTo(todoTitle.snp.trailing).offset(12)
+            make.bottom.equalToSuperview().offset(-23)
         }
         
         dateLabel.snp.makeConstraints{ make in
@@ -181,14 +194,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     func setUpTimeStack(){
         
-        timeStack.addArrangedSubview(dateLabel)
-        
-        if(getCategoryTextCount() > 12){
-            timeStack.snp.makeConstraints{ make in
-                make.top.equalToSuperview().offset(48)
-            }
-        } else if(timeLabel.text != ""){
-            
+        if(timeLabel.text != ""){
             timeView.addSubview(timeLabel)
             timeView.addSubview(alarmImage)
             
@@ -209,17 +215,8 @@ class CategoryTodoTableViewCell: UITableViewCell {
                 make.leading.equalToSuperview().offset(6)
                 make.top.equalToSuperview()
             }
-            
-            timeStack.snp.makeConstraints{ make in
-                make.top.equalToSuperview().offset(29)
-            }
-            
-        }else{
-            timeStack.snp.makeConstraints{ make in
-//                make.bottom.equalToSuperview().offset(-22.86)
-                make.top.equalToSuperview().offset(51)
-            }
         }
+        
     }
     
     func getCategoryTextCount() -> Int{

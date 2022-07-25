@@ -28,11 +28,11 @@ class CategoryViewController: UIViewController {
     //dumy data
     
     var todoData = [
-        CategoryTodo(categories: ["가나다라마바":.category1,"가다다라마바":.category8,"가라다라마바":.category5], title: "운동", date: "7월 20일", time: "AM 7:00"),
-        CategoryTodo(categories: ["운동":.category13], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil),
-        CategoryTodo(categories: ["운동":.category6, "대외활동":.category1], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00"),
-        CategoryTodo(categories: ["운동":.category8, "대외활동":.category3,"공부":.category6], title: "아침 산책", date: "7월 20일", time: nil),
-        CategoryTodo(categories: [:], title: "아침 산책", date: "7월 20일", time: nil)
+        CategoryTodo(categories: ["가나다라마바":.category1,"가다다라마바":.category8,"가라다라마바":.category5], title: "운동", date: "7월 20일", time: "AM 7:00", alarm: true),
+        CategoryTodo(categories: ["운동":.category13], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil, alarm: nil),
+        CategoryTodo(categories: ["운동":.category6, "대외활동":.category1], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00", alarm: false),
+        CategoryTodo(categories: ["운동":.category8, "대외활동":.category3,"공부":.category6], title: "아침 산책", date: "7월 20일", time: nil, alarm: nil),
+        CategoryTodo(categories: [:], title: "아침 산책", date: "7월 20일", time: nil, alarm: nil)
     ]
 
     
@@ -124,6 +124,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Ta
             cell.todoTitle.text = cellData.title
             cell.dateLabel.text = cellData.date
             cell.timeLabel.text = cellData.time ?? ""
+            cell.alarmImage.isHidden = cellData.alarm ?? false
             cell.setUpCategory(cellData.categories)
             cell.setUpTimeStack()
             cell.delegate = self
@@ -139,8 +140,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Ta
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if(indexPath.row == todoData.count){
             return false
-        }
-        else{
+        }else{
             return true
         }
     }
@@ -203,4 +203,5 @@ struct CategoryTodo{
     var title : String?
     var date : String?
     var time : String?
+    var alarm : Bool?
 }
