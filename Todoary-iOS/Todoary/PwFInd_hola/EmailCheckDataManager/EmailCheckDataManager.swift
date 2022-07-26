@@ -17,6 +17,7 @@ class EmailCheckDataManager{
                     print("비밀번호찾기 이메일 인증 성공")
                     viewController.checkEmail(result.code)
                 }else{
+                    viewController.checkEmail(result.code)
                     print(result.message)
                 }
             case .failure(let error):

@@ -116,10 +116,7 @@ class AccountViewController : UIViewController {
         let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
         let no = UIAlertAction(title: "아니오", style: .default)
         let yes = UIAlertAction(title: "네", style: .cancel){(_) in
-        let LoginViewController = LoginViewController()
             SignoutDataManager().signout(self)
-            self.navigationController?.pushViewController(LoginViewController, animated: true)
-            self.navigationController?.isNavigationBarHidden = true
         }
             
         alert.addAction(no)

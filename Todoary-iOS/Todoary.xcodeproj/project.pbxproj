@@ -63,11 +63,12 @@
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
-		AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */; };
-		AC5E27CD288C38290056EC69 /* TodoCategoryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */; };
+		AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CA288C38130056EC69 /* TodoCalendarCell.swift */; };
+		AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27CC288C38290056EC69 /* TodoWeekCell.swift */; };
 		AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */; };
 		AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D4288C68920056EC69 /* EmailCheckDataManager.swift */; };
 		AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D7288C68DB0056EC69 /* EmailCheckModel.swift */; };
+		AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27D9288EFCFE0056EC69 /* TodoCalendar.swift */; };
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
@@ -231,11 +232,12 @@
 		AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary_TodoaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingViewController.swift; sourceTree = "<group>"; };
 		AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSettingViewController+Layout.swift"; sourceTree = "<group>"; };
-		AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryViewController.swift; sourceTree = "<group>"; };
-		AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoCategoryViewController+Layout.swift"; sourceTree = "<group>"; };
+		AC5E27CA288C38130056EC69 /* TodoCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCalendarCell.swift; sourceTree = "<group>"; };
+		AC5E27CC288C38290056EC69 /* TodoWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoWeekCell.swift; sourceTree = "<group>"; };
 		AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCalendarBottomSheetViewController.swift; sourceTree = "<group>"; };
 		AC5E27D4288C68920056EC69 /* EmailCheckDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckDataManager.swift; sourceTree = "<group>"; };
 		AC5E27D7288C68DB0056EC69 /* EmailCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckModel.swift; sourceTree = "<group>"; };
+		AC5E27D9288EFCFE0056EC69 /* TodoCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCalendar.swift; sourceTree = "<group>"; };
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -549,9 +551,10 @@
 			children = (
 				AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */,
 				AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */,
-				AC5E27CA288C38130056EC69 /* TodoCategoryViewController.swift */,
-				AC5E27CC288C38290056EC69 /* TodoCategoryViewController+Layout.swift */,
+				AC5E27CA288C38130056EC69 /* TodoCalendarCell.swift */,
+				AC5E27CC288C38290056EC69 /* TodoWeekCell.swift */,
 				AC5E27D2288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift */,
+				AC5E27D9288EFCFE0056EC69 /* TodoCalendar.swift */,
 			);
 			path = TodoSetting;
 			sourceTree = "<group>";
@@ -1130,6 +1133,7 @@
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
 				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
+				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
@@ -1141,7 +1145,7 @@
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
-				AC5E27CB288C38130056EC69 /* TodoCategoryViewController.swift in Sources */,
+				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
@@ -1227,7 +1231,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
-				AC5E27CD288C38290056EC69 /* TodoCategoryViewController+Layout.swift in Sources */,
+				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,
 				572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,

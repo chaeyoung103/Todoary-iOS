@@ -113,7 +113,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 4
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        $0.contentInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
         $0.collectionViewLayout = layout
     }
 
@@ -147,7 +147,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
 
     
-    //MARK: - settingBtnDidTab
+    //MARK: - Actions
     
     @objc func settingBtnDidTap(_ sender: UIButton){
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
