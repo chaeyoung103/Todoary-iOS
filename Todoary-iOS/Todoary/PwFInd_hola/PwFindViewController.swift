@@ -13,14 +13,29 @@ class PwFindViewController: UIViewController {
     //MARK: - Properties
     
     var password: String = ""
+    var email: String = ""
+    var certification: String = ""
     
-    var emailCheck = false
-    
-    //유효성검사를 위한 프로퍼티
-    var isValidPw = false {
-        //didSet -> 세팅이 끝난 후에 코드블럭을 실행하겠다는 의미
+    var emailCheck = false{
         didSet {//프로퍼티 옵저버
-            self.validatePw()
+            self.validateUserInput()
+        }
+    }
+    var isValidPw = false {
+        didSet {//프로퍼티 옵저버
+            self.validateUserInput()
+        }
+    }
+    
+    var isValidPwCheck = false {
+        didSet {//프로퍼티 옵저버
+            self.validateUserInput()
+        }
+    }
+    
+    var isCertification = false {
+        didSet {//프로퍼티 옵저버
+            self.validateUserInput()
         }
     }
     
@@ -62,7 +77,7 @@ class PwFindViewController: UIViewController {
         $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
-        $0.addTarget(self, action: #selector(idCertificationBtnDidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(idCertificationBtnDidTap), for: .touchUpInside)
     }
     
     //인증코드
@@ -89,6 +104,7 @@ class PwFindViewController: UIViewController {
         $0.buttonTypeSetting(type: .subButton)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 22/2
+        $0.addTarget(self, action: #selector(certificationOkBtnDidTap), for: .touchUpInside)
     }
 
     //pw
@@ -143,12 +159,13 @@ class PwFindViewController: UIViewController {
 
 
     let confirmBtn = UIButton().then{
+        $0.isEnabled = false
         $0.setTitle("확인", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
         $0.layer.cornerRadius = 52/2
-        $0.addTarget(self, action: #selector(passWordChangeButtonDidClicked), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(passWordChangeBtnDidTap), for: .touchUpInside)
     }
     
     
@@ -176,47 +193,97 @@ class PwFindViewController: UIViewController {
         let text = sender.text ?? ""
         
         switch sender{
+        case idTf:
+            self.email = text
+        case certificationTf:
+            self.certification = text
         case pwTf:
             pwNoticeLb.isHidden = false
             self.isValidPw = text.isValidPw()
             self.password = text
+            if isValidPw{
+                pwNoticeLb.isHidden = true
+                }
+            else {
+                pwNoticeLb.isHidden = false
+            }
         case pwCertificationTf:
             pwCertificationNoticeLb.isHidden = false
             if text == self.password {
-                isValidPw = true
+                isValidPwCheck = true
                 pwCertificationNoticeLb.isHidden = true
             }else{
-                isValidPw = false
+                isValidPwCheck = false
+                pwCertificationNoticeLb.isHidden = false
             }
         default:
             fatalError("Missing TextField...")
         }
     }
     
-    @objc func idCertificationBtnDidTab() {
 
-        EmailCheckDataManager().emailCheckDataManager(self, email: idTf.text!)
+    @objc func idCertificationBtnDidTap() {
+        self.email = idTf.text!
+        EmailCheckDataManager().emailCheckDataManager(self, email: self.email)
+        print(self.email)
+        print("버튼")
+    }
+    
+    @objc func passWordChangeBtnDidTap(){
         
+        let pwInput = PwFindInput(email:idTf.text!, newPassword: self.password)
+        
+        PwFindDataManager().pwFindDataManager(self, pwInput)
 
     }
     
-    @objc func passWordChangeButtonDidClicked(){
+    @objc func certificationOkBtnDidTap(){
+        self.certification = certificationTf.text!
+        if self.certification == UserDefaults.standard.string(forKey: "key"){
+            isCertification = true
+        }else{
+            isCertification = false
+        }
         
-        let pwInput = PwFindInput(newPassword: self.password)
+        let alertTitle : String!
         
-        PwFindDataManager().pwFindDataManager(self, pwInput)
+        if isCertification{
+            alertTitle = "인증이 완료되었습니다."
+        }else{
+            alertTitle = "인증코드가 일치하지 않습니다."
+        }
+        
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Helpers
     
+    func validateUserInput(){
+        if isValidPw
+            && isValidPwCheck
+            && emailCheck
+            && isCertification{
+            confirmBtn.isEnabled = true
+        }else{
+            confirmBtn.isEnabled = false
+        }
+    }
+    
+
     func checkEmail(_ code: Int){
         
         if(code == 1000) { //사용가능 이메일 점검 조건문 추가
             
-            idNoticeLb.text = "*존재하는 이메일입니다."
+            emailCheck = true
+            
+            idNoticeLb.text = "*유효한 이메일입니다."
             idNoticeLb.textColor = .todoaryGrey
             
-            MailSender.shared.sendEmail()
+            MailSender.shared.sendEmail("thdcodud103@naver.com")
             
             //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
             let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: nil, preferredStyle: .alert)
@@ -227,15 +294,10 @@ class PwFindViewController: UIViewController {
         }else if(code == 2017){
             idNoticeLb.text = "*유효하지 않은 이메일입니다. 다시 입력해 주세요."
             idNoticeLb.textColor = .noticeRed
-        }
-    }
-    
-    private func validatePw(){
-        if isValidPw{
-            pwNoticeLb.isHidden = true
-            }
-        else { //유효성 검사 -> 유효하지 않음
-            pwNoticeLb.isHidden = false
+            emailCheck = false
+        }else{
+            emailCheck = false
+
         }
     }
 }

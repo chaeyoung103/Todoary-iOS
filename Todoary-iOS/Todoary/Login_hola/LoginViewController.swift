@@ -116,10 +116,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
 
         setUpView()
         setUpConstraint()
-        //setupData()
+        setupData()
+  
         
     }
 
@@ -157,8 +160,6 @@ class LoginViewController: UIViewController {
             // 자동로그인을 눌렀을 때
             let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
             AutoLoginDataManager() .autologin(self,autoLoginInput)
-            
-            
         }
       
     }
@@ -174,13 +175,9 @@ class LoginViewController: UIViewController {
     //MARK: - Helpers
     
     private func setupData() {
-        if  (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
+        if (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
             let homeViewController = HomeViewController()
             navigationController?.pushViewController(homeViewController, animated: true)
-            navigationController?.isNavigationBarHidden = true
-        } else {
-            let LoginViewController = LoginViewController()
-            navigationController?.pushViewController(LoginViewController, animated: true)
             navigationController?.isNavigationBarHidden = true
         }
     }

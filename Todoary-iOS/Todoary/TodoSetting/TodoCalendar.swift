@@ -1,13 +1,13 @@
 //
-//  CalendarViewController.swift
+//  TodoCalendar.swift
 //  Todoary
 //
-//  Created by 송채영 on 2022/07/16.
+//  Created by 송채영 on 2022/07/26.
 //
 
 import UIKit
 
-extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     //MARK: - UIcomponents
     func initView() {
@@ -48,8 +48,14 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.section{
+        case 0:
+            return CGSize(width: 43, height: 50)
+            
+        default:
             return CGSize(width: 43, height: 42)
         }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -68,19 +74,19 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! WeekCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todoWeekCell", for: indexPath) as! TodoWeekCell
             if indexPath.row == 0 {
                 cell.weekLabel.textColor = .sunday
             } else if indexPath.row == 6 {
                 cell.weekLabel.textColor = .saturday
             } else {
-                cell.weekLabel.textColor = .black
+                cell.weekLabel.textColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.6)
             }
             cell.weekLabel.text = weeks[indexPath.row]
             
             return cell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todoCalendarCell", for: indexPath) as! TodoCalendarCell
             cell.dateLabel.text = days[indexPath.row]
             cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
             cell.dateLabel.textColor = .black
@@ -88,50 +94,26 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
             
-            if self.year == year_component && self.month == month_component {
-                if today == (indexPath.row - emptyDay) {
-                    collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
-                    cell.isSelected = true
-                }
-//                else if today+1 == (indexPath.row - emptyDay) {
-//                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
-//                    cell.dateLabel.textColor = .black
-//                }else if today-1 == (indexPath.row - emptyDay) {
-//                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
-//                    cell.dateLabel.textColor = .black
-//                }
-                else {
-                    cell.dateLabel.textColor = .black
-                }
-            }else {
-                if indexPath.row - emptyDay == 1 {
-                    collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
-                    cell.isSelected = true
-                }
-            }
-            
             return cell
         }
     }
     
     //셀 선택o
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
-            fatalError()
-        }
+        let cell = collectionView.cellForItem(at: indexPath) as! TodoCalendarCell
+        
         cell.dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
         cell.dateLabel.textColor = .white
         cell.dateLabel.layer.shadowRadius = 4.0
-        cell.dateLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        cell.dateLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
         cell.dateLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.dateLabel.layer.shadowOpacity = 1
         cell.dateLabel.layer.masksToBounds = false
     }
     //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
-            fatalError()
-        }
+        let cell = collectionView.cellForItem(at: indexPath) as! TodoCalendarCell
+        
         cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
         cell.dateLabel.textColor = .black
         cell.dateLabel.layer.shadowRadius = 0
@@ -155,3 +137,4 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     
 }
+

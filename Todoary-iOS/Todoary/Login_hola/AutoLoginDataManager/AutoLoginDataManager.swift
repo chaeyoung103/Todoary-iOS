@@ -19,14 +19,14 @@ class AutoLoginDataManager {
             .responseDecodable(of: AutoLoginModel.self) {response in
             switch response.result {
             case .success(let result) :
-                print("DEBUG: ", result)
-                UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
-                UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
-                
-                let homeViewController = HomeViewController()
-                veiwController.navigationController?.pushViewController(homeViewController, animated: true)
-                veiwController.navigationController?.isNavigationBarHidden = true
-                
+                if result.isSuccess {
+                    UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
+                    UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                    print("자동로그인 성공")
+                    let homeViewController = HomeViewController()
+                    veiwController.navigationController?.pushViewController(homeViewController, animated: true)
+                    veiwController.navigationController?.isNavigationBarHidden = true
+                }
             case .failure(let error) :
                 print(error.localizedDescription)
             }

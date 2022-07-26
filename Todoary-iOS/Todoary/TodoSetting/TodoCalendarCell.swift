@@ -1,13 +1,13 @@
 //
-//  CalendarCell.swift
+//  TodoCategoryViewController.swift
 //  Todoary
 //
-//  Created by 송채영 on 2022/07/17.
+//  Created by 송채영 on 2022/07/23.
 //
 
 import UIKit
 
-class CalendarCell : UICollectionViewCell {
+class TodoCalendarCell : UICollectionViewCell {
     
     override var isSelected: Bool{
             didSet{
@@ -23,7 +23,7 @@ class CalendarCell : UICollectionViewCell {
                 else{
                     dateLabel.textAlignment = .center
                     dateLabel.textColor = .black
-                    dateLabel.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+                    dateLabel.font = UIFont.nbFont(ofSize: 16, weight: .medium)
                     dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
                     dateLabel.layer.cornerRadius = 12
                 }
@@ -31,10 +31,10 @@ class CalendarCell : UICollectionViewCell {
         }
     
     let dateLabel = UILabel().then{
-        $0.text = "월"
+        $0.text = "10"
         $0.textAlignment = .center
         $0.textColor = .black
-        $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+        $0.font = UIFont.nbFont(ofSize: 16, weight: .medium)
         $0.layer.backgroundColor = UIColor.calendarExistColor.cgColor
         $0.layer.cornerRadius = 12
     }
@@ -53,8 +53,8 @@ class CalendarCell : UICollectionViewCell {
     private func setConstraint() {
         dateLabel.snp.makeConstraints{ make in
             make.center.equalToSuperview()
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
       }
     
@@ -67,3 +67,4 @@ class CalendarCell : UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
 }
+
