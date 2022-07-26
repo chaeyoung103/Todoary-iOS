@@ -21,7 +21,6 @@ class PwFindViewController: UIViewController {
             self.validateUserInput()
         }
     }
-
     var isValidPw = false {
         didSet {//프로퍼티 옵저버
             self.validateUserInput()
@@ -222,6 +221,7 @@ class PwFindViewController: UIViewController {
         }
     }
     
+
     @objc func idCertificationBtnDidTap() {
         self.email = idTf.text!
         EmailCheckDataManager().emailCheckDataManager(self, email: self.email)
@@ -234,6 +234,7 @@ class PwFindViewController: UIViewController {
         let pwInput = PwFindInput(email:idTf.text!, newPassword: self.password)
         
         PwFindDataManager().pwFindDataManager(self, pwInput)
+
     }
     
     @objc func certificationOkBtnDidTap(){
@@ -272,6 +273,7 @@ class PwFindViewController: UIViewController {
         }
     }
     
+
     func checkEmail(_ code: Int){
         
         if(code == 1000) { //사용가능 이메일 점검 조건문 추가
@@ -295,6 +297,7 @@ class PwFindViewController: UIViewController {
             emailCheck = false
         }else{
             emailCheck = false
+
         }
     }
 }
