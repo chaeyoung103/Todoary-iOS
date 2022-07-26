@@ -8,9 +8,9 @@
 import Foundation
 
 struct AutoLoginModel : Decodable {
-    var isSuccess : Bool?
-    var code : Int?
-    var message : String?
+    var isSuccess : Bool
+    var code : Int
+    var message : String
     var result : AutoLoginModelReult?
     
 }

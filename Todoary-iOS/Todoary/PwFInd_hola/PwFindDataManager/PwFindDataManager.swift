@@ -12,14 +12,19 @@ class PwFindDataManager{
     
     func pwFindDataManager(_ viewController: PwFindViewController, _ parameter: PwFindInput){
         
-        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
-        
-        AF.request("http://todoary.com:9000/users/password", method: .patch, parameters: parameter, encoder: JSONParameterEncoder.default, headers: headers).validate().responseDecodable(of: PwFindModel.self) { response in
+        AF.request("http://todoary.com:9000/auth/password", method: .patch, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: PwFindModel.self) { response in
             switch response.result {
             case .success(let result):
                 if result.isSuccess {
                     if result.code == 1000{
-                        print("프로필수정성공")
+                        if (UserDefaults.standard.string(forKey: "accessToken") != nil) {
+                            SignoutDataManager().signout(viewController)
+                        }else {
+                            let loginViewController = LoginViewController()
+                            viewController.navigationController?.pushViewController(loginViewController, animated: true)
+                            viewController.navigationController?.isNavigationBarHidden = true
+                        }
+                        print("비밀번호재설정성공")
                     }else{
                         print(result.message)
                     }

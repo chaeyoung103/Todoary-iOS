@@ -17,7 +17,6 @@ class LoginDataManager{
                     switch result.code{
                     case 1000:
                         UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
-                        UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
                         print("로그인 성공")
                         
                         let homeViewController = HomeViewController()

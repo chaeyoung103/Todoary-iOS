@@ -34,11 +34,13 @@ class TodoSettingViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body2)
     }
     
-    let date = UILabel().then{
-        $0.text = "2022년 7월 20일"
-        $0.textColor = .black
+    let date = UIButton().then{
+        $0.setTitle("2022년 7월 20일", for: .normal)
         $0.addLetterSpacing(spacing: 0.28)
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.addTarget(self, action: #selector(dateDidTap), for: .touchUpInside)
     }
     
     let dateBorderLine = UIView().then{
@@ -132,6 +134,12 @@ class TodoSettingViewController : UIViewController {
     }
     
     //MARK: - Actions
+    @objc func dateDidTap() {
+        let todoCalendarBottomSheetVC = TodoCalendarBottomSheetViewController()
+        todoCalendarBottomSheetVC.modalPresentationStyle = .overFullScreen
+        self.present(todoCalendarBottomSheetVC, animated: false, completion: nil)
+    }
+
 }
     
     

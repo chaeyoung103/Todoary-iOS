@@ -26,7 +26,7 @@ class MailSender: NSObject, SKPSMTPMessageDelegate {
         UserDefaults.standard.set(num, forKey: "key")
         }
 
-    func sendEmail() {
+    func sendEmail(_ email: String) {
         let message = SKPSMTPMessage()
         message.relayHost = "smtp.gmail.com"
         message.login = TODOARY_EMAIL
@@ -35,7 +35,7 @@ class MailSender: NSObject, SKPSMTPMessageDelegate {
         message.wantsSecure = true
         message.relayPorts = [587]
         message.fromEmail = TODOARY_CODE_EMAIL
-        message.toEmail = YERI_MAIL
+        message.toEmail = email
         message.subject = "Todoary CODE"
         let messagePart = [kSKPSMTPPartContentTypeKey: "text/plain; charset=UTF-8", kSKPSMTPPartMessageKey: "인증번호 [\(random_num)]을 입력해 주세요."]
         message.parts = [messagePart]
