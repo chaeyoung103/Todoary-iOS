@@ -29,12 +29,18 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     let addImage = UIImageView().then{
         $0.image = UIImage(named: "category_plus")
     }
+    
+    let selectedView = UIView().then{
+        $0.backgroundColor = .white
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.addSubview(backView)
+        self.selectedBackgroundView = selectedView
+        
         backView.addSubview(addImage)
         backView.addSubview(addBtn)
         
