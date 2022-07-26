@@ -54,14 +54,20 @@ class TodoSettingViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body2)
     }
     
-    let time = UILabel().then{
-        $0.text = "AM 8:00"
-        $0.textColor = .black
+    var time = UIButton().then{
+        $0.isHidden = true
+        $0.backgroundColor = .white
+        $0.setTitle("AM 8:00", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
         $0.addLetterSpacing(spacing: 0.28)
-        $0.font = UIFont.nbFont(type: .body2)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.addTarget(self, action: #selector(timeDidTap), for: .touchUpInside)
     }
     
-    let alarmSwitch = UISwitch()
+    let alarmSwitch = UISwitch().then{
+        $0.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
+
+    }
     
     let alarmBorderLine = UIView().then{
         $0.backgroundColor = .silver_225
@@ -139,7 +145,32 @@ class TodoSettingViewController : UIViewController {
         todoCalendarBottomSheetVC.modalPresentationStyle = .overFullScreen
         self.present(todoCalendarBottomSheetVC, animated: false, completion: nil)
     }
+    
+    @objc func timeDidTap() {
+        let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
+        todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
+        self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
+    }
+    
+    @objc func onClickSwitch(sender: UISwitch) {
 
+        if sender.isOn {
+            time.isHidden = false
+            let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
+            todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
+            self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
+        }else {
+            time.isHidden = true
+        }
+    }
+    
+    //MARK: - Helpers
+    
+    func alarmSetting(timeStr: String) {
+        self.time.setTitle(timeStr, for: .normal)
+        print(timeStr)
+    }
+    
 }
     
     

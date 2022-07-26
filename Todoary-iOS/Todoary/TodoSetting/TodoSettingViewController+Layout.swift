@@ -9,10 +9,10 @@ import UIKit
 
 extension TodoSettingViewController {
     
+    
     func setUpView(){
         
         self.view.addSubview(navigationView)
-        
         self.view.addSubview(todo)
         self.view.addSubview(todoBorderLine)
         
@@ -37,13 +37,13 @@ extension TodoSettingViewController {
     }
     
     func setUpConstraint(){
-        
+
         //navigation bar
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
         }
-
+        
         todo.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(101)
             make.leading.equalToSuperview().offset(31)
@@ -91,6 +91,8 @@ extension TodoSettingViewController {
         time.snp.makeConstraints{ make in
             make.centerY.equalTo(alarm)
             make.trailing.equalTo(alarmSwitch.snp.leading).offset(-15)
+            make.width.equalTo(60)
+            make.height.equalTo(20)
         }
         
         alarmBorderLine.snp.makeConstraints{ make in
