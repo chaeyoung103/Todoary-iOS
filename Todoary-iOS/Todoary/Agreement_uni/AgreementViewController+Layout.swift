@@ -31,8 +31,8 @@ extension AgreementViewController {
    
 
         self.view.addSubview(locationBorderLine)
-        self.view.addSubview(locationCheckBtn)
-        self.view.addSubview(locationTitle)
+//        self.view.addSubview(locationCheckBtn)
+//        self.view.addSubview(locationTitle)
         
         self.view.addSubview(agreeAllBorderLine)
         self.view.addSubview(allCheckBtn)
@@ -127,25 +127,25 @@ extension AgreementViewController {
             make.top.equalTo(adTitle.snp.bottom).offset(15)
         }
         
-        locationCheckBtn.snp.makeConstraints{make in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.left.equalTo(privacyBorderLine)
-            make.top.equalTo(locationBorderLine.snp.bottom).offset(13)
-        }
-        
-        locationTitle.snp.makeConstraints{make in
-            make.height.equalTo(18)
-            make .width.equalTo(146)
-            make.centerY.equalTo(locationCheckBtn)
-            make.leading.equalTo(locationCheckBtn.snp.trailing).offset(8)
-        }
+//        locationCheckBtn.snp.makeConstraints{make in
+//            make.width.equalTo(20)
+//            make.height.equalTo(20)
+//            make.left.equalTo(privacyBorderLine)
+//            make.top.equalTo(locationBorderLine.snp.bottom).offset(13)
+//        }
+//
+//        locationTitle.snp.makeConstraints{make in
+//            make.height.equalTo(18)
+//            make .width.equalTo(146)
+//            make.centerY.equalTo(locationCheckBtn)
+//            make.leading.equalTo(locationCheckBtn.snp.trailing).offset(8)
+//        }
         
         agreeAllBorderLine.snp.makeConstraints{make in
             make.height.equalTo(1)
             make .width.equalTo(328)
             make.centerX.equalTo(agreeTitle)
-            make.top.equalTo(locationTitle.snp.bottom).offset(15)
+            make.top.equalTo(adTitle.snp.bottom).offset(15)
         }
         
         allCheckBtn.snp.makeConstraints{ make in
