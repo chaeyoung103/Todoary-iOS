@@ -66,6 +66,7 @@ extension TodoSettingViewController {
             make.trailing.equalToSuperview().offset(-31)
             make.width.equalTo(105)
             make.height.equalTo(20)
+
         }
         
         dateBorderLine.snp.makeConstraints{ make in
