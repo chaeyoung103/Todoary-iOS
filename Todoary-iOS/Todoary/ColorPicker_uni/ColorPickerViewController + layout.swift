@@ -11,6 +11,8 @@ extension ColorPickerViewController {
     
     func setUpView(){
         
+        self.view.addSubview(navigationView)
+        
         self.view.addSubview(categoryTitle)
         self.view.addSubview(colorview)
         
@@ -19,6 +21,11 @@ extension ColorPickerViewController {
     
     
     func setUpConstraint(){
+        
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+        }
         
         categoryTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(120)
@@ -31,7 +38,7 @@ extension ColorPickerViewController {
         colorview.snp.makeConstraints{ make in
             make.top.equalTo(categoryTitle.snp.bottom).offset(18)
             make.width.equalTo(326)
-            make.height.equalTo(287)
+            make.height.equalTo(196)
             make.centerX.equalToSuperview()
         }
         
