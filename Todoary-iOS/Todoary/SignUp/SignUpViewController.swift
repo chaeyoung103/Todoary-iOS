@@ -20,6 +20,9 @@ class SignUpViewController: UIViewController {
     var name : String = ""
     var nickname : String = ""
     
+    //agreemnetVC에서 마케팅 동의 여부 정보 넘겨받기
+    var agreementMarketing : Bool?
+    
     var isValidEmail = false{
         didSet{
             self.validateUserInput()
@@ -391,5 +394,18 @@ extension SignUpViewController{
             idCanUseLabel.textColor = .noticeRed
             isValidEmail = false
         }
+        
+        switch code {
+        case 1000:
+            
+            return
+        case 2017:
+            return
+        case 2032:
+            return
+        default:
+            print("데이터 베이스 오류")
+        }
+        
     }
 }

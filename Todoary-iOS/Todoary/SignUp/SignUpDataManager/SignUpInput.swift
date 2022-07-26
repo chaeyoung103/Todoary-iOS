@@ -13,6 +13,7 @@ struct SignUpInput: Encodable{
     var name: String?
     var nickname: String?
     var password: String?
+    var isTermsEnable: Bool?
     
     //email 유효성 검사용 생성자
     init(email: String) {
