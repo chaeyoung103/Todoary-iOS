@@ -33,6 +33,7 @@ extension AgreementViewController {
         self.view.addSubview(locationBorderLine)
 //        self.view.addSubview(locationCheckBtn)
 //        self.view.addSubview(locationTitle)
+        //
         
         self.view.addSubview(agreeAllBorderLine)
         self.view.addSubview(allCheckBtn)
