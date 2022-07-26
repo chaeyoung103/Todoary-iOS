@@ -66,13 +66,13 @@ class AgreementViewController : UIViewController {
         $0.addTarget(self, action: #selector(ADTitleDIdTab), for: .touchUpInside)
     }
     
-    let locationTitle = UIButton().then{
-        $0.setTitle("위치정보 이용 동의 (선택)", for: .normal)
-        $0.setTitleColor(.headline, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
-        $0.titleLabel?.textAlignment = .left
-        $0.setUnderline()
-    }
+//    let locationTitle = UIButton().then{
+//        $0.setTitle("위치정보 이용 동의 (선택)", for: .normal)
+//        $0.setTitleColor(.headline, for: .normal)
+//        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
+//        $0.titleLabel?.textAlignment = .left
+//        $0.setUnderline()
+//    }
 
 
     //MARK: - 약관 체크버튼 (필수 동의를 해야만 확인버튼을 누를수 있음)
@@ -107,14 +107,14 @@ class AgreementViewController : UIViewController {
         $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
         $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
     }
-    
-    let locationCheckBtn = UIButton().then{
-        $0.setImage(UIImage(named: "check_box"), for: .selected)
-        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
-        $0.addTarget(self, action: #selector(locationdidCheck), for: .touchUpInside)
-        $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
-        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
-    }
+//
+//    let locationCheckBtn = UIButton().then{
+//        $0.setImage(UIImage(named: "check_box"), for: .selected)
+//        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+//        $0.addTarget(self, action: #selector(locationdidCheck), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(allagreementdidcheck), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(essentialCheckBtnDidTab), for: .touchUpInside)
+//    }
 
     
     //MARK: - BorderLine
@@ -209,11 +209,11 @@ class AgreementViewController : UIViewController {
             } else {adCheckBtn.isSelected = true}
     }
         
-    @objc func locationdidCheck() {
-        if locationCheckBtn.isSelected{ locationCheckBtn.isSelected = false
-            } else {locationCheckBtn.isSelected = true}
-    }
-    
+//    @objc func locationdidCheck() {
+//        if locationCheckBtn.isSelected{ locationCheckBtn.isSelected = false
+//            } else {locationCheckBtn.isSelected = true}
+//    }
+//
     //MARK: - allCheckBtndidCheck
     
     @objc func allcheckBtndidcheck() {
@@ -223,7 +223,7 @@ class AgreementViewController : UIViewController {
             privacyCheckBtn.isSelected = false
             useServiceCheckBtn.isSelected = false
             adCheckBtn.isSelected = false
-            locationCheckBtn.isSelected = false
+//            locationCheckBtn.isSelected = false
             
         } else {
             
@@ -231,15 +231,15 @@ class AgreementViewController : UIViewController {
             privacyCheckBtn.isSelected = true
             useServiceCheckBtn.isSelected = true
             adCheckBtn.isSelected = true
-            locationCheckBtn.isSelected = true
+//            locationCheckBtn.isSelected = true
             }
         }
     
     @objc func allagreementdidcheck() {
         if  privacyCheckBtn.isSelected == true
             && useServiceCheckBtn.isSelected == true
-            && adCheckBtn.isSelected == true
-            && locationCheckBtn.isSelected == true {
+                && adCheckBtn.isSelected == true {
+//            && locationCheckBtn.isSelected == true
             
             allCheckBtn.isSelected = true
             
