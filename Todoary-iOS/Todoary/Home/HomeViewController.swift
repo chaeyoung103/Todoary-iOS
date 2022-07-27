@@ -132,6 +132,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         
         setUpView()
         setUpConstraint()
+        bottomSheetShow()
         
         self.initView()
         self.collectionView.delegate = self
@@ -175,6 +176,16 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
          
     @objc func onPickCancel() {
         year_Month.resignFirstResponder() /// 피커뷰 내림
+    }
+    
+    //MARK: - Helpers
+    
+    func bottomSheetShow(){
+        
+        let viewControllerToPresent = TodoListBottomSheetViewController()
+        
+        viewControllerToPresent.loadViewIfNeeded()
+        present(viewControllerToPresent, animated: true, completion: nil)
     }
     
     func successAPI_home(_ result : GetProfileResult) {
