@@ -132,11 +132,16 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         return CGFloat(20)
     }
     
-    //MARK: - UICollectionViewDelegate,
+    //MARK: - UICollectionViewDelegate
 
-    func collectionView(_ collectionView: UICollectionView, colorBtnDidtab indexPath: IndexPath) {
-        if indexPath.item == 0 {
-            iscolorBtntap = true
-        }
+//    func collectionView(_ collectionView: UICollectionView, colorBtnDidtab indexPath: IndexPath) {
+//        if indexPath.item == 0 {
+//            iscolorBtntap = true
+//        }
+//    }
+    func collectionView(UICollectionView, didSelectItemA indexPath : IndexPath) {
+        
     }
+    
+    
 }

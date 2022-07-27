@@ -90,6 +90,13 @@ class ColorPickerCollectionViewCell: UICollectionViewCell {
         } else {colorBtnpick.isHidden = false
     }
 }
+    override var isSelected: Bool {
+            didSet {
+                if isSelected {
+                    iscolorBtntap = true
+                } else {
+                    iscolorBtntap = false
+                }
 
 }
 
