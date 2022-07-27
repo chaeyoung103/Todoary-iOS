@@ -33,6 +33,10 @@ class ColorPickerViewController : UIViewController {
         $0.layer.cornerRadius = 10
     }
     
+    let deleteBtn = UIButton().then{
+        $0.setImage(UIImage (named: "category_trash"), for: .normal)
+    }
+    
     let colorview = UIView().then{
         $0.layer.cornerRadius = 15
         $0.layer.borderWidth = 1

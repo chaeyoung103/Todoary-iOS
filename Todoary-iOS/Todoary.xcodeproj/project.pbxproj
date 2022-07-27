@@ -102,6 +102,7 @@
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
+		E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */; };
 		E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */; };
 		E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */; };
 		E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */; };
@@ -292,6 +293,7 @@
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
+		E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetViewController.swift; sourceTree = "<group>"; };
 		E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController + layout.swift"; sourceTree = "<group>"; };
 		E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
 				E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */,
 				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
+				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -1343,6 +1346,7 @@
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
+				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
 				E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
