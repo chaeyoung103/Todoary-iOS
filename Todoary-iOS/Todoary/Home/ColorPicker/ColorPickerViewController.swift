@@ -86,11 +86,11 @@ class ColorPickerViewController : UIViewController {
     }
 }
 
-    private func collectionView (
-        _ collectionView : UICollectionView,
-        colorBtnDidtab indexPath : IndexPath
-    ) -> Bool {
-    }
+//    private func collectionView (
+//        _ collectionView : UICollectionView,
+//        colorBtnDidtab indexPath : IndexPath
+//    ) -> Bool {
+//    }
 
     //MARK: - UICollectionViewDataSource
 
