@@ -354,17 +354,18 @@ class SignUpViewController: UIViewController {
     func certificationOKBtnDidClicked(_ sender: UIButton){
         
         let alertTitle : String!
-        
+
         if isValidCertiCode{
             alertTitle = "인증이 완료되었습니다."
         }else{
             alertTitle = "인증코드가 일치하지 않습니다."
         }
-        
+
         let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
+
         alert.addAction(alertAction)
+        
         self.present(alert, animated: true, completion: nil)
             
     }
@@ -390,17 +391,23 @@ extension SignUpViewController{
             return
         case 2017:
             return
+            
         case 2032: //닉네임 중복 오류
-            print("2032")
+
             nextButton.isEnabled = false
             nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
             return
             
         default:
+            
             print("데이터 베이스 오류")
             nextButton.isEnabled = false
+            
             //팝업 띄우기
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            
             return
         }
     }
