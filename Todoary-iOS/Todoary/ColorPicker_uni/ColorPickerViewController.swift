@@ -17,10 +17,10 @@ class ColorPickerViewController : UIViewController {
     private var ColorPickerCollectionViewCellid = "ColorPickerCollectionViewCellid"
     
     private var ColorPickerCollectionView: ColorPickerCollectionView!
-//    var ColorPickerCollectionView = UICollectionView().then{
-//        $0.backgroundColor = .red
-//    }
-//
+    
+    var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
+
+    var navigationView:NavigationView!
     
     let categoryTitle = UITextField().then{
         $0.placeholder = "카테고리 이름을 입력해주세요"
@@ -39,10 +39,13 @@ class ColorPickerViewController : UIViewController {
         $0.layer.borderColor = UIColor.silver_217.cgColor
     }
     
+    //MARK: - Lifecycles
     
     override func viewDidLoad() {
     
         super.viewDidLoad()
+        
+        navigationView = NavigationView(frame: .zero , self.navigationController!)
         
         setUpView()
         setUpConstraint()
@@ -56,21 +59,19 @@ class ColorPickerViewController : UIViewController {
     private func configure() {
 
            let collectionViewLayer = UICollectionViewFlowLayout()
-//           collectionViewLayer.sectionInset = UIEdgeInsets(top: 20, left: 23, bottom: 21, right: 23)
-//           collectionViewLayer.minimumLineSpacing = 22
-//           collectionViewLayer.minimumInteritemSpacing = 14
-           //collectionViewLayer.estimatedItemSize = .zero
-        
+           collectionViewLayer.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
 
         ColorPickerCollectionView = Todoary.ColorPickerCollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
+        ColorPickerCollectionView.isScrollEnabled = false
         
-           view.addSubview(ColorPickerCollectionView)
+        view.addSubview(ColorPickerCollectionView)
 
             ColorPickerCollectionView.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(208)
+                make.leading.equalToSuperview().offset(50)
+                make.width.equalTo(300)
+                make.height.equalTo(150)
                 make.centerX.equalToSuperview()
-                make.width.equalTo(271)
-                make.height.equalTo(236)
            }
        }
 
@@ -85,11 +86,18 @@ class ColorPickerViewController : UIViewController {
     }
 }
 
-//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+    private func collectionView (
+        _ collectionView : UICollectionView,
+        colorBtnDidtab indexPath : IndexPath
+    ) -> Bool {
+    }
+
+    //MARK: - UICollectionViewDataSource
 
 extension ColorPickerViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 18
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,33 +106,37 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
             for: indexPath) as? ColorPickerCollectionViewCell else {
                 fatalError("셀 타입 케스팅 실패")
             }
+        
+        
+        cell.colorBtn.backgroundColor = allColor[indexPath.row]
+        cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
+        
         return cell
     }
-
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //            let collectionViewWidth = collectionView.bounds.width
-//            let cellItemForRow: CGFloat = 5
-//            let minimumSpacing: CGFloat = 14
+//            let cellItemForRow: CGFloat = 6
+//            let minimumSpacing: CGFloat = 10
 //            let width = (collectionViewWidth - (cellItemForRow - 1) * minimumSpacing) / cellItemForRow
-//
-            return CGSize(width: 35, height: 35)
-//            return CGSize(width: 45, height: 45)
 
-            }
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//           return UIEdgeInsets(top: 20, left: 23, bottom: 21, right: 23)
-//        }
+        return CGSize(width: 30, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(25)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(20)
+    }
+    
+    //MARK: - UICollectionViewDelegate,
 
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return CGFloat(22)
-
-       }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return CGFloat(14)
+    func collectionView(_ collectionView: UICollectionView, colorBtnDidtab indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            iscolorBtntap = true
         }
-      
-    
-    
+    }
 }

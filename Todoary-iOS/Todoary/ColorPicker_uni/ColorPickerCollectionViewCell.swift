@@ -13,28 +13,41 @@ import Then
 class ColorPickerCollectionViewCell: UICollectionViewCell {
     static let identifier = "ColorPickerCollectionViewCell"
     
-    let colorBtn = UIButton().then{
-        $0.backgroundColor = UIColor.category1
-        //원형버튼 만들기
-        $0.layer.cornerRadius = 35/2
+    
+    //MARK: - UIComponenets
+    
+    var iscolorBtntap = false{
+        didSet{
+            self.colorBtndidtap()
+        }
     }
     
+    let colorBtn = UIButton().then{
+        //원형버튼 만들기
+        $0.layer.cornerRadius = 30/2
+        $0.addTarget(self, action: #selector(colorBtnDidTab), for: .touchUpInside)
+    }
+    
+   
     let colorBtnpick = UIView().then{
         $0.layer.borderWidth = 2
-        $0.layer.cornerRadius = 45/2
-        $0.layer.borderColor = UIColor.category1.cgColor
+        $0.layer.cornerRadius = 40/2
+        $0.isHidden = true
+        $0.isUserInteractionEnabled = true
+        
     }
+   
     
-    //layout
+    //MARK: - Lifecycles
     
     override init(frame: CGRect) {
       super.init(frame: frame)
-        
+    
         setUpContentView()
         setUpConstraint()
     }
 
-    
+    //MARK: - layout
         func setUpContentView(){
             
             contentView.addSubview(colorBtn)
@@ -45,17 +58,38 @@ class ColorPickerCollectionViewCell: UICollectionViewCell {
         func setUpConstraint(){
             
             colorBtn.snp.makeConstraints{ make in
-                make.width.height.equalTo(35)
+                make.width.height.equalTo(30)
             }
             
-//            colorBtnpick.snp.makeConstraints{ make in
-//                make.width.height.equalTo(45)
-//                make.centerX.centerY.equalTo(colorBtn)
-//            }
+            colorBtnpick.snp.makeConstraints{ make in
+                make.width.height.equalTo(40)
+                make.centerX.centerY.equalTo(colorBtn)
+            }
         }
             
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+    
+
+    //MARK: - Actions
+
+    @objc func colorBtnDidTab() {
+        if colorBtn.isSelected == true {
+            iscolorBtntap = true
+        } else {
+            iscolorBtntap = false
+        }
     }
+
+    //MARK: - Helpers
+    
+    private func colorBtndidtap() {
+        if iscolorBtntap {
+            colorBtnpick.isHidden = true
+        } else {colorBtnpick.isHidden = false
+    }
+}
+
+}
 
