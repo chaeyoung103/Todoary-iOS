@@ -641,6 +641,11 @@
 		AC5E27DD28901EBE0056EC69 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
+				E0F9987F288A57070051C7AA /* PwFindDataManager */,
+				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
+				5750364F288A3F85006A9070 /* LoginDataManager */,
+				57503650288A3F98006A9070 /* AutoLoginDataManager */,
 				57503648288A3E21006A9070 /* SignUpDataManager */,
 				AC5E27DE28901EEF0056EC69 /* AuthInterceptor.swift */,
 				AC5E27E0289020350056EC69 /* AuthJwtInput.swift */,
@@ -687,6 +692,8 @@
 		AC5E27E92890EC5D0056EC69 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
+				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				E0F998A2288A59740051C7AA /* UserDeleteDataManager */,
 			);
 			path = User;
@@ -709,7 +716,6 @@
 		AC9128C7287AD5830056932A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
 				AC9128C8287AD5A80056932A /* AccountViewController.swift */,
 				AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */,
 				AC9128CC287AFE620056932A /* AccountTableViewCell.swift */,
@@ -720,10 +726,8 @@
 		AC9128CE287B34830056932A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
 				E0F99894288A58410051C7AA /* ProfileImgDeleteDataManager */,
 				E0F9988D288A57F50051C7AA /* ProfileImgDataManager */,
-				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -743,8 +747,6 @@
 		ACACD00E28749F360029D5CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				57503650288A3F98006A9070 /* AutoLoginDataManager */,
-				5750364F288A3F85006A9070 /* LoginDataManager */,
 				ACACD00F28749F520029D5CE /* LoginViewController.swift */,
 				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
 			);
@@ -754,8 +756,6 @@
 		ACACD01328749F760029D5CE /* PwFind */ = {
 			isa = PBXGroup;
 			children = (
-				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
-				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				ACACD01428749F880029D5CE /* PwFindViewController.swift */,
 				ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */,
 				AC9859C5287DC219009FC2F8 /* MailSender.swift */,

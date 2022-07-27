@@ -13,7 +13,6 @@ final class Interceptor: RequestInterceptor {
             completion(.doNotRetryWithError(error))
             return
         }
-        
         exit(0)
     }
 }
