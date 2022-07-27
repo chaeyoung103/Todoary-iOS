@@ -26,7 +26,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - UIComponents
     
     let dimmedBackView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     let bottomSheetView = UIView().then{
@@ -100,6 +100,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Layout
     private func setUpView() {
         
+        view.addSubview(dimmedBackView)
         view.addSubview(bottomSheetView)
         
         view.addSubview(categoryTextField)
@@ -107,6 +108,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         view.addSubview(confirmBtn)
         view.addSubview(deleteBtn)
         
+        dimmedBackView.alpha = 0.0
         setUpConstraint()
         
         configure()
@@ -114,15 +116,23 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
     
     private func setUpConstraint() {
-            bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
-            let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
-            bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
-            NSLayoutConstraint.activate([
-                bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                bottomSheetViewTopConstraint
-            ])
+        dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
+            dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+            
+        bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
+        bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
+        NSLayoutConstraint.activate([
+            bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomSheetViewTopConstraint
+        ])
         
         categoryTextField.snp.makeConstraints{ make in
             make.top.equalTo(bottomSheetView.snp.top).offset(30)
@@ -161,7 +171,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - bottomHeight
         
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            self.dimmedBackView.alpha = 0.0
+            self.dimmedBackView.alpha = 0.1
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
