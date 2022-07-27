@@ -147,6 +147,20 @@ class AccountViewController : UIViewController {
         introduce.text = result.introduce
         userAccount.text = result.email
     }
+    
+    func deleteApiResultCode(_ result: Int){
+        switch result{
+        case 1000:
+            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            return
+        case 2010, 4000:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        default:
+            fatalError()
+        }
+    }
 }
 
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
