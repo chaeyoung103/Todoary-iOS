@@ -14,7 +14,7 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     // 바텀 시트 높이
     let bottomHeight: CGFloat = 375
     
-    var delegate: CompleteAction?
+    var delegate: CalendarComplete?
         
     // bottomSheet가 view의 상단에서 떨어진 거리
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
@@ -161,7 +161,7 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     //MARK: - Helpers
     
     // 바텀 시트 표출 애니메이션
-    private func showBottomSheet() {
+    func showBottomSheet() {
         let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding: CGFloat = view.safeAreaInsets.bottom
         
@@ -174,7 +174,7 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     }
     
     // 바텀 시트 사라지는 애니메이션
-    private func hideBottomSheetAndGoBack() {
+    func hideBottomSheetAndGoBack() {
         let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding = view.safeAreaInsets.bottom
         bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
@@ -189,7 +189,7 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     }
     
     // GestureRecognizer 세팅 작업
-    private func setupGestureRecognizer() {
+    func setupGestureRecognizer() {
         // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
         let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
         dimmedBackView.addGestureRecognizer(dimmedTap)
@@ -203,7 +203,7 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     
     
     // UITapGestureRecognizer 연결 함수 부분
-    @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
+    @objc func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
         hideBottomSheetAndGoBack()
     }
     
@@ -218,4 +218,8 @@ class TodoCalendarBottomSheetViewController: UIViewController {
             }
         }
     }
+}
+
+protocol CalendarComplete {
+    func calendarComplete(date: String)
 }

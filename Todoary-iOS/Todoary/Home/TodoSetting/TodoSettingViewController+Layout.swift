@@ -90,7 +90,7 @@ extension TodoSettingViewController {
         time.snp.makeConstraints{ make in
             make.centerY.equalTo(alarm)
             make.trailing.equalTo(alarmSwitch.snp.leading).offset(-15)
-            make.width.equalTo(58)
+            make.width.equalTo(60)
             make.height.equalTo(17)
         }
         

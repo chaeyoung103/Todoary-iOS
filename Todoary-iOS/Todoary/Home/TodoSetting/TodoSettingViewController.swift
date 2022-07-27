@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class TodoSettingViewController : UIViewController, CompleteAction {
+class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
     
     
     
@@ -149,6 +149,7 @@ class TodoSettingViewController : UIViewController, CompleteAction {
     @objc func dateDidTap() {
         let todoCalendarBottomSheetVC = TodoCalendarBottomSheetViewController()
         todoCalendarBottomSheetVC.modalPresentationStyle = .overFullScreen
+        todoCalendarBottomSheetVC.delegate = self
         self.present(todoCalendarBottomSheetVC, animated: false, completion: nil)
     }
     
@@ -178,8 +179,12 @@ class TodoSettingViewController : UIViewController, CompleteAction {
     
     //MARK: - Helpers
     
-    func completeAction(time: String) {
+    func alarmComplete(time: String) {
         self.time.setTitle(time, for: .normal)
+    }
+    
+    func calendarComplete(date: String) {
+        self.date.setTitle(date, for: .normal)
     }
     
 }
