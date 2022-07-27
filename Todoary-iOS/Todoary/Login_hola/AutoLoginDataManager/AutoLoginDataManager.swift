@@ -22,6 +22,7 @@ class AutoLoginDataManager {
                 if result.isSuccess {
                     UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
                     UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                    print(UserDefaults.standard.string(forKey: "refreshToken"))
                     print("자동로그인 성공")
                     let homeViewController = HomeViewController()
                     veiwController.navigationController?.pushViewController(homeViewController, animated: true)

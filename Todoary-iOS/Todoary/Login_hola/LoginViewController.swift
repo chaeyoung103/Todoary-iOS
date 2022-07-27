@@ -166,8 +166,8 @@ class LoginViewController: UIViewController {
     
     @objc func appleBtnDidTab() {
         let todoSettingViewController = TodoSettingViewController()
-        navigationController?.pushViewController(todoSettingViewController, animated: true)
-        navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(todoSettingViewController, animated: true)
+        self.navigationController?.isNavigationBarHidden = true
     }
         
         
@@ -175,10 +175,13 @@ class LoginViewController: UIViewController {
     //MARK: - Helpers
     
     private func setupData() {
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
-            let homeViewController = HomeViewController()
-            navigationController?.pushViewController(homeViewController, animated: true)
-            navigationController?.isNavigationBarHidden = true
+        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
+            print("돼?")
+            print("refresh: "+UserDefaults.standard.string(forKey: "refreshToken")!)
+            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken")!)
+            AuthJwtDataManager().authJwtDataManager(self,authJwt)
+        }else {
+            print("안돼")
         }
     }
 
