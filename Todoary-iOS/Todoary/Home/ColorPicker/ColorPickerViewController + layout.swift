@@ -25,6 +25,15 @@ extension ColorPickerViewController {
             make.width.equalToSuperview()
         }
         
+        navigationView.addSubview(deleteBtn)
+        
+        deleteBtn.snp.makeConstraints{ make in
+            make.width.equalTo(61)
+            make.height.equalTo(55)
+            make.top.equalTo(42)
+            make.leading.equalTo(311)
+        }
+        
         categoryTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(120)
             make.centerX.equalToSuperview()
