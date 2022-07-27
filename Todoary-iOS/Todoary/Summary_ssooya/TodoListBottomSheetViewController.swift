@@ -273,7 +273,7 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
 
 class SummaryData : Equatable{
     
-    var time: String?
+    var time: String
     var pin: Bool
     var alarm: Bool
     var category: Bool
