@@ -13,6 +13,8 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     // MARK: - Properties
     // 바텀 시트 높이
     let bottomHeight: CGFloat = 375
+    
+    var delegate: CompleteAction?
         
     // bottomSheet가 view의 상단에서 떨어진 거리
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!

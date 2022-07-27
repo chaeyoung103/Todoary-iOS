@@ -9,7 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
-class TodoSettingViewController : UIViewController {
+class TodoSettingViewController : UIViewController, CompleteAction {
+    
+    
+    
+    var viewController: UIViewController!
     
     //MARK: - UIComponenets
     
@@ -137,6 +141,8 @@ class TodoSettingViewController : UIViewController {
         setUpView()
         setUpConstraint()
         
+        
+        
     }
     
     //MARK: - Actions
@@ -149,6 +155,9 @@ class TodoSettingViewController : UIViewController {
     @objc func timeDidTap() {
         let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
         todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
+        
+        todoAlarmBottomSheetVC.delegate = self
+        
         self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
     }
     
@@ -158,6 +167,9 @@ class TodoSettingViewController : UIViewController {
             time.isHidden = false
             let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
             todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
+            
+            todoAlarmBottomSheetVC.delegate = self
+            
             self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
         }else {
             time.isHidden = true
@@ -166,9 +178,8 @@ class TodoSettingViewController : UIViewController {
     
     //MARK: - Helpers
     
-    func alarmSetting(timeStr: String) {
-        self.time.setTitle(timeStr, for: .normal)
-        print(timeStr)
+    func completeAction(time: String) {
+        self.time.setTitle(time, for: .normal)
     }
     
 }

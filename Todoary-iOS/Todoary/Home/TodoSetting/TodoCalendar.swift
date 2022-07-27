@@ -109,6 +109,8 @@ extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICo
         cell.dateLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.dateLabel.layer.shadowOpacity = 1
         cell.dateLabel.layer.masksToBounds = false
+        let firstDayOfMonth = cal.date(from: components)
+        self.delegate?.completeAction(time: dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월"+(indexPath.row - emptyDay)+"일")
     }
     //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
