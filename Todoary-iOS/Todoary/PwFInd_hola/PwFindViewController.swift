@@ -283,7 +283,7 @@ class PwFindViewController: UIViewController {
             idNoticeLb.text = "*유효한 이메일입니다."
             idNoticeLb.textColor = .todoaryGrey
             
-            MailSender.shared.sendEmail("thdcodud103@naver.com")
+            MailSender.shared.sendEmail(self.email)
             
             //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
             let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: nil, preferredStyle: .alert)
