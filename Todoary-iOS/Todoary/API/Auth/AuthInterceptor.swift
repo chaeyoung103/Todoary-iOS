@@ -13,12 +13,7 @@ final class Interceptor: RequestInterceptor {
             completion(.doNotRetryWithError(error))
             return
         }
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            print("refresh: "+UserDefaults.standard.string(forKey: "refreshToken")!)
-            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken")!)
-            AuthJwtDataManager().authJwtDataManager(LoginViewController(),authJwt)
-        }else {
-            print("안돼")
-        }
+        
+        exit(0)
     }
 }

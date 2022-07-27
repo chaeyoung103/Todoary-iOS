@@ -10,23 +10,24 @@ import Alamofire
 class LoginDataManager{
     
     func loginDataManager(_ viewController : LoginViewController, _ parameter: LoginInput){
-        AF.request("http://todoary.com:9000/auth/signin", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: LoginModel.self) { response in
+        AF.request("https://todoary.com/auth/signin", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil, interceptor: Interceptor()).validate().responseDecodable(of: LoginModel.self) { response in
             switch response.result {
             case .success(let result):
-                if result.isSuccess {
-                    switch result.code{
-                    case 1000:
-                        UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
-                        print("로그인 성공")
-                        
-                        let homeViewController = HomeViewController()
-                        viewController.navigationController?.pushViewController(homeViewController, animated: true)
-                        viewController.navigationController?.isNavigationBarHidden = true
-                    default:
-                        print(result.message)
-                    }
-                }else {
+                switch result.code{
+                case 1000:
+                    UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
+                    print("로그인 성공")
+                    
+                    let homeViewController = HomeViewController()
+                    viewController.navigationController?.pushViewController(homeViewController, animated: true)
+                    viewController.navigationController?.isNavigationBarHidden = true
+                case 2005:
                     print(result.message)
+                case 2011:
+                    print(result.message)
+                default:
+                    let alert = DataBaseErrorAlert()
+                    viewController.present(alert, animated: true, completion: nil)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
