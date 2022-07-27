@@ -56,8 +56,13 @@ class ColorPickerViewController : UIViewController {
         
         configure()
         setupCollectionView()
+        
+        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
+        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
 
     }
+    
     //MARK: - Helpers
     
     private func configure() {
@@ -88,7 +93,10 @@ class ColorPickerViewController : UIViewController {
         ColorPickerCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerCollectionViewCellid)
         
     }
+  
 }
+
+
 
     //MARK: - UICollectionViewDataSource
 
