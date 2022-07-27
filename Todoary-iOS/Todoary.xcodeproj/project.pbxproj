@@ -206,7 +206,7 @@
 		574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBottomSheetViewController.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
-		574A703F2885085D003C8F99 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		574A703F2885085D003C8F99 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewController.swift; path = Todoary/Home/Summary/TestViewController.swift; sourceTree = SOURCE_ROOT; };
 		574A704428852523003C8F99 /* TodoListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTitleCell.swift; sourceTree = "<group>"; };
 		574A704628852543003C8F99 /* DiaryTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTitleCell.swift; sourceTree = "<group>"; };
 		574A70482885255B003C8F99 /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
@@ -1492,7 +1492,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Summary_ssooya/CustomSPCDetent-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Home/Summary/CustomSPCDetent-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1524,7 +1524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Todoary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Summary_ssooya/CustomSPCDetent-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Home/Summary/CustomSPCDetent-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
