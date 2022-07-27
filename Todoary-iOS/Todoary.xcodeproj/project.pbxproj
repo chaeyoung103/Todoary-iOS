@@ -83,6 +83,9 @@
 		AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27E0289020350056EC69 /* AuthJwtInput.swift */; };
 		AC5E27E3289020D70056EC69 /* AuthJwtDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27E2289020D70056EC69 /* AuthJwtDataManager.swift */; };
 		AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27E42890211C0056EC69 /* AuthJwtModel.swift */; };
+		AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27ED28914E810056EC69 /* TodoSettingDataManager.swift */; };
+		AC5E27F028914E930056EC69 /* TodoSettingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27EF28914E930056EC69 /* TodoSettingInput.swift */; };
+		AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */; };
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
@@ -269,6 +272,9 @@
 		AC5E27E0289020350056EC69 /* AuthJwtInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthJwtInput.swift; sourceTree = "<group>"; };
 		AC5E27E2289020D70056EC69 /* AuthJwtDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthJwtDataManager.swift; sourceTree = "<group>"; };
 		AC5E27E42890211C0056EC69 /* AuthJwtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthJwtModel.swift; sourceTree = "<group>"; };
+		AC5E27ED28914E810056EC69 /* TodoSettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingDataManager.swift; sourceTree = "<group>"; };
+		AC5E27EF28914E930056EC69 /* TodoSettingInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingInput.swift; sourceTree = "<group>"; };
+		AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingModel.swift; sourceTree = "<group>"; };
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -622,6 +628,7 @@
 		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
 			isa = PBXGroup;
 			children = (
+				AC5E27EC28914E5E0056EC69 /* TodoSettingDataManager */,
 				AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */,
 				AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */,
 				AC5E27CA288C38130056EC69 /* TodoCalendarCell.swift */,
@@ -715,6 +722,16 @@
 			children = (
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		AC5E27EC28914E5E0056EC69 /* TodoSettingDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC5E27ED28914E810056EC69 /* TodoSettingDataManager.swift */,
+				AC5E27EF28914E930056EC69 /* TodoSettingInput.swift */,
+				AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */,
+			);
+			path = TodoSettingDataManager;
 			sourceTree = "<group>";
 		};
 		AC9128C7287AD5830056932A /* Account */ = {
@@ -1232,6 +1249,7 @@
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
 				57294AB22891161D00DA2F31 /* TodoGetInput.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
+				AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */,
 				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
@@ -1279,6 +1297,8 @@
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
+				AC5E27F028914E930056EC69 /* TodoSettingInput.swift in Sources */,
+				AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
