@@ -196,7 +196,8 @@ class SignUpViewController: UIViewController {
     }
     
     let nicknameCanUseLabel = UILabel().then{
-        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+//        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+        $0.text = "중복된 닉네임입니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
     }
@@ -253,6 +254,13 @@ class SignUpViewController: UIViewController {
         tfEditedEndArray.forEach{ each in
             each.addTarget(self, action: #selector(textFieldDidEditingEnd(_:)), for: .editingDidEnd)
         }
+        
+        nicknameTextField.addTarget(self, action: #selector(initNicknameCanUseLabel), for: .editingDidBegin)
+    }
+    
+    @objc
+    func initNicknameCanUseLabel(){
+        nicknameCanUseLabel.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
     }
     
     @objc
@@ -372,9 +380,34 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController{
     
-    func checkApiResultCode(_ code: Int){
+    func checkSignUpResultCode(_ code: Int){
+        switch(code){
+        case 1000:
+            
+            /*
+             root login인지 여부 체크
+             */
+            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            return
+        case 2017:
+            return
+        case 2032: //닉네임 중복 오류
+            //중복된 닉네임입니다.
+            nextButton.isEnabled = false
+            nicknameCanUseLabel.text = "중복된 닉네임입니다."
+            return
+        default:
+            print("데이터 베이스 오류")
+            nextButton.isEnabled = false
+            //팝업 띄우기
+            return
+        }
+    }
+    
+    func checkEmailApiResultCode(_ code: Int){
         
-        if(code == 1000) { //사용가능 이메일 점검 조건문 추가
+        switch code {
+        case 1000:
             
             idCanUseLabel.text = "*사용 가능한 이메일입니다."
             idCanUseLabel.textColor = .todoaryGrey
@@ -389,22 +422,19 @@ extension SignUpViewController{
             alert.addAction(alertAction)
             self.present(alert, animated: true, completion: nil)
             
-        }else if(code == 2017){
+            return
+            
+        case 2017:
+            
             idCanUseLabel.text = "*이미 사용중인 이메일입니다."
             idCanUseLabel.textColor = .noticeRed
             isValidEmail = false
-        }
-        
-        switch code {
-        case 1000:
             
             return
-        case 2017:
-            return
-        case 2032:
-            return
+            
         default:
-            print("데이터 베이스 오류")
+            print("데이터베이스 오류")
+            return
         }
         
     }

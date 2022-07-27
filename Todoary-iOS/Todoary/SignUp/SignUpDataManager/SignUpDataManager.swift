@@ -16,7 +16,7 @@ class SignUpDataManager{
             case .success(let result):
                 if result.isSuccess{
                     print("success??")
-                    viewController.checkApiResultCode(result.code)
+                    viewController.checkEmailApiResultCode(result.code)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -28,11 +28,9 @@ class SignUpDataManager{
         AF.request("http://todoary.com:9000/auth/signup", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
             case .success(let result):
-                if result.isSuccess && result.code == 1000{
+                if result.isSuccess{
                     print("성공")
-                    viewController.navigationController?.pushViewController(AgreementViewController(), animated: true)
-                }else{
-                    print(result.messsage)
+                    viewController.checkSignUpResultCode(result.code)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
