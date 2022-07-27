@@ -12,7 +12,7 @@ class AutoLoginDataManager {
               _ parameter : AutoLoginInput) {
         
         //통신
-        AF.request("http://todoary.com:9000/auth/signin/auto",
+        AF.request("https://todoary.com/auth/signin/auto",
                    method: .post, parameters: parameter,
                    encoder: JSONParameterEncoder.default, headers: nil)
             .validate()
