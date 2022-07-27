@@ -21,11 +21,12 @@ struct SignUpInput: Encodable{
     }
     
     //회원가입용 생성자
-    init(email: String, name: String, nickname: String, password: String) {
+    init(email: String, name: String, nickname: String, password: String, isTermsEnable: Bool) {
         self.email = email
         self.name = name
         self.nickname = nickname
         self.password = password
+        self.isTermsEnable = isTermsEnable
     }
     
 }

@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     var nickname : String = ""
     
     //agreemnetVC에서 마케팅 동의 여부 정보 넘겨받기
-    var agreementMarketing : Bool?
+    var isMarketingAgree : Bool!
     
     var isValidEmail = false{
         didSet{
@@ -211,7 +211,7 @@ class SignUpViewController: UIViewController {
         $0.layer.cornerRadius = 52/2
         $0.addTarget(self, action: #selector(nextButtonDidClicked(_:)), for: .touchUpInside)
     }
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -260,6 +260,7 @@ class SignUpViewController: UIViewController {
     
     @objc
     func initNicknameCanUseLabel(){
+        nicknameCanUseLabel.isHidden = false
         nicknameCanUseLabel.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
     }
     
@@ -337,7 +338,7 @@ class SignUpViewController: UIViewController {
     func certificationBtnDidClicked(_ sender: UIButton){
         
         idCanUseLabel.isHidden = false
-        
+
         if(isValidEmail){
             //이메일 중복 여부 확인
             SignUpDataManager().posts(self, email: self.email)
@@ -371,7 +372,7 @@ class SignUpViewController: UIViewController {
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
 
-        let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd)
+        let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd, isTermsEnable: self.isMarketingAgree)
         
         SignUpDataManager().posts(self, userData)
     }
@@ -383,19 +384,19 @@ extension SignUpViewController{
     func checkSignUpResultCode(_ code: Int){
         switch(code){
         case 1000:
+    
+            self.navigationController?.popToRootViewController(animated: true)
             
-            /*
-             root login인지 여부 체크
-             */
-            self.navigationController?.pushViewController(LoginViewController(), animated: true)
             return
         case 2017:
             return
         case 2032: //닉네임 중복 오류
-            //중복된 닉네임입니다.
+            print("2032")
             nextButton.isEnabled = false
+            nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
             return
+            
         default:
             print("데이터 베이스 오류")
             nextButton.isEnabled = false
@@ -407,6 +408,7 @@ extension SignUpViewController{
     func checkEmailApiResultCode(_ code: Int){
         
         switch code {
+            
         case 1000:
             
             idCanUseLabel.text = "*사용 가능한 이메일입니다."
@@ -434,6 +436,7 @@ extension SignUpViewController{
             
         default:
             print("데이터베이스 오류")
+            
             return
         }
         

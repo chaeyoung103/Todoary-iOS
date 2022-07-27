@@ -28,11 +28,10 @@ class SignUpDataManager{
         AF.request("http://todoary.com:9000/auth/signup", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
             case .success(let result):
-                if result.isSuccess{
-                    print("성공")
-                    viewController.checkSignUpResultCode(result.code)
-                }
+                print("성공")
+                viewController.checkSignUpResultCode(result.code)
             case .failure(let error):
+                print("실패")
                 print(error.localizedDescription)
             }
         }

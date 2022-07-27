@@ -259,11 +259,14 @@ class AgreementViewController : UIViewController {
         }
     
     @objc func confirmBtnDidTab() {
-        let PrivacyTextViewController = PrivacyTextViewController()
         
-        navigationController?.pushViewController(PrivacyTextViewController, animated: true)
+        let vc = SignUpViewController()
+        vc.isMarketingAgree = adCheckBtn.isSelected
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
         navigationController?.isNavigationBarHidden = true
-        }
+    }
     
     @objc func essentialCheckBtnDidTab() {
         if privacyCheckBtn.isSelected == false ||
