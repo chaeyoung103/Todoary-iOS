@@ -86,9 +86,16 @@ class ColorPickerViewController : UIViewController {
     }
 }
 
-    //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+    private func collectionView (
+        _ collectionView : UICollectionView,
+        colorBtnDidtab indexPath : IndexPath
+    ) -> Bool {
+    }
+
+    //MARK: - UICollectionViewDataSource
 
 extension ColorPickerViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18
     }
@@ -99,6 +106,7 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
             for: indexPath) as? ColorPickerCollectionViewCell else {
                 fatalError("셀 타입 케스팅 실패")
             }
+        
         
         cell.colorBtn.backgroundColor = allColor[indexPath.row]
         cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
@@ -124,5 +132,11 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         return CGFloat(20)
     }
     
+    //MARK: - UICollectionViewDelegate,
 
+    func collectionView(_ collectionView: UICollectionView, colorBtnDidtab indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            iscolorBtntap = true
+        }
+    }
 }

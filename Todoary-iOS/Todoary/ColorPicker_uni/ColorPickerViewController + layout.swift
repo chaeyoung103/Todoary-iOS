@@ -15,8 +15,6 @@ extension ColorPickerViewController {
         
         self.view.addSubview(categoryTitle)
         self.view.addSubview(colorview)
-        
-//        self.view.addSubview(ColorPickerCollectionView)
     }
     
     
@@ -41,14 +39,5 @@ extension ColorPickerViewController {
             make.height.equalTo(196)
             make.centerX.equalToSuperview()
         }
-        
-//        colorview.addSubview(ColorPickerCollectionView)
-        
-//        ColorPickerCollectionView.snp.makeConstraints { (make) in
-//            make.top.equalTo(colorview)
-//            make.width.equalTo(colorview)
-//            make.centerX.equalTo(colorview)
-//            make.bottom.equalTo(colorview)
-//        }
     }
 }
