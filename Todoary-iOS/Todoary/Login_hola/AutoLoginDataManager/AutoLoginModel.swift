@@ -11,11 +11,11 @@ struct AutoLoginModel : Decodable {
     var isSuccess : Bool
     var code : Int
     var message : String
-    var result : AutoLoginModelReult?
+    var result : AutoLoginModelResult?
     
 }
 
-struct AutoLoginModelReult : Decodable {
+struct AutoLoginModelResult : Decodable {
     var token : Token?
 }
 

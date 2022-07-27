@@ -1,39 +1,25 @@
 //
-//  TodoCalendarBottomSheetViewController.swift
+//  TodoAlarmBottomSheetViewController.swift
 //  Todoary
 //
-//  Created by 송채영 on 2022/07/23.
+//  Created by 송채영 on 2022/07/26.
 //
 
-import UIKit
-
-class TodoCalendarBottomSheetViewController: UIViewController {
+class TodoAlarmBottomSheetViewController: UIViewController {
     
     
     // MARK: - Properties
+    //시간
+    let formatter = DateFormatter()
+    
+    var timeStr = ""
+    var todoSettingVC : UIViewController?
+    
     // 바텀 시트 높이
-    let bottomHeight: CGFloat = 375
+    let bottomHeight: CGFloat = 273
         
     // bottomSheet가 view의 상단에서 떨어진 거리
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
-    
-    let now = Date()
-    var cal = Calendar.current
-    let dateFormatterYear = DateFormatter()
-    let dateFormatterMonth = DateFormatter()
-    let dateFormatterDate = DateFormatter()
-    var today : Int = 0
-    var month_component : Int = 0
-    var year_component : Int = 0
-    var month : Int = 0
-    var year : Int = 0
-    var emptyDay : Int = 0
-    var components = DateComponents()
-    var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
-    var days: [String] = []
-    var daysCountInMonth = 0
-    var weekdayAdding = 0
-    let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
     // MARK: - UIComponents
     
@@ -49,31 +35,24 @@ class TodoCalendarBottomSheetViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
-    let year_Month = UILabel().then{
-        $0.text = "1999년 7월"
-        $0.textColor = .black
-        $0.font = UIFont.nbFont(ofSize: 18, weight: .extraBold)
-        $0.tintColor = .clear
-    }
-    
-    let previousMonthBtn = UIButton().then{
-        $0.setImage(UIImage(named: "home_previous"), for: .normal)
-        $0.addTarget(self, action: #selector(prevBtnDidTap), for: .touchUpInside)
-    }
-    
-    let nextMonthBtn = UIButton().then{
-        $0.setImage(UIImage(named: "home_next"), for: .normal)
-        $0.addTarget(self, action: #selector(nextBtnDidTap), for: .touchUpInside)
-    }
-    
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = -2
+    let completeBtn = UIButton().then{
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
-        $0.collectionViewLayout = layout
+        $0.setTitle("완료", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.addLetterSpacing(spacing: 0.28)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.addTarget(self, action: #selector(completeBtnDidTap), for: .touchUpInside)
     }
+    
+    let timePicker = UIDatePicker().then{
+        $0.backgroundColor = .clear
+        $0.datePickerMode = .time
+        $0.preferredDatePickerStyle = .wheels
+        $0.addTarget(self, action: #selector(timePickerValueDidChange(_:)), for: .valueChanged)
+        $0.locale = Locale(identifier: "en_US")
+    }
+    
+
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -81,16 +60,11 @@ class TodoCalendarBottomSheetViewController: UIViewController {
         
         setUpView()
         setupGestureRecognizer()
-        
-        self.initView()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.register(TodoWeekCell.self, forCellWithReuseIdentifier: "todoWeekCell")
-        self.collectionView.register(TodoCalendarCell.self, forCellWithReuseIdentifier: "todoCalendarCell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         showBottomSheet()
     }
 
@@ -99,11 +73,9 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     private func setUpView() {
         view.addSubview(dimmedBackView)
         view.addSubview(bottomSheetView)
-        bottomSheetView.addSubview(collectionView)
-        bottomSheetView.addSubview(year_Month)
-        bottomSheetView.addSubview(previousMonthBtn)
-        bottomSheetView.addSubview(nextMonthBtn)
         
+        bottomSheetView.addSubview(timePicker)
+        bottomSheetView.addSubview(completeBtn)
             
         dimmedBackView.alpha = 0.0
         setUpConstraint()
@@ -129,32 +101,34 @@ class TodoCalendarBottomSheetViewController: UIViewController {
             bottomSheetViewTopConstraint
         ])
         
-        year_Month.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(36)
-            make.leading.equalTo(bottomSheetView.snp.leading).offset(51)
+        timePicker.snp.makeConstraints{ make in
+            make.top.bottom.leading.trailing.equalTo(bottomSheetView)
         }
         
-        previousMonthBtn.snp.makeConstraints{ make in
-            make.centerY.equalTo(year_Month)
-            make.trailing.equalTo(nextMonthBtn.snp.leading).offset(-13)
-        }
-        
-        nextMonthBtn.snp.makeConstraints{ make in
-            make.centerY.equalTo(year_Month)
-            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-34)
-        }
-        
-        collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(year_Month.snp.bottom).offset(-2)
-            make.centerX.equalTo(bottomSheetView)
-            make.leading.equalTo(bottomSheetView.snp.leading).offset(34)
-            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-34)
-            make.bottom.equalTo(bottomSheetView.snp.bottom)
+        completeBtn.snp.makeConstraints{ make in
+            make.top.equalTo(bottomSheetView.snp.top).offset(15)
+            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-25)
+            make.width.equalTo(40)
+            make.height.equalTo(20)
         }
         
     }
     
     //MARK: - Actions
+    @objc func timePickerValueDidChange(_ datePicker: UIDatePicker) {
+        formatter.dateFormat = "a hh:mm"
+        formatter.locale = Locale(identifier: "en_US")
+        timeStr = formatter.string(from: timePicker.date)
+    }
+    
+    @objc func completeBtnDidTap() {
+        formatter.dateFormat = "a hh:mm"
+        formatter.locale = Locale(identifier: "en_US")
+        timeStr = formatter.string(from: timePicker.date)
+        let vc = TodoSettingViewController()
+        vc.alarmSetting(timeStr: timeStr)
+        hideBottomSheetAndGoBack()
+    }
     
     //MARK: - Helpers
     
@@ -217,3 +191,4 @@ class TodoCalendarBottomSheetViewController: UIViewController {
         }
     }
 }
+
