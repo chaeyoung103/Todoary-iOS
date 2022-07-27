@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     var nickname : String = ""
     
     //agreemnetVC에서 마케팅 동의 여부 정보 넘겨받기
-    var agreementMarketing : Bool?
+    var isMarketingAgree : Bool!
     
     var isValidEmail = false{
         didSet{
@@ -196,7 +196,8 @@ class SignUpViewController: UIViewController {
     }
     
     let nicknameCanUseLabel = UILabel().then{
-        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+//        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+        $0.text = "중복된 닉네임입니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
     }
@@ -210,7 +211,7 @@ class SignUpViewController: UIViewController {
         $0.layer.cornerRadius = 52/2
         $0.addTarget(self, action: #selector(nextButtonDidClicked(_:)), for: .touchUpInside)
     }
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -253,6 +254,14 @@ class SignUpViewController: UIViewController {
         tfEditedEndArray.forEach{ each in
             each.addTarget(self, action: #selector(textFieldDidEditingEnd(_:)), for: .editingDidEnd)
         }
+        
+        nicknameTextField.addTarget(self, action: #selector(initNicknameCanUseLabel), for: .editingDidBegin)
+    }
+    
+    @objc
+    func initNicknameCanUseLabel(){
+        nicknameCanUseLabel.isHidden = false
+        nicknameCanUseLabel.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
     }
     
     @objc
@@ -329,7 +338,7 @@ class SignUpViewController: UIViewController {
     func certificationBtnDidClicked(_ sender: UIButton){
         
         idCanUseLabel.isHidden = false
-        
+
         if(isValidEmail){
             //이메일 중복 여부 확인
             SignUpDataManager().posts(self, email: self.email)
@@ -363,7 +372,7 @@ class SignUpViewController: UIViewController {
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
 
-        let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd)
+        let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd, isTermsEnable: self.isMarketingAgree)
         
         SignUpDataManager().posts(self, userData)
     }
@@ -372,9 +381,35 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController{
     
-    func checkApiResultCode(_ code: Int){
+    func checkSignUpResultCode(_ code: Int){
+        switch(code){
+        case 1000:
+    
+            self.navigationController?.popToRootViewController(animated: true)
+            
+            return
+        case 2017:
+            return
+        case 2032: //닉네임 중복 오류
+            print("2032")
+            nextButton.isEnabled = false
+            nicknameCanUseLabel.isHidden = false
+            nicknameCanUseLabel.text = "중복된 닉네임입니다."
+            return
+            
+        default:
+            print("데이터 베이스 오류")
+            nextButton.isEnabled = false
+            //팝업 띄우기
+            return
+        }
+    }
+    
+    func checkEmailApiResultCode(_ code: Int){
         
-        if(code == 1000) { //사용가능 이메일 점검 조건문 추가
+        switch code {
+            
+        case 1000:
             
             idCanUseLabel.text = "*사용 가능한 이메일입니다."
             idCanUseLabel.textColor = .todoaryGrey
@@ -389,22 +424,20 @@ extension SignUpViewController{
             alert.addAction(alertAction)
             self.present(alert, animated: true, completion: nil)
             
-        }else if(code == 2017){
+            return
+            
+        case 2017:
+            
             idCanUseLabel.text = "*이미 사용중인 이메일입니다."
             idCanUseLabel.textColor = .noticeRed
             isValidEmail = false
-        }
-        
-        switch code {
-        case 1000:
             
             return
-        case 2017:
-            return
-        case 2032:
-            return
+            
         default:
-            print("데이터 베이스 오류")
+            print("데이터베이스 오류")
+            
+            return
         }
         
     }
