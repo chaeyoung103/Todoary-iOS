@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-class ColorPickerBottomsheetViewController: UIViewController {
-    
-    
+class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
 
     //바텀시트 높이
@@ -19,16 +17,16 @@ class ColorPickerBottomsheetViewController: UIViewController {
     // bottomSheet가 view의 상단에서 떨어진 거리
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
     
-    private var ColorPickerCollectionViewCellid = "ColorPickerCollectionViewCellid"
+    private var ColorPickerBottomsheetCollectionViewcellid = "ColorPickerBottomsheetCollectionViewcellid"
     
-    private var ColorPickerCollectionView: ColorPickerCollectionView!
+    private var ColorPickerBottomsheetCollectionView: ColorPickerBottomsheetCollectionView!
     
     var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
     
     // MARK: - UIComponents
     
     let dimmedBackView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     let bottomSheetView = UIView().then{
@@ -46,6 +44,10 @@ class ColorPickerBottomsheetViewController: UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
+        $0.placeholder = "카테고리 이름을 입력해 주세요"
+        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
+        $0.addLeftPadding()
+        $0.textFieldTypeSetting(type: .tableCell)
         
         $0.snp.makeConstraints{ make in
             make.height.equalTo(46)
@@ -54,7 +56,7 @@ class ColorPickerBottomsheetViewController: UIViewController {
     
     let confirmBtn = UIButton().then{
         $0.backgroundColor = .white
-        $0.setTitle("취소", for: .normal)
+        $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.addLetterSpacing(spacing: 0.3)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 15, weight: .bold)
@@ -81,6 +83,7 @@ class ColorPickerBottomsheetViewController: UIViewController {
     }
     
     // MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,11 +100,15 @@ class ColorPickerBottomsheetViewController: UIViewController {
     // MARK: - Layout
     private func setUpView() {
         
+        view.addSubview(dimmedBackView)
         view.addSubview(bottomSheetView)
+        
+        view.addSubview(categoryTextField)
         
         view.addSubview(confirmBtn)
         view.addSubview(deleteBtn)
         
+        dimmedBackView.alpha = 0.0
         setUpConstraint()
         
         configure()
@@ -109,26 +116,43 @@ class ColorPickerBottomsheetViewController: UIViewController {
     }
     
     private func setUpConstraint() {
-            bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
-            let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
-            bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
-            NSLayoutConstraint.activate([
-                bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                bottomSheetViewTopConstraint
-            ])
+        dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
+            dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+            
+        bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
+        bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
+        NSLayoutConstraint.activate([
+            bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomSheetViewTopConstraint
+        ])
+        
+        categoryTextField.snp.makeConstraints{ make in
+            make.top.equalTo(bottomSheetView.snp.top).offset(30)
+            make.centerX.equalTo(bottomSheetView)
+            make.width.equalTo(328)
+            make.height.equalTo(46)
+            
+        }
         
         confirmBtn.snp.makeConstraints{ make in
             make.top.equalTo(bottomSheetView.snp.top).offset(270)
             make.leading.equalTo(bottomSheetView.snp.leading).offset(66)
             make.width.equalTo(93)
             make.height.equalTo(38)
+            
         }
         
         deleteBtn.snp.makeConstraints{ make in
             make.top.equalTo(bottomSheetView.snp.top).offset(270)
-            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(66)
+            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-66)
             make.width.equalTo(93)
             make.height.equalTo(38)
         }
@@ -147,7 +171,7 @@ class ColorPickerBottomsheetViewController: UIViewController {
         bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - bottomHeight
         
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            self.dimmedBackView.alpha = 0.0
+            self.dimmedBackView.alpha = 0.1
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
@@ -201,93 +225,94 @@ class ColorPickerBottomsheetViewController: UIViewController {
     //MARK: - Helpers_ColorPicker
     
     private func configure() {
+        let collectionViewLayer = UICollectionViewFlowLayout()
+        collectionViewLayer.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
 
-           let collectionViewLayer = UICollectionViewFlowLayout()
-           collectionViewLayer.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
-
-        ColorPickerCollectionView = Todoary.ColorPickerCollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
-        ColorPickerCollectionView.isScrollEnabled = false
+        ColorPickerBottomsheetCollectionView = Todoary.ColorPickerBottomsheetCollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
+        ColorPickerBottomsheetCollectionView.isScrollEnabled = false
+        ColorPickerBottomsheetCollectionView.backgroundColor = .transparent
         
-        view.addSubview(ColorPickerCollectionView)
+        view.addSubview(ColorPickerBottomsheetCollectionView)
 
-            ColorPickerCollectionView.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(208)
-                make.leading.equalToSuperview().offset(50)
-                make.width.equalTo(300)
+        ColorPickerBottomsheetCollectionView.snp.makeConstraints { make in
+                make.top.equalTo(bottomSheetView).offset(102)
+                make.leading.equalTo(bottomSheetView).offset(45)
+                make.width.equalTo(290)
                 make.height.equalTo(150)
-                make.centerX.equalToSuperview()
+                make.centerX.equalTo(bottomSheetView)
            }
        }
 
     
     private func setupCollectionView() {
-        ColorPickerCollectionView.delegate = self
-        ColorPickerCollectionView.dataSource = self
+        ColorPickerBottomsheetCollectionView.delegate = self
+        ColorPickerBottomsheetCollectionView.dataSource = self
         
         //cell 등록
-        ColorPickerCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerCollectionViewCellid)
+        ColorPickerBottomsheetCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerBottomsheetCollectionViewcellid)
         
     }
 }
 
 //MARK: - UICollectionViewDataSource
 
-extension ColorPickerViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 18
-}
 
-func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: ColorPickerCollectionViewCellid,
-        for: indexPath) as? ColorPickerCollectionViewCell else {
+extension ColorPickerBottomsheetViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 18
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ColorPickerBottomsheetCollectionViewcellid, for : indexPath) as? ColorPickerCollectionViewCell else {
             fatalError("셀 타입 케스팅 실패")
         }
     
-    cell.layer.cornerRadius = 30/2
-    cell.backgroundColor = allColor[indexPath.row]
-    cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
+        cell.layer.cornerRadius = 30/2
+        cell.backgroundColor = allColor[indexPath.row]
+        cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
     
-    return cell
-}
+        return cell
+    }
 
 
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 30, height: 30)
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 30, height: 30)
+    }
 
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return CGFloat(25)
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(25)
+    }
 
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return CGFloat(20)
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(20)
+    }
 
 
 
 //MARK: - UICollectionViewDelegate
 
-func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
         fatalError()
+        }
+        cell.colorBtnpick.isHidden = false
+        cell.colorBtnpick.layer.borderWidth = 2
+        cell.colorBtnpick.layer.cornerRadius = 40/2
+        cell.colorBtnpick.isUserInteractionEnabled = true
     }
-    cell.colorBtnpick.isHidden = false
-    cell.colorBtnpick.layer.borderWidth = 2
-    cell.colorBtnpick.layer.cornerRadius = 40/2
-    cell.colorBtnpick.isUserInteractionEnabled = true
-}
 
-func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
-        fatalError()
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
+            fatalError()
+        }
+        cell.colorBtnpick.isHidden = true
+        cell.colorBtnpick.layer.borderWidth = 2
+        cell.colorBtnpick.layer.cornerRadius = 40/2
+        cell.colorBtnpick.isUserInteractionEnabled = true
     }
-    cell.colorBtnpick.isHidden = true
-    cell.colorBtnpick.layer.borderWidth = 2
-    cell.colorBtnpick.layer.cornerRadius = 40/2
-    cell.colorBtnpick.isUserInteractionEnabled = true
-}
 }
 
 

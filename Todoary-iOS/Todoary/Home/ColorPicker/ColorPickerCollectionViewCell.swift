@@ -5,7 +5,7 @@
 //  Created by 예리 on 2022/07/24.
 //
 
-import UIKit
+import Foundation
 import UIKit
 import SnapKit
 import Then
@@ -38,17 +38,13 @@ class ColorPickerCollectionViewCell: UICollectionViewCell {
 
     //MARK: - layout
         func setUpContentView(){
-            
-//            contentView.addSubview(colorBtn)
+
             contentView.addSubview(colorBtnpick)
         }
             
         
         func setUpConstraint(){
             
-//            colorBtn.snp.makeConstraints{ make in
-//                make.width.height.equalTo(30)
-//            }
             
             colorBtnpick.snp.makeConstraints{ make in
                 make.width.height.equalTo(40)
