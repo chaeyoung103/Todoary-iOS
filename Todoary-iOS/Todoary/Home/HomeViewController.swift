@@ -30,6 +30,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
+    let bottomSheetVC = TodoListBottomSheetViewController()
+    
     //MARK: - UIComponenets
 
     //settingBtn
@@ -132,7 +134,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         
         setUpView()
         setUpConstraint()
-        bottomSheetShow()
         
         self.initView()
         self.collectionView.delegate = self
@@ -146,14 +147,22 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         GetProfileDataManager().getProfileDataManger(self)
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bottomSheetVC.loadViewIfNeeded()
+        present(bottomSheetVC, animated: true, completion: nil)
+    }
 
     
     //MARK: - Actions
     
     @objc func settingBtnDidTap(_ sender: UIButton){
+        bottomSheetVC.dismiss(animated: true, completion: nil)
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
+    
     @objc func profileBtnDidTap() {
+        bottomSheetVC.dismiss(animated: true, completion: nil)
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
@@ -179,14 +188,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     //MARK: - Helpers
-    
-    func bottomSheetShow(){
-        
-        let viewControllerToPresent = TodoListBottomSheetViewController()
-        
-        viewControllerToPresent.loadViewIfNeeded()
-        present(viewControllerToPresent, animated: true, completion: nil)
-    }
     
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
