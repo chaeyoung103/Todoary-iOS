@@ -100,6 +100,8 @@
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
 		E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */; };
+		E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */; };
+		E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */; };
 		E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */; };
 		E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */; };
 		E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */; };
@@ -288,6 +290,8 @@
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
 		E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetViewController.swift; sourceTree = "<group>"; };
+		E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetCollectionViewCell.swift; sourceTree = "<group>"; };
+		E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetCollectionView.swift; sourceTree = "<group>"; };
 		E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController + layout.swift"; sourceTree = "<group>"; };
 		E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -815,7 +819,9 @@
 				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
 				E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */,
 				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
+				E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */,
 				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
+				E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -1295,6 +1301,7 @@
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
+				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				57294AB9289116B200DA2F31 /* TodoGetByCategoryInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
@@ -1302,6 +1309,7 @@
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
+				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
