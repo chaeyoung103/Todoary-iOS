@@ -110,8 +110,6 @@ class TodoListBottomSheetViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-27)
         }
         
-        
-    
     }
     
     @objc
