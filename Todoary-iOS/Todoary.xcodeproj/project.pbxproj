@@ -99,6 +99,9 @@
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
+		E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */; };
+		E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */; };
+		E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */; };
 		E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */; };
 		E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */; };
 		E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */; };
@@ -286,6 +289,9 @@
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
+		E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetViewController.swift; sourceTree = "<group>"; };
+		E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetCollectionViewCell.swift; sourceTree = "<group>"; };
+		E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetCollectionView.swift; sourceTree = "<group>"; };
 		E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController + layout.swift"; sourceTree = "<group>"; };
 		E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -639,6 +645,11 @@
 		AC5E27DD28901EBE0056EC69 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
+				E0F9987F288A57070051C7AA /* PwFindDataManager */,
+				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
+				5750364F288A3F85006A9070 /* LoginDataManager */,
+				57503650288A3F98006A9070 /* AutoLoginDataManager */,
 				57503648288A3E21006A9070 /* SignUpDataManager */,
 				AC5E27DE28901EEF0056EC69 /* AuthInterceptor.swift */,
 				AC5E27E0289020350056EC69 /* AuthJwtInput.swift */,
@@ -685,6 +696,8 @@
 		AC5E27E92890EC5D0056EC69 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
+				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				E0F998A2288A59740051C7AA /* UserDeleteDataManager */,
 			);
 			path = User;
@@ -707,7 +720,6 @@
 		AC9128C7287AD5830056932A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
 				AC9128C8287AD5A80056932A /* AccountViewController.swift */,
 				AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */,
 				AC9128CC287AFE620056932A /* AccountTableViewCell.swift */,
@@ -718,10 +730,8 @@
 		AC9128CE287B34830056932A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
 				E0F99894288A58410051C7AA /* ProfileImgDeleteDataManager */,
 				E0F9988D288A57F50051C7AA /* ProfileImgDataManager */,
-				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -741,8 +751,6 @@
 		ACACD00E28749F360029D5CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				57503650288A3F98006A9070 /* AutoLoginDataManager */,
-				5750364F288A3F85006A9070 /* LoginDataManager */,
 				ACACD00F28749F520029D5CE /* LoginViewController.swift */,
 				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
 			);
@@ -752,8 +760,6 @@
 		ACACD01328749F760029D5CE /* PwFind */ = {
 			isa = PBXGroup;
 			children = (
-				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
-				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				ACACD01428749F880029D5CE /* PwFindViewController.swift */,
 				ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */,
 				AC9859C5287DC219009FC2F8 /* MailSender.swift */,
@@ -813,6 +819,9 @@
 				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
 				E0439AC2288C5E570075CBF0 /* ColorPickerCollectionView.swift */,
 				E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */,
+				E03856BC28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift */,
+				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
+				E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -1292,6 +1301,7 @@
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
+				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				57294AB9289116B200DA2F31 /* TodoGetByCategoryInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
@@ -1299,6 +1309,7 @@
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
+				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
@@ -1332,6 +1343,7 @@
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
+				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
 				E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,

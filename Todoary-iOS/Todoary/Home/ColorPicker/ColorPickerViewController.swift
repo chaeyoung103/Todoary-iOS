@@ -33,6 +33,10 @@ class ColorPickerViewController : UIViewController {
         $0.layer.cornerRadius = 10
     }
     
+    let deleteBtn = UIButton().then{
+        $0.setImage(UIImage (named: "category_trash"), for: .normal)
+    }
+    
     let colorview = UIView().then{
         $0.layer.cornerRadius = 15
         $0.layer.borderWidth = 1
@@ -52,8 +56,13 @@ class ColorPickerViewController : UIViewController {
         
         configure()
         setupCollectionView()
+        
+        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
+        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
 
     }
+    
     //MARK: - Helpers
     
     private func configure() {
@@ -84,13 +93,10 @@ class ColorPickerViewController : UIViewController {
         ColorPickerCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerCollectionViewCellid)
         
     }
+  
 }
 
-//    private func collectionView (
-//        _ collectionView : UICollectionView,
-//        colorBtnDidtab indexPath : IndexPath
-//    ) -> Bool {
-//    }
+
 
     //MARK: - UICollectionViewDataSource
 
@@ -107,8 +113,8 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
                 fatalError("셀 타입 케스팅 실패")
             }
         
-        
-        cell.colorBtn.backgroundColor = allColor[indexPath.row]
+        cell.layer.cornerRadius = 30/2
+        cell.backgroundColor = allColor[indexPath.row]
         cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
         
         return cell
@@ -116,11 +122,6 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
     
  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            let collectionViewWidth = collectionView.bounds.width
-//            let cellItemForRow: CGFloat = 6
-//            let minimumSpacing: CGFloat = 10
-//            let width = (collectionViewWidth - (cellItemForRow - 1) * minimumSpacing) / cellItemForRow
-
         return CGSize(width: 30, height: 30)
     }
     
@@ -132,11 +133,27 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         return CGFloat(20)
     }
     
-    //MARK: - UICollectionViewDelegate,
 
-//    func collectionView(_ collectionView: UICollectionView, colorBtnDidtab indexPath: IndexPath) {
-//        if indexPath.item == 0 {
-//            iscolorBtntap = true
-//        }
-//    }
+    
+    //MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
+            fatalError()
+        }
+        cell.colorBtnpick.isHidden = false
+        cell.colorBtnpick.layer.borderWidth = 2
+        cell.colorBtnpick.layer.cornerRadius = 40/2
+        cell.colorBtnpick.isUserInteractionEnabled = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
+            fatalError()
+        }
+        cell.colorBtnpick.isHidden = true
+        cell.colorBtnpick.layer.borderWidth = 2
+        cell.colorBtnpick.layer.cornerRadius = 40/2
+        cell.colorBtnpick.isUserInteractionEnabled = true
+    }
 }

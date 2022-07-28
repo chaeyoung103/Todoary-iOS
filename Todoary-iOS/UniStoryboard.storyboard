@@ -172,7 +172,6 @@
         <!--Color Picker View Controller-->
         <scene sceneID="BUg-Lq-Rfm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W3p-9Y-YG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController modalPresentationStyle="fullScreen" id="DDA-Nd-iUL" customClass="ColorPickerViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3FJ-xE-GJ6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -182,8 +181,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="C4W-ON-fhu"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3p-9Y-YG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.913043478261" y="2271.4285714285711"/>
+            <point key="canvasLocation" x="1658" y="2271"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q1o-Jn-3AB">

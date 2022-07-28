@@ -13,10 +13,11 @@ class SignoutDataManager {
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
         //통신
-    func signout(_ viewController : UIViewController) {AF.request("http://todoary.com:9000/users/signout", method: .post, parameters: nil, headers: headers).validate().responseDecodable(of: SignoutModel.self) {response in
+    func signout(_ viewController : UIViewController) {AF.request("https://todoary.com/users/signout", method: .post, parameters: nil, headers: headers).validate().responseDecodable(of: SignoutModel.self) {response in
             switch response.result {
             case .success(let result) :
-                if result.isSuccess {
+                switch result.code {
+                case 1000 :
                     UserDefaults.standard.removeObject(forKey: "accessToken")
                     UserDefaults.standard.removeObject(forKey: "refreshToken")
                     let loginViewController = LoginViewController()
@@ -28,7 +29,11 @@ class SignoutDataManager {
                         vc.navigationController?.isNavigationBarHidden = true
                     }
                     print("로그아웃 성공")
-                }else{
+                
+                case 4000 :
+                    let alert = DataBaseErrorAlert()
+                    viewController.present(alert, animated: true, completion: nil)
+                default:
                     print(result.message)
                 }
             case .failure(let error) :

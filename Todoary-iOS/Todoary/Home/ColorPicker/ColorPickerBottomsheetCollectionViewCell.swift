@@ -1,8 +1,8 @@
 //
-//  ColorPickerCollectionViewCell.swift
+//  ColorPickerBottomsheetCollectionViewCell.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/07/24.
+//  Created by 예리 on 2022/07/27.
 //
 
 import Foundation
@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-class ColorPickerCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ColorPickerCollectionViewCell"
+class ColorPickerBottomsheetCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ColorPickerBottomsheetCollectionViewCell"
     
     
     
@@ -38,13 +38,12 @@ class ColorPickerCollectionViewCell: UICollectionViewCell {
 
     //MARK: - layout
         func setUpContentView(){
-
+            
             contentView.addSubview(colorBtnpick)
         }
             
         
         func setUpConstraint(){
-            
             
             colorBtnpick.snp.makeConstraints{ make in
                 make.width.height.equalTo(40)
