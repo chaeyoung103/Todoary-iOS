@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
-		57294AB22891161D00DA2F31 /* TodoGetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* TodoGetInput.swift */; };
-		57294AB42891162800DA2F31 /* TodoGetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB32891162800DA2F31 /* TodoGetDataManager.swift */; };
+		57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* GetTodo.swift */; };
+		57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB32891162800DA2F31 /* GetTodoDataManager.swift */; };
 		57294AB9289116B200DA2F31 /* TodoGetByCategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB8289116B200DA2F31 /* TodoGetByCategoryInput.swift */; };
 		57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294ABC289116C500DA2F31 /* TodoGetByCategoryDataManager.swift */; };
 		57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294ABF289116F500DA2F31 /* TodoCheckboxInput.swift */; };
@@ -189,8 +189,8 @@
 		2DBA94F04064FB8CCFC3F4D6 /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.debug.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
-		57294AB12891161D00DA2F31 /* TodoGetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetInput.swift; sourceTree = "<group>"; };
-		57294AB32891162800DA2F31 /* TodoGetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetDataManager.swift; sourceTree = "<group>"; };
+		57294AB12891161D00DA2F31 /* GetTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodo.swift; sourceTree = "<group>"; };
+		57294AB32891162800DA2F31 /* GetTodoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodoDataManager.swift; sourceTree = "<group>"; };
 		57294AB8289116B200DA2F31 /* TodoGetByCategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetByCategoryInput.swift; sourceTree = "<group>"; };
 		57294ABC289116C500DA2F31 /* TodoGetByCategoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetByCategoryDataManager.swift; sourceTree = "<group>"; };
 		57294ABF289116F500DA2F31 /* TodoCheckboxInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheckboxInput.swift; sourceTree = "<group>"; };
@@ -419,8 +419,8 @@
 		57294AB0289115F100DA2F31 /* TodoGetDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				57294AB12891161D00DA2F31 /* TodoGetInput.swift */,
-				57294AB32891162800DA2F31 /* TodoGetDataManager.swift */,
+				57294AB12891161D00DA2F31 /* GetTodo.swift */,
+				57294AB32891162800DA2F31 /* GetTodoDataManager.swift */,
 			);
 			path = TodoGetDataManager;
 			sourceTree = "<group>";
@@ -1247,7 +1247,7 @@
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
-				57294AB22891161D00DA2F31 /* TodoGetInput.swift in Sources */,
+				57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
 				AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */,
 				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
@@ -1287,7 +1287,7 @@
 				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
-				57294AB42891162800DA2F31 /* TodoGetDataManager.swift in Sources */,
+				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
