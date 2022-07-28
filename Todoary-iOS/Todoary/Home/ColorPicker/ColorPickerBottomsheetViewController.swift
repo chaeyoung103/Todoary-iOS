@@ -39,10 +39,10 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
     
     let categoryTextField = UITextField().then {
-        $0.placeholder = "왜 안바뀌는데"
-//        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
-//        $0.setPlaceholderColor(.black)
-//        $0.addLeftPadding(padding: 17)
+        $0.placeholder = "카테고리 이름을 입력해주세요"
+        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
+        $0.setPlaceholderColor(.black)
+        $0.addLeftPadding(padding: 17)
         //그림자
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20

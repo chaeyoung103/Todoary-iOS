@@ -167,12 +167,6 @@ class AgreementViewController : UIViewController {
 
         setUpView()
         setUpConstraint()
-        
-        
-        //바텀시트 테스트
-        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
     }
   
     //MARK: - agreementTitleDIdTab
