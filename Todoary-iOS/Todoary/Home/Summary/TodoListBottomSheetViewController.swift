@@ -141,7 +141,11 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         
         switch indexPath.row{
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
+                fatalError()
+            }
+            cell.homeVC = self
+            return cell
         case rowCount - 2:
             cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
         case rowCount - 1:
@@ -167,7 +171,17 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 }
 
-extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
+extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver, CellMoveToViewController{
+    
+    func cellWillMoveSettingVC(_ indexPath: IndexPath) {
+        
+        let vc = TodoSettingViewController()
+        
+        //setting vc로 넘어갈 때 data indexpath로 접근해서 데이터 넘기면 됨
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func cellWillDelete(_ indexPath: IndexPath){
         summaryData.remove(at: indexPath.row-1)
@@ -203,10 +217,6 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
         tableView.reloadData()
-    }
-    
-    func cellWillMoveSettingVC(){
-        
     }
     
     func cellWillClamp(_ indexPath: IndexPath){

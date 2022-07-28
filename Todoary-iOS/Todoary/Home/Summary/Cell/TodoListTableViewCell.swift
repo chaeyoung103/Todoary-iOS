@@ -19,6 +19,7 @@ class TodoListTableViewCell: UITableViewCell {
     static let cellIdentifier = "todoListCell"
     
     weak var delegate : SelectedTableViewCellDeliver?
+    weak var vcDelegate : CellMoveToViewController?
     
     let selectedBackView = UIView().then{
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -310,11 +311,20 @@ extension TodoListTableViewCell{
     
     @objc
     func settingButtonDidClicked(_ sender : UIButton){
+        
         cellWillMoveOriginalPosition()
+        
+        guard let indexPath = getCellIndexPath() else{
+            fatalError("indexPath casting error")
+        }
+        vcDelegate?.cellWillMoveSettingVC(indexPath)
+        
     }
     
     @objc
     func deleteButtonDidClicked(_ sender : UIButton){
+        
+//        TodoDeleteDataManager.delete(self, )
         
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
@@ -323,6 +333,10 @@ extension TodoListTableViewCell{
         cellWillMoveOriginalPosition()
         
         delegate?.cellWillDelete(indexPath)
+    }
+    
+    func deleteApiResultCode(){
+        
     }
     
     @objc
@@ -337,6 +351,9 @@ extension TodoListTableViewCell{
 protocol SelectedTableViewCellDeliver: AnyObject{
     func cellWillDelete(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
-    func cellWillMoveSettingVC()
     func cellWillClamp(_ indexPath: IndexPath)
+}
+
+protocol CellMoveToViewController: AnyObject{
+    func cellWillMoveSettingVC(_ indexPath: IndexPath)
 }
