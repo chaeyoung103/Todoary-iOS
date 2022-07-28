@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class TodoGetDataManager{
+class GetTodoDataManager{
     
     func gets(_ viewController: SignUpViewController, email: String){
         AF.request("http://todoary.com:9000/auth/email/duplication", method: .get, parameters: ["email":email], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
