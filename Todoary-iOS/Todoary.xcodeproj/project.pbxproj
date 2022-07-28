@@ -86,6 +86,7 @@
 		AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27ED28914E810056EC69 /* TodoSettingDataManager.swift */; };
 		AC5E27F028914E930056EC69 /* TodoSettingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27EF28914E930056EC69 /* TodoSettingInput.swift */; };
 		AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */; };
+		AC67C2DC2892904C00071763 /* SetKeboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2DB2892904C00071763 /* SetKeboard.swift */; };
 		AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128C8287AD5A80056932A /* AccountViewController.swift */; };
 		AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */; };
 		AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9128CC287AFE620056932A /* AccountTableViewCell.swift */; };
@@ -275,6 +276,7 @@
 		AC5E27ED28914E810056EC69 /* TodoSettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingDataManager.swift; sourceTree = "<group>"; };
 		AC5E27EF28914E930056EC69 /* TodoSettingInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingInput.swift; sourceTree = "<group>"; };
 		AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSettingModel.swift; sourceTree = "<group>"; };
+		AC67C2DB2892904C00071763 /* SetKeboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetKeboard.swift; sourceTree = "<group>"; };
 		AC9128C8287AD5A80056932A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewController+Layout.swift"; sourceTree = "<group>"; };
 		AC9128CC287AFE620056932A /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
 			isa = PBXGroup;
 			children = (
+				AC67C2DA2892903400071763 /* SetKeyboard */,
 				AC5E27EC28914E5E0056EC69 /* TodoSettingDataManager */,
 				AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */,
 				AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */,
@@ -732,6 +735,14 @@
 				AC5E27F128914EAE0056EC69 /* TodoSettingModel.swift */,
 			);
 			path = TodoSettingDataManager;
+			sourceTree = "<group>";
+		};
+		AC67C2DA2892903400071763 /* SetKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AC67C2DB2892904C00071763 /* SetKeboard.swift */,
+			);
+			path = SetKeyboard;
 			sourceTree = "<group>";
 		};
 		AC9128C7287AD5830056932A /* Account */ = {
@@ -1321,6 +1332,7 @@
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
+				AC67C2DC2892904C00071763 /* SetKeboard.swift in Sources */,
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				57294AB9289116B200DA2F31 /* TodoGetByCategoryInput.swift in Sources */,
