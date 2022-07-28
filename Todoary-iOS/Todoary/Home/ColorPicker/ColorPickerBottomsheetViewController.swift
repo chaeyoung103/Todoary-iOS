@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import Then
 
 class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
@@ -29,14 +31,19 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
-    let bottomSheetView = UIView().then{
+    let bottomSheetView = UIView().then {
         $0.backgroundColor = .calendarSelectColor
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         $0.clipsToBounds = true
     }
     
-    let categoryTextField = UITextField().then{
+    let categoryTextField = UITextField().then {
+        $0.placeholder = "왜 안바뀌는데"
+//        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
+//        $0.setPlaceholderColor(.black)
+//        $0.addLeftPadding(padding: 17)
+        //그림자
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
         $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -44,16 +51,6 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
-        $0.placeholder = "카테고리 이름을 입력해 주세요"
-//        $0.textFieldTypeSetting(type: .tableCell)
-        $0.setPlaceholderColor(.black)
-        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
-        $0.addLeftPadding()
- 
-        
-        $0.snp.makeConstraints{ make in
-            make.height.equalTo(46)
-        }
     }
     
     let confirmBtn = UIButton().then{
@@ -90,6 +87,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         super.viewDidLoad()
         
         setUpView()
+        setUpConstraint()
         setupGestureRecognizer()
     }
     
