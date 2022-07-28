@@ -38,6 +38,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     let todo = UITextField().then{
         $0.placeholder = "투두이름"
         $0.font = UIFont.nbFont(type: .body2)
+        $0.setPlaceholderColor(.black)
     }
     
     let todoBorderLine = UIView().then{
