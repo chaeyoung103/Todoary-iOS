@@ -158,8 +158,8 @@ class LoginViewController: UIViewController {
             LoginDataManager().loginDataManager(self,loginInput)
         } else {
             // 자동로그인을 눌렀을 때
-            let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
-            AutoLoginDataManager() .autologin(self,autoLoginInput)
+           // let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
+           // AutoLoginDataManager() .autologin(self,autoLoginInput)
         }
       
     }

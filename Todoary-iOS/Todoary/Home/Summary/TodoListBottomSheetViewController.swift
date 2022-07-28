@@ -124,6 +124,18 @@ class TodoListBottomSheetViewController: UIViewController {
         }
         cell.cellWillMoveOriginalPosition()
     }
+    
+    func checkApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
  
 }
 
