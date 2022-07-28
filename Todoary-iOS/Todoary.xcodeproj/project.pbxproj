@@ -8,17 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
-		57294AAD2891158900DA2F31 /* TodoDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAC2891158900DA2F31 /* TodoDeleteModel.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
-		57294AB22891161D00DA2F31 /* TodoGetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* TodoGetInput.swift */; };
-		57294AB42891162800DA2F31 /* TodoGetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB32891162800DA2F31 /* TodoGetDataManager.swift */; };
-		57294AB62891163200DA2F31 /* TodoGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB52891163200DA2F31 /* TodoGetModel.swift */; };
+		57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* GetTodo.swift */; };
+		57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB32891162800DA2F31 /* GetTodoDataManager.swift */; };
 		57294AB9289116B200DA2F31 /* TodoGetByCategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB8289116B200DA2F31 /* TodoGetByCategoryInput.swift */; };
-		57294ABB289116BB00DA2F31 /* TodoGetByCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294ABA289116BB00DA2F31 /* TodoGetByCategoryModel.swift */; };
 		57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294ABC289116C500DA2F31 /* TodoGetByCategoryDataManager.swift */; };
 		57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294ABF289116F500DA2F31 /* TodoCheckboxInput.swift */; };
-		57294AC2289116FF00DA2F31 /* TodoCheckboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AC1289116FF00DA2F31 /* TodoCheckboxModel.swift */; };
 		57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AC32891170B00DA2F31 /* TodoCheckboxDataManager.swift */; };
+		57294AC62891189700DA2F31 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AC52891189700DA2F31 /* ApiModel.swift */; };
 		572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */; };
 		572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */; };
 		572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */; };
@@ -188,17 +185,14 @@
 		0869569AF164AFEE9666A08A /* Pods-Todoary-TodoaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DBA94F04064FB8CCFC3F4D6 /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.debug.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
-		57294AAC2891158900DA2F31 /* TodoDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteModel.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
-		57294AB12891161D00DA2F31 /* TodoGetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetInput.swift; sourceTree = "<group>"; };
-		57294AB32891162800DA2F31 /* TodoGetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetDataManager.swift; sourceTree = "<group>"; };
-		57294AB52891163200DA2F31 /* TodoGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetModel.swift; sourceTree = "<group>"; };
+		57294AB12891161D00DA2F31 /* GetTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodo.swift; sourceTree = "<group>"; };
+		57294AB32891162800DA2F31 /* GetTodoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodoDataManager.swift; sourceTree = "<group>"; };
 		57294AB8289116B200DA2F31 /* TodoGetByCategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetByCategoryInput.swift; sourceTree = "<group>"; };
-		57294ABA289116BB00DA2F31 /* TodoGetByCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetByCategoryModel.swift; sourceTree = "<group>"; };
 		57294ABC289116C500DA2F31 /* TodoGetByCategoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGetByCategoryDataManager.swift; sourceTree = "<group>"; };
 		57294ABF289116F500DA2F31 /* TodoCheckboxInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheckboxInput.swift; sourceTree = "<group>"; };
-		57294AC1289116FF00DA2F31 /* TodoCheckboxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheckboxModel.swift; sourceTree = "<group>"; };
 		57294AC32891170B00DA2F31 /* TodoCheckboxDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheckboxDataManager.swift; sourceTree = "<group>"; };
+		57294AC52891189700DA2F31 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		572E5AD6286EBDCC00D1FAA0 /* Todoary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E5AD9286EBDCC00D1FAA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -411,7 +405,6 @@
 		57294AAB2891155600DA2F31 /* TodoDeleteDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				57294AAC2891158900DA2F31 /* TodoDeleteModel.swift */,
 				57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */,
 			);
 			path = TodoDeleteDataManager;
@@ -420,9 +413,8 @@
 		57294AB0289115F100DA2F31 /* TodoGetDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				57294AB12891161D00DA2F31 /* TodoGetInput.swift */,
-				57294AB32891162800DA2F31 /* TodoGetDataManager.swift */,
-				57294AB52891163200DA2F31 /* TodoGetModel.swift */,
+				57294AB12891161D00DA2F31 /* GetTodo.swift */,
+				57294AB32891162800DA2F31 /* GetTodoDataManager.swift */,
 			);
 			path = TodoGetDataManager;
 			sourceTree = "<group>";
@@ -431,7 +423,6 @@
 			isa = PBXGroup;
 			children = (
 				57294AB8289116B200DA2F31 /* TodoGetByCategoryInput.swift */,
-				57294ABA289116BB00DA2F31 /* TodoGetByCategoryModel.swift */,
 				57294ABC289116C500DA2F31 /* TodoGetByCategoryDataManager.swift */,
 			);
 			path = TodoGetByCategoryDataManager;
@@ -441,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				57294ABF289116F500DA2F31 /* TodoCheckboxInput.swift */,
-				57294AC1289116FF00DA2F31 /* TodoCheckboxModel.swift */,
 				57294AC32891170B00DA2F31 /* TodoCheckboxDataManager.swift */,
 			);
 			path = TodoCheckboxDataManager;
@@ -655,6 +645,11 @@
 		AC5E27DD28901EBE0056EC69 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
+				E0F9987F288A57070051C7AA /* PwFindDataManager */,
+				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
+				5750364F288A3F85006A9070 /* LoginDataManager */,
+				57503650288A3F98006A9070 /* AutoLoginDataManager */,
 				57503648288A3E21006A9070 /* SignUpDataManager */,
 				AC5E27DE28901EEF0056EC69 /* AuthInterceptor.swift */,
 				AC5E27E0289020350056EC69 /* AuthJwtInput.swift */,
@@ -671,6 +666,7 @@
 				AC5E27E92890EC5D0056EC69 /* User */,
 				AC5E27EA2890ECFB0056EC69 /* Setting */,
 				AC5E27EB2890ED570056EC69 /* Home */,
+				57294AC52891189700DA2F31 /* ApiModel.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -700,6 +696,8 @@
 		AC5E27E92890EC5D0056EC69 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
+				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				E0F998A2288A59740051C7AA /* UserDeleteDataManager */,
 			);
 			path = User;
@@ -722,7 +720,6 @@
 		AC9128C7287AD5830056932A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
 				AC9128C8287AD5A80056932A /* AccountViewController.swift */,
 				AC9128CA287AD5D20056932A /* AccountViewController+Layout.swift */,
 				AC9128CC287AFE620056932A /* AccountTableViewCell.swift */,
@@ -733,10 +730,8 @@
 		AC9128CE287B34830056932A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E0F9989B288A58D40051C7AA /* GetProfileDataManager */,
 				E0F99894288A58410051C7AA /* ProfileImgDeleteDataManager */,
 				E0F9988D288A57F50051C7AA /* ProfileImgDataManager */,
-				E0F99886288A57AC0051C7AA /* ProfileDataManager */,
 				AC9128CF287B34B30056932A /* ProfileViewController.swift */,
 				AC9128D1287B34C80056932A /* ProfileViewController+Layout.swift */,
 			);
@@ -756,8 +751,6 @@
 		ACACD00E28749F360029D5CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				57503650288A3F98006A9070 /* AutoLoginDataManager */,
-				5750364F288A3F85006A9070 /* LoginDataManager */,
 				ACACD00F28749F520029D5CE /* LoginViewController.swift */,
 				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
 			);
@@ -767,8 +760,6 @@
 		ACACD01328749F760029D5CE /* PwFind */ = {
 			isa = PBXGroup;
 			children = (
-				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
-				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				ACACD01428749F880029D5CE /* PwFindViewController.swift */,
 				ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */,
 				AC9859C5287DC219009FC2F8 /* MailSender.swift */,
@@ -1237,10 +1228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
-				57294AAD2891158900DA2F31 /* TodoDeleteModel.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
-				57294AB22891161D00DA2F31 /* TodoGetInput.swift in Sources */,
+				57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
 				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
@@ -1263,6 +1253,7 @@
 				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
 				57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */,
+				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
@@ -1278,7 +1269,7 @@
 				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
-				57294AB42891162800DA2F31 /* TodoGetDataManager.swift in Sources */,
+				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
@@ -1307,7 +1298,6 @@
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
-				57294AB62891163200DA2F31 /* TodoGetModel.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
@@ -1330,7 +1320,6 @@
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
-				57294ABB289116BB00DA2F31 /* TodoGetByCategoryModel.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
@@ -1375,7 +1364,6 @@
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
-				57294AC2289116FF00DA2F31 /* TodoCheckboxModel.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,
 				572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */,
 				572E5ADC286EBDCC00D1FAA0 /* SceneDelegate.swift in Sources */,

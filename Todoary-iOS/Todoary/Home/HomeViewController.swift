@@ -30,7 +30,9 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
-    let bottomSheetVC = TodoListBottomSheetViewController()
+    static let bottomSheetVC = TodoListBottomSheetViewController()
+    
+    var newData : [SummaryData] = []
     
     //MARK: - UIComponenets
 
@@ -149,20 +151,21 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        bottomSheetVC.loadViewIfNeeded()
-        present(bottomSheetVC, animated: true, completion: nil)
+        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
+        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 
     
     //MARK: - Actions
     
     @objc func settingBtnDidTap(_ sender: UIButton){
-        bottomSheetVC.dismiss(animated: true, completion: nil)
+        HomeViewController.dismissBottomSheet()
         self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
     
     @objc func profileBtnDidTap() {
-        bottomSheetVC.dismiss(animated: true, completion: nil)
+        HomeViewController.dismissBottomSheet()
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
@@ -196,7 +199,11 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             return false
-        }
+    }
+    
+    static func dismissBottomSheet(){
+        HomeViewController.bottomSheetVC.dismiss(animated: true, completion: nil)
+    }
 }
 
 

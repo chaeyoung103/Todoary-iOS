@@ -176,12 +176,10 @@ class LoginViewController: UIViewController {
     
     private func setupData() {
         if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            print("돼?")
-            print("refresh: "+UserDefaults.standard.string(forKey: "refreshToken")!)
             let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken")!)
             AuthJwtDataManager().authJwtDataManager(self,authJwt)
         }else {
-            print("안돼")
+            print("refresh토큰 없음-자동로그인 아님")
         }
     }
 

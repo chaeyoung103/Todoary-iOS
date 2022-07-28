@@ -9,6 +9,10 @@ class TodoAlarmBottomSheetViewController: UIViewController {
     
     
     // MARK: - Properties
+    
+    //protocol
+    var delegate: AlarmComplete?
+    
     //시간
     let formatter = DateFormatter()
     
@@ -106,10 +110,10 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         }
         
         completeBtn.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(15)
+            make.top.equalTo(bottomSheetView.snp.top).offset(19)
             make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-25)
-            make.width.equalTo(40)
-            make.height.equalTo(20)
+            make.width.equalTo(29)
+            make.height.equalTo(19)
         }
         
     }
@@ -125,8 +129,7 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         formatter.dateFormat = "a hh:mm"
         formatter.locale = Locale(identifier: "en_US")
         timeStr = formatter.string(from: timePicker.date)
-        let vc = TodoSettingViewController()
-        vc.alarmSetting(timeStr: timeStr)
+        self.delegate?.alarmComplete(time: timeStr)
         hideBottomSheetAndGoBack()
     }
     
@@ -192,3 +195,6 @@ class TodoAlarmBottomSheetViewController: UIViewController {
     }
 }
 
+protocol AlarmComplete {
+    func alarmComplete(time: String)
+}

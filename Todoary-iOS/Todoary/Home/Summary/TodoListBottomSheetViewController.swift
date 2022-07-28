@@ -48,6 +48,8 @@ class TodoListBottomSheetViewController: UIViewController {
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
     
+    var homeNavigaiton : UINavigationController!
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -108,8 +110,6 @@ class TodoListBottomSheetViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-27)
         }
         
-        
-    
     }
     
     @objc
@@ -123,6 +123,18 @@ class TodoListBottomSheetViewController: UIViewController {
                 return
         }
         cell.cellWillMoveOriginalPosition()
+    }
+    
+    func checkApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
     }
  
 }
@@ -141,7 +153,11 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
         
         switch indexPath.row{
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
+                fatalError()
+            }
+            cell.navigaiton = homeNavigaiton
+            return cell
         case rowCount - 2:
             cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
         case rowCount - 1:
@@ -153,6 +169,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 fatalError()
             }
             let data = summaryData[indexPath.row-1]
+            cell.navigation = homeNavigaiton
             cell.delegate = self
             cell.titleLabel.text = "아침 산책"
             cell.timeLabel.text = data.time
@@ -203,10 +220,6 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
         tableView.reloadData()
-    }
-    
-    func cellWillMoveSettingVC(){
-        
     }
     
     func cellWillClamp(_ indexPath: IndexPath){
