@@ -12,19 +12,33 @@ import Then
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
     
     
+    var dateFormatter = DateFormatter()
+    var now = Date()
+    var todoTitle : String!
+    var targetDate : String!
+    var isAlarmEnabled : Bool!
+    var targetTime : String!
+    var categories: [Int]!
     
-    var viewController: UIViewController!
     
     //MARK: - UIComponenets
+    
+    let completeBtn = UIButton().then{
+        $0.setTitle("완료", for: .normal)
+        $0.addLetterSpacing(spacing: 0.36)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
+        $0.addTarget(self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
+    }
     
     //navigation bar
     var navigationView : NavigationView!
     
-    let todo = UILabel().then{
-        $0.text = "투두이름"
-        $0.textColor = .black
-        $0.addLetterSpacing(spacing: 0.28)
+    let todo = UITextField().then{
+        $0.placeholder = "투두이름"
         $0.font = UIFont.nbFont(type: .body2)
+        $0.setPlaceholderColor(.black)
     }
     
     let todoBorderLine = UIView().then{
@@ -141,6 +155,11 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         setUpView()
         setUpConstraint()
         
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        targetDate = dateFormatter.string(from: now)
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        date.setTitle(dateFormatter.string(from: now), for: .normal)
+        
         
         
     }
@@ -162,10 +181,18 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
     }
     
+    @objc func todocompleteBtnDidTap() {
+        todoTitle = todo.text!
+        let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [])
+        TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+    }
+    
     @objc func onClickSwitch(sender: UISwitch) {
 
         if sender.isOn {
             time.isHidden = false
+            isAlarmEnabled = true
+            targetTime = "08:00"
             let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
             todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
             
@@ -174,17 +201,21 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
         }else {
             time.isHidden = true
+            targetTime = nil
+            isAlarmEnabled = false
         }
     }
     
     //MARK: - Helpers
     
-    func alarmComplete(time: String) {
+    func alarmComplete(time: String, time_api: String) {
         self.time.setTitle(time, for: .normal)
+        self.targetTime = time_api
     }
     
-    func calendarComplete(date: String) {
+    func calendarComplete(date: String, date_api: String) {
         self.date.setTitle(date, for: .normal)
+        self.targetDate = date_api
     }
     
 }

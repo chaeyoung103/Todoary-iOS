@@ -122,9 +122,14 @@ class LoginViewController: UIViewController {
         setUpView()
         setUpConstraint()
         setupData()
+        setKeyboardObserver()
   
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
 
     //MARK: - Actions
         

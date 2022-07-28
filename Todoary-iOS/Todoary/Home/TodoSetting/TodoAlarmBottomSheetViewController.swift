@@ -17,6 +17,7 @@ class TodoAlarmBottomSheetViewController: UIViewController {
     let formatter = DateFormatter()
     
     var timeStr = ""
+    var time_api : String!
     var todoSettingVC : UIViewController?
     
     // 바텀 시트 높이
@@ -45,7 +46,7 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         $0.setTitleColor(.black, for: .normal)
         $0.addLetterSpacing(spacing: 0.28)
         $0.titleLabel?.font = UIFont.nbFont(type: .body2)
-        $0.addTarget(self, action: #selector(completeBtnDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(timecompleteBtnDidTap), for: .touchUpInside)
     }
     
     let timePicker = UIDatePicker().then{
@@ -125,11 +126,16 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         timeStr = formatter.string(from: timePicker.date)
     }
     
-    @objc func completeBtnDidTap() {
+    @objc func timecompleteBtnDidTap() {
+        print("안돼?")
         formatter.dateFormat = "a hh:mm"
         formatter.locale = Locale(identifier: "en_US")
         timeStr = formatter.string(from: timePicker.date)
-        self.delegate?.alarmComplete(time: timeStr)
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "hh:mm"
+        timeFormat.locale = Locale(identifier: "fr_FR")
+        time_api = timeFormat.string(from: timePicker.date)
+        self.delegate?.alarmComplete(time: timeStr, time_api: time_api)
         hideBottomSheetAndGoBack()
     }
     
@@ -196,5 +202,5 @@ class TodoAlarmBottomSheetViewController: UIViewController {
 }
 
 protocol AlarmComplete {
-    func alarmComplete(time: String)
+    func alarmComplete(time: String, time_api: String)
 }
