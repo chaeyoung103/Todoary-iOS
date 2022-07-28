@@ -116,6 +116,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     //셀 선택o
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
             fatalError()
         }
@@ -126,6 +127,17 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         cell.dateLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.dateLabel.layer.shadowOpacity = 1
         cell.dateLabel.layer.masksToBounds = false
+        
+        //선택한 날짜에 맞는 투두 리스트 불러오기
+        
+        let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row]).dateSendToServerType()
+                                                      
+        GetTodoDataManager().gets(convertDate)
+        
+        /*
+        HomeViewController.bottomSheetVC.summaryData = newData
+        HomeViewController.bottomSheetVC.tableView.reloadData()
+         */
     }
     //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
