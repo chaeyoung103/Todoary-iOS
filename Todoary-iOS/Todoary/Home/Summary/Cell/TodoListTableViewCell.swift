@@ -19,7 +19,9 @@ class TodoListTableViewCell: UITableViewCell {
     static let cellIdentifier = "todoListCell"
     
     weak var delegate : SelectedTableViewCellDeliver?
-    weak var vcDelegate : CellMoveToViewController?
+//    weak var vcDelegate : CellMoveToViewController?
+    
+    var navigation : UINavigationController!
     
     let selectedBackView = UIView().then{
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -314,10 +316,14 @@ extension TodoListTableViewCell{
         
         cellWillMoveOriginalPosition()
         
-        guard let indexPath = getCellIndexPath() else{
-            fatalError("indexPath casting error")
-        }
-        vcDelegate?.cellWillMoveSettingVC(indexPath)
+        HomeViewController.dismissBottomSheet()
+        
+        navigation.pushViewController(TodoSettingViewController(), animated: true)
+        
+//        guard let indexPath = getCellIndexPath() else{
+//            fatalError("indexPath casting error")
+//        }
+//        vcDelegate?.cellWillMoveSettingVC(indexPath)
         
     }
     
@@ -353,7 +359,7 @@ protocol SelectedTableViewCellDeliver: AnyObject{
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }
-
-protocol CellMoveToViewController: AnyObject{
-    func cellWillMoveSettingVC(_ indexPath: IndexPath)
-}
+//
+//protocol CellMoveToViewController: AnyObject{
+//    func cellWillMoveSettingVC(_ indexPath: IndexPath)
+//}

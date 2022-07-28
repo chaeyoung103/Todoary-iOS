@@ -48,6 +48,8 @@ class TodoListBottomSheetViewController: UIViewController {
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
     
+    var homeNavigaiton : UINavigationController!
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -144,7 +146,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
                 fatalError()
             }
-            cell.homeVC = self
+            cell.navigaiton = homeNavigaiton
             return cell
         case rowCount - 2:
             cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
@@ -157,6 +159,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 fatalError()
             }
             let data = summaryData[indexPath.row-1]
+            cell.navigation = homeNavigaiton
             cell.delegate = self
             cell.titleLabel.text = "아침 산책"
             cell.timeLabel.text = data.time
@@ -171,17 +174,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 }
 
-extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver, CellMoveToViewController{
-    
-    func cellWillMoveSettingVC(_ indexPath: IndexPath) {
-        
-        let vc = TodoSettingViewController()
-        
-        //setting vc로 넘어갈 때 data indexpath로 접근해서 데이터 넘기면 됨
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func cellWillDelete(_ indexPath: IndexPath){
         summaryData.remove(at: indexPath.row-1)
