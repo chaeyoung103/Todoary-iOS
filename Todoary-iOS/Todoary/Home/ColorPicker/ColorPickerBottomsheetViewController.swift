@@ -45,10 +45,11 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
         $0.placeholder = "카테고리 이름을 입력해 주세요"
+//        $0.textFieldTypeSetting(type: .tableCell)
         $0.setPlaceholderColor(.black)
         $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
         $0.addLeftPadding()
-        $0.textFieldTypeSetting(type: .tableCell)
+ 
         
         $0.snp.makeConstraints{ make in
             make.height.equalTo(46)
