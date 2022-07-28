@@ -32,6 +32,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     static let bottomSheetVC = TodoListBottomSheetViewController()
     
+    var newData : [SummaryData] = []
+    
     //MARK: - UIComponenets
 
     //settingBtn

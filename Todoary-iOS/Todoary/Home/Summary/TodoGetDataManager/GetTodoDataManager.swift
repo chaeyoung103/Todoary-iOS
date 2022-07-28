@@ -10,17 +10,36 @@ import Alamofire
 
 class GetTodoDataManager{
     
-    func gets(_ viewController: SignUpViewController, email: String){
-        AF.request("http://todoary.com:9000/auth/email/duplication", method: .get, parameters: ["email":email], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
+    func gets(_ date: String){
+        AF.request("http://todoary.com/todo", method: .get, parameters: ["date":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
             switch response.result {
             case .success(let result):
-                if result.isSuccess{
-                    print("success??")
-                    viewController.checkEmailApiResultCode(result.code)
-                }
+                HomeViewController.bottomSheetVC
+                print("success")
+//                viewController.
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+struct ConvertDate{
+    
+    var year: Int?
+    var month: Int?
+    var date: String?
+    
+    func dateSendToServerType() -> String{
+    
+        let monthString = self.month! < 10 ? "0\(month!)" : "\(month!)"
+        
+        let dateString = self.date!.count < 2 ? "0\(date!)" : date!
+        
+        return "\(year!)-\(monthString)-\(dateString)"
+    }
+    
+    func dateUseAtFrontType() -> String{
+        return ""
     }
 }

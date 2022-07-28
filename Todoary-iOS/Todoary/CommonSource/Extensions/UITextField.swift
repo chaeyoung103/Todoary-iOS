@@ -9,7 +9,7 @@ import UIKit
 
 extension UITextField {
 
-    //placeholder 색상 변경 함수
+    //placeholder 색상 변경 함수 todoaryGrey
     func setPlaceholderColor(_ placeholderColor: UIColor = .todoaryGrey) {
         attributedPlaceholder = NSAttributedString(
             string: placeholder ?? "",
@@ -55,5 +55,13 @@ extension UITextField {
                                                      length: attributedString.length-1))
         
         return attributedString
+    }
+    
+    func addLeftPadding(padding: CGFloat = 10) {
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
+        
     }
 }
