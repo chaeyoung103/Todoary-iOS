@@ -9,7 +9,6 @@ import Alamofire
 
 class SignoutDataManager {
   
-        
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
         //통신
