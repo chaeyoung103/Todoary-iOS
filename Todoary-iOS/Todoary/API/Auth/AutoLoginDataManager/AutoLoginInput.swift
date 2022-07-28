@@ -8,6 +8,6 @@
 import Foundation
 
 struct AutoLoginInput: Encodable{
-    var email: String
-    var password: String
+    var email: String?
+    var password: String?
 }
