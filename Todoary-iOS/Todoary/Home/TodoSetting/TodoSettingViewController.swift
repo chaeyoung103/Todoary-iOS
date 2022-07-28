@@ -16,8 +16,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var now = Date()
     var todoTitle : String!
     var targetDate : String!
-    var isAlarmEnabled : Bool!
-    var targetTime : String!
+    var isAlarmEnabled = false
+    var targetTime = ""
     var categories: [Int]!
     
     
@@ -201,7 +201,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
         }else {
             time.isHidden = true
-            targetTime = nil
+            targetTime = ""
             isAlarmEnabled = false
         }
     }

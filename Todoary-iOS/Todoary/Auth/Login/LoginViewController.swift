@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var validateAutoLogin = false
     
@@ -27,9 +27,11 @@ class LoginViewController: UIViewController {
     
     let idTf = UITextField().then{
         $0.placeholder = "가입하신 이메일을 입력해주세요"
-        $0.setPlaceholderColor()
         $0.textFieldTypeSetting(type: .body1)
         $0.font = UIFont.nbFont(type: .body2)
+        $0.setPlaceholderColor()
+        $0.returnKeyType = UIReturnKeyType.join
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let idBorderLine = UIView().then{
@@ -47,10 +49,12 @@ class LoginViewController: UIViewController {
 
     let pwTf = UITextField().then{
         $0.placeholder = "비밀번호를 입력해주세요"
-        $0.setPlaceholderColor()
         $0.textFieldTypeSetting(type: .body1)
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
+        $0.setPlaceholderColor()
+        $0.returnKeyType = UIReturnKeyType.join
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let pwBorderLine = UIView().then{
@@ -118,20 +122,24 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
+        self.idTf.delegate = self
+        self.pwTf.delegate = self
 
         setUpView()
         setUpConstraint()
         setupData()
         setKeyboardObserver()
-  
+        
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
-        }
+        self.view.endEditing(true)
+        self.view.window?.frame.origin.y = 0
+    }
 
     //MARK: - Actions
+    
         
     
     @objc func signUpBtnDidTab() {
@@ -163,8 +171,8 @@ class LoginViewController: UIViewController {
             LoginDataManager().loginDataManager(self,loginInput)
         } else {
             // 자동로그인을 눌렀을 때
-           // let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
-           // AutoLoginDataManager() .autologin(self,autoLoginInput)
+            let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
+            AutoLoginDataManager() .autologin(self,autoLoginInput)
         }
       
     }
@@ -187,6 +195,15 @@ class LoginViewController: UIViewController {
             print("refresh토큰 없음-자동로그인 아님")
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTf {
+                pwTf.becomeFirstResponder()
+            } else {
+                pwTf.resignFirstResponder()
+            }
+            return true
+        }
 
 }
 
