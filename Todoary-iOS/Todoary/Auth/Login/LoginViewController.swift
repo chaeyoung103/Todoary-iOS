@@ -130,8 +130,8 @@ class LoginViewController: UIViewController {
         
     
     @objc func signUpBtnDidTab() {
-        let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        let vc = AgreementViewController()
+        navigationController?.pushViewController(vc, animated: true)
         navigationController?.isNavigationBarHidden = true
     }
     @objc func pwSearchBtnDidTab() {

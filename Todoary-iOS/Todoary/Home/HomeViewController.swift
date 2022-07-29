@@ -151,7 +151,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         HomeViewController.bottomSheetVC.loadViewIfNeeded()
         HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
-
         present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 
