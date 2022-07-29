@@ -33,17 +33,10 @@ class TodoListBottomSheetViewController: UIViewController {
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = false
     
-    //더미 데이터
-    var summaryData : [SummaryData] = [
-        SummaryData(time: "AM 7:00", pin: false, alarm: false, category: false),
-        SummaryData(time: "AM 10:00", pin: true, alarm: false, category: false),
-        SummaryData(time: "AM 10:30", pin: false, alarm: true, category: false),
-        SummaryData(time: "AM 11:00", pin: false, alarm: false, category: true),
-        SummaryData(time: "PM 2:00", pin: true, alarm: true, category: true),
-        SummaryData(time: "PM 4:00", pin: false, alarm: false, category: false),
-        SummaryData(time: "PM 11:00", pin: false, alarm: true, category: true),
-        SummaryData(time: "PM 11:30", pin: false, alarm: true, category: true)
-    ]
+    //todo 데이터
+    var todoData : [GetTodoInfo]!
+    
+    var todayDate : ConvertDate?
     
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
@@ -65,6 +58,7 @@ class TodoListBottomSheetViewController: UIViewController {
             $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
             
             $0.register(TodoListTitleCell.self, forCellReuseIdentifier: TodoListTitleCell.cellIdentifier)
+            $0.register(TodoBannerCell.self, forCellReuseIdentifier: TodoBannerCell.cellIdentifier)
             $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
             $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
@@ -75,11 +69,13 @@ class TodoListBottomSheetViewController: UIViewController {
             
         }
         
-        dataArraySortByPin()
-        
         setUpView()
         setUpConstraint()
         setUpSheetVC()
+        
+        //오늘 날짜로 todo list 가져오기
+        print("api 호출?")
+        GetTodoDataManager().gets(todayDate!.dateSendToServerType())
     }
     
     func setUpView(){
@@ -125,11 +121,15 @@ class TodoListBottomSheetViewController: UIViewController {
         cell.cellWillMoveOriginalPosition()
     }
     
-    func checkApiResultCode(_ code: Int){
-        switch code{
+    func checkApiResultCode(_ result: GetTodoModel){
+
+        switch result.code{
         case 1000:
-            
+            todoData = result.result
+            dataArraySortByPin()
+            tableView.reloadData()
             return
+            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
@@ -142,7 +142,8 @@ class TodoListBottomSheetViewController: UIViewController {
 extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return summaryData.count + 3
+        
+        return todoData.count != 0 ? todoData!.count + 3 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -165,20 +166,35 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
             let identifier = isDiaryExist ? DiaryCell.cellIdentifier : DiaryBannerCell.cellIdentifier
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
-                fatalError()
+            
+            if(todoData.count != 0){
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
+                    fatalError()
+                }
+                let data = todoData![indexPath.row-1]
+                print(data)
+                cell.navigation = homeNavigaiton
+                cell.delegate = self
+                cell.titleLabel.text = data.title
+                cell.timeLabel.text = data.targetTime
+                cell.isPin = data.isPinned
+                cell.isAlarm = data.isAlarmEnabled
+                cell.categories = data.categories
+                /*
+                cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].changeUIColor())
+                 */
+                cell.setUpViewByCase()
+                cell.settingCategoryButton(title: "카테고리", color: .category8)
+                return cell
+            }else{
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath) as? TodoBannerCell else{
+                    fatalError()
+                }
+                cell.navigation = homeNavigaiton
+                return cell
             }
-            let data = summaryData[indexPath.row-1]
-            cell.navigation = homeNavigaiton
-            cell.delegate = self
-            cell.titleLabel.text = "아침 산책"
-            cell.timeLabel.text = data.time
-            cell.isPin = data.pin
-            cell.isAlarm = data.alarm
-            cell.hasCategory = data.category
-            cell.setUpViewByCase()
-            return cell
         }
+
         return cell
     }
 
@@ -187,7 +203,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func cellWillDelete(_ indexPath: IndexPath){
-        summaryData.remove(at: indexPath.row-1)
+        todoData!.remove(at: indexPath.row-1)
         self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
@@ -195,9 +211,9 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         let pinnedCount: Int = getPinnedCount()
         
-        let willChangeData = summaryData[indexPath.row-1]
+        var willChangeData = todoData![indexPath.row-1]
     
-        if(!willChangeData.pin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
+        if(!willChangeData.isPinned && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
             let alertTitle = "고정은 2개까지만 가능합니다."
             
@@ -210,11 +226,11 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         }
         
         //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
-        willChangeData.pin.toggle()
+        willChangeData.isPinned.toggle()
         
         dataArraySortByPin()
     
-        guard let newIndex = summaryData.firstIndex(of: willChangeData) else{
+        guard let newIndex = todoData!.firstIndex(of: willChangeData) else{
             return
         }
         
@@ -242,8 +258,8 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         var count : Int = 0
         
-        summaryData.forEach{ each in
-            if (each.pin) {
+        todoData!.forEach{ each in
+            if (each.isPinned) {
                 count += 1
             }
         }
@@ -252,8 +268,9 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     }
     
     func dataArraySortByPin(){
-        summaryData.sort(by: {$0.time < $1.time})
-        summaryData.sort(by: {$0.pin && !$1.pin})
+        todoData!.sort(by: {$0.createdTime < $1.createdTime})
+        todoData!.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
+        todoData!.sort(by: {$0.isPinned && !$1.isPinned})
     }
 }
 
@@ -284,21 +301,21 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
     
 }
 
-class SummaryData : Equatable{
-    
-    var time: String
-    var pin: Bool
-    var alarm: Bool
-    var category: Bool
-    
-    init(time: String, pin: Bool, alarm: Bool, category: Bool ){
-        self.time = time
-        self.pin = pin
-        self.alarm = alarm
-        self.category = category
-    }
-    
-    static func ==(lhs: SummaryData, rhs: SummaryData) -> Bool {
-        return lhs.time == rhs.time && lhs.pin == rhs.pin && lhs.alarm == rhs.alarm && lhs.category == rhs.category
-    }
-}
+//class SummaryData : Equatable{
+//
+//    var time: String
+//    var pin: Bool
+//    var alarm: Bool
+//    var category: Bool
+//
+//    init(time: String, pin: Bool, alarm: Bool, category: Bool ){
+//        self.time = time
+//        self.pin = pin
+//        self.alarm = alarm
+//        self.category = category
+//    }
+//
+//    static func ==(lhs: SummaryData, rhs: SummaryData) -> Bool {
+//        return lhs.time == rhs.time && lhs.pin == rhs.pin && lhs.alarm == rhs.alarm && lhs.category == rhs.category
+//    }
+//}

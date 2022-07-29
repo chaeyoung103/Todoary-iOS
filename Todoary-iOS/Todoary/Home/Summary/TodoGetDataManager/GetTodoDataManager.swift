@@ -11,12 +11,13 @@ import Alamofire
 class GetTodoDataManager{
     
     func gets(_ date: String){
-        AF.request("http://todoary.com/todo", method: .get, parameters: ["date":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
+
+        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
+        
+        AF.request("https://todoary.com/todo/date/\(date)", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetTodoModel.self) { response in
             switch response.result {
             case .success(let result):
-                HomeViewController.bottomSheetVC
-                print("success")
-//                viewController.
+                HomeViewController.bottomSheetVC.checkApiResultCode(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -37,9 +38,5 @@ struct ConvertDate{
         let dateString = self.date!.count < 2 ? "0\(date!)" : date!
         
         return "\(year!)-\(monthString)-\(dateString)"
-    }
-    
-    func dateUseAtFrontType() -> String{
-        return ""
     }
 }

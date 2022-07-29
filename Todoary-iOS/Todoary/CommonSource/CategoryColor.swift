@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIColor {
+    
+    static let categoryColor = [category1, category2, category3, category4, category5, category6, category7, category8, category9, category10, category11, category12, category13, category14, category15, category16, category17, category18]
 
     static let category1 = UIColor(
         red: 250/255,
