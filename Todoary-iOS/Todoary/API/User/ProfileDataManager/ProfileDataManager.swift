@@ -18,7 +18,8 @@ class ProfileDataManager {
                 switch result.code {
                 case 1000:
                     print("프로필수정성공")
-                case 2201:
+                    viewController.navigationController?.popViewController(animated: true)
+                case 2032:
                     print("중복된 닉네임입니다")
                 default:
                     print(result.message)

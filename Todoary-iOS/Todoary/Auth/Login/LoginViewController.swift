@@ -135,7 +135,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        self.view.window?.frame.origin.y = 0
+        UIView.animate(withDuration: 1){
+            self.view.window?.frame.origin.y = 0
+        }
     }
 
     //MARK: - Actions

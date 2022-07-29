@@ -43,6 +43,18 @@ class ColorPickerViewController : UIViewController {
         $0.layer.borderColor = UIColor.silver_217.cgColor
     }
     
+    let completeBtn = UIButton().then{
+        $0.setTitle("완료", for: .normal)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .semibold)
+        $0.layer.cornerRadius = 15
+        $0.layer.borderColor = UIColor.silver_217.cgColor
+        $0.layer.borderWidth = 1
+        $0.addTarget(self, action: #selector(completeBtnDidTap), for: .touchUpInside)
+    }
+    
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -50,6 +62,7 @@ class ColorPickerViewController : UIViewController {
         super.viewDidLoad()
         
         navigationView = NavigationView(frame: .zero , self.navigationController!)
+        self.view.backgroundColor = .white
         
         setUpView()
         setUpConstraint()
@@ -57,10 +70,17 @@ class ColorPickerViewController : UIViewController {
         configure()
         setupCollectionView()
 
-        //바텀시트 테스트
-        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+//        //바텀시트 테스트
+//        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
+//        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+//        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+    }
+    
+    //MARK: - Actions
+    @objc private func completeBtnDidTap() {
+        
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Helpers

@@ -100,6 +100,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
     let plusBtn = UIButton().then{
         $0.setImage(UIImage(named: "categoryadd"), for: .normal)
+        $0.addTarget(self, action: #selector(plusBtnDidTap), for: .touchUpInside)
     }
     
     let category1 = UIButton().then{
@@ -160,8 +161,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         date.setTitle(dateFormatter.string(from: now), for: .normal)
         
-        
-        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     //MARK: - Actions
@@ -185,6 +188,14 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         todoTitle = todo.text!
         let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [])
         TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func plusBtnDidTap() {
+        let colorPickerViewController = ColorPickerViewController()
+        self.navigationController?.pushViewController(colorPickerViewController, animated: true)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     @objc func onClickSwitch(sender: UISwitch) {
