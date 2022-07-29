@@ -22,6 +22,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = cal.component(.month, from: now)
         components.day = 1
         self.calculation()
+        
+        HomeViewController.bottomSheetVC.todayDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
     }
 
     
