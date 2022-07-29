@@ -171,20 +171,27 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
                     fatalError()
                 }
-                
                 let data = todoData![indexPath.row-1]
+                print(data)
                 cell.navigation = homeNavigaiton
                 cell.delegate = self
-                cell.titleLabel.text = "아침 산책"
+                cell.titleLabel.text = data.title
                 cell.timeLabel.text = data.targetTime
                 cell.isPin = data.isPinned
                 cell.isAlarm = data.isAlarmEnabled
                 cell.categories = data.categories
-                cell.setUpViewByCase()
+                /*
                 cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].changeUIColor())
+                 */
+                cell.setUpViewByCase()
+                cell.settingCategoryButton(title: "카테고리", color: .category8)
                 return cell
             }else{
-                cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath) as? TodoBannerCell else{
+                    fatalError()
+                }
+                cell.navigation = homeNavigaiton
+                return cell
             }
         }
 

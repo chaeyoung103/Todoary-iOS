@@ -61,48 +61,4 @@ struct GetTodoCategories: Decodable{
     let id: Int
     let title: String
     let color: String
-    
-    func changeUIColor() -> UIColor{
-        
-        switch self.color{
-        case "FA9031":
-            return .category1
-        case "F8C32C":
-            return .category2
-        case "9F843C":
-            return .category3
-        case "347251":
-            return .category4
-        case "244B3A":
-            return .category5
-        case "B94949":
-            return .category6
-        case "34AFB8":
-            return .category7
-        case "9DB09B":
-            return .category8
-        case "E9D090":
-            return .category9
-        case "DD8D43":
-            return .category10
-        case "B45F12":
-            return .category11
-        case "F69E58":
-            return .category12
-        case "3773D4":
-            return .category13
-        case "24354A":
-            return .category14
-        case "626E80":
-            return .category15
-        case "9FA7AF":
-            return .category16
-        case "D7ABB5":
-            return .category17
-        case "E97590":
-            return .category18
-        default:
-            fatalError()
-        }
-    }
 }
