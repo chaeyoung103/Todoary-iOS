@@ -29,6 +29,32 @@ struct GetTodoInfo: Decodable, Equatable{
         return lhs.todoId == rhs.todoId
 //        && lhs.isPinned == rhs.isPinned && lhs.isChecked == rhs.isChecked && lhs.title == rhs.title && lhs.isAlarmEnabled == rhs.isAlarmEnabled && lhs.targetTime == rhs.targetTime && lhs.createdTime == rhs.createdTime && lhs.categories == rhs.categories
     }
+    
+//    func dateUseAtFrontType() -> String{
+//        //18:00 형태
+//        
+//        guard let time = targetTime else{
+//            fatalError()
+//        }
+//
+//        //12:00 이전 -> AM
+//        //10:00 이전 -> index 조절 필요
+//
+//        let startIndex = time.index(time.startIndex, offsetBy: 1)
+//        let endIndex = time.endIndex
+//        let range = startIndex..<endIndex
+//
+//        if(time < "12:00"){
+//            if(){
+//
+//            }else{
+//
+//            }
+//            return "AM "
+//        }else{
+//            return "PM "
+//        }
+//    }
 }
 
 struct GetTodoCategories: Decodable{
@@ -37,11 +63,6 @@ struct GetTodoCategories: Decodable{
     let color: String
     
     func changeUIColor() -> UIColor{
-
-        //dictionary로 uicolor, hex 동시 관리...?
-        /*
-         let colorDictionary = [UIColor.category1:"FA9031"]
-         */
         
         switch self.color{
         case "FA9031":
