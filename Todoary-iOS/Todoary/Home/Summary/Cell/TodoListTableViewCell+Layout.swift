@@ -16,6 +16,7 @@ extension TodoListTableViewCell{
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
         self.backView.addSubview(timeLabel)
+        self.backView.addSubview(categoryButton)
         
         self.selectedBackgroundView = selectedBackView
         
@@ -54,10 +55,17 @@ extension TodoListTableViewCell{
             //            make.lastBaseline.equalTo(alarmImage)
         }
         
+        categoryButton.snp.makeConstraints{ make in
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+            make.height.equalTo(21)
+            make.centerY.equalToSuperview()
+        }
+        
     }
     
     //default 아닌 view
     func setUpViewByCase(){
+        
         if(isAlarm){
             
             self.backView.addSubview(alarmImage)
@@ -76,44 +84,29 @@ extension TodoListTableViewCell{
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
                 }
-                
-                if(hasCategory){
-                    categoryConstraint()
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
                 }
             }else{
-                if(hasCategory){
-                    categoryConstraint()
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
                 }
             }
-            
         }else{
             if(isPin){
                 pinImageConstraint()
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
                 }
-                if(hasCategory){
-                    categoryConstraint()
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
                 }
             }else{
-                if(hasCategory){
-                    categoryConstraint()
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
                 }
             }
         }
-        
     }
     
     func pinImageConstraint(){
@@ -128,15 +121,5 @@ extension TodoListTableViewCell{
             make.lastBaseline.equalTo(timeLabel).offset(-1)
         }
     }
-    
-    func categoryConstraint(){
-        
-        self.backView.addSubview(categoryButton)
-        
-        categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
-            make.height.equalTo(21)
-            make.centerY.equalToSuperview()
-        }
-    }
+
 }

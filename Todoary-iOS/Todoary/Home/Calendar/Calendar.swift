@@ -22,6 +22,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = cal.component(.month, from: now)
         components.day = 1
         self.calculation()
+        
+        print("today date")
+        print(year, month, today)
     }
 
     

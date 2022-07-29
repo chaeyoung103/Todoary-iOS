@@ -14,14 +14,20 @@ struct GetTodoModel: Decodable{
     let result: [GetTodoInfo]?
 }
 
-struct GetTodoInfo: Decodable{
-    let todoId: Int?
-    let isChecked: Bool?
-    let title: String?
-    let isAlarmEnabled: Bool?
-    let targetTime: Bool?
-    let createdTime: String?
-    let categories: GetTodoCategories?
+struct GetTodoInfo: Decodable, Equatable{
+    let todoId: Int
+    var isPinned: Bool
+    var isChecked: Bool
+    var title: String
+    var isAlarmEnabled: Bool
+    var targetTime: String?
+    var createdTime: String
+    var categories: [GetTodoCategories]?
+    
+    static func ==(lhs: GetTodoInfo, rhs: GetTodoInfo) -> Bool {
+        return lhs.todoId == rhs.todoId
+//        && lhs.isPinned == rhs.isPinned && lhs.isChecked == rhs.isChecked && lhs.title == rhs.title && lhs.isAlarmEnabled == rhs.isAlarmEnabled && lhs.targetTime == rhs.targetTime && lhs.createdTime == rhs.createdTime && lhs.categories == rhs.categories
+    }
 }
 
 struct GetTodoCategories: Decodable{

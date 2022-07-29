@@ -11,12 +11,10 @@ import Alamofire
 class GetTodoDataManager{
     
     func gets(_ date: String){
-        AF.request("http://todoary.com/todo", method: .get, parameters: ["date":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: SingUpModel.self) { response in
+        AF.request("http://todoary.com/todo", method: .get, parameters: ["date":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: GetTodoModel.self) { response in
             switch response.result {
             case .success(let result):
-                HomeViewController.bottomSheetVC
-                print("success")
-//                viewController.
+                HomeViewController.bottomSheetVC.checkApiResultCode(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -40,6 +38,7 @@ struct ConvertDate{
     }
     
     func dateUseAtFrontType() -> String{
+        
         return ""
     }
 }
