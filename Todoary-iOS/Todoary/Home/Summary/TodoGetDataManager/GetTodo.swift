@@ -30,31 +30,39 @@ struct GetTodoInfo: Decodable, Equatable{
 //        && lhs.isPinned == rhs.isPinned && lhs.isChecked == rhs.isChecked && lhs.title == rhs.title && lhs.isAlarmEnabled == rhs.isAlarmEnabled && lhs.targetTime == rhs.targetTime && lhs.createdTime == rhs.createdTime && lhs.categories == rhs.categories
     }
     
-//    func dateUseAtFrontType() -> String{
-//        //18:00 형태
-//        
-//        guard let time = targetTime else{
-//            fatalError()
-//        }
-//
-//        //12:00 이전 -> AM
-//        //10:00 이전 -> index 조절 필요
-//
-//        let startIndex = time.index(time.startIndex, offsetBy: 1)
-//        let endIndex = time.endIndex
-//        let range = startIndex..<endIndex
-//
-//        if(time < "12:00"){
-//            if(){
-//
-//            }else{
-//
-//            }
-//            return "AM "
-//        }else{
-//            return "PM "
-//        }
-//    }
+    var convertTime: String?
+    {
+        //18:00 형태
+        
+        guard let time = targetTime else{
+            return nil
+        }
+        
+        var startIndex: String.Index!
+        var endIndex : String.Index!
+
+        if(time < "12:00"){
+            
+            startIndex = time < "10:00" ? time.startIndex : time.index(time.startIndex, offsetBy: 1)
+            
+            endIndex = time.endIndex
+            
+            return "AM \(time[startIndex..<endIndex])"
+            
+        }else if(time < "13:00"){
+    
+            return "PM \(time)"
+
+        }else{
+            
+            startIndex = time.startIndex
+            endIndex = time.index(time.startIndex, offsetBy: 2)
+            
+            let changeHour = Int(time[startIndex..<endIndex])! - 12
+            
+            return "PM \(changeHour)\(time[endIndex..<time.endIndex])"
+        }
+    }
 }
 
 struct GetTodoCategories: Decodable{

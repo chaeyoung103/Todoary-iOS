@@ -176,12 +176,12 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 cell.navigation = homeNavigaiton
                 cell.delegate = self
                 cell.titleLabel.text = data.title
-                cell.timeLabel.text = data.targetTime
+                cell.timeLabel.text = data.convertTime
                 cell.isPin = data.isPinned
                 cell.isAlarm = data.isAlarmEnabled
                 cell.categories = data.categories
-                /*
-                cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].changeUIColor())
+                /* 투두 카테고리 데이터 추가되면 주석 제거하기
+                cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
                  */
                 cell.setUpViewByCase()
                 cell.settingCategoryButton(title: "카테고리", color: .category8)
