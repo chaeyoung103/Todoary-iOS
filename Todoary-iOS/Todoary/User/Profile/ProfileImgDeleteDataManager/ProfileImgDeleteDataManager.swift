@@ -17,8 +17,8 @@ class ProfileImgDeleteDataManager {
                    method: .delete,
                    encoding: URLEncoding(destination: .queryString),
                    headers: headers).validate().responseDecodable(of: ProfileImgDeleteModel.self)
-        {responce in
-            switch responce.result {
+        {response in
+            switch response.result {
             case .success(let result) :
                 switch result.code {
                 case 1000 :

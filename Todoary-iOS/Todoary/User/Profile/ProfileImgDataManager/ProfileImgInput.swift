@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ProfileImgInput : Encodable {
-  //  var profileImg :
+struct ProfileImgInput  {
+    var profileImg : UIImage?
 }
