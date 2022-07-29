@@ -42,10 +42,8 @@ class TodoListTableViewCell: UITableViewCell {
     
     lazy var categoryButton = UIButton().then{
         $0.setTitle("운동", for: .normal)
-//        $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
         $0.addLetterSpacing(spacing: 0.24)
-//        $0.layer.borderColor = UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1).cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2
         $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
@@ -138,7 +136,6 @@ class TodoListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
-        categoryButton.removeFromSuperview()
         categoryButton.setTitle("", for: .normal)
         categoryButton.setTitleColor(UIColor.white, for: .normal)
         categoryButton.layer.borderColor = UIColor.white.cgColor
@@ -361,7 +358,4 @@ protocol SelectedTableViewCellDeliver: AnyObject{
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }
-//
-//protocol CellMoveToViewController: AnyObject{
-//    func cellWillMoveSettingVC(_ indexPath: IndexPath)
-//}
+

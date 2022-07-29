@@ -39,9 +39,4 @@ struct ConvertDate{
         
         return "\(year!)-\(monthString)-\(dateString)"
     }
-    
-    func dateUseAtFrontType() -> String{
-        
-        return ""
-    }
 }

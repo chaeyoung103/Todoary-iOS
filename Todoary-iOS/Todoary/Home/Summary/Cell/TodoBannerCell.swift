@@ -47,6 +47,9 @@ class TodoBannerCell: UITableViewCell {
         setUpView()
         setUpConstraint()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveNewTodoVC))
+        self.contentView.addGestureRecognizer(tapGesture)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -90,5 +93,13 @@ class TodoBannerCell: UITableViewCell {
             make.centerY.equalTo(checkBox)
         }
     
+    }
+    
+    @objc
+    func willMoveNewTodoVC(){
+        let vc = TodoSettingViewController()
+//        vc.todoTitle = "(투두 이름)"
+        HomeViewController.dismissBottomSheet()
+        navigation.pushViewController(vc, animated: true)
     }
 }
