@@ -24,9 +24,9 @@ class ColorPickerViewController : UIViewController {
     
     let categoryTitle = UITextField().then{
         $0.placeholder = "카테고리 이름을 입력해주세요"
-        $0.font = UIFont.nbFont(type: .tableCell)
-        $0.addLeftPadding()
-        $0.textFieldTypeSetting(type: .tableCell)
+        $0.font = UIFont.nbFont(ofSize: 15, weight: .medium)
+        $0.setPlaceholderColor(.black)
+        $0.addLeftPadding(padding: 11)
         $0.borderStyle = .none
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
@@ -56,11 +56,11 @@ class ColorPickerViewController : UIViewController {
         
         configure()
         setupCollectionView()
-        
+
+        //바텀시트 테스트
         let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
         ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
         self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
-
     }
     
     //MARK: - Helpers

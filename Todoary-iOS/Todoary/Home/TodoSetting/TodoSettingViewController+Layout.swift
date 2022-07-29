@@ -12,6 +12,7 @@ extension TodoSettingViewController {
     func setUpView(){
         
         self.view.addSubview(navigationView)
+        self.view.addSubview(completeBtn)
         self.view.addSubview(todo)
         self.view.addSubview(todoBorderLine)
         
@@ -43,6 +44,13 @@ extension TodoSettingViewController {
             make.width.equalToSuperview()
         }
         
+        completeBtn.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(58)
+            make.trailing.equalToSuperview().offset(-21)
+            make.width.equalTo(35)
+            make.height.equalTo(22)
+        }
+        
         todo.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(101)
             make.leading.equalToSuperview().offset(31)
@@ -63,7 +71,7 @@ extension TodoSettingViewController {
         date.snp.makeConstraints{ make in
             make.centerY.equalTo(dateTitle)
             make.trailing.equalToSuperview().offset(-31)
-            make.width.equalTo(105)
+            make.width.equalTo(107)
             make.height.equalTo(17)
 
         }
@@ -90,7 +98,7 @@ extension TodoSettingViewController {
         time.snp.makeConstraints{ make in
             make.centerY.equalTo(alarm)
             make.trailing.equalTo(alarmSwitch.snp.leading).offset(-15)
-            make.width.equalTo(60)
+            make.width.equalTo(62)
             make.height.equalTo(17)
         }
         

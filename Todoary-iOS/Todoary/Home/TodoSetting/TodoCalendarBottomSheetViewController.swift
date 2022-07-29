@@ -221,5 +221,5 @@ class TodoCalendarBottomSheetViewController: UIViewController {
 }
 
 protocol CalendarComplete {
-    func calendarComplete(date: String)
+    func calendarComplete(date: String, date_api: String)
 }
