@@ -10,7 +10,7 @@ import Alamofire
 
 class TodoPinDataManager {
 
-    func patch(cell: TodoListTableViewCell, parameter: TodoPinInput){
+    func patch(parameter: TodoPinInput, indexPath: IndexPath){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
@@ -22,7 +22,7 @@ class TodoPinDataManager {
             .validate().responseDecodable(of: ApiModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    cell.checkSendCheckboxApiResultCode(result.code)
+                    HomeViewController.bottomSheetVC.checkSendPinApiResultCode(result.code, indexPath)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

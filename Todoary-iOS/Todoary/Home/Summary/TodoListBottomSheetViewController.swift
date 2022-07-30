@@ -206,8 +206,9 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         let pinnedCount: Int = getPinnedCount()
         
         var willChangeData = todoData[indexPath.row-1]
+        var currentPin = willChangeData.isPinned
     
-        if(!willChangeData.isPinned && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
+        if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
             let alertTitle = "고정은 2개까지만 가능합니다."
             
@@ -220,6 +221,11 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
             return
         }
         
+        let parameter = TodoPinInput(todoId: willChangeData.todoId, isPinned: !currentPin)
+        
+        TodoPinDataManager().patch(parameter: parameter, indexPath: indexPath)
+        
+        /*
         //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
         willChangeData.isPinned.toggle()
         todoData[indexPath.row-1].isPinned = willChangeData.isPinned
@@ -232,6 +238,33 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
         tableView.reloadData()
+         */
+    }
+    
+    func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
+        switch code{
+        case 1000:
+            print("성공")
+            //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
+            var willChangeData = todoData[indexPath.row-1]
+            
+            willChangeData.isPinned.toggle()
+            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
+            
+            dataArraySortByPin()
+        
+            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
+                return
+            }
+            
+            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
+            tableView.reloadData()
+            
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func cellWillClamp(_ indexPath: IndexPath){
