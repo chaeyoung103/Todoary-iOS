@@ -8,14 +8,30 @@
 import Foundation
 import Alamofire
 
+enum AlarmType{
+    case Todoary
+    case Diary
+    case Remind
+}
 
 class AlarmDataManager {
     
-    func patch(cell: AlarmSettingTableViewCell, isChecked: Bool){
+    func patch(cell: AlarmSettingTableViewCell, isChecked: Bool, alarmType: AlarmType){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/users/alarm/todo",
+        var url : String{
+            switch alarmType {
+            case .Todoary:
+                return "users/alarm/todo"
+            case .Diary:
+                return "users/alarm/diary"
+            case .Remind:
+                return "users/alarm/remind"
+            }
+        }
+        
+        AF.request("https://todoary.com/\(url)",
                    method: .patch,
                    parameters: ["isChecked":isChecked],
                    encoder: JSONParameterEncoder.default,
