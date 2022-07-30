@@ -22,9 +22,7 @@ class TodoListTableViewCell: UITableViewCell {
     
     var navigation : UINavigationController!
     
-    let selectedBackView = UIView().then{
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-    }
+    var cellData : GetTodoInfo!
     
     //tableCell UI
     lazy var checkBox = UIButton().then{
@@ -96,6 +94,10 @@ class TodoListTableViewCell: UITableViewCell {
         $0.snp.makeConstraints{ make in
             make.height.equalTo(60)
         }
+    }
+    
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
     
     //MARK: - CellData
@@ -238,8 +240,10 @@ extension TodoListTableViewCell{
     
     func cellWillMoveOriginalPosition(){
         
-        let originalFrame = CGRect(x: 0, y: frame.origin.y,
-                                   width: bounds.size.width, height: bounds.size.height)
+        let originalFrame = CGRect(x: 0,
+                                   y: frame.origin.y,
+                                   width: bounds.size.width,
+                                   height: bounds.size.height)
         
         moveBackHiddenView()
         UIView.animate(withDuration: 0.25,
@@ -253,8 +257,10 @@ extension TodoListTableViewCell{
     
     func cellWillMoveOriginalPosition(_ indexPath : IndexPath){
         
-        let originalFrame = CGRect(x: 0, y: frame.origin.y,
-                                   width: bounds.size.width, height: bounds.size.height)
+        let originalFrame = CGRect(x: 0,
+                                   y: frame.origin.y,
+                                   width: bounds.size.width,
+                                   height: bounds.size.height)
         
         moveBackHiddenView()
         
@@ -313,7 +319,21 @@ extension TodoListTableViewCell{
     
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
-        sender.isSelected.toggle()
+        let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !sender.isSelected)
+        print(parameter.todoId, parameter.isChecked)
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
+    }
+    
+    func checkSendCheckboxApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            print("성공")
+            checkBox.isSelected.toggle()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc

@@ -120,8 +120,13 @@ class TodoListBottomSheetViewController: UIViewController {
         }
         cell.cellWillMoveOriginalPosition()
     }
+ 
+}
+
+//MARK: - API
+extension TodoListBottomSheetViewController{
     
-    func checkApiResultCode(_ result: GetTodoModel){
+    func checkGetTodoApiResultCode(_ result: GetTodoModel){
 
         switch result.code{
         case 1000:
@@ -136,7 +141,6 @@ class TodoListBottomSheetViewController: UIViewController {
             return
         }
     }
- 
 }
 
 extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
@@ -175,6 +179,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
                 print(data)
                 cell.navigation = homeNavigaiton
                 cell.delegate = self
+                cell.cellData = data
                 cell.titleLabel.text = data.title
                 cell.timeLabel.text = data.convertTime
                 cell.isPin = data.isPinned
@@ -300,22 +305,3 @@ extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelega
     }
     
 }
-
-//class SummaryData : Equatable{
-//
-//    var time: String
-//    var pin: Bool
-//    var alarm: Bool
-//    var category: Bool
-//
-//    init(time: String, pin: Bool, alarm: Bool, category: Bool ){
-//        self.time = time
-//        self.pin = pin
-//        self.alarm = alarm
-//        self.category = category
-//    }
-//
-//    static func ==(lhs: SummaryData, rhs: SummaryData) -> Bool {
-//        return lhs.time == rhs.time && lhs.pin == rhs.pin && lhs.alarm == rhs.alarm && lhs.category == rhs.category
-//    }
-//}
