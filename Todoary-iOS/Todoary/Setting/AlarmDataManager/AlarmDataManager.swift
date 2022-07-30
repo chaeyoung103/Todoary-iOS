@@ -12,6 +12,7 @@ enum AlarmType{
     case Todoary
     case Diary
     case Remind
+
 }
 
 class AlarmDataManager {

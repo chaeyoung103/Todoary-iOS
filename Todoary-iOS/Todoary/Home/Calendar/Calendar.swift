@@ -132,9 +132,11 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         //선택한 날짜에 맞는 투두 리스트 불러오기
         
-        let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row]).dateSendToServerType()
+        let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row])
+        
+        HomeViewController.bottomSheetVC.todayDate = convertDate
                                                       
-        GetTodoDataManager().gets(convertDate)
+        GetTodoDataManager().gets(convertDate.dateSendServer)
         
         /*
         HomeViewController.bottomSheetVC.summaryData = newData

@@ -36,7 +36,7 @@ class TodoListBottomSheetViewController: UIViewController {
     //todo 데이터
     var todoData : [GetTodoInfo]!
     
-    var todayDate : ConvertDate?
+    var todayDate : ConvertDate!
     
     //clamp cell
     var clampCell : IndexPath = [0,-1] //default 값
@@ -74,7 +74,7 @@ class TodoListBottomSheetViewController: UIViewController {
         setUpSheetVC()
         
         //오늘 날짜로 todo list 가져오기
-        GetTodoDataManager().gets(todayDate!.dateSendToServerType())
+        GetTodoDataManager().gets(todayDate.dateSendServer)
     }
     
     func setUpView(){
@@ -109,7 +109,9 @@ class TodoListBottomSheetViewController: UIViewController {
     
     @objc
     func addButtonDidClicked(){
-        print("clicked")
+        print(todayDate.dateUsedDiary)
+        
+        
     }
     
     @objc
