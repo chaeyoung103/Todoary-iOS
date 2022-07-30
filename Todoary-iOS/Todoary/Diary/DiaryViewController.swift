@@ -18,6 +18,10 @@ class DiaryViewController : UIViewController {
     //navigation bar
     var navigationView:NavigationView!
     
+    private var DiaryTabelViewCell = "DiaryTabelViewCellid"
+    
+    private var DiaryTableView: DiaryTableView!
+    
     //오늘 날짜
     let todaysDate = UILabel().then{
         //선택한 날짜 나오게 연결해주기
@@ -53,7 +57,6 @@ class DiaryViewController : UIViewController {
         diaryText.setTextWithLineHeight(spaing: 20)
         diaryText.textColor = .silver_225
         diaryText.font = UIFont.nbFont(ofSize: 15, weight: .medium)
-        diaryText.sc
         
         diaryText.delegate = self
 
@@ -71,12 +74,46 @@ class DiaryViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        configure()
+        setupCollectionView()
+            
+        }
     }
+    //MARK: - Helpers
+    
+    private func configure() {
+           
+        view.addSubview(DiaryTableView)
+
+        tableView.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(125)
+                make.leading.equalToSuperview().offset(32)
+                make.width.equalTo(387)
+                make.height.equalTo(161)
+                make.centerX.equalToSuperview()
+           }
+       }
+
+    private func setupCollectionView() {
+        DiaryTableView.delegate = self
+        DiaryTableView.dataSource = self
+        
+        //cell 등록
+        
+        tableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCellid)
+    }
+  
 }
+
 
         //MARK: - Helpers_UITextViewDelegate
 
-extension DiaryViewController: UITextViewDelegate {
+extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
@@ -93,4 +130,12 @@ extension DiaryViewController: UITextViewDelegate {
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
+            fatalError()
+        }
+        return cell
+    }
 }
+
