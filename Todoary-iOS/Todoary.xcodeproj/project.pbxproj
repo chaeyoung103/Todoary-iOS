@@ -134,6 +134,8 @@
 		E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */; };
 		E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */; };
 		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
+		E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */; };
+		E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */; };
 		E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99880288A57640051C7AA /* PwFindModel.swift */; };
 		E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99882288A57760051C7AA /* PwFindInput.swift */; };
 		E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99884288A57850051C7AA /* PwFindDataManager.swift */; };
@@ -329,6 +331,8 @@
 		E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceViewController.swift; sourceTree = "<group>"; };
 		E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
+		E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0F99880288A57640051C7AA /* PwFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindModel.swift; sourceTree = "<group>"; };
 		E0F99882288A57760051C7AA /* PwFindInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindInput.swift; sourceTree = "<group>"; };
 		E0F99884288A57850051C7AA /* PwFindDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindDataManager.swift; sourceTree = "<group>"; };
@@ -494,6 +498,7 @@
 				AC5E27E82890EBF90056EC69 /* User */,
 				574913B5287ADEF300381BCD /* Setting */,
 				E0AB9EBE287B1C100064CADA /* Home */,
+				E0F3CDC22895000200A74AB7 /* Diary */,
 				AC5E27E62890EA090056EC69 /* API */,
 				E05C0BF228851B7100812099 /* SupportingFile */,
 				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
@@ -919,6 +924,15 @@
 			path = AgreementText;
 			sourceTree = "<group>";
 		};
+		E0F3CDC22895000200A74AB7 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
+				E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
 		E0F9987F288A57070051C7AA /* PwFindDataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1320,6 +1334,7 @@
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
+				E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */,
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
@@ -1378,6 +1393,7 @@
 				E0F998B7288A69DD0051C7AA /* AlarmDiaryInput.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */,
+				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
