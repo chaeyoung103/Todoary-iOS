@@ -106,6 +106,9 @@
 		ACCD87B92893C43F00C34CE7 /* CategoryMakeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87B82893C43F00C34CE7 /* CategoryMakeInput.swift */; };
 		ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87BA2893C45400C34CE7 /* CategoryMakeModel.swift */; };
 		ACCD87BD2893C46D00C34CE7 /* CategoryMakeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87BC2893C46D00C34CE7 /* CategoryMakeDataManager.swift */; };
+		ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87BF2895930500C34CE7 /* GetCategoryDataManager.swift */; };
+		ACCD87C22895931600C34CE7 /* GetCategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C12895931600C34CE7 /* GetCategoryInput.swift */; };
+		ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C32895932500C34CE7 /* GetCategoryModel.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -299,6 +302,9 @@
 		ACCD87B82893C43F00C34CE7 /* CategoryMakeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeInput.swift; sourceTree = "<group>"; };
 		ACCD87BA2893C45400C34CE7 /* CategoryMakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeModel.swift; sourceTree = "<group>"; };
 		ACCD87BC2893C46D00C34CE7 /* CategoryMakeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeDataManager.swift; sourceTree = "<group>"; };
+		ACCD87BF2895930500C34CE7 /* GetCategoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryDataManager.swift; sourceTree = "<group>"; };
+		ACCD87C12895931600C34CE7 /* GetCategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryInput.swift; sourceTree = "<group>"; };
+		ACCD87C32895932500C34CE7 /* GetCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryModel.swift; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -821,6 +827,16 @@
 			path = CategoryMakeDataManager;
 			sourceTree = "<group>";
 		};
+		ACCD87BE289592E200C34CE7 /* GetCategoryDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACCD87BF2895930500C34CE7 /* GetCategoryDataManager.swift */,
+				ACCD87C12895931600C34CE7 /* GetCategoryInput.swift */,
+				ACCD87C32895932500C34CE7 /* GetCategoryModel.swift */,
+			);
+			path = GetCategoryDataManager;
+			sourceTree = "<group>";
+		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,6 +885,7 @@
 		E0439AB9288C57A30075CBF0 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				ACCD87BE289592E200C34CE7 /* GetCategoryDataManager */,
 				ACCD87B72893C38E00C34CE7 /* CategoryMakeDataManager */,
 				E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */,
 				E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */,
@@ -1339,6 +1356,7 @@
 				E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */,
 				5750364C288A3EC0006A9070 /* SignUpDataManager.swift in Sources */,
 				E03DCC4C28929D0F00532180 /* AutoLoginInput.swift in Sources */,
+				ACCD87C22895931600C34CE7 /* GetCategoryInput.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
@@ -1360,6 +1378,7 @@
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
 				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
+				ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
 				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
@@ -1414,6 +1433,7 @@
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
+				ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,

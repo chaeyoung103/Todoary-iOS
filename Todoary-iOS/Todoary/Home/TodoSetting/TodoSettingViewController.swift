@@ -11,6 +11,9 @@ import Then
 
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
     
+    var category_title : [String]! = ["?"]
+    var category_color : [Int]! = [0]
+    
     
     var dateFormatter = DateFormatter()
     var now = Date()
@@ -19,6 +22,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var isAlarmEnabled = false
     var targetTime = ""
     var categories: [Int]!
+    
+    var collectionView : UICollectionView!
+    
+    var current_category : CategoryButtonCollectionViewCell!
     
     
     //MARK: - UIComponenets
@@ -103,42 +110,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.addTarget(self, action: #selector(plusBtnDidTap), for: .touchUpInside)
     }
     
-    let category1 = UIButton().then{
-        $0.setTitle("운동", for: .normal)
-        $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
-        $0.addLetterSpacing(spacing: 0.24)
-        $0.layer.borderColor = UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1).cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 26/2
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
-        $0.isEnabled = false
-    }
-    
-    let category2 = UIButton().then{
-        $0.setTitle("운동", for: .normal)
-        $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
-        $0.addLetterSpacing(spacing: 0.24)
-        $0.layer.borderColor = UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1).cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 26/2
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
-        $0.isEnabled = false
-    }
-    
-    let category3 = UIButton().then{
-        $0.setTitle("운동", for: .normal)
-        $0.setTitleColor(UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1), for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
-        $0.addLetterSpacing(spacing: 0.24)
-        $0.layer.borderColor = UIColor(red: 122/255, green: 73/255, blue: 185/255, alpha: 1).cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 26/2
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 14, bottom: 4, right: 14)
-        $0.isEnabled = false
-    }
-    
     let categoryBorderLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
@@ -153,6 +124,17 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
 
         self.view.backgroundColor = .white
         
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = CGFloat(8)
+        
+        collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
+            $0.delegate = self
+            $0.dataSource = self
+
+            $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
+        }
+        
         setUpView()
         setUpConstraint()
         
@@ -160,6 +142,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         targetDate = dateFormatter.string(from: now)
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         date.setTitle(dateFormatter.string(from: now), for: .normal)
+        
+        GetCategoryDataManager().getCategoryDataManager(self)
         
     }
     
@@ -218,6 +202,13 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
     //MARK: - Helpers
+    func successAPI_category(_ result : [GetCategoryResult]) {
+        for i in 0...result.count{
+            category_title[i] = result[i].title
+            category_color[i] = result[i].color
+            
+        }
+    }
     
     func alarmComplete(time: String, time_api: String) {
         self.time.setTitle(time, for: .normal)
@@ -230,5 +221,48 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
 }
+
+extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryButtonSelect{
+    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell){
+        current_category.buttonIsNotSelected()
+        current_category.categoryBtn.isSelected = false
+        current_category = cell
+    }
     
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return category_title.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
+            fatalError()
+        }
+        
+        cell.setBtnAttribute(title: category_title[indexPath.row], color: .categoryColor[ category_color[indexPath.row]])
+        cell.delegate = self
+        
+        if(indexPath.row == 0){
+            cell.buttonIsSelected()
+            current_category = cell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let tmpLabel = UILabel()
+        tmpLabel.text = category_title[indexPath.row]
+        
+        if(category_title[indexPath.row].count > 2){
+            tmpLabel.then{
+                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+                $0.addLetterSpacing(spacing: 0.28)
+            }
+        }
+        
+        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
+    }
+}
     

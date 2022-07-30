@@ -18,6 +18,8 @@ class ColorPickerViewController : UIViewController {
     
     private var ColorPickerCollectionView: ColorPickerCollectionView!
     
+    var selectColor : Int!
+    
     var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
 
     var navigationView:NavigationView!
@@ -78,9 +80,20 @@ class ColorPickerViewController : UIViewController {
     
     //MARK: - Actions
     @objc private func completeBtnDidTap() {
+        if selectColor != nil{
+            print(selectColor!)
+            let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
+            CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
+            
+            self.navigationController?.popViewController(animated: true)
+        }else {
+            let alert = UIAlertController(title: "색상은 필수로 선택해주세요", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+                
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Helpers
@@ -134,8 +147,8 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
             }
         
         cell.layer.cornerRadius = 30/2
-        cell.backgroundColor = allColor[indexPath.row]
-        cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
+        cell.backgroundColor = .categoryColor[indexPath.row]
+        cell.colorBtnpick.layer.borderColor = UIColor.categoryColor[indexPath.row].cgColor
         
         return cell
     }
@@ -161,6 +174,7 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
             fatalError()
         }
+        selectColor = indexPath.row
         cell.colorBtnpick.isHidden = false
         cell.colorBtnpick.layer.borderWidth = 2
         cell.colorBtnpick.layer.cornerRadius = 40/2
