@@ -300,6 +300,11 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         todoData.sort(by: {$0.createdTime < $1.createdTime})
         todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
         todoData.sort(by: {$0.isPinned && !$1.isPinned})
+        
+        print("정렬 제대로 된거니?")
+        todoData.forEach{ each in
+            print(each.isPinned, each.convertTime, each.createdTime)
+        }
     }
 }
 
