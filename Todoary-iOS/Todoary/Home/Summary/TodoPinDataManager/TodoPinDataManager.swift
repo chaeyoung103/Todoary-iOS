@@ -1,20 +1,20 @@
 //
-//  TodoCheckboxDataManager.swift
+//  TodoPinDataManager.swift
 //  Todoary
 //
-//  Created by 박지윤 on 2022/07/27.
+//  Created by 박지윤 on 2022/07/30.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 
-class TodoCheckboxDataManager{
-    
-    func patch(cell: TodoListTableViewCell, parameter: TodoCheckboxInput){
+class TodoPinDataManager {
+
+    func patch(parameter: TodoPinInput, indexPath: IndexPath){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/todo/check",
+        AF.request("https://todoary.com/todo/pin",
                    method: .patch,
                    parameters: parameter,
                    encoder: JSONParameterEncoder.default,
@@ -22,7 +22,7 @@ class TodoCheckboxDataManager{
             .validate().responseDecodable(of: ApiModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    cell.checkSendCheckboxApiResultCode(result.code)
+                    HomeViewController.bottomSheetVC.checkSendPinApiResultCode(result.code, indexPath)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

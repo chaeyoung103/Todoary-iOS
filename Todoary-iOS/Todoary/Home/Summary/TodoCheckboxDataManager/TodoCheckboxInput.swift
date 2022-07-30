@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct TodoCheckboxInput: Encodable{
+    var todoId: Int
+    var isChecked: Bool
+}

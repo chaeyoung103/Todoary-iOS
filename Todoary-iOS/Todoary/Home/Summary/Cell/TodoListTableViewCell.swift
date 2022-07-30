@@ -22,9 +22,7 @@ class TodoListTableViewCell: UITableViewCell {
     
     var navigation : UINavigationController!
     
-    let selectedBackView = UIView().then{
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-    }
+    var cellData : GetTodoInfo!
     
     //tableCell UI
     lazy var checkBox = UIButton().then{
@@ -98,10 +96,9 @@ class TodoListTableViewCell: UITableViewCell {
         }
     }
     
-    //MARK: - CellData
-    var isPin : Bool!
-    var isAlarm : Bool!
-    var categories : [GetTodoCategories]?
+    let selectedBackView = UIView().then{
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+    }
     
     //MARK: - Properties(for swipe)
     
@@ -136,11 +133,23 @@ class TodoListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
-        categoryButton.setTitle("", for: .normal)
-        categoryButton.setTitleColor(UIColor.white, for: .normal)
-        categoryButton.layer.borderColor = UIColor.white.cgColor
+        settingCategoryButton(title: "", color: .white)
         titleLabel.text = ""
         timeLabel.text = ""
+        checkBox.isSelected = false
+    }
+    
+    func cellWillSettingWithData(){
+        
+        self.titleLabel.text = cellData.title
+        self.timeLabel.text = cellData.convertTime
+        self.checkBox.isSelected = cellData.isChecked
+        self.setUpViewByCase()
+        
+        /* 투두 카테고리 데이터 추가되면 주석 제거하기
+        cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
+         */
+        self.settingCategoryButton(title: "카테고리", color: .category8)
     }
     
     func settingCategoryButton(title: String, color: UIColor){
@@ -238,8 +247,10 @@ extension TodoListTableViewCell{
     
     func cellWillMoveOriginalPosition(){
         
-        let originalFrame = CGRect(x: 0, y: frame.origin.y,
-                                   width: bounds.size.width, height: bounds.size.height)
+        let originalFrame = CGRect(x: 0,
+                                   y: frame.origin.y,
+                                   width: bounds.size.width,
+                                   height: bounds.size.height)
         
         moveBackHiddenView()
         UIView.animate(withDuration: 0.25,
@@ -253,8 +264,10 @@ extension TodoListTableViewCell{
     
     func cellWillMoveOriginalPosition(_ indexPath : IndexPath){
         
-        let originalFrame = CGRect(x: 0, y: frame.origin.y,
-                                   width: bounds.size.width, height: bounds.size.height)
+        let originalFrame = CGRect(x: 0,
+                                   y: frame.origin.y,
+                                   width: bounds.size.width,
+                                   height: bounds.size.height)
         
         moveBackHiddenView()
         
@@ -313,7 +326,21 @@ extension TodoListTableViewCell{
     
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
-        sender.isSelected.toggle()
+        let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !sender.isSelected)
+        print(parameter.todoId, parameter.isChecked)
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
+    }
+    
+    func checkSendCheckboxApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            print("성공")
+            checkBox.isSelected.toggle()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc
