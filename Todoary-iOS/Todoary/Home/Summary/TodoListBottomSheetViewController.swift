@@ -197,8 +197,21 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func cellWillDelete(_ indexPath: IndexPath){
-        todoData.remove(at: indexPath.row-1)
-        self.tableView.deleteRows(at: [indexPath], with: .fade)
+//        todoData.remove(at: indexPath.row-1)
+//        self.tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+    func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
+        switch code{
+        case 1000:
+            todoData.remove(at: indexPath.row-1)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
     }
     
     func cellWillPin(_ indexPath: IndexPath){
@@ -224,21 +237,6 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         let parameter = TodoPinInput(todoId: willChangeData.todoId, isPinned: !currentPin)
         
         TodoPinDataManager().patch(parameter: parameter, indexPath: indexPath)
-        
-        /*
-        //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
-        willChangeData.isPinned.toggle()
-        todoData[indexPath.row-1].isPinned = willChangeData.isPinned
-        
-        dataArraySortByPin()
-    
-        guard let newIndex = todoData.firstIndex(of: willChangeData) else{
-            return
-        }
-        
-        tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
-        tableView.reloadData()
-         */
     }
     
     func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
@@ -300,6 +298,11 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         todoData.sort(by: {$0.createdTime < $1.createdTime})
         todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
         todoData.sort(by: {$0.isPinned && !$1.isPinned})
+        
+        print("정렬 제대로 된거니?")
+        todoData.forEach{ each in
+            print(each.isPinned, each.convertTime, each.createdTime)
+        }
     }
 }
 

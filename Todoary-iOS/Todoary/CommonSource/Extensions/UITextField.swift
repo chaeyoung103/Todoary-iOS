@@ -57,6 +57,21 @@ extension UITextField {
         return attributedString
     }
     
+    func addLetterSpacing(spacing: CGFloat){
+        
+        if let labelText = text, labelText.isEmpty == false{
+            
+            let attributedString = NSMutableAttributedString(string: labelText)
+            
+            attributedString.addAttribute(.kern,
+                                          value: spacing,
+                                          range: NSRange(location: 0,
+                                                         length: attributedString.length-1))
+            
+            self.attributedText = attributedString
+        }
+    }
+    
     func addLeftPadding(padding: CGFloat = 10) {
         
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.height))
