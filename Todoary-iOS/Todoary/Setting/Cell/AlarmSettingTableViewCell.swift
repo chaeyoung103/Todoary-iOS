@@ -9,6 +9,8 @@ import UIKit
 
 class AlarmSettingTableViewCell: UITableViewCell {
     
+    var alarmType: AlarmType!
+    
     var navigation: UINavigationController!
     
     let backView = UIView()
@@ -97,7 +99,7 @@ class AlarmSettingTableViewCell: UITableViewCell {
     
     @objc
     func alarmSwitchWillChangeState(){
-        AlarmDataManager().patch(cell: self, isChecked: alarmSwitch.isOn)
+        AlarmDataManager().patch(cell: self, isChecked: self.alarmSwitch.isOn, alarmType: self.alarmType)
     }
     
     func checkAlarmApiResultCode(_ code: Int){
