@@ -18,6 +18,8 @@ class DiaryViewController : UIViewController {
     //navigation bar
     var navigationView:NavigationView!
     
+    private var DiaryTableView : DiaryTableView!
+    
     //오늘 날짜
     let todaysDate = UILabel().then{
         //선택한 날짜 나오게 연결해주기
@@ -53,7 +55,6 @@ class DiaryViewController : UIViewController {
         diaryText.setTextWithLineHeight(spaing: 20)
         diaryText.textColor = .silver_225
         diaryText.font = UIFont.nbFont(ofSize: 15, weight: .medium)
-        diaryText.sc
         
         diaryText.delegate = self
 
@@ -71,12 +72,55 @@ class DiaryViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        configure()
+        setupCollectionView()
+            
+        }
+    //MARK: - Helpers
+    
+    private func configure() {
+        
+        DiaryTableView = Todoary.DiaryTableView(frame: .zero)
+        
+        view.addSubview(DiaryTableView)
+
+        DiaryTableView.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(125)
+                make.leading.equalToSuperview().offset(32)
+                make.width.equalTo(387)
+                make.height.equalTo(161)
+                make.centerX.equalToSuperview()
+           }
+       }
+
+    private func setupCollectionView() {
+        DiaryTableView.delegate = self
+        DiaryTableView.dataSource = self
+        
+        //cell 등록
+        
+        DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
+  
 }
+
 
         //MARK: - Helpers_UITextViewDelegate
 
-extension DiaryViewController: UITextViewDelegate {
+extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
+    func tableView(_ DiaryTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = DiaryTableView.dequeueReusableCell(withIdentifier: DiaryTabelViewCell.cellIdentifier, for: indexPath) as? DiaryTabelViewCell else{
+            fatalError()
+        }
+        return cell
+    }
+
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
@@ -94,3 +138,5 @@ extension DiaryViewController: UITextViewDelegate {
         }
     }
 }
+
+
