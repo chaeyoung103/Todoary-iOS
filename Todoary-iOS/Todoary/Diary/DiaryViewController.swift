@@ -18,9 +18,7 @@ class DiaryViewController : UIViewController {
     //navigation bar
     var navigationView:NavigationView!
     
-    private var DiaryTabelViewCell = "DiaryTabelViewCellid"
-    
-    private var DiaryTableView: DiaryTableView!
+    private var DiaryTableView : DiaryTableView!
     
     //오늘 날짜
     let todaysDate = UILabel().then{
@@ -79,14 +77,15 @@ class DiaryViewController : UIViewController {
         setupCollectionView()
             
         }
-    }
     //MARK: - Helpers
     
     private func configure() {
-           
+        
+        DiaryTableView = Todoary.DiaryTableView(frame: .zero)
+        
         view.addSubview(DiaryTableView)
 
-        tableView.snp.makeConstraints { make in
+        DiaryTableView.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(125)
                 make.leading.equalToSuperview().offset(32)
                 make.width.equalTo(387)
@@ -101,7 +100,7 @@ class DiaryViewController : UIViewController {
         
         //cell 등록
         
-        tableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCellid)
+        DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
   
 }
@@ -110,9 +109,17 @@ class DiaryViewController : UIViewController {
         //MARK: - Helpers_UITextViewDelegate
 
 extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
+    
+    func tableView(_ DiaryTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = DiaryTableView.dequeueReusableCell(withIdentifier: DiaryTabelViewCell.cellIdentifier, for: indexPath) as? DiaryTabelViewCell else{
+            fatalError()
+        }
+        return cell
+    }
+
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
@@ -130,12 +137,6 @@ extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableV
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
-            fatalError()
-        }
-        return cell
-    }
 }
+
 

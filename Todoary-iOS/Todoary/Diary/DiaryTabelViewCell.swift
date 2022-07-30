@@ -9,7 +9,7 @@ import Foundation
 import SnapKit
 
 class DiaryTabelViewCell: UITableViewCell {
-    static let cellIdentifier = "DiaryTodoListCell"
+    static let cellIdentifier = "DiaryTabelViewCell"
     
     var cellData : GetTodoInfo!
     
