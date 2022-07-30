@@ -15,6 +15,9 @@ class DiaryViewController : UIViewController {
     
     //MARK: - UIComponenets
     
+    let contentView = UIView().then{
+        $0.backgroundColor = .white
+    }
     //navigation bar
     var navigationView:NavigationView!
     
@@ -22,8 +25,6 @@ class DiaryViewController : UIViewController {
     
     //오늘 날짜
     let todaysDate = UILabel().then{
-        //선택한 날짜 나오게 연결해주기
-        $0.text = "2022.07.22"
         $0.font = UIFont.nbFont(ofSize: 16, weight: .bold)
         $0.addLetterSpacing(spacing: 0.32)
         $0.textColor = .black
