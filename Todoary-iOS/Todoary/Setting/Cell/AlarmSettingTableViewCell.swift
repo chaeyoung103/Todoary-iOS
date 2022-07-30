@@ -9,6 +9,8 @@ import UIKit
 
 class AlarmSettingTableViewCell: UITableViewCell {
     
+    var navigation: UINavigationController!
+    
     let backView = UIView()
     
     let cellTitle = UILabel().then{
@@ -16,7 +18,9 @@ class AlarmSettingTableViewCell: UITableViewCell {
         $0.text = "Todoary 알림"
     }
     
-    let alarmSwitch = UISwitch()
+    let alarmSwitch = UISwitch().then{
+        $0.addTarget(self, action: #selector(alarmSwitchWillChangeState), for: .valueChanged)
+    }
     
     let infoBtn = UIButton().then{
         $0.setImage(UIImage(named: "help"), for: .normal)
@@ -89,6 +93,24 @@ class AlarmSettingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
           contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+    }
+    
+    @objc
+    func alarmSwitchWillChangeState(){
+        AlarmDataManager().patch(cell: self, isChecked: alarmSwitch.isOn)
+    }
+    
+    func checkAlarmApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            print("알림 설정 변경")
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: {
+                self.alarmSwitch.setOn(!self.alarmSwitch.isOn, animated: true)
+            })
+        }
     }
 
 }

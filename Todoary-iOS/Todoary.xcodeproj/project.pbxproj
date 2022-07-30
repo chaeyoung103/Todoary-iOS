@@ -154,15 +154,7 @@
 		E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A3288A59A80051C7AA /* UserDeleteDataManager.swift */; };
 		E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A5288A59B70051C7AA /* UserDeleteModel.swift */; };
 		E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998A7288A683E0051C7AA /* UserDeleteInput.swift */; };
-		E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */; };
-		E0F998AD288A69330051C7AA /* AlarmTodoInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */; };
-		E0F998AF288A69600051C7AA /* AlarmTodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */; };
-		E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */; };
-		E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */; };
-		E0F998B7288A69DD0051C7AA /* AlarmDiaryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */; };
-		E0F998BA288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */; };
-		E0F998BC288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */; };
-		E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */; };
+		E0F998AB288A69100051C7AA /* AlarmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998AA288A69100051C7AA /* AlarmDataManager.swift */; };
 		E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */; };
 		E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C3288A6AF80051C7AA /* SignoutModel.swift */; };
 		E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C5288A6B010051C7AA /* SignoutInput.swift */; };
@@ -351,15 +343,7 @@
 		E0F998A3288A59A80051C7AA /* UserDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteDataManager.swift; sourceTree = "<group>"; };
 		E0F998A5288A59B70051C7AA /* UserDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteModel.swift; sourceTree = "<group>"; };
 		E0F998A7288A683E0051C7AA /* UserDeleteInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteInput.swift; sourceTree = "<group>"; };
-		E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoDataManager.swift; sourceTree = "<group>"; };
-		E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoInput.swift; sourceTree = "<group>"; };
-		E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTodoModel.swift; sourceTree = "<group>"; };
-		E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryDataManager.swift; sourceTree = "<group>"; };
-		E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryModel.swift; sourceTree = "<group>"; };
-		E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryInput.swift; sourceTree = "<group>"; };
-		E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindDataManager.swift; sourceTree = "<group>"; };
-		E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindModel.swift; sourceTree = "<group>"; };
-		E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDiaryRemindInput.swift; sourceTree = "<group>"; };
+		E0F998AA288A69100051C7AA /* AlarmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDataManager.swift; sourceTree = "<group>"; };
 		E0F998C1288A6AD60051C7AA /* SignoutDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutDataManager.swift; sourceTree = "<group>"; };
 		E0F998C3288A6AF80051C7AA /* SignoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutModel.swift; sourceTree = "<group>"; };
 		E0F998C5288A6B010051C7AA /* SignoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutInput.swift; sourceTree = "<group>"; };
@@ -547,9 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				E0AB9EBF287B1C290064CADA /* SettingAgreement */,
-				E0F998B8288A69EC0051C7AA /* AlarmRemindManager */,
-				E0F998B0288A69700051C7AA /* AlarmDiaryDataManager */,
-				E0F998A9288A68B70051C7AA /* AlarmTodoDataManager */,
+				E0F998A9288A68B70051C7AA /* AlarmDataManager */,
 				57B36ECB287AFA9D00378E16 /* Cell */,
 				574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */,
 				574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */,
@@ -993,34 +975,12 @@
 			path = UserDeleteDataManager;
 			sourceTree = "<group>";
 		};
-		E0F998A9288A68B70051C7AA /* AlarmTodoDataManager */ = {
+		E0F998A9288A68B70051C7AA /* AlarmDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0F998AA288A69100051C7AA /* AlarmTodoDataManager.swift */,
-				E0F998AC288A69330051C7AA /* AlarmTodoInput.swift */,
-				E0F998AE288A69600051C7AA /* AlarmTodoModel.swift */,
+				E0F998AA288A69100051C7AA /* AlarmDataManager.swift */,
 			);
-			path = AlarmTodoDataManager;
-			sourceTree = "<group>";
-		};
-		E0F998B0288A69700051C7AA /* AlarmDiaryDataManager */ = {
-			isa = PBXGroup;
-			children = (
-				E0F998B1288A69880051C7AA /* AlarmDiaryDataManager.swift */,
-				E0F998B3288A699C0051C7AA /* AlarmDiaryModel.swift */,
-				E0F998B6288A69DD0051C7AA /* AlarmDiaryInput.swift */,
-			);
-			path = AlarmDiaryDataManager;
-			sourceTree = "<group>";
-		};
-		E0F998B8288A69EC0051C7AA /* AlarmRemindManager */ = {
-			isa = PBXGroup;
-			children = (
-				E0F998B9288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift */,
-				E0F998BB288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift */,
-				E0F998BD288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift */,
-			);
-			path = AlarmRemindManager;
+			path = AlarmDataManager;
 			sourceTree = "<group>";
 		};
 		E0F998BF288A6A9C0051C7AA /* SignoutDataManager */ = {
@@ -1298,19 +1258,16 @@
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
 				AC5E27E3289020D70056EC69 /* AuthJwtDataManager.swift in Sources */,
-				E0F998BA288A6A360051C7AA /* AlarmDiaryRemindDataManager.swift in Sources */,
 				E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */,
 				E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
-				E0F998AD288A69330051C7AA /* AlarmTodoInput.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
-				E0F998BE288A6A8A0051C7AA /* AlarmDiaryRemindInput.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
 				57294AD12894F72F00DA2F31 /* TodoPinInput.swift in Sources */,
 				57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */,
@@ -1364,7 +1321,6 @@
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
-				E0F998B2288A69880051C7AA /* AlarmDiaryDataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
 				AC67C2DC2892904C00071763 /* SetKeboard.swift in Sources */,
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
@@ -1377,7 +1333,7 @@
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
 				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
-				E0F998AB288A69100051C7AA /* AlarmTodoDataManager.swift in Sources */,
+				E0F998AB288A69100051C7AA /* AlarmDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
 				574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */,
@@ -1390,9 +1346,7 @@
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				57294ACC28937C2C00DA2F31 /* TodoBannerCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
-				E0F998B7288A69DD0051C7AA /* AlarmDiaryInput.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
-				E0F998B4288A699C0051C7AA /* AlarmDiaryModel.swift in Sources */,
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
@@ -1402,10 +1356,8 @@
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
-				E0F998BC288A6A7D0051C7AA /* AlarmDiaryRemindModel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
 				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
-				E0F998AF288A69600051C7AA /* AlarmTodoModel.swift in Sources */,
 				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
