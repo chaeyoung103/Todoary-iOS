@@ -136,6 +136,8 @@
 		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
 		E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */; };
 		E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */; };
+		E0F3CDC92895696E00A74AB7 /* DiaryTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */; };
+		E0F3CDCB2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */; };
 		E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99880288A57640051C7AA /* PwFindModel.swift */; };
 		E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99882288A57760051C7AA /* PwFindInput.swift */; };
 		E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99884288A57850051C7AA /* PwFindDataManager.swift */; };
@@ -325,6 +327,8 @@
 		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
 		E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTabelViewCell.swift; sourceTree = "<group>"; };
+		E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTabelViewCell+Layout.swift"; sourceTree = "<group>"; };
 		E0F99880288A57640051C7AA /* PwFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindModel.swift; sourceTree = "<group>"; };
 		E0F99882288A57760051C7AA /* PwFindInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindInput.swift; sourceTree = "<group>"; };
 		E0F99884288A57850051C7AA /* PwFindDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindDataManager.swift; sourceTree = "<group>"; };
@@ -911,6 +915,8 @@
 			children = (
 				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
 				E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */,
+				E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */,
+				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1256,6 +1262,7 @@
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				E0F998A1288A59400051C7AA /* GetProfileInput.swift in Sources */,
 				574A704F28865FEE003C8F99 /* HiddenTransparentButtonView.swift in Sources */,
+				E0F3CDCB2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift in Sources */,
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
 				AC5E27E3289020D70056EC69 /* AuthJwtDataManager.swift in Sources */,
 				E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */,
@@ -1298,6 +1305,7 @@
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
+				E0F3CDC92895696E00A74AB7 /* DiaryTabelViewCell.swift in Sources */,
 				AC5E27F028914E930056EC69 /* TodoSettingInput.swift in Sources */,
 				AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,

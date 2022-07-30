@@ -58,9 +58,9 @@ class ColorPickerViewController : UIViewController {
         setupCollectionView()
 
         //바텀시트 테스트
-        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+//        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
+//        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+//        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
     }
     
     //MARK: - Helpers
