@@ -53,6 +53,7 @@ class DiaryViewController : UIViewController {
         diaryText.setTextWithLineHeight(spaing: 20)
         diaryText.textColor = .silver_225
         diaryText.font = UIFont.nbFont(ofSize: 15, weight: .medium)
+        diaryText.sc
         
         diaryText.delegate = self
 
