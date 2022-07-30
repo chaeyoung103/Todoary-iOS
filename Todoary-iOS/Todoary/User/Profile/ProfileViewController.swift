@@ -140,6 +140,8 @@ class ProfileViewController : UIViewController {
         let profileInput = ProfileInput(nickname: nickNameTf.text, introduce: introduceTf.text)
         ProfileDataManager().profileDataManager(self,profileInput)
         print("확인버튼")
+//        let profileImg = ProfileImgInput(profileImage)
+        profileImgDataManager().profileImgData(self, profileImage.image!)
     }
     
     //MARK: - Helpers
