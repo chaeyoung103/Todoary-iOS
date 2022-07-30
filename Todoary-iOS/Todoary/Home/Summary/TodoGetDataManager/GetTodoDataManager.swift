@@ -17,7 +17,7 @@ class GetTodoDataManager{
         AF.request("https://todoary.com/todo/date/\(date)", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetTodoModel.self) { response in
             switch response.result {
             case .success(let result):
-                HomeViewController.bottomSheetVC.checkApiResultCode(result)
+                HomeViewController.bottomSheetVC.checkGetTodoApiResultCode(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
