@@ -30,10 +30,8 @@ struct GetTodoInfo: Decodable, Equatable{
 //        && lhs.isPinned == rhs.isPinned && lhs.isChecked == rhs.isChecked && lhs.title == rhs.title && lhs.isAlarmEnabled == rhs.isAlarmEnabled && lhs.targetTime == rhs.targetTime && lhs.createdTime == rhs.createdTime && lhs.categories == rhs.categories
     }
     
-    var convertTime: String?
-    {
-        //18:00 형태
-        
+    var convertTime: String?{
+
         guard let time = targetTime else{
             return nil
         }
@@ -50,9 +48,7 @@ struct GetTodoInfo: Decodable, Equatable{
             return "AM \(time[startIndex..<endIndex])"
             
         }else if(time < "13:00"){
-    
             return "PM \(time)"
-
         }else{
             
             startIndex = time.startIndex

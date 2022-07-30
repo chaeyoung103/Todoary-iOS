@@ -100,11 +100,6 @@ class TodoListTableViewCell: UITableViewCell {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
     
-    //MARK: - CellData
-    var isPin : Bool!
-    var isAlarm : Bool!
-    var categories : [GetTodoCategories]?
-    
     //MARK: - Properties(for swipe)
     
     lazy var leftWidth : CGFloat = 58
@@ -138,11 +133,23 @@ class TodoListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
-        categoryButton.setTitle("", for: .normal)
-        categoryButton.setTitleColor(UIColor.white, for: .normal)
-        categoryButton.layer.borderColor = UIColor.white.cgColor
+        settingCategoryButton(title: "", color: .white)
         titleLabel.text = ""
         timeLabel.text = ""
+        checkBox.isSelected = false
+    }
+    
+    func cellWillSettingWithData(){
+        
+        self.titleLabel.text = cellData.title
+        self.timeLabel.text = cellData.convertTime
+        self.checkBox.isSelected = cellData.isChecked
+        self.setUpViewByCase()
+        
+        /* 투두 카테고리 데이터 추가되면 주석 제거하기
+        cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
+         */
+        self.settingCategoryButton(title: "카테고리", color: .category8)
     }
     
     func settingCategoryButton(title: String, color: UIColor){

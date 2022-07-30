@@ -19,7 +19,6 @@ extension TodoListTableViewCell{
         self.backView.addSubview(categoryButton)
         
         self.selectedBackgroundView = selectedBackView
-        
     }
     
     func setUpConstraint(){
@@ -66,7 +65,7 @@ extension TodoListTableViewCell{
     //default 아닌 view
     func setUpViewByCase(){
         
-        if(isAlarm){
+        if(cellData.isAlarmEnabled){
             
             self.backView.addSubview(alarmImage)
             alarmImage.snp.makeConstraints{ make in
@@ -79,7 +78,7 @@ extension TodoListTableViewCell{
                 make.lastBaseline.equalTo(timeLabel)
             }
             
-            if(isPin){
+            if(cellData.isPinned){
                 pinImageConstraint()
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
@@ -93,7 +92,7 @@ extension TodoListTableViewCell{
                 }
             }
         }else{
-            if(isPin){
+            if(cellData.isPinned){
                 pinImageConstraint()
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
