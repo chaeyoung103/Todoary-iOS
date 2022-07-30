@@ -109,9 +109,13 @@ class TodoListBottomSheetViewController: UIViewController {
     
     @objc
     func addButtonDidClicked(){
-        print(todayDate.dateUsedDiary)
         
+        HomeViewController.dismissBottomSheet()
         
+        let vc = DiaryViewController()
+        vc.todaysDate.text = todayDate.dateUsedDiary
+        
+        homeNavigaiton.pushViewController(vc, animated: true)
     }
     
     @objc
