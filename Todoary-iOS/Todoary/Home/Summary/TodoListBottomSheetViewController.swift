@@ -196,10 +196,10 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
-    func cellWillDelete(_ indexPath: IndexPath){
-//        todoData.remove(at: indexPath.row-1)
-//        self.tableView.deleteRows(at: [indexPath], with: .fade)
-    }
+//    func cellWillDelete(_ indexPath: IndexPath){
+////        todoData.remove(at: indexPath.row-1)
+////        self.tableView.deleteRows(at: [indexPath], with: .fade)
+//    }
     
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
@@ -218,8 +218,8 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         
         let pinnedCount: Int = getPinnedCount()
         
-        var willChangeData = todoData[indexPath.row-1]
-        var currentPin = willChangeData.isPinned
+        let willChangeData = todoData[indexPath.row-1]
+        let currentPin = willChangeData.isPinned
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
