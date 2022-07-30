@@ -50,13 +50,51 @@ extension UITextView {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: style,
-//            .baselineOffset: (lineHeight - font!.lineHeight) / 4
         ]
        
         attributedString.addAttributes(attributes,
                                        range: NSRange(location: 0,
                                                       length: attributedString.length-1))
         return attributedString
+    }
+    
+    func addLetterSpacing(spacing: CGFloat){
+        
+        if let labelText = text, labelText.isEmpty == false {
+            
+            let attributedString = NSMutableAttributedString(string: labelText)
+            
+            attributedString.addAttribute(.kern,
+                                          value: spacing,
+                                          range: NSRange(location: 0,
+                                                         length: attributedString.length-1))
+            attributedText = attributedString
+        }
+    }
+    
+    func setTextWithLineHeight(spaing : CGFloat){
+        
+        if let labelText = text, labelText.isEmpty == false {
+            
+            let attributedString = NSMutableAttributedString(string: labelText)
+            
+            let lineHeight: CGFloat = spaing
+            
+            let style = NSMutableParagraphStyle()
+            style.maximumLineHeight = lineHeight
+            style.minimumLineHeight = lineHeight
+            
+            style.lineSpacing = lineHeight / 4
+            
+            let attributes: [NSAttributedString.Key: Any] = [
+                .paragraphStyle: style,
+            ]
+           
+            attributedString.addAttributes(attributes,
+                                           range: NSRange(location: 0,
+                                                          length: attributedString.length-1))
+            attributedText = attributedString
+        }
     }
 
 }
