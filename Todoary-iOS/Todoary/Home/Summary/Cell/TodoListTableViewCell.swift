@@ -356,26 +356,22 @@ extension TodoListTableViewCell{
     @objc
     func deleteButtonDidClicked(_ sender : UIButton){
         
-//        TodoDeleteDataManager.delete(self, )
-        
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
         }
 
         cellWillMoveOriginalPosition()
         
-        delegate?.cellWillDelete(indexPath)
-    }
-    
-    func deleteApiResultCode(){
-        
+        TodoDeleteDataManager().delete(todoId: cellData.todoId, indexPath: indexPath)
     }
     
     @objc
     func pinButtonDidClicked(_ sender : UIButton){
+        
         guard let indexPath = getCellIndexPath() else{
             fatalError("indexPath casting error")
         }
+        
         cellWillMoveOriginalPosition(indexPath)
     }
 }

@@ -10,18 +10,23 @@ import Alamofire
 
 class TodoDeleteDataManager{
 
-    func delete(_ cell: TodoListTableViewCell, todoId: Int){
+    func delete(todoId: Int, indexPath: IndexPath){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("http://todoary.com/todo/:\(todoId)", method: .delete, parameters: [:], headers: headers).validate().responseDecodable(of: UserDeleteModel.self) { response in
-            switch response.result {
-            case .success(let result):
-                cell.deleteApiResultCode()
-                return
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        AF.request("http://todoary.com/todo/\(todoId)",
+                   method: .delete,
+                   parameters: [:],
+                   headers: headers)
+            .validate()
+            .responseDecodable(of: UserDeleteModel.self) { response in
+                switch response.result {
+                case .success(let result):
+                    HomeViewController.bottomSheetVC.checkDeleteApiResultCode(result.code, indexPath)
+                    return
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
         }
     }
 }
