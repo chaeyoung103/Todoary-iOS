@@ -14,7 +14,7 @@ class TodoDeleteDataManager{
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("http://todoary.com/todo/\(todoId)",
+        AF.request("https://todoary.com/todo/\(todoId)",
                    method: .delete,
                    parameters: [:],
                    headers: headers)

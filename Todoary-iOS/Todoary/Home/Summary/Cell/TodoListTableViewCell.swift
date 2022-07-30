@@ -357,7 +357,7 @@ extension TodoListTableViewCell{
     func deleteButtonDidClicked(_ sender : UIButton){
         
         guard let indexPath = getCellIndexPath() else{
-            fatalError("indexPath casting error")
+            return
         }
 
         cellWillMoveOriginalPosition()
@@ -369,7 +369,7 @@ extension TodoListTableViewCell{
     func pinButtonDidClicked(_ sender : UIButton){
         
         guard let indexPath = getCellIndexPath() else{
-            fatalError("indexPath casting error")
+            return
         }
         
         cellWillMoveOriginalPosition(indexPath)
@@ -377,7 +377,7 @@ extension TodoListTableViewCell{
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
-    func cellWillDelete(_ indexPath: IndexPath)
+//    func cellWillDelete(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }

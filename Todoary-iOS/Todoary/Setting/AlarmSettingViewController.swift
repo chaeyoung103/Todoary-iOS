@@ -110,14 +110,19 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
         tapGesture.caller = indexPath.row
         cell.infoBtn.addGestureRecognizer(tapGesture)
         
+        cell.navigation = self.navigationController
+        
         switch indexPath.row{
         case 0:
+            cell.alarmType = .Todoary
             cell.cellTitle.text = "Todoary 알림"
             return cell
         case 1:
+            cell.alarmType = .Diary
             cell.cellTitle.text = "하루기록 알림"
             return cell
         case 2:
+            cell.alarmType = .Remind
             cell.cellTitle.text = "리마인드 알림"
             return cell
         default:
