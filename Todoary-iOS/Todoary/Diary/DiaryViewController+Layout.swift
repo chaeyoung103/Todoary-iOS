@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import SnapKit
 
 
@@ -13,20 +14,54 @@ extension DiaryViewController {
     
     func setUpView(){
         
-        self.view.addSubview()
+        self.view.addSubview(navigationView)
+        self.view.addSubview(todaysDate)
+        
+        self.view.addSubview(diaryLine)
+        self.view.addSubview(diaryTitle)
+        self.view.addSubview(textView)
 
     }
     
     
     func setUpConstraint(){
         
-//        //logo
-//        logo.snp.makeConstraints{ make in
-//            make.top.equalToSuperview().offset(56)
-//            make.leading.equalToSuperview().offset(42)
-//            make.width.equalTo(56)
-//            make.height.equalTo(19.27)
-//        }
+        //navigation bar
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
+        todaysDate.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(101)
+            make.leading.equalToSuperview().offset(32)
+            make.width.equalTo(84)
+            make.height.equalTo(19)
+        }
+        
+        diaryLine.snp.makeConstraints{ make in
+            make.top.equalTo(todaysDate.snp.bottom).offset(176)
+            make.leading.equalToSuperview().offset(31)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(328)
+            make.height.equalTo(1)
+            
+        }
+        
+        diaryTitle.snp.makeConstraints{ make in
+            make.top.equalTo(diaryLine.snp.bottom).offset(25)
+            make.leading.equalToSuperview().offset(31)
+            make.width.equalTo(85)
+            make.height.equalTo(22)
+        }
+        
+        //diaryText
+        textView.snp.makeConstraints{ make in
+            make.top.equalTo(diaryTitle.snp.bottom).offset(17)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(328)
+            make.height.equalTo(456)
+        }
     }
-
+    
 }
