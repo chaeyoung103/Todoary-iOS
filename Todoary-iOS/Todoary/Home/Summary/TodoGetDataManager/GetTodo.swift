@@ -65,5 +65,5 @@ struct GetTodoInfo: Decodable, Equatable{
 struct GetTodoCategories: Decodable{
     let id: Int
     let title: String
-    let color: String
+    let color: Int
 }

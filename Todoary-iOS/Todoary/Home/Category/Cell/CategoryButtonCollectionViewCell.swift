@@ -11,9 +11,9 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "categoryButtonCell"
     
-//    var delegate: CategoryButtonSelect?
-    
     var viewController: CategoryViewController!
+    
+    var categoryData : GetCategoryResult!
     
     lazy var categoryBtn = UIButton().then{
         $0.setTitleColor(.white, for: .selected)
@@ -64,13 +64,7 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     @objc
     func categoryButtonDidClicked(_ sender: UIButton){
         if(!categoryBtn.isSelected){
-            
-            ///*
-            TodoGetByCategoryDataManager().get(cell: self,viewController: self.viewController, categoryId: 29)
-//            //*/
-//
-//            delegate?.newCategoryDidSelected(cell: self)
-//            buttonIsSelected()
+            TodoGetByCategoryDataManager().get(cell: self,viewController: self.viewController, categoryId: categoryData.id)
         }
     }
     
@@ -84,7 +78,3 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         categoryBtn.backgroundColor = .white
     }
 }
-
-//protocol CategoryButtonSelect{
-//    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell)
-//}

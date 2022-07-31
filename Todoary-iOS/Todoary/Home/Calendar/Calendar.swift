@@ -135,14 +135,11 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row])
         
         HomeViewController.bottomSheetVC.todayDate = convertDate
+        print(convertDate.dateSendServer)
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
-        
-        /*
-        HomeViewController.bottomSheetVC.summaryData = newData
-        HomeViewController.bottomSheetVC.tableView.reloadData()
-         */
     }
+    
     //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{

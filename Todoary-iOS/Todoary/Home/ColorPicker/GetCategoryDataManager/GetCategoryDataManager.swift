@@ -11,6 +11,25 @@ class GetCategoryDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
 
+    func get( _ viewController : CategoryViewController ) {
+        AF.request("https://todoary.com/category", method: .get , parameters: nil, headers: headers).validate().responseDecodable(of: GetCategoryModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                switch result.code {
+                case 1000:
+                    viewController.checkGetCategoryApiResultCode(result.result)
+                case 4000:
+                    let alert = DataBaseErrorAlert()
+                    viewController.present(alert, animated: true, completion: nil)
+                default:
+                    print(result.message)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     func getCategoryDataManager( _ viewController : TodoSettingViewController ) {
         AF.request("https://todoary.com/category", method: .get , parameters: nil, headers: headers).validate().responseDecodable(of: GetCategoryModel.self) { response in
