@@ -137,12 +137,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         HomeViewController.bottomSheetVC.todayDate = convertDate
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
-        
-        /*
-        HomeViewController.bottomSheetVC.summaryData = newData
-        HomeViewController.bottomSheetVC.tableView.reloadData()
-         */
     }
+    
     //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{

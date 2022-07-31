@@ -26,9 +26,6 @@ class CategoryViewController: UIViewController {
 
     var todoData: [GetTodoInfo]! = []
     
-//    var categoryTitle = ["운동","대외활동","공부","가나다라마바"]
-//    let categoryColor = [UIColor.category1, .category6, .category4, .category13]
-    
     var categories : [GetCategoryResult] = []
 
     override func viewDidLoad() {
@@ -36,7 +33,6 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        
         self.navigationController?.navigationBar.isHidden = true
         
         navigationView = NavigationView(frame: .zero, self.navigationController!)
@@ -70,11 +66,6 @@ class CategoryViewController: UIViewController {
         
         //1. category 조회
         GetCategoryDataManager().get(self)
-        //2. category 조회 결과 통해 첫 번째 카테고리로 투두 조회
-        
-        print("third")
-//        TodoGetByCategoryDataManager().get(viewController: self, categoryId: 29)
-
     }
     
     @objc
@@ -111,7 +102,6 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("second")
         return todoData.count + 1
     }
     
@@ -122,21 +112,20 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier) as? CategoryTodoTableViewCell else{
                 fatalError()
             }
+            
             let cellData = todoData[indexPath.row]
-//            cell.todoTitle.text = cellData.title
-//            cell.dateLabel.text = cellData.date
-//            cell.timeLabel.text = cellData.time ?? ""
-//            cell.alarmImage.isHidden = cellData.alarm ?? false
-//            cell.setUpCategory(cellData.categories)
-//            cell.setUpTimeStack()
             cell.settingTodoData(cellData)
             cell.navigation = self.navigationController
             cell.viewController = self
+            
             return cell
+            
         } else{
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
                 fatalError()
             }
+            
             return cell
         }
     }
@@ -166,8 +155,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         let categoryData = categories[indexPath.row]
   
         cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
-//        cell.delegate = self
         cell.viewController = self
+        cell.categoryData = categoryData
         
         if(indexPath.row == 0){
             cell.buttonIsSelected()
@@ -199,28 +188,21 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
 extension CategoryViewController{
     
     func checkGetCategoryApiResultCode(_ result: [GetCategoryResult]){
-        print("api end")
         self.categories = result
         collectionView.reloadData()
         
-        print("category result")
-        categories.forEach{ each in
-            print(each)
-        }
+        TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
         switch result.code{
         case 1000:
-//            cell.buttonIsSelected()
-//            currentCategory.buttonIsNotSelected()
-//            currentCategory.categoryBtn.isSelected = false
-//            currentCategory = cell
-            print("first")
             todoData = result.result
             tableView.reloadData()
             return
         default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
             return
         }
     }
@@ -237,6 +219,8 @@ extension CategoryViewController{
             tableView.reloadData()
             return
         default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
             return
         }
     }
