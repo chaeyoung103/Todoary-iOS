@@ -135,6 +135,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row])
         
         HomeViewController.bottomSheetVC.todayDate = convertDate
+        print(convertDate.dateSendServer)
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
     }
