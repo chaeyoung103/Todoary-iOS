@@ -15,15 +15,14 @@ class TodoCategoryCell: UICollectionViewCell {
     
     var viewController: TodoSettingViewController!
     
-    lazy var categoryBtn = UIButton().then{
-        $0.setTitleColor(.white, for: .selected)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+    lazy var categoryLabel = cellPaddingLabel().then{
+        $0.textColor = .white
+        $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
         $0.addLetterSpacing(spacing: 0.28)
-        $0.titleLabel?.textAlignment = .center
+        $0.textAlignment = .center
         $0.layer.borderWidth = 1
-        $0.addTarget(self, action: #selector(categoryButtonDidClicked(_:)), for: .touchUpInside)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
         $0.layer.cornerRadius = 26/2
+        $0.layer.masksToBounds = true
     }
     
     var categoryColor : UIColor!
@@ -32,16 +31,16 @@ class TodoCategoryCell: UICollectionViewCell {
         
         super.init(frame: frame)
         
-        self.contentView.addSubview(categoryBtn)
+        self.contentView.addSubview(categoryLabel)
         
         self.snp.makeConstraints{ make in
-            make.width.height.equalTo(categoryBtn)
+            make.width.height.equalTo(categoryLabel)
         }
         self.contentView.snp.makeConstraints{ make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        categoryBtn.snp.makeConstraints{ make in
+        categoryLabel.snp.makeConstraints{ make in
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
@@ -54,29 +53,24 @@ class TodoCategoryCell: UICollectionViewCell {
         
         categoryColor = color
         
-        categoryBtn.setTitle(title, for: .normal)
-        categoryBtn.setTitleColor(categoryColor, for: .normal)
-        
-        buttonIsNotSelected()
+        categoryLabel.text = title
+        categoryLabel.textColor = categoryColor
         
     }
+}
+
+class cellPaddingLabel: UILabel {
+    var padding = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
     
-    @objc
-    func categoryButtonDidClicked(_ sender: UIButton){
-        if(!categoryBtn.isSelected){
-            buttonIsSelected()
-        }else{
-            buttonIsNotSelected()
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: padding))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+            var contentSize = super.intrinsicContentSize
+            contentSize.height += padding.top + padding.bottom
+            contentSize.width += padding.left + padding.right
+            
+            return contentSize
         }
-    }
-    
-    func buttonIsSelected(){
-        categoryBtn.backgroundColor = categoryColor
-        categoryBtn.isSelected.toggle()
-    }
-    
-    func buttonIsNotSelected(){
-        categoryBtn.layer.borderColor = categoryColor.cgColor
-        categoryBtn.backgroundColor = .white
-    }
 }
