@@ -26,8 +26,10 @@ class CategoryViewController: UIViewController {
 
     var todoData: [GetTodoInfo]! = []
     
-    let categoryTitle = ["운동","대외활동","공부","가나다라마바"]
-    let categoryColor = [UIColor.category1, .category6, .category4, .category13]
+//    var categoryTitle = ["운동","대외활동","공부","가나다라마바"]
+//    let categoryColor = [UIColor.category1, .category6, .category4, .category13]
+    
+    var categories : [GetCategoryResult] = []
 
     override func viewDidLoad() {
         
@@ -67,10 +69,11 @@ class CategoryViewController: UIViewController {
         
         
         //1. category 조회
+        GetCategoryDataManager().get(self)
         //2. category 조회 결과 통해 첫 번째 카테고리로 투두 조회
         
         print("third")
-        TodoGetByCategoryDataManager().get(viewController: self, categoryId: 29)
+//        TodoGetByCategoryDataManager().get(viewController: self, categoryId: 29)
 
     }
     
@@ -151,7 +154,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryTitle.count
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -160,7 +163,9 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError()
         }
         
-        cell.setBtnAttribute(title: categoryTitle[indexPath.row], color: categoryColor[indexPath.row])
+        let categoryData = categories[indexPath.row]
+  
+        cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
 //        cell.delegate = self
         cell.viewController = self
         
@@ -173,10 +178,12 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let tmpLabel = UILabel()
-        tmpLabel.text = categoryTitle[indexPath.row]
+        let categoryTitle = categories[indexPath.row].title
         
-        if(categoryTitle[indexPath.row].count > 2){
+        let tmpLabel = UILabel()
+        tmpLabel.text = categoryTitle
+        
+        if(categoryTitle.count > 2){
             tmpLabel.then{
                 $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
                 $0.addLetterSpacing(spacing: 0.28)
@@ -191,8 +198,15 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
 //MARK: - API
 extension CategoryViewController{
     
-    func checkGetCategoryApiResultCode(_ result: Int){
+    func checkGetCategoryApiResultCode(_ result: [GetCategoryResult]){
+        print("api end")
+        self.categories = result
+        collectionView.reloadData()
         
+        print("category result")
+        categories.forEach{ each in
+            print(each)
+        }
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
