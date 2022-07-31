@@ -15,6 +15,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var category_title : [String]! = ["?"]
     var category_color : [Int]! = [0]
     
+    var selectCategory: Int!
     
     var dateFormatter = DateFormatter()
     var now = Date()
@@ -172,11 +173,21 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
     @objc func todocompleteBtnDidTap() {
-        todoTitle = todo.text!
-        let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [])
-        TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
         
-        self.navigationController?.popViewController(animated: true)
+        if selectCategory != nil{
+            print(selectCategory!)
+            todoTitle = todo.text!
+            let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
+            TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+            
+            self.navigationController?.popViewController(animated: true)
+        }else {
+            let alert = UIAlertController(title: "카테고리는 필수로 선택해주세요", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+                
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc func plusBtnDidTap() {
@@ -243,12 +254,31 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         }
         
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
-        if(indexPath.row == 0){
-            cell.buttonIsSelected()
-            current_category = cell
-        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
+            fatalError()
+        }
+        selectCategory = categoryData[indexPath.row].id
+        cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
+        cell.categoryLabel.isUserInteractionEnabled = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
+            fatalError()
+        }
+        
+        cell.categoryLabel.backgroundColor = .white
+        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        cell.categoryLabel.isUserInteractionEnabled = true
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
