@@ -140,15 +140,16 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     func cellWillSettingWithData(){
-        
-        self.titleLabel.text = cellData.title
-        self.timeLabel.text = cellData.convertTime
-        self.checkBox.isSelected = cellData.isChecked
-        self.setUpViewByCase()
+
+        titleLabel.text = cellData.title
+        timeLabel.text = cellData.convertTime
+        checkBox.isSelected = cellData.isChecked ?? false
+        setUpViewByCase()
         
         /* 투두 카테고리 데이터 추가되면 주석 제거하기
         cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
          */
+        
         self.settingCategoryButton(title: "카테고리", color: .category8)
     }
     
@@ -326,6 +327,7 @@ extension TodoListTableViewCell{
     
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
+        print("눌림?")
         let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !sender.isSelected)
         print(parameter.todoId, parameter.isChecked)
         TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
