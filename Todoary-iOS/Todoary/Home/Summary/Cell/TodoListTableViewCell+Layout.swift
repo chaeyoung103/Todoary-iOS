@@ -78,7 +78,7 @@ extension TodoListTableViewCell{
                 make.lastBaseline.equalTo(timeLabel)
             }
             
-            if(cellData.isPinned){
+            if(cellData.isPinned!){
                 pinImageConstraint()
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
@@ -92,7 +92,7 @@ extension TodoListTableViewCell{
                 }
             }
         }else{
-            if(cellData.isPinned){
+            if(cellData.isPinned!){
                 pinImageConstraint()
                 pinImage.snp.makeConstraints{ make in
                     make.trailing.equalTo(timeLabel.snp.leading).offset(-5)

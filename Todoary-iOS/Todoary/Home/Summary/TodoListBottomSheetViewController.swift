@@ -225,7 +225,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         let pinnedCount: Int = getPinnedCount()
         
         let willChangeData = todoData[indexPath.row-1]
-        let currentPin = willChangeData.isPinned
+        let currentPin = willChangeData.isPinned!
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
@@ -252,7 +252,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
             //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
             var willChangeData = todoData[indexPath.row-1]
             
-            willChangeData.isPinned.toggle()
+            willChangeData.isPinned!.toggle()
             todoData[indexPath.row-1].isPinned = willChangeData.isPinned
             
             dataArraySortByPin()
@@ -292,7 +292,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         var count : Int = 0
         
         todoData.forEach{ each in
-            if (each.isPinned) {
+            if (each.isPinned!) {
                 count += 1
             }
         }
@@ -303,7 +303,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     func dataArraySortByPin(){
         todoData.sort(by: {$0.createdTime < $1.createdTime})
         todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
-        todoData.sort(by: {$0.isPinned && !$1.isPinned})
+        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
         
         print("정렬 제대로 된거니?")
         todoData.forEach{ each in

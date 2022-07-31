@@ -22,8 +22,11 @@ class TodoGetByCategoryDataManager{
                 switch response.result {
                 case .success(let result):
                     print("성공")
+                    print(result.code)
+                    print(result.message)
                     viewController.checkGetTodoApiResultCode(result)
                 case .failure(let error):
+                    print("실패")
                     print(error.localizedDescription)
                 }
             }

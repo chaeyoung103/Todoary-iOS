@@ -17,7 +17,7 @@ struct GetTodoModel: Decodable{
 
 struct GetTodoInfo: Decodable, Equatable{
     let todoId: Int
-    var isPinned: Bool
+    var isPinned: Bool?
     var isChecked: Bool?
     var title: String
     var targetDate: String?
