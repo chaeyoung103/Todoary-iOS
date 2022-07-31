@@ -146,11 +146,8 @@ class TodoListTableViewCell: UITableViewCell {
         checkBox.isSelected = cellData.isChecked ?? false
         setUpViewByCase()
         
-        /* 투두 카테고리 데이터 추가되면 주석 제거하기
-        cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
-         */
-        
-        self.settingCategoryButton(title: "카테고리", color: .category8)
+        let category = cellData.categories[0]
+        settingCategoryButton(title: category.title, color: UIColor.categoryColor[category.color])
     }
     
     func settingCategoryButton(title: String, color: UIColor){

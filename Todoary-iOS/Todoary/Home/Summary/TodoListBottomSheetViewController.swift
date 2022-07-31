@@ -120,9 +120,7 @@ class TodoListBottomSheetViewController: UIViewController {
     
     @objc
     func cellWillMoveToOriginalPosition(){
-        guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else{
-                return
-        }
+        guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
         cell.cellWillMoveOriginalPosition()
     }
  
@@ -202,14 +200,14 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
-//    func cellWillDelete(_ indexPath: IndexPath){
-////        todoData.remove(at: indexPath.row-1)
-////        self.tableView.deleteRows(at: [indexPath], with: .fade)
-//    }
-    
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
+            if(todoData.count == 1){
+                todoData = []
+                tableView.reloadData()
+                return
+            }
             todoData.remove(at: indexPath.row-1)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             return
@@ -305,10 +303,10 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
         todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
         
-        print("정렬 제대로 된거니?")
-        todoData.forEach{ each in
-            print(each.isPinned, each.convertTime, each.createdTime)
-        }
+//        print("정렬 제대로 된거니?")
+//        todoData.forEach{ each in
+//            print(each.isPinned, each.convertTime, each.createdTime)
+//        }
     }
 }
 
