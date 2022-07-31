@@ -32,14 +32,13 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     let titleLabel = UILabel().then{
-        $0.text = "아침 산책"
+        $0.numberOfLines = 1
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
     }
     
     lazy var categoryButton = UIButton().then{
-        $0.setTitle("운동", for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
         $0.addLetterSpacing(spacing: 0.24)
         $0.layer.borderWidth = 1
@@ -57,7 +56,6 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     let timeLabel = UILabel().then{
-        $0.text = "AM 7:00"
         $0.textColor = .timeColor
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
         $0.addLetterSpacing(spacing: -0.26)
@@ -133,9 +131,9 @@ class TodoListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
-        settingCategoryButton(title: "", color: .white)
+        timeLabel.removeFromSuperview()
+        categoryButton.removeFromSuperview()
         titleLabel.text = ""
-        timeLabel.text = ""
         checkBox.isSelected = false
     }
     

@@ -15,9 +15,7 @@ extension TodoListTableViewCell{
         
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
-        self.backView.addSubview(timeLabel)
-        self.backView.addSubview(categoryButton)
-        
+    
         self.selectedBackgroundView = selectedBackView
     }
     
@@ -45,19 +43,7 @@ extension TodoListTableViewCell{
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalTo(checkBox)
-        }
-        
-        timeLabel.snp.makeConstraints{ make in
-            make.trailing.equalToSuperview().offset(-18)
-            make.top.equalToSuperview().offset(23.4)
-            make.bottom.equalToSuperview().offset(-22.46)
-            //            make.lastBaseline.equalTo(alarmImage)
-        }
-        
-        categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
-            make.height.equalTo(21)
-            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-164)
         }
         
     }
@@ -65,44 +51,115 @@ extension TodoListTableViewCell{
     //default 아닌 view
     func setUpViewByCase(){
         
-        if(cellData.isAlarmEnabled){
+        self.backView.addSubview(categoryButton)
+        
+        categoryButton.snp.makeConstraints{ make in
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+            make.height.equalTo(21)
+            make.centerY.equalToSuperview()
+        }
+        
+        //time
+        if(cellData.targetTime != nil){
             
-            self.backView.addSubview(alarmImage)
-            alarmImage.snp.makeConstraints{ make in
-                make.width.equalTo(14)
-                make.height.equalTo(13.2)
-                make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
-                make.centerY.equalToSuperview()
+            self.backView.addSubview(timeLabel)
+            
+            timeLabel.snp.makeConstraints{ make in
+                make.trailing.equalToSuperview().offset(-18)
                 make.top.equalToSuperview().offset(23.4)
-                make.bottom.equalToSuperview().offset(-23.4)
-                make.lastBaseline.equalTo(timeLabel)
+                make.bottom.equalToSuperview().offset(-22.46)
             }
             
-            if(cellData.isPinned!){
-                pinImageConstraint()
-                pinImage.snp.makeConstraints{ make in
-                    make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
+            //alarm
+            if(cellData.isAlarmEnabled){
+                
+                alarmImageConstraint()
+                
+                alarmImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
                 }
-                categoryButton.snp.makeConstraints{ make in
-                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                
+                //pin
+                if(cellData.isPinned!){
+                    
+                    pinImageConstraint()
+                    
+                    pinImage.snp.makeConstraints{ make in
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
+                    }
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                    
+                }else{
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
+                    }
                 }
+                
+                
             }else{
-                categoryButton.snp.makeConstraints{ make in
-                    make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
+                //pin
+                if(cellData.isPinned!){
+                    
+                    pinImageConstraint()
+                    
+                    pinImage.snp.makeConstraints{ make in
+                        make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
+                    }
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                    
+                }else{
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
+                    }
                 }
             }
         }else{
-            if(cellData.isPinned!){
-                pinImageConstraint()
-                pinImage.snp.makeConstraints{ make in
-                    make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
+            
+            //alarm
+            if(cellData.isAlarmEnabled){
+                
+                alarmImageConstraint()
+                
+                alarmImage.snp.makeConstraints{ make in
+                    make.trailing.equalToSuperview().offset(-18)
                 }
-                categoryButton.snp.makeConstraints{ make in
-                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                
+                if(cellData.isPinned!){
+                    
+                    pinImageConstraint()
+                    
+                    pinImage.snp.makeConstraints{ make in
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
+                    }
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                }else{
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalToSuperview().offset(-18)
+                    }
                 }
+                
             }else{
-                categoryButton.snp.makeConstraints{ make in
-                    make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
+                
+                if(cellData.isPinned!){
+                    
+                    pinImageConstraint()
+                    
+                    pinImage.snp.makeConstraints{ make in
+                        make.trailing.equalToSuperview().offset(-18)
+                    }
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
+                    }
+                }else{
+                    categoryButton.snp.makeConstraints{ make in
+                        make.trailing.equalToSuperview().offset(-18)
+                    }
                 }
             }
         }
@@ -117,7 +174,19 @@ extension TodoListTableViewCell{
             make.height.equalTo(13.2)
             make.top.equalToSuperview().offset(24.34)
             make.bottom.equalToSuperview().offset(-22.46)
-            make.lastBaseline.equalTo(timeLabel).offset(-1)
+        }
+    }
+    
+    func alarmImageConstraint(){
+        
+        self.backView.addSubview(alarmImage)
+        
+        alarmImage.snp.makeConstraints{ make in
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(23.4)
+            make.bottom.equalToSuperview().offset(-23.4)
         }
     }
 
