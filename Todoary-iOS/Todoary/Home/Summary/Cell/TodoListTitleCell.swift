@@ -77,7 +77,10 @@ class TodoListTitleCell: UITableViewCell {
     
     @objc
     func moveCategoryButtonDidClicked(_ sender: UIButton){
-        print("move category button did cliked")
+        
+        HomeViewController.dismissBottomSheet()
+    
+        navigaiton.pushViewController(CategoryViewController(), animated: true)
     }
     
     func setUpView(){
