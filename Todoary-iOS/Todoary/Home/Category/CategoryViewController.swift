@@ -24,17 +24,7 @@ class CategoryViewController: UIViewController {
     
     var currentCategory : CategoryButtonCollectionViewCell!
 
-    
-    //dumy data
-    
-    var todoData = [
-        CategoryTodo(categories: ["가나다라마바":.category1,"가다다라마바":.category8,"가라다라마바":.category5], title: "운동", date: "7월 20일", time: "AM 7:00", alarm: true),
-        CategoryTodo(categories: ["운동":.category13], title: "가나다라마바 사가나다라 마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사", date: "7월 20일", time: nil, alarm: nil),
-        CategoryTodo(categories: ["운동":.category6, "대외활동":.category1], title: "베어랑 아침 산책 8시까지 만나기로함", date: "7월 20일", time: "AM 7:00", alarm: false),
-        CategoryTodo(categories: ["운동":.category8, "대외활동":.category3,"공부":.category6], title: "아침 산책", date: "7월 20일", time: nil, alarm: nil),
-        CategoryTodo(categories: [:], title: "아침 산책", date: "7월 20일", time: nil, alarm: nil)
-    ]
-
+    var todoData: [GetTodoInfo]! = []
     
     let categoryTitle = ["운동","대외활동","공부","가나다라마바"]
     let categoryColor = [UIColor.category1, .category6, .category4, .category13]
@@ -74,6 +64,13 @@ class CategoryViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        
+        //1. category 조회
+        //2. category 조회 결과 통해 첫 번째 카테고리로 투두 조회
+        
+        print("third")
+        TodoGetByCategoryDataManager().get(viewController: self, categoryId: 29)
 
     }
     
@@ -108,26 +105,30 @@ class CategoryViewController: UIViewController {
 
 }
 
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, TableViewEditModeProtocol{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("second")
         return todoData.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier) as? CategoryTodoTableViewCell else{
                 fatalError()
             }
             let cellData = todoData[indexPath.row]
-            cell.todoTitle.text = cellData.title
-            cell.dateLabel.text = cellData.date
-            cell.timeLabel.text = cellData.time ?? ""
-            cell.alarmImage.isHidden = cellData.alarm ?? false
-            cell.setUpCategory(cellData.categories)
-            cell.setUpTimeStack()
-            cell.delegate = self
+//            cell.todoTitle.text = cellData.title
+//            cell.dateLabel.text = cellData.date
+//            cell.timeLabel.text = cellData.time ?? ""
+//            cell.alarmImage.isHidden = cellData.alarm ?? false
+//            cell.setUpCategory(cellData.categories)
+//            cell.setUpTimeStack()
+            cell.settingTodoData(cellData)
+            cell.navigation = self.navigationController
+            cell.viewController = self
             return cell
         } else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
@@ -144,15 +145,10 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Ta
             return true
         }
     }
-    
-    func deleteBtnDidClicked(indexPath : IndexPath){
-        todoData.remove(at: indexPath.row)
-        tableView.reloadData()
-    }
 
 }
 
-extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryButtonSelect{
+extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryTitle.count
@@ -165,7 +161,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         cell.setBtnAttribute(title: categoryTitle[indexPath.row], color: categoryColor[indexPath.row])
-        cell.delegate = self
+//        cell.delegate = self
+        cell.viewController = self
         
         if(indexPath.row == 0){
             cell.buttonIsSelected()
@@ -189,19 +186,57 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
     
-    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell){
-        currentCategory.buttonIsNotSelected()
-        currentCategory.categoryBtn.isSelected = false
-        currentCategory = cell
-    }
-    
 }
 
+//MARK: - API
+extension CategoryViewController{
+    
+    func checkGetCategoryApiResultCode(_ result: Int){
+        
+    }
+    
+    func checkGetTodoApiResultCode(_ result: GetTodoModel){
+        switch result.code{
+        case 1000:
+//            cell.buttonIsSelected()
+//            currentCategory.buttonIsNotSelected()
+//            currentCategory.categoryBtn.isSelected = false
+//            currentCategory = cell
+            print("first")
+            todoData = result.result
+            tableView.reloadData()
+            return
+        default:
+            return
+        }
+    }
+    
+    func checkGetTodoApiResultCode(_ cell: CategoryButtonCollectionViewCell, _ result: GetTodoModel){
+        switch result.code{
+        case 1000:
+            cell.buttonIsSelected()
+            currentCategory.buttonIsNotSelected()
+            currentCategory.categoryBtn.isSelected = false
+            currentCategory = cell
 
-struct CategoryTodo{
-    var categories : [String:UIColor]
-    var title : String?
-    var date : String?
-    var time : String?
-    var alarm : Bool?
+            todoData = result.result
+            tableView.reloadData()
+            return
+        default:
+            return
+        }
+    }
+    
+    func checkDeleteApiResultCode(code: Int, indexPath : IndexPath){
+        switch code{
+        case 1000:
+            todoData.remove(at: indexPath.row)
+            tableView.reloadData()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
+
+    }
 }

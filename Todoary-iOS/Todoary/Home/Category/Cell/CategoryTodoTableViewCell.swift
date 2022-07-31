@@ -11,7 +11,9 @@ class CategoryTodoTableViewCell: UITableViewCell {
 
     static let cellIdentifier = "todoCell"
     
-    var delegate: TableViewEditModeProtocol?
+    var navigation: UINavigationController!
+    
+    var viewController: CategoryViewController!
     
     lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
@@ -84,6 +86,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     var categoryList : [String:UIColor]!
     
+    var todoData: GetTodoInfo!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -128,16 +131,16 @@ class CategoryTodoTableViewCell: UITableViewCell {
         timeStack.addArrangedSubview(dateLabel)
     }
     
-    func setUpCategory(_ categoryList : [String:UIColor]){
-        
-        self.categoryList = categoryList
-
-            categoryList.forEach{ each in
-                lazy var button = CategoryLabel()
-                button.setTitle(each.key, for: .normal)
-                categoryStack.addArrangedSubview(button)
-            }
-    }
+//    func setUpCategory(_ categoryList : [String:UIColor]){
+//
+//        self.categoryList = categoryList
+//
+//            categoryList.forEach{ each in
+//                lazy var button = CategoryLabel()
+//                button.setTitle(each.key, for: .normal)
+//                categoryStack.addArrangedSubview(button)
+//            }
+//    }
     
     func setUpConstraint(){
         
@@ -219,6 +222,18 @@ class CategoryTodoTableViewCell: UITableViewCell {
         
     }
     
+    func settingTodoData(_ cellData: GetTodoInfo){
+        
+        self.todoData = cellData
+        
+        self.todoTitle.text = self.todoData.title
+        self.dateLabel.text = cellData.targetDate
+        self.timeLabel.text = cellData.convertTime ?? ""
+        self.alarmImage.isHidden = cellData.isAlarmEnabled
+//        self.setUpCategory() -> category 1개로 수정
+        self.setUpTimeStack()
+    }
+    
     func getCategoryTextCount() -> Int{
         
         var sum = 0
@@ -232,7 +247,21 @@ class CategoryTodoTableViewCell: UITableViewCell {
 
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
-        sender.isSelected.toggle()
+        let parameter = TodoCheckboxInput(todoId: todoData.todoId, isChecked: !sender.isSelected)
+        print(parameter.todoId, parameter.isChecked)
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
+    }
+    
+    func checkSendCheckboxApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            print("성공")
+            checkBox.isSelected.toggle()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc
@@ -243,12 +272,8 @@ class CategoryTodoTableViewCell: UITableViewCell {
         }
         let indexPath = tableView.indexPath(for: self)!
         
-        delegate?.deleteBtnDidClicked(indexPath: indexPath)
+        TodoDeleteDataManager().delete(viewController: self.viewController, todoId: todoData.todoId, indexPath: indexPath)
     }
-}
-
-protocol TableViewEditModeProtocol{
-    func deleteBtnDidClicked(indexPath : IndexPath)
 }
 
 class CategoryLabel: UIButton{
