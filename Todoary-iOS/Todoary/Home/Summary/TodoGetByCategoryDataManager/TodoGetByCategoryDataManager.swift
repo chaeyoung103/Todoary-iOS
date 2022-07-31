@@ -9,19 +9,19 @@ import Foundation
 import Alamofire
 
 class TodoGetByCategoryDataManager{
-    func get(cell: TodoListTableViewCell, parameter: TodoCheckboxInput){
+    
+    func get(categoryId: Int){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/todo/check",
-                   method: .patch,
-                   parameters: parameter,
-                   encoder: JSONParameterEncoder.default,
+        AF.request("https://todoary.com/todo/caregory/\(categoryId)",
+                   method: .get,
+                   parameters: nil,
                    headers: headers)
-            .validate().responseDecodable(of: ApiModel.self) { response in
+            .validate().responseDecodable(of: GetTodoModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    cell.checkSendCheckboxApiResultCode(result.code)
+                    print("성공")
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
