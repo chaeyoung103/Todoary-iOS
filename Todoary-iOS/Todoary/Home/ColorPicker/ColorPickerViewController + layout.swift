@@ -15,6 +15,7 @@ extension ColorPickerViewController {
         
         self.view.addSubview(categoryTitle)
         self.view.addSubview(colorview)
+        self.view.addSubview(completeBtn)
     }
     
     
@@ -48,5 +49,13 @@ extension ColorPickerViewController {
             make.height.equalTo(196)
             make.centerX.equalToSuperview()
         }
+        
+        completeBtn.snp.makeConstraints{ make in
+            make.top.equalTo(colorview.snp.bottom).offset(20)
+            make.width.equalTo(326)
+            make.height.equalTo(52)
+            make.centerX.equalToSuperview()
+        }
+        
     }
 }

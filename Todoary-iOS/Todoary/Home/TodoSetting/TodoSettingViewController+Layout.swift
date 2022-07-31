@@ -27,9 +27,7 @@ extension TodoSettingViewController {
         
         self.view.addSubview(category)
         self.view.addSubview(plusBtn)
-        self.view.addSubview(category1)
-        self.view.addSubview(category2)
-        self.view.addSubview(category3)
+        self.view.addSubview(collectionView)
         self.view.addSubview(categoryBorderLine)
 
 
@@ -98,7 +96,7 @@ extension TodoSettingViewController {
         time.snp.makeConstraints{ make in
             make.centerY.equalTo(alarm)
             make.trailing.equalTo(alarmSwitch.snp.leading).offset(-15)
-            make.width.equalTo(62)
+            make.width.equalTo(64)
             make.height.equalTo(17)
         }
         
@@ -121,29 +119,15 @@ extension TodoSettingViewController {
             make.height.equalTo(38.26)
         }
         
-        category1.snp.makeConstraints{ make in
+        collectionView.snp.makeConstraints{ make in
             make.top.equalTo(category.snp.bottom).offset(22)
             make.leading.equalToSuperview().offset(28)
-            make.width.equalTo(category1.titleLabel!.snp.width).offset(28)
-            make.height.equalTo(26)
-        }
-        
-        category2.snp.makeConstraints{ make in
-            make.top.equalTo(category.snp.bottom).offset(22)
-            make.leading.equalTo(category1.snp.trailing).offset(10)
-            make.width.equalTo(category2.titleLabel!.snp.width).offset(28)
-            make.height.equalTo(26)
-        }
-        
-        category3.snp.makeConstraints{ make in
-            make.top.equalTo(category.snp.bottom).offset(22)
-            make.leading.equalTo(category2.snp.trailing).offset(10)
-            make.width.equalTo(category3.titleLabel!.snp.width).offset(28)
+            make.trailing.equalToSuperview()
             make.height.equalTo(26)
         }
         
         categoryBorderLine.snp.makeConstraints{ make in
-            make.top.equalTo(category1.snp.bottom).offset(19)
+            make.top.equalTo(collectionView.snp.bottom).offset(19)
             make.leading.equalToSuperview().offset(31)
             make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(1)

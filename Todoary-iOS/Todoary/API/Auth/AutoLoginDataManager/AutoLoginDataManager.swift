@@ -30,6 +30,7 @@ class AutoLoginDataManager {
                 case 4000 :
                     let alert = DataBaseErrorAlert()
                     veiwController.present(alert, animated: true, completion: nil)
+                    print("왜?")
                 default:
                     print(result.message)
                 }

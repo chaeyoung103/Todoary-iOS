@@ -11,6 +11,7 @@ class GetProfileDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
+    
     func getProfileDataManger( _ viewController : UIViewController) {
         AF.request("https://todoary.com/users", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetProfileModel.self) { response in
             switch response.result {
