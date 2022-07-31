@@ -74,7 +74,7 @@ class TodoListBottomSheetViewController: UIViewController {
         setUpSheetVC()
         
         //오늘 날짜로 todo list 가져오기
-        GetTodoDataManager().gets(todayDate.dateSendServer)
+//        GetTodoDataManager().gets(todayDate.dateSendServer)
     }
     
     func setUpView(){
@@ -133,6 +133,7 @@ extension TodoListBottomSheetViewController{
 
         switch result.code{
         case 1000:
+            print("second")
             todoData = result.result
             dataArraySortByPin()
             tableView.reloadData()
