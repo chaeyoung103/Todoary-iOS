@@ -12,8 +12,6 @@ import Then
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
     
     var categoryData : [GetCategoryResult]! = []
-    var category_title : [String]! = ["?"]
-    var category_color : [Int]! = [0]
     
     var selectCategory: Int!
     
@@ -26,8 +24,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var categories: [Int]!
     
     var collectionView : UICollectionView!
-    
-    var current_category : TodoCategoryCell!
     
     
     //MARK: - UIComponenets
@@ -132,8 +128,14 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         targetDate = dateFormatter.string(from: now)
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        date.setTitle(dateFormatter.string(from: now), for: .normal)
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: now)
+        dateFormatter.dateFormat = "MM"
+        let month = Int(dateFormatter.string(from: now))
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: now)
+        
+        date.setTitle(year + "년 " + String(month!) + "월 " + day + "일" , for: .normal)
         
         GetCategoryDataManager().getCategoryDataManager(self)
         
