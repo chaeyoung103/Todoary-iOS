@@ -26,7 +26,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
     var collectionView : UICollectionView!
     
-    var current_category : CategoryButtonCollectionViewCell!
+    var current_category : TodoCategoryCell!
     
     
     //MARK: - UIComponenets
@@ -140,7 +140,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             $0.delegate = self
             $0.dataSource = self
 
-            $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
+            $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
         }
         
         
@@ -226,13 +226,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
 }
 
-extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryButtonSelect{
-    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell){
-        current_category.buttonIsNotSelected()
-        current_category.categoryBtn.isSelected = false
-        current_category = cell
-    }
-    
+extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if categoryData.isEmpty{
@@ -244,12 +238,11 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath) as? TodoCategoryCell else{
             fatalError()
         }
         
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
-        cell.delegate = self
         
         if(indexPath.row == 0){
             cell.buttonIsSelected()
