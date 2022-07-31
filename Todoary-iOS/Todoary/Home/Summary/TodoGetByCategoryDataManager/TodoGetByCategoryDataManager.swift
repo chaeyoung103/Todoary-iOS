@@ -14,7 +14,7 @@ class TodoGetByCategoryDataManager{
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/todo/caregory/\(categoryId)",
+        AF.request("https://todoary.com/todo/category/\(categoryId)",
                    method: .get,
                    parameters: nil,
                    headers: headers)
@@ -33,7 +33,7 @@ class TodoGetByCategoryDataManager{
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/todo/caregory/\(categoryId)",
+        AF.request("https://todoary.com/todo/category/\(categoryId)",
                    method: .get,
                    parameters: nil,
                    headers: headers)

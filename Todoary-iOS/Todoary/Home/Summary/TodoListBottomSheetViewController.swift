@@ -34,7 +34,7 @@ class TodoListBottomSheetViewController: UIViewController {
     let isDiaryExist = false
     
     //todo 데이터
-    var todoData : [GetTodoInfo]!
+    var todoData : [GetTodoInfo]! = []
     
     var todayDate : ConvertDate!
     

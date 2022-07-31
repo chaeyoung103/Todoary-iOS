@@ -327,7 +327,6 @@ extension TodoListTableViewCell{
     
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
-        print("눌림?")
         let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !sender.isSelected)
         print(parameter.todoId, parameter.isChecked)
         TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
@@ -379,7 +378,6 @@ extension TodoListTableViewCell{
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
-//    func cellWillDelete(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }
