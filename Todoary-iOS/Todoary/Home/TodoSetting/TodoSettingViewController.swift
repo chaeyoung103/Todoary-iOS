@@ -11,6 +11,7 @@ import Then
 
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
     
+    var categoryData : [GetCategoryResult]! = []
     var category_title : [String]! = ["?"]
     var category_color : [Int]! = [0]
     
@@ -128,6 +129,13 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        targetDate = dateFormatter.string(from: now)
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        date.setTitle(dateFormatter.string(from: now), for: .normal)
+        
+        GetCategoryDataManager().getCategoryDataManager(self)
+        
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
             $0.delegate = self
             $0.dataSource = self
@@ -135,15 +143,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
         }
         
+        
+        
         setUpView()
         setUpConstraint()
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        targetDate = dateFormatter.string(from: now)
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        date.setTitle(dateFormatter.string(from: now), for: .normal)
-        
-        GetCategoryDataManager().getCategoryDataManager(self)
         
     }
     
@@ -203,10 +206,11 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
     //MARK: - Helpers
     func successAPI_category(_ result : [GetCategoryResult]) {
-        for i in 0...result.count{
-            category_title[i] = result[i].title
-            category_color[i] = result[i].color
-            
+        if(result.isEmpty){
+        }else {
+            categoryData = result
+            print(categoryData!)
+            collectionView.reloadData()
         }
     }
     
@@ -231,7 +235,11 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return category_title.count
+        if categoryData.isEmpty{
+            return 0
+        }else {
+            return categoryData.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -240,7 +248,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
             fatalError()
         }
         
-        cell.setBtnAttribute(title: category_title[indexPath.row], color: .categoryColor[ category_color[indexPath.row]])
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.delegate = self
         
         if(indexPath.row == 0){
@@ -253,9 +261,9 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let tmpLabel = UILabel()
-        tmpLabel.text = category_title[indexPath.row]
+        tmpLabel.text = categoryData[indexPath.row].title
         
-        if(category_title[indexPath.row].count > 2){
+        if(categoryData[indexPath.row].title.count > 2){
             tmpLabel.then{
                 $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
                 $0.addLetterSpacing(spacing: 0.28)
