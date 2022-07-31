@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class TodoGetByCategoryDataManager{
     func get(cell: TodoListTableViewCell, parameter: TodoCheckboxInput){
