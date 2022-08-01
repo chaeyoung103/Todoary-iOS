@@ -16,8 +16,8 @@ class profileImgDataManager {
             
             print("실행?")
             
-            if let image = Input.jpegData(compressionQuality: 0) {
-                multipartFormData.append(image, withName: "profileImg", fileName: "\(image).jpeg", mimeType: "image/ipeg")
+            if let image = Input.jpegData(compressionQuality: 0.1) {
+                multipartFormData.append(image, withName: "profile-img", fileName: "\(image).jpeg", mimeType: "image/ipeg")
             }
             
         }, to: "https://todoary.com/users/profile-img", usingThreshold: UInt64.init(), method: .patch, headers: headers).validate().responseDecodable(of: ProfileImgModel.self)

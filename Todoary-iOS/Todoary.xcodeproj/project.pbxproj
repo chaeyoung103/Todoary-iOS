@@ -110,6 +110,9 @@
 		ACCD87C22895931600C34CE7 /* GetCategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C12895931600C34CE7 /* GetCategoryInput.swift */; };
 		ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C32895932500C34CE7 /* GetCategoryModel.swift */; };
 		ACCD87C628965B7700C34CE7 /* TodoCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C528965B7700C34CE7 /* TodoCategoryCell.swift */; };
+		ACCD87C92897BB3800C34CE7 /* CategoryModifyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87C82897BB3800C34CE7 /* CategoryModifyDataManager.swift */; };
+		ACCD87CB2897BB4C00C34CE7 /* CategoryModifyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87CA2897BB4C00C34CE7 /* CategoryModifyInput.swift */; };
+		ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87CC2897BB6500C34CE7 /* CategoryModifyModel.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -126,8 +129,6 @@
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
-		E09C2A9828978D54008F2B3E /* FirstToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09C2A9728978D53008F2B3E /* FirstToolBar.swift */; };
-		E09C2A9A28978D7F008F2B3E /* SecondToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */; };
 		E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */; };
 		E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */; };
 		E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */; };
@@ -309,6 +310,9 @@
 		ACCD87C12895931600C34CE7 /* GetCategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryInput.swift; sourceTree = "<group>"; };
 		ACCD87C32895932500C34CE7 /* GetCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryModel.swift; sourceTree = "<group>"; };
 		ACCD87C528965B7700C34CE7 /* TodoCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryCell.swift; sourceTree = "<group>"; };
+		ACCD87C82897BB3800C34CE7 /* CategoryModifyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModifyDataManager.swift; sourceTree = "<group>"; };
+		ACCD87CA2897BB4C00C34CE7 /* CategoryModifyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModifyInput.swift; sourceTree = "<group>"; };
+		ACCD87CC2897BB6500C34CE7 /* CategoryModifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModifyModel.swift; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -327,8 +331,6 @@
 		E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewCell.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
-		E09C2A9728978D53008F2B3E /* FirstToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstToolBar.swift; sourceTree = "<group>"; };
-		E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondToolBar.swift; sourceTree = "<group>"; };
 		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -844,6 +846,16 @@
 			path = GetCategoryDataManager;
 			sourceTree = "<group>";
 		};
+		ACCD87C72897BAE700C34CE7 /* CategoryModifyDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACCD87C82897BB3800C34CE7 /* CategoryModifyDataManager.swift */,
+				ACCD87CA2897BB4C00C34CE7 /* CategoryModifyInput.swift */,
+				ACCD87CC2897BB6500C34CE7 /* CategoryModifyModel.swift */,
+			);
+			path = CategoryModifyDataManager;
+			sourceTree = "<group>";
+		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +904,7 @@
 		E0439AB9288C57A30075CBF0 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				ACCD87C72897BAE700C34CE7 /* CategoryModifyDataManager */,
 				ACCD87BE289592E200C34CE7 /* GetCategoryDataManager */,
 				ACCD87B72893C38E00C34CE7 /* CategoryMakeDataManager */,
 				E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */,
@@ -961,8 +974,6 @@
 				E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */,
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
-				E09C2A9728978D53008F2B3E /* FirstToolBar.swift */,
-				E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1316,12 +1327,10 @@
 				E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
-				E09C2A9A28978D7F008F2B3E /* SecondToolBar.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
-				E09C2A9828978D54008F2B3E /* FirstToolBar.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
@@ -1382,6 +1391,7 @@
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
+				ACCD87CB2897BB4C00C34CE7 /* CategoryModifyInput.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
 				AC67C2DC2892904C00071763 /* SetKeboard.swift in Sources */,
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
@@ -1408,6 +1418,7 @@
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				57294ACC28937C2C00DA2F31 /* TodoBannerCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
@@ -1435,6 +1446,7 @@
 				57294ACF2894F72500DA2F31 /* TodoPinDataManager.swift in Sources */,
 				576ED6B228749021007389CD /* String.swift in Sources */,
 				5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */,
+				ACCD87C92897BB3800C34CE7 /* CategoryModifyDataManager.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
