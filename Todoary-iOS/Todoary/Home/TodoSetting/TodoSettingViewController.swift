@@ -11,6 +11,8 @@ import Then
 
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
     
+    var delegate : CategoryData!
+    
     var categoryData : [GetCategoryResult]! = []
     
     var selectCategory: Int!
@@ -63,6 +65,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.titleLabel?.textAlignment = .right
         $0.addTarget(self, action: #selector(dateDidTap), for: .touchUpInside)
     }
     
@@ -84,6 +87,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.setTitleColor(.black, for: .normal)
         $0.addLetterSpacing(spacing: 0.28)
         $0.titleLabel?.font = UIFont.nbFont(type: .body2)
+        $0.titleLabel?.textAlignment = .right
         $0.addTarget(self, action: #selector(timeDidTap), for: .touchUpInside)
     }
     
@@ -134,10 +138,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         dateFormatter.dateFormat = "MM"
         let month = Int(dateFormatter.string(from: now))
         dateFormatter.dateFormat = "dd"
-        let day = dateFormatter.string(from: now)
+        let day = Int(dateFormatter.string(from: now))
         
         //날짜 초기값 설정(오늘)
-        date.setTitle(year + "년 " + String(month!) + "월 " + day + "일" , for: .normal)
+        date.setTitle(year + "년 " + String(month!) + "월 " + String(day!) + "일" , for: .normal)
         
         GetCategoryDataManager().getCategoryDataManager(self)
         
@@ -186,7 +190,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     @objc func todocompleteBtnDidTap() {
         
         if selectCategory != nil{
-            print(selectCategory!)
             todoTitle = todo.text!
             if todoTitle == ""{
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
@@ -220,6 +223,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //카테고리 플러스 버튼 누르기 -> 카테고리 생성 화면
     @objc func plusBtnDidTap() {
         let colorPickerViewController = ColorPickerViewController()
+        
         self.navigationController?.pushViewController(colorPickerViewController, animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -251,7 +255,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         if(result.isEmpty){
         }else {
             categoryData = result
-            print(categoryData!)
             collectionView.reloadData()
         }
     }
@@ -286,7 +289,12 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
 
         if let indexPath = collectionView?.indexPathForItem(at: p) {
             
-            print("Long press at item: \(indexPath.row)")
+            let colorPickerViewController = ColorPickerViewController()
+            
+            colorPickerViewController.categoryData = CategoryData(id: categoryData[indexPath.row].id, title: categoryData[indexPath.row].title, color: categoryData[indexPath.row].color)
+            
+            self.navigationController?.pushViewController(colorPickerViewController, animated: true)
+            self.navigationController?.isNavigationBarHidden = true
         }
     }
     
@@ -352,5 +360,11 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         
         return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
+}
+
+struct CategoryData {
+    var id : Int
+    var title : String
+    var color : Int
 }
     
