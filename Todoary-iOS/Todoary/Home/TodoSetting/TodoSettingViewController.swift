@@ -224,6 +224,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     @objc func plusBtnDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         
+        colorPickerViewController.deleteBtn.isHidden = true
+        
         self.navigationController?.pushViewController(colorPickerViewController, animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
