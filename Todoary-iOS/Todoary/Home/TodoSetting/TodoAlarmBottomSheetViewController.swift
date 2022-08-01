@@ -40,7 +40,7 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
-    let completeBtn = UIButton().then{
+    lazy var completeBtn = UIButton().then{
         $0.backgroundColor = .white
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.black, for: .normal)

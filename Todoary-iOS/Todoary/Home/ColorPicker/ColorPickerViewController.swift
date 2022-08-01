@@ -18,6 +18,12 @@ class ColorPickerViewController : UIViewController {
     
     private var ColorPickerCollectionView: ColorPickerCollectionView!
     
+    
+    
+    var selectColor : Int!
+    
+    var categoryId : Int!
+    
     var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
 
     var navigationView:NavigationView!
@@ -43,6 +49,18 @@ class ColorPickerViewController : UIViewController {
         $0.layer.borderColor = UIColor.silver_217.cgColor
     }
     
+    let completeBtn = UIButton().then{
+        $0.setTitle("완료", for: .normal)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .semibold)
+        $0.layer.cornerRadius = 15
+        $0.layer.borderColor = UIColor.silver_217.cgColor
+        $0.layer.borderWidth = 1
+        $0.addTarget(self, action: #selector(completeBtnDidTap), for: .touchUpInside)
+    }
+    
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -50,6 +68,7 @@ class ColorPickerViewController : UIViewController {
         super.viewDidLoad()
         
         navigationView = NavigationView(frame: .zero , self.navigationController!)
+        self.view.backgroundColor = .white
         
         setUpView()
         setUpConstraint()
@@ -57,13 +76,37 @@ class ColorPickerViewController : UIViewController {
         configure()
         setupCollectionView()
 
-        //바텀시트 테스트
+//        //바텀시트 테스트
 //        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
 //        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
 //        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
     }
     
+    //MARK: - Actions
+    @objc private func completeBtnDidTap() {
+        if selectColor != nil{
+            print(selectColor!)
+            let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
+            CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
+            
+            self.navigationController?.popViewController(animated: true)
+        }else {
+            let alert = UIAlertController(title: "색상은 필수로 선택해주세요", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+                
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
     //MARK: - Helpers
+    
+    func dataSend(categoryData : CategoryData){
+        categoryTitle.text = categoryData.categoryTitle
+        categoryId = categoryData.categoryId
+        selectColor = categoryData.categoryColor
+    }
     
     private func configure() {
 
@@ -114,8 +157,8 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
             }
         
         cell.layer.cornerRadius = 30/2
-        cell.backgroundColor = allColor[indexPath.row]
-        cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
+        cell.backgroundColor = .categoryColor[indexPath.row]
+        cell.colorBtnpick.layer.borderColor = UIColor.categoryColor[indexPath.row].cgColor
         
         return cell
     }
@@ -141,6 +184,7 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
             fatalError()
         }
+        selectColor = indexPath.row
         cell.colorBtnpick.isHidden = false
         cell.colorBtnpick.layer.borderWidth = 2
         cell.colorBtnpick.layer.cornerRadius = 40/2
@@ -156,4 +200,10 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         cell.colorBtnpick.layer.cornerRadius = 40/2
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
+}
+
+struct CategoryData {
+    var categoryId : Int
+    var categoryTitle : String
+    var categoryColor : Int
 }

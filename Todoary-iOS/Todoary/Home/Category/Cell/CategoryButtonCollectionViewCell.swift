@@ -11,7 +11,9 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "categoryButtonCell"
     
-    var delegate: CategoryButtonSelect?
+    var viewController: CategoryViewController!
+    
+    var categoryData : GetCategoryResult!
     
     lazy var categoryBtn = UIButton().then{
         $0.setTitleColor(.white, for: .selected)
@@ -40,8 +42,6 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         }
         
         categoryBtn.snp.makeConstraints{ make in
-//            make.width.equalTo(categoryBtn.titleLabel!.snp.width).offset(32)
-//            make.height.equalTo(26)
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
@@ -64,8 +64,7 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     @objc
     func categoryButtonDidClicked(_ sender: UIButton){
         if(!categoryBtn.isSelected){
-            delegate?.newCategoryDidSelected(cell: self)
-            buttonIsSelected()
+            TodoGetByCategoryDataManager().get(cell: self,viewController: self.viewController, categoryId: categoryData.id)
         }
     }
     
@@ -77,10 +76,31 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     func buttonIsNotSelected(){
         categoryBtn.layer.borderColor = categoryColor.cgColor
         categoryBtn.backgroundColor = .white
-//        categoryBtn.isSelected.toggle()
     }
 }
 
-protocol CategoryButtonSelect{
-    func newCategoryDidSelected(cell: CategoryButtonCollectionViewCell)
+class CategoryPlusButtonCell: UICollectionViewCell{
+    
+    static let cellIdentifier = "categoryPlusCell"
+    
+    let plusImage = UIImageView().then{
+        $0.image = UIImage(named: "category_plus")
+    }
+    
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        self.contentView.addSubview(plusImage)
+        
+        plusImage.snp.makeConstraints{ make in
+            make.width.height.equalTo(25.91)
+            make.leading.top.bottom.equalToSuperview()
+        }
+    
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

@@ -11,7 +11,16 @@ class CategoryTodoTableViewCell: UITableViewCell {
 
     static let cellIdentifier = "todoCell"
     
-    var delegate: TableViewEditModeProtocol?
+    var navigation: UINavigationController!
+    
+    var viewController: CategoryViewController!
+    
+    lazy var categoryLabel = UIButton().then{
+        $0.titleEdgeInsets = UIEdgeInsets(top: 4, left: 11, bottom: 3, right: 11)
+        $0.layer.borderWidth = 1
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
+        $0.layer.cornerRadius = 21/2
+    }
     
     lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
@@ -48,11 +57,6 @@ class CategoryTodoTableViewCell: UITableViewCell {
         $0.isHidden = true
     }
     
-    let categoryStack = UIStackView().then{
-        $0.axis = .horizontal
-        $0.spacing = 8
-    }
-    
     let timeView = UIView()
     
     let timeStack = UIStackView().then{
@@ -82,10 +86,10 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var categoryList : [String:UIColor]!
-    
+    var todoData: GetTodoInfo!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectedBackgroundView = selectedView
@@ -98,141 +102,14 @@ class CategoryTodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-
-    override func prepareForReuse() {
-        
-        todoTitle.text = ""
-        dateLabel.text = ""
-        timeLabel.text = ""
-        
-        alarmImage.isHidden = true
-        
-        timeView.removeFromSuperview()
-        
-        categoryStack.arrangedSubviews.forEach{ each in
-            each.removeFromSuperview()
-        }
-    }
+    //MARK: - Action
     
-    func setUpView(){
-        
-        self.contentView.addSubview(backView)
-        
-        self.addSubview(deleteButton)
-        
-        backView.addSubview(categoryStack)
-        backView.addSubview(checkBox)
-        backView.addSubview(todoTitle)
-        backView.addSubview(timeStack)
-        
-        timeStack.addArrangedSubview(dateLabel)
-    }
-    
-    func setUpCategory(_ categoryList : [String:UIColor]){
-        
-        self.categoryList = categoryList
-
-            categoryList.forEach{ each in
-                lazy var button = CategoryLabel()
-                button.setTitle(each.key, for: .normal)
-                categoryStack.addArrangedSubview(button)
-            }
-    }
-    
-    func setUpConstraint(){
-        
-        self.contentView.snp.makeConstraints{ make in
-            make.height.equalTo(todoTitle.snp.height).offset(68+20)
-            make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(32)
-            make.trailing.equalToSuperview().offset(-30)
-        }
-        
-        backView.snp.makeConstraints{ make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-        }
-        
-        categoryStack.snp.makeConstraints{ make in
-            make.leading.equalToSuperview().offset(19)
-            make.top.equalToSuperview().offset(11)
-            make.height.equalTo(21)
-        }
-        
-        checkBox.snp.makeConstraints{ make in
-            make.width.height.equalTo(22)
-            make.top.equalTo(categoryStack.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(19)
-        }
-        
-        todoTitle.snp.makeConstraints{ make in
-            make.width.equalTo(177)
-            make.top.equalTo(categoryStack.snp.bottom).offset(14)
-            make.bottom.equalToSuperview().offset(-19)
-            make.leading.equalTo(checkBox.snp.trailing).offset(9)
-        }
-        
-        timeStack.snp.makeConstraints{ make in
-            make.trailing.equalToSuperview().offset(-18)
-            make.leading.equalTo(todoTitle.snp.trailing).offset(12)
-            make.bottom.equalToSuperview().offset(-23)
-        }
-        
-        dateLabel.snp.makeConstraints{ make in
-            make.width.equalTo(71)
-            make.height.equalTo(14.14)
-        }
-        
-        deleteButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(22)
-            make.leading.equalToSuperview().offset(17)
-            make.centerY.equalTo(backView)
-        }
-        
-    }
-    
-    func setUpTimeStack(){
-        
-        if(timeLabel.text != ""){
-            timeView.addSubview(timeLabel)
-            timeView.addSubview(alarmImage)
-            
-            timeStack.addArrangedSubview(timeView)
-            
-            timeView.snp.makeConstraints{ make in
-                make.width.equalTo(71)
-                make.height.equalTo(14.14)
-            }
-            
-            timeLabel.snp.makeConstraints{ make in
-                make.top.bottom.leading.trailing.equalToSuperview()
-            }
-            
-            alarmImage.snp.makeConstraints{ make in
-                make.width.equalTo(14)
-                make.height.equalTo(13.2)
-                make.leading.equalToSuperview().offset(6)
-                make.top.equalToSuperview()
-            }
-        }
-        
-    }
-    
-    func getCategoryTextCount() -> Int{
-        
-        var sum = 0
-        
-        categoryList.forEach{ each in
-            sum = sum + each.key.count
-        }
-        
-        return sum
-    }
-
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
-        sender.isSelected.toggle()
+        let parameter = TodoCheckboxInput(todoId: todoData.todoId, isChecked: !sender.isSelected)
+        print(parameter.todoId, parameter.isChecked)
+        
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
     }
     
     @objc
@@ -243,41 +120,60 @@ class CategoryTodoTableViewCell: UITableViewCell {
         }
         let indexPath = tableView.indexPath(for: self)!
         
-        delegate?.deleteBtnDidClicked(indexPath: indexPath)
+        TodoDeleteDataManager().delete(viewController: self.viewController, todoId: todoData.todoId, indexPath: indexPath)
     }
-}
-
-protocol TableViewEditModeProtocol{
-    func deleteBtnDidClicked(indexPath : IndexPath)
-}
-
-class CategoryLabel: UIButton{
     
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
+    //MARK: - Method
+
+    override func prepareForReuse() {
         
-        setUpValue()
-        setUpConstraint()
+        todoTitle.text = ""
+        dateLabel.text = ""
+        timeLabel.text = ""
+        
+        alarmImage.isHidden = true
+        checkBox.isSelected = false
+        
+        timeView.removeFromSuperview()
+        
+        categoryLabel.setTitle("", for: .normal)
+        categoryLabel.setTitleColor(.white, for: .normal)
+        categoryLabel.layer.borderColor = UIColor.white.cgColor
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func settingTodoData(_ cellData: GetTodoInfo){
+        
+        self.todoData = cellData
+        
+        self.todoTitle.text = self.todoData.title
+        self.dateLabel.text = cellData.convertDate
+        self.timeLabel.text = cellData.convertTime ?? ""
+        self.checkBox.isSelected = cellData.isChecked ?? false
+        self.alarmImage.isHidden = cellData.isAlarmEnabled
+        self.setUpTimeStack()
+        self.setCategoryData()
     }
     
-    func setUpValue(){
-        self.setTitle("운동", for: .normal)
-        self.titleEdgeInsets = UIEdgeInsets(top: 4, left: 11, bottom: 3, right: 11)
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.category14.cgColor
-        self.setTitleColor(.category14, for: .normal)
-        self.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
-        self.layer.cornerRadius = 21/2
+    func setCategoryData(){
+        
+        let categoryData = todoData.categories[0]
+
+        self.categoryLabel.setTitle(categoryData.title, for: .normal)
+        self.categoryLabel.layer.borderColor = UIColor.categoryColor[categoryData.color].cgColor
+        self.categoryLabel.setTitleColor( UIColor.categoryColor[categoryData.color], for: .normal)
     }
     
-    func setUpConstraint(){
-        self.snp.makeConstraints{ make in
-            make.width.equalTo(self.titleLabel!).offset(22)
-            make.height.equalTo(21)
+    //MARK: - API
+    
+    func checkSendCheckboxApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            print("성공")
+            checkBox.isSelected.toggle()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: nil)
         }
     }
 }
