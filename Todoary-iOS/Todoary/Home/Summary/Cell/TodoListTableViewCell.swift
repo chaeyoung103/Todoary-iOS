@@ -16,6 +16,8 @@ enum CurrentHidden{
 
 class TodoListTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
     static let cellIdentifier = "todoListCell"
     
     weak var delegate : SelectedTableViewCellDeliver?
@@ -24,7 +26,19 @@ class TodoListTableViewCell: UITableViewCell {
     
     var cellData : GetTodoInfo!
     
-    //tableCell UI
+    //MARK: - Properties(for swipe)
+    
+    lazy var leftWidth : CGFloat = 58
+    lazy var rightWidth : CGFloat = 105
+    
+    //hiddenView addSubView 되었는지 아닌지 확인 용도
+    lazy var isViewAdd : CurrentHidden = .none
+    
+    lazy var originalCenter = CGPoint()
+    lazy var isClamp = false
+    
+    //MARK: - UI
+    
     lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
         $0.setImage(UIImage(named: "todo_check"), for: .selected)
@@ -98,16 +112,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
     
-    //MARK: - Properties(for swipe)
-    
-    lazy var leftWidth : CGFloat = 58
-    lazy var rightWidth : CGFloat = 105
-    
-    //hiddenView addSubView 되었는지 아닌지 확인 용도
-    lazy var isViewAdd : CurrentHidden = .none
-    
-    lazy var originalCenter = CGPoint()
-    lazy var isClamp = false
+    //MARK: - LifeCycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -137,15 +142,27 @@ class TodoListTableViewCell: UITableViewCell {
         checkBox.isSelected = false
     }
     
+    //MARK: - Method
+    
     func cellWillSettingWithData(){
-
-        titleLabel.text = cellData.title
-        timeLabel.text = cellData.convertTime
-        checkBox.isSelected = cellData.isChecked ?? false
-        setUpViewByCase()
         
-        let category = cellData.categories[0]
-        settingCategoryButton(title: category.title, color: UIColor.categoryColor[category.color])
+        print("확인좀",cellData,cellData.categories)
+        
+        if(cellData.categories.count == 0){
+            guard let indexPath = getCellIndexPath() else{
+                return
+            }
+        }else{
+            
+            titleLabel.text = cellData.title
+            timeLabel.text = cellData.convertTime
+            checkBox.isSelected = cellData.isChecked ?? false
+            setUpViewByCase()
+            
+            let category = cellData.categories[0]
+            
+            settingCategoryButton(title: category.title, color: UIColor.categoryColor[category.color])
+        }
     }
     
     func settingCategoryButton(title: String, color: UIColor){
@@ -156,7 +173,7 @@ class TodoListTableViewCell: UITableViewCell {
     
 }
 
-//for cell swipe
+//MARK: - Swipe Method
 extension TodoListTableViewCell{
 
     @objc

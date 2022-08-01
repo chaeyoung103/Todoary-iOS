@@ -9,11 +9,17 @@ import UIKit
 
 class CategoryButtonCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Properties
+    
     static let cellIdentifier = "categoryButtonCell"
     
     var viewController: CategoryViewController!
     
     var categoryData : GetCategoryResult!
+    
+    var categoryColor: UIColor!
+    
+    //MARK: - UI
     
     lazy var categoryBtn = UIButton().then{
         $0.setTitleColor(.white, for: .selected)
@@ -25,9 +31,8 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
         $0.layer.cornerRadius = 26/2
     }
-    
-    var categoryColor : UIColor!
    
+    //MARK: - LifeCycle
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -50,32 +55,52 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setBtnAttribute(title:String,color: UIColor){
+    override func prepareForReuse() {
+        categoryBtn.isSelected = false
+        categoryBtn.setTitle("", for: .normal)
+        categoryBtn.setTitleColor(.transparent, for: .normal)
+        categoryBtn.layer.borderColor = UIColor.transparent.cgColor
+        categoryBtn.backgroundColor = .transparent
+    }
+    
+    //MARK: - Method
+    
+    func setBtnAttribute(){
         
-        categoryColor = color
+        self.categoryColor = UIColor.categoryColor[self.categoryData.color]
         
-        categoryBtn.setTitle(title, for: .normal)
+        categoryBtn.setTitle(categoryData.title, for: .normal)
+        
+        categoryBtn.layer.borderColor = self.categoryColor.cgColor
+        
         categoryBtn.setTitleColor(categoryColor, for: .normal)
+        categoryBtn.setTitleColor(.white, for: .selected)
         
         buttonIsNotSelected()
-        
     }
+    
+    func buttonIsSelected(){
+        categoryBtn.isSelected = true
+        
+        categoryBtn.backgroundColor = self.categoryColor
+    }
+    
+    func buttonIsNotSelected(){
+        categoryBtn.isSelected = false
+        
+        categoryBtn.backgroundColor = .white
+    }
+    
+    //MARK: - ACTION
     
     @objc
     func categoryButtonDidClicked(_ sender: UIButton){
         if(!categoryBtn.isSelected){
-            TodoGetByCategoryDataManager().get(cell: self,viewController: self.viewController, categoryId: categoryData.id)
+            
+            guard let tableView = self.superview as? UICollectionView else{return}
+            let index = tableView.indexPath(for: self)
+            TodoGetByCategoryDataManager().get(indexPath: index!, viewController: self.viewController, categoryId: categoryData.id)
         }
-    }
-    
-    func buttonIsSelected(){
-        categoryBtn.backgroundColor = categoryColor
-        categoryBtn.isSelected.toggle()
-    }
-    
-    func buttonIsNotSelected(){
-        categoryBtn.layer.borderColor = categoryColor.cgColor
-        categoryBtn.backgroundColor = .white
     }
 }
 

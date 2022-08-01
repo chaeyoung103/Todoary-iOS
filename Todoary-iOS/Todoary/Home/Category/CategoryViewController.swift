@@ -9,6 +9,8 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     
+    //MARK: - UI
+    
     var navigationView : NavigationView!
 
     lazy var trashButton = UIButton().then{
@@ -22,11 +24,14 @@ class CategoryViewController: UIViewController {
     
     var isEditingMode = false
     
-    var currentCategory : CategoryButtonCollectionViewCell!
+//    var currentCategory : CategoryButtonCollectionViewCell!
+    var currentCategoryIndex : IndexPath = [0,0]
 
     var todoData: [GetTodoInfo]! = []
     
     var categories : [GetCategoryResult] = []
+    
+    //MARK: - LifeCycle
 
     override func viewDidLoad() {
         
@@ -65,10 +70,11 @@ class CategoryViewController: UIViewController {
         setUpView()
         setUpConstraint()
         
-        
-        //1. category 조회
+        //category 조회
         GetCategoryDataManager().get(self)
     }
+    
+    //MARK: - Action
     
     @objc
     func trashButtonDidClicked(){
@@ -101,6 +107,7 @@ class CategoryViewController: UIViewController {
 
 }
 
+//MARK: - TableView
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,6 +149,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
 
 }
 
+//MARK: - CollectionView
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -152,20 +160,21 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
-                fatalError()
-            }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError()}
             
             let categoryData = categories[indexPath.row]
             
-            cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
             cell.viewController = self
             cell.categoryData = categoryData
+            cell.setBtnAttribute()
             
-            if(indexPath.row == 0){
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
+            cell.addGestureRecognizer(longPress)
+            
+            if(indexPath == currentCategoryIndex){
                 cell.buttonIsSelected()
-                currentCategory = cell
             }
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
@@ -189,6 +198,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             }
             
             return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
+            
         }else{
             return CGSize(width: 50, height: 26)
         }
@@ -197,10 +207,27 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if(indexPath.row == categories.count){
-            let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-            ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-            self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+            let vc = ColorPickerBottomsheetViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.categoryVC = self
+            vc.deleteBtn.setTitle("삭제", for: .normal)
+            self.present(vc, animated: false, completion: nil)
         }
+    }
+    
+    @objc
+    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){
+        
+        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
+        
+        let vc = ColorPickerBottomsheetViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        vc.categoryVC = self
+        vc.categoryTextField.text = categories[index.row].title
+        vc.currentColorIndex = [0, categories[index.row].color]
+        
+        self.present(vc, animated: false, completion: nil)
     }
     
 }
@@ -212,7 +239,9 @@ extension CategoryViewController{
         self.categories = result
         collectionView.reloadData()
         
-        TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
+        if(self.categories != []){
+            TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
+        }
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
@@ -220,6 +249,7 @@ extension CategoryViewController{
         case 1000:
             todoData = result.result
             tableView.reloadData()
+//            currentCategory.buttonIsSelected()
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -227,13 +257,13 @@ extension CategoryViewController{
             return
         }
     }
-    
+    /*
     func checkGetTodoApiResultCode(_ cell: CategoryButtonCollectionViewCell, _ result: GetTodoModel){
         switch result.code{
         case 1000:
+            
             cell.buttonIsSelected()
             currentCategory.buttonIsNotSelected()
-            currentCategory.categoryBtn.isSelected = false
             currentCategory = cell
 
             todoData = result.result
@@ -245,7 +275,36 @@ extension CategoryViewController{
             return
         }
     }
+     */
     
+    func checkGetTodoApiResultCode(_ indexPath: IndexPath, _ result: GetTodoModel){
+        switch result.code{
+            
+        case 1000:
+            print("여기임?")
+            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else{
+                return
+            }
+            cell.buttonIsSelected()
+            
+            guard let preCell = collectionView.cellForItem(at: currentCategoryIndex)as? CategoryButtonCollectionViewCell else{
+                return
+            }
+            
+            print("카테고리별 조회 성공", indexPath)
+            preCell.buttonIsNotSelected()
+//            currentCategory = cell
+            currentCategoryIndex = indexPath
+
+            todoData = result.result
+            tableView.reloadData()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
     func checkDeleteApiResultCode(code: Int, indexPath : IndexPath){
         switch code{
         case 1000:
@@ -256,6 +315,5 @@ extension CategoryViewController{
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
         }
-
     }
 }
