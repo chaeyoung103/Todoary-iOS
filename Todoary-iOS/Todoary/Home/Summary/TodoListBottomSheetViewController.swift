@@ -114,6 +114,7 @@ class TodoListBottomSheetViewController: UIViewController {
         
         let vc = DiaryViewController()
         vc.todaysDate.text = todayDate.dateUsedDiary
+        vc.sendApiDate = todayDate.dateSendServer
         
         homeNavigaiton.pushViewController(vc, animated: true)
     }
