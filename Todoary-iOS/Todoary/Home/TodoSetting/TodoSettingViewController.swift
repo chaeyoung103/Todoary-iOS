@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete {
+class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
     
     var categoryData : [GetCategoryResult]! = []
     
@@ -126,6 +126,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
+        //오늘날짜받아오기
         dateFormatter.dateFormat = "yyyy-MM-dd"
         targetDate = dateFormatter.string(from: now)
         dateFormatter.dateFormat = "yyyy"
@@ -135,14 +136,16 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         dateFormatter.dateFormat = "dd"
         let day = dateFormatter.string(from: now)
         
+        //날짜 초기값 설정(오늘)
         date.setTitle(year + "년 " + String(month!) + "월 " + day + "일" , for: .normal)
         
         GetCategoryDataManager().getCategoryDataManager(self)
         
+        //카테고리 컬렉션뷰(수평스크롤)
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
             $0.delegate = self
             $0.dataSource = self
-
+            $0.showsHorizontalScrollIndicator = false
             $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
         }
         
@@ -150,14 +153,18 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         
         setUpView()
         setUpConstraint()
+        setupLongGestureRecognizerOnCollection()
         
     }
     
+    //아무데나 누르기 -> 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     //MARK: - Actions
+    
+    //날짜 누르면 캘린더 바텀시트 띄우기
     @objc func dateDidTap() {
         let todoCalendarBottomSheetVC = TodoCalendarBottomSheetViewController()
         todoCalendarBottomSheetVC.modalPresentationStyle = .overFullScreen
@@ -165,6 +172,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         self.present(todoCalendarBottomSheetVC, animated: false, completion: nil)
     }
     
+    //시간누르면 알람 바텀시트 띄우기
     @objc func timeDidTap() {
         let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
         todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
@@ -174,30 +182,49 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
     }
     
+    //완료버튼 누르기 -> 투두생성api 호출 및 성공 시 홈화면 이동
     @objc func todocompleteBtnDidTap() {
         
         if selectCategory != nil{
             print(selectCategory!)
             todoTitle = todo.text!
-            let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
-            TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
-            
+            if todoTitle == ""{
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else {
+                let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
+                TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+            }
             self.navigationController?.popViewController(animated: true)
         }else {
-            let alert = UIAlertController(title: "카테고리는 필수로 선택해주세요", message: nil, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default)
-                
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
+            todoTitle = todo.text!
+            if todoTitle == ""{
+                let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else {
+                let alert = UIAlertController(title: "카테고리를 선택해주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
+    //카테고리 플러스 버튼 누르기 -> 카테고리 생성 화면
     @objc func plusBtnDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         self.navigationController?.pushViewController(colorPickerViewController, animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    //알람 uiswitch 변경 제스쳐
     @objc func onClickSwitch(sender: UISwitch) {
 
         if sender.isOn {
@@ -218,6 +245,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
     //MARK: - Helpers
+    
+    //카테고리 조회 api 성공
     func successAPI_category(_ result : [GetCategoryResult]) {
         if(result.isEmpty){
         }else {
@@ -227,17 +256,43 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         }
     }
     
+    //알람 시간 받아오기
     func alarmComplete(time: String, time_api: String) {
         self.time.setTitle(time, for: .normal)
         self.targetTime = time_api
     }
     
+    //캘린더 날짜 받아오기
     func calendarComplete(date: String, date_api: String) {
         self.date.setTitle(date, for: .normal)
         self.targetDate = date_api
     }
     
+    //길게 누르기 제스쳐 -> 카테고리 수정화면
+    func setupLongGestureRecognizerOnCollection() {
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView?.addGestureRecognizer(longPressedGesture)
+    }
+
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+            return
+        }
+
+        let p = gestureRecognizer.location(in: collectionView)
+
+        if let indexPath = collectionView?.indexPathForItem(at: p) {
+            
+            print("Long press at item: \(indexPath.row)")
+        }
+    }
+    
 }
+
+
 
 extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 

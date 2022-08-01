@@ -18,7 +18,11 @@ class ColorPickerViewController : UIViewController {
     
     private var ColorPickerCollectionView: ColorPickerCollectionView!
     
+    
+    
     var selectColor : Int!
+    
+    var categoryId : Int!
     
     var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
 
@@ -97,6 +101,12 @@ class ColorPickerViewController : UIViewController {
     }
     
     //MARK: - Helpers
+    
+    func dataSend(categoryData : CategoryData){
+        categoryTitle.text = categoryData.categoryTitle
+        categoryId = categoryData.categoryId
+        selectColor = categoryData.categoryColor
+    }
     
     private func configure() {
 
@@ -190,4 +200,10 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         cell.colorBtnpick.layer.cornerRadius = 40/2
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
+}
+
+struct CategoryData {
+    var categoryId : Int
+    var categoryTitle : String
+    var categoryColor : Int
 }
