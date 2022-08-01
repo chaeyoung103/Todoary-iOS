@@ -69,14 +69,7 @@ class CategoryViewController: UIViewController {
         setUpView()
         setUpConstraint()
         
-        
-        //1. category 조회
-//        GetCategoryDataManager().get(self)
-        requestCategory()
-    }
-
-    
-    func requestCategory(){
+        //category 조회
         GetCategoryDataManager().get(self)
     }
     

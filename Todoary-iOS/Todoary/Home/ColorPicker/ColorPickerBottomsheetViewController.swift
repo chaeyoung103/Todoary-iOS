@@ -200,7 +200,6 @@ class ColorPickerBottomsheetViewController : UIViewController {
     // 바텀 시트 사라지는 애니메이션
     @objc
     func hideBottomSheetAndGoBack() {
-        print("hide")
         let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding = view.safeAreaInsets.bottom
         bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding

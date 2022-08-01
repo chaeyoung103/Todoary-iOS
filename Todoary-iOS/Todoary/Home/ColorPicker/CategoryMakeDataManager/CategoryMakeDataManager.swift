@@ -18,7 +18,7 @@ class CategoryMakeDataManager {
                 switch result.code {
                 case 1000:
                     print("카테고리생성성공")
-                    categoryVC.requestCategory()
+                    GetCategoryDataManager().get(categoryVC)
                     viewController.hideBottomSheetAndGoBack()
                 case 2010:
                     print("유저 아이디값을 확인해주세요")
