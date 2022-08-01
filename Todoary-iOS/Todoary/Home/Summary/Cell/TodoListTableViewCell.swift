@@ -16,6 +16,8 @@ enum CurrentHidden{
 
 class TodoListTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
     static let cellIdentifier = "todoListCell"
     
     weak var delegate : SelectedTableViewCellDeliver?
@@ -24,7 +26,19 @@ class TodoListTableViewCell: UITableViewCell {
     
     var cellData : GetTodoInfo!
     
-    //tableCell UI
+    //MARK: - Properties(for swipe)
+    
+    lazy var leftWidth : CGFloat = 58
+    lazy var rightWidth : CGFloat = 105
+    
+    //hiddenView addSubView 되었는지 아닌지 확인 용도
+    lazy var isViewAdd : CurrentHidden = .none
+    
+    lazy var originalCenter = CGPoint()
+    lazy var isClamp = false
+    
+    //MARK: - UI
+    
     lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
         $0.setImage(UIImage(named: "todo_check"), for: .selected)
@@ -32,14 +46,13 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     let titleLabel = UILabel().then{
-        $0.text = "아침 산책"
+        $0.numberOfLines = 1
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
     }
     
     lazy var categoryButton = UIButton().then{
-        $0.setTitle("운동", for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
         $0.addLetterSpacing(spacing: 0.24)
         $0.layer.borderWidth = 1
@@ -57,7 +70,6 @@ class TodoListTableViewCell: UITableViewCell {
     }
     
     let timeLabel = UILabel().then{
-        $0.text = "AM 7:00"
         $0.textColor = .timeColor
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
         $0.addLetterSpacing(spacing: -0.26)
@@ -100,16 +112,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
     
-    //MARK: - Properties(for swipe)
-    
-    lazy var leftWidth : CGFloat = 58
-    lazy var rightWidth : CGFloat = 105
-    
-    //hiddenView addSubView 되었는지 아닌지 확인 용도
-    lazy var isViewAdd : CurrentHidden = .none
-    
-    lazy var originalCenter = CGPoint()
-    lazy var isClamp = false
+    //MARK: - LifeCycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -133,24 +136,33 @@ class TodoListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
-        settingCategoryButton(title: "", color: .white)
+        timeLabel.removeFromSuperview()
+        categoryButton.removeFromSuperview()
         titleLabel.text = ""
-        timeLabel.text = ""
         checkBox.isSelected = false
     }
     
+    //MARK: - Method
+    
     func cellWillSettingWithData(){
-
-        titleLabel.text = cellData.title
-        timeLabel.text = cellData.convertTime
-        checkBox.isSelected = cellData.isChecked ?? false
-        setUpViewByCase()
         
-        /* 투두 카테고리 데이터 추가되면 주석 제거하기
-        cell.settingCategoryButton(title: data.categories[0].title, color: data.categories[0].color)
-         */
+        print("확인좀",cellData,cellData.categories)
         
-        self.settingCategoryButton(title: "카테고리", color: .category8)
+        if(cellData.categories.count == 0){
+            guard let indexPath = getCellIndexPath() else{
+                return
+            }
+        }else{
+            
+            titleLabel.text = cellData.title
+            timeLabel.text = cellData.convertTime
+            checkBox.isSelected = cellData.isChecked ?? false
+            setUpViewByCase()
+            
+            let category = cellData.categories[0]
+            
+            settingCategoryButton(title: category.title, color: UIColor.categoryColor[category.color])
+        }
     }
     
     func settingCategoryButton(title: String, color: UIColor){
@@ -161,7 +173,7 @@ class TodoListTableViewCell: UITableViewCell {
     
 }
 
-//for cell swipe
+//MARK: - Swipe Method
 extension TodoListTableViewCell{
 
     @objc

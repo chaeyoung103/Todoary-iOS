@@ -149,8 +149,13 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        
         HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
+        
+        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        
+        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todayDate.dateSendServer)
+        
         present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 

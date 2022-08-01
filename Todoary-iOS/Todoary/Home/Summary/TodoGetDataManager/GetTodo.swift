@@ -17,7 +17,7 @@ struct GetTodoModel: Decodable{
 
 struct GetTodoInfo: Decodable, Equatable{
     let todoId: Int
-    var isPinned: Bool
+    var isPinned: Bool?
     var isChecked: Bool?
     var title: String
     var targetDate: String?
@@ -43,13 +43,14 @@ struct GetTodoInfo: Decodable, Equatable{
         if(time < "12:00"){
             
             startIndex = time < "10:00" ? time.startIndex : time.index(time.startIndex, offsetBy: 1)
-            
             endIndex = time.endIndex
             
             return "AM \(time[startIndex..<endIndex])"
             
         }else if(time < "13:00"){
+            
             return "PM \(time)"
+            
         }else{
             
             startIndex = time.startIndex
@@ -59,6 +60,14 @@ struct GetTodoInfo: Decodable, Equatable{
             
             return "PM \(changeHour)\(time[endIndex..<time.endIndex])"
         }
+    }
+    
+    var convertDate: String{
+        
+        //2022-07-24 -> 7월 24일
+        let dateArr = targetDate!.components(separatedBy: "-")
+        
+        return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }
 }
 

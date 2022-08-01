@@ -11,6 +11,7 @@ import SnapKit
 class DiaryTabelViewCell: UITableViewCell {
     static let cellIdentifier = "DiaryTabelViewCell"
     
+    
     var cellData : GetTodoInfo!
     
     //tableCell UI
@@ -50,9 +51,9 @@ class DiaryTabelViewCell: UITableViewCell {
     let backView = UIView().then{
         $0.layer.cornerRadius = 20
         $0.backgroundColor = .white
-        $0.layer.shadowRadius = 10.0
+        $0.layer.shadowRadius = 5.0
         $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowOffset = CGSize(width: 0, height: 1)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
     }
@@ -61,14 +62,14 @@ class DiaryTabelViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        self.selectionStyle = .none
         
         setUpView()
         setUpConstraint()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-

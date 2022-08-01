@@ -74,7 +74,7 @@ class TodoListBottomSheetViewController: UIViewController {
         setUpSheetVC()
         
         //오늘 날짜로 todo list 가져오기
-        GetTodoDataManager().gets(todayDate.dateSendServer)
+//        GetTodoDataManager().gets(todayDate.dateSendServer)
     }
     
     func setUpView(){
@@ -114,15 +114,14 @@ class TodoListBottomSheetViewController: UIViewController {
         
         let vc = DiaryViewController()
         vc.todaysDate.text = todayDate.dateUsedDiary
+        vc.sendApiDate = todayDate.dateSendServer
         
         homeNavigaiton.pushViewController(vc, animated: true)
     }
     
     @objc
     func cellWillMoveToOriginalPosition(){
-        guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else{
-                return
-        }
+        guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
         cell.cellWillMoveOriginalPosition()
     }
  
@@ -135,6 +134,7 @@ extension TodoListBottomSheetViewController{
 
         switch result.code{
         case 1000:
+            print("second")
             todoData = result.result
             dataArraySortByPin()
             tableView.reloadData()
@@ -202,14 +202,14 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     
-//    func cellWillDelete(_ indexPath: IndexPath){
-////        todoData.remove(at: indexPath.row-1)
-////        self.tableView.deleteRows(at: [indexPath], with: .fade)
-//    }
-    
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
+            if(todoData.count == 1){
+                todoData = []
+                tableView.reloadData()
+                return
+            }
             todoData.remove(at: indexPath.row-1)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             return
@@ -225,7 +225,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         let pinnedCount: Int = getPinnedCount()
         
         let willChangeData = todoData[indexPath.row-1]
-        let currentPin = willChangeData.isPinned
+        let currentPin = willChangeData.isPinned!
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
             //기본 팝업 띄우기
@@ -252,7 +252,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
             //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
             var willChangeData = todoData[indexPath.row-1]
             
-            willChangeData.isPinned.toggle()
+            willChangeData.isPinned!.toggle()
             todoData[indexPath.row-1].isPinned = willChangeData.isPinned
             
             dataArraySortByPin()
@@ -292,7 +292,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         var count : Int = 0
         
         todoData.forEach{ each in
-            if (each.isPinned) {
+            if (each.isPinned!) {
                 count += 1
             }
         }
@@ -303,13 +303,14 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
     func dataArraySortByPin(){
         todoData.sort(by: {$0.createdTime < $1.createdTime})
         todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
-        todoData.sort(by: {$0.isPinned && !$1.isPinned})
+        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
         
-        print("정렬 제대로 된거니?")
-        todoData.forEach{ each in
-            print(each.isPinned, each.convertTime, each.createdTime)
-        }
+//        print("정렬 제대로 된거니?")
+//        todoData.forEach{ each in
+//            print(each.isPinned, each.convertTime, each.createdTime)
+//        }
     }
+
 }
 
 extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{

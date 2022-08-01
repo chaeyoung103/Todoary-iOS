@@ -11,8 +11,12 @@ struct GetCategoryModel : Decodable {
     var result :[GetCategoryResult]
 }
 
-struct GetCategoryResult : Decodable {
+struct GetCategoryResult : Decodable, Equatable {
     var id : Int
     var title : String
     var color : Int
+    
+    static func ==(lhs: GetCategoryResult, rhs: GetCategoryResult) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
