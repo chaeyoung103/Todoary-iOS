@@ -146,7 +146,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         self.todoData = cellData
         
         self.todoTitle.text = self.todoData.title
-        self.dateLabel.text = cellData.targetDate
+        self.dateLabel.text = cellData.convertDate
         self.timeLabel.text = cellData.convertTime ?? ""
         self.checkBox.isSelected = cellData.isChecked ?? false
         self.alarmImage.isHidden = cellData.isAlarmEnabled

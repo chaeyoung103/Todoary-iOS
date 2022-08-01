@@ -60,6 +60,15 @@ struct GetTodoInfo: Decodable, Equatable{
             return "PM \(changeHour)\(time[endIndex..<time.endIndex])"
         }
     }
+    
+    var convertDate: String{
+        
+        //2022-07-24 -> 7월 24일
+        
+        let dateArr = targetDate!.components(separatedBy: "-")
+        
+        return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
+    }
 }
 
 struct GetTodoCategories: Decodable{
