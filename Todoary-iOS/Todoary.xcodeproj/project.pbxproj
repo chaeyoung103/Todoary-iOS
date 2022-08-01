@@ -126,8 +126,6 @@
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
-		E09C2A9828978D54008F2B3E /* FirstToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09C2A9728978D53008F2B3E /* FirstToolBar.swift */; };
-		E09C2A9A28978D7F008F2B3E /* SecondToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */; };
 		E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */; };
 		E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */; };
 		E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */; };
@@ -327,8 +325,6 @@
 		E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewCell.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
-		E09C2A9728978D53008F2B3E /* FirstToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstToolBar.swift; sourceTree = "<group>"; };
-		E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondToolBar.swift; sourceTree = "<group>"; };
 		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -961,8 +957,6 @@
 				E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */,
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
-				E09C2A9728978D53008F2B3E /* FirstToolBar.swift */,
-				E09C2A9928978D7F008F2B3E /* SecondToolBar.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1316,12 +1310,10 @@
 				E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
-				E09C2A9A28978D7F008F2B3E /* SecondToolBar.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
-				E09C2A9828978D54008F2B3E /* FirstToolBar.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
