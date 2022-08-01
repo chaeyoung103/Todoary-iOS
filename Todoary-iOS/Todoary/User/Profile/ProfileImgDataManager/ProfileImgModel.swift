@@ -15,7 +15,19 @@ struct ProfileImgModel : Decodable {
     
 }
 
-struct ProfileImgModelResult : Decodable {
-    var userId : String
-    var profileImgUrl : String
+//struct ProfileImgModelResult : Decodable {
+//    var user_id : Int
+//    var profile_img_url : String
+//}
+
+struct ProfileImgModelResult : Codable {
+    
+    var userId : Int
+    var profileImageUrl : String
+    
+    enum CodingKeys: String,CodingKey{
+        case userId = "user_id"
+        case profileImageUrl = "profile_img_url"
+    }
+
 }
