@@ -132,6 +132,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         timeLabel.text = ""
         
         alarmImage.isHidden = true
+        checkBox.isSelected = false
         
         timeView.removeFromSuperview()
         
@@ -147,6 +148,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         self.todoTitle.text = self.todoData.title
         self.dateLabel.text = cellData.targetDate
         self.timeLabel.text = cellData.convertTime ?? ""
+        self.checkBox.isSelected = cellData.isChecked ?? false
         self.alarmImage.isHidden = cellData.isAlarmEnabled
         self.setUpTimeStack()
         self.setCategoryData()
