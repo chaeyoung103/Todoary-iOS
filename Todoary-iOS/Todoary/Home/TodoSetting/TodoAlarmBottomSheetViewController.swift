@@ -127,7 +127,6 @@ class TodoAlarmBottomSheetViewController: UIViewController {
     }
     
     @objc func timecompleteBtnDidTap() {
-        print("안돼?")
         formatter.dateFormat = "a hh:mm"
         formatter.locale = Locale(identifier: "en_US")
         timeStr = formatter.string(from: timePicker.date)

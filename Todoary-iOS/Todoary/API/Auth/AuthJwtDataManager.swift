@@ -10,7 +10,7 @@ import Alamofire
 class AuthJwtDataManager{
     
     func authJwtDataManager(_ viewController: LoginViewController, _ parameter: AuthJwtInput){
-        AF.request("https://todoary.com/auth/jwt", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: AuthJwtModel.self) { response in
+        AF.request("https://todoary.com/auth/jwt", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil, interceptor: Interceptor()).validate().responseDecodable(of: AuthJwtModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code{

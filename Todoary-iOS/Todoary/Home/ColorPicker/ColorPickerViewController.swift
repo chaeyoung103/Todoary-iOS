@@ -12,21 +12,24 @@ import Then
 
 class ColorPickerViewController : UIViewController {
     
-    //MARK: - UIComponenets
+    //MARK: - Properties
     
     private var ColorPickerCollectionViewCellid = "ColorPickerCollectionViewCellid"
     
     private var ColorPickerCollectionView: ColorPickerCollectionView!
     
-    
-    
+    //선택된 컬러값
     var selectColor : Int!
     
+    //id 데이터가 있을때 카테고리id값
     var categoryId : Int!
     
-    var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
+    //데이터가 넘겨왔을 경우에 data를 담는 struct
+    var categoryData : CategoryData!
 
     var navigationView:NavigationView!
+    
+    //MARK: - UIComponenets
     
     let categoryTitle = UITextField().then{
         $0.placeholder = "카테고리 이름을 입력해주세요"
@@ -75,39 +78,74 @@ class ColorPickerViewController : UIViewController {
         
         configure()
         setupCollectionView()
-
-//        //바텀시트 테스트
-//        let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-//        ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-//        self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+        
+        categoryReceive()
+        
     }
     
     //MARK: - Actions
+    
+    //완료버튼 누르기 -> 뒤로가기, api 호출
     @objc private func completeBtnDidTap() {
-        if selectColor != nil{
-            print(selectColor!)
-            let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
-            CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
-            
-            self.navigationController?.popViewController(animated: true)
-        }else {
-            let alert = UIAlertController(title: "색상은 필수로 선택해주세요", message: nil, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default)
-                
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-        }
         
+        //데이터가 없는 경우, 있는 경우에 따라 생성, 수정 api로 변경
+        //제목이나 컬러값을 유저가 넣지 않았을때 팝업 띄우기
+        if categoryData != nil {
+            if categoryTitle.text != "" {
+                print(selectColor!)
+                let categoryModifyInput = CategoryModifyInput(title: categoryTitle.text!, color: selectColor)
+                CategoryModifyDataManager().categoryModifyDataManager(self,categoryModifyInput,categoryId: categoryId)
+                
+                self.navigationController?.popViewController(animated: true)
+            }else {
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }else {
+            if selectColor != nil && categoryTitle.text != ""{
+                print(selectColor!)
+                let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
+                CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
+                
+                self.navigationController?.popViewController(animated: true)
+            }else if selectColor == nil && categoryTitle.text != "" {
+                let alert = UIAlertController(title: "색상을 선택해주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else if selectColor == nil &&  categoryTitle.text == "" {
+                let alert = UIAlertController(title: "제목과 색상을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else {
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     //MARK: - Helpers
     
-    func dataSend(categoryData : CategoryData){
-        categoryTitle.text = categoryData.categoryTitle
-        categoryId = categoryData.categoryId
-        selectColor = categoryData.categoryColor
+    //정보가 있을 경우에 카테고리정보받아오기
+    func categoryReceive(){
+        if categoryData != nil {
+            categoryTitle.text = categoryData.title
+            categoryId = categoryData.id
+            selectColor = categoryData.color
+            ColorPickerCollectionView?.reloadData()
+        }
     }
     
+    //컬렉션뷰 layout
     private func configure() {
 
            let collectionViewLayer = UICollectionViewFlowLayout()
@@ -127,16 +165,13 @@ class ColorPickerViewController : UIViewController {
            }
        }
 
-    
+    //컬렉션뷰 등록
     private func setupCollectionView() {
         ColorPickerCollectionView.delegate = self
         ColorPickerCollectionView.dataSource = self
         
-        //cell 등록
         ColorPickerCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerCollectionViewCellid)
-        
     }
-  
 }
 
 
@@ -145,10 +180,12 @@ class ColorPickerViewController : UIViewController {
 
 extension ColorPickerViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //셀 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18
     }
     
+    //셀 초기값 설정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ColorPickerCollectionViewCellid,
@@ -160,18 +197,27 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         cell.backgroundColor = .categoryColor[indexPath.row]
         cell.colorBtnpick.layer.borderColor = UIColor.categoryColor[indexPath.row].cgColor
         
+        if(selectColor != nil){
+            if indexPath.row == selectColor {
+                collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
+                cell.isSelected = true
+            }
+        }
+        
         return cell
     }
     
- 
+    //셀 사이즈
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 30, height: 30)
     }
     
+    //셀 위아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(25)
     }
     
+    //셀 양옆 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(20)
     }
@@ -180,6 +226,7 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
     
     //MARK: - UICollectionViewDelegate
     
+    //셀 선택o
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
             fatalError()
@@ -191,6 +238,7 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
     
+    //셀 선택x
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
             fatalError()
@@ -202,8 +250,4 @@ extension ColorPickerViewController : UICollectionViewDelegate, UICollectionView
     }
 }
 
-struct CategoryData {
-    var categoryId : Int
-    var categoryTitle : String
-    var categoryColor : Int
-}
+
