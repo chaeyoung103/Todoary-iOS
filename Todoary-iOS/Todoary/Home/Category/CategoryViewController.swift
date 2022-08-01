@@ -24,7 +24,8 @@ class CategoryViewController: UIViewController {
     
     var isEditingMode = false
     
-    var currentCategory : CategoryButtonCollectionViewCell!
+//    var currentCategory : CategoryButtonCollectionViewCell!
+    var currentCategoryIndex : IndexPath = [0,0]
 
     var todoData: [GetTodoInfo]! = []
     
@@ -71,11 +72,6 @@ class CategoryViewController: UIViewController {
         
         //category 조회
         GetCategoryDataManager().get(self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        guard let cell = collectionView.cellForItem(at: [0,0]) as? CategoryButtonCollectionViewCell else { return }
-        currentCategory = cell
     }
     
     //MARK: - Action
@@ -175,6 +171,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
             cell.addGestureRecognizer(longPress)
             
+            if(indexPath == currentCategoryIndex){
+                cell.buttonIsSelected()
+            }
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
@@ -257,7 +257,7 @@ extension CategoryViewController{
             return
         }
     }
-    
+    /*
     func checkGetTodoApiResultCode(_ cell: CategoryButtonCollectionViewCell, _ result: GetTodoModel){
         switch result.code{
         case 1000:
@@ -275,7 +275,36 @@ extension CategoryViewController{
             return
         }
     }
+     */
     
+    func checkGetTodoApiResultCode(_ indexPath: IndexPath, _ result: GetTodoModel){
+        switch result.code{
+            
+        case 1000:
+            print("여기임?")
+            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else{
+                return
+            }
+            cell.buttonIsSelected()
+            
+            guard let preCell = collectionView.cellForItem(at: currentCategoryIndex)as? CategoryButtonCollectionViewCell else{
+                return
+            }
+            
+            print("카테고리별 조회 성공", indexPath)
+            preCell.buttonIsNotSelected()
+//            currentCategory = cell
+            currentCategoryIndex = indexPath
+
+            todoData = result.result
+            tableView.reloadData()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
     func checkDeleteApiResultCode(code: Int, indexPath : IndexPath){
         switch code{
         case 1000:

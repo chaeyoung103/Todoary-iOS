@@ -56,6 +56,7 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        categoryBtn.isSelected = false
         categoryBtn.setTitle("", for: .normal)
         categoryBtn.setTitleColor(.transparent, for: .normal)
         categoryBtn.layer.borderColor = UIColor.transparent.cgColor
@@ -95,7 +96,10 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     @objc
     func categoryButtonDidClicked(_ sender: UIButton){
         if(!categoryBtn.isSelected){
-            TodoGetByCategoryDataManager().get(cell: self, viewController: self.viewController, categoryId: categoryData.id)
+            
+            guard let tableView = self.superview as? UICollectionView else{return}
+            let index = tableView.indexPath(for: self)
+            TodoGetByCategoryDataManager().get(indexPath: index!, viewController: self.viewController, categoryId: categoryData.id)
         }
     }
 }
