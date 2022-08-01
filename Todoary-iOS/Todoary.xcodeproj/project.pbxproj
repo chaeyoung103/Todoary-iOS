@@ -801,6 +801,7 @@
 		AC9859C72882909F009FC2F8 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				ACCD87D32897E35B00C34CE7 /* GetCalendarDataManager */,
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				AC9859CA288334AC009FC2F8 /* CalendarCell.swift */,
 				AC9859CC288505C5009FC2F8 /* WeekCell.swift */,
@@ -864,6 +865,13 @@
 				ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */,
 			);
 			path = CategoryDeleteDataManager;
+			sourceTree = "<group>";
+		};
+		ACCD87D32897E35B00C34CE7 /* GetCalendarDataManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GetCalendarDataManager;
 			sourceTree = "<group>";
 		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
