@@ -44,7 +44,9 @@ class CategoryViewController: UIViewController {
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
             $0.delegate = self
             $0.dataSource = self
+            $0.showsHorizontalScrollIndicator = false
 
+            $0.register(CategoryPlusButtonCell.self, forCellWithReuseIdentifier: CategoryPlusButtonCell.cellIdentifier)
             $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
         }
         
@@ -143,43 +145,53 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return categories.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
-            fatalError()
+        if(indexPath.row != categories.count){
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
+                fatalError()
+            }
+            
+            let categoryData = categories[indexPath.row]
+            
+            cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
+            cell.viewController = self
+            cell.categoryData = categoryData
+            
+            if(indexPath.row == 0){
+                cell.buttonIsSelected()
+                currentCategory = cell
+            }
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
+            return cell
         }
-        
-        let categoryData = categories[indexPath.row]
-  
-        cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
-        cell.viewController = self
-        cell.categoryData = categoryData
-        
-        if(indexPath.row == 0){
-            cell.buttonIsSelected()
-            currentCategory = cell
-        }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let categoryTitle = categories[indexPath.row].title
-        
-        let tmpLabel = UILabel()
-        tmpLabel.text = categoryTitle
-        
-        if(categoryTitle.count > 2){
-            tmpLabel.then{
-                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
-                $0.addLetterSpacing(spacing: 0.28)
+        if(indexPath.row != categories.count){
+            let categoryTitle = categories[indexPath.row].title
+            
+            let tmpLabel = UILabel()
+            tmpLabel.text = categoryTitle
+            
+            if(categoryTitle.count > 2){
+                tmpLabel.then{
+                    $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+                    $0.addLetterSpacing(spacing: 0.28)
+                }
             }
+            
+            return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
+        }else{
+            return CGSize(width: 50, height: 26)
         }
-        
-        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
     
 }
