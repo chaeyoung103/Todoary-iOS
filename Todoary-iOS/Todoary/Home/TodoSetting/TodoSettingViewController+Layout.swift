@@ -50,7 +50,7 @@ extension TodoSettingViewController {
         }
         
         todo.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(101)
+            make.top.equalToSuperview().offset(111)
             make.leading.equalToSuperview().offset(31)
         }
         
@@ -122,7 +122,7 @@ extension TodoSettingViewController {
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(category.snp.bottom).offset(22)
             make.leading.equalToSuperview().offset(28)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-28)
             make.height.equalTo(26)
         }
         
