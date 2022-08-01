@@ -73,6 +73,8 @@ class CategoryViewController: UIViewController {
         GetCategoryDataManager().get(self)
     }
     
+    //MARK: - Action
+    
     @objc
     func trashButtonDidClicked(){
         
@@ -104,6 +106,7 @@ class CategoryViewController: UIViewController {
 
 }
 
+//MARK: - TableView
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,6 +148,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
 
 }
 
+//MARK: - CollectionView
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -155,9 +159,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else{
-                fatalError()
-            }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError()}
             
             let categoryData = categories[indexPath.row]
             
@@ -165,10 +167,14 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             cell.viewController = self
             cell.categoryData = categoryData
             
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
+            cell.addGestureRecognizer(longPress)
+            
             if(indexPath.row == 0){
                 cell.buttonIsSelected()
                 currentCategory = cell
             }
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
@@ -192,6 +198,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             }
             
             return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
+            
         }else{
             return CGSize(width: 50, height: 26)
         }
@@ -200,11 +207,27 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if(indexPath.row == categories.count){
-            let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
-            ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
-            ColorPickerBottomsheetVC.categoryVC = self
-            self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+            let vc = ColorPickerBottomsheetViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.categoryVC = self
+            vc.deleteBtn.setTitle("삭제", for: .normal)
+            self.present(vc, animated: false, completion: nil)
         }
+    }
+    
+    @objc
+    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){
+        
+        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
+        
+        let vc = ColorPickerBottomsheetViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        vc.categoryVC = self
+        vc.categoryTextField.text = categories[index.row].title
+        vc.currentColorIndex = [0, categories[index.row].color]
+        
+        self.present(vc, animated: false, completion: nil)
     }
     
 }
@@ -260,6 +283,5 @@ extension CategoryViewController{
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
         }
-
     }
 }

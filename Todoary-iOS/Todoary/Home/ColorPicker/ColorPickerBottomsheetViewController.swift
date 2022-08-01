@@ -12,6 +12,7 @@ import Then
 
 class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
+    var currentColorIndex : IndexPath?
 
     //바텀시트 높이
     let bottomHeight : CGFloat = 342
@@ -24,8 +25,6 @@ class ColorPickerBottomsheetViewController : UIViewController {
     private var ColorPickerBottomsheetCollectionView: ColorPickerBottomsheetCollectionView!
     
     var categoryVC: CategoryViewController!
-    
-    var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
     
     // MARK: - UIComponents
     
@@ -70,7 +69,6 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.addTarget(self, action: #selector(confirmBtnDidClicked), for: .touchUpInside)
     }
     
-    //TODO: - deleteBtn 삭제, 취소 2가지 세팅
     lazy var deleteBtn = UIButton().then{
         $0.backgroundColor = .white
         $0.setTitle("취소", for: .normal)
@@ -94,6 +92,12 @@ class ColorPickerBottomsheetViewController : UIViewController {
         setUpView()
         setUpConstraint()
         setupGestureRecognizer()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if (currentColorIndex != nil){
+            ColorPickerBottomsheetCollectionView.selectItem(at: currentColorIndex, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -293,9 +297,18 @@ extension ColorPickerBottomsheetViewController : UICollectionViewDelegate, UICol
         }
     
         cell.layer.cornerRadius = 30/2
-        cell.backgroundColor = allColor[indexPath.row]
-        cell.colorBtnpick.layer.borderColor = allColor[indexPath.row].cgColor
-    
+        cell.backgroundColor = .categoryColor[indexPath.row]
+            
+        cell.colorBtnpick.layer.borderColor = UIColor.categoryColor[indexPath.row].cgColor
+        
+        //카테고리 수정인 경우, 초기 카테고리 값 설정 상태로 만들어주기
+        if(indexPath == currentColorIndex){
+            cell.colorBtnpick.isHidden = false
+            cell.colorBtnpick.layer.borderWidth = 2
+            cell.colorBtnpick.layer.cornerRadius = 40/2
+            cell.colorBtnpick.isUserInteractionEnabled = true
+        }
+
         return cell
     }
 
@@ -320,11 +333,14 @@ extension ColorPickerBottomsheetViewController : UICollectionViewDelegate, UICol
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
         fatalError()
         }
+        
         cell.colorBtnpick.isHidden = false
         cell.colorBtnpick.layer.borderWidth = 2
         cell.colorBtnpick.layer.cornerRadius = 40/2
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
+    
+    
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
