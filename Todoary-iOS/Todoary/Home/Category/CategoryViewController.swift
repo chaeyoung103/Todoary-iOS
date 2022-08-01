@@ -194,6 +194,15 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(indexPath.row == categories.count){
+            let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
+            ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+            self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
+        }
+    }
+    
 }
 
 //MARK: - API
