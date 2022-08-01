@@ -65,6 +65,39 @@ class DiaryViewController : UIViewController {
         return diaryText
     }()
     
+    let firstToolBar = UIToolbar().then{
+        $0.backgroundColor = .gray
+        $0.sizeToFit()
+        let cameraBtn = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
+        cameraBtn.tintColor = .black
+        
+        let textBtn = UIBarButtonItem(image: UIImage(named: "type"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
+        textBtn.tintColor = .black
+        
+        let stickerBtn = UIBarButtonItem(image: UIImage(named: "smile"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
+        stickerBtn.tintColor = .black
+        
+        let highlightBtn = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
+        highlightBtn.tintColor = .black
+        
+        let exitBtn = UIBarButtonItem(image: UIImage(named: "x"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
+        exitBtn.tintColor = .black
+        
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let edgeSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+        edgeSpace.width = 15
+        
+        $0.setItems([edgeSpace, cameraBtn, space, textBtn, space, stickerBtn,space, highlightBtn,space, exitBtn, edgeSpace], animated: true)
+        $0.isUserInteractionEnabled = true
+        
+    }
+    
+    let secondToolBar = UIToolbar().then{
+        $0.backgroundColor = .gray
+        $0.sizeToFit()
+    }
+    
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -72,6 +105,9 @@ class DiaryViewController : UIViewController {
         super.viewDidLoad()
         
         navigationView = NavigationView(frame: .zero , self.navigationController!)
+        //tool바 넣어주기
+        textView.inputAccessoryView = firstToolBar
+//        firstToolBar.inputView = secondToolBar
         
         setUpView()
         setUpConstraint()
@@ -80,6 +116,10 @@ class DiaryViewController : UIViewController {
         setupCollectionView()
             
         }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     //MARK: - Helpers
     
@@ -106,10 +146,12 @@ class DiaryViewController : UIViewController {
         //cell 등록
         DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
-  
+    
+    //MARK: - Actions
+    @objc func toolBarBtnDidTab() {
+        print("버튼 잘 눌림")
+    }
 }
-
-
         //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
 
 extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
