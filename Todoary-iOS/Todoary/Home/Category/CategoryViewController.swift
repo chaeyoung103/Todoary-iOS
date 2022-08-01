@@ -73,6 +73,11 @@ class CategoryViewController: UIViewController {
         GetCategoryDataManager().get(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let cell = collectionView.cellForItem(at: [0,0]) as? CategoryButtonCollectionViewCell else { return }
+        currentCategory = cell
+    }
+    
     //MARK: - Action
     
     @objc
@@ -163,17 +168,12 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             
             let categoryData = categories[indexPath.row]
             
-            cell.setBtnAttribute(title: categoryData.title, color: UIColor.categoryColor[categoryData.color])
             cell.viewController = self
             cell.categoryData = categoryData
+            cell.setBtnAttribute()
             
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
             cell.addGestureRecognizer(longPress)
-            
-            if(indexPath.row == 0){
-                cell.buttonIsSelected()
-                currentCategory = cell
-            }
             
             return cell
         }else{
@@ -239,7 +239,9 @@ extension CategoryViewController{
         self.categories = result
         collectionView.reloadData()
         
-        TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
+        if(self.categories != []){
+            TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
+        }
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
@@ -247,6 +249,7 @@ extension CategoryViewController{
         case 1000:
             todoData = result.result
             tableView.reloadData()
+//            currentCategory.buttonIsSelected()
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -258,9 +261,9 @@ extension CategoryViewController{
     func checkGetTodoApiResultCode(_ cell: CategoryButtonCollectionViewCell, _ result: GetTodoModel){
         switch result.code{
         case 1000:
+            
             cell.buttonIsSelected()
             currentCategory.buttonIsNotSelected()
-            currentCategory.categoryBtn.isSelected = false
             currentCategory = cell
 
             todoData = result.result
