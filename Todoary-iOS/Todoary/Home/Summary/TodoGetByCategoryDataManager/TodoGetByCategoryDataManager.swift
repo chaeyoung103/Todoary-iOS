@@ -21,7 +21,6 @@ class TodoGetByCategoryDataManager{
             .validate().responseDecodable(of: GetTodoModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    print("성공")
                     viewController.checkGetTodoApiResultCode(result)
                 case .failure(let error):
                     print(error.localizedDescription)

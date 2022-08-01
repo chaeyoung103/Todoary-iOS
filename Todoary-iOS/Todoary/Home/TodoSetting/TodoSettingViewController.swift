@@ -198,7 +198,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
                 TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
-            self.navigationController?.popViewController(animated: true)
         }else {
             todoTitle = todo.text!
             if todoTitle == ""{
