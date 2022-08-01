@@ -30,6 +30,8 @@ class DiaryViewController : UIViewController {
         $0.textColor = .black
     }
     
+    var sendApiDate: String!
+    
     //다이어리 제목
     let diaryTitle = UITextField().then{
         $0.placeholder = "오늘의 일기"
