@@ -10,5 +10,5 @@ import Foundation
 
 class DiaryTableView : UITableView {
     static let identifier = "DiaryTableView"
-    
 }
+    
