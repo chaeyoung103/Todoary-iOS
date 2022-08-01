@@ -198,7 +198,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }else {
-                let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
+                let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categoryId: selectCategory)
                 TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
         }else {

@@ -115,6 +115,8 @@
 		ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87CC2897BB6500C34CE7 /* CategoryModifyModel.swift */; };
 		ACCD87D02897DB8C00C34CE7 /* CategoryDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87CF2897DB8C00C34CE7 /* CategoryDeleteDataManager.swift */; };
 		ACCD87D22897DB9E00C34CE7 /* CategoryDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */; };
+		ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */; };
+		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -317,6 +319,8 @@
 		ACCD87CC2897BB6500C34CE7 /* CategoryModifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModifyModel.swift; sourceTree = "<group>"; };
 		ACCD87CF2897DB8C00C34CE7 /* CategoryDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteDataManager.swift; sourceTree = "<group>"; };
 		ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteModel.swift; sourceTree = "<group>"; };
+		ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendataManager.swift; sourceTree = "<group>"; };
+		ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarModel.swift; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -873,6 +877,8 @@
 		ACCD87D32897E35B00C34CE7 /* GetCalendarDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */,
+				ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */,
 			);
 			path = GetCalendarDataManager;
 			sourceTree = "<group>";
@@ -1361,6 +1367,7 @@
 				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
+				ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
@@ -1454,6 +1461,7 @@
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
 				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
+				ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */,
 				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
