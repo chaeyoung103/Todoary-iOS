@@ -21,13 +21,13 @@ extension DiaryTabelViewCell{
     
     func setUpConstraint(){
         
-//        self.contentView.snp.makeConstraints{ make in
-//            make.leading.equalToSuperview().offset(125)
-//            make.trailing.equalToSuperview().offset(-30)
-//            make.height.equalTo(75)
-//            make.top.equalToSuperview().offset(7.5)
-//            make.bottom.equalToSuperview().offset(-7.5)
-//        }
+        self.contentView.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(31)
+            make.trailing.equalToSuperview().offset(-31)
+            make.height.equalTo(75)
+            make.top.equalToSuperview().offset(7.5)
+            make.bottom.equalToSuperview().offset(-7.5)
+        }
         
         backView.snp.makeConstraints{ make in
             make.leading.trailing.top.bottom.equalToSuperview()
@@ -56,8 +56,8 @@ extension DiaryTabelViewCell{
             make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
             make.centerY.equalToSuperview()
+            make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
         }
-        
     }
     
     func setUpViewByCase(){
