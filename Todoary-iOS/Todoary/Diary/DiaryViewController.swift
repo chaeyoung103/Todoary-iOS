@@ -78,18 +78,20 @@ class DiaryViewController : UIViewController {
         setupCollectionView()
             
         }
+    
     //MARK: - Helpers
     
     private func configure() {
         
         DiaryTableView = Todoary.DiaryTableView(frame: .zero)
+        DiaryTableView.separatorStyle = .none
         
         view.addSubview(DiaryTableView)
 
         DiaryTableView.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(125)
-                make.leading.equalToSuperview().offset(32)
-                make.width.equalTo(387)
+            make.top.equalToSuperview().offset(131.5)
+                make.leading.equalToSuperview()
+                make.width.equalToSuperview()
                 make.height.equalTo(161)
                 make.centerX.equalToSuperview()
            }
@@ -100,17 +102,17 @@ class DiaryViewController : UIViewController {
         DiaryTableView.dataSource = self
         
         //cell 등록
-        
         DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
   
 }
 
 
-        //MARK: - Helpers_UITextViewDelegate
+        //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
 
 extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //그 날짜에 있는 todo 개수만큼으로 설정하기
         2
     }
     
@@ -121,6 +123,7 @@ extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableV
         return cell
     }
 
+    //MARK: - Helpers_UITextViewDelegate
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
