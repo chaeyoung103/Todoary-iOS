@@ -9,6 +9,8 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     
+    //MARK: - UI
+    
     var navigationView : NavigationView!
 
     lazy var trashButton = UIButton().then{
@@ -27,6 +29,8 @@ class CategoryViewController: UIViewController {
     var todoData: [GetTodoInfo]! = []
     
     var categories : [GetCategoryResult] = []
+    
+    //MARK: - LifeCycle
 
     override func viewDidLoad() {
         
@@ -67,6 +71,12 @@ class CategoryViewController: UIViewController {
         
         
         //1. category 조회
+//        GetCategoryDataManager().get(self)
+        requestCategory()
+    }
+
+    
+    func requestCategory(){
         GetCategoryDataManager().get(self)
     }
     
@@ -199,6 +209,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         if(indexPath.row == categories.count){
             let ColorPickerBottomsheetVC = ColorPickerBottomsheetViewController()
             ColorPickerBottomsheetVC.modalPresentationStyle = .overFullScreen
+            ColorPickerBottomsheetVC.categoryVC = self
             self.present(ColorPickerBottomsheetVC, animated: false, completion: nil)
         }
     }

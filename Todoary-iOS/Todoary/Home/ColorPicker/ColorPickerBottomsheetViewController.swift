@@ -23,6 +23,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     private var ColorPickerBottomsheetCollectionView: ColorPickerBottomsheetCollectionView!
     
+    var categoryVC: CategoryViewController!
+    
     var allColor : [UIColor] = [.category1, .category2, .category3, .category4, .category5, .category6, .category7, .category8, .category9, .category10, .category11, .category12, .category13, .category14, .category15, .category16, .category17, .category18]
     
     // MARK: - UIComponents
@@ -68,6 +70,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.addTarget(self, action: #selector(confirmBtnDidClicked), for: .touchUpInside)
     }
     
+    //TODO: - deleteBtn 삭제, 취소 2가지 세팅
     lazy var deleteBtn = UIButton().then{
         $0.backgroundColor = .white
         $0.setTitle("취소", for: .normal)
@@ -165,13 +168,17 @@ class ColorPickerBottomsheetViewController : UIViewController {
     @objc
     func confirmBtnDidClicked(){
         
-        guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else{ return }
-        
+        guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else { return }
         guard let categoryText = categoryTextField.text else{ return }
+        
+        //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
+        if(select == [] || categoryText == ""){
+            return
+        }
+        
         let parameter = CategoryMakeInput(title: categoryText, color: select[0].row)
-        print(categoryText, parameter)
-//        CategoryMakeDataManager().categoryMakeDataManager(self, parameter)
-        print("확인")
+        
+        CategoryMakeDataManager().categoryMakeDataManager(parameter: parameter, categoryVC: categoryVC, viewController: self)
     }
 
     
@@ -193,6 +200,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     // 바텀 시트 사라지는 애니메이션
     @objc
     func hideBottomSheetAndGoBack() {
+        print("hide")
         let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding = view.safeAreaInsets.bottom
         bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
