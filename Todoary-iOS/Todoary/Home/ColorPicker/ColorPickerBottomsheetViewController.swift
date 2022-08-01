@@ -53,7 +53,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.masksToBounds = false
     }
     
-    let confirmBtn = UIButton().then{
+    lazy var confirmBtn = UIButton().then{
         $0.backgroundColor = .white
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.black, for: .normal)
@@ -65,9 +65,10 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
+        $0.addTarget(self, action: #selector(confirmBtnDidClicked), for: .touchUpInside)
     }
     
-    let deleteBtn = UIButton().then{
+    lazy var deleteBtn = UIButton().then{
         $0.backgroundColor = .white
         $0.setTitle("취소", for: .normal)
         $0.setTitleColor(.black, for: .normal)
@@ -79,6 +80,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
+        $0.addTarget(self, action: #selector(hideBottomSheetAndGoBack), for: .touchUpInside)
     }
     
     // MARK: - LifeCycle
@@ -159,6 +161,18 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
     
     //MARK: - Actions
+    
+    @objc
+    func confirmBtnDidClicked(){
+        
+        guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else{ return }
+        
+        guard let categoryText = categoryTextField.text else{ return }
+        let parameter = CategoryMakeInput(title: categoryText, color: select[0].row)
+        print(categoryText, parameter)
+//        CategoryMakeDataManager().categoryMakeDataManager(self, parameter)
+        print("확인")
+    }
 
     
     //MARK: - Helpers_BottomSheet
@@ -177,7 +191,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
     
     // 바텀 시트 사라지는 애니메이션
-    private func hideBottomSheetAndGoBack() {
+    @objc
+    func hideBottomSheetAndGoBack() {
         let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding = view.safeAreaInsets.bottom
         bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
