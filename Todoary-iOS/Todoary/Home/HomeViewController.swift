@@ -30,7 +30,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
-    var recordList : [Int] = []
+    var calendarRecord = [Int](repeating: 0, count: 32)
     
     static let bottomSheetVC = TodoListBottomSheetViewController()
     
@@ -97,7 +97,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     let year_Month = UITextField().then{
         $0.text = "1999년 7월"
         $0.textColor = .black
-        $0.font = UIFont.nbFont(type: .header)
+        $0.font = UIFont.nbFont(ofSize: 18, weight: .bold)
         $0.tintColor = .clear
         
     }
@@ -137,7 +137,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         setUpView()
         setUpConstraint()
         
-        self.initView()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
@@ -146,11 +145,15 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.year_Month.inputView = self.datePicker
         self.year_Month.inputAccessoryView = self.toolBar
         
-        GetProfileDataManager().getProfileDataManger(self)
+       
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.initView()
+        
+        GetProfileDataManager().getProfileDataManger(self)
         
         HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
         
@@ -202,7 +205,11 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         introduce.text = result.introduce
     }
     func successAPI_calendar(_ result : [Int]) {
-        recordList = result
+        if !result.isEmpty{
+            for i in 0...result.count-1{
+                calendarRecord[result[i]] = result[i]
+            }
+        }
         collectionView.reloadData()
     }
     

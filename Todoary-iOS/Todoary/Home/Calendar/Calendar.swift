@@ -51,8 +51,13 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: 43, height: 30)
+        default:
             return CGSize(width: 43, height: 42)
         }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -91,14 +96,13 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
             
-            if !recordList.isEmpty {
-                for i in 0...recordList.count-1 {
-                    if recordList[i] == indexPath.row-emptyDay {
-                        cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
-                        cell.dateLabel.textColor = .black
-                    }
+            if (indexPath.row - emptyDay) >= 1 && (indexPath.row - emptyDay) < 32 {
+                if calendarRecord[indexPath.row-emptyDay] != 0{
+                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                    cell.dateLabel.textColor = .black
                 }
             }
+            
             if self.year == year_component && self.month == month_component {
                 if today == (indexPath.row - emptyDay) {
                     collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
@@ -146,11 +150,20 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
             fatalError()
         }
-        cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
-        cell.dateLabel.textColor = .black
-        cell.dateLabel.layer.shadowRadius = 0
-        cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
-        cell.dateLabel.layer.shadowOpacity = 0
+        
+        if calendarRecord[indexPath.row-emptyDay] != 0 {
+            cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+            cell.dateLabel.textColor = .black
+            cell.dateLabel.layer.shadowRadius = 0
+            cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
+            cell.dateLabel.layer.shadowOpacity = 0
+        }else {
+            cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
+            cell.dateLabel.textColor = .black
+            cell.dateLabel.layer.shadowRadius = 0
+            cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
+            cell.dateLabel.layer.shadowOpacity = 0
+        }
     }
     
     
@@ -159,6 +172,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = components.month! - 1
         self.calculation()
         let date = cal.date(from: components)
+        calendarRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
     }
@@ -167,6 +181,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = components.month! + 1
         self.calculation()
         let date = cal.date(from: components)
+        calendarRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
     }
