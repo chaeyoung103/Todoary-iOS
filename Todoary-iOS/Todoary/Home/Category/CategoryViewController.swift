@@ -203,9 +203,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                     $0.addLetterSpacing(spacing: 0.28)
                 }
             }
-            
             return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
-            
         }else{
             return CGSize(width: 50, height: 26)
         }
@@ -217,7 +215,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let vc = ColorPickerBottomsheetViewController()
             vc.modalPresentationStyle = .overFullScreen
             vc.categoryVC = self
-//            vc.currentData = categories[indexPath.row]
             vc.deleteBtn.setTitle("취소", for: .normal)
             self.present(vc, animated: false, completion: nil)
         }
