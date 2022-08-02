@@ -108,7 +108,7 @@ class CategoryViewController: UIViewController {
 }
 
 //MARK: - TableView
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveTodoSetting{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoData.count + 1
@@ -134,20 +134,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
                 fatalError()
             }
-            cell.isUserInteractionEnabled = true
+            cell.delegate = self
             
             return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select?")
-        if(indexPath.row == tableView.numberOfRows(inSection: 0) - 1){
-            print("clicked?")
-            let vc = TodoSettingViewController()
-            vc.selectCategory = currentCategoryIndex.row
-            vc.todo.text =  "\(vc.selectCategory)"
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -157,6 +146,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
         }else{
             return true
         }
+    }
+    
+    func moveTodoSetting() {
+        let vc = TodoSettingViewController()
+        vc.selectCategory = currentCategoryIndex.row
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

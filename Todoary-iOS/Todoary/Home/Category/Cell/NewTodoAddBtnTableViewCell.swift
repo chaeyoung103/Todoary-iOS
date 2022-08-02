@@ -11,6 +11,8 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "addBtnCell"
     
+    var delegate: MoveTodoSetting?
+    
     let backView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -23,7 +25,7 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     
     lazy var addBtn = UIButton().then{
         $0.backgroundColor = .transparent
-//        $0.addTarget(self, action: #selector(addBtnDidClicked), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(addBtnDidClicked), for: .touchUpInside)
     }
     
     let addImage = UIImageView().then{
@@ -72,9 +74,14 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    @objc
-//    func addBtnDidClicked(){
-//        print("button clicked")
-//    }
+    @objc
+    func addBtnDidClicked(){
+        print("button clicked")
+        delegate?.moveTodoSetting()
+    }
     
+}
+
+protocol MoveTodoSetting{
+    func moveTodoSetting()
 }
