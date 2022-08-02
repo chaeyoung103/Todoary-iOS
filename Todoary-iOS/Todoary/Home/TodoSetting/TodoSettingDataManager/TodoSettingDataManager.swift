@@ -12,7 +12,7 @@ class TodoSettingDataManager {
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
     func todoSettingDataManager( _ viewController : TodoSettingViewController , _ parameter: TodoSettingInput) {
-        AF.request("https://todoary.com/todo", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: ProfileModel.self) { response in
+        AF.request("https://todoary.com/todo", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: TodoSettingModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code {

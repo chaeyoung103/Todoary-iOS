@@ -1,5 +1,5 @@
 //
-//  CategoryModifyDataManager.swift
+//  CategoryDeleteDataManager.swift
 //  Todoary
 //
 //  Created by 송채영 on 2022/08/01.
@@ -7,28 +7,26 @@
 
 import Alamofire
 
-class CategoryModifyDataManager {
+class CategoryDeleteDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func categoryModifyDataManager(_ viewController : ColorPickerViewController ,_ parameter: CategoryModifyInput, categoryId : Int) {
+    func categoryDeleteDataManager(_ viewController : ColorPickerViewController , categoryId : Int) {
         
         AF.request("https://todoary.com/category/\(categoryId)",
-                   method: .patch,
-                   parameters: parameter,
-                   encoder: JSONParameterEncoder.default,
+                   method: .delete,
+                   parameters: nil,
                    headers: headers)
             .validate()
-            .responseDecodable(of: CategoryModifyModel.self) { response in
+            .responseDecodable(of: CategoryDeleteModel.self) { response in
                 switch response.result {
                 case .success(let result):
                     switch result.code {
                     case 1000:
-                        print("카테고리수정성공")
+                        print("카테고리삭제성공")
+                        viewController.navigationController?.popViewController(animated: true)
                     case 2010:
                         print("유저 아이디값을 확인해주세요")
-                    case 2104:
-                        print("같은 이름의 카테고리가 이미 존재합니다")
                     case 4000:
                         let alert = DataBaseErrorAlert()
                         viewController.present(alert, animated: true, completion: nil)

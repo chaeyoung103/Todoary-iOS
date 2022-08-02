@@ -30,6 +30,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
+    var recordList : [Int] = []
+    
     static let bottomSheetVC = TodoListBottomSheetViewController()
     
     //MARK: - UIComponenets
@@ -198,6 +200,10 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
         introduce.text = result.introduce
+    }
+    func successAPI_calendar(_ result : [Int]) {
+        recordList = result
+        collectionView.reloadData()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

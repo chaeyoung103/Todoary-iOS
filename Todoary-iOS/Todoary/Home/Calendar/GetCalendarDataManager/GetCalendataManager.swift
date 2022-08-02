@@ -1,5 +1,5 @@
 //
-//  CategoryModifyDataManager.swift
+//  GetCalendataManager.swift
 //  Todoary
 //
 //  Created by 송채영 on 2022/08/01.
@@ -7,28 +7,28 @@
 
 import Alamofire
 
-class CategoryModifyDataManager {
+class GetCalendataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func categoryModifyDataManager(_ viewController : ColorPickerViewController ,_ parameter: CategoryModifyInput, categoryId : Int) {
+    func getCalendataManager(_ viewController : HomeViewController , yearMonth : String) {
         
-        AF.request("https://todoary.com/category/\(categoryId)",
-                   method: .patch,
-                   parameters: parameter,
-                   encoder: JSONParameterEncoder.default,
+        AF.request("https://todoary.com/todo/days/\(yearMonth)",
+                   method: .get,
+                   parameters: nil,
                    headers: headers)
             .validate()
-            .responseDecodable(of: CategoryModifyModel.self) { response in
+            .responseDecodable(of: GetCalendarModel.self) { response in
                 switch response.result {
                 case .success(let result):
                     switch result.code {
                     case 1000:
-                        print("카테고리수정성공")
+                        print("캘린더조회성공")
+                        viewController.successAPI_calendar(result.result)
+                    case 2005:
+                        print("유효하지 않은 회원정보입니다")
                     case 2010:
-                        print("유저 아이디값을 확인해주세요")
-                    case 2104:
-                        print("같은 이름의 카테고리가 이미 존재합니다")
+                        print("유저 아이디값을 확인해 주세요")
                     case 4000:
                         let alert = DataBaseErrorAlert()
                         viewController.present(alert, animated: true, completion: nil)

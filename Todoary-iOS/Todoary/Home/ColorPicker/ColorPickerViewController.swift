@@ -44,6 +44,7 @@ class ColorPickerViewController : UIViewController {
     
     let deleteBtn = UIButton().then{
         $0.setImage(UIImage (named: "category_trash"), for: .normal)
+        $0.addTarget(self, action: #selector(deleteBtnDidTap), for: .touchUpInside)
     }
     
     let colorview = UIView().then{
@@ -131,6 +132,11 @@ class ColorPickerViewController : UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    //카테고리 삭제 버튼 -> 카테고리 삭제 api 호출
+    @objc func deleteBtnDidTap(){
+        CategoryDeleteDataManager().categoryDeleteDataManager(self, categoryId: categoryId)
     }
     
     //MARK: - Helpers
