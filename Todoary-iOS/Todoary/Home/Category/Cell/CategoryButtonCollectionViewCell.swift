@@ -56,7 +56,7 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        categoryBtn.isSelected = false
+//        categoryBtn.isSelected = false
         categoryBtn.setTitle("", for: .normal)
         categoryBtn.setTitleColor(.transparent, for: .normal)
         categoryBtn.layer.borderColor = UIColor.transparent.cgColor

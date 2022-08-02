@@ -24,7 +24,10 @@ struct GetTodoInfo: Decodable, Equatable{
     var isAlarmEnabled: Bool
     var targetTime: String?
     var createdTime: String
-    var categories: [GetTodoCategories]
+//    var categories: [GetTodoCategories]
+    var categoryId: Int
+    var categoryTitle: String
+    var color: Int
     
     static func ==(lhs: GetTodoInfo, rhs: GetTodoInfo) -> Bool {
         return lhs.todoId == rhs.todoId
@@ -71,8 +74,8 @@ struct GetTodoInfo: Decodable, Equatable{
     }
 }
 
-struct GetTodoCategories: Decodable{
-    let id: Int
-    let title: String
-    let color: Int
-}
+//struct GetTodoCategories: Decodable{
+//    let id: Int
+//    let title: String
+//    let color: Int
+//}

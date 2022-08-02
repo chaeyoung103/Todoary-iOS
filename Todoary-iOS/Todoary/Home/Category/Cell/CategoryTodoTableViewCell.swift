@@ -155,12 +155,10 @@ class CategoryTodoTableViewCell: UITableViewCell {
     }
     
     func setCategoryData(){
-        
-        let categoryData = todoData.categories[0]
 
-        self.categoryLabel.setTitle(categoryData.title, for: .normal)
-        self.categoryLabel.layer.borderColor = UIColor.categoryColor[categoryData.color].cgColor
-        self.categoryLabel.setTitleColor( UIColor.categoryColor[categoryData.color], for: .normal)
+        self.categoryLabel.setTitle(todoData.categoryTitle, for: .normal)
+        self.categoryLabel.layer.borderColor = UIColor.categoryColor[todoData.color].cgColor
+        self.categoryLabel.setTitleColor( UIColor.categoryColor[todoData.color], for: .normal)
     }
     
     //MARK: - API
