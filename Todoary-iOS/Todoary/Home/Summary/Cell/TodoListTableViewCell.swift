@@ -146,23 +146,23 @@ class TodoListTableViewCell: UITableViewCell {
     
     func cellWillSettingWithData(){
         
-        print("확인좀",cellData,cellData.categories)
+//        print("확인좀",cellData,cellData.categories)
         
-        if(cellData.categories.count == 0){
-            guard let indexPath = getCellIndexPath() else{
-                return
-            }
-        }else{
+//        if(cellData.categories.count == 0){
+//            guard let indexPath = getCellIndexPath() else{
+//                return
+//            }
+//        }else{
             
             titleLabel.text = cellData.title
             timeLabel.text = cellData.convertTime
             checkBox.isSelected = cellData.isChecked ?? false
             setUpViewByCase()
             
-            let category = cellData.categories[0]
+//            let category = cellData.categories[0]
             
-            settingCategoryButton(title: category.title, color: UIColor.categoryColor[category.color])
-        }
+            settingCategoryButton(title: cellData.categoryTitle, color: UIColor.categoryColor[cellData.color])
+//        }
     }
     
     func settingCategoryButton(title: String, color: UIColor){
@@ -363,7 +363,15 @@ extension TodoListTableViewCell{
         
         HomeViewController.dismissBottomSheet()
         
-        navigation.pushViewController(TodoSettingViewController(), animated: true)
+        let vc = TodoSettingViewController()
+        vc.todoSettingData = TodoSettingData(todoId: cellData.todoId,
+                                             todoTitle: cellData.title,
+                                             targetDate: cellData.targetDate,
+                                             isAlarmEnabled: cellData.isAlarmEnabled,
+                                             targetTime: cellData.targetTime ?? "",
+                                             categoryId: cellData.categoryId)
+        
+        navigation.pushViewController(vc, animated: true)
     }
     
     @objc
