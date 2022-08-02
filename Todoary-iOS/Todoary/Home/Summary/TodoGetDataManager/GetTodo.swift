@@ -20,7 +20,7 @@ struct GetTodoInfo: Decodable, Equatable{
     var isPinned: Bool?
     var isChecked: Bool?
     var title: String
-    var targetDate: String?
+    var targetDate: String
     var isAlarmEnabled: Bool
     var targetTime: String?
     var createdTime: String
@@ -68,7 +68,7 @@ struct GetTodoInfo: Decodable, Equatable{
     var convertDate: String{
         
         //2022-07-24 -> 7월 24일
-        let dateArr = targetDate!.components(separatedBy: "-")
+        let dateArr = targetDate.components(separatedBy: "-")
         
         return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }
