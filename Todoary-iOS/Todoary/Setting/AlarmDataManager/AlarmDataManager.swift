@@ -8,31 +8,45 @@
 import Foundation
 import Alamofire
 
-enum AlarmType{
-    case Todoary
-    case Diary
-    case Remind
-
+enum AlarmType: String{
+    case Todoary = "users/alarm/todo"
+    case Diary = "users/alarm/diary"
+    case Remind = "users/alarm/remind"
 }
 
 class AlarmDataManager {
+    
+    func get(viewController: AlarmSettingViewController){
+        
+        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
+        
+        AF.request("https://todoary.com/users/alarm",
+                   method: .get,
+                   parameters: nil,
+                   headers: headers)
+            .validate().responseDecodable(of: GetAlarmCheckModel.self) { response in
+                switch response.result {
+                case .success(let result):
+                    switch result.code{
+                    case 1000:
+                        viewController.successApiResult(result.result)
+                        return
+                        
+                    default:
+                        let alert = DataBaseErrorAlert()
+                        viewController.present(alert, animated: true, completion: nil)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+    }
     
     func patch(cell: AlarmSettingTableViewCell, isChecked: Bool, alarmType: AlarmType){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        var url : String{
-            switch alarmType {
-            case .Todoary:
-                return "users/alarm/todo"
-            case .Diary:
-                return "users/alarm/diary"
-            case .Remind:
-                return "users/alarm/remind"
-            }
-        }
-        
-        AF.request("https://todoary.com/\(url)",
+        AF.request("https://todoary.com/\(alarmType.rawValue)",
                    method: .patch,
                    parameters: ["isChecked":isChecked],
                    encoder: JSONParameterEncoder.default,
