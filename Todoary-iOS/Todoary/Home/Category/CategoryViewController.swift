@@ -134,8 +134,20 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
                 fatalError()
             }
+            cell.isUserInteractionEnabled = true
             
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("select?")
+        if(indexPath.row == tableView.numberOfRows(inSection: 0) - 1){
+            print("clicked?")
+            let vc = TodoSettingViewController()
+            vc.selectCategory = currentCategoryIndex.row
+            vc.todo.text =  "\(vc.selectCategory)"
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
