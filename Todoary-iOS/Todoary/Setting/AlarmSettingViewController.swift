@@ -24,6 +24,13 @@ class AlarmSettingViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
+        //for view 터치시, 도움말 팝업 제거
+        let viewTapGesture = UITapGestureRecognizer()
+        viewTapGesture.delegate = self
+        
+        self.view.addGestureRecognizer(viewTapGesture)
 
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "알림"
@@ -40,16 +47,11 @@ class AlarmSettingViewController: UIViewController {
         setUpView()
         setUpConstraint()
         
-        //for view 터치시, 도움말 팝업 제거
-        let viewTapGesture = UITapGestureRecognizer()
-        viewTapGesture.delegate = self
-        self.view.addGestureRecognizer(viewTapGesture)
-        
-        self.view.backgroundColor = .white
-        
         AlarmDataManager().get(viewController: self)
         
     }
+    
+    //MARK: - Action
     
     @objc
     func showInfoMessage(_ sender: CellButtonTapGesture){
@@ -100,6 +102,7 @@ class AlarmSettingViewController: UIViewController {
     }
 }
 
+//MARK: - TableView
 extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,7 +114,6 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath) as? AlarmSettingTableViewCell else{
             return UITableViewCell()
         }
-        
         
         let tapGesture = CellButtonTapGesture(target: self, action: #selector(showInfoMessage(_:)))
         tapGesture.caller = indexPath.row
@@ -138,7 +140,6 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
         default:
             fatalError("TableViewCell Error")
         }
-        print("테이블 뷰 구성 끝")
     }
     
 }
@@ -153,6 +154,7 @@ extension AlarmSettingViewController{
     }
 }
 
+//MARK: - GestureRecognizer
 extension AlarmSettingViewController: UIGestureRecognizerDelegate{
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
