@@ -43,7 +43,7 @@
 		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
 		574A6FEE28826D30003C8F99 /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */; };
-		574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */; };
+		574A6FF028826EB5003C8F99 /* SummaryBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */; };
 		574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */; };
 		574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */; };
 		574A70402885085D003C8F99 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A703F2885085D003C8F99 /* TestViewController.swift */; };
@@ -243,7 +243,7 @@
 		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
 		574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
-		574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBottomSheetViewController.swift; sourceTree = "<group>"; };
+		574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryBottomSheetViewController.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		574A703F2885085D003C8F99 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewController.swift; path = Todoary/Home/Summary/TestViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -594,7 +594,7 @@
 				57294AB0289115F100DA2F31 /* TodoGetDataManager */,
 				57294AAB2891155600DA2F31 /* TodoDeleteDataManager */,
 				574A70432885250D003C8F99 /* Cell */,
-				574A6FEF28826EB5003C8F99 /* TodoListBottomSheetViewController.swift */,
+				574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */,
 				574A703F2885085D003C8F99 /* TestViewController.swift */,
 				574A704C28853C36003C8F99 /* UISheetPresentationControllerDetent+Private.h */,
 				574A704D28853CA8003C8F99 /* CustomSPCDetent-Bridging-Header.h */,
@@ -1389,7 +1389,7 @@
 				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
-				574A6FF028826EB5003C8F99 /* TodoListBottomSheetViewController.swift in Sources */,
+				574A6FF028826EB5003C8F99 /* SummaryBottomSheetViewController.swift in Sources */,
 				E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */,
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,

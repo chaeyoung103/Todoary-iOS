@@ -19,7 +19,7 @@ class TestViewController: UIViewController {
     
     func show(){
         
-        let viewControllerToPresent = TodoListBottomSheetViewController()
+        let viewControllerToPresent = SummaryBottomSheetViewController()
         
         viewControllerToPresent.loadViewIfNeeded()
         present(viewControllerToPresent, animated: true, completion: nil)

@@ -1,5 +1,5 @@
 //
-//  TodoListBottomSheetViewController.swift
+//  SummaryBottomSheetViewController.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/07/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoListBottomSheetViewController: UIViewController {
+class SummaryBottomSheetViewController: UIViewController {
     
     let sheetLine = UIView().then{
         $0.backgroundColor = .white
@@ -128,7 +128,7 @@ class TodoListBottomSheetViewController: UIViewController {
 }
 
 //MARK: - API
-extension TodoListBottomSheetViewController{
+extension SummaryBottomSheetViewController{
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
 
@@ -148,7 +148,7 @@ extension TodoListBottomSheetViewController{
     }
 }
 
-extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
+extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -200,7 +200,7 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 }
 
-extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
+extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
@@ -313,7 +313,7 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
 
 }
 
-extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{
+extension SummaryBottomSheetViewController: UIViewControllerTransitioningDelegate{
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         
