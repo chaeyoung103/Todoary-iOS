@@ -9,12 +9,17 @@ import UIKit
 
 class AlarmSettingViewController: UIViewController {
     
+    //MARK: - Properties
+    
     var navigationView : NavigationView!
     
     var tableView : UITableView!
     
     var currentInfoView: UIView?
     
+    var alarmData = GetAlarmCheckResult(isTodoAlarmChecked: true, isDiaryAlarmChecked: true, isRemindAlarmChecked: true)
+    
+    //MARK: - LifeCycle
 
     override func viewDidLoad() {
         
@@ -41,6 +46,8 @@ class AlarmSettingViewController: UIViewController {
         self.view.addGestureRecognizer(viewTapGesture)
         
         self.view.backgroundColor = .white
+        
+        AlarmDataManager().get(viewController: self)
         
     }
     
@@ -116,20 +123,34 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
         case 0:
             cell.alarmType = .Todoary
             cell.cellTitle.text = "Todoary 알림"
+            cell.alarmSwitch.setOn (alarmData.isTodoAlarmChecked, animated: true)
             return cell
         case 1:
             cell.alarmType = .Diary
             cell.cellTitle.text = "하루기록 알림"
+            cell.alarmSwitch.setOn(alarmData.isDiaryAlarmChecked, animated: true)
             return cell
         case 2:
             cell.alarmType = .Remind
             cell.cellTitle.text = "리마인드 알림"
+            cell.alarmSwitch.setOn(alarmData.isRemindAlarmChecked, animated: true)
             return cell
         default:
             fatalError("TableViewCell Error")
         }
+        print("테이블 뷰 구성 끝")
     }
     
+}
+
+//MARK: - API
+extension AlarmSettingViewController{
+    func successApiResult(_ resultData: GetAlarmCheckResult){
+        print("api 호출 성공")
+        print(resultData)
+        self.alarmData = resultData
+        self.tableView.reloadData()
+    }
 }
 
 extension AlarmSettingViewController: UIGestureRecognizerDelegate{
