@@ -32,7 +32,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     var recordList : [Int] = []
     
-    static let bottomSheetVC = TodoListBottomSheetViewController()
+    static let bottomSheetVC = SummaryBottomSheetViewController()
     
     //MARK: - UIComponenets
 

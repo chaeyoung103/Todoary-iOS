@@ -11,7 +11,7 @@ import Then
 
 class SignUpViewController: UIViewController {
     
-    //MARK: - UIComponenets
+    //MARK: - Properties
     
     var email: String = ""
     var certificationCode : String = ""
@@ -20,8 +20,7 @@ class SignUpViewController: UIViewController {
     var name : String = ""
     var nickname : String = ""
     
-    //agreemnetVC에서 마케팅 동의 여부 정보 넘겨받기
-    var isMarketingAgree : Bool!
+    var isMarketingAgree : Bool! //agreemnetVC에서 마케팅 동의 여부 정보 넘겨받기
     
     var isValidEmail = false{
         didSet{
@@ -58,6 +57,8 @@ class SignUpViewController: UIViewController {
             self.validateUserInput()
         }
     }
+    
+    //MARK: - UI
     
     var navigationView : NavigationView!
     
@@ -196,8 +197,7 @@ class SignUpViewController: UIViewController {
     }
     
     let nicknameCanUseLabel = UILabel().then{
-//        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
-        $0.text = "중복된 닉네임입니다."
+        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
         $0.textColor = .todoaryGrey
         $0.labelTypeSetting(type: .sub1)
     }
@@ -212,22 +212,24 @@ class SignUpViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonDidClicked(_:)), for: .touchUpInside)
     }
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
+        self.view.backgroundColor = .white
+        
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "회원가입"
         }
-        
-        self.navigationController?.navigationBar.isHidden = true
 
         setUpView()
         setUpConstraint()
         textFieldAddRecognizer()
-        
-        self.view.backgroundColor = .white
     }
+    
+    //MARK: - Helper
 
     func validateUserInput(){
         if isValidName
@@ -258,6 +260,7 @@ class SignUpViewController: UIViewController {
         nicknameTextField.addTarget(self, action: #selector(initNicknameCanUseLabel), for: .editingDidBegin)
     }
     
+    //MARK: - Action
     @objc
     func initNicknameCanUseLabel(){
         nicknameCanUseLabel.isHidden = false
@@ -271,15 +274,16 @@ class SignUpViewController: UIViewController {
         
         switch sender {
         case idTextField:
+            
             isValidEmail = text.isValidEmail()
             email = text
-            
-            //for debug
-            print(navigationView.backBtn.allTargets)
             return
+            
         case certificationTextField:
+            
             isValidCertiCode = true
             return
+            
         case pwCertificationTextField:
             
             let bool = (sender.text == passwd)
@@ -367,33 +371,26 @@ class SignUpViewController: UIViewController {
         alert.addAction(alertAction)
         
         self.present(alert, animated: true, completion: nil)
-            
     }
     
     @objc
     func nextButtonDidClicked(_ sender: UIButton){
-
         let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd, isTermsEnable: self.isMarketingAgree)
-        
         SignUpDataManager().posts(self, userData)
     }
-    
 }
 
+//MARK: - API
 extension SignUpViewController{
     
     func checkSignUpResultCode(_ code: Int){
         switch(code){
         case 1000:
-    
             self.navigationController?.popToRootViewController(animated: true)
-            
             return
         case 2017:
             return
-            
         case 2032: //닉네임 중복 오류
-
             nextButton.isEnabled = false
             nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
@@ -440,10 +437,10 @@ extension SignUpViewController{
             isValidEmail = false
             
             return
-            
         default:
             print("데이터베이스 오류")
-            
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
