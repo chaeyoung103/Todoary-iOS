@@ -11,8 +11,6 @@ class TodoCategoryCell: UICollectionViewCell {
     
     static let cellIdentifier = "todoCategoryCell"
     
-//    var delegate: CategoryButtonSelect?
-    
     var viewController: TodoSettingViewController!
     
     lazy var categoryLabel = cellPaddingLabel().then{
