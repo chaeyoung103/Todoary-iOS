@@ -103,6 +103,9 @@
 		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
 		ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */; };
+		ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE1D3E2898D9CD00B34DCC /* TodoModifyDataManager.swift */; };
+		ACAE1D412898D9DD00B34DCC /* TodoModifyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE1D402898D9DD00B34DCC /* TodoModifyInput.swift */; };
+		ACAE1D432898D9EC00B34DCC /* TodoModifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE1D422898D9EC00B34DCC /* TodoModifyModel.swift */; };
 		ACCD87B92893C43F00C34CE7 /* CategoryMakeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87B82893C43F00C34CE7 /* CategoryMakeInput.swift */; };
 		ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87BA2893C45400C34CE7 /* CategoryMakeModel.swift */; };
 		ACCD87BD2893C46D00C34CE7 /* CategoryMakeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87BC2893C46D00C34CE7 /* CategoryMakeDataManager.swift */; };
@@ -307,6 +310,9 @@
 		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
 		ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PwFindViewController+Layout.swift"; sourceTree = "<group>"; };
+		ACAE1D3E2898D9CD00B34DCC /* TodoModifyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModifyDataManager.swift; sourceTree = "<group>"; };
+		ACAE1D402898D9DD00B34DCC /* TodoModifyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModifyInput.swift; sourceTree = "<group>"; };
+		ACAE1D422898D9EC00B34DCC /* TodoModifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModifyModel.swift; sourceTree = "<group>"; };
 		ACCD87B82893C43F00C34CE7 /* CategoryMakeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeInput.swift; sourceTree = "<group>"; };
 		ACCD87BA2893C45400C34CE7 /* CategoryMakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeModel.swift; sourceTree = "<group>"; };
 		ACCD87BC2893C46D00C34CE7 /* CategoryMakeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMakeDataManager.swift; sourceTree = "<group>"; };
@@ -668,6 +674,7 @@
 		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE1D3D2898D9B200B34DCC /* TodoModifyDataManager */,
 				AC67C2DA2892903400071763 /* SetKeyboard */,
 				AC5E27EC28914E5E0056EC69 /* TodoSettingDataManager */,
 				AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */,
@@ -833,6 +840,16 @@
 				AC9859C5287DC219009FC2F8 /* MailSender.swift */,
 			);
 			path = PwFind;
+			sourceTree = "<group>";
+		};
+		ACAE1D3D2898D9B200B34DCC /* TodoModifyDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE1D3E2898D9CD00B34DCC /* TodoModifyDataManager.swift */,
+				ACAE1D402898D9DD00B34DCC /* TodoModifyInput.swift */,
+				ACAE1D422898D9EC00B34DCC /* TodoModifyModel.swift */,
+			);
+			path = TodoModifyDataManager;
 			sourceTree = "<group>";
 		};
 		ACCD87B72893C38E00C34CE7 /* CategoryMakeDataManager */ = {
@@ -1342,6 +1359,7 @@
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
 				57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
+				ACAE1D432898D9EC00B34DCC /* TodoModifyModel.swift in Sources */,
 				AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */,
 				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
@@ -1415,6 +1433,7 @@
 				E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
+				ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */,
 				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
@@ -1430,6 +1449,7 @@
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */,
 				5750364A288A3EB0006A9070 /* SignUpInput.swift in Sources */,
+				ACAE1D412898D9DD00B34DCC /* TodoModifyInput.swift in Sources */,
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
 				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
