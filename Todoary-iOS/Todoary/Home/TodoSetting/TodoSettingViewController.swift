@@ -236,9 +236,9 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             time.isHidden = false
             todoSettingData.isAlarmEnabled = true
             todoSettingData.targetTime = "08:00"
+            
             let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
             todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
-            
             todoAlarmBottomSheetVC.delegate = self
             
             self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
@@ -264,16 +264,18 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             let day : Int? = Int(result[2])
             date.setTitle(String(year ?? 2022) + "년 " + String(month ?? 08)+"월 " + String(day ?? 01) + "일", for: .normal)
             
-            //받아온 시간 형식에 맞게 변경
-            dateFormatter.dateFormat = "HH:mm"
-            dateFormatter.locale = Locale(identifier: "fr_FR")
-            
-            //string->date
-            let initTime = dateFormatter.date(from: todoSettingData.targetTime)
-            //date->string
-            dateFormatter.dateFormat = "a hh:mm"
-            dateFormatter.locale = Locale(identifier: "en_US")
-            time.setTitle(dateFormatter.string(from: initTime!), for: .normal)
+            if todoSettingData.targetTime != "" {
+                //받아온 시간 형식에 맞게 변경
+                dateFormatter.dateFormat = "HH:mm"
+                dateFormatter.locale = Locale(identifier: "fr_FR")
+                
+                //string->date
+                let initTime = dateFormatter.date(from: todoSettingData.targetTime)
+                //date->string
+                dateFormatter.dateFormat = "a hh:mm"
+                dateFormatter.locale = Locale(identifier: "en_US")
+                time.setTitle(dateFormatter.string(from: initTime!), for: .normal)
+            }
             
             //title설정
             todo.text = todoSettingData.todoTitle
