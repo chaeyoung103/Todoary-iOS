@@ -9,6 +9,8 @@ import UIKit
 
 class SummaryBottomSheetViewController: UIViewController {
     
+    //MARK: - UI
+    
     let sheetLine = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5/2
@@ -33,15 +35,15 @@ class SummaryBottomSheetViewController: UIViewController {
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = false
     
-    //todo 데이터
     var todoData : [GetTodoInfo]! = []
     
     var todayDate : ConvertDate!
     
-    //clamp cell
-    var clampCell : IndexPath = [0,-1] //default 값
+    var clampCell : IndexPath = [0,-1] //clamp cell default 값
     
     var homeNavigaiton : UINavigationController!
+    
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
     
@@ -74,6 +76,8 @@ class SummaryBottomSheetViewController: UIViewController {
         setUpSheetVC()
     }
     
+    //MARK: - Action
+    
     @objc
     func addButtonDidClicked(){
         
@@ -91,7 +95,27 @@ class SummaryBottomSheetViewController: UIViewController {
         guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
         cell.cellWillMoveOriginalPosition()
     }
+    
+    //MARK: - Helper
  
+    func getPinnedCount() -> Int{
+        
+        var count : Int = 0
+        
+        todoData.forEach{ each in
+            if (each.isPinned!) {
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func dataArraySortByPin(){
+        todoData.sort(by: {$0.createdTime < $1.createdTime})
+        todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
+        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
+    }
+
 }
 
 //MARK: - API
@@ -101,20 +125,45 @@ extension SummaryBottomSheetViewController{
 
         switch result.code{
         case 1000:
-            print("second")
             todoData = result.result
             dataArraySortByPin()
             tableView.reloadData()
             return
-            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
             return
         }
     }
+    
+    func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
+        switch code{
+        case 1000:
+            print("성공")
+            //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
+            var willChangeData = todoData[indexPath.row-1]
+            
+            willChangeData.isPinned!.toggle()
+            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
+            
+            dataArraySortByPin()
+        
+            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
+                return
+            }
+            
+            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
+            tableView.reloadData()
+            return
+            
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
+//MARK: - TableView
 extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,6 +216,7 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
 
 }
 
+//MARK: - TableViewCell Delegate
 extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
@@ -212,32 +262,6 @@ extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
         TodoPinDataManager().patch(parameter: parameter, indexPath: indexPath)
     }
     
-    func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
-        switch code{
-        case 1000:
-            print("성공")
-            //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
-            var willChangeData = todoData[indexPath.row-1]
-            
-            willChangeData.isPinned!.toggle()
-            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
-            
-            dataArraySortByPin()
-        
-            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
-                return
-            }
-            
-            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
-            tableView.reloadData()
-            
-            return
-        default:
-            let alert = DataBaseErrorAlert()
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     func cellWillClamp(_ indexPath: IndexPath){
         
         //1. 기존 고정 cell 존재 여부 점검 (row 값 -1인지 아닌지)
@@ -253,24 +277,4 @@ extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
         clampCell = indexPath
     }
-    
-    func getPinnedCount() -> Int{
-        
-        var count : Int = 0
-        
-        todoData.forEach{ each in
-            if (each.isPinned!) {
-                count += 1
-            }
-        }
-        
-        return count
-    }
-    
-    func dataArraySortByPin(){
-        todoData.sort(by: {$0.createdTime < $1.createdTime})
-        todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
-        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
-    }
-
 }
