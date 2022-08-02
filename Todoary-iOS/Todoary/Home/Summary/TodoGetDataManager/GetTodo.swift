@@ -73,9 +73,3 @@ struct GetTodoInfo: Decodable, Equatable{
         return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }
 }
-
-//struct GetTodoCategories: Decodable{
-//    let id: Int
-//    let title: String
-//    let color: Int
-//}
