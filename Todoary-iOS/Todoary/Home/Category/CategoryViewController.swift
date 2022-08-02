@@ -283,15 +283,17 @@ extension CategoryViewController{
         case 1000:
             print("여기임?")
             guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else{
+                print("첫번째 셀",currentCategoryIndex, indexPath)
                 return
             }
-            cell.buttonIsSelected()
             
             guard let preCell = collectionView.cellForItem(at: currentCategoryIndex)as? CategoryButtonCollectionViewCell else{
+                print("두번째 셀",currentCategoryIndex, indexPath)
                 return
             }
             
             print("카테고리별 조회 성공", indexPath)
+            cell.buttonIsSelected()
             preCell.buttonIsNotSelected()
 //            currentCategory = cell
             currentCategoryIndex = indexPath
