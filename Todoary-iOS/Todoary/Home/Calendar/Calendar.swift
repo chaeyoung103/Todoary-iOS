@@ -11,7 +11,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     //MARK: - UIcomponents
     func initView() {
-        
         dateFormatterYear.dateFormat = "yyyy"
         dateFormatterMonth.dateFormat = "MM"
         dateFormatterDate.dateFormat = "dd"
@@ -22,6 +21,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = cal.component(.month, from: now)
         components.day = 1
         self.calculation()
+        
+        GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: now))-\(dateFormatterMonth.string(from: now))")
         
         HomeViewController.bottomSheetVC.todayDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
     }
@@ -90,18 +91,19 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
             
+            if !recordList.isEmpty {
+                for i in 0...recordList.count-1 {
+                    if recordList[i] == indexPath.row-emptyDay {
+                        cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
+                        cell.dateLabel.textColor = .black
+                    }
+                }
+            }
             if self.year == year_component && self.month == month_component {
                 if today == (indexPath.row - emptyDay) {
                     collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
                     cell.isSelected = true
                 }
-//                else if today+1 == (indexPath.row - emptyDay) {
-//                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
-//                    cell.dateLabel.textColor = .black
-//                }else if today-1 == (indexPath.row - emptyDay) {
-//                    cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
-//                    cell.dateLabel.textColor = .black
-//                }
                 else {
                     cell.dateLabel.textColor = .black
                 }
@@ -156,12 +158,16 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     @objc func prevBtnDidTap() {
         components.month = components.month! - 1
         self.calculation()
+        let date = cal.date(from: components)
+        GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
     }
     
     @objc func nextBtnDidTap() {
         components.month = components.month! + 1
         self.calculation()
+        let date = cal.date(from: components)
+        GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
     }
     

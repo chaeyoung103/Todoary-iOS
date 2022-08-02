@@ -10,5 +10,5 @@ struct TodoSettingInput : Encodable {
     var targetDate : String
     var isAlarmEnabled : Bool
     var targetTime : String
-    var categories : [Int]
+    var categoryId : Int
 }

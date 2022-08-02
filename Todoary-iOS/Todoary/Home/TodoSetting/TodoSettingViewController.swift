@@ -11,19 +11,14 @@ import Then
 
 class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
     
-    var delegate : CategoryData!
-    
     var categoryData : [GetCategoryResult]! = []
     
     var selectCategory: Int!
     
     var dateFormatter = DateFormatter()
     var now = Date()
-    var todoTitle : String!
-    var targetDate : String!
-    var isAlarmEnabled = false
-    var targetTime = ""
-    var categories: [Int]!
+    
+    var todoSettingData : TodoSettingData!
     
     var collectionView : UICollectionView!
     
@@ -132,7 +127,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         
         //오늘날짜받아오기
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        targetDate = dateFormatter.string(from: now)
+        todoSettingData.targetDate = dateFormatter.string(from: now)
         dateFormatter.dateFormat = "yyyy"
         let year = dateFormatter.string(from: now)
         dateFormatter.dateFormat = "MM"
@@ -152,8 +147,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             $0.showsHorizontalScrollIndicator = false
             $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
         }
-        
-        
         
         setUpView()
         setUpConstraint()
@@ -190,20 +183,20 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     @objc func todocompleteBtnDidTap() {
         
         if selectCategory != nil{
-            todoTitle = todo.text!
-            if todoTitle == ""{
+            todoSettingData.todoTitle = todo.text!
+            if todoSettingData.todoTitle == ""{
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default)
                     
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }else {
-                let todoSettingInput = TodoSettingInput(title: todoTitle, targetDate: targetDate, isAlarmEnabled: isAlarmEnabled, targetTime: targetTime, categories: [selectCategory])
+                let todoSettingInput = TodoSettingInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
                 TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
         }else {
-            todoTitle = todo.text!
-            if todoTitle == ""{
+            todoSettingData.todoTitle = todo.text!
+            if todoSettingData.todoTitle == ""{
                 let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default)
                     
@@ -223,17 +216,18 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     @objc func plusBtnDidTap() {
         let colorPickerViewController = ColorPickerViewController()
         
+        colorPickerViewController.deleteBtn.isHidden = true
+        
         self.navigationController?.pushViewController(colorPickerViewController, animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
     
     //알람 uiswitch 변경 제스쳐
     @objc func onClickSwitch(sender: UISwitch) {
-
         if sender.isOn {
             time.isHidden = false
-            isAlarmEnabled = true
-            targetTime = "08:00"
+            todoSettingData.isAlarmEnabled = true
+            todoSettingData.targetTime = "08:00"
             let todoAlarmBottomSheetVC = TodoAlarmBottomSheetViewController()
             todoAlarmBottomSheetVC.modalPresentationStyle = .overFullScreen
             
@@ -242,12 +236,22 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             self.present(todoAlarmBottomSheetVC, animated: false, completion: nil)
         }else {
             time.isHidden = true
-            targetTime = ""
-            isAlarmEnabled = false
+            todoSettingData.targetTime = ""
+            todoSettingData.isAlarmEnabled = false
         }
     }
     
     //MARK: - Helpers
+    
+    //todo 정보 받아오기
+    func getTodoData(){
+        if todoSettingData != nil{
+            todo.text = todoSettingData.todoTitle
+            date.setTitle(todoSettingData.targetDate, for: .normal)
+            time.setTitle(todoSettingData.targetTime, for: .normal)
+            alarmSwitch.isOn = todoSettingData.isAlarmEnabled
+        }
+    }
     
     //카테고리 조회 api 성공
     func successAPI_category(_ result : [GetCategoryResult]) {
@@ -261,13 +265,13 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //알람 시간 받아오기
     func alarmComplete(time: String, time_api: String) {
         self.time.setTitle(time, for: .normal)
-        self.targetTime = time_api
+        self.todoSettingData.targetTime = time_api
     }
     
     //캘린더 날짜 받아오기
     func calendarComplete(date: String, date_api: String) {
         self.date.setTitle(date, for: .normal)
-        self.targetDate = date_api
+        self.todoSettingData.targetDate = date_api
     }
     
     //길게 누르기 제스쳐 -> 카테고리 수정화면
@@ -365,5 +369,14 @@ struct CategoryData {
     var id : Int
     var title : String
     var color : Int
+}
+
+struct TodoSettingData {
+    var todoId : Int
+    var todoTitle : String!
+    var targetDate : String!
+    var isAlarmEnabled = false
+    var targetTime = ""
+    var categoryId: Int
 }
     
