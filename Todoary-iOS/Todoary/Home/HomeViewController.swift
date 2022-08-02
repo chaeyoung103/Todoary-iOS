@@ -32,7 +32,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     var calendarRecord = [Int](repeating: 0, count: 32)
     
-    static let bottomSheetVC = TodoListBottomSheetViewController()
+    static let bottomSheetVC = SummaryBottomSheetViewController()
     
     //MARK: - UIComponenets
 

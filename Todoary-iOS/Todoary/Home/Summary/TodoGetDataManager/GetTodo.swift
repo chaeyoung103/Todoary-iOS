@@ -20,18 +20,16 @@ struct GetTodoInfo: Decodable, Equatable{
     var isPinned: Bool?
     var isChecked: Bool?
     var title: String
-    var targetDate: String?
+    var targetDate: String
     var isAlarmEnabled: Bool
     var targetTime: String?
     var createdTime: String
-//    var categories: [GetTodoCategories]
     var categoryId: Int
     var categoryTitle: String
     var color: Int
     
     static func ==(lhs: GetTodoInfo, rhs: GetTodoInfo) -> Bool {
         return lhs.todoId == rhs.todoId
-//        && lhs.isPinned == rhs.isPinned && lhs.isChecked == rhs.isChecked && lhs.title == rhs.title && lhs.isAlarmEnabled == rhs.isAlarmEnabled && lhs.targetTime == rhs.targetTime && lhs.createdTime == rhs.createdTime && lhs.categories == rhs.categories
     }
     
     var convertTime: String?{
@@ -53,7 +51,6 @@ struct GetTodoInfo: Decodable, Equatable{
         }else if(time < "13:00"){
             
             return "PM \(time)"
-            
         }else{
             
             startIndex = time.startIndex
@@ -66,9 +63,8 @@ struct GetTodoInfo: Decodable, Equatable{
     }
     
     var convertDate: String{
-        
         //2022-07-24 -> 7월 24일
-        let dateArr = targetDate!.components(separatedBy: "-")
+        let dateArr = targetDate.components(separatedBy: "-")
         
         return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }

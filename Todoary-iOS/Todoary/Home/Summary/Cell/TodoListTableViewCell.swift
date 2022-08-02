@@ -366,7 +366,7 @@ extension TodoListTableViewCell{
         let vc = TodoSettingViewController()
         vc.todoSettingData = TodoSettingData(todoId: cellData.todoId,
                                              todoTitle: cellData.title,
-                                             targetDate: "2022-08-02",
+                                             targetDate: cellData.targetDate,
                                              isAlarmEnabled: cellData.isAlarmEnabled,
                                              targetTime: cellData.targetTime ?? "",
                                              categoryId: cellData.categoryId)

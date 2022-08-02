@@ -1,5 +1,5 @@
 //
-//  TodoListBottomSheetViewController.swift
+//  SummaryBottomSheetViewController.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/07/16.
@@ -7,7 +7,9 @@
 
 import UIKit
 
-class TodoListBottomSheetViewController: UIViewController {
+class SummaryBottomSheetViewController: UIViewController {
+    
+    //MARK: - UI
     
     let sheetLine = UIView().then{
         $0.backgroundColor = .white
@@ -33,15 +35,15 @@ class TodoListBottomSheetViewController: UIViewController {
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = false
     
-    //todo 데이터
     var todoData : [GetTodoInfo]! = []
     
     var todayDate : ConvertDate!
     
-    //clamp cell
-    var clampCell : IndexPath = [0,-1] //default 값
+    var clampCell : IndexPath = [0,-1] //clamp cell default 값
     
     var homeNavigaiton : UINavigationController!
+    
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
     
@@ -72,40 +74,9 @@ class TodoListBottomSheetViewController: UIViewController {
         setUpView()
         setUpConstraint()
         setUpSheetVC()
-        
-        //오늘 날짜로 todo list 가져오기
-//        GetTodoDataManager().gets(todayDate.dateSendServer)
     }
     
-    func setUpView(){
-        self.view.addSubview(sheetLine)
-        self.view.addSubview(tableView)
-        self.view.addSubview(addButton)
-    }
-    
-    func setUpConstraint(){
-        
-        sheetLine.snp.makeConstraints{ make in
-            make.width.equalTo(46)
-            make.height.equalTo(5)
-            make.top.equalToSuperview().offset(12)
-            make.leading.equalToSuperview().offset(172)
-            make.trailing.equalToSuperview().offset(-172)
-        }
-        
-        tableView.snp.makeConstraints{ make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview()
-        }
-        
-        addButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(70)
-            make.bottom.equalToSuperview().offset(-52.52)
-            make.trailing.equalToSuperview().offset(-27)
-        }
-        
-    }
+    //MARK: - Action
     
     @objc
     func addButtonDidClicked(){
@@ -124,31 +95,76 @@ class TodoListBottomSheetViewController: UIViewController {
         guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
         cell.cellWillMoveOriginalPosition()
     }
+    
+    //MARK: - Helper
  
+    func getPinnedCount() -> Int{
+        
+        var count : Int = 0
+        
+        todoData.forEach{ each in
+            if (each.isPinned!) {
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func dataArraySortByPin(){
+        todoData.sort(by: {$0.createdTime < $1.createdTime})
+        todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
+        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
+    }
+
 }
 
 //MARK: - API
-extension TodoListBottomSheetViewController{
+extension SummaryBottomSheetViewController{
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
 
         switch result.code{
         case 1000:
-            print("second")
             todoData = result.result
             dataArraySortByPin()
             tableView.reloadData()
             return
-            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
             return
         }
     }
+    
+    func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
+        switch code{
+        case 1000:
+            print("성공")
+            //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
+            var willChangeData = todoData[indexPath.row-1]
+            
+            willChangeData.isPinned!.toggle()
+            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
+            
+            dataArraySortByPin()
+        
+            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
+                return
+            }
+            
+            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
+            tableView.reloadData()
+            return
+            
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
-extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
+//MARK: - TableView
+extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -200,7 +216,8 @@ extension TodoListBottomSheetViewController: UITableViewDelegate, UITableViewDat
 
 }
 
-extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
+//MARK: - TableViewCell Delegate
+extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
     
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
@@ -245,32 +262,6 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         TodoPinDataManager().patch(parameter: parameter, indexPath: indexPath)
     }
     
-    func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
-        switch code{
-        case 1000:
-            print("성공")
-            //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
-            var willChangeData = todoData[indexPath.row-1]
-            
-            willChangeData.isPinned!.toggle()
-            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
-            
-            dataArraySortByPin()
-        
-            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
-                return
-            }
-            
-            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
-            tableView.reloadData()
-            
-            return
-        default:
-            let alert = DataBaseErrorAlert()
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     func cellWillClamp(_ indexPath: IndexPath){
         
         //1. 기존 고정 cell 존재 여부 점검 (row 값 -1인지 아닌지)
@@ -286,56 +277,4 @@ extension TodoListBottomSheetViewController: SelectedTableViewCellDeliver{
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
         clampCell = indexPath
     }
-    
-    func getPinnedCount() -> Int{
-        
-        var count : Int = 0
-        
-        todoData.forEach{ each in
-            if (each.isPinned!) {
-                count += 1
-            }
-        }
-        
-        return count
-    }
-    
-    func dataArraySortByPin(){
-        todoData.sort(by: {$0.createdTime < $1.createdTime})
-        todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
-        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
-        
-//        print("정렬 제대로 된거니?")
-//        todoData.forEach{ each in
-//            print(each.isPinned, each.convertTime, each.createdTime)
-//        }
-    }
-
-}
-
-extension TodoListBottomSheetViewController: UIViewControllerTransitioningDelegate{
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
-        let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
-        
-        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
-        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
-        
-        let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2")
-        
-        controller.detents = [detent1, detent2]
-        controller.preferredCornerRadius = 30
-        controller.largestUndimmedDetentIdentifier = detentIdentifier
-        controller.prefersScrollingExpandsWhenScrolledToEdge = false
-        
-        return controller
-    }
-    
-    func setUpSheetVC(){
-        isModalInPresentation = true
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
-    }
-    
 }
