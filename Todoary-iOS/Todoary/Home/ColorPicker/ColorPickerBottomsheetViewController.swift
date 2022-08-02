@@ -12,7 +12,7 @@ import Then
 
 class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
-    var currentColorIndex : IndexPath?
+    var currentData : GetCategoryResult?
 
     //바텀시트 높이
     let bottomHeight : CGFloat = 342
@@ -71,7 +71,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     lazy var deleteBtn = UIButton().then{
         $0.backgroundColor = .white
-        $0.setTitle("취소", for: .normal)
+        $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.addLetterSpacing(spacing: 0.3)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 15, weight: .bold)
@@ -81,7 +81,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(hideBottomSheetAndGoBack), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(deleteCancelBtnDidClicked), for: .touchUpInside)
     }
     
     // MARK: - LifeCycle
@@ -95,8 +95,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if (currentColorIndex != nil){
-            ColorPickerBottomsheetCollectionView.selectItem(at: currentColorIndex, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
+        if (currentData != nil){
+            ColorPickerBottomsheetCollectionView.selectItem(at: [0,currentData!.color], animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
         }
     }
     
@@ -173,6 +173,9 @@ class ColorPickerBottomsheetViewController : UIViewController {
     func confirmBtnDidClicked(){
         
         guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else { return }
+        
+        let color = select[0].row
+        
         guard let categoryText = categoryTextField.text else{ return }
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
@@ -180,9 +183,29 @@ class ColorPickerBottomsheetViewController : UIViewController {
             return
         }
         
-        let parameter = CategoryMakeInput(title: categoryText, color: select[0].row)
-        
-        CategoryMakeDataManager().categoryMakeDataManager(parameter: parameter, categoryVC: categoryVC, viewController: self)
+        if(currentData != nil){ //카테고리 수정 API 호출
+            let parameter = CategoryModifyInput(title: categoryText, color: color)
+            
+            guard let data = currentData else { return }
+            
+            CategoryModifyDataManager().patch(categoryId: data.id, parameter: parameter, viewController: self, categoryViewController: categoryVC)
+            
+        }else{ //카테고리 생성 API 호출
+            let parameter = CategoryMakeInput(title: categoryText, color: color)
+            
+            CategoryMakeDataManager().categoryMakeDataManager(parameter: parameter, categoryVC: categoryVC, viewController: self)
+        }
+    }
+    
+    @objc
+    func deleteCancelBtnDidClicked(){
+        if(currentData != nil){
+            guard let data = currentData else { return }
+            
+            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
+        }else{
+            hideBottomSheetAndGoBack()
+        }
     }
 
     
@@ -278,6 +301,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         ColorPickerBottomsheetCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerBottomsheetCollectionViewcellid)
         
     }
+
 }
 
 //MARK: - UICollectionViewDataSource
@@ -302,7 +326,7 @@ extension ColorPickerBottomsheetViewController : UICollectionViewDelegate, UICol
         cell.colorBtnpick.layer.borderColor = UIColor.categoryColor[indexPath.row].cgColor
         
         //카테고리 수정인 경우, 초기 카테고리 값 설정 상태로 만들어주기
-        if(indexPath == currentColorIndex){
+        if(indexPath.row == currentData?.color){
             cell.colorBtnpick.isHidden = false
             cell.colorBtnpick.layer.borderWidth = 2
             cell.colorBtnpick.layer.cornerRadius = 40/2

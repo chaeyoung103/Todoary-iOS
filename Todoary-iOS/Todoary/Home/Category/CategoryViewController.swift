@@ -108,7 +108,7 @@ class CategoryViewController: UIViewController {
 }
 
 //MARK: - TableView
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveTodoSetting{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoData.count + 1
@@ -134,6 +134,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
                 fatalError()
             }
+            cell.delegate = self
             
             return cell
         }
@@ -145,6 +146,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource{
         }else{
             return true
         }
+    }
+    
+    func moveTodoSetting() {
+        let vc = TodoSettingViewController()
+        vc.selectCategory = currentCategoryIndex.row
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
@@ -210,13 +217,14 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let vc = ColorPickerBottomsheetViewController()
             vc.modalPresentationStyle = .overFullScreen
             vc.categoryVC = self
-            vc.deleteBtn.setTitle("삭제", for: .normal)
+//            vc.currentData = categories[indexPath.row]
+            vc.deleteBtn.setTitle("취소", for: .normal)
             self.present(vc, animated: false, completion: nil)
         }
     }
     
     @objc
-    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){
+    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
         
         guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
         
@@ -224,8 +232,9 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         vc.modalPresentationStyle = .overFullScreen
         
         vc.categoryVC = self
+        vc.currentData = categories[index.row]
         vc.categoryTextField.text = categories[index.row].title
-        vc.currentColorIndex = [0, categories[index.row].color]
+//        vc.currentColorIndex = [0, categories[index.row].color]
         
         self.present(vc, animated: false, completion: nil)
     }

@@ -11,6 +11,8 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "addBtnCell"
     
+    var delegate: MoveTodoSetting?
+    
     let backView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -75,6 +77,11 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     @objc
     func addBtnDidClicked(){
         print("button clicked")
+        delegate?.moveTodoSetting()
     }
     
+}
+
+protocol MoveTodoSetting{
+    func moveTodoSetting()
 }
