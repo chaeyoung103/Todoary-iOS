@@ -5,6 +5,7 @@
 //  Created by 송채영 on 2022/07/23.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 import Then
@@ -16,6 +17,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var selectCategory: Int!
     
     var dateFormatter = DateFormatter()
+    
     var now = Date()
     
     var todoSettingData : TodoSettingData!
@@ -125,19 +127,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
-        //오늘날짜받아오기
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        todoSettingData.targetDate = dateFormatter.string(from: now)
-        dateFormatter.dateFormat = "yyyy"
-        let year = dateFormatter.string(from: now)
-        dateFormatter.dateFormat = "MM"
-        let month = Int(dateFormatter.string(from: now))
-        dateFormatter.dateFormat = "dd"
-        let day = Int(dateFormatter.string(from: now))
-        
-        //날짜 초기값 설정(오늘)
-        date.setTitle(year + "년 " + String(month!) + "월 " + String(day!) + "일" , for: .normal)
-        
         GetCategoryDataManager().getCategoryDataManager(self)
         
         //카테고리 컬렉션뷰(수평스크롤)
@@ -151,6 +140,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         setUpView()
         setUpConstraint()
         setupLongGestureRecognizerOnCollection()
+        getTodoData()
         
     }
     
@@ -245,11 +235,47 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
     //todo 정보 받아오기
     func getTodoData(){
+        
         if todoSettingData != nil{
+            
+            dateFormatter.dateFormat = "HH:mm"
+            dateFormatter.locale = Locale(identifier: "fr_FR")
+            
+            let initTime = dateFormatter.date(from: todoSettingData.targetTime)
+            let result = todoSettingData.targetDate.components(separatedBy: "-")
+            
+            let year : Int? = Int(result[0])
+            let month  : Int? = Int(result[1])
+            let day : Int? = Int(result[2])
+            
+            dateFormatter.dateFormat = "a hh:mm"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            
             todo.text = todoSettingData.todoTitle
-            date.setTitle(todoSettingData.targetDate, for: .normal)
-            time.setTitle(todoSettingData.targetTime, for: .normal)
+            date.setTitle(String(year ?? 2022) + "년 " + String(month ?? 08)+"월 " + String(day ?? 01) + "일", for: .normal)
+            time.setTitle(dateFormatter.string(from: initTime!), for: .normal)
+            print(dateFormatter.string(from: initTime!))
             alarmSwitch.isOn = todoSettingData.isAlarmEnabled
+            time.isHidden = false
+            selectCategory = todoSettingData.categoryId
+            
+            collectionView?.reloadData()
+        }else {
+            todoSettingData = TodoSettingData(todoId: nil, todoTitle: "", targetDate: "", isAlarmEnabled: false, targetTime: "", categoryId: nil)
+            
+            //오늘날짜받아오기
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let today = dateFormatter.string(from: now)
+            todoSettingData.targetDate = today
+            dateFormatter.dateFormat = "yyyy"
+            let year = dateFormatter.string(from: now)
+            dateFormatter.dateFormat = "MM"
+            let month = Int(dateFormatter.string(from: now))
+            dateFormatter.dateFormat = "dd"
+            let day = Int(dateFormatter.string(from: now))
+            
+            //날짜 초기값 설정(오늘)
+            self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
         }
     }
     
@@ -324,6 +350,18 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
+        if selectCategory == categoryData[indexPath.row].id {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
+            cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
+            cell.categoryLabel.isUserInteractionEnabled = true
+        }else {
+            cell.categoryLabel.backgroundColor = .white
+            cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+            cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+            cell.categoryLabel.isUserInteractionEnabled = true
+        }
+        
         return cell
     }
     
@@ -372,11 +410,11 @@ struct CategoryData {
 }
 
 struct TodoSettingData {
-    var todoId : Int
+    var todoId : Int?
     var todoTitle : String!
     var targetDate : String!
     var isAlarmEnabled = false
     var targetTime = ""
-    var categoryId: Int
+    var categoryId: Int?
 }
     
