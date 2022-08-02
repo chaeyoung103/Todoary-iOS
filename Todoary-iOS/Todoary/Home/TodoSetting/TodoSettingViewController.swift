@@ -178,33 +178,46 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //완료버튼 누르기 -> 투두생성api 호출 및 성공 시 홈화면 이동
     @objc func todocompleteBtnDidTap() {
         
-        
-        
-        if selectCategory != nil{
-            todoSettingData.todoTitle = todo.text!
-            if todoSettingData.todoTitle == ""{
+        if todoSettingData.todoId != nil {
+            if todo.text != ""{
+                todoSettingData.todoTitle = todo.text!
+                let todoModifyInput = TodoModifyInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
+                TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId!)
+            }else{
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
-            }else {
-                let todoSettingInput = TodoSettingInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
-                TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
         }else {
-            todoSettingData.todoTitle = todo.text!
-            if todoSettingData.todoTitle == ""{
-                let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+            if selectCategory != nil{
+                todoSettingData.todoTitle = todo.text!
+                if todoSettingData.todoTitle == ""{
+                    let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }else {
+                    let todoSettingInput = TodoSettingInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
+                    TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+                }
             }else {
-                let alert = UIAlertController(title: "카테고리를 선택해주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                todoSettingData.todoTitle = todo.text!
+                if todoSettingData.todoTitle == ""{
+                    let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }else {
+                    let alert = UIAlertController(title: "카테고리를 선택해주세요", message: nil, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
+        
+        
     }
     
     //카테고리 플러스 버튼 누르기 -> 카테고리 생성 화면
