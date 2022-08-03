@@ -83,7 +83,7 @@ extension HomeViewController {
         }
         
         collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(nextMonthBtn.snp.bottom)
+            make.top.equalTo(nextMonthBtn.snp.bottom).offset(5)
             make.centerX.equalToSuperview()
             make.width.equalTo(322)
             make.bottom.equalToSuperview().offset(-300)

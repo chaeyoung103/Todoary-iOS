@@ -9,10 +9,4 @@ struct TodoSettingModel : Decodable {
     var isSuccess : Bool
     var code : Int
     var message : String
-    var result :TodoSettingResult?
-}
-
-struct TodoSettingResult : Decodable {
-    var nickname : String?
-    var introduce : String?
 }
