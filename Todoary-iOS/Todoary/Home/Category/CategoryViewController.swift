@@ -24,7 +24,7 @@ class CategoryViewController: UIViewController {
     
     var isEditingMode = false
     
-//    var currentCategory : CategoryButtonCollectionViewCell!
+    var currentCategory : CategoryButtonCollectionViewCell!
     var currentCategoryIndex : IndexPath = [0,0]
 
     var todoData: [GetTodoInfo]! = []
@@ -79,22 +79,13 @@ class CategoryViewController: UIViewController {
     @objc
     func trashButtonDidClicked(){
         
-        let leading: Int!
-        let trailing: Int!
-        
-        if(isEditingMode){
-            leading = 32
-            trailing = -30
-        }else{
-            leading = 58
-            trailing = -4
-        }
+        let leading = isEditingMode ? 32 : 58
+        let trailing = isEditingMode ? -30 : -4
         
         var i = 0
         while(i < todoData.count){
-            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else{
-                fatalError()
-            }
+            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { fatalError() }
+            
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(leading)
                 make.trailing.equalToSuperview().offset(trailing)
@@ -118,9 +109,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
         
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier) as? CategoryTodoTableViewCell else{
-                fatalError()
-            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier)
+                    as? CategoryTodoTableViewCell else { fatalError() }
             
             let cellData = todoData[indexPath.row]
             cell.settingTodoData(cellData)
@@ -129,11 +119,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
             
             return cell
             
-        } else{
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier) as? NewTodoAddBtnTableViewCell else{
-                fatalError()
-            }
+        }else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
+                    as? NewTodoAddBtnTableViewCell else { fatalError() }
             cell.delegate = self
             
             return cell
@@ -141,14 +129,10 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if(indexPath.row == todoData.count){
-            return false
-        }else{
-            return true
-        }
+        return indexPath.row == todoData.count ? false : true
     }
     
-    func moveTodoSetting() {
+    func moveTodoSettingVC() {
         let vc = TodoSettingViewController()
         vc.selectCategory = currentCategoryIndex.row
         self.navigationController?.pushViewController(vc, animated: true)
@@ -178,7 +162,9 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
             cell.addGestureRecognizer(longPress)
             
+            //처음 category 값 초기화용 코드
             if(indexPath == currentCategoryIndex){
+                currentCategory = cell
                 cell.buttonIsSelected()
             }
             
@@ -231,7 +217,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         vc.categoryVC = self
         vc.currentData = categories[index.row]
         vc.categoryTextField.text = categories[index.row].title
-//        vc.currentColorIndex = [0, categories[index.row].color]
         
         self.present(vc, animated: false, completion: nil)
     }
@@ -255,7 +240,6 @@ extension CategoryViewController{
         case 1000:
             todoData = result.result
             tableView.reloadData()
-//            currentCategory.buttonIsSelected()
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -263,50 +247,22 @@ extension CategoryViewController{
             return
         }
     }
-    /*
-    func checkGetTodoApiResultCode(_ cell: CategoryButtonCollectionViewCell, _ result: GetTodoModel){
-        switch result.code{
-        case 1000:
-            
-            cell.buttonIsSelected()
-            currentCategory.buttonIsNotSelected()
-            currentCategory = cell
-
-            todoData = result.result
-            tableView.reloadData()
-            return
-        default:
-            let alert = DataBaseErrorAlert()
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-    }
-     */
     
     func checkGetTodoApiResultCode(_ indexPath: IndexPath, _ result: GetTodoModel){
         switch result.code{
             
         case 1000:
-            print("여기임?")
-            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else{
-                print("첫번째 셀",currentCategoryIndex, indexPath)
-                return
-            }
+            guard let newCell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
+            newCell.buttonIsSelected()
             
-            guard let preCell = collectionView.cellForItem(at: currentCategoryIndex)as? CategoryButtonCollectionViewCell else{
-                print("두번째 셀",currentCategoryIndex, indexPath)
-                return
-            }
-            
-            print("카테고리별 조회 성공", indexPath)
-            cell.buttonIsSelected()
-            preCell.buttonIsNotSelected()
-//            currentCategory = cell
+            currentCategory.buttonIsNotSelected()
+            currentCategory = newCell
             currentCategoryIndex = indexPath
 
             todoData = result.result
             tableView.reloadData()
             return
+            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
