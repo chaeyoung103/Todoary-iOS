@@ -14,6 +14,10 @@ import Then
 class DiaryViewController : UIViewController {
     
     //MARK: - UIComponenets
+
+    var toolbar = DiaryToolbar().then{
+        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
+    }
     
     let contentView = UIView().then{
         $0.backgroundColor = .white
@@ -55,50 +59,16 @@ class DiaryViewController : UIViewController {
         
         let diaryText = UITextView()
         diaryText.text = textViewPlaceHolder
-        diaryText.setTextWithLineHeight(spaing: 20)
+        diaryText.setTextWithLineHeight(spaing: 25)
         diaryText.textColor = .silver_225
         diaryText.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         
         diaryText.delegate = self
+        
 
         
         return diaryText
     }()
-    
-    let firstToolBar = UIToolbar().then{
-        $0.backgroundColor = .gray
-        $0.sizeToFit()
-        $0.frame = CGRect(x: $0.frame.origin.x, y: $0.frame.origin.y, width: $0.frame.size.width, height: 46)
-        let cameraBtn = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
-        cameraBtn.tintColor = .black
-        
-        let textBtn = UIBarButtonItem(image: UIImage(named: "type"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
-        textBtn.tintColor = .black
-        
-        let stickerBtn = UIBarButtonItem(image: UIImage(named: "smile"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
-        stickerBtn.tintColor = .black
-        
-        let highlightBtn = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
-        highlightBtn.tintColor = .black
-        
-        let exitBtn = UIBarButtonItem(image: UIImage(named: "x"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
-        exitBtn.tintColor = .black
-        
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        
-        let edgeSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
-        edgeSpace.width = 15
-        
-        $0.setItems([edgeSpace, cameraBtn, space, textBtn, space, stickerBtn,space, highlightBtn,space, exitBtn, edgeSpace], animated: true)
-        $0.isUserInteractionEnabled = true
-        
-    }
-    
-    let secondToolBar = UIToolbar().then{
-        $0.backgroundColor = .gray
-        $0.sizeToFit()
-        $0.frame = CGRect(x: $0.frame.origin.x, y: $0.frame.origin.y, width: $0.frame.size.width, height: 150)
-    }
     
     //MARK: - Lifecycles
     
@@ -107,8 +77,9 @@ class DiaryViewController : UIViewController {
         super.viewDidLoad()
         
         navigationView = NavigationView(frame: .zero , self.navigationController!)
+        
         //tool바 넣어주기
-        textView.inputAccessoryView = firstToolBar
+        textView.inputAccessoryView = toolbar
         
         setUpView()
         setUpConstraint()
@@ -121,7 +92,6 @@ class DiaryViewController : UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
     
     //MARK: - Helpers
     
@@ -139,7 +109,7 @@ class DiaryViewController : UIViewController {
                 make.height.equalTo(161)
                 make.centerX.equalToSuperview()
            }
-       }
+    }
 
     private func setupCollectionView() {
         DiaryTableView.delegate = self
@@ -148,15 +118,10 @@ class DiaryViewController : UIViewController {
         //cell 등록
         DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
-    
-    //MARK: - Actions
-    @objc func toolBarBtnDidTab() {
-        firstToolBar.isHidden = true
-    }
 }
         //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
 
-extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
+extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //그 날짜에 있는 todo 개수만큼으로 설정하기
         2
@@ -174,19 +139,30 @@ extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableV
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.setTextWithLineHeight(spaing: 20)
+            textView.setTextWithLineHeight(spaing: 25)
             textView.textColor = .black
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= 275
+        }
+        
+        diaryLine.isHidden = true
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.setTextWithLineHeight(spaing: 20)
+            textView.setTextWithLineHeight(spaing: 25)
             textView.textColor = .silver_225
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
+    
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+        
+        diaryLine.isHidden = false
     }
 }
-
 
