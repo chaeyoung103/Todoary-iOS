@@ -305,7 +305,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             collectionView?.reloadData()
             
         }else { // 없을때
-            print("없긴 함")
             todoSettingData = GetTodoInfo(todoId: -1,
                                           title: "",
                                           targetDate: "",
@@ -316,15 +315,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryTitle: "",
                                           color: -1)
             
-//            guard let settingDate = todoDate else { return }
-            
             if(todoDate != nil){
-                print("받아온 날짜???")
                 date.setTitle(todoDate!.dateUsedTodo, for: .normal)
                 todoSettingData.targetDate = todoDate!.dateSendServer
             }else{
-                
-                print("오늘 날짜??")
                 //오늘날짜받아오기
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let today = dateFormatter.string(from: now)
