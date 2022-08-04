@@ -11,7 +11,7 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "addBtnCell"
     
-    var delegate: MoveTodoSetting?
+    var delegate: MoveViewController?
     
     let backView = UIView().then{
         $0.backgroundColor = .white
@@ -77,11 +77,11 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     @objc
     func addBtnDidClicked(){
         print("button clicked")
-        delegate?.moveTodoSettingVC()
+        delegate?.moveToViewController()
     }
     
 }
 
-protocol MoveTodoSetting{
-    func moveTodoSettingVC()
+protocol MoveViewController{
+    func moveToViewController()
 }

@@ -24,7 +24,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: now))-\(dateFormatterMonth.string(from: now))")
         
-        HomeViewController.bottomSheetVC.todayDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
+        HomeViewController.bottomSheetVC.todoDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
     }
 
     
@@ -140,7 +140,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         let convertDate = ConvertDate(year: year_component, month: month_component, date: days[indexPath.row])
         
-        HomeViewController.bottomSheetVC.todayDate = convertDate
+        HomeViewController.bottomSheetVC.todoDate = convertDate
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
     }
