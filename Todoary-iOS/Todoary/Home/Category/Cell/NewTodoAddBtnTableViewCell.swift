@@ -77,11 +77,11 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     @objc
     func addBtnDidClicked(){
         print("button clicked")
-        delegate?.moveTodoSetting()
+        delegate?.moveTodoSettingVC()
     }
     
 }
 
 protocol MoveTodoSetting{
-    func moveTodoSetting()
+    func moveTodoSettingVC()
 }

@@ -281,7 +281,7 @@ class SignUpViewController: UIViewController {
             
         case certificationTextField:
             
-            isValidCertiCode = true
+            isValidCertiCode = (text == UserDefaults.standard.string(forKey: "key"))
             return
             
         case pwCertificationTextField:
@@ -397,7 +397,6 @@ extension SignUpViewController{
             return
             
         default:
-            
             print("데이터 베이스 오류")
             nextButton.isEnabled = false
             
@@ -412,7 +411,6 @@ extension SignUpViewController{
     func checkEmailApiResultCode(_ code: Int){
         
         switch code {
-            
         case 1000:
             
             idCanUseLabel.text = "*사용 가능한 이메일입니다."

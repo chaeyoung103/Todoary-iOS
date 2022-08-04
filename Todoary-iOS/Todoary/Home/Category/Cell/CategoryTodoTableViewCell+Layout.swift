@@ -71,7 +71,7 @@ extension CategoryTodoTableViewCell{
         
         deleteButton.snp.makeConstraints{ make in
             make.width.height.equalTo(22)
-            make.leading.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(18.5)
             make.centerY.equalTo(backView)
         }
         
