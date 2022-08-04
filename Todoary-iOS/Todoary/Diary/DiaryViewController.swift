@@ -14,7 +14,7 @@ import Then
 class DiaryViewController : UIViewController {
     
     //MARK: - UIComponenets
-    
+
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
     }
@@ -59,11 +59,12 @@ class DiaryViewController : UIViewController {
         
         let diaryText = UITextView()
         diaryText.text = textViewPlaceHolder
-        diaryText.setTextWithLineHeight(spaing: 20)
+        diaryText.setTextWithLineHeight(spaing: 25)
         diaryText.textColor = .silver_225
         diaryText.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         
         diaryText.delegate = self
+        
 
         
         return diaryText
@@ -76,6 +77,7 @@ class DiaryViewController : UIViewController {
         super.viewDidLoad()
         
         navigationView = NavigationView(frame: .zero , self.navigationController!)
+        
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
         
@@ -90,7 +92,6 @@ class DiaryViewController : UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
     
     //MARK: - Helpers
     
@@ -108,7 +109,7 @@ class DiaryViewController : UIViewController {
                 make.height.equalTo(161)
                 make.centerX.equalToSuperview()
            }
-       }
+    }
 
     private func setupCollectionView() {
         DiaryTableView.delegate = self
@@ -120,7 +121,7 @@ class DiaryViewController : UIViewController {
 }
         //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
 
-extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
+extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //그 날짜에 있는 todo 개수만큼으로 설정하기
         2
@@ -138,19 +139,30 @@ extension DiaryViewController: UITextViewDelegate, UITableViewDelegate, UITableV
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.setTextWithLineHeight(spaing: 20)
+            textView.setTextWithLineHeight(spaing: 25)
             textView.textColor = .black
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= 275
+        }
+        
+        diaryLine.isHidden = true
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.setTextWithLineHeight(spaing: 20)
+            textView.setTextWithLineHeight(spaing: 25)
             textView.textColor = .silver_225
             textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
         }
+    
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+        
+        diaryLine.isHidden = false
     }
 }
-
 

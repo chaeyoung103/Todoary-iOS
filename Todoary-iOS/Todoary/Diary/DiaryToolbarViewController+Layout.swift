@@ -13,11 +13,6 @@ extension DiaryToolbar {
     
     func setUpView(){
         self.addSubview(backToolbar)
-        
-        self.addSubview(firstToolbar)
-        
-        self.addSubview(colorToolbar)
-        
 
     }
     
@@ -46,35 +41,30 @@ extension DiaryToolbar {
         cameraBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.centerY.equalTo(firstToolbar)
-//            make.top.equalTo(11)
             make.leading.equalTo(firstToolbar.snp.leading).offset(32)
         }
         
         textBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.centerY.equalTo(firstToolbar)
-//            make.top.equalTo(11)
             make.leading.equalTo(firstToolbar.snp.leading).offset(110)
         }
         
         stickerBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.centerY.equalTo(firstToolbar)
-//            make.top.equalTo(11)
             make.leading.equalTo(firstToolbar.snp.leading).offset(188)
         }
         
         highlightBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.centerY.equalTo(firstToolbar)
-//            make.top.equalTo(11)
             make.leading.equalTo(firstToolbar.snp.leading).offset(266)
         }
         
         exitBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
             make.centerY.equalTo(firstToolbar)
-//            make.top.equalTo(11)
             make.leading.equalTo(firstToolbar.snp.leading).offset(344)
         }
         
@@ -127,6 +117,70 @@ extension DiaryToolbar {
             make.width.height.equalTo(28)
             make.centerY.equalTo(colorToolbar)
             make.leading.equalTo(blueBtn.snp.trailing).offset(30)
+        }
+        
+        backToolbar.addSubview(textToolbar)
+        
+        textToolbar.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            make.height.equalTo(46)
+            make.top.equalToSuperview()
+        }
+
+        textToolbar.addSubview(alignLeftBtn)
+        textToolbar.addSubview(ailgnCenterBtn)
+        textToolbar.addSubview(alignRightBtn)
+        textToolbar.addSubview(fontBtn)
+        textToolbar.addSubview(strikeLineBtn)
+        textToolbar.addSubview(underLineBtn)
+        textToolbar.addSubview(boldBtn)
+
+        alignLeftBtn.snp.makeConstraints{make in
+            make.width.height.equalTo(24)
+            make.centerY.equalTo(textToolbar)
+            make.leading.equalTo(textToolbar.snp.leading).offset(33)
+        }
+
+        ailgnCenterBtn.snp.makeConstraints{ make in
+            make.width.height.equalTo(24)
+            make.centerY.equalTo(textToolbar)
+            make.leading.equalTo(alignLeftBtn.snp.trailing).offset(32)
+        }
+
+        alignRightBtn.snp.makeConstraints{make in
+            make.width.height.equalTo(24)
+            make.centerY.equalTo(textToolbar)
+            make.leading.equalTo(ailgnCenterBtn.snp.trailing).offset(32)
+        }
+        
+        fontBtn.snp.makeConstraints{make in
+            make.width.equalTo(19)
+            make.height.equalTo(22)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(alignRightBtn.snp.trailing).offset(32)
+            
+        }
+
+        strikeLineBtn.snp.makeConstraints{make in
+            make.width.equalTo(14)
+            make.height.equalTo(22)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(fontBtn.snp.trailing).offset(32)
+        }
+
+        underLineBtn.snp.makeConstraints{make in
+            make.width.equalTo(13)
+            make.height.equalTo(22)
+
+            make.centerY.equalTo(textToolbar)
+            make.leading.equalTo(strikeLineBtn.snp.trailing).offset(32)
+        }
+
+        boldBtn.snp.makeConstraints{make in
+            make.width.equalTo(14)
+            make.height.equalTo(22)
+            make.centerY.equalTo(textToolbar)
+            make.leading.equalTo(underLineBtn.snp.trailing).offset(32)
         }
     }
 }

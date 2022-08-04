@@ -12,7 +12,7 @@ import Then
 
 
 class DiaryToolbar : UIView {
-    
+
     //MARK: - UIComponenets
     
     let backToolbar = UIView().then{
@@ -24,15 +24,19 @@ class DiaryToolbar : UIView {
     }
     let textBtn = UIButton().then{
         $0.setImage(UIImage(named: "type"), for: .normal)
+        $0.addTarget(self, action: #selector(textBtnDidTab), for: .touchUpInside)
     }
     let stickerBtn = UIButton().then{
         $0.setImage(UIImage(named: "smile"), for: .normal)
     }
     let highlightBtn = UIButton().then{
         $0.setImage(UIImage(named: "edit"), for: .normal)
+        $0.addTarget(self, action: #selector(highlightBtnDidTab), for: .touchUpInside)
     }
+    
     let exitBtn = UIButton().then{
         $0.setImage(UIImage(named: "x"), for: .normal)
+        $0.addTarget(self, action: #selector(exitBtnDidTab), for: .touchUpInside)
     }
     
     let firstToolbar = UIView().then{
@@ -128,7 +132,7 @@ class DiaryToolbar : UIView {
     }
     
     let fontBtn = UIButton().then{
-        $0.setImage(UIImage(named: ""), for: .normal)
+        $0.setImage(UIImage(named: "ga"), for: .normal)
     }
     
     let strikeLineBtn = UIButton().then{
@@ -144,10 +148,10 @@ class DiaryToolbar : UIView {
     }
     
     let textToolbar = UIView().then{
-//        $0.isHidden = true
+        $0.isHidden = true
         $0.backgroundColor = .white
         $0.layer.borderColor = UIColor.silver_225.cgColor
-        $0.layer.borderWidth = 1.
+        $0.layer.borderWidth = 1
     }
     
     //MARK: - Lifecycles
@@ -167,5 +171,44 @@ class DiaryToolbar : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Helpers
+    //MARK: - BtnDidTab
+    
+    @objc func cameraBtnDidTab() {
+//        if cameraBtn.isTouchInside == true {
+//            colorToolbar.isHidden = false
+//        } else {
+//            colorToolbar.isHidden = true
+//        }
+    }
+    
+    @objc func textBtnDidTab() {
+        if textBtn.isTouchInside == true {
+            textToolbar.isHidden = false
+            colorToolbar.isHidden = true
+        } else {
+            textToolbar.isHidden = true
+        }
+    }
+//    @objc func stickerBtnDidTab() {
+//        if stickerBtn.isTouchInside == true {
+//            colorToolbar.isHidden = false
+//        } else {
+//            colorToolbar.isHidden = true
+//        }
+//    }
+    
+    @objc func highlightBtnDidTab() {
+        if highlightBtn.isTouchInside == true {
+            colorToolbar.isHidden = false
+            textToolbar.isHidden = true
+        } else {
+            colorToolbar.isHidden = true
+        }
+    }
+    
+//    @objc func exitBtnDidTab(_ sender : UIButton) {
+//        } else {
+//
+//        }
+//    }
 }
