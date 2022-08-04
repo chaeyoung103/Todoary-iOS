@@ -113,27 +113,8 @@ class CategoryViewController: UIViewController {
     }
     
     //MARK: - Helper
-//    func initTodoCellConstraint(){
-//
-//        isEditingMode = false
-//
-//        tableView.reloadData()
-//
-//        for i in 0..<tableView.numberOfRows(inSection: 0)-1{
-//            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
-//            cell.contentView.snp.updateConstraints{ make in
-//                make.leading.equalToSuperview().offset(32)
-//                make.trailing.equalToSuperview().offset(-30)
-//                cell.deleteButton.isHidden = true
-//            }
-//        }
-//    }
     
     func initTodoCellConstraint(){
-        
-//        isEditingMode = false
-        
-//        tableView.reloadData()
         
         for i in 0..<tableView.numberOfRows(inSection: 0)-1{
             guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
@@ -166,14 +147,15 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
             cell.navigation = self.navigationController
             cell.viewController = self
             
-            let leading = isEditingMode ? 32 : 58
-            let trailing = isEditingMode ? -30 : -4
+            let leading = isEditingMode ? 58 : 32
+            let trailing = isEditingMode ? -4 : -30
+            let buttonHidden = isEditingMode ? false : true
             
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(leading)
                 make.trailing.equalToSuperview().offset(trailing)
             }
-            cell.deleteButton.isHidden.toggle()
+            cell.deleteButton.isHidden = buttonHidden
             
             return cell
             
