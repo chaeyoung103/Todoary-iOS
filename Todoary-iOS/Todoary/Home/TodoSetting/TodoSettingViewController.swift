@@ -307,19 +307,19 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryTitle: "",
                                           color: -1)
             
-            //오늘날짜받아오기
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let today = dateFormatter.string(from: now)
-            todoSettingData.targetDate = today
-            dateFormatter.dateFormat = "yyyy"
-            let year = dateFormatter.string(from: now)
-            dateFormatter.dateFormat = "MM"
-            let month = Int(dateFormatter.string(from: now))
-            dateFormatter.dateFormat = "dd"
-            let day = Int(dateFormatter.string(from: now))
+//            //오늘날짜받아오기
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+//            let today = dateFormatter.string(from: now)
+//            todoSettingData.targetDate = today
+//            dateFormatter.dateFormat = "yyyy"
+//            let year = dateFormatter.string(from: now)
+//            dateFormatter.dateFormat = "MM"
+//            let month = Int(dateFormatter.string(from: now))
+//            dateFormatter.dateFormat = "dd"
+//            let day = Int(dateFormatter.string(from: now))
             
-            //날짜 초기값 설정(오늘)
-            self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
+//            //날짜 초기값 설정(오늘)
+//            self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
         }
     }
     

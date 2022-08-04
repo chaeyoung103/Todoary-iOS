@@ -48,4 +48,8 @@ struct ConvertDate{
         
         return "\(year!).\(monthString).\(dateString)"
     }
+    
+    var dateUsedTodo: String{
+        return "\(year!)년 \(month!)월 \(date!)일"
+    }
 }

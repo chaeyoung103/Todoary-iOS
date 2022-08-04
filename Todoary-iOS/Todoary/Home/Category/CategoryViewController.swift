@@ -115,7 +115,7 @@ class CategoryViewController: UIViewController {
 }
 
 //MARK: - TableView
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveTodoSetting{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoData.count + 1
@@ -145,7 +145,6 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let unIndex = tableView.numberOfRows(inSection: 0) - 1
         if(indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
             let vc = TodoSettingViewController()
             vc.todoSettingData = todoData[indexPath.row]
@@ -157,7 +156,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
         return indexPath.row == todoData.count ? false : true
     }
     
-    func moveTodoSettingVC() {
+    func moveToViewController() {
         let vc = TodoSettingViewController()
         vc.selectCategory = currentCategoryIndex.row
         self.navigationController?.pushViewController(vc, animated: true)

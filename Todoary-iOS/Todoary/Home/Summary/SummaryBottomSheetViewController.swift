@@ -35,9 +35,9 @@ class SummaryBottomSheetViewController: UIViewController {
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = false
     
-    var todoData : [GetTodoInfo]! = []
+    var todoDataList : [GetTodoInfo]! = []
     
-    var todayDate : ConvertDate!
+    var todoDate : ConvertDate!
     
     var clampCell : IndexPath = [0,-1] //clamp cell default 값
     
@@ -84,8 +84,8 @@ class SummaryBottomSheetViewController: UIViewController {
         HomeViewController.dismissBottomSheet()
         
         let vc = DiaryViewController()
-        vc.todaysDate.text = todayDate.dateUsedDiary
-        vc.sendApiDate = todayDate.dateSendServer
+        vc.todaysDate.text = todoDate.dateUsedDiary
+        vc.sendApiDate = todoDate.dateSendServer
         
         homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -102,7 +102,7 @@ class SummaryBottomSheetViewController: UIViewController {
         
         var count : Int = 0
         
-        todoData.forEach{ each in
+        todoDataList.forEach{ each in
             if (each.isPinned!) {
                 count += 1
             }
@@ -111,11 +111,21 @@ class SummaryBottomSheetViewController: UIViewController {
     }
     
     func dataArraySortByPin(){
-        todoData.sort(by: {$0.createdTime < $1.createdTime})
-        todoData.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
-        todoData.sort(by: {$0.isPinned! && !$1.isPinned!})
+        todoDataList.sort(by: {$0.createdTime < $1.createdTime})
+        todoDataList.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
+        todoDataList.sort(by: {$0.isPinned! && !$1.isPinned!})
     }
 
+}
+//MARK: - Delegate
+extension SummaryBottomSheetViewController: MoveViewController{
+    func moveToViewController() {
+        HomeViewController.dismissBottomSheet()
+        let vc = TodoSettingViewController()
+        vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
+        
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+    }
 }
 
 //MARK: - API
@@ -125,7 +135,7 @@ extension SummaryBottomSheetViewController{
 
         switch result.code{
         case 1000:
-            todoData = result.result
+            todoDataList = result.result
             dataArraySortByPin()
             tableView.reloadData()
             return
@@ -141,14 +151,14 @@ extension SummaryBottomSheetViewController{
         case 1000:
             print("성공")
             //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
-            var willChangeData = todoData[indexPath.row-1]
+            var willChangeData = todoDataList[indexPath.row-1]
             
             willChangeData.isPinned!.toggle()
-            todoData[indexPath.row-1].isPinned = willChangeData.isPinned
+            todoDataList[indexPath.row-1].isPinned = willChangeData.isPinned
             
             dataArraySortByPin()
         
-            guard let newIndex = todoData.firstIndex(of: willChangeData) else{
+            guard let newIndex = todoDataList.firstIndex(of: willChangeData) else{
                 return
             }
             
@@ -167,8 +177,7 @@ extension SummaryBottomSheetViewController{
 extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return todoData.count != 0 ? todoData.count + 3 : 4
+        return todoDataList.count != 0 ? todoDataList.count + 3 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -183,6 +192,7 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
                 fatalError()
             }
             cell.navigaiton = homeNavigaiton
+            cell.delegate = self
             return cell
         case rowCount - 2:
             cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
@@ -192,11 +202,11 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         default:
             
-            if(todoData.count != 0){
+            if(todoDataList.count != 0){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
                     fatalError()
                 }
-                let data = todoData[indexPath.row-1]
+                let data = todoDataList[indexPath.row-1]
                 cell.navigation = homeNavigaiton
                 cell.delegate = self
                 cell.cellData = data
@@ -222,12 +232,12 @@ extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
-            if(todoData.count == 1){
-                todoData = []
+            if(todoDataList.count == 1){
+                todoDataList = []
                 tableView.reloadData()
                 return
             }
-            todoData.remove(at: indexPath.row-1)
+            todoDataList.remove(at: indexPath.row-1)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             return
         default:
@@ -241,7 +251,7 @@ extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
         
         let pinnedCount: Int = getPinnedCount()
         
-        let willChangeData = todoData[indexPath.row-1]
+        let willChangeData = todoDataList[indexPath.row-1]
         let currentPin = willChangeData.isPinned!
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
