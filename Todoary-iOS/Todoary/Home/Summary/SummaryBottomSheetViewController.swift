@@ -123,6 +123,7 @@ extension SummaryBottomSheetViewController: MoveViewController{
         HomeViewController.dismissBottomSheet()
         let vc = TodoSettingViewController()
         vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
+        vc.todoDate = todoDate
         
         self.homeNavigaiton.pushViewController(vc, animated: true)
     }

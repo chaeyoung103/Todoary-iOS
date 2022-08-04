@@ -30,6 +30,9 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     
     var collectionView : UICollectionView!
     
+    //선택한 날짜 정보 가져오기
+    var todoDate : ConvertDate!
+    
     
     //MARK: - UIComponenets
     
@@ -178,8 +181,9 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //완료버튼 누르기 -> 투두생성api 호출 및 성공 시 홈화면 이동
     @objc func todocompleteBtnDidTap() {
         
-        if todoSettingData.todoId != nil {
+        if todoSettingData.todoId != -1 {
             if todo.text != ""{
+                print("수정")
                 todoSettingData.title = todo.text!
                 let todoModifyInput = TodoModifyInput(title: todoSettingData.title, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime!, categoryId: selectCategory)
                 TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
@@ -306,6 +310,9 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryId: -1,
                                           categoryTitle: "",
                                           color: -1)
+            
+            date.setTitle(todoDate.dateUsedTodo, for: .normal)
+            todoSettingData.targetDate = todoDate.dateSendServer
             
 //            //오늘날짜받아오기
 //            dateFormatter.dateFormat = "yyyy-MM-dd"
