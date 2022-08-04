@@ -34,7 +34,6 @@ struct ConvertDate{
     var dateSendServer: String{
         
         let monthString = self.month! < 10 ? "0\(month!)" : "\(month!)"
-        
         let dateString = self.date!.count < 2 ? "0\(date!)" : date!
         
         return "\(year!)-\(monthString)-\(dateString)"
@@ -43,9 +42,12 @@ struct ConvertDate{
     var dateUsedDiary: String{
         
         let monthString = self.month! < 10 ? "0\(month!)" : "\(month!)"
-        
         let dateString = self.date!.count < 2 ? "0\(date!)" : date!
         
         return "\(year!).\(monthString).\(dateString)"
+    }
+    
+    var dateUsedTodo: String{
+        return "\(year!)년 \(month!)월 \(date!)일"
     }
 }

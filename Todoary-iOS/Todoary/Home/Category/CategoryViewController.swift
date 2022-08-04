@@ -79,6 +79,8 @@ class CategoryViewController: UIViewController {
     @objc
     func trashButtonDidClicked(){
         
+        print("눌렸니?")
+        
         let leading = isEditingMode ? 32 : 58
         let trailing = isEditingMode ? -30 : -4
         
@@ -93,13 +95,29 @@ class CategoryViewController: UIViewController {
             cell.deleteButton.isHidden.toggle()
             i = i + 1
         }
+        
         isEditingMode.toggle()
+    }
+    
+    @objc
+    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
+        
+        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
+        
+        let vc = ColorPickerBottomsheetViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        vc.categoryVC = self
+        vc.currentData = categories[index.row]
+        vc.categoryTextField.text = categories[index.row].title
+        
+        self.present(vc, animated: false, completion: nil)
     }
 
 }
 
 //MARK: - TableView
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveTodoSetting{
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoData.count + 1
@@ -128,11 +146,19 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
+            let vc = TodoSettingViewController()
+            vc.todoSettingData = todoData[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row == todoData.count ? false : true
     }
     
-    func moveTodoSettingVC() {
+    func moveToViewController() {
         let vc = TodoSettingViewController()
         vc.selectCategory = currentCategoryIndex.row
         self.navigationController?.pushViewController(vc, animated: true)
@@ -151,7 +177,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? CategoryButtonCollectionViewCell else { fatalError() }
             
             let categoryData = categories[indexPath.row]
             
@@ -205,22 +232,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             self.present(vc, animated: false, completion: nil)
         }
     }
-    
-    @objc
-    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
-        
-        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
-        
-        let vc = ColorPickerBottomsheetViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        
-        vc.categoryVC = self
-        vc.currentData = categories[index.row]
-        vc.categoryTextField.text = categories[index.row].title
-        
-        self.present(vc, animated: false, completion: nil)
-    }
-    
 }
 
 //MARK: - API
@@ -262,18 +273,22 @@ extension CategoryViewController{
             todoData = result.result
             tableView.reloadData()
             return
-            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
             return
         }
     }
+    
     func checkDeleteApiResultCode(code: Int, indexPath : IndexPath){
         switch code{
         case 1000:
             todoData.remove(at: indexPath.row)
             tableView.reloadData()
+            
+            if(todoData.count == 0){
+                trashButtonDidClicked()
+            }
             return
         default:
             let alert = DataBaseErrorAlert()
