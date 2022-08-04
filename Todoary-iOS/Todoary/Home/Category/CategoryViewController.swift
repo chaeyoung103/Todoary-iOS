@@ -144,6 +144,15 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let unIndex = tableView.numberOfRows(inSection: 0) - 1
+        if(indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
+            let vc = TodoSettingViewController()
+            vc.todoSettingData = todoData[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row == todoData.count ? false : true
     }
@@ -167,7 +176,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError() }
             
             let categoryData = categories[indexPath.row]
             

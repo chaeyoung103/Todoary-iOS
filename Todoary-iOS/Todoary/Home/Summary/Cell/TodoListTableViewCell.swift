@@ -189,20 +189,23 @@ extension TodoListTableViewCell{
             if !isClamp {
                 cellWillMoveOriginalPosition()
             }else{
-                guard let indexPath = getCellIndexPath() else{
-                    fatalError("indexPath casting error")
-                }
+                guard let indexPath = getCellIndexPath() else { fatalError("indexPath casting error") }
+                
                 delegate?.cellWillClamp(indexPath)
                 
                 let clampFrame : CGRect!
                 if(frame.origin.x < 0){
-                    clampFrame = CGRect(x: -rightWidth, y: frame.origin.y,
-                                            width: bounds.size.width, height: bounds.size.height)
+                    clampFrame = CGRect(x: -rightWidth,
+                                        y: frame.origin.y,
+                                        width: bounds.size.width,
+                                        height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenRightView)
                     UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }else{
-                    clampFrame = CGRect(x: leftWidth, y: frame.origin.y,
-                                                width: bounds.size.width, height: bounds.size.height)
+                    clampFrame = CGRect(x: leftWidth,
+                                        y: frame.origin.y,
+                                        width: bounds.size.width,
+                                        height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenLeftView)
                     UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
                 }
@@ -246,7 +249,6 @@ extension TodoListTableViewCell{
      
      @indexPath : pin button 클릭한 경우에만 indexPath 전달 통해 animation 종료 후 delegate 실행 되도록 함
      */
-    
     func cellWillMoveOriginalPosition(){
         
         let originalFrame = CGRect(x: 0,
@@ -354,12 +356,7 @@ extension TodoListTableViewCell{
         HomeViewController.dismissBottomSheet()
         
         let vc = TodoSettingViewController()
-        vc.todoSettingData = TodoSettingData(todoId: cellData.todoId,
-                                             todoTitle: cellData.title,
-                                             targetDate: cellData.targetDate,
-                                             isAlarmEnabled: cellData.isAlarmEnabled,
-                                             targetTime: cellData.targetTime ?? "",
-                                             categoryId: cellData.categoryId)
+        vc.todoSettingData = cellData
         
         navigation.pushViewController(vc, animated: true)
     }
