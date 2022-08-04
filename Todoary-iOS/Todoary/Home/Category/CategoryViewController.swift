@@ -161,6 +161,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
         }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
                     as? NewTodoAddBtnTableViewCell else { fatalError() }
+            
             cell.delegate = self
             
             return cell
@@ -215,7 +216,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                 currentCategory = cell
                 cell.buttonIsSelected()
             }
-            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
