@@ -8,9 +8,6 @@
 import Foundation
 
 struct ProfileImgInput {
-//    var profile-img : UIImage?
-//
-//    enum CodingKeys: String, CodingKey{
-//        case profileImg = "profile-img"
+    
     }
 
