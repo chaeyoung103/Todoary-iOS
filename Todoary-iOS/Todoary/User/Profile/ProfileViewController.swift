@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import Photos
 
-class ProfileViewController : UIViewController {
+class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDelegate {
     
     let imagePickerController = UIImagePickerController()
     
@@ -102,6 +102,10 @@ class ProfileViewController : UIViewController {
         
         GetProfileDataManager().getProfileDataManger(self)
         
+        NotificationCenter.default.addObserver(self,
+                                            selector: #selector(textFieldDidChange(_:)),
+                                            name: UITextField.textDidChangeNotification,
+                                            object: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -112,6 +116,7 @@ class ProfileViewController : UIViewController {
     }
     
     //MARK: - Actions
+    
     @objc func imagePickerDidTab(_ sender: Any) {
         
         PhotoAuth()
@@ -158,6 +163,39 @@ class ProfileViewController : UIViewController {
     }
     
     //MARK: - Helpers
+    
+    @objc
+    private func textFieldDidChange(_ notification: Notification) {
+            if let textField = notification.object as? UITextField {
+                switch textField {
+                case nickNameTf:
+                    if let text = nickNameTf.text {
+                        if text.count > 10 {
+                            // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+                            let maxIndex = text.index(text.startIndex, offsetBy: 10)
+                            // 🪓 문자열 자르기
+                            let newString = text.substring(to: maxIndex)
+                            nickNameTf.text = newString
+                        }
+                    }
+                default:
+                    return
+                }
+            }
+        }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//            let newLength = (textField.text.characters.count)! + string.characters.count - range.length
+//            return !(newLength > 10)
+//        }
+//    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementString text: String) -> Bool {
+//        let currentText = textView.text ?? ""
+//        guard let stringRange = Range(range, in: currentText) else { return false }
+//        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+//        
+//        return changedText.count <= 31
+//    }
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
