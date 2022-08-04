@@ -125,9 +125,9 @@ class CategoryTodoTableViewCell: UITableViewCell {
         dateLabel.text = ""
         timeLabel.text = ""
         
-        alarmImage.isHidden = true
         checkBox.isSelected = false
         
+        alarmImage.removeFromSuperview()
         timeView.removeFromSuperview()
         
         categoryLabel.setTitle("", for: .normal)

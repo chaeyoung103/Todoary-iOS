@@ -10,10 +10,10 @@ import UIKit
 class InfoMessageView: UIView {
     
     let silverView = UIView().then{
-        $0.backgroundColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
+        $0.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         $0.layer.cornerRadius = 10
         $0.layer.shadowRadius = 5.0
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45).cgColor
         $0.layer.shadowOffset = CGSize(width: 0, height: 1)
         $0.layer.shadowOpacity = 0.5
         $0.layer.masksToBounds = false

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryBottomSheetViewController: UIViewController {
+class SummaryBottomViewController: UIViewController {
     
     //MARK: - UI
     
@@ -118,7 +118,7 @@ class SummaryBottomSheetViewController: UIViewController {
 
 }
 //MARK: - Delegate
-extension SummaryBottomSheetViewController: MoveViewController{
+extension SummaryBottomViewController: MoveViewController{
     func moveToViewController() {
         HomeViewController.dismissBottomSheet()
         let vc = TodoSettingViewController()
@@ -130,7 +130,7 @@ extension SummaryBottomSheetViewController: MoveViewController{
 }
 
 //MARK: - API
-extension SummaryBottomSheetViewController{
+extension SummaryBottomViewController{
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
 
@@ -175,7 +175,7 @@ extension SummaryBottomSheetViewController{
 }
 
 //MARK: - TableView
-extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewDataSource{
+extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoDataList.count != 0 ? todoDataList.count + 3 : 4
@@ -224,7 +224,7 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
 }
 
 //MARK: - TableViewCell Delegate
-extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
+extension SummaryBottomViewController: SelectedTableViewCellDeliver{
     
     func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
