@@ -79,6 +79,8 @@ class CategoryViewController: UIViewController {
     @objc
     func trashButtonDidClicked(){
         
+        print("눌렸니?")
+        
         let leading = isEditingMode ? 32 : 58
         let trailing = isEditingMode ? -30 : -4
         
@@ -175,7 +177,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? CategoryButtonCollectionViewCell else { fatalError() }
             
             let categoryData = categories[indexPath.row]
             
@@ -282,6 +285,10 @@ extension CategoryViewController{
         case 1000:
             todoData.remove(at: indexPath.row)
             tableView.reloadData()
+            
+            if(todoData.count == 0){
+                trashButtonDidClicked()
+            }
             return
         default:
             let alert = DataBaseErrorAlert()

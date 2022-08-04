@@ -31,7 +31,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var collectionView : UICollectionView!
     
     //선택한 날짜 정보 가져오기
-    var todoDate : ConvertDate!
+    var todoDate : ConvertDate?
     
     
     //MARK: - UIComponenets
@@ -185,7 +185,12 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             if todo.text != ""{
                 print("수정")
                 todoSettingData.title = todo.text!
-                let todoModifyInput = TodoModifyInput(title: todoSettingData.title, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime!, categoryId: selectCategory)
+                let todoModifyInput = TodoModifyInput(title: todoSettingData.title,
+                                                      targetDate: todoSettingData.targetDate,
+                                                      isAlarmEnabled: todoSettingData.isAlarmEnabled,
+                                                      targetTime: todoSettingData.targetTime ?? "",
+                                                      categoryId: selectCategory)
+                
                 TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
             }else{
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
@@ -205,7 +210,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                     let todoSettingInput = TodoSettingInput(title: todoSettingData.title,
                                                             targetDate: todoSettingData.targetDate,
                                                             isAlarmEnabled: todoSettingData.isAlarmEnabled,
-                                                            targetTime: todoSettingData.targetTime!,
+                                                            targetTime: todoSettingData.targetTime ?? "",
                                                             categoryId: selectCategory)
                     TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
                 }
@@ -300,7 +305,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             collectionView?.reloadData()
             
         }else { // 없을때
-            
+            print("없긴 함")
             todoSettingData = GetTodoInfo(todoId: -1,
                                           title: "",
                                           targetDate: "",
@@ -311,22 +316,29 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryTitle: "",
                                           color: -1)
             
-            date.setTitle(todoDate.dateUsedTodo, for: .normal)
-            todoSettingData.targetDate = todoDate.dateSendServer
+//            guard let settingDate = todoDate else { return }
             
-//            //오늘날짜받아오기
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//            let today = dateFormatter.string(from: now)
-//            todoSettingData.targetDate = today
-//            dateFormatter.dateFormat = "yyyy"
-//            let year = dateFormatter.string(from: now)
-//            dateFormatter.dateFormat = "MM"
-//            let month = Int(dateFormatter.string(from: now))
-//            dateFormatter.dateFormat = "dd"
-//            let day = Int(dateFormatter.string(from: now))
-            
-//            //날짜 초기값 설정(오늘)
-//            self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
+            if(todoDate != nil){
+                print("받아온 날짜???")
+                date.setTitle(todoDate!.dateUsedTodo, for: .normal)
+                todoSettingData.targetDate = todoDate!.dateSendServer
+            }else{
+                
+                print("오늘 날짜??")
+                //오늘날짜받아오기
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let today = dateFormatter.string(from: now)
+                todoSettingData.targetDate = today
+                dateFormatter.dateFormat = "yyyy"
+                let year = dateFormatter.string(from: now)
+                dateFormatter.dateFormat = "MM"
+                let month = Int(dateFormatter.string(from: now))
+                dateFormatter.dateFormat = "dd"
+                let day = Int(dateFormatter.string(from: now))
+                
+                //날짜 초기값 설정(오늘)
+                self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
+            }
         }
     }
     

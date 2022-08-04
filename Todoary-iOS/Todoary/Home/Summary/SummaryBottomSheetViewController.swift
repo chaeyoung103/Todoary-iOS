@@ -189,9 +189,8 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
         
         switch indexPath.row{
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath) as? TodoListTitleCell else{
-                fatalError()
-            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
+                    as? TodoListTitleCell else{ fatalError() }
             cell.navigaiton = homeNavigaiton
             cell.delegate = self
             return cell
@@ -202,21 +201,18 @@ extension SummaryBottomSheetViewController: UITableViewDelegate, UITableViewData
             let identifier = isDiaryExist ? DiaryCell.cellIdentifier : DiaryBannerCell.cellIdentifier
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         default:
-            
             if(todoDataList.count != 0){
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath) as? TodoListTableViewCell else{
-                    fatalError()
-                }
-                let data = todoDataList[indexPath.row-1]
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
+                        as? TodoListTableViewCell else{ fatalError() }
+
                 cell.navigation = homeNavigaiton
                 cell.delegate = self
-                cell.cellData = data
+                cell.cellData = todoDataList[indexPath.row-1]
                 cell.cellWillSettingWithData()
                 return cell
             }else{
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath) as? TodoBannerCell else{
-                    fatalError()
-                }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath)
+                        as? TodoBannerCell else{ fatalError() }
                 cell.navigation = homeNavigaiton
                 return cell
             }
@@ -280,9 +276,8 @@ extension SummaryBottomSheetViewController: SelectedTableViewCellDeliver{
             return
         }else if(clampCell.row != -1){
         //2. -1 아닐 경우 -> 이미 고정되어 있는 cell 존재 -> 고정 풀기
-            guard let cell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else{
-                return
-            }
+            guard let cell = tableView.cellForRow(at: clampCell)
+                    as? TodoListTableViewCell else{ return }
             cell.cellWillMoveOriginalPosition()
         }
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
