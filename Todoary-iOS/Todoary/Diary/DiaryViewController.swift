@@ -68,6 +68,7 @@ class DiaryViewController : UIViewController {
     let firstToolBar = UIToolbar().then{
         $0.backgroundColor = .gray
         $0.sizeToFit()
+        $0.frame = CGRect(x: $0.frame.origin.x, y: $0.frame.origin.y, width: $0.frame.size.width, height: 46)
         let cameraBtn = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(toolBarBtnDidTab))
         cameraBtn.tintColor = .black
         
@@ -96,6 +97,7 @@ class DiaryViewController : UIViewController {
     let secondToolBar = UIToolbar().then{
         $0.backgroundColor = .gray
         $0.sizeToFit()
+        $0.frame = CGRect(x: $0.frame.origin.x, y: $0.frame.origin.y, width: $0.frame.size.width, height: 150)
     }
     
     //MARK: - Lifecycles
@@ -107,7 +109,6 @@ class DiaryViewController : UIViewController {
         navigationView = NavigationView(frame: .zero , self.navigationController!)
         //tool바 넣어주기
         textView.inputAccessoryView = firstToolBar
-//        firstToolBar.inputView = secondToolBar
         
         setUpView()
         setUpConstraint()
@@ -120,6 +121,7 @@ class DiaryViewController : UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+
     
     //MARK: - Helpers
     
@@ -149,7 +151,7 @@ class DiaryViewController : UIViewController {
     
     //MARK: - Actions
     @objc func toolBarBtnDidTab() {
-        print("버튼 잘 눌림")
+        firstToolBar.isHidden = true
     }
 }
         //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
