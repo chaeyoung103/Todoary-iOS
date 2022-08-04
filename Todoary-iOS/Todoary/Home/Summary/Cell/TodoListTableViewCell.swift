@@ -146,23 +146,12 @@ class TodoListTableViewCell: UITableViewCell {
     
     func cellWillSettingWithData(){
         
-//        print("확인좀",cellData,cellData.categories)
+        titleLabel.text = cellData.title
+        timeLabel.text = cellData.convertTime
+        checkBox.isSelected = cellData.isChecked ?? false
+        setUpViewByCase()
         
-//        if(cellData.categories.count == 0){
-//            guard let indexPath = getCellIndexPath() else{
-//                return
-//            }
-//        }else{
-            
-            titleLabel.text = cellData.title
-            timeLabel.text = cellData.convertTime
-            checkBox.isSelected = cellData.isChecked ?? false
-            setUpViewByCase()
-            
-//            let category = cellData.categories[0]
-            
-            settingCategoryButton(title: cellData.categoryTitle, color: UIColor.categoryColor[cellData.color])
-//        }
+        settingCategoryButton(title: cellData.categoryTitle, color: UIColor.categoryColor[cellData.color])
     }
     
     func settingCategoryButton(title: String, color: UIColor){
@@ -339,8 +328,9 @@ extension TodoListTableViewCell{
     
     @objc
     func checkBoxDidClicked(_ sender: UIButton){
+        
         let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !sender.isSelected)
-        print(parameter.todoId, parameter.isChecked)
+        
         TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
     }
     
@@ -377,9 +367,7 @@ extension TodoListTableViewCell{
     @objc
     func deleteButtonDidClicked(_ sender : UIButton){
         
-        guard let indexPath = getCellIndexPath() else{
-            return
-        }
+        guard let indexPath = getCellIndexPath() else { return }
 
         cellWillMoveOriginalPosition()
         
@@ -389,9 +377,7 @@ extension TodoListTableViewCell{
     @objc
     func pinButtonDidClicked(_ sender : UIButton){
         
-        guard let indexPath = getCellIndexPath() else{
-            return
-        }
+        guard let indexPath = getCellIndexPath() else { return }
         
         cellWillMoveOriginalPosition(indexPath)
     }

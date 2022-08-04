@@ -93,7 +93,23 @@ class CategoryViewController: UIViewController {
             cell.deleteButton.isHidden.toggle()
             i = i + 1
         }
+        
         isEditingMode.toggle()
+    }
+    
+    @objc
+    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
+        
+        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
+        
+        let vc = ColorPickerBottomsheetViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        vc.categoryVC = self
+        vc.currentData = categories[index.row]
+        vc.categoryTextField.text = categories[index.row].title
+        
+        self.present(vc, animated: false, completion: nil)
     }
 
 }
@@ -205,22 +221,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             self.present(vc, animated: false, completion: nil)
         }
     }
-    
-    @objc
-    func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
-        
-        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
-        
-        let vc = ColorPickerBottomsheetViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        
-        vc.categoryVC = self
-        vc.currentData = categories[index.row]
-        vc.categoryTextField.text = categories[index.row].title
-        
-        self.present(vc, animated: false, completion: nil)
-    }
-    
 }
 
 //MARK: - API
@@ -262,13 +262,13 @@ extension CategoryViewController{
             todoData = result.result
             tableView.reloadData()
             return
-            
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
             return
         }
     }
+    
     func checkDeleteApiResultCode(code: Int, indexPath : IndexPath){
         switch code{
         case 1000:

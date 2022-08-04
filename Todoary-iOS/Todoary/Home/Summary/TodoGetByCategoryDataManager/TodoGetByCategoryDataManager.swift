@@ -10,9 +10,9 @@ import Alamofire
 
 class TodoGetByCategoryDataManager{
     
+    let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
+    
     func get(viewController: CategoryViewController, categoryId: Int){
-        
-        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
         AF.request("https://todoary.com/todo/category/\(categoryId)",
                    method: .get,
@@ -28,28 +28,7 @@ class TodoGetByCategoryDataManager{
             }
     }
     
-//    func get(cell: CategoryButtonCollectionViewCell, viewController: CategoryViewController, categoryId: Int){
-//
-//        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
-//
-//        AF.request("https://todoary.com/todo/category/\(categoryId)",
-//                   method: .get,
-//                   parameters: nil,
-//                   headers: headers)
-//            .validate().responseDecodable(of: GetTodoModel.self) { response in
-//                switch response.result {
-//                case .success(let result):
-//                    print("성공")
-//                    viewController.checkGetTodoApiResultCode(cell, result)
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//    }
-    
     func get(indexPath: IndexPath, viewController: CategoryViewController, categoryId: Int){
-        
-        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
         AF.request("https://todoary.com/todo/category/\(categoryId)",
                    method: .get,
