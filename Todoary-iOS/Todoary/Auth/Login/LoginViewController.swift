@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.textFieldTypeSetting(type: .body1)
         $0.font = UIFont.nbFont(type: .body2)
         $0.setPlaceholderColor()
-        $0.returnKeyType = UIReturnKeyType.join
+        $0.returnKeyType = .next
         $0.enablesReturnKeyAutomatically = true
     }
     
@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
         $0.setPlaceholderColor()
-        $0.returnKeyType = UIReturnKeyType.join
+        $0.returnKeyType = .done
         $0.enablesReturnKeyAutomatically = true
     }
 
@@ -128,14 +128,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUpView()
         setUpConstraint()
         setupData()
-        setKeyboardObserver()
         
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        UIView.animate(withDuration: 1){
+        UIView.animate(withDuration: 0.3){
             self.view.window?.frame.origin.y = 0
         }
     }
@@ -194,7 +193,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken")!)
             AuthJwtDataManager().authJwtDataManager(self,authJwt)
         }else {
-            print("refresh토큰 없음-자동로그인 아님")
+            print("자동로그인 아님")
         }
     }
     
@@ -203,9 +202,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 pwTf.becomeFirstResponder()
             } else {
                 pwTf.resignFirstResponder()
+                UIView.animate(withDuration: 0.3){
+                    self.view.window?.frame.origin.y = 0
+                }
             }
             return true
         }
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= 50
+        }
+        return true
+    }
+    
 }
 
