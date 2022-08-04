@@ -14,8 +14,6 @@ class ProfileViewController : UIViewController {
     
     let imagePickerController = UIImagePickerController()
     
-    var isphoto = false
-    
     //MARK: - UIComponenets
     
     //navigation bar
@@ -104,10 +102,15 @@ class ProfileViewController : UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 1){
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
     //MARK: - Actions
     @objc func imagePickerDidTab(_ sender: Any) {
-        
-        
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -116,12 +119,12 @@ class ProfileViewController : UIViewController {
             self.profileImage.image = UIImage(named: "profile")
         })
         let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: { [self](UIAlertAction) in
-            self.isphoto = self.PhotoAuth()
+            let authorizationStatus = PHPhotoLibrary.authorizationStatus()
             
-            if self.isphoto {
+            if self.PhotoAuth(authorizationStatus: authorizationStatus) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
-                imagePicker.delegate = self //3
+                imagePicker.delegate = self
                 self.present(imagePicker, animated: true, completion: nil)
             } else {
                 self.AuthSettingOpen(AuthString: "사진")
@@ -139,8 +142,7 @@ class ProfileViewController : UIViewController {
     @objc func confirmBtnDidTab() {
         let profileInput = ProfileInput(nickname: nickNameTf.text, introduce: introduceTf.text)
         ProfileDataManager().profileDataManager(self,profileInput)
-        print("확인버튼")
-//        let profileImg = ProfileImgInput(profileImage)
+        
         profileImgDataManager().profileImgData(self, profileImage.image!)
     }
     
@@ -161,16 +163,15 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         dismiss(animated: true, completion: nil)
     }
     
-    func PhotoAuth() -> Bool {
+    func PhotoAuth(authorizationStatus: PHAuthorizationStatus) -> Bool {
         // 포토 라이브러리 접근 권한
-        let authorizationStatus = PHPhotoLibrary.authorizationStatus()
         
         var isAuth = false
         
         switch authorizationStatus {
         case .authorized: return true // 사용자가 앱에 사진 라이브러리에 대한 액세스 권한을 명시 적으로 부여했습니다.
-        case .denied: break // 사용자가 사진 라이브러리에 대한 앱 액세스를 명시 적으로 거부했습니다.
-        case .limited: break // ?
+        case .denied: return false // 사용자가 사진 라이브러리에 대한 앱 액세스를 명시 적으로 거부했습니다.
+        case .limited: return true // 사진 선택
         case .notDetermined: // 사진 라이브러리 액세스에는 명시적인 사용자 권한이 필요하지만 사용자가 아직 이러한 권한을 부여하거나 거부하지 않았습니다
             PHPhotoLibrary.requestAuthorization { (state) in
                 if state == .authorized {
@@ -178,11 +179,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 }
             }
             return isAuth
-        case .restricted: break // 앱이 사진 라이브러리에 액세스 할 수있는 권한이 없으며 사용자는 이러한 권한을 부여 할 수 없습니다.
-        default: break
+        case .restricted: return false // 앱이 사진 라이브러리에 액세스 할 수있는 권한이 없으며 사용자는 이러한 권한을 부여 할 수 없습니다.
+        default: return false
         }
-        
-        return false;
     }
     
     func AuthSettingOpen(AuthString: String) {
@@ -204,6 +203,8 @@ extension ProfileViewController {
     func successAPI_profile(_ result : GetProfileResult) {
         nickNameTf.text = result.nickname
         introduceTf.text = result.introduce
+        let url = URL(string: result.profileImgUrl!)
+        profileImage.load(url: url!)
     }
 }
 
@@ -214,9 +215,20 @@ extension UITextView {
     }
 }
 
-class AddPaddingButtton : UIButton
-{
+class AddPaddingButtton : UIButton {
     var padding = UIEdgeInsets(top: 1.5, left: 10, bottom: 0, right: 10)
-    
- 
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

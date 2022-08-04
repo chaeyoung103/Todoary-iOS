@@ -14,8 +14,6 @@ class profileImgDataManager {
     func profileImgData(_ veiwController : ProfileViewController, _ Input: UIImage) {
         AF.upload(multipartFormData: { (multipartFormData) in
             
-            print("실행?")
-            
             if let image = Input.jpegData(compressionQuality: 0.1) {
                 multipartFormData.append(image, withName: "profile-img", fileName: "\(image).jpeg", mimeType: "image/ipeg")
             }
@@ -28,7 +26,7 @@ class profileImgDataManager {
                 switch result.code {
                     
                 case 1000 :
-                    print("사진바꾸기")
+                    print("프로필이미지변경성공")
                 case 5001 :
                     let alert = DataBaseErrorAlert()
                     veiwController.present(alert, animated: true, completion: nil)
@@ -36,10 +34,8 @@ class profileImgDataManager {
                     print(result.message)
                 }
                 print(result.message)
-                print("????????")
             case .failure(let error) :
                 print(error.localizedDescription)
-                print("!!!")
             }
         }
         
