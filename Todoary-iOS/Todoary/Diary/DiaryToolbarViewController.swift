@@ -107,6 +107,7 @@ class DiaryToolbar : UIView {
     }
     
     let colorToolbar = UIView().then{
+        $0.isHidden = true
         $0.backgroundColor = .white
         $0.layer.borderColor = UIColor.silver_225.cgColor
         $0.layer.borderWidth = 1
@@ -114,7 +115,40 @@ class DiaryToolbar : UIView {
     
     //MARK: - UIComponenets_textToolbar
     
-    let 
+    let alignLeftBtn = UIButton().then{
+        $0.setImage(UIImage(named: "align-left"), for: .normal)
+    }
+    
+    let ailgnCenterBtn = UIButton().then{
+        $0.setImage(UIImage(named: "align-center"), for: .normal)
+    }
+    
+    let alignRightBtn = UIButton().then{
+        $0.setImage(UIImage(named: "align-right"), for: .normal)
+    }
+    
+    let fontBtn = UIButton().then{
+        $0.setImage(UIImage(named: ""), for: .normal)
+    }
+    
+    let strikeLineBtn = UIButton().then{
+        $0.setImage(UIImage(named: "T"), for: .normal)
+    }
+    
+    let underLineBtn = UIButton().then{
+        $0.setImage(UIImage(named: "U"), for: .normal)
+    }
+    
+    let boldBtn = UIButton().then{
+        $0.setImage(UIImage(named: "B"), for: .normal)
+    }
+    
+    let textToolbar = UIView().then{
+//        $0.isHidden = true
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor.silver_225.cgColor
+        $0.layer.borderWidth = 1.
+    }
     
     //MARK: - Lifecycles
     
