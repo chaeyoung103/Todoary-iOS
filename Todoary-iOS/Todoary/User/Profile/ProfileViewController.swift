@@ -49,13 +49,26 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
     }
     
     let nickNameTf = UITextField().then{
-        $0.text = "일이삼사오육칠팔구십"
+        $0.text = "닉네임을 적어주세요!"
         $0.textFieldTypeSetting(type: .tableCell)
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.borderStyle = .none
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
+    }
+    
+    let nickNameCount = UILabel().then{
+        $0.text = "0/10"
+        $0.textColor = .todoaryGrey
+        $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
+    }
+    
+    let nickNameNotice = UILabel().then{
+        $0.isHidden = true
+        $0.text = "이미 사용중인 닉네임입니다."
+        $0.textColor = .todoaryGrey
+        $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
     }
     
     let introduceTitle = UILabel().then{
@@ -66,13 +79,19 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
     }
     
     let introduceTf = UITextView().then{
-        $0.text = "가가가가가가가가가가가가가가가가가가가가가ㅏ까ㅏ가가가가가"
+        $0.text = "한줄소개를 적어주세요!"
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.addLeftPadding()
         $0.textViewTypeSetting()
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
+    }
+    
+    let introduceCount = UILabel().then{
+        $0.text = "0/30"
+        $0.textColor = .todoaryGrey
+        $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
     }
     
     let confirmBtn = UIButton().then{
@@ -99,6 +118,7 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
         
         setUpView()
         setUpConstraint()
+    
         
         GetProfileDataManager().getProfileDataManger(self)
         
@@ -106,7 +126,15 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
                                             selector: #selector(textFieldDidChange(_:)),
                                             name: UITextField.textDidChangeNotification,
                                             object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                            selector: #selector(textViewDidChange(_:)),
+                                            name: UITextView.textDidChangeNotification,
+                                            object: nil)
+        
     }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -164,38 +192,54 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
     
     //MARK: - Helpers
     
-    @objc
-    private func textFieldDidChange(_ notification: Notification) {
-            if let textField = notification.object as? UITextField {
-                switch textField {
-                case nickNameTf:
-                    if let text = nickNameTf.text {
-                        if text.count > 10 {
-                            // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
-                            let maxIndex = text.index(text.startIndex, offsetBy: 10)
-                            // 🪓 문자열 자르기
-                            let newString = text.substring(to: maxIndex)
-                            nickNameTf.text = newString
-                        }
+    @objc func textFieldDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            switch textField {
+            case nickNameTf:
+                if let text = nickNameTf.text {
+                    
+                    if nickNameTf.text!.count < 11 {
+                        nickNameCount.text = "\(text.count)/10"
                     }
-                default:
-                    return
+                    
+                    if text.count >= 10 {
+                        //주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+                        let maxIndex = text.index(text.startIndex, offsetBy: 10)
+                        //문자열 자르기
+                        let newString = text.substring(to: maxIndex)
+                        nickNameTf.text = newString
+                    }
                 }
+            default:
+                return
             }
         }
+    }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//            let newLength = (textField.text.characters.count)! + string.characters.count - range.length
-//            return !(newLength > 10)
-//        }
-//    
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementString text: String) -> Bool {
-//        let currentText = textView.text ?? ""
-//        guard let stringRange = Range(range, in: currentText) else { return false }
-//        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
-//        
-//        return changedText.count <= 31
-//    }
+    @objc func textViewDidChange(_ notification: Notification) {
+        if let textView = notification.object as? UITextView {
+            switch textView {
+            case introduceTf:
+                if let text = introduceTf.text {
+                    
+                    if introduceTf.text!.count < 31 {
+                        introduceCount.text = "\(text.count)/30"
+                    }
+                    
+                    if text.count >= 30 {
+                        //주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+                        let maxIndex = text.index(text.startIndex, offsetBy: 30)
+                        //문자열 자르기
+                        let newString = text.substring(to: maxIndex)
+                        introduceTf.text = newString
+                    }
+                }
+            default:
+                return
+            }
+        }
+    }
+    
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -256,6 +300,8 @@ extension ProfileViewController {
     func successAPI_profile(_ result : GetProfileResult) {
         nickNameTf.text = result.nickname
         introduceTf.text = result.introduce
+        nickNameCount.text = "\(result.nickname!.count)/10"
+        introduceCount.text = "\(result.introduce!.count)/30"
         let url = URL(string: result.profileImgUrl!)
         profileImage.load(url: url!)
     }

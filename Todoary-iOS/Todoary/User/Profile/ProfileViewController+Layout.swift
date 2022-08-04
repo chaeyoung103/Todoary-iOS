@@ -17,8 +17,11 @@ extension ProfileViewController {
         self.view.addSubview(imagePicker)
         self.view.addSubview(nickNameTitle)
         self.view.addSubview(nickNameTf)
+        self.view.addSubview(nickNameCount)
+        self.view.addSubview(nickNameNotice)
         self.view.addSubview(introduceTitle)
         self.view.addSubview(introduceTf)
+        self.view.addSubview(introduceCount)
         self.view.addSubview(confirmBtn)
         
 
@@ -61,6 +64,18 @@ extension ProfileViewController {
             make.height.equalTo(45)
         }
         
+        nickNameCount.snp.makeConstraints{ make in
+            make.centerY.equalTo(nickNameTitle)
+            make.trailing.equalToSuperview().offset(-289)
+            make.width.equalTo(25)
+        }
+        
+        nickNameNotice.snp.makeConstraints{ make in
+            make.centerY.equalTo(nickNameTitle)
+            make.trailing.equalToSuperview().offset(-50)
+            make.width.equalTo(234)
+        }
+        
         introduceTitle.snp.makeConstraints{ make in
             make.top.equalTo(nickNameTf.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(31)
@@ -71,6 +86,12 @@ extension ProfileViewController {
             make.leading.equalToSuperview().offset(32)
             make.width.equalTo(327)
             make.height.equalTo(67)
+        }
+        
+        introduceCount.snp.makeConstraints{ make in
+            make.centerY.equalTo(introduceTitle)
+            make.trailing.equalToSuperview().offset(-67)
+            make.width.equalTo(234)
         }
         
         //button

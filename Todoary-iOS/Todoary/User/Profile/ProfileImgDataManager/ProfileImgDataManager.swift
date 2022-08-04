@@ -11,7 +11,7 @@ class profileImgDataManager {
     
     let headers : HTTPHeaders = [.contentType("multipart/form-data"),.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func profileImgData(_ veiwController : ProfileViewController, _ Input: UIImage) {
+    func profileImgData(_ viewController : ProfileViewController, _ Input: UIImage) {
         AF.upload(multipartFormData: { (multipartFormData) in
             
             if let image = Input.jpegData(compressionQuality: 0.1) {
@@ -29,11 +29,10 @@ class profileImgDataManager {
                     print("프로필이미지변경성공")
                 case 5001 :
                     let alert = DataBaseErrorAlert()
-                    veiwController.present(alert, animated: true, completion: nil)
+                    viewController.present(alert, animated: true, completion: nil)
                 default:
                     print(result.message)
                 }
-                print(result.message)
             case .failure(let error) :
                 print(error.localizedDescription)
             }
