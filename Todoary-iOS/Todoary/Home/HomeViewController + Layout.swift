@@ -65,6 +65,7 @@ extension HomeViewController {
         introduce.snp.makeConstraints{ make in
             make.top.equalTo(nickname.snp.bottom).offset(4)
             make.leading.equalTo(profileImage.snp.trailing).offset(12)
+            make.trailing.equalToSuperview().offset(-25)
         }
         
         year_Month.snp.makeConstraints{ make in
