@@ -146,6 +146,8 @@
 		E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC7287B44C90064CADA /* SettingTableViewCell.swift */; };
 		E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */; };
 		E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */; };
+		E0BF9627289B69C000895111 /* DiaryToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */; };
+		E0BF9629289B69D900895111 /* DiaryToolbarViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */; };
 		E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */; };
 		E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */; };
 		E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */; };
@@ -356,6 +358,8 @@
 		E0AB9EC7287B44C90064CADA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HolaStoryboard.storyboard; sourceTree = "<group>"; };
 		E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SsoyaStoryboard.storyboard; sourceTree = "<group>"; };
+		E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToolbarViewController.swift; sourceTree = "<group>"; };
+		E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryToolbarViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextViewController.swift; sourceTree = "<group>"; };
 		E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyTextViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UseServiceViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -1017,10 +1021,12 @@
 			isa = PBXGroup;
 			children = (
 				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
+				E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */,
 				E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */,
 				E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */,
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
+				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1379,6 +1385,7 @@
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
+				E0BF9629289B69D900895111 /* DiaryToolbarViewController+Layout.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
@@ -1471,6 +1478,7 @@
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				57294ACC28937C2C00DA2F31 /* TodoBannerCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
+				E0BF9627289B69C000895111 /* DiaryToolbarViewController.swift in Sources */,
 				ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
