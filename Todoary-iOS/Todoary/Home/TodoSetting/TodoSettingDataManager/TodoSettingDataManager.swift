@@ -18,6 +18,7 @@ class TodoSettingDataManager {
                 switch result.code {
                 case 1000:
                     print("투두생성성공")
+                    parameter.targetDate
                     viewController.navigationController?.popViewController(animated: true)
                 case 2201:
                     print("중복된 닉네임입니다")

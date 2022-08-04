@@ -357,6 +357,7 @@ extension TodoListTableViewCell{
         
         let vc = TodoSettingViewController()
         vc.todoSettingData = cellData
+        vc.selectCategory = cellData.categoryId
         
         navigation.pushViewController(vc, animated: true)
     }
