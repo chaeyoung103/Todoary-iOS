@@ -76,7 +76,6 @@ class NewTodoAddBtnTableViewCell: UITableViewCell {
     
     @objc
     func addBtnDidClicked(){
-        print("button clicked")
         delegate?.moveToViewController()
     }
     
