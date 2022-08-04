@@ -79,21 +79,18 @@ class CategoryViewController: UIViewController {
     @objc
     func trashButtonDidClicked(){
         
-        print("눌렸니?")
-        
         let leading = isEditingMode ? 32 : 58
         let trailing = isEditingMode ? -30 : -4
         
-        var i = 0
-        while(i < todoData.count){
+        for i in 0..<todoData.count{
             guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { fatalError() }
             
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(leading)
                 make.trailing.equalToSuperview().offset(trailing)
             }
+            
             cell.deleteButton.isHidden.toggle()
-            i = i + 1
         }
         
         isEditingMode.toggle()
@@ -112,6 +109,20 @@ class CategoryViewController: UIViewController {
         vc.categoryTextField.text = categories[index.row].title
         
         self.present(vc, animated: false, completion: nil)
+    }
+    
+    //MARK: - Helper
+    
+    func initTodoCellConstraint(){
+        
+        for i in 0..<tableView.numberOfRows(inSection: 0)-1{
+            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
+            cell.contentView.snp.updateConstraints{ make in
+                make.leading.equalToSuperview().offset(32)
+                make.trailing.equalToSuperview().offset(-30)
+                cell.deleteButton.isHidden = true
+            }
+        }
     }
 
 }
@@ -134,6 +145,16 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
             cell.settingTodoData(cellData)
             cell.navigation = self.navigationController
             cell.viewController = self
+            
+            let leading = isEditingMode ? 58 : 32
+            let trailing = isEditingMode ? -4 : -30
+            let buttonHidden = isEditingMode ? false : true
+            
+            cell.contentView.snp.updateConstraints{ make in
+                make.leading.equalToSuperview().offset(leading)
+                make.trailing.equalToSuperview().offset(trailing)
+            }
+            cell.deleteButton.isHidden = buttonHidden
             
             return cell
             
@@ -263,6 +284,9 @@ extension CategoryViewController{
         switch result.code{
             
         case 1000:
+            
+            initTodoCellConstraint()
+            
             guard let newCell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
             newCell.buttonIsSelected()
             
@@ -285,9 +309,8 @@ extension CategoryViewController{
         case 1000:
             todoData.remove(at: indexPath.row)
             tableView.reloadData()
-            
             if(todoData.count == 0){
-                trashButtonDidClicked()
+                isEditingMode = false
             }
             return
         default:
