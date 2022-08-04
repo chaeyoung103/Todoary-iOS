@@ -203,6 +203,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
         introduce.text = result.introduce
+        let url = URL(string: result.profileImgUrl!)
+        profileImage.load(url: url!)
     }
     func successAPI_calendar(_ result : [Int]) {
         if !result.isEmpty{
@@ -237,4 +239,18 @@ class paddingLabel: UILabel {
             
             return contentSize
         }
+}
+
+extension UIButton {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.setImage(image, for: .normal)
+                    }
+                }
+            }
+        }
+    }
 }

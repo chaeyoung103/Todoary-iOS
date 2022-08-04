@@ -94,6 +94,9 @@ class AccountViewController : UIViewController {
         setUpView()
         setUpConstraint()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         GetProfileDataManager().getProfileDataManger(self)
     }
     
@@ -146,6 +149,8 @@ class AccountViewController : UIViewController {
         nickName.text = result.nickname
         introduce.text = result.introduce
         userAccount.text = result.email
+        let url = URL(string: result.profileImgUrl!)
+        profileImage.load(url: url!)
     }
     
     func deleteApiResultCode(_ result: Int){
