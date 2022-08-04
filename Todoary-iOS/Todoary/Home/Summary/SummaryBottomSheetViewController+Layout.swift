@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension SummaryBottomSheetViewController{
+extension SummaryBottomViewController{
     
     func setUpView(){
         self.view.addSubview(sheetLine)
@@ -39,7 +39,7 @@ extension SummaryBottomSheetViewController{
     }
 }
 
-extension SummaryBottomSheetViewController: UIViewControllerTransitioningDelegate{
+extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         

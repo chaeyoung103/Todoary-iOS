@@ -63,6 +63,7 @@ class CategoryViewController: UIViewController {
             $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
+            $0.register(NoTodoTableViewCell.self, forCellReuseIdentifier: NoTodoTableViewCell.cellIdentifier)
             $0.register(NewTodoAddBtnTableViewCell.self, forCellReuseIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
             
         }
@@ -131,10 +132,15 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoData.count + 1
+        return todoData.count != 0 ? todoData.count + 1 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+//        if(todoData.count == 0){
+//            let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
+//            return cell
+//        }
         
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
             
