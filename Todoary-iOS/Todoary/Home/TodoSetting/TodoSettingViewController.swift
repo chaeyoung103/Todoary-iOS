@@ -23,12 +23,15 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var now = Date()
     
     //받아올 정보가 있을때 활성화되는 투두 data
-    var todoSettingData : TodoSettingData!
+    var todoSettingData : GetTodoInfo!
     
     //받아올 정보가 없을때 활성화 되는 투두 data
-    var todoInitData : TodoSettingData!
+    var todoInitData : GetTodoInfo!
     
     var collectionView : UICollectionView!
+    
+    //선택한 날짜 정보 가져오기
+    var todoDate : ConvertDate?
     
     
     //MARK: - UIComponenets
@@ -178,11 +181,17 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //완료버튼 누르기 -> 투두생성api 호출 및 성공 시 홈화면 이동
     @objc func todocompleteBtnDidTap() {
         
-        if todoSettingData.todoId != nil {
+        if todoSettingData.todoId != -1 {
             if todo.text != ""{
-                todoSettingData.todoTitle = todo.text!
-                let todoModifyInput = TodoModifyInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
-                TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId!)
+                print("수정")
+                todoSettingData.title = todo.text!
+                let todoModifyInput = TodoModifyInput(title: todoSettingData.title,
+                                                      targetDate: todoSettingData.targetDate,
+                                                      isAlarmEnabled: todoSettingData.isAlarmEnabled,
+                                                      targetTime: todoSettingData.targetTime ?? "",
+                                                      categoryId: selectCategory)
+                
+                TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
             }else{
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default)
@@ -191,19 +200,23 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             }
         }else {
             if selectCategory != nil{
-                todoSettingData.todoTitle = todo.text!
-                if todoSettingData.todoTitle == ""{
+                todoSettingData.title = todo.text!
+                if todoSettingData.title == ""{
                     let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
                     let ok = UIAlertAction(title: "확인", style: .default)
                     alert.addAction(ok)
                     self.present(alert, animated: true, completion: nil)
                 }else {
-                    let todoSettingInput = TodoSettingInput(title: todoSettingData.todoTitle, targetDate: todoSettingData.targetDate, isAlarmEnabled: todoSettingData.isAlarmEnabled, targetTime: todoSettingData.targetTime, categoryId: selectCategory)
+                    let todoSettingInput = TodoSettingInput(title: todoSettingData.title,
+                                                            targetDate: todoSettingData.targetDate,
+                                                            isAlarmEnabled: todoSettingData.isAlarmEnabled,
+                                                            targetTime: todoSettingData.targetTime ?? "",
+                                                            categoryId: selectCategory)
                     TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
                 }
             }else {
-                todoSettingData.todoTitle = todo.text!
-                if todoSettingData.todoTitle == ""{
+                todoSettingData.title = todo.text!
+                if todoSettingData.title == ""{
                     let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
                     let ok = UIAlertAction(title: "확인", style: .default)
                     alert.addAction(ok)
@@ -264,13 +277,13 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             let day : Int? = Int(result[2])
             date.setTitle(String(year ?? 2022) + "년 " + String(month ?? 08)+"월 " + String(day ?? 01) + "일", for: .normal)
             
-            if todoSettingData.targetTime != "" {
+            if todoSettingData.targetTime != nil {
                 //받아온 시간 형식에 맞게 변경
                 dateFormatter.dateFormat = "HH:mm"
                 dateFormatter.locale = Locale(identifier: "fr_FR")
                 
                 //string->date
-                let initTime = dateFormatter.date(from: todoSettingData.targetTime)
+                let initTime = dateFormatter.date(from: todoSettingData.targetTime!)
                 //date->string
                 dateFormatter.dateFormat = "a hh:mm"
                 dateFormatter.locale = Locale(identifier: "en_US")
@@ -278,7 +291,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             }
             
             //title설정
-            todo.text = todoSettingData.todoTitle
+            todo.text = todoSettingData.title
             //알람 스위치 설정
             alarmSwitch.isOn = todoSettingData.isAlarmEnabled
             if alarmSwitch.isOn{
@@ -292,21 +305,34 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             collectionView?.reloadData()
             
         }else { // 없을때
-            todoSettingData = TodoSettingData(todoId: nil, todoTitle: "", targetDate: "", isAlarmEnabled: false, targetTime: "", categoryId: nil)
+            todoSettingData = GetTodoInfo(todoId: -1,
+                                          title: "",
+                                          targetDate: "",
+                                          isAlarmEnabled: false,
+                                          targetTime: "",
+                                          createdTime: "",
+                                          categoryId: -1,
+                                          categoryTitle: "",
+                                          color: -1)
             
-            //오늘날짜받아오기
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let today = dateFormatter.string(from: now)
-            todoSettingData.targetDate = today
-            dateFormatter.dateFormat = "yyyy"
-            let year = dateFormatter.string(from: now)
-            dateFormatter.dateFormat = "MM"
-            let month = Int(dateFormatter.string(from: now))
-            dateFormatter.dateFormat = "dd"
-            let day = Int(dateFormatter.string(from: now))
-            
-            //날짜 초기값 설정(오늘)
-            self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
+            if(todoDate != nil){
+                date.setTitle(todoDate!.dateUsedTodo, for: .normal)
+                todoSettingData.targetDate = todoDate!.dateSendServer
+            }else{
+                //오늘날짜받아오기
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let today = dateFormatter.string(from: now)
+                todoSettingData.targetDate = today
+                dateFormatter.dateFormat = "yyyy"
+                let year = dateFormatter.string(from: now)
+                dateFormatter.dateFormat = "MM"
+                let month = Int(dateFormatter.string(from: now))
+                dateFormatter.dateFormat = "dd"
+                let day = Int(dateFormatter.string(from: now))
+                
+                //날짜 초기값 설정(오늘)
+                self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
+            }
         }
     }
     
@@ -439,13 +465,3 @@ struct CategoryData {
     var title : String
     var color : Int
 }
-
-struct TodoSettingData {
-    var todoId : Int?
-    var todoTitle : String!
-    var targetDate : String!
-    var isAlarmEnabled = false
-    var targetTime = ""
-    var categoryId: Int?
-}
-    

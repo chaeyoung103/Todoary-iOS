@@ -13,6 +13,8 @@ class TodoListTitleCell: UITableViewCell {
     
     var navigaiton : UINavigationController!
     
+    var delegate: MoveViewController?
+    
     let backView = UIView().then{
         $0.backgroundColor = .transparent
     }
@@ -69,10 +71,7 @@ class TodoListTitleCell: UITableViewCell {
     
     @objc
     func addPlanButtonDidClicked(_ sender: UIButton){
-        
-        HomeViewController.dismissBottomSheet()
-        
-        navigaiton.pushViewController(TodoSettingViewController(), animated: true)
+        delegate?.moveToViewController()
     }
     
     @objc

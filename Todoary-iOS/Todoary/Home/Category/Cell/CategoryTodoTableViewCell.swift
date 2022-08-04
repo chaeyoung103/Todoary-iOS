@@ -115,12 +115,19 @@ class CategoryTodoTableViewCell: UITableViewCell {
     @objc
     func deleteButtonDidClicked(){
         
-        guard let tableView = (self.superview as? UITableView) else{
-            fatalError()
-        }
-        let indexPath = tableView.indexPath(for: self)!
+        let alert = UIAlertController(title: "TODO 삭제", message: "선택하신 TODO를 삭제하시겠습니까?", preferredStyle: .alert)
         
-        TodoDeleteDataManager().delete(viewController: self.viewController, todoId: todoData.todoId, indexPath: indexPath)
+        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let deleteBtn = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            guard let tableView = (self.superview as? UITableView) else{ fatalError() }
+            let indexPath = tableView.indexPath(for: self)!
+            TodoDeleteDataManager().delete(viewController: self.viewController, todoId: self.todoData.todoId, indexPath: indexPath)
+        })
+        
+        alert.addAction(cancelBtn)
+        alert.addAction(deleteBtn)
+        
+        navigation.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Method

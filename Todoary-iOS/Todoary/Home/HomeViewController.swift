@@ -159,7 +159,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         
         HomeViewController.bottomSheetVC.loadViewIfNeeded()
         
-        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todayDate.dateSendServer)
+        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
         
         present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
