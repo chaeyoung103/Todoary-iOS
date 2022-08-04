@@ -82,16 +82,15 @@ class CategoryViewController: UIViewController {
         let leading = isEditingMode ? 32 : 58
         let trailing = isEditingMode ? -30 : -4
         
-        var i = 0
-        while(i < todoData.count){
+        for i in 0..<todoData.count{
             guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { fatalError() }
             
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(leading)
                 make.trailing.equalToSuperview().offset(trailing)
             }
+            
             cell.deleteButton.isHidden.toggle()
-            i = i + 1
         }
         
         isEditingMode.toggle()
