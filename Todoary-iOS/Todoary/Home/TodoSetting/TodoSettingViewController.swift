@@ -271,7 +271,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             let month  : Int? = Int(result[1])
             let day : Int? = Int(result[2])
             date.setTitle(String(year ?? 2022) + "년 " + String(month ?? 08)+"월 " + String(day ?? 01) + "일", for: .normal)
-            
+    
             if todoSettingData.targetTime != nil {
                 //받아온 시간 형식에 맞게 변경
                 dateFormatter.dateFormat = "HH:mm"

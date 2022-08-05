@@ -22,8 +22,6 @@ class InfoMessageView: UIView {
     let messageLabel = UILabel().then{
         $0.font = UIFont.nbFont(ofSize: 11, weight: .semibold)
         $0.numberOfLines = 0
-        $0.setTextWithLineHeight(lineHeight: 13.2)
-        $0.addLetterSpacing(spacing: 0.22)
         $0.textColor = .black
     }
     

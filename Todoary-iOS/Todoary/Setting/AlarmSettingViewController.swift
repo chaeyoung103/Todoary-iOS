@@ -58,8 +58,6 @@ class AlarmSettingViewController: UIViewController {
         
         let messageView = InfoMessageView()
         
-        self.view.addSubview(messageView)
-        
         var offset = 0
         
         switch sender.caller{
@@ -89,6 +87,10 @@ class AlarmSettingViewController: UIViewController {
         default:
             return
         }
+        
+        messageView.messageLabel.labelAttributeSetting(letterSpacing: 0.22, lineHeight: 13.2)
+        
+        self.view.addSubview(messageView)
         
         messageView.snp.makeConstraints{ make in
             make.width.equalTo(messageView.messageLabel.snp.width).offset(32)
