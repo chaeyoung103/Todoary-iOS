@@ -254,9 +254,11 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row == categories.count){
             let vc = ColorPickerBottomsheetViewController()
+            
             vc.modalPresentationStyle = .overFullScreen
             vc.categoryVC = self
             vc.deleteBtn.setTitle("취소", for: .normal)
+            
             self.present(vc, animated: false, completion: nil)
         }
     }
@@ -288,7 +290,6 @@ extension CategoryViewController{
     
     func checkGetTodoApiResultCode(_ indexPath: IndexPath, _ result: GetTodoModel){
         switch result.code{
-            
         case 1000:
             
             initTodoCellConstraint()
