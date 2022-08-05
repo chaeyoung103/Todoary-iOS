@@ -20,6 +20,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
         components.day = 1
+        component_select.day = -1
+
         self.calculation()
         
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: now))-\(dateFormatterMonth.string(from: now))")
@@ -103,20 +105,28 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                 }
             }
             
-            if self.year == year_component && self.month == month_component {
-                if today == (indexPath.row - emptyDay) {
-                    collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
-                    cell.isSelected = true
-                }
-                else {
-                    cell.dateLabel.textColor = .black
+            if select == -1 {
+                if self.year == year_component && self.month == month_component {
+                    if today == (indexPath.row - emptyDay) {
+                        collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
+                        cell.isSelected = true
+                    }else {
+                        cell.dateLabel.textColor = .black
+                    }
+                }else {
+                    if indexPath.row - emptyDay == 1 {
+                        collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
+                        cell.isSelected = true
+                    }
                 }
             }else {
-                if indexPath.row - emptyDay == 1 {
-                    collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
-                    cell.isSelected = true
+                if select == (indexPath.row - emptyDay){
+                collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
+                cell.isSelected = true
                 }
             }
+            
+            
             
             return cell
         }
@@ -128,6 +138,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
             fatalError()
         }
+        
+        select = indexPath.row - emptyDay
+        
         cell.dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
         cell.dateLabel.textColor = .white
         cell.dateLabel.layer.shadowRadius = 4.0
@@ -169,7 +182,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     
     @objc func prevBtnDidTap() {
+        select = -1
         components.month = components.month! - 1
+        print(components.month)
+        print(components.year)
         self.calculation()
         let date = cal.date(from: components)
         calendarRecord = [Int](repeating: 0, count: 32)
@@ -178,6 +194,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     @objc func nextBtnDidTap() {
+        select = -1
+
         components.month = components.month! + 1
         self.calculation()
         let date = cal.date(from: components)
