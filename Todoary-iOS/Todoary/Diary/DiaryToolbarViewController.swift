@@ -206,9 +206,7 @@ class DiaryToolbar : UIView {
         }
     }
     
-//    @objc func exitBtnDidTab(_ sender : UIButton) {
-//        } else {
-//
-//        }
-//    }
+    @objc func exitBtnDidTab(_ sender : UIButton) {
+    
+    }
 }

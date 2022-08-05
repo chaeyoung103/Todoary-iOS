@@ -25,7 +25,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var categoryData : [GetCategoryResult]! = []
     
     //선택된 카테고리
-    var selectCategory: Int = 0
+    var selectCategory: Int = -1
     
     var dateFormatter = DateFormatter()
     
@@ -145,7 +145,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
-        GetCategoryDataManager().getCategoryDataManager(self)
         
         //카테고리 컬렉션뷰(수평스크롤)
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
@@ -159,7 +158,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         setUpConstraint()
         setupLongGestureRecognizerOnCollection()
         getTodoData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        GetCategoryDataManager().getCategoryDataManager(self)
     }
     
     //아무데나 누르기 -> 키보드 내리기
@@ -197,7 +199,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                                       targetDate: todoSettingData.targetDate,
                                                       isAlarmEnabled: todoSettingData.isAlarmEnabled,
                                                       targetTime: todoSettingData.targetTime ?? "",
-                                                      categoryId: categoryData[selectCategory].id)
+                                                      categoryId: selectCategory)
                 
                 TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
             }else{
@@ -207,39 +209,22 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 self.present(alert, animated: true, completion: nil)
             }
         }else {
-            //카테고리 선택 여부 코드 -> 기본 값 적용시킬 거여서 제거해야 됨
-            if selectCategory != nil{
-                todoSettingData.title = todo.text!
-                if todoSettingData.title == ""{
-                    let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }else {
-                    let todoSettingInput = TodoSettingInput(title: todoSettingData.title,
-                                                            targetDate: todoSettingData.targetDate,
-                                                            isAlarmEnabled: todoSettingData.isAlarmEnabled,
-                                                            targetTime: todoSettingData.targetTime ?? "",
-                                                            categoryId: categoryData[selectCategory].id)
-                    TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
-                }
+            //카테고리 선택 여부 코드 -> 기본 값 적용시킬 거여서 제거해야 됨 -> 제거 완료
+            todoSettingData.title = todo.text!
+            if todoSettingData.title == ""{
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
             }else {
-                todoSettingData.title = todo.text!
-                if todoSettingData.title == ""{
-                    let alert = UIAlertController(title: "제목과 카테고리를 넣어주세요", message: nil, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }else {
-                    let alert = UIAlertController(title: "카테고리를 선택해주세요", message: nil, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
+                let todoSettingInput = TodoSettingInput(title: todoSettingData.title,
+                                                        targetDate: todoSettingData.targetDate,
+                                                        isAlarmEnabled: todoSettingData.isAlarmEnabled,
+                                                        targetTime: todoSettingData.targetTime ?? "",
+                                                        categoryId: selectCategory)
+                TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
         }
-        
-        
     }
     
     //카테고리 플러스 버튼 누르기 -> 카테고리 생성 화면
@@ -298,6 +283,9 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 dateFormatter.dateFormat = "a hh:mm"
                 dateFormatter.locale = Locale(identifier: "en_US")
                 time.setTitle(dateFormatter.string(from: initTime!), for: .normal)
+                
+                selectCategory = todoSettingData.categoryId
+                
             }
             
             //title설정
@@ -309,7 +297,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             }else {
                 time.isHidden = true
             }
-
+            
             collectionView?.reloadData()
             
         }else { // 없을때
@@ -351,10 +339,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         }else {
             categoryData = result
             //카테고리 초기값 설정
-            categoryData.forEach{ each in
-                if(each.id == todoSettingData.categoryId){
-                    selectCategory = categoryData.firstIndex(of: each)!
-                }
+            if selectCategory == -1{
+                selectCategory = categoryData[0].id
             }
             collectionView.reloadData()
         }
@@ -380,14 +366,14 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
     }
-
+    
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if (gestureRecognizer.state != .began) {
             return
         }
-
+        
         let p = gestureRecognizer.location(in: collectionView)
-
+        
         if let indexPath = collectionView?.indexPathForItem(at: p) {
             
             let colorPickerViewController = ColorPickerViewController()
@@ -404,7 +390,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
 
 
 extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if categoryData.isEmpty{
             return 0
@@ -412,7 +398,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
             return categoryData.count
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath) as? TodoCategoryCell else{
@@ -422,7 +408,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
-        if selectCategory == indexPath.row {
+        if selectCategory == categoryData[indexPath.row].id {
             print("현재 선택된 셀",selectCategory)
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
@@ -442,7 +428,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
             fatalError()
         }
-        selectCategory = indexPath.row
+        selectCategory = categoryData[indexPath.row].id
         cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
         cell.categoryLabel.isUserInteractionEnabled = true
@@ -457,7 +443,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.categoryLabel.isUserInteractionEnabled = true
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

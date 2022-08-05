@@ -54,6 +54,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     let profileImage = UIButton().then {
         $0.setImage(UIImage(named: "home_profile"),for: .normal)
         $0.layer.cornerRadius = 40/2
+        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         $0.addTarget(self, action: #selector(profileBtnDidTap), for: .touchUpInside)
     }
@@ -145,15 +146,16 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.year_Month.inputView = self.datePicker
         self.year_Month.inputAccessoryView = self.toolBar
         
+        self.initView()
        
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.initView()
-        
         GetProfileDataManager().getProfileDataManger(self)
+        
+        collectionView.reloadData()
         
         HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
         
@@ -199,6 +201,14 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     //MARK: - Helpers
+    
+    func settingComplete() {
+        components.year = cal.component(.year, from: datePicker.date)
+        components.month = cal.component(.month, from: datePicker.date)
+        self.calculation()
+        self.collectionView.reloadData()
+        year_Month.resignFirstResponder() /// 피커뷰 내림
+    }
     
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname

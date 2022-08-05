@@ -10,7 +10,9 @@ import SnapKit
 import Then
 import Photos
 
-class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDelegate {
+class ProfileViewController : UIViewController {
+    
+    //MARK: - Properties
     
     let imagePickerController = UIImagePickerController()
     
@@ -25,6 +27,7 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
     
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "profile")
+        $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 85/2
         $0.clipsToBounds = true
     }
@@ -52,6 +55,7 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
         $0.text = "닉네임을 적어주세요!"
         $0.textFieldTypeSetting(type: .tableCell)
         $0.font = UIFont.nbFont(type: .tableCell)
+        $0.addLeftPadding()
         $0.borderStyle = .none
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
@@ -114,27 +118,24 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
         
         self.view.backgroundColor = .white
         
-        nickNameTf.addLeftPadding()
-        
         setUpView()
         setUpConstraint()
     
-        
         GetProfileDataManager().getProfileDataManger(self)
         
+        //닉네임 textfield 10자 글자수제한 + observer
         NotificationCenter.default.addObserver(self,
                                             selector: #selector(textFieldDidChange(_:)),
                                             name: UITextField.textDidChangeNotification,
                                             object: nil)
         
+        //한줄소개 textview 30자 글자수제한 + observer
         NotificationCenter.default.addObserver(self,
                                             selector: #selector(textViewDidChange(_:)),
                                             name: UITextView.textDidChangeNotification,
                                             object: nil)
         
     }
-    
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -145,8 +146,10 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
     
     //MARK: - Actions
     
+    //사진변경 버튼 누르기 -> 현재사진삭제 or 갤러리선택
     @objc func imagePickerDidTab(_ sender: Any) {
         
+        //사진 접근권한 메시지 보여주기 (처음에만)
         PhotoAuth()
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -158,22 +161,19 @@ class ProfileViewController : UIViewController, UITextFieldDelegate,UITextViewDe
         
         let albumSelectAction = UIAlertAction(title: "갤러리에서 선택", style: .default, handler: { [self](UIAlertAction) in
             
+            //접근권한 있는지 없는지 체크
             isPhoto = PhotoAuth()
             
-            if self.isPhoto {
+            if self.isPhoto { //권한 있는 경우 사진 고르기
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.delegate = self
                 self.present(imagePicker, animated: true, completion: nil)
-            } else {
-                print("접근권한x")
+            } else {//권한 없는 경우 팝업 띄우기
                     self.AuthSettingOpen(AuthString: "사진")
             }
 
         })
-        
-
-        
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
         alert.addAction(removeAction)
@@ -258,17 +258,16 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func PhotoAuth() -> Bool {
         // 포토 라이브러리 접근 권한
-        
         var isAuth = false
         
         switch PHPhotoLibrary.authorizationStatus() {
         case .authorized:
-            return true // 사용자가 앱에 사진 라이브러리에 대한 액세스 권한을 명시 적으로 부여했습니다.
+            return true // 모든 권한 허용
         case .denied:
-            return false // 사용자가 사진 라이브러리에 대한 앱 액세스를 명시 적으로 거부했습니다.
+            return false // 권한 거부
         case .limited:
-            return true // 사진 선택
-        case .notDetermined: // 사진 라이브러리 액세스에는 명시적인 사용자 권한이 필요하지만 사용자가 아직 이러한 권한을 부여하거나 거부하지 않았습니다
+            return true // 사진 선택적으로 허용
+        case .notDetermined: // 아직 결정된 것이 없는 경우
             PHPhotoLibrary.requestAuthorization { (state) in
                 if state == .authorized {
                     isAuth = true
@@ -276,7 +275,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             }
             return isAuth
         case .restricted:
-            return false // 앱이 사진 라이브러리에 액세스 할 수있는 권한이 없으며 사용자는 이러한 권한을 부여 할 수 없습니다.
+            return false // 권한 x
         default: return false
         }
     }
@@ -285,8 +284,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         let AppName = "Todoary"
         let message = "\(AppName)이(가) \(AuthString)에 접근할 수 없습니다.\r\n 설정화면으로 가시겠습니까?"
         let alert = UIAlertController(title: "권한 설정하기", message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .destructive) { (UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)}
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        // 권한이 없는 경우 설정 화면으로 갈 수있는 팝업 띄우기
         let confirm = UIAlertAction(title: "확인", style: .default) { (UIAlertAction) in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)}
         alert.addAction(cancel)
@@ -297,6 +296,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 }
 
 extension ProfileViewController {
+    // 프로필 조회 성공시에 불리는 함수
     func successAPI_profile(_ result : GetProfileResult) {
         nickNameTf.text = result.nickname
         introduceTf.text = result.introduce
@@ -307,6 +307,7 @@ extension ProfileViewController {
     }
 }
 
+//텍스트뷰에 패딩 넣기
 extension UITextView {
     func addLeftPadding() {
         self.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 0, right: 10)
@@ -314,10 +315,12 @@ extension UITextView {
     }
 }
 
+// 버튼에 패딩 넣기
 class AddPaddingButtton : UIButton {
     var padding = UIEdgeInsets(top: 1.5, left: 10, bottom: 0, right: 10)
 }
 
+//url로 이미지 불러오기
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
