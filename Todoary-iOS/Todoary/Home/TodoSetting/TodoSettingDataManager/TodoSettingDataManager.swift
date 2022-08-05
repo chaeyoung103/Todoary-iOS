@@ -18,7 +18,17 @@ class TodoSettingDataManager {
                 switch result.code {
                 case 1000:
                     print("투두생성성공")
-                    parameter.targetDate
+                    let result = parameter.targetDate.components(separatedBy: "-")
+                    
+                    let year  = Int(result[0])
+                    let month  = Int(result[1])
+                    let day = Int(result[2])
+
+                    HomeViewController().components.year = year
+                    HomeViewController().components.month = month
+                    HomeViewController().components.day = 1
+                    
+
                     viewController.navigationController?.popViewController(animated: true)
                 case 2201:
                     print("중복된 닉네임입니다")

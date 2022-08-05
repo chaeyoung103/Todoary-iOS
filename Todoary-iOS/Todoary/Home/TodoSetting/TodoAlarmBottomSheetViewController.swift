@@ -131,8 +131,9 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         formatter.locale = Locale(identifier: "en_US")
         timeStr = formatter.string(from: timePicker.date)
         let timeFormat = DateFormatter()
-        timeFormat.dateFormat = "hh:mm"
+        timeFormat.dateFormat = "HH:mm"
         timeFormat.locale = Locale(identifier: "fr_FR")
+        print(timeFormat.string(from: timePicker.date))
         time_api = timeFormat.string(from: timePicker.date)
         self.delegate?.alarmComplete(time: timeStr, time_api: time_api)
         hideBottomSheetAndGoBack()
