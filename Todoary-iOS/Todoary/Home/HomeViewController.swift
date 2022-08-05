@@ -12,6 +12,8 @@ import Then
 
 class HomeViewController : UIViewController , UITextFieldDelegate {
     
+    static var check : Int!
+    
     let now = Date()
     var cal = Calendar.current
     let dateFormatterYear = DateFormatter()
@@ -24,6 +26,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     var year : Int = 0
     var emptyDay : Int = 0
     var components = DateComponents()
+    var component_select = DateComponents()
+    var select = -1
     var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
     var daysCountInMonth = 0
@@ -153,9 +157,19 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        GetProfileDataManager().getProfileDataManger(self)
+//        if component_select.day != -1 {
+//            select = component_select.day!
+//        }else{
+//            select = -1
+//        }
+        
+        self.calculation()
+        let component = cal.date(from: components)
+        GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
         
         collectionView.reloadData()
+        
+        GetProfileDataManager().getProfileDataManger(self)
         
         HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
         
@@ -202,12 +216,8 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     //MARK: - Helpers
     
-    func settingComplete() {
-        components.year = cal.component(.year, from: datePicker.date)
-        components.month = cal.component(.month, from: datePicker.date)
-        self.calculation()
-        self.collectionView.reloadData()
-        year_Month.resignFirstResponder() /// 피커뷰 내림
+    func settingComplete(settingDay: String) {
+
     }
     
     func successAPI_home(_ result : GetProfileResult) {
