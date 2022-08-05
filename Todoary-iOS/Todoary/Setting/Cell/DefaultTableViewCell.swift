@@ -22,9 +22,15 @@ class DefaultTableViewCell: UITableViewCell {
     let separatorLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
+    
+    let selectedView = UIView().then{
+        $0.backgroundColor = .white
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.selectedBackgroundView = selectedView
         
         setUpView()
         setUpConstraint()
