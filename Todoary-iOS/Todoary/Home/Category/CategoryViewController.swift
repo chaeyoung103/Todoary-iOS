@@ -70,8 +70,9 @@ class CategoryViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
-        
-        //category 조회
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         GetCategoryDataManager().get(self)
     }
     
@@ -268,9 +269,8 @@ extension CategoryViewController{
         self.categories = result
         collectionView.reloadData()
         
-        if(self.categories != []){
-            TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
-        }
+        let categoryId = self.categories.count == 0 ? categories[0].id : categories[currentCategoryIndex.row].id
+        TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
