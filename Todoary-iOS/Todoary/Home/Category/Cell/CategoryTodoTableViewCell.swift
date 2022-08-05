@@ -8,6 +8,12 @@
 import UIKit
 
 class CategoryTodoTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties
+    
+    var todoData: GetTodoInfo!
+    
+    //MARK: - UI
 
     static let cellIdentifier = "todoCell"
     
@@ -54,7 +60,6 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
-        $0.isHidden = true
     }
     
     let timeView = UIView()
@@ -84,9 +89,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         $0.addTarget(self, action: #selector(deleteButtonDidClicked), for: .touchUpInside)
     }
     
-    //MARK: - Properties
-    
-    var todoData: GetTodoInfo!
+    //MARK: - LifeCycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         
@@ -102,51 +105,38 @@ class CategoryTodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Action
-    
-    @objc
-    func checkBoxDidClicked(_ sender: UIButton){
-        let parameter = TodoCheckboxInput(todoId: todoData.todoId, isChecked: !sender.isSelected)
-        print(parameter.todoId, parameter.isChecked)
-        
-        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
-    }
-    
-    @objc
-    func deleteButtonDidClicked(){
-        
-        let alert = UIAlertController(title: "TODO 삭제", message: "선택하신 TODO를 삭제하시겠습니까?", preferredStyle: .alert)
-        
-        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let deleteBtn = UIAlertAction(title: "확인", style: .default, handler: { _ in
-            guard let tableView = (self.superview as? UITableView) else{ fatalError() }
-            let indexPath = tableView.indexPath(for: self)!
-            TodoDeleteDataManager().delete(viewController: self.viewController, todoId: self.todoData.todoId, indexPath: indexPath)
-        })
-        
-        alert.addAction(cancelBtn)
-        alert.addAction(deleteBtn)
-        
-        navigation.present(alert, animated: true, completion: nil)
-    }
-    
-    //MARK: - Method
-
     override func prepareForReuse() {
         
         todoTitle.text = ""
         dateLabel.text = ""
         timeLabel.text = ""
         
-        alarmImage.isHidden = true
         checkBox.isSelected = false
         
+        alarmImage.removeFromSuperview()
         timeView.removeFromSuperview()
         
         categoryLabel.setTitle("", for: .normal)
         categoryLabel.setTitleColor(.white, for: .normal)
         categoryLabel.layer.borderColor = UIColor.white.cgColor
     }
+    
+    //MARK: - Action
+    
+    @objc
+    func checkBoxDidClicked(_ sender: UIButton){
+        let parameter = TodoCheckboxInput(todoId: todoData.todoId, isChecked: !sender.isSelected)
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
+    }
+    
+    @objc
+    func deleteButtonDidClicked(){
+        guard let tableView = (self.superview as? UITableView) else{ fatalError() }
+        let indexPath = tableView.indexPath(for: self)!
+        TodoDeleteDataManager().delete(viewController: self.viewController, todoId: self.todoData.todoId, indexPath: indexPath)
+    }
+    
+    //MARK: - Helper
     
     func settingTodoData(_ cellData: GetTodoInfo){
         
@@ -156,13 +146,11 @@ class CategoryTodoTableViewCell: UITableViewCell {
         self.dateLabel.text = cellData.convertDate
         self.timeLabel.text = cellData.convertTime ?? ""
         self.checkBox.isSelected = cellData.isChecked ?? false
-        self.alarmImage.isHidden = cellData.isAlarmEnabled
         self.setUpTimeStack()
         self.setCategoryData()
     }
     
     func setCategoryData(){
-
         self.categoryLabel.setTitle(todoData.categoryTitle, for: .normal)
         self.categoryLabel.layer.borderColor = UIColor.categoryColor[todoData.color].cgColor
         self.categoryLabel.setTitleColor( UIColor.categoryColor[todoData.color], for: .normal)

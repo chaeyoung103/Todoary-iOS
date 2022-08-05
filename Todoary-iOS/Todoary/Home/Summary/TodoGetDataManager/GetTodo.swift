@@ -34,25 +34,20 @@ struct GetTodoInfo: Decodable, Equatable{
     
     var convertTime: String?{
 
-        guard let time = targetTime else{
-            return nil
-        }
+        guard let time = targetTime else{ return nil }
         
         var startIndex: String.Index!
         var endIndex : String.Index!
 
         if(time < "12:00"){
-            
-            startIndex = time < "10:00" ? time.startIndex : time.index(time.startIndex, offsetBy: 1)
+            startIndex = time > "10:00" ? time.startIndex : time.index(time.startIndex, offsetBy: 1)
             endIndex = time.endIndex
             
             return "AM \(time[startIndex..<endIndex])"
             
         }else if(time < "13:00"){
-            
             return "PM \(time)"
         }else{
-            
             startIndex = time.startIndex
             endIndex = time.index(time.startIndex, offsetBy: 2)
             

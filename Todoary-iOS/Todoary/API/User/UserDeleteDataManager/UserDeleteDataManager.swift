@@ -14,9 +14,10 @@ class UserDeleteDataManager{
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("http://todoary.com:9000/users/status", method: .patch, parameters: [:], headers: headers).validate().responseDecodable(of: UserDeleteModel.self) { response in
+        AF.request("https://todoary.com/users/status", method: .patch, parameters: [:], headers: headers).validate().responseDecodable(of: UserDeleteModel.self) { response in
             switch response.result {
             case .success(let result):
+                print("계정삭제성공")
                 viewController.deleteApiResultCode(result.code)
                 return
             case .failure(let error):

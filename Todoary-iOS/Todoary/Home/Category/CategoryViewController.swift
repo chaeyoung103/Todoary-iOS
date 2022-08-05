@@ -63,6 +63,7 @@ class CategoryViewController: UIViewController {
             $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
+            $0.register(NoTodoTableViewCell.self, forCellReuseIdentifier: NoTodoTableViewCell.cellIdentifier)
             $0.register(NewTodoAddBtnTableViewCell.self, forCellReuseIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
             
         }
@@ -78,7 +79,7 @@ class CategoryViewController: UIViewController {
     
     @objc
     func trashButtonDidClicked(){
-
+        
         let leading = isEditingMode ? 32 : 58
         let trailing = isEditingMode ? -30 : -4
         
@@ -110,6 +111,20 @@ class CategoryViewController: UIViewController {
         
         self.present(vc, animated: false, completion: nil)
     }
+    
+    //MARK: - Helper
+    
+    func initTodoCellConstraint(){
+        
+        for i in 0..<tableView.numberOfRows(inSection: 0)-1{
+            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
+            cell.contentView.snp.updateConstraints{ make in
+                make.leading.equalToSuperview().offset(32)
+                make.trailing.equalToSuperview().offset(-30)
+                cell.deleteButton.isHidden = true
+            }
+        }
+    }
 
 }
 
@@ -117,12 +132,17 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, MoveViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoData.count + 1
+        return todoData.count != 0 ? todoData.count + 1 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
+            
+            if(todoData.count == 0){
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
+                return cell
+            }
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier)
                     as? CategoryTodoTableViewCell else { fatalError() }
@@ -132,11 +152,22 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
             cell.navigation = self.navigationController
             cell.viewController = self
             
+            let leading = isEditingMode ? 58 : 32
+            let trailing = isEditingMode ? -4 : -30
+            let buttonHidden = isEditingMode ? false : true
+            
+            cell.contentView.snp.updateConstraints{ make in
+                make.leading.equalToSuperview().offset(leading)
+                make.trailing.equalToSuperview().offset(trailing)
+            }
+            cell.deleteButton.isHidden = buttonHidden
+            
             return cell
             
         }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
                     as? NewTodoAddBtnTableViewCell else { fatalError() }
+            
             cell.delegate = self
             
             return cell
@@ -157,7 +188,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     
     func moveToViewController() {
         let vc = TodoSettingViewController()
-        vc.selectCategory = currentCategoryIndex.row
+        vc.selectCategory = categories[currentCategoryIndex.row].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -191,7 +222,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                 currentCategory = cell
                 cell.buttonIsSelected()
             }
-            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
@@ -260,6 +290,9 @@ extension CategoryViewController{
         switch result.code{
             
         case 1000:
+            
+            initTodoCellConstraint()
+            
             guard let newCell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
             newCell.buttonIsSelected()
             
@@ -282,9 +315,8 @@ extension CategoryViewController{
         case 1000:
             todoData.remove(at: indexPath.row)
             tableView.reloadData()
-            
             if(todoData.count == 0){
-                trashButtonDidClicked()
+                isEditingMode = false
             }
             return
         default:
