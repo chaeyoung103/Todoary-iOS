@@ -137,12 +137,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if(todoData.count == 0){
-//            let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
-//            return cell
-//        }
-        
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
+            
+            if(todoData.count == 0){
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
+                return cell
+            }
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier)
                     as? CategoryTodoTableViewCell else { fatalError() }
