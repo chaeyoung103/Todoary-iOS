@@ -51,7 +51,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
-        $0.addTarget(self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
+        $0.addTarget(TodoSettingViewController.self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
     }
     
     //navigation bar
@@ -409,7 +409,6 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
         if selectCategory == categoryData[indexPath.row].id {
-            print("현재 선택된 셀",selectCategory)
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
             cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)

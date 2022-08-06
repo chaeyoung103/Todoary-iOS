@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
+class TodoBannerCell: UITableViewCell {
 
     static let cellIdentifier = "todoBannerCell"
     
@@ -21,12 +21,11 @@ class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
     }
     
-    let titleLabel = UITextField().then{
-        $0.placeholder = "오늘의 할 일은 무엇인가요?"
-        $0.tintColor = .clear
+    let titleLabel = UILabel().then{
+        $0.text = "오늘의 할 일은 무엇인가요?"
+        $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
-        $0.setPlaceholderColor(.black)
     }
     
     let backView = UIView().then{
@@ -39,20 +38,7 @@ class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
         $0.layer.masksToBounds = false
     }
     
-    let todoEasySettingView = TodoEasySettingView().then{
-        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 118.0)
-    }
-    
-    let todoTf = UITextField().then{
-        $0.placeholder = "오늘의 할일은 무엇인가요?"
-        $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
-        $0.addLeftPadding()
-        $0.borderStyle = .none
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.silver_217.cgColor
-        $0.layer.cornerRadius = 10
-        $0.tintColor = .clear
-    }
+
     
 
     
@@ -65,19 +51,6 @@ class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
         setUpView()
         setUpConstraint()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveNewTodoVC))
-        self.contentView.addGestureRecognizer(tapGesture)
-        
-        titleLabel.delegate = self
-        titleLabel.inputAccessoryView = todoEasySettingView
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didShowKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardDidShowNotification ,
-                                            object: nil)
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -87,10 +60,8 @@ class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
     func setUpView(){
         
         self.contentView.addSubview(backView)
-        
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
-        self.todoEasySettingView.addSubview(todoTf)
         
         self.selectedBackgroundView = selectedBackView
         
@@ -123,33 +94,7 @@ class TodoBannerCell: UITableViewCell , UITextFieldDelegate{
             make.width.equalTo(170)
         }
         
-        todoTf.snp.makeConstraints{ make in
-            make.width.equalTo(327)
-            make.height.equalTo(45)
-            make.leading.equalTo(todoEasySettingView).offset(31)
-            make.bottom.equalTo(todoEasySettingView).offset(-56)
-        }
+
     
-    }
-    
-    @objc
-    func willMoveNewTodoVC(){
-        
-        self.titleLabel.becomeFirstResponder()
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        todoTf.text = textField.text
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        todoTf.text = textField.text
-        return true
-    }
-    
-    @objc func didShowKeyboardNotification(_ notification: Notification) {
-        print("되니?")
-        todoTf.becomeFirstResponder()
     }
 }
