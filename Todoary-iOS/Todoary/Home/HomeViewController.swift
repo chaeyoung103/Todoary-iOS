@@ -122,7 +122,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 4
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
+        $0.contentInset = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 3)
         $0.collectionViewLayout = layout
     }
 
