@@ -130,11 +130,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didShowKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillShowNotification ,
-                                            object: nil)
+                                               object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didHideKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillHideNotification ,
-                                            object: nil)
+                                               object: nil)
     }
     
     //MARK: - Action
@@ -239,6 +239,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
                                                 isAlarmEnabled: false,
                                                 targetTime: "",
                                                 categoryId: selectCategory)
+        
         TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
         
         

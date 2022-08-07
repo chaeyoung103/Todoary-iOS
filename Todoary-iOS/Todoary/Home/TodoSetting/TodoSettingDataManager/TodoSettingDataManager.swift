@@ -34,6 +34,8 @@ class TodoSettingDataManager {
                         GetCalendataManager().getCalendataManager(HomeViewController(), yearMonth: "\(year)-\(month)")
                         
                         HomeViewController().collectionView.reloadData()
+                        
+                        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
                     }
                 case 2201:
                     print("중복된 닉네임입니다")
