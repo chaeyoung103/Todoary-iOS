@@ -24,7 +24,7 @@ extension UILabel {
     }
     
     //label 자간, 행간 수동 설정 함수
-    func labelAttributeSetting(letterSpacing: Double?, lineHeight: Double?){
+    func labelAttributeSetting(letterSpacing: Double? = nil, lineHeight: Double? = nil){
         
         if let labelText = text, labelText.isEmpty == false {
             var attributedString = NSMutableAttributedString(string: labelText)
