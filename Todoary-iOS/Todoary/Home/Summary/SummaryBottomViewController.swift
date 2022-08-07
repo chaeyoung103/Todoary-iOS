@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryBottomViewController: UIViewController {
+class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //MARK: - UI
     
@@ -30,7 +30,40 @@ class SummaryBottomViewController: UIViewController {
         $0.addTarget(self, action: #selector(addButtonDidClicked), for: .touchUpInside)
     }
     
+    let todoEasySettingView = UIView().then{
+        $0.isHidden = true
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 30
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+    }
+    
+    let todoTf = UITextField().then{
+        $0.isHidden = true
+        $0.placeholder = "오늘의 할 일은 무엇인가요?"
+        $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
+        $0.addLeftPadding()
+        $0.borderStyle = .none
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.silver_217.cgColor
+        $0.layer.cornerRadius = 10
+        $0.returnKeyType = .done
+        $0.enablesReturnKeyAutomatically = true
+    }
+    
+    var collectionView : UICollectionView!
+    
     //MARK: - Properties
+    
+    //카테고리 정보 받아오는 struct
+    var categoryData : [GetCategoryResult]! = []
+    
+    //선택된 카테고리
+    var selectCategory: Int = -1
+    
+    //투두간단설정 프로퍼티
+    var todoEasyTitle : String!
     
     //for 다이어리 작성했을 때 view 구성
     let isDiaryExist = false
@@ -71,9 +104,37 @@ class SummaryBottomViewController: UIViewController {
             
         }
         
+        GetCategoryDataManager().getCategoryDataManager(self)
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = CGFloat(8)
+        
+        
+        //카테고리 컬렉션뷰 (투두간단설정화면)
+        collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
+            $0.isHidden = true
+            $0.delegate = self
+            $0.dataSource = self
+            $0.showsHorizontalScrollIndicator = false
+            $0.isUserInteractionEnabled = true
+            $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
+        }
+        
+        self.todoTf.delegate = self
+        
         setUpView()
         setUpConstraint()
         setUpSheetVC()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didShowKeyboardNotification(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didHideKeyboardNotification(_:)),
+                                               name: UIResponder.keyboardWillHideNotification ,
+                                               object: nil)
     }
     
     //MARK: - Action
@@ -96,6 +157,58 @@ class SummaryBottomViewController: UIViewController {
         cell.cellWillMoveOriginalPosition()
     }
     
+    //아무런 todo 없는경우 배너 누르기-> 키보드 올리기
+    @objc
+    func tapBannerCell(){
+        self.todoTf.becomeFirstResponder()
+    }
+    
+    //키보드가 올라오는 순간 -> todo간단설정 뷰 보이게
+    @objc func didShowKeyboardNotification(_ notification: Notification) {
+        var keyboardHeight = 0.0
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                keyboardHeight = keyboardRectangle.height
+            }
+        
+        //constraint 다시 잡아주기
+        self.todoEasySettingView.snp.makeConstraints{ make in
+            make.height.equalTo(118)
+            make.bottom.equalToSuperview().offset(-keyboardHeight)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+        
+        self.todoTf.snp.makeConstraints{ make in
+            make.height.equalTo(45)
+            make.top.equalTo(self.todoEasySettingView.snp.top).offset(17)
+            make.leading.equalTo(todoEasySettingView).offset(32)
+            make.trailing.equalTo(todoEasySettingView).offset(-31)
+            make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-56)
+        }
+        
+        self.collectionView.snp.makeConstraints{ make in
+            make.height.equalTo(26)
+            make.top.equalTo(todoTf.snp.bottom).offset(14)
+            make.leading.equalTo(todoEasySettingView).offset(32)
+            make.trailing.equalTo(todoEasySettingView.snp.trailing)
+            make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-16)
+        }
+        
+        self.todoEasySettingView.isHidden = false
+        self.todoTf.isHidden = false
+        self.collectionView.isHidden = false
+        
+    }
+    
+    //키보드 내려갈때 todo간단 설정 뷰 안보이게
+    @objc func didHideKeyboardNotification(_ notification: Notification) {
+        self.todoEasySettingView.isHidden = true
+        self.todoTf.isHidden = true
+        self.collectionView.isHidden = true
+    }
+    
+    
     //MARK: - Helper
  
     func getPinnedCount() -> Int{
@@ -115,7 +228,24 @@ class SummaryBottomViewController: UIViewController {
         todoDataList.sort(by: {$0.targetTime ?? "25:00" < $1.targetTime ?? "25:00"})
         todoDataList.sort(by: {$0.isPinned! && !$1.isPinned!})
     }
-
+    
+    //todo 간단설정 textfield return 키 누르기 -> 뷰 안보이게 & api 호출
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        todoEasyTitle = todoTf.text!
+        
+        let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
+                                                targetDate: todoDate!.dateSendServer,
+                                                isAlarmEnabled: false,
+                                                targetTime: "",
+                                                categoryId: selectCategory)
+        
+        TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+        
+        
+        return true
+        
+    }
 }
 //MARK: - Delegate
 extension SummaryBottomViewController: MoveViewController{
@@ -159,9 +289,7 @@ extension SummaryBottomViewController{
             
             dataArraySortByPin()
         
-            guard let newIndex = todoDataList.firstIndex(of: willChangeData) else{
-                return
-            }
+            guard let newIndex = todoDataList.firstIndex(of: willChangeData) else{ return }
             
             tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
             tableView.reloadData()
@@ -172,6 +300,19 @@ extension SummaryBottomViewController{
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func successAPI_category(_ result : [GetCategoryResult]) {
+        if(result.isEmpty){
+        }else {
+            categoryData = result
+            //카테고리 초기값 설정
+            if selectCategory == -1{
+                selectCategory = categoryData[0].id
+            }
+            collectionView.reloadData()
+        }
+    }
+    
 }
 
 //MARK: - TableView
@@ -213,7 +354,12 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             }else{
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath)
                         as? TodoBannerCell else{ fatalError() }
+                
+                let tapBannerCell = CellButtonTapGesture(target: self, action: #selector(tapBannerCell))
+                tapBannerCell.caller = indexPath.row
+                
                 cell.navigation = homeNavigaiton
+                cell.contentView.addGestureRecognizer(tapBannerCell)
                 return cell
             }
         }
@@ -282,5 +428,73 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         }
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
         clampCell = indexPath
+    }
+}
+
+//MARK: - collectionViewDelegate
+
+extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryData.isEmpty ? 0 : categoryData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath)
+                as? TodoCategoryCell else{ fatalError() }
+        
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+        
+        if selectCategory == categoryData[indexPath.row].id {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
+            cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
+            cell.categoryLabel.isUserInteractionEnabled = true
+        }else {
+            cell.categoryLabel.backgroundColor = .white
+            cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+            cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+            cell.categoryLabel.isUserInteractionEnabled = true
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
+            fatalError()
+        }
+        selectCategory = categoryData[indexPath.row].id
+        cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
+        cell.categoryLabel.isUserInteractionEnabled = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at:indexPath)
+                as? TodoCategoryCell else{ fatalError() }
+        
+        cell.categoryLabel.backgroundColor = .white
+        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        cell.categoryLabel.isUserInteractionEnabled = true
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let tmpLabel = UILabel()
+        tmpLabel.text = categoryData[indexPath.row].title
+        
+        if(categoryData[indexPath.row].title.count > 2){
+            tmpLabel.then{
+                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
+                $0.addLetterSpacing(spacing: 0.28)
+            }
+        }
+        
+        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
 }

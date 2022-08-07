@@ -409,7 +409,6 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
         if selectCategory == categoryData[indexPath.row].id {
-            print("현재 선택된 셀",selectCategory)
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
             cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)

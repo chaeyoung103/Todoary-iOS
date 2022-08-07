@@ -122,7 +122,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 4
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
+        $0.contentInset = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 3)
         $0.collectionViewLayout = layout
     }
 
@@ -157,12 +157,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        if component_select.day != -1 {
-//            select = component_select.day!
-//        }else{
-//            select = -1
-//        }
-        
         self.calculation()
         let component = cal.date(from: components)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
@@ -171,13 +165,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         
         GetProfileDataManager().getProfileDataManger(self)
         
-        HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
-        
-        HomeViewController.bottomSheetVC.loadViewIfNeeded()
-        
-        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
-        
-        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
+        showBottomSheet()
     }
 
     
@@ -207,18 +195,18 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         components.month = cal.component(.month, from: datePicker.date)
         self.calculation()
         self.collectionView.reloadData()
-        year_Month.resignFirstResponder() /// 피커뷰 내림
+        year_Month.resignFirstResponder() // 피커뷰 내림
+        
+//        showBottomSheet()
     }
          
     @objc func onPickCancel() {
-        year_Month.resignFirstResponder() /// 피커뷰 내림
+        year_Month.resignFirstResponder() // 피커뷰 내림
+        
+//        showBottomSheet()
     }
     
     //MARK: - Helpers
-    
-    func settingComplete(settingDay: String) {
-
-    }
     
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
@@ -236,11 +224,21 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return false
+        return false
     }
     
     static func dismissBottomSheet(){
         HomeViewController.bottomSheetVC.dismiss(animated: true, completion: nil)
+    }
+    
+    func showBottomSheet(){
+        HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
+        
+        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        
+        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
+        
+        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 }
 

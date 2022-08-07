@@ -113,9 +113,8 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath) as? AlarmSettingTableViewCell else{
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath)
+                as? AlarmSettingTableViewCell else { fatalError() }
         
         let tapGesture = CellButtonTapGesture(target: self, action: #selector(showInfoMessage(_:)))
         tapGesture.caller = indexPath.row
@@ -150,7 +149,6 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
 extension AlarmSettingViewController{
     func successApiResult(_ resultData: GetAlarmCheckResult){
         print("api 호출 성공")
-        print(resultData)
         self.alarmData = resultData
         self.tableView.reloadData()
     }

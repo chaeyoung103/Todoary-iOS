@@ -13,9 +13,37 @@ extension SummaryBottomViewController{
         self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
         self.view.addSubview(addButton)
+        
+        self.view.addSubview(todoEasySettingView)
+        self.view.addSubview(todoTf)
+        self.view.addSubview(collectionView)
+        self.view.bringSubviewToFront(collectionView)
     }
     
     func setUpConstraint(){
+        
+        todoEasySettingView.snp.makeConstraints{ make in
+            make.height.equalTo(118)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+        
+        todoTf.snp.makeConstraints{ make in
+            make.height.equalTo(45)
+            make.top.equalTo(self.todoEasySettingView.snp.top).offset(17)
+            make.leading.equalTo(todoEasySettingView).offset(32)
+            make.trailing.equalTo(todoEasySettingView).offset(-31)
+            make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-56)
+        }
+        
+        collectionView.snp.makeConstraints{ make in
+            make.height.equalTo(26)
+            make.top.equalTo(todoTf.snp.bottom).offset(14)
+            make.leading.equalTo(todoEasySettingView).offset(32)
+            make.trailing.equalTo(todoEasySettingView.snp.trailing)
+            make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-16)
+        }
         
         sheetLine.snp.makeConstraints{ make in
             make.width.equalTo(46)
@@ -45,8 +73,10 @@ extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
         
         let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
         
-        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
-        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
+        let height = UIScreen.main.bounds.size.height
+        
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: height - 519 - 41)
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: height - 95 - 41 ) //790 - 41
         
         let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2")
         

@@ -182,18 +182,20 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     
     @objc func prevBtnDidTap() {
+ 
         select = -1
         components.month = components.month! - 1
-        print(components.month)
-        print(components.year)
         self.calculation()
         let date = cal.date(from: components)
         calendarRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
+        
+        requestTodoFirstDayOfMonth()
     }
     
     @objc func nextBtnDidTap() {
+
         select = -1
 
         components.month = components.month! + 1
@@ -202,6 +204,15 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         calendarRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         self.collectionView.reloadData()
+        
+        requestTodoFirstDayOfMonth()
+    }
+    
+    func requestTodoFirstDayOfMonth(){
+        let convertDate = ConvertDate(year: year_component, month: month_component, date: "1")
+        HomeViewController.bottomSheetVC.todoDate = convertDate
+                                                      
+        GetTodoDataManager().gets(convertDate.dateSendServer)
     }
     
     
