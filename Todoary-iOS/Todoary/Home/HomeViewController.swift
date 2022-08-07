@@ -165,13 +165,7 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         
         GetProfileDataManager().getProfileDataManger(self)
         
-        HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
-        
-        HomeViewController.bottomSheetVC.loadViewIfNeeded()
-        
-        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
-        
-        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
+        showBottomSheet()
     }
 
     
@@ -201,11 +195,15 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         components.month = cal.component(.month, from: datePicker.date)
         self.calculation()
         self.collectionView.reloadData()
-        year_Month.resignFirstResponder() /// 피커뷰 내림
+        year_Month.resignFirstResponder() // 피커뷰 내림
+        
+//        showBottomSheet()
     }
          
     @objc func onPickCancel() {
-        year_Month.resignFirstResponder() /// 피커뷰 내림
+        year_Month.resignFirstResponder() // 피커뷰 내림
+        
+//        showBottomSheet()
     }
     
     //MARK: - Helpers
@@ -226,11 +224,21 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return false
+        return false
     }
     
     static func dismissBottomSheet(){
         HomeViewController.bottomSheetVC.dismiss(animated: true, completion: nil)
+    }
+    
+    func showBottomSheet(){
+        HomeViewController.bottomSheetVC.homeNavigaiton = self.navigationController
+        
+        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        
+        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
+        
+        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 }
 
