@@ -157,12 +157,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        if component_select.day != -1 {
-//            select = component_select.day!
-//        }else{
-//            select = -1
-//        }
-        
         self.calculation()
         let component = cal.date(from: components)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
@@ -215,10 +209,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     }
     
     //MARK: - Helpers
-    
-    func settingComplete(settingDay: String) {
-
-    }
     
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
