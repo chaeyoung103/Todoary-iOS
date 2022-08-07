@@ -38,6 +38,10 @@ class TodoBannerCell: UITableViewCell {
         $0.layer.masksToBounds = false
     }
     
+
+    
+
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,9 +50,6 @@ class TodoBannerCell: UITableViewCell {
      
         setUpView()
         setUpConstraint()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveNewTodoVC))
-        self.contentView.addGestureRecognizer(tapGesture)
         
     }
     
@@ -59,7 +60,6 @@ class TodoBannerCell: UITableViewCell {
     func setUpView(){
         
         self.contentView.addSubview(backView)
-        
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
         
@@ -91,15 +91,10 @@ class TodoBannerCell: UITableViewCell {
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalTo(checkBox)
+            make.width.equalTo(170)
         }
+        
+
     
-    }
-    
-    @objc
-    func willMoveNewTodoVC(){
-        let vc = TodoSettingViewController()
-//        vc.todoTitle = "(투두 이름)"
-        HomeViewController.dismissBottomSheet()
-        navigation.pushViewController(vc, animated: true)
     }
 }
