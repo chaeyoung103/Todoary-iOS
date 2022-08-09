@@ -23,7 +23,23 @@ extension UILabel {
         self.font = UIFont.nbFont(type: type)
     }
     
-    private func setTextWithLineHeight(type: TextStyles, attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
+    //label 자간, 행간 수동 설정 함수
+    func labelAttributeSetting(letterSpacing: Double? = nil, lineHeight: Double? = nil){
+        
+        if let labelText = text, labelText.isEmpty == false {
+            var attributedString = NSMutableAttributedString(string: labelText)
+            
+            if(letterSpacing != nil){
+                attributedString = addLetterSpacing(spacing: letterSpacing!, attributedString: attributedString)
+            }
+            if(lineHeight != nil){
+                attributedString = setTextWithLineHeight(lineHeight: lineHeight!, attributedString: attributedString)
+            }
+            self.attributedText = attributedString
+        }
+    }
+    
+    private func setTextWithLineHeight(type: TextStyles,attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
         
         var lineHeight: Double = 0
         
@@ -60,6 +76,22 @@ extension UILabel {
         return attributedString
     }
     
+    private func setTextWithLineHeight(lineHeight: Double, attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
+        
+        let style = NSMutableParagraphStyle()
+        style.maximumLineHeight = lineHeight
+        style.minimumLineHeight = lineHeight
+        style.lineSpacing = lineHeight/4
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: style,
+        ]
+        
+        attributedString.addAttributes(attributes, range: NSRange(location: 0,
+                                                                  length: attributedString.length-1))
+        return attributedString
+    }
+    
     private func addLetterSpacing(type: TextStyles, attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
         
         var value: Double = 0
@@ -83,6 +115,18 @@ extension UILabel {
         return attributedString
     }
     
+    private func addLetterSpacing(spacing: Double, attributedString: NSMutableAttributedString) -> NSMutableAttributedString{
+        
+        attributedString.addAttribute(.kern,
+                                      value: spacing,
+                                      range: NSRange(location: 0,
+                                                     length: attributedString.length-1))
+        
+        return attributedString
+    }
+    
+    //TODO: - 마무리 때 함수 labelAttributeSetting로 대체하게 하기!!!
+    
     //기본 타입 아닌 경우 자간 설정 함수
     func addLetterSpacing(spacing: CGFloat){
         
@@ -98,21 +142,23 @@ extension UILabel {
             self.attributedText = attributedString
         }
     }
-    
+
     //기본 타입 아닌 경우 행간 설정 함수
     func setTextWithLineHeight(lineHeight: CGFloat){
         if let text = text {
             let style = NSMutableParagraphStyle()
             style.maximumLineHeight = lineHeight
             style.minimumLineHeight = lineHeight
+            style.lineSpacing = lineHeight/4
             
             let attributes: [NSAttributedString.Key: Any] = [
                 .paragraphStyle: style,
-                .baselineOffset: (lineHeight - font.lineHeight) / 4
+//                .baselineOffset: (lineHeight - font.lineHeight) / 4
             ]
             
-            let attrString = NSAttributedString(string: text,
-                                                attributes: attributes)
+            let attrString = NSMutableAttributedString(string: text,
+                                      attributes: attributes)
+            
             self.attributedText = attrString
         }
     }

@@ -73,8 +73,10 @@ extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
         
         let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
         
-        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: 325)
-        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: 600)
+        let height = UIScreen.main.bounds.size.height
+        
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: height - 519 - 41)
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: height - 95 - 41 ) //790 - 41
         
         let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2")
         

@@ -395,15 +395,12 @@ extension SignUpViewController{
             nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
             return
-            
         default:
             print("데이터 베이스 오류")
             nextButton.isEnabled = false
-            
             //팝업 띄우기
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
-            
             return
         }
     }

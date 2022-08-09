@@ -130,11 +130,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didShowKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillShowNotification ,
-                                            object: nil)
+                                               object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didHideKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillHideNotification ,
-                                            object: nil)
+                                               object: nil)
     }
     
     //MARK: - Action
@@ -239,6 +239,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
                                                 isAlarmEnabled: false,
                                                 targetTime: "",
                                                 categoryId: selectCategory)
+        
         TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
         
         
@@ -288,9 +289,7 @@ extension SummaryBottomViewController{
             
             dataArraySortByPin()
         
-            guard let newIndex = todoDataList.firstIndex(of: willChangeData) else{
-                return
-            }
+            guard let newIndex = todoDataList.firstIndex(of: willChangeData) else{ return }
             
             tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex + 1, section: 0))
             tableView.reloadData()
@@ -437,18 +436,13 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
 extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if categoryData.isEmpty{
-            return 0
-        }else {
-            return categoryData.count
-        }
+        return categoryData.isEmpty ? 0 : categoryData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath) as? TodoCategoryCell else{
-            fatalError()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath)
+                as? TodoCategoryCell else{ fatalError() }
         
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
@@ -479,9 +473,8 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
-            fatalError()
-        }
+        guard let cell = collectionView.cellForItem(at:indexPath)
+                as? TodoCategoryCell else{ fatalError() }
         
         cell.categoryLabel.backgroundColor = .white
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
