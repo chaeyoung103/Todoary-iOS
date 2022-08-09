@@ -79,7 +79,7 @@ extension CategoryTodoTableViewCell{
     
     func setUpTimeStack(){
         
-        if(todoData.targetTime != nil){
+        if(todoData.isAlarmEnabled){
             timeView.addSubview(timeLabel)
             timeView.addSubview(alarmImage)
             

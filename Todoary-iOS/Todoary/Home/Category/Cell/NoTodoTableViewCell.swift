@@ -43,6 +43,9 @@ class NoTodoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectedBackgroundView = selectedView
+        
+        setUpView()
+        setUpConstraint()
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +64,7 @@ class NoTodoTableViewCell: UITableViewCell {
     func setUpConstraint(){
         
         self.contentView.snp.makeConstraints{ make in
-            make.height.equalTo(88)
+            make.height.equalTo(88+20)
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-30)

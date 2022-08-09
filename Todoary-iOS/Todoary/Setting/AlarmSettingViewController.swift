@@ -58,8 +58,6 @@ class AlarmSettingViewController: UIViewController {
         
         let messageView = InfoMessageView()
         
-        self.view.addSubview(messageView)
-        
         var offset = 0
         
         switch sender.caller{
@@ -90,6 +88,10 @@ class AlarmSettingViewController: UIViewController {
             return
         }
         
+        messageView.messageLabel.labelAttributeSetting(letterSpacing: 0.22, lineHeight: 13.2)
+        
+        self.view.addSubview(messageView)
+        
         messageView.snp.makeConstraints{ make in
             make.width.equalTo(messageView.messageLabel.snp.width).offset(32)
             make.height.equalTo(messageView.messageLabel.snp.height).offset(22)
@@ -111,9 +113,8 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath) as? AlarmSettingTableViewCell else{
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmSettingCell", for: indexPath)
+                as? AlarmSettingTableViewCell else { fatalError() }
         
         let tapGesture = CellButtonTapGesture(target: self, action: #selector(showInfoMessage(_:)))
         tapGesture.caller = indexPath.row
@@ -148,7 +149,6 @@ extension AlarmSettingViewController: UITableViewDelegate, UITableViewDataSource
 extension AlarmSettingViewController{
     func successApiResult(_ resultData: GetAlarmCheckResult){
         print("api 호출 성공")
-        print(resultData)
         self.alarmData = resultData
         self.tableView.reloadData()
     }

@@ -70,8 +70,9 @@ class CategoryViewController: UIViewController {
         
         setUpView()
         setUpConstraint()
-        
-        //category 조회
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         GetCategoryDataManager().get(self)
     }
     
@@ -137,12 +138,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if(todoData.count == 0){
-//            let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
-//            return cell
-//        }
-        
         if(indexPath.row != tableView.numberOfRows(inSection: 0)-1){
+            
+            if(todoData.count == 0){
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoTodoTableViewCell.cellIdentifier, for: indexPath)
+                return cell
+            }
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTodoTableViewCell.cellIdentifier)
                     as? CategoryTodoTableViewCell else { fatalError() }
@@ -253,9 +254,11 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row == categories.count){
             let vc = ColorPickerBottomsheetViewController()
+            
             vc.modalPresentationStyle = .overFullScreen
             vc.categoryVC = self
             vc.deleteBtn.setTitle("취소", for: .normal)
+            
             self.present(vc, animated: false, completion: nil)
         }
     }
@@ -268,9 +271,8 @@ extension CategoryViewController{
         self.categories = result
         collectionView.reloadData()
         
-        if(self.categories != []){
-            TodoGetByCategoryDataManager().get(viewController: self, categoryId: categories[0].id)
-        }
+        let categoryId = self.categories.count == 0 ? categories[0].id : categories[currentCategoryIndex.row].id
+        TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }
     
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
@@ -288,7 +290,6 @@ extension CategoryViewController{
     
     func checkGetTodoApiResultCode(_ indexPath: IndexPath, _ result: GetTodoModel){
         switch result.code{
-            
         case 1000:
             
             initTodoCellConstraint()

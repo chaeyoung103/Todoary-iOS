@@ -8,6 +8,12 @@
 import UIKit
 
 class CategoryTodoTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties
+    
+    var todoData: GetTodoInfo!
+    
+    //MARK: - UI
 
     static let cellIdentifier = "todoCell"
     
@@ -54,7 +60,6 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
-        $0.isHidden = true
     }
     
     let timeView = UIView()
@@ -84,9 +89,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         $0.addTarget(self, action: #selector(deleteButtonDidClicked), for: .touchUpInside)
     }
     
-    //MARK: - Properties
-    
-    var todoData: GetTodoInfo!
+    //MARK: - LifeCycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         
@@ -100,6 +103,22 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        
+        todoTitle.text = ""
+        dateLabel.text = ""
+        timeLabel.text = ""
+        
+        checkBox.isSelected = false
+        
+        alarmImage.removeFromSuperview()
+        timeView.removeFromSuperview()
+        
+        categoryLabel.setTitle("", for: .normal)
+        categoryLabel.setTitleColor(.white, for: .normal)
+        categoryLabel.layer.borderColor = UIColor.white.cgColor
     }
     
     //MARK: - Action
@@ -117,23 +136,7 @@ class CategoryTodoTableViewCell: UITableViewCell {
         TodoDeleteDataManager().delete(viewController: self.viewController, todoId: self.todoData.todoId, indexPath: indexPath)
     }
     
-    //MARK: - Method
-
-    override func prepareForReuse() {
-        
-        todoTitle.text = ""
-        dateLabel.text = ""
-        timeLabel.text = ""
-        
-        checkBox.isSelected = false
-        
-        alarmImage.removeFromSuperview()
-        timeView.removeFromSuperview()
-        
-        categoryLabel.setTitle("", for: .normal)
-        categoryLabel.setTitleColor(.white, for: .normal)
-        categoryLabel.layer.borderColor = UIColor.white.cgColor
-    }
+    //MARK: - Helper
     
     func settingTodoData(_ cellData: GetTodoInfo){
         
@@ -143,13 +146,11 @@ class CategoryTodoTableViewCell: UITableViewCell {
         self.dateLabel.text = cellData.convertDate
         self.timeLabel.text = cellData.convertTime ?? ""
         self.checkBox.isSelected = cellData.isChecked ?? false
-        self.alarmImage.isHidden = cellData.isAlarmEnabled
         self.setUpTimeStack()
         self.setCategoryData()
     }
     
     func setCategoryData(){
-
         self.categoryLabel.setTitle(todoData.categoryTitle, for: .normal)
         self.categoryLabel.layer.borderColor = UIColor.categoryColor[todoData.color].cgColor
         self.categoryLabel.setTitleColor( UIColor.categoryColor[todoData.color], for: .normal)

@@ -51,7 +51,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
-        $0.addTarget(TodoSettingViewController.self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
     }
     
     //navigation bar
