@@ -15,11 +15,20 @@ extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICo
         dateFormatterYear.dateFormat = "yyyy"
         dateFormatterMonth.dateFormat = "MM"
         dateFormatterDate.dateFormat = "dd"
-        self.year = Int(dateFormatterYear.string(from: now))!
-        self.month = Int(dateFormatterMonth.string(from: now))!
-        self.today = Int(dateFormatterDate.string(from: now))!
-        components.year = cal.component(.year, from: now)
-        components.month = cal.component(.month, from: now)
+        
+        if todoYear != -1 {
+            self.year = todoYear
+            self.month = todoMonth
+            self.today = todoDay
+            components.year = cal.component(.year, from: now)
+            components.month = cal.component(.month, from: now)
+        }else {
+            self.year = Int(dateFormatterYear.string(from: now))!
+            self.month = Int(dateFormatterMonth.string(from: now))!
+            self.today = Int(dateFormatterDate.string(from: now))!
+            components.year = cal.component(.year, from: now)
+            components.month = cal.component(.month, from: now)
+        }
         components.day = 1
         self.calculation()
     }
