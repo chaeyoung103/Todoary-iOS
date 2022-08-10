@@ -44,80 +44,107 @@ extension DiaryViewController{
     
     @objc
     func strikeBtnDidClicked(){
+
         let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange!
+        let selectedTextRange = self.textView.selectedTextRange
+        
+        let start = selectedRange.lowerBound
+
+        let attribute = textView.attributedText.attribute(.strikethroughStyle,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
         
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        attributedString.addAttribute(.strikethroughStyle,
-                                      value: 1,
-                                      range: selectedRange)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.strikethroughStyle, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.strikethroughStyle,
+                                          value: 1,
+                                          range: selectedRange)
+        }
         
         textView.attributedText = attributedString
+        
+        moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc
     func underLineBtnDidClicked(){
         
         let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange!
+        let selectedTextRange = self.textView.selectedTextRange
+        
+        let start = selectedRange.lowerBound
+
+        let attribute = textView.attributedText.attribute(.underlineStyle,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
         
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        attributedString.addAttribute(.underlineStyle,
-                                      value: NSUnderlineStyle.single.rawValue,
-                                      range: selectedRange)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.underlineStyle, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.underlineStyle,
+                                          value: NSUnderlineStyle.single.rawValue,
+                                          range: selectedRange)
+        }
         
         textView.attributedText = attributedString
+        
+        moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc
     func boldBtnDidClicked(){
         
         /*
-         기본값 UIFont.nbFont(ofSize: 15, weight: .bold)
-         볼드 값 UIFont.nbFont(ofSize: 15, weight: .bold)
-         
-         1. 선택한 범위 현재 attribute 가져오기
-         2. if bold 아닐 경우 bold 적용
-         3. bold일 경우 기본값으로 돌리기
-         4. bold, bold 아닌 문자 섞여있을 경우 더 많이 적용된 값 기준으로 적용
+         무조건 첫 번째 글자 기준으로 적용시키기
+         첫 번째 글자 -> 볼드 -> 볼드 취소
+         첫 번째 글자 -> 기본 -> 볼드
          */
         
         let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange!
+        let selectedTextRange = self.textView.selectedTextRange
         
-        chooseBoldOrDefault(selectedTextRange)
+        let start = selectedRange.lowerBound
+
+        let attribute = textView.attributedText.attribute(.font,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+        var fontWeight: NBWeight!
+        
+        if let fontName = attribute?.fontName{
+            fontWeight = fontName == "AppleSDGothicNeo-Bold" ? NBWeight.medium : .bold
+        }
         
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
         
         attributedString.addAttribute(.font,
-                                      value: UIFont.nbFont(ofSize: 15, weight: .bold),
+                                      value: UIFont.nbFont(ofSize: 15, weight: fontWeight),
                                       range: selectedRange)
         
         textView.attributedText = attributedString
+        
+        moveCursorEndOfSelection(selectedTextRange)
     }
     
-    func chooseBoldOrDefault(_ textRange: UITextRange){
-        
-        let start = textView.offset(from: textView.beginningOfDocument, to: textRange.start)
-        let end = textView.offset(from: textView.beginningOfDocument, to: textRange.end)
-        
-        var count = 0
-        
-        for i in start..<end{
-            let attribute = textView.attributedText.attribute(.font, at: i, effectiveRange: &self.textView.selectedRange) as? UIFont
-            
-            if let fontName = attribute?.fontName{
-                if(fontName == "AppleSDGothicNeo-Bold"){
-                    count += 1
-                }
+    //Attribute 추가 후 커서 마지막 드래그 위치로 이동
+    func moveCursorEndOfSelection(_ selectedTextRange: UITextRange?){
+        // only if there is a currently selected range
+        if let selectedRange = selectedTextRange {
+            // and only if the new position is valid
+            if let newPosition = textView.position(from: selectedRange.end, offset: 0) {
+                // set the new position
+                textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
             }
         }
-        
-        //
-        print("기본", end - start - count, "선택", count)
-        print(count >= end - start - count)
     }
 }
 
