@@ -82,9 +82,6 @@ extension DiaryViewController{
         let attribute = textView.attributedText.attribute(.underlineStyle,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange)
-//        as? NSUnderlineStyle
-
-        print("속성", attribute)
         
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
