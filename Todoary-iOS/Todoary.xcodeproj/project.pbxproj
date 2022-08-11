@@ -1044,6 +1044,7 @@
 				E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */,
 				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
+
 			);
 			path = Diary;
 			sourceTree = "<group>";
