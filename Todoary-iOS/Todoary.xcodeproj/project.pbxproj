@@ -70,6 +70,7 @@
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
+		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
@@ -279,6 +280,7 @@
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
@@ -939,6 +941,7 @@
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
 				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */,
+				577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -1398,6 +1401,7 @@
 				E0F99898288A58870051C7AA /* ProfileImgDeleteModel.swift in Sources */,
 				57294AD12894F72F00DA2F31 /* TodoPinInput.swift in Sources */,
 				57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */,
+				577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */,
 				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
