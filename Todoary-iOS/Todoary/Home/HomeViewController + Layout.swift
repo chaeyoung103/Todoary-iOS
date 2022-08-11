@@ -44,7 +44,7 @@ extension HomeViewController {
         logo.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(52)
             make.leading.equalToSuperview().offset(42)
-            make.width.equalTo(56)
+            make.width.equalTo(90)
             make.height.equalTo(24)
         }
         

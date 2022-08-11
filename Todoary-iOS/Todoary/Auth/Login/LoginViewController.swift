@@ -16,13 +16,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - UIComponenets
     
+    let logo = UIImageView().then{
+        $0.image = UIImage(named: "login_logo")
+        $0.contentMode = .scaleAspectFill
+    }
+    
+    let comment = UIImageView().then{
+        $0.image = UIImage(named: "login_comment")
+        $0.contentMode = .scaleAspectFill
+    }
+    
+    let picture = UIImageView().then{
+        $0.image = UIImage(named: "loginPic")
+        $0.contentMode = .scaleAspectFill
+    }
+    
     //id
     let idTitle = UILabel().then{
         $0.text = "아이디"
         $0.textColor = .headline
-        $0.labelTypeSetting(type: .header)
-        $0.font = UIFont.nbFont(type: .subtitle)
-        $0.labelTypeSetting(type: .tableCell)
+        $0.font = UIFont.nbFont(ofSize: 16, weight: .bold)
     }
     
     let idTf = UITextField().then{
@@ -32,10 +45,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.setPlaceholderColor()
         $0.returnKeyType = .next
         $0.enablesReturnKeyAutomatically = true
+        $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
     
     let idBorderLine = UIView().then{
-        $0.backgroundColor = .buttonColor
+        $0.backgroundColor = .todoaryGrey
     }
 
 
@@ -43,8 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let pwTitle = UILabel().then{
         $0.text = "비밀번호"
         $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .subtitle)
-        $0.labelTypeSetting(type: .tableCell)
+        $0.font = UIFont.nbFont(ofSize: 16, weight: .bold)
     }
 
     let pwTf = UITextField().then{
@@ -55,10 +68,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.setPlaceholderColor()
         $0.returnKeyType = .done
         $0.enablesReturnKeyAutomatically = true
+        $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
 
     let pwBorderLine = UIView().then{
-        $0.backgroundColor = .buttonColor
+        $0.backgroundColor = .todoaryGrey
     }
 
     let autoLoginTitle = UILabel().then{
@@ -77,11 +91,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
   
     let loginBtn = UIButton().then{
         $0.setTitle("로그인", for: .normal)
-        $0.backgroundColor = .buttonColor
+        $0.backgroundColor = UIColor(red: 184/255, green: 184/255, blue: 184/255, alpha: 1)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.textAlignment = .center
-        $0.titleLabel?.font = UIFont.nbFont(type: .button2)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 20, weight: .semibold)
         $0.layer.cornerRadius = 51/2
+        $0.isEnabled = false
         $0.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
     }
     
@@ -95,7 +110,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.setTitle("회원가입", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.todoaryGrey, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .button2)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 20, weight: .semibold)
         $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.buttonColor.cgColor
@@ -141,7 +156,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: - Actions
     
-        
+    @objc func tfDidChange() {
+        if idTf.text != "" && pwTf.text != ""{
+            loginBtn.backgroundColor = .buttonColor
+            loginBtn.isEnabled = true
+        }else{
+            loginBtn.backgroundColor = UIColor(red: 184/255, green: 184/255, blue: 184/255, alpha: 1)
+            loginBtn.isEnabled = false
+        }
+    }
     
     @objc func signUpBtnDidTab() {
         let vc = AgreementViewController()
@@ -179,9 +202,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func appleBtnDidTab() {
-        let todoSettingViewController = TodoSettingViewController()
-        self.navigationController?.pushViewController(todoSettingViewController, animated: true)
-        self.navigationController?.isNavigationBarHidden = true
     }
         
         
