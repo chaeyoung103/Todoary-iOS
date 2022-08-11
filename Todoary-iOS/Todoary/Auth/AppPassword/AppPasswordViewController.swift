@@ -163,8 +163,7 @@ class AppPasswordViewController : UIViewController {
     }
     
     let blueCharacter = UIImageView().then{
-//        $0.image = UIImage(named: <#T##String#>)
-        $0.backgroundColor = .black
+        $0.image = UIImage(named: "password5")
     }
 
  
