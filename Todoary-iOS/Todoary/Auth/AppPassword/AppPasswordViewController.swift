@@ -161,8 +161,14 @@ class AppPasswordViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
+    
+    let blueCharacter = UIImageView().then{
+//        $0.image = UIImage(named: <#T##String#>)
+        $0.backgroundColor = .black
+    }
+
  
-    //MARK: - UIComponenets
+    //MARK: - UIComponenets_deletBtn
     let deletBtn = UIButton().then{
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black

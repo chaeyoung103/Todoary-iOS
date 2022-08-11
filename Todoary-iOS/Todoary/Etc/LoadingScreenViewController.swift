@@ -18,22 +18,13 @@ class LoadingScreenViewController : UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadingHUD.show()
+        //테스트 할때 써주기
+//        LoadingHUD.show()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func tapp() {
-        isTap = !isTap
-        if isTap {
-            LoadingHUD.show()
-        }
-        else {
-            LoadingHUD.hide()
-        }
     }
 }
 
