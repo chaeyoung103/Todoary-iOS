@@ -32,9 +32,14 @@ class DiaryViewController : UIViewController {
     
     //MARK: - UIComponenets
 
+
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
     }
+    
+    var DiarySticker = DiaryStickerView().then{
+        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 406.0)
+        }
     
     let contentView = UIView().then{
         $0.backgroundColor = .white
@@ -96,6 +101,7 @@ class DiaryViewController : UIViewController {
         
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
+        textView.inputView = DiarySticker
         
         setUpView()
         setUpConstraint()
@@ -103,7 +109,7 @@ class DiaryViewController : UIViewController {
         configure()
         setupCollectionView()
         
-        setTextToolBarAction()//
+        setTextToolBarAction()
             
         }
     
