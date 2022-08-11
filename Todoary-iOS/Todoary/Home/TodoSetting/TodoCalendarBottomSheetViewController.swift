@@ -11,30 +11,47 @@ class TodoCalendarBottomSheetViewController: UIViewController {
     
     
     // MARK: - Properties
+    
+    //받아올 날짜 데이터
+    var todoYear : Int = -1
+    var todoMonth : Int = -1
+    var todoDay : Int = -1
+    
     // 바텀 시트 높이
     let bottomHeight: CGFloat = 375
     
+    //데이터 전달 delegate
     var delegate: CalendarComplete?
         
     // bottomSheet가 view의 상단에서 떨어진 거리
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
     
+    //현재시간
     let now = Date()
+    
     var cal = Calendar.current
+    
+    //년,월,일 데이터 형식
     let dateFormatterYear = DateFormatter()
     let dateFormatterMonth = DateFormatter()
     let dateFormatterDate = DateFormatter()
+    
     var today : Int = 0
     var month_component : Int = 0
     var year_component : Int = 0
+    
     var month : Int = 0
     var year : Int = 0
+    
     var emptyDay : Int = 0
+    
     var components = DateComponents()
+    
     var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
     var daysCountInMonth = 0
     var weekdayAdding = 0
+    
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
     // MARK: - UIComponents
