@@ -126,6 +126,26 @@ class CategoryViewController: UIViewController {
             }
         }
     }
+    
+    func showDeleteCompleteToastMessage(){
+        
+        let toast = ToastMessageView()
+        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+        
+        self.view.addSubview(toast)
+        
+        toast.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(81)
+            make.trailing.equalToSuperview().offset(-81)
+            make.bottom.equalToSuperview().offset(-39)
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+              toast.alpha = 0.0
+          }, completion: {(isCompleted) in
+              toast.removeFromSuperview()
+          })
+    }
 
 }
 
@@ -319,6 +339,7 @@ extension CategoryViewController{
             if(todoData.count == 0){
                 isEditingMode = false
             }
+            showDeleteCompleteToastMessage()
             return
         default:
             let alert = DataBaseErrorAlert()

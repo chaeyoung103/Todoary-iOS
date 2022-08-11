@@ -1,12 +1,11 @@
 //
-//  TextToolBar.swift
+//  ToolBarText.swift
 //  Todoary
 //
-//  Created by 박지윤 on 2022/08/09.
+//  Created by 박지윤 on 2022/08/11.
 //
 
 import Foundation
-import UIKit
 
 extension DiaryViewController{
     
@@ -45,7 +44,7 @@ extension DiaryViewController{
     
     @objc
     func fontChange(){
-//        self.textView.font = 
+//        self.textView.font =
     }
     
     @objc
