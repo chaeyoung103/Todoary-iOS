@@ -19,8 +19,7 @@ class DiaryStickerCollectionViewCell: UICollectionViewCell {
     
    
     let stickerBtn = UIImageView().then{
-        $0.image 
-
+        $0.image = UIImage(named : "sticker1")
     }
    
     
@@ -43,9 +42,9 @@ class DiaryStickerCollectionViewCell: UICollectionViewCell {
         func setUpConstraint(){
             
             stickerBtn.snp.makeConstraints{ make in
-                make.width.height.equalTo(40)
+                make.width.equalTo(97.5)
+                make.height.equalTo(101.5)
                 make.centerX.centerY.equalToSuperview()
-                
             }
         }
             

@@ -13,15 +13,42 @@ import Then
 
 class DiaryViewController : UIViewController {
     
+    static let stickerData = [UIImage(named: "sticker1"),
+                               UIImage(named: "sticker2"),
+                               UIImage(named: "sticker3"),
+                               UIImage(named: "sticker4"),
+                               UIImage(named: "sticker5"),
+                               UIImage(named: "sticker6"),
+                               UIImage(named: "sticker7"),
+                               UIImage(named: "sticker8"),
+                               UIImage(named: "sticker9"),
+                               UIImage(named: "sticker10"),
+                               UIImage(named: "sticker11"),
+                               UIImage(named: "sticker12"),
+                               UIImage(named: "sticker13"),
+                               UIImage(named: "sticker14"),
+                               UIImage(named: "sticker15"),
+                               UIImage(named: "sticker16")]
+    
     //MARK: - UIComponenets
+
 
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
+        $0.textBtn.addTarget(self, action: #selector(textBtnTab), for: .touchUpInside)
+        $0.stickerBtn.addTarget(self, action: #selector(stickerBtnTab), for: .touchUpInside)
+        $0.highlightBtn.addTarget(self, action: #selector(highlightBtnTab), for: .touchUpInside)
+        $0.exitBtn.addTarget(self, action: #selector(exitBtnDidTab), for: .touchUpInside)
     }
+    
+    var DiarySticker = DiaryStickerView().then{
+        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 406.0)
+        }
     
     let contentView = UIView().then{
         $0.backgroundColor = .white
     }
+    
     //navigation bar
     var navigationView:NavigationView!
     
@@ -80,19 +107,49 @@ class DiaryViewController : UIViewController {
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
         
+        //Sticker뷰 넣어주기
+//        textView.inputView = DiarySticker
+//        DiarySticker.isHidden = true
+
         setUpView()
         setUpConstraint()
         
         configure()
         setupCollectionView()
         
-        setTextToolBarAction()//
+        setTextToolBarAction()
             
         }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    //MARK: - ToolbarBtnDidTab
+    
+    @objc func textBtnTab() {
+        textView.inputView = nil
+        textView.reloadInputViews()
+    }
+    
+    @objc func stickerBtnTab() {
+        textView.inputView = DiarySticker
+        toolbar.textToolbar.isHidden = true
+        toolbar.colorToolbar.isHidden = true
+        textView.reloadInputViews()
+    }
+    
+    @objc func highlightBtnTab() {
+        textView.inputView = nil
+        textView.reloadInputViews()
+    }
+    
+    @objc func exitBtnDidTab() {
+        textView.endEditing(true)
+        textView.reloadInputViews()
+    }
+    
+    
     
     //MARK: - Helpers
     

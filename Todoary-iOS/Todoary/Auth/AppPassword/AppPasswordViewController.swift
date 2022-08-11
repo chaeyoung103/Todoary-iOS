@@ -59,22 +59,22 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - input password
     let inputPw1 = UIImageView().then{
-        $0.image = UIImage(named: "inputPassword")
+        $0.image = UIImage(named: "sticker1")
         $0.isHidden = true
     }
     
     let inputPw2 = UIImageView().then{
-        $0.image = UIImage(named: "inputPassword")
+        $0.image = UIImage(named: "sticker2")
         $0.isHidden = true
     }
     
     let inputPw3 = UIImageView().then{
-        $0.image = UIImage(named: "inputPassword")
+        $0.image = UIImage(named: "sticker3")
         $0.isHidden = true
     }
     
     let inputPw4 = UIImageView().then{
-        $0.image = UIImage(named: "inputPassword")
+        $0.image = UIImage(named: "sticker4")
         $0.isHidden = true
     }
     
@@ -201,7 +201,11 @@ class AppPasswordViewController : UIViewController {
             inputPw4.isHidden = false
             
             let pw = passwordArr.joined(separator: "")
-            if password == pw {
+            if password == pw
+            && inputPw1.isHidden == false
+            && inputPw2.isHidden == false
+            && inputPw3.isHidden == false
+            && inputPw4.isHidden == false {
                 self.navigationController?.pushViewController(HomeViewController(), animated: true)
                // print("다음")
             } else {
@@ -214,9 +218,9 @@ class AppPasswordViewController : UIViewController {
                 inputPw3.isHidden = true
                 inputPw4.isHidden = true
             }
+        
         default:
             return
-            
         }
     }
     
