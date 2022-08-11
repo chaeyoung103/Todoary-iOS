@@ -35,7 +35,10 @@ class DiaryViewController : UIViewController {
 
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
-        $0.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
+        $0.textBtn.addTarget(self, action: #selector(textBtnTab), for: .touchUpInside)
+        $0.stickerBtn.addTarget(self, action: #selector(stickerBtnTab), for: .touchUpInside)
+        $0.highlightBtn.addTarget(self, action: #selector(highlightBtnTab), for: .touchUpInside)
+        $0.exitBtn.addTarget(self, action: #selector(exitBtnDidTab), for: .touchUpInside)
     }
     
     var DiarySticker = DiaryStickerView().then{
@@ -45,6 +48,7 @@ class DiaryViewController : UIViewController {
     let contentView = UIView().then{
         $0.backgroundColor = .white
     }
+    
     //navigation bar
     var navigationView:NavigationView!
     
@@ -121,11 +125,31 @@ class DiaryViewController : UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func stickerBtnDidTab() {
-        print("ddd")
-        textView.inputView = DiarySticker
+    //MARK: - ToolbarBtnDidTab
+    
+    @objc func textBtnTab() {
+        textView.inputView = nil
         textView.reloadInputViews()
     }
+    
+    @objc func stickerBtnTab() {
+        textView.inputView = DiarySticker
+        toolbar.textToolbar.isHidden = true
+        toolbar.colorToolbar.isHidden = true
+        textView.reloadInputViews()
+    }
+    
+    @objc func highlightBtnTab() {
+        textView.inputView = nil
+        textView.reloadInputViews()
+    }
+    
+    @objc func exitBtnDidTab() {
+        textView.endEditing(true)
+        textView.reloadInputViews()
+    }
+    
+    
     
     //MARK: - Helpers
     
