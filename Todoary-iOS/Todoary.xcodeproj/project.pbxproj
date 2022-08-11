@@ -70,7 +70,6 @@
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
-		577A01BE28A4EB21004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BD28A4EB21004B2575 /* ToolBarText.swift */; };
 		577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BF28A4EBFE004B2575 /* ToolBarText.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
@@ -127,7 +126,7 @@
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
-		E0218B2528A4E99600E48618 /* DiaryStickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController.swift */; };
+		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -348,7 +347,7 @@
 		E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionView.swift; sourceTree = "<group>"; };
 		E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionViewCell.swift; sourceTree = "<group>"; };
-		E0218B2428A4E99600E48618 /* DiaryStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerViewController.swift; sourceTree = "<group>"; };
+		E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryStickerViewController + Layout.swift"; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1054,7 +1053,7 @@
 				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
 				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
-				E0218B2428A4E99600E48618 /* DiaryStickerViewController.swift */,
+				E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */,
 				577A01BF28A4EBFE004B2575 /* ToolBarText.swift */,
 			);
 			path = Diary;
@@ -1408,7 +1407,7 @@
 				574A704B28852F9B003C8F99 /* DiaryBannerCell.swift in Sources */,
 				AC5E27E3289020D70056EC69 /* AuthJwtDataManager.swift in Sources */,
 				E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */,
-				E0218B2528A4E99600E48618 /* DiaryStickerViewController.swift in Sources */,
+				E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */,
 				ACCD87B92893C43F00C34CE7 /* CategoryMakeInput.swift in Sources */,
 				E0F99893288A58320051C7AA /* ProfileImgModel.swift in Sources */,
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
@@ -1467,7 +1466,6 @@
 				E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */,
 				5750364C288A3EC0006A9070 /* SignUpDataManager.swift in Sources */,
 				E03DCC4C28929D0F00532180 /* AutoLoginInput.swift in Sources */,
-				577A01BE28A4EB21004B2575 /* ToolBarText.swift in Sources */,
 				ACCD87C22895931600C34CE7 /* GetCategoryInput.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,

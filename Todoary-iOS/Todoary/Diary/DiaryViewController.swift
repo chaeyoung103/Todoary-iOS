@@ -32,9 +32,15 @@ class DiaryViewController : UIViewController {
     
     //MARK: - UIComponenets
 
+
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
+        $0.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
     }
+    
+    var DiarySticker = DiaryStickerView().then{
+        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 406.0)
+        }
     
     let contentView = UIView().then{
         $0.backgroundColor = .white
@@ -97,18 +103,28 @@ class DiaryViewController : UIViewController {
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
         
+        //Sticker뷰 넣어주기
+//        textView.inputView = DiarySticker
+//        DiarySticker.isHidden = true
+
         setUpView()
         setUpConstraint()
         
         configure()
         setupCollectionView()
         
-        setTextToolBarAction()//
+        setTextToolBarAction()
             
         }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @objc func stickerBtnDidTab() {
+        print("ddd")
+        textView.inputView = DiarySticker
+        textView.reloadInputViews()
     }
     
     //MARK: - Helpers

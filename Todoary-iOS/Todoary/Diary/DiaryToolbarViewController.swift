@@ -12,8 +12,11 @@ import Then
 
 
 class DiaryToolbar : UIView {
+    
 
     //MARK: - UIComponenets
+    
+    var DiarySticker = DiaryStickerView()
     
     let backToolbar = UIView().then{
         $0.backgroundColor = .none
@@ -191,9 +194,9 @@ class DiaryToolbar : UIView {
     }
 //    @objc func stickerBtnDidTab() {
 //        if stickerBtn.isTouchInside == true {
-//            colorToolbar.isHidden = false
+//            DiaryViewController().textView.inputView = DiarySticker
 //        } else {
-//            colorToolbar.isHidden = true
+//            DiaryViewController().textView.inputView = nil
 //        }
 //    }
     
