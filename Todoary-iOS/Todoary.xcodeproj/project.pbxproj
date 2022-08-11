@@ -122,6 +122,9 @@
 		ACCD87D22897DB9E00C34CE7 /* CategoryDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */; };
 		ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */; };
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
+		E0218B1A28A4D51000E48618 /* DiaryStickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */; };
+		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
+		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -337,6 +340,9 @@
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaryStickerViewController.swift; path = ../../../../../Documents/DiaryStickerViewController.swift; sourceTree = "<group>"; };
+		E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionView.swift; sourceTree = "<group>"; };
+		E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1030,6 +1036,9 @@
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
 				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
+				E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */,
+				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
+				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1366,6 +1375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */,
 				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
@@ -1491,6 +1501,7 @@
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
+				E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
 				ACCD87D22897DB9E00C34CE7 /* CategoryDeleteModel.swift in Sources */,
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
@@ -1526,6 +1537,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */,
+				E0218B1A28A4D51000E48618 /* DiaryStickerViewController.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,
