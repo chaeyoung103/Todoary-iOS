@@ -129,6 +129,10 @@
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
 		E0218B2728A54BF900E48618 /* AdTextSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2628A54BF900E48618 /* AdTextSettingViewController.swift */; };
 		E0218B2928A54C0700E48618 /* AdTextSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */; };
+		E0218B2C28A54F8300E48618 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2B28A54F8300E48618 /* SplashScreenViewController.swift */; };
+		E0218B2E28A54FCC00E48618 /* SplashScreenViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2D28A54FCC00E48618 /* SplashScreenViewController+Layout.swift */; };
+		E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */; };
+		E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -352,6 +356,10 @@
 		E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryStickerViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0218B2628A54BF900E48618 /* AdTextSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdTextSettingViewController.swift; path = ../../../../../../Documents/AdTextSettingViewController.swift; sourceTree = "<group>"; };
 		E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0218B2B28A54F8300E48618 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		E0218B2D28A54FCC00E48618 /* SplashScreenViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashScreenViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingScreenViewController+Layout.swift"; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -546,10 +554,11 @@
 				574913B5287ADEF300381BCD /* Setting */,
 				E0AB9EBE287B1C100064CADA /* Home */,
 				E0F3CDC22895000200A74AB7 /* Diary */,
+				E0218B2A28A54EE300E48618 /* Etc */,
 				AC5E27E62890EA090056EC69 /* API */,
 				E05C0BF228851B7100812099 /* SupportingFile */,
-				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 				572E5AE7286EBDCE00D1FAA0 /* Info.plist */,
+				572E5AE2286EBDCE00D1FAA0 /* Assets.xcassets */,
 			);
 			path = Todoary;
 			sourceTree = "<group>";
@@ -950,6 +959,17 @@
 				577A01BD28A4EB21004B2575 /* ToolBarText.swift */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		E0218B2A28A54EE300E48618 /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				E0218B2B28A54F8300E48618 /* SplashScreenViewController.swift */,
+				E0218B2D28A54FCC00E48618 /* SplashScreenViewController+Layout.swift */,
+				E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */,
+				E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */,
+			);
+			path = Etc;
 			sourceTree = "<group>";
 		};
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
@@ -1430,6 +1450,7 @@
 				57294AD12894F72F00DA2F31 /* TodoPinInput.swift in Sources */,
 				57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */,
 				577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */,
+				E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */,
 				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
@@ -1450,6 +1471,7 @@
 				ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */,
 				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
 				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
+				E0218B2E28A54FCC00E48618 /* SplashScreenViewController+Layout.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */,
@@ -1512,6 +1534,7 @@
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
 				AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
+				E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
@@ -1525,6 +1548,7 @@
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
+				E0218B2C28A54F8300E48618 /* SplashScreenViewController.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */,
