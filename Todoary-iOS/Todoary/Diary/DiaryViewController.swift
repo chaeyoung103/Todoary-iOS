@@ -13,6 +13,23 @@ import Then
 
 class DiaryViewController : UIViewController {
     
+    static let stickerData = [UIImage(named: "sticker1"),
+                               UIImage(named: "sticker2"),
+                               UIImage(named: "sticker3"),
+                               UIImage(named: "sticker4"),
+                               UIImage(named: "sticker5"),
+                               UIImage(named: "sticker6"),
+                               UIImage(named: "sticker7"),
+                               UIImage(named: "sticker8"),
+                               UIImage(named: "sticker9"),
+                               UIImage(named: "sticker10"),
+                               UIImage(named: "sticker11"),
+                               UIImage(named: "sticker12"),
+                               UIImage(named: "sticker13"),
+                               UIImage(named: "sticker14"),
+                               UIImage(named: "sticker15"),
+                               UIImage(named: "sticker16")]
+    
     //MARK: - UIComponenets
 
     var toolbar = DiaryToolbar().then{
