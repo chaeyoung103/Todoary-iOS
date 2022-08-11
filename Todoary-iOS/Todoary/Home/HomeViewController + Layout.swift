@@ -71,6 +71,7 @@ extension HomeViewController {
         year_Month.snp.makeConstraints{ make in
             make.top.equalTo(profileImage.snp.bottom).offset(25)
             make.leading.equalToSuperview().offset(45)
+            make.width.equalTo(100)
             make.height.equalTo(22)
         }
         

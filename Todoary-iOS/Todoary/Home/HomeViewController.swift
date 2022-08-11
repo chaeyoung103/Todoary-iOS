@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class HomeViewController : UIViewController , UITextFieldDelegate {
+class HomeViewController : UIViewController {
     
     static var check : Int!
     
@@ -80,31 +80,13 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
-    
-    let toolBar = UIToolbar().then {
-        $0.backgroundColor = .white
-        $0.sizeToFit()
-        let btnDone = UIBarButtonItem(title: "확인", style: .plain, target: self, action: #selector(onPickDone))
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let btnCancel = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onPickCancel))
-        $0.setItems([btnCancel , space , btnDone], animated: true)
-        $0.isUserInteractionEnabled = true
-    }
-    
-    let datePicker = UIDatePicker().then{
-        $0.backgroundColor = .clear
-        $0.datePickerMode = .date
-        $0.preferredDatePickerStyle = .wheels
-        $0.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        $0.locale = Locale(identifier: "ko_KR")
-    }
-    
-    let year_Month = UITextField().then{
-        $0.text = "1999년 7월"
-        $0.textColor = .black
-        $0.font = UIFont.nbFont(ofSize: 18, weight: .bold)
-        $0.tintColor = .clear
-        
+    let year_Month = UIButton().then{
+        $0.setTitle("1999년 7월", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .bold)
+        $0.titleLabel?.textAlignment = .left
+        $0.contentHorizontalAlignment = .left
+        $0.addTarget(self, action: #selector(settingInit), for: .touchUpInside)
     }
     
     let previousMonthBtn = UIButton().then{
@@ -135,9 +117,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
     
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
-        toolBar.subviews.first?.backgroundColor = .white
-        datePicker.subviews.first?.backgroundColor = .white
-        datePicker.subviews.first?.subviews.first?.backgroundColor = .white
         
         setUpView()
         setUpConstraint()
@@ -146,9 +125,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         self.collectionView.dataSource = self
         self.collectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
         self.collectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "calendarCell")
-        self.year_Month.delegate = self
-        self.year_Month.inputView = self.datePicker
-        self.year_Month.inputAccessoryView = self.toolBar
         
         self.initView()
        
@@ -183,27 +159,9 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
         navigationController?.isNavigationBarHidden = true
     }
     
-    // datePicker.addTarget의 selector에 지정된 메서드
-    @objc func datePickerValueDidChange(_ datePicker: UIDatePicker) {
-        let formatter = DateFormatter() // Date 타입과 관련된 포맷터
-        formatter.dateFormat = "yyyy년 MM월 dd일(EEEEE)" // 요일을 한글자만
-        formatter.locale = Locale(identifier: "ko_KR")
-    }
-    
-    @objc func onPickDone() {
-        components.year = cal.component(.year, from: datePicker.date)
-        components.month = cal.component(.month, from: datePicker.date)
-        self.calculation()
-        self.collectionView.reloadData()
-        year_Month.resignFirstResponder() // 피커뷰 내림
-        
-//        showBottomSheet()
-    }
-         
-    @objc func onPickCancel() {
-        year_Month.resignFirstResponder() // 피커뷰 내림
-        
-//        showBottomSheet()
+    // 년,월 누르기 -> 오늘로 돌아가기
+    @objc func settingInit(){
+        self.initView()
     }
     
     //MARK: - Helpers
@@ -221,10 +179,6 @@ class HomeViewController : UIViewController , UITextFieldDelegate {
             }
         }
         collectionView.reloadData()
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false
     }
     
     static func dismissBottomSheet(){
