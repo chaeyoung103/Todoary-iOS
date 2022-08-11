@@ -71,6 +71,7 @@
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
 		577A01BE28A4EB21004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BD28A4EB21004B2575 /* ToolBarText.swift */; };
+		577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BF28A4EBFE004B2575 /* ToolBarText.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
@@ -284,6 +285,7 @@
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
 		577A01BD28A4EB21004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
+		577A01BF28A4EBFE004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
@@ -942,7 +944,7 @@
 		E0218B2328A4E8A400E48618 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				57468AA328A245DD00056691 /* TextToolBar.swift */,
+				577A01BD28A4EB21004B2575 /* ToolBarText.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1053,6 +1055,7 @@
 				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
 				E0218B2428A4E99600E48618 /* DiaryStickerViewController.swift */,
+				577A01BF28A4EBFE004B2575 /* ToolBarText.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1538,6 +1541,7 @@
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,
 				E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */,
 				E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */,
+				577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */,
 				ACCD87D02897DB8C00C34CE7 /* CategoryDeleteDataManager.swift in Sources */,
 				574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */,
 				57294ACF2894F72500DA2F31 /* TodoPinDataManager.swift in Sources */,
