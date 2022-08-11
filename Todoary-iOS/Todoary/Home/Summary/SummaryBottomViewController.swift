@@ -141,13 +141,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc
     func addButtonDidClicked(){
-        
         HomeViewController.dismissBottomSheet()
-        
+
         let vc = DiaryViewController()
         vc.todaysDate.text = todoDate.dateUsedDiary
         vc.sendApiDate = todoDate.dateSendServer
-        
+
         homeNavigaiton.pushViewController(vc, animated: true)
     }
     
@@ -244,7 +243,26 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         
         return true
+    }
+    
+    func showDeleteCompleteToastMessage(){
         
+        let toast = ToastMessageView()
+        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+        
+        self.view.addSubview(toast)
+        
+        toast.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(81)
+            make.trailing.equalToSuperview().offset(-81)
+            make.bottom.equalToSuperview().offset(-39)
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+              toast.alpha = 0.0
+          }, completion: {(isCompleted) in
+              toast.removeFromSuperview()
+          })
     }
 }
 //MARK: - Delegate
@@ -313,6 +331,24 @@ extension SummaryBottomViewController{
         }
     }
     
+    func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
+        switch code{
+        case 1000:
+            if(todoDataList.count == 1){
+                todoDataList = []
+                tableView.reloadData()
+                return
+            }
+            todoDataList.remove(at: indexPath.row-1)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            showDeleteCompleteToastMessage()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
 }
 
 //MARK: - TableView
@@ -371,24 +407,6 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
 
 //MARK: - TableViewCell Delegate
 extension SummaryBottomViewController: SelectedTableViewCellDeliver{
-    
-    func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
-        switch code{
-        case 1000:
-            if(todoDataList.count == 1){
-                todoDataList = []
-                tableView.reloadData()
-                return
-            }
-            todoDataList.remove(at: indexPath.row-1)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            return
-        default:
-            let alert = DataBaseErrorAlert()
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-    }
     
     func cellWillPin(_ indexPath: IndexPath){
         
