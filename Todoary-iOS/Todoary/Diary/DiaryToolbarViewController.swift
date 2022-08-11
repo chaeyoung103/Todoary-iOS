@@ -25,13 +25,16 @@ class DiaryToolbar : UIView {
     let cameraBtn = UIButton().then{
         $0.setImage(UIImage(named: "camera"), for: .normal)
     }
+    
     let textBtn = UIButton().then{
         $0.setImage(UIImage(named: "type"), for: .normal)
         $0.addTarget(self, action: #selector(textBtnDidTab), for: .touchUpInside)
     }
+    
     let stickerBtn = UIButton().then{
         $0.setImage(UIImage(named: "smile"), for: .normal)
     }
+    
     let highlightBtn = UIButton().then{
         $0.setImage(UIImage(named: "edit"), for: .normal)
         $0.addTarget(self, action: #selector(highlightBtnDidTab), for: .touchUpInside)
@@ -39,7 +42,6 @@ class DiaryToolbar : UIView {
     
     let exitBtn = UIButton().then{
         $0.setImage(UIImage(named: "x"), for: .normal)
-        $0.addTarget(self, action: #selector(exitBtnDidTab), for: .touchUpInside)
     }
     
     let firstToolbar = UIView().then{
@@ -49,6 +51,13 @@ class DiaryToolbar : UIView {
             blue: 230/255,
             alpha: 1
         )
+        $0.layer.borderColor = UIColor(
+            red: 198/255,
+            green: 198/255,
+            blue: 198/255,
+            alpha: 1
+        ).cgColor
+        $0.layer.borderWidth = 0.8
     }
     
     //MARK: - UIComponenets_colorToolbar
@@ -177,6 +186,7 @@ class DiaryToolbar : UIView {
     //MARK: - BtnDidTab
     
     @objc func cameraBtnDidTab() {
+        //사진 기능 추가시 코드 넣어주기
 //        if cameraBtn.isTouchInside == true {
 //            colorToolbar.isHidden = false
 //        } else {
@@ -192,13 +202,6 @@ class DiaryToolbar : UIView {
             textToolbar.isHidden = true
         }
     }
-//    @objc func stickerBtnDidTab() {
-//        if stickerBtn.isTouchInside == true {
-//            DiaryViewController().textView.inputView = DiarySticker
-//        } else {
-//            DiaryViewController().textView.inputView = nil
-//        }
-//    }
     
     @objc func highlightBtnDidTab() {
         if highlightBtn.isTouchInside == true {
@@ -208,8 +211,5 @@ class DiaryToolbar : UIView {
             colorToolbar.isHidden = true
         }
     }
-    
-    @objc func exitBtnDidTab(_ sender : UIButton) {
-    
-    }
 }
+

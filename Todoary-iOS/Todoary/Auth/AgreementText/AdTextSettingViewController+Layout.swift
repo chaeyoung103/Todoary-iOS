@@ -1,8 +1,8 @@
 //
-//  AdTextViewController+Layout.swift
+//  AdTextSettingViewController+Layout.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/07/04.
+//  Created by 예리 on 2022/08/11.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ extension UIView {
 
 }
 
-extension AdTextViewController {
+extension AdTextSettingViewController {
     
     func setUpView(){
         
@@ -22,6 +22,9 @@ extension AdTextViewController {
         
         self.view.addSubview(contentScrollView)
         self.view.addSubview(AdText)
+        
+        self.view.addSubview(adTitle)
+        self.view.addSubview(adCheckBtn)
         
     }
         
@@ -57,6 +60,19 @@ extension AdTextViewController {
             make.width.equalTo(contentScrollView)
             make.centerX.equalTo(contentScrollView)
             make.bottom.equalTo(contentScrollView)
+        }
+        
+        adTitle.snp.makeConstraints{ make in
+            make.top.equalTo(contentScrollView.snp.bottom).offset(2)
+            make.width.equalTo(63)
+            make.height.equalTo(18)
+            make.trailing.equalTo(contentScrollView.snp.trailing)
+        }
+        
+        adCheckBtn.snp.makeConstraints{make in
+            make.width.height.equalTo(20)
+            make.centerY.equalTo(adTitle)
+            make.trailing.equalTo(adTitle.snp.leading).offset(-5)
         }
     }
 }
