@@ -20,7 +20,7 @@ class DiaryStickerViewController : UIViewController {
 
     //선택된 컬러값
     var selectColor : Int!
-
+ 
 
     //MARK: - UIComponenets
 
@@ -78,7 +78,7 @@ class DiaryStickerViewController : UIViewController {
 
     //셀 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 16
     }
 
     //셀 초기값 설정
