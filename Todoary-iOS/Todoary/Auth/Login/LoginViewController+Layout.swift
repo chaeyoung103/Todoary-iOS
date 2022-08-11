@@ -11,6 +11,10 @@ extension LoginViewController {
     
     func setUpView(){
         
+        self.view.addSubview(logo)
+        self.view.addSubview(comment)
+        self.view.addSubview(picture)
+        
         self.view.addSubview(idTitle)
         self.view.addSubview(idTf)
         self.view.addSubview(idBorderLine)
@@ -32,10 +36,32 @@ extension LoginViewController {
     
     func setUpConstraint(){
 
+        logo.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(100)
+            make.leading.equalToSuperview().offset(42)
+            make.width.equalTo(167)
+            make.height.equalTo(46)
+        }
+        
+        comment.snp.makeConstraints{ make in
+            make.top.equalTo(logo.snp.bottom).offset(15)
+            make.leading.equalToSuperview().offset(46)
+            make.width.equalTo(221)
+            make.height.equalTo(71)
+        }
+        
+        picture.snp.makeConstraints{ make in
+            make.top.equalTo(comment.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(114.06)
+        }
+        
         //id
         idTitle.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(368)
+            make.top.equalTo(picture.snp.bottom).offset(28.94)
             make.leading.equalToSuperview().offset(37)
+            make.height.equalTo(20)
         }
 
         idTf.snp.makeConstraints{ make in
@@ -55,7 +81,8 @@ extension LoginViewController {
         
         //password
         pwTitle.snp.makeConstraints{ make in
-            make.top.equalTo(idBorderLine).offset(31)
+            make.top.equalTo(idBorderLine.snp.bottom).offset(31)
+            make.height.equalTo(20)
             make.leading.equalTo(idTitle)
         }
         
@@ -115,7 +142,7 @@ extension LoginViewController {
             make.top.equalTo(signUpBtn.snp.bottom).offset(24)
             make.bottom.equalToSuperview().offset(-33.67)
             make.centerX.equalToSuperview()
-            make.width.equalTo(171)
+            make.width.equalTo(131)
             make.height.equalTo(25)
         }
     }
