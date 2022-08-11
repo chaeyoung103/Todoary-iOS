@@ -40,7 +40,6 @@
 		572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AC2287C643000F915DF /* InfoMessageView.swift */; };
 		573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */; };
 		57468A6A289BCDE800056691 /* NoTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57468A69289BCDE800056691 /* NoTodoTableViewCell.swift */; };
-		57468AA428A245DD00056691 /* TextToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57468AA328A245DD00056691 /* TextToolBar.swift */; };
 		574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */; };
 		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
@@ -71,6 +70,7 @@
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
+		577A01BE28A4EB21004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BD28A4EB21004B2575 /* ToolBarText.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
@@ -248,7 +248,6 @@
 		572E9AC2287C643000F915DF /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoAddBtnTableViewCell.swift; sourceTree = "<group>"; };
 		57468A69289BCDE800056691 /* NoTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTodoTableViewCell.swift; sourceTree = "<group>"; };
-		57468AA328A245DD00056691 /* TextToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToolBar.swift; sourceTree = "<group>"; };
 		574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +280,7 @@
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
+		577A01BD28A4EB21004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
@@ -1035,7 +1035,7 @@
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
 				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
-				57468AA328A245DD00056691 /* TextToolBar.swift */,
+				577A01BD28A4EB21004B2575 /* ToolBarText.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1417,7 +1417,6 @@
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				ACCD87BD2893C46D00C34CE7 /* CategoryMakeDataManager.swift in Sources */,
-				57468AA428A245DD00056691 /* TextToolBar.swift in Sources */,
 				E0F9988C288A57EB0051C7AA /* ProfileModel.swift in Sources */,
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */,
@@ -1446,6 +1445,7 @@
 				E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */,
 				5750364C288A3EC0006A9070 /* SignUpDataManager.swift in Sources */,
 				E03DCC4C28929D0F00532180 /* AutoLoginInput.swift in Sources */,
+				577A01BE28A4EB21004B2575 /* ToolBarText.swift in Sources */,
 				ACCD87C22895931600C34CE7 /* GetCategoryInput.swift in Sources */,
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
