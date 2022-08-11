@@ -35,6 +35,7 @@ extension AppPasswordViewController {
         self.view.addSubview(numBtn8)
         self.view.addSubview(numBtn9)
         self.view.addSubview(numBtn0)
+        self.view.addSubview(blueCharacter)
         self.view.addSubview(deletBtn)
         
     }
@@ -194,6 +195,12 @@ extension AppPasswordViewController {
             make.height.equalTo(31)
             make.centerX.equalTo(numBtn8)
         }
+            
+            blueCharacter.snp.makeConstraints{ make in
+                make.width.height.equalTo(40)
+                make.top.equalTo(numBtn7.snp.bottom).offset(42)
+                make.centerX.equalTo(numBtn7)
+            }
         
         deletBtn.snp.makeConstraints{ make in
             make.leading.equalTo(numBtn0.snp.trailing).offset(81)

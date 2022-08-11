@@ -59,22 +59,22 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - input password
     let inputPw1 = UIImageView().then{
-        $0.image = UIImage(named: "sticker1")
+        $0.image = UIImage(named: "password1")
         $0.isHidden = true
     }
     
     let inputPw2 = UIImageView().then{
-        $0.image = UIImage(named: "sticker2")
+        $0.image = UIImage(named: "password2")
         $0.isHidden = true
     }
     
     let inputPw3 = UIImageView().then{
-        $0.image = UIImage(named: "sticker3")
+        $0.image = UIImage(named: "password3")
         $0.isHidden = true
     }
     
     let inputPw4 = UIImageView().then{
-        $0.image = UIImage(named: "sticker4")
+        $0.image = UIImage(named: "password4")
         $0.isHidden = true
     }
     
@@ -161,8 +161,13 @@ class AppPasswordViewController : UIViewController {
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
+    
+    let blueCharacter = UIImageView().then{
+        $0.image = UIImage(named: "password5")
+    }
+
  
-    //MARK: - UIComponenets
+    //MARK: - UIComponenets_deletBtn
     let deletBtn = UIButton().then{
         $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         $0.tintColor = .black
@@ -202,23 +207,31 @@ class AppPasswordViewController : UIViewController {
             
             let pw = passwordArr.joined(separator: "")
             if password == pw
-            && inputPw1.isHidden == false
-            && inputPw2.isHidden == false
-            && inputPw3.isHidden == false
-            && inputPw4.isHidden == false {
-                self.navigationController?.pushViewController(HomeViewController(), animated: true)
-               // print("다음")
+                && inputPw1.isHidden == false
+                && inputPw2.isHidden == false
+                && inputPw3.isHidden == false
+                && inputPw4.isHidden == false {
+                
+                //이미지 보이기 위한 딜레이
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                }
             } else {
                 passwordArr.removeAll()
                 appPwtext.isHidden = true
                 pwnotcorrect.isHidden = false
                 
-                inputPw1.isHidden = true
-                inputPw2.isHidden = true
-                inputPw3.isHidden = true
-                inputPw4.isHidden = true
+                //이미지 보이기 위한 딜레이
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [self] in
+                    
+                    inputPw1.isHidden = true
+                    inputPw2.isHidden = true
+                    inputPw3.isHidden = true
+                    inputPw4.isHidden = true
+                }
             }
-        
+            
         default:
             return
         }
@@ -231,13 +244,13 @@ class AppPasswordViewController : UIViewController {
         
         if deletBtn.isTouchInside {
             switch pwarraycount {
-        case 4 :
-            inputPw4.isHidden = true
-            passwordArr.removeLast()
-            print(passwordArr)
-        case 3 :
-            inputPw3.isHidden = true
-            passwordArr.removeLast()
+            case 4 :
+                inputPw4.isHidden = true
+                passwordArr.removeLast()
+                print(passwordArr)
+            case 3 :
+                inputPw3.isHidden = true
+                passwordArr.removeLast()
                 print(passwordArr)
         case 2 :
             inputPw2.isHidden = true
