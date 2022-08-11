@@ -15,8 +15,7 @@ class SplashScreenViewController : UIViewController {
     //MARK: - UIComponenets
     
     let appface = UIImageView().then{
-//        $0.image = UIImage(named: <#T##String#>)
-        $0.backgroundColor = .black
+        $0.image = UIImage(named: "password3")
     }
     
     let apptitle = UIImageView().then{

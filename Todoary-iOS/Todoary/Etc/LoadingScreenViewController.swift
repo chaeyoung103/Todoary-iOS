@@ -67,10 +67,10 @@ class LoadingHUD: NSObject {
 
     private class func getAnimationImageArray() -> [UIImage] {
         var animationArray: [UIImage] = []
-        animationArray.append(UIImage(named: "sticker1")!)
-        animationArray.append(UIImage(named: "sticker2")!)
-        animationArray.append(UIImage(named: "sticker3")!)
-        animationArray.append(UIImage(named: "sticker4")!)
+        animationArray.append(UIImage(named: "password1")!)
+        animationArray.append(UIImage(named: "password2")!)
+        animationArray.append(UIImage(named: "password3")!)
+        animationArray.append(UIImage(named: "password4")!)
 
         return animationArray
     }

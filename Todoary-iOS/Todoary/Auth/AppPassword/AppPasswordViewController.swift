@@ -59,22 +59,22 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - input password
     let inputPw1 = UIImageView().then{
-        $0.image = UIImage(named: "sticker1")
+        $0.image = UIImage(named: "password1")
         $0.isHidden = true
     }
     
     let inputPw2 = UIImageView().then{
-        $0.image = UIImage(named: "sticker2")
+        $0.image = UIImage(named: "password2")
         $0.isHidden = true
     }
     
     let inputPw3 = UIImageView().then{
-        $0.image = UIImage(named: "sticker3")
+        $0.image = UIImage(named: "password3")
         $0.isHidden = true
     }
     
     let inputPw4 = UIImageView().then{
-        $0.image = UIImage(named: "sticker4")
+        $0.image = UIImage(named: "password4")
         $0.isHidden = true
     }
     
