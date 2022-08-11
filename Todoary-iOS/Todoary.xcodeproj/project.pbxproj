@@ -344,7 +344,7 @@
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
-		E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaryStickerViewController.swift; path = ../../../../../Documents/DiaryStickerViewController.swift; sourceTree = "<group>"; };
+		E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaryStickerViewController.swift; path = ../../../Documents/DiaryStickerViewController.swift; sourceTree = SOURCE_ROOT; };
 		E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionView.swift; sourceTree = "<group>"; };
 		E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -518,6 +518,7 @@
 				572E5AD7286EBDCC00D1FAA0 /* Products */,
 				4AB76D1F7C7CA0A1F7C1F030 /* Pods */,
 				556B92C6D2368A9C6BACE6E8 /* Frameworks */,
+				E0218B2328A4E8A400E48618 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -938,6 +939,14 @@
 			path = Agreement;
 			sourceTree = "<group>";
 		};
+		E0218B2328A4E8A400E48618 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				57468AA328A245DD00056691 /* TextToolBar.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1044,7 +1053,6 @@
 				E0218B1928A4D51000E48618 /* DiaryStickerViewController.swift */,
 				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
-
 			);
 			path = Diary;
 			sourceTree = "<group>";

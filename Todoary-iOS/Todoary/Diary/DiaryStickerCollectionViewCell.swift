@@ -19,7 +19,7 @@ class DiaryStickerCollectionViewCell: UICollectionViewCell {
     
    
     let stickerBtn = UIImageView().then{
-        $0.image
+        $0.image 
 
     }
    
