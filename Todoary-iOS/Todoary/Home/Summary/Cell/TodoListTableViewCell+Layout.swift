@@ -43,7 +43,7 @@ extension TodoListTableViewCell{
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalTo(checkBox)
-            make.trailing.equalToSuperview().offset(-164)
+            make.width.equalTo(106)
         }
         
     }
