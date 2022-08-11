@@ -66,7 +66,6 @@ class DiaryViewController : UIViewController {
         diaryText.delegate = self
         
 
-        
         return diaryText
     }()
     
@@ -86,6 +85,8 @@ class DiaryViewController : UIViewController {
         
         configure()
         setupCollectionView()
+        
+        setTextToolBarAction()//
             
         }
     

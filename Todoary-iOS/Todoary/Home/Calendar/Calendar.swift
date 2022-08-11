@@ -39,7 +39,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         self.month_component = Int(dateFormatterMonth.string(from: firstDayOfMonth!))!
         self.year_component = Int(dateFormatterYear.string(from: firstDayOfMonth!))!
-        self.year_Month.text = dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월"
+        self.year_Month.setTitle(dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월", for: .normal)
         
         
         self.days.removeAll()
