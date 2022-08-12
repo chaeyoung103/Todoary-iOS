@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Hrm-JG-z7X">
-                                <rect key="frame" x="120.5" y="344" width="173" height="173"/>
+                                <rect key="frame" x="120.5" y="349" width="173" height="173"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="173" id="chp-Rb-Cjx"/>
                                     <constraint firstAttribute="width" constant="173" id="pn0-8M-M1r"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="myH-79-Fuq">
-                                <rect key="frame" x="107" y="535" width="200" height="55"/>
+                                <rect key="frame" x="107" y="540" width="200" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="R38-OX-McY"/>
                                     <constraint firstAttribute="height" constant="55" id="S50-yj-xjG"/>
@@ -35,7 +35,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="myH-79-Fuq" firstAttribute="top" secondItem="Hrm-JG-z7X" secondAttribute="bottom" constant="18" id="1AP-wG-MOl"/>
-                            <constraint firstItem="Hrm-JG-z7X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="cvl-F3-O1H"/>
+                            <constraint firstItem="Hrm-JG-z7X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="305" id="cvl-F3-O1H"/>
                             <constraint firstItem="Hrm-JG-z7X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="f6F-f0-2K6"/>
                             <constraint firstItem="myH-79-Fuq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ssP-gE-6NK"/>
                         </constraints>
