@@ -171,7 +171,6 @@ extension DiaryToolbar {
         underLineBtn.snp.makeConstraints{make in
             make.width.equalTo(13)
             make.height.equalTo(22)
-
             make.centerY.equalTo(textToolbar)
             make.leading.equalTo(strikeLineBtn.snp.trailing).offset(32)
         }
@@ -182,5 +181,55 @@ extension DiaryToolbar {
             make.centerY.equalTo(textToolbar)
             make.leading.equalTo(underLineBtn.snp.trailing).offset(32)
         }
+        
+        backToolbar.addSubview(fontToolbar)
+        
+        fontToolbar.snp.makeConstraints{make in
+            make.width.equalToSuperview()
+            make.height.equalTo(46)
+            make.top.equalToSuperview()
+        }
+        
+        fontToolbar.addSubview(fontBtn1)
+        fontToolbar.addSubview(fontBtn2)
+        fontToolbar.addSubview(fontBtn3)
+        fontToolbar.addSubview(fontBtn4)
+        fontToolbar.addSubview(fontBtn5)
+        
+        fontBtn1.snp.makeConstraints{make in
+            make.width.equalTo(58)
+            make.height.equalTo(22)
+            make.centerY.equalTo(fontToolbar)
+            make.leading.equalTo(fontToolbar.snp.leading).offset(23)
+        }
+        
+        fontBtn2.snp.makeConstraints{make in
+            make.width.equalTo(63)
+            make.height.equalTo(22)
+            make.centerY.equalTo(fontToolbar)
+            make.leading.equalTo(fontBtn1.snp.trailing).offset(13)
+        }
+        
+        fontBtn3.snp.makeConstraints{make in
+            make.width.equalTo(63)
+            make.height.equalTo(22)
+            make.centerY.equalTo(fontToolbar)
+            make.leading.equalTo(fontBtn2.snp.trailing).offset(11)
+        }
+        
+        fontBtn4.snp.makeConstraints{make in
+            make.width.equalTo(57)
+            make.height.equalTo(22)
+            make.centerY.equalTo(fontToolbar)
+            make.leading.equalTo(fontBtn3.snp.trailing).offset(14)
+        }
+        
+        fontBtn5.snp.makeConstraints{make in
+            make.width.equalTo(55)
+            make.height.equalTo(22)
+            make.centerY.equalTo(fontToolbar)
+            make.leading.equalTo(fontBtn4.snp.trailing).offset(13)
+        }
     }
 }
+
