@@ -1100,12 +1100,12 @@
 			isa = PBXGroup;
 			children = (
 				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
+				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
 				E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */,
 				E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */,
 				E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */,
 				E0F3CDD02895841A00A74AB7 /* DiaryTableView.swift */,
 				E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */,
-				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
 				E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */,
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
 				E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */,

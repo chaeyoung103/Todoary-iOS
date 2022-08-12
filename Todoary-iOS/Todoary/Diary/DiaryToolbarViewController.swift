@@ -29,6 +29,7 @@ class DiaryToolbar : UIView {
     let textBtn = UIButton().then{
         $0.setImage(UIImage(named: "type"), for: .normal)
         $0.addTarget(self, action: #selector(textBtnDidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(fontBtnDidTab), for: .touchUpInside)
     }
     
     let stickerBtn = UIButton().then{
@@ -38,6 +39,7 @@ class DiaryToolbar : UIView {
     let highlightBtn = UIButton().then{
         $0.setImage(UIImage(named: "edit"), for: .normal)
         $0.addTarget(self, action: #selector(highlightBtnDidTab), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(fontBtnDidTab), for: .touchUpInside)
     }
     
     let exitBtn = UIButton().then{
@@ -145,6 +147,7 @@ class DiaryToolbar : UIView {
     
     let fontBtn = UIButton().then{
         $0.setImage(UIImage(named: "ga"), for: .normal)
+        $0.addTarget(self, action: #selector(fontBtnDidTab), for: .touchUpInside)
     }
     
     let strikeLineBtn = UIButton().then{
@@ -160,6 +163,35 @@ class DiaryToolbar : UIView {
     }
     
     let textToolbar = UIView().then{
+        $0.isHidden = true
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor.silver_225.cgColor
+        $0.layer.borderWidth = 1
+    }
+    
+    //MARK: - UIComponenets_fontToolbar
+    
+    let fontBtn1 = UIButton().then{
+        $0.setImage(UIImage(named: "abcd1"), for: .normal)
+    }
+    
+    let fontBtn2 = UIButton().then{
+        $0.setImage(UIImage(named: "abcd2"), for: .normal)
+    }
+    
+    let fontBtn3 = UIButton().then{
+        $0.setImage(UIImage(named: "abcd3"), for: .normal)
+    }
+    
+    let fontBtn4 = UIButton().then{
+        $0.setImage(UIImage(named: "abcd4"), for: .normal)
+    }
+    
+    let fontBtn5 = UIButton().then{
+        $0.setImage(UIImage(named: "abcd5"), for: .normal)
+    }
+    
+    let fontToolbar = UIView().then{
         $0.isHidden = true
         $0.backgroundColor = .white
         $0.layer.borderColor = UIColor.silver_225.cgColor
@@ -200,6 +232,15 @@ class DiaryToolbar : UIView {
             colorToolbar.isHidden = true
         } else {
             textToolbar.isHidden = true
+        }
+    }
+    
+    @objc func fontBtnDidTab() {
+        if fontBtn.isTouchInside == true {
+            textToolbar.isHidden = true
+            fontToolbar.isHidden = false
+        } else {
+            fontToolbar.isHidden = true
         }
     }
     
