@@ -11,6 +11,14 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>AppleSDGothicNeoEB.ttf</string>
+		<string>GangwonEduAll-Bold.ttf</string>
+		<string>GangwonEduAll-Light.ttf</string>
+		<string>IBMPlexSans-Medium.otf</string>
+		<string>IBMPlexSans-Text.otf</string>
+		<string>IM_Hyemin-Bold.ttf</string>
+		<string>IM_Hyemin-Regular.ttf</string>
+		<string>NotoSerifKR-Regular.otf</string>
+		<string>NotoSerifKR-SemiBold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -33,16 +41,10 @@
 	</dict>
 	<key>YERI_MAIL</key>
 	<string>dbdpfl0105@naver.com</string>
-	<key>item0</key>
-	<string>AppleSDGothicNeoB.ttf</string>
-	<key>item1</key>
-	<string>AppleSDGothicNeoSB.ttf</string>
-	<key>item2</key>
-	<string>AppleSDGothicNeoM.ttf</string>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-    </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
