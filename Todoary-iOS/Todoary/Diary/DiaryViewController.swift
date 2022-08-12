@@ -145,6 +145,10 @@ class DiaryViewController : UIViewController {
     }
     
     @objc func exitBtnDidTab() {
+        toolbar.textToolbar.isHidden = true
+        toolbar.fontToolbar.isHidden = true
+        toolbar.colorToolbar.isHidden = true
+        textView.inputView = nil
         textView.endEditing(true)
         textView.reloadInputViews()
     }
