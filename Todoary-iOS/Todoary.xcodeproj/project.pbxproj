@@ -76,6 +76,15 @@
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
 		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
+		57DF45F428A60B310002D66C /* IM_Hyemin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */; };
+		57DF45F528A60B310002D66C /* IBMPlexSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */; };
+		57DF45F628A60B310002D66C /* NotoSerifKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */; };
+		57DF45F728A60B310002D66C /* GangwonEduAll-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */; };
+		57DF45F828A60B310002D66C /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F028A60B310002D66C /* NotoSerifKR-SemiBold.otf */; };
+		57DF45F928A60B310002D66C /* IBMPlexSans-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */; };
+		57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */; };
+		57DF45FB28A60B310002D66C /* IM_Hyemin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */; };
+		57DF45FD28A60DB90002D66C /* DiaryFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF45FC28A60DB90002D66C /* DiaryFont.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -296,6 +305,15 @@
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
 		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
+		57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Regular.ttf"; sourceTree = "<group>"; };
+		57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
+		57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Regular.otf"; sourceTree = "<group>"; };
+		57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GangwonEduAll-Light.ttf"; sourceTree = "<group>"; };
+		57DF45F028A60B310002D66C /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; };
+		57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Text.otf"; sourceTree = "<group>"; };
+		57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GangwonEduAll-Bold.ttf"; sourceTree = "<group>"; };
+		57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Bold.ttf"; sourceTree = "<group>"; };
+		57DF45FC28A60DB90002D66C /* DiaryFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFont.swift; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -705,6 +723,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		57DF45EB28A60AFB0002D66C /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */,
+				57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */,
+				57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */,
+				57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */,
+				57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */,
+				57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */,
+				57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */,
+				57DF45F028A60B310002D66C /* NotoSerifKR-SemiBold.otf */,
+				574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */,
+				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
+				57DF45FC28A60DB90002D66C /* DiaryFont.swift */,
+			);
+			path = UIFont;
+			sourceTree = "<group>";
+		};
 		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,9 +1011,8 @@
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
-				574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */,
+				57DF45EB28A60AFB0002D66C /* UIFont */,
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
-				572E5B0D286EC10500D1FAA0 /* UIFont.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
 				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */,
@@ -1283,13 +1318,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DF45F728A60B310002D66C /* GangwonEduAll-Light.ttf in Resources */,
+				57DF45F828A60B310002D66C /* NotoSerifKR-SemiBold.otf in Resources */,
+				57DF45FB28A60B310002D66C /* IM_Hyemin-Bold.ttf in Resources */,
 				E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */,
 				572E5AE6286EBDCE00D1FAA0 /* LaunchScreen.storyboard in Resources */,
 				E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
+				57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */,
+				57DF45F528A60B310002D66C /* IBMPlexSans-Medium.otf in Resources */,
 				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
+				57DF45F928A60B310002D66C /* IBMPlexSans-Text.otf in Resources */,
+				57DF45F628A60B310002D66C /* NotoSerifKR-Regular.otf in Resources */,
 				574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */,
+				57DF45F428A60B310002D66C /* IM_Hyemin-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1583,6 +1626,7 @@
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,
+				57DF45FD28A60DB90002D66C /* DiaryFont.swift in Sources */,
 				E0F3CDD12895841A00A74AB7 /* DiaryTableView.swift in Sources */,
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
