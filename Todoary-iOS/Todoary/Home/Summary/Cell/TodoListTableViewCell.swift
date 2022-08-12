@@ -57,7 +57,8 @@ class TodoListTableViewCell: UITableViewCell {
         $0.addLetterSpacing(spacing: 0.24)
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 13, bottom: 3, right: 11)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 1, bottom: 3, right: 0)
+        $0.titleLabel?.textAlignment = .center
         $0.isEnabled = false
     }
     
@@ -149,15 +150,13 @@ class TodoListTableViewCell: UITableViewCell {
         titleLabel.text = cellData.title
         timeLabel.text = cellData.convertTime
         checkBox.isSelected = cellData.isChecked ?? false
+        
+        self.categoryButton.setTitle(cellData.categoryTitle, for: .normal)
+        self.categoryButton.layer.borderColor = UIColor.categoryColor[cellData.color].cgColor
+        self.categoryButton.setTitleColor(UIColor.categoryColor[cellData.color], for: .normal)
+        
         setUpViewByCase()
         
-        settingCategoryButton(title: cellData.categoryTitle, color: UIColor.categoryColor[cellData.color])
-    }
-    
-    func settingCategoryButton(title: String, color: UIColor){
-        self.categoryButton.setTitle(title, for: .normal)
-        self.categoryButton.layer.borderColor = color.cgColor
-        self.categoryButton.setTitleColor(color, for: .normal)
     }
     
 }

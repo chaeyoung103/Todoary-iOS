@@ -30,6 +30,8 @@ class DiaryViewController : UIViewController {
                                UIImage(named: "sticker15"),
                                UIImage(named: "sticker16")]
     
+    var currentFont: DiaryFont = DiaryFont(fontName: .font1)
+    
     //MARK: - UIComponenets
 
 
