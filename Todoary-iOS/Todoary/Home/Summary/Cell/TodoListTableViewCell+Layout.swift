@@ -54,11 +54,18 @@ extension TodoListTableViewCell{
         self.backView.addSubview(categoryButton)
         
         categoryButton.snp.removeConstraints()
+        titleLabel.snp.removeConstraints()
+        
+        titleLabel.snp.makeConstraints{ make in
+            make.leading.equalTo(checkBox.snp.trailing).offset(13)
+            make.centerY.equalTo(checkBox)
+            make.width.equalTo(106)
+        }
         
         categoryButton.snp.makeConstraints{ make in
             make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(1)
         }
         
         //time
@@ -68,8 +75,7 @@ extension TodoListTableViewCell{
             
             timeLabel.snp.makeConstraints{ make in
                 make.trailing.equalToSuperview().offset(-18)
-                make.top.equalToSuperview().offset(24)
-                make.bottom.equalToSuperview().offset(-21)
+                make.centerY.equalToSuperview().offset(2)
                 make.height.equalTo(15)
             }
             
@@ -79,7 +85,7 @@ extension TodoListTableViewCell{
                 alarmImageConstraint()
                 
                 alarmImage.snp.makeConstraints{ make in
-                    make.trailing.equalTo(timeLabel.snp.leading).offset(-4.33)
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
                 }
                 
                 //pin
@@ -88,19 +94,22 @@ extension TodoListTableViewCell{
                     pinImageConstraint()
                     
                     pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7.25)
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
                     }
                     categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-5.92)
+                        make.trailing.equalTo(pinImage.snp.leading).offset(-3)
 //                        make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
                     }
                     categoryButton.snp.updateConstraints{ make in
                         make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
                     }
+                    titleLabel.snp.updateConstraints{ make in
+                        make.leading.equalTo(checkBox.snp.trailing).offset(7)
+                    }
                     
                 }else{
                     categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-9.33)
+                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
                     }
                 }
                 
@@ -177,10 +186,9 @@ extension TodoListTableViewCell{
         self.backView.addSubview(pinImage)
         
         pinImage.snp.makeConstraints{ make in
-            make.width.equalTo(8.17)
-            make.height.equalTo(11)
-            make.top.equalToSuperview().offset(26.44)
-            make.bottom.equalToSuperview().offset(-22.56)
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.centerY.equalToSuperview().offset(1)
         }
     }
     
@@ -189,10 +197,9 @@ extension TodoListTableViewCell{
         self.backView.addSubview(alarmImage)
         
         alarmImage.snp.makeConstraints{ make in
-            make.width.equalTo(9.33)
-            make.height.equalTo(10.73)
-            make.top.equalToSuperview().offset(25.77)
-            make.bottom.equalToSuperview().offset(-23.5)
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.centerY.equalToSuperview().offset(0.6)
         }
     }
 
