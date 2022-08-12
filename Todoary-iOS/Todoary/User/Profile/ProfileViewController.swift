@@ -28,6 +28,8 @@ class ProfileViewController : UIViewController {
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "profile")
         $0.contentMode = .scaleAspectFill
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.layer.cornerRadius = 85/2
         $0.clipsToBounds = true
     }
@@ -100,10 +102,12 @@ class ProfileViewController : UIViewController {
     
     let confirmBtn = UIButton().then{
         $0.setTitle("확인", for: .normal)
-        $0.backgroundColor = .buttonColor
-        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
-        $0.layer.cornerRadius = 52/2
+        $0.layer.borderColor = UIColor.silver_217.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 15
         $0.addTarget(self, action: #selector(confirmBtnDidTab), for: .touchUpInside)
     }
     

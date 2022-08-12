@@ -60,6 +60,8 @@ class HomeViewController : UIViewController {
         $0.layer.cornerRadius = 40/2
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.addTarget(self, action: #selector(profileBtnDidTap), for: .touchUpInside)
     }
     
@@ -80,7 +82,7 @@ class HomeViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
-    let year_Month = UIButton().then{
+    lazy var year_Month = UIButton().then{
         $0.setTitle("1999년 7월", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .bold)
@@ -89,12 +91,12 @@ class HomeViewController : UIViewController {
         $0.addTarget(self, action: #selector(settingInit), for: .touchUpInside)
     }
     
-    let previousMonthBtn = UIButton().then{
+    lazy var previousMonthBtn = UIButton().then{
         $0.setImage(UIImage(named: "home_previous"), for: .normal)
         $0.addTarget(self, action: #selector(prevBtnDidTap), for: .touchUpInside)
     }
     
-    let nextMonthBtn = UIButton().then{
+    lazy var nextMonthBtn = UIButton().then{
         $0.setImage(UIImage(named: "home_next"), for: .normal)
         $0.addTarget(self, action: #selector(nextBtnDidTap), for: .touchUpInside)
     }

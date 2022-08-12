@@ -19,7 +19,7 @@ class ProfileDataManager {
                 case 1000:
                     print("프로필수정성공")
                     viewController.nickNameNotice.isHidden = true
-//                    viewController.navigationController?.popViewController(animated: true)
+                    viewController.navigationController?.popViewController(animated: true)
                 case 2032:
                     print("중복된 닉네임입니다")
                     viewController.nickNameNotice.isHidden = false
