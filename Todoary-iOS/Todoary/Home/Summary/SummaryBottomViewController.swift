@@ -101,7 +101,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellWillMoveToOriginalPosition))
             $0.addGestureRecognizer(tapGesture)
-            
         }
         
         GetCategoryDataManager().getCategoryDataManager(self)
