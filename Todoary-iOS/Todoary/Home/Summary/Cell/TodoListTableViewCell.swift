@@ -57,7 +57,7 @@ class TodoListTableViewCell: UITableViewCell {
         $0.addLetterSpacing(spacing: 0.24)
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 3, right: 0)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 1, bottom: 3, right: 0)
         $0.titleLabel?.textAlignment = .center
         $0.isEnabled = false
     }
@@ -158,12 +158,6 @@ class TodoListTableViewCell: UITableViewCell {
         setUpViewByCase()
         
     }
-//
-//    func settingCategoryButton(title: String, color: UIColor){
-//        self.categoryButton.setTitle(title, for: .normal)
-//        self.categoryButton.layer.borderColor = color.cgColor
-//        self.categoryButton.setTitleColor(color, for: .normal)
-//    }
     
 }
 

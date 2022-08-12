@@ -53,6 +53,8 @@ extension TodoListTableViewCell{
         
         self.backView.addSubview(categoryButton)
         
+        categoryButton.snp.removeConstraints()
+        
         categoryButton.snp.makeConstraints{ make in
             make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
