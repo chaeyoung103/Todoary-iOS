@@ -214,6 +214,7 @@ class AppPasswordViewController : UIViewController {
                 
                 //이미지 보이기 위한 딜레이
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                    
                     self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }
             } else {
