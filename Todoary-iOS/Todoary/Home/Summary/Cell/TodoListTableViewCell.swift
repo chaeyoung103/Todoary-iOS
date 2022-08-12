@@ -138,9 +138,11 @@ class TodoListTableViewCell: UITableViewCell {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
         timeLabel.removeFromSuperview()
-        categoryButton.removeFromSuperview()
         titleLabel.text = ""
         checkBox.isSelected = false
+        
+        titleLabel.snp.removeConstraints()
+        categoryButton.snp.removeConstraints()
     }
     
     //MARK: - Method

@@ -15,6 +15,7 @@ extension TodoListTableViewCell{
         
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
+        self.backView.addSubview(categoryButton)
     
         self.selectedBackgroundView = selectedBackView
     }
@@ -39,29 +40,22 @@ extension TodoListTableViewCell{
             make.top.equalToSuperview().offset(18)
             make.bottom.equalToSuperview().offset(-18)
         }
-        
-        titleLabel.snp.makeConstraints{ make in
-            make.leading.equalTo(checkBox.snp.trailing).offset(13)
-            make.centerY.equalTo(checkBox)
-            make.width.equalTo(106)
-        }
-        
+
     }
-    
-    //default 아닌 view
+
+    //TODO: - 레이아웃 수정
+    /**
+        1. 카테고리 5글자인 경우 offset 6*2로 지정
+        2. 카테고리 5글자인 경우만 아이콘 간격 줄이기
+     */
     func setUpViewByCase(){
         
-        self.backView.addSubview(categoryButton)
-        
-        categoryButton.snp.removeConstraints()
-        titleLabel.snp.removeConstraints()
-        
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
-            make.centerY.equalTo(checkBox)
+            make.centerY.equalToSuperview().offset(1.4)
             make.width.equalTo(106)
         }
-        
+
         categoryButton.snp.makeConstraints{ make in
             make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
