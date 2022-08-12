@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-
+//AdTextViewController
 class AdTextViewController : UIViewController {
     
     //MARK: - UIComponenets
