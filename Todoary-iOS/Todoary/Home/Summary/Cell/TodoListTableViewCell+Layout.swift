@@ -58,11 +58,15 @@ extension TodoListTableViewCell{
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalToSuperview().offset(1.4)
+            
+            
             make.width.equalTo(106)
+//            make.trailing.equalToSuperview().offset(-177)
+            titleLabel.backgroundColor = .red
         }
 
         categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
             make.height.equalTo(21)
             make.centerY.equalToSuperview().offset(1)
         }
@@ -94,9 +98,7 @@ extension TodoListTableViewCell{
                 categoryButton.snp.makeConstraints{ make in
                     make.trailing.equalTo(pinImage.snp.leading).offset(-3)
                 }
-                categoryButton.snp.updateConstraints{ make in
-                    make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
-                }
+ 
                 titleLabel.snp.updateConstraints{ make in
                     make.leading.equalTo(checkBox.snp.trailing).offset(7)
                 }
