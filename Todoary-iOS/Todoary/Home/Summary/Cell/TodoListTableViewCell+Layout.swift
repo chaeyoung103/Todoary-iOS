@@ -47,6 +47,11 @@ extension TodoListTableViewCell{
     /**
         1. 카테고리 5글자인 경우 offset 6*2로 지정
         2. 카테고리 5글자인 경우만 아이콘 간격 줄이기
+     
+     
+        카테고리 -> 5글자 : 6*2 offset
+     이외 -> 핀, 알람 모두 있을 경우 글자수별 사이즈 적용
+     그외 -> 24로 통일
      */
     func setUpViewByCase(){
         
@@ -62,8 +67,8 @@ extension TodoListTableViewCell{
             make.centerY.equalToSuperview().offset(1)
         }
         
-        //time
-        if(cellData.targetTime != nil){
+        
+        if(cellData.isAlarmEnabled){
             
             self.backView.addSubview(timeLabel)
             
@@ -73,107 +78,52 @@ extension TodoListTableViewCell{
                 make.height.equalTo(15)
             }
             
-            //alarm
-            if(cellData.isAlarmEnabled){
+            alarmImageConstraint()
+            
+            alarmImage.snp.makeConstraints{ make in
+                make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
+            }
+            
+            if(cellData.isPinned!){
                 
-                alarmImageConstraint()
+                pinImageConstraint()
                 
-                alarmImage.snp.makeConstraints{ make in
-                    make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
+                pinImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
                 }
-                
-                //pin
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-3)
-//                        make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
-                    }
-                    categoryButton.snp.updateConstraints{ make in
-                        make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
-                    }
-                    titleLabel.snp.updateConstraints{ make in
-                        make.leading.equalTo(checkBox.snp.trailing).offset(7)
-                    }
-                    
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-3)
                 }
-                
-                
+                categoryButton.snp.updateConstraints{ make in
+                    make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
+                }
+                titleLabel.snp.updateConstraints{ make in
+                    make.leading.equalTo(checkBox.snp.trailing).offset(7)
+                }
             }else{
-                //pin
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                    
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
                 }
             }
         }else{
-            
-            //alarm
-            if(cellData.isAlarmEnabled){
+            if(cellData.isPinned!){
                 
-                alarmImageConstraint()
+                pinImageConstraint()
                 
-                alarmImage.snp.makeConstraints{ make in
+                pinImage.snp.makeConstraints{ make in
                     make.trailing.equalToSuperview().offset(-18)
                 }
-                
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
                 }
-                
             }else{
-                
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalToSuperview().offset(-18)
                 }
             }
         }
     }
+
     
     func pinImageConstraint(){
         
