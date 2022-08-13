@@ -227,6 +227,7 @@ class SignUpViewController: UIViewController {
         setUpView()
         setUpConstraint()
         textFieldAddRecognizer()
+        settingTextFieldDelegate()
     }
     
     //MARK: - Helper
@@ -258,6 +259,14 @@ class SignUpViewController: UIViewController {
         }
         
         nicknameTextField.addTarget(self, action: #selector(initNicknameCanUseLabel), for: .editingDidBegin)
+    }
+    
+    func settingTextFieldDelegate(){
+        let textFields = [idTextField,certificationTextField,pwTextField,nameTextField,nicknameTextField]
+        
+        textFields.forEach{ each in
+            each.delegate = self
+        }
     }
     
     //MARK: - Action
@@ -390,8 +399,26 @@ extension SignUpViewController: UITextFieldDelegate{
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField){
-        print("ㅋ")
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        
+        let size: CGFloat!
+        
+        switch textField{
+        case nameTextField:
+            size = 80
+            break
+        case nicknameTextField:
+            size = 200
+            break
+        default:
+            return true
+        }
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= size
+        }
+        
+        return true
     }
 }
 
