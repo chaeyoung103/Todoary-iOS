@@ -137,7 +137,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(AccountViewController(), animated: true)
             return
         case 3:
-           // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
+            self.navigationController?.pushViewController(PinNumberSettingViewController(), animated: true)
             return
         case 4:
            // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
