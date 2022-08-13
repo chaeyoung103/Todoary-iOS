@@ -60,7 +60,7 @@ class HomeViewController : UIViewController {
         $0.layer.cornerRadius = 40/2
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        $0.layer.borderWidth = 1
+        $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.addTarget(self, action: #selector(profileBtnDidTap), for: .touchUpInside)
     }
