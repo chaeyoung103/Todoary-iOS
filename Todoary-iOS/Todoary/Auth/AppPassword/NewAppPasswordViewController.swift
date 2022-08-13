@@ -223,7 +223,6 @@ class NewAppPasswordViewController : UIViewController {
                 newAppPwtext2.isHidden = false
                 
                 //이미지 보이기 위한 딜레이
-
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [self] in
                     
                     inputPw1.isHidden = true
