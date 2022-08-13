@@ -1,19 +1,21 @@
 //
-//  AppPasswordViewController+Layout.swift
+//  NewAppPasswordViewController+Layout.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/07/02.
+//  Created by 예리 on 2022/08/12.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 
-extension AppPasswordViewController {
+extension NewAppPasswordViewController {
+    
     func setUpView(){
         
         self.view.addSubview(appPwTitle)
-        self.view.addSubview(appPwtext)
-        self.view.addSubview(pwnotcorrect)
+        self.view.addSubview(newAppPwtext)
+        self.view.addSubview(newAppPwtext2)
         
         self.view.addSubview(inputNotPw1)
         self.view.addSubview(inputNotPw2)
@@ -48,23 +50,23 @@ extension AppPasswordViewController {
             make.leading.equalToSuperview().offset(161)
         }
         
-        appPwtext.snp.makeConstraints{ make in
+        newAppPwtext.snp.makeConstraints{ make in
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
-            make.width.equalTo(120)
+            make.width.equalTo(161)
             make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
         
-        pwnotcorrect.snp.makeConstraints{ make in
+        newAppPwtext2.snp.makeConstraints{ make in
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
-            make.width.equalTo(107)
+            make.width.equalTo(128)
             make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
         
         //inputNotPassword img
         inputNotPw1.snp.makeConstraints{ make in
-            make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.top.equalTo(newAppPwtext.snp.bottom).offset(92)
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.left.equalToSuperview().offset(91)
@@ -96,7 +98,7 @@ extension AppPasswordViewController {
         //inputPassword img
         
         inputPw1.snp.makeConstraints{ make in
-            make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.top.equalTo(newAppPwtext.snp.bottom).offset(92)
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.left.equalToSuperview().offset(91)
@@ -211,4 +213,3 @@ extension AppPasswordViewController {
         }
     }
 }
-
