@@ -380,6 +380,21 @@ class SignUpViewController: UIViewController {
     }
 }
 
+//MARK: - Keyboard
+extension SignUpViewController: UITextFieldDelegate{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        print("ㅋ")
+    }
+}
+
 //MARK: - API
 extension SignUpViewController{
     

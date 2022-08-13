@@ -174,7 +174,7 @@ extension TodoListTableViewCell{
         
         if(recognizer.state == .began){
             originalCenter = center
-            hiddenSettingViewShow(translation.x)
+            hiddenSettingViewShow()
         }
         if (recognizer.state == .changed){
             
@@ -183,8 +183,7 @@ extension TodoListTableViewCell{
             if(frame.origin.x > 0){ //왼쪽 view
                 isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth   && isViewAdd != .left //* 1.2
-                print(frame.origin.x, isClamp, frame.origin.x < -rightWidth, isViewAdd)
+                isClamp = frame.origin.x < -rightWidth * 1.2   && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {
@@ -298,7 +297,8 @@ extension TodoListTableViewCell{
         return (self.superview as? UITableView)?.indexPath(for: self)
     }
     
-    func hiddenSettingViewShow(_ translation: CGFloat){
+//    func hiddenSettingViewShow(_ translation: CGFloat){
+    func hiddenSettingViewShow(){
 
         if(isViewAdd == .none && !isClamp){
             
