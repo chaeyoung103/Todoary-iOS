@@ -183,7 +183,8 @@ extension TodoListTableViewCell{
             if(frame.origin.x > 0){ //왼쪽 view
                 isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth * 1.2 && isViewAdd != .left
+                isClamp = frame.origin.x < -rightWidth   && isViewAdd != .left //* 1.2
+                print(frame.origin.x, isClamp, frame.origin.x < -rightWidth, isViewAdd)
             }
         }
         if recognizer.state == .ended {
@@ -196,6 +197,7 @@ extension TodoListTableViewCell{
                 
                 let clampFrame : CGRect!
                 if(frame.origin.x < 0){
+                    isViewAdd = .right
                     clampFrame = CGRect(x: -rightWidth,
                                         y: frame.origin.y,
                                         width: bounds.size.width,
@@ -204,6 +206,7 @@ extension TodoListTableViewCell{
                     superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
                     UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }else{
+                    isViewAdd = .left
                     clampFrame = CGRect(x: leftWidth,
                                         y: frame.origin.y,
                                         width: bounds.size.width,
@@ -299,7 +302,7 @@ extension TodoListTableViewCell{
 
         if(isViewAdd == .none && !isClamp){
             
-            isViewAdd = translation < 0 ? .right : .left
+//            isViewAdd = translation < 0 ? .right : .left
             
             self.superview?.superview?.addSubview(hiddenView)
             self.superview?.superview?.addSubview(hiddenRightView)
