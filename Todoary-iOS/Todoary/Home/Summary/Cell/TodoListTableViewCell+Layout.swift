@@ -60,9 +60,8 @@ extension TodoListTableViewCell{
             make.centerY.equalToSuperview().offset(1.4)
             
             
-            make.width.equalTo(106)
-//            make.trailing.equalToSuperview().offset(-177)
-            titleLabel.backgroundColor = .red
+//            make.width.equalTo(106)
+            make.trailing.equalToSuperview().offset(-177)
         }
 
         categoryButton.snp.makeConstraints{ make in
@@ -84,11 +83,12 @@ extension TodoListTableViewCell{
             
             alarmImageConstraint()
             
-            alarmImage.snp.makeConstraints{ make in
-                make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
-            }
             
             if(cellData.isPinned!){
+                
+                alarmImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
+                }
                 
                 pinImageConstraint()
                 
@@ -103,6 +103,11 @@ extension TodoListTableViewCell{
                     make.leading.equalTo(checkBox.snp.trailing).offset(7)
                 }
             }else{
+                
+                alarmImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-4)
+                }
+                
                 categoryButton.snp.makeConstraints{ make in
                     make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
                 }
