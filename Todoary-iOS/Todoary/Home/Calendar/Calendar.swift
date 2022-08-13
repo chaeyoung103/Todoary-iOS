@@ -55,9 +55,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: 43, height: 30)
+            return CGSize(width: view.frame.width/8.5, height: 30)
         default:
-            return CGSize(width: 43, height: 42)
+            return CGSize(width: view.frame.width/8.5, height: view.frame.width/8.7)
         }
     }
     

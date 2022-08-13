@@ -39,12 +39,14 @@ extension LoginViewController {
         logo.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(42)
+            make.bottom.equalTo(comment.snp.top).offset(-15)
             make.width.equalTo(167)
             make.height.equalTo(46)
         }
         
         comment.snp.makeConstraints{ make in
             make.top.equalTo(logo.snp.bottom).offset(15)
+            make.bottom.equalTo(picture.snp.top)
             make.leading.equalToSuperview().offset(46)
             make.width.equalTo(221)
             make.height.equalTo(71)
@@ -52,6 +54,7 @@ extension LoginViewController {
         
         picture.snp.makeConstraints{ make in
             make.top.equalTo(comment.snp.bottom)
+            make.bottom.equalTo(idTitle.snp.top).offset(-28.94)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(114.06)

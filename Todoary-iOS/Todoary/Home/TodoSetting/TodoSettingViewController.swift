@@ -141,8 +141,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
 
         self.view.backgroundColor = .white
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
+        let flowLayout = LeftAlignedCollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         
         
@@ -150,7 +150,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
             $0.delegate = self
             $0.dataSource = self
-            $0.showsHorizontalScrollIndicator = false
+            $0.showsVerticalScrollIndicator = false
             $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
         }
         
@@ -448,17 +448,18 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let tmpLabel = UILabel()
-        tmpLabel.text = categoryData[indexPath.row].title
-        
-        if(categoryData[indexPath.row].title.count > 2){
-            tmpLabel.then{
-                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
-                $0.addLetterSpacing(spacing: 0.28)
-            }
+        switch categoryData[indexPath.row].title.count {
+        case 2:
+            return CGSize(width: 48, height: 26)
+        case 3:
+            return CGSize(width: 54, height: 26)
+        case 4:
+            return CGSize(width: 79, height: 26)
+        case 5:
+            return CGSize(width: 92, height: 26)
+        default:
+            return CGSize(width: 27, height: 26)
         }
-        
-        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
 }
 
@@ -466,4 +467,26 @@ struct CategoryData {
     var id : Int
     var title : String
     var color : Int
+}
+
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+
+            layoutAttribute.frame.origin.x = leftMargin
+
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+
+        return attributes
+    }
 }

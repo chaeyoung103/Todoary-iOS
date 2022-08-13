@@ -103,10 +103,10 @@ class HomeViewController : UIViewController {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 4
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 3)
+        $0.contentInset = UIEdgeInsets.init(top: 0, left: 2, bottom: 0, right: 2)
         $0.collectionViewLayout = layout
     }
 
@@ -175,6 +175,9 @@ class HomeViewController : UIViewController {
         profileImage.load(url: url!)
     }
     func successAPI_calendar(_ result : [Int]) {
+        
+        calendarRecord = [Int](repeating: 0, count: 32)
+        
         if !result.isEmpty{
             for i in 0...result.count-1{
                 calendarRecord[result[i]] = result[i]
