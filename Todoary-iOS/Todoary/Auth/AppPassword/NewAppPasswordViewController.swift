@@ -17,6 +17,8 @@ class NewAppPasswordViewController : UIViewController {
     var passwordArr : [String] = []
     
     var password : String = "1234"
+    
+    let defaults = UserDefaults.standard
 
     //text
 
@@ -83,8 +85,9 @@ class NewAppPasswordViewController : UIViewController {
     
     let numBtn1 =  UIButton().then{
         $0.setTitle( "1", for: .normal)
-        $0.backgroundColor = .numberBtnColor
-        $0.setTitleColor(.black, for: .normal)
+//        $0.backgroundColor = .numberBtnColor
+        $0.tintColor = .black
+        $0.setTitleColor(.silver_225, for: .selected)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
@@ -206,16 +209,18 @@ class NewAppPasswordViewController : UIViewController {
             inputPw4.isHidden = false
             
             let pw = passwordArr.joined(separator: "")
-            if password == pw
-                && inputPw1.isHidden == false
+            if inputPw1.isHidden == false
                 && inputPw2.isHidden == false
                 && inputPw3.isHidden == false
                 && inputPw4.isHidden == false {
                 
+                defaults.set(passwordArr, forKey: "SavedPasswordArr")
+                print(UserDefaults.standard)
+                
                 //이미지 보이기 위한 딜레이
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                     
-                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
+//                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }
             } else {
                 passwordArr.removeAll()
