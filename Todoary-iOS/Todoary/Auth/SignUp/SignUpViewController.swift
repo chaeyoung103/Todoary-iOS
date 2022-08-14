@@ -227,6 +227,7 @@ class SignUpViewController: UIViewController {
         setUpView()
         setUpConstraint()
         textFieldAddRecognizer()
+        settingTextFieldDelegate()
     }
     
     //MARK: - Helper
@@ -258,6 +259,14 @@ class SignUpViewController: UIViewController {
         }
         
         nicknameTextField.addTarget(self, action: #selector(initNicknameCanUseLabel), for: .editingDidBegin)
+    }
+    
+    func settingTextFieldDelegate(){
+        let textFields = [idTextField,certificationTextField,pwTextField,nameTextField,nicknameTextField]
+        
+        textFields.forEach{ each in
+            each.delegate = self
+        }
     }
     
     //MARK: - Action
@@ -377,6 +386,39 @@ class SignUpViewController: UIViewController {
     func nextButtonDidClicked(_ sender: UIButton){
         let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd, isTermsEnable: self.isMarketingAgree)
         SignUpDataManager().posts(self, userData)
+    }
+}
+
+//MARK: - Keyboard
+extension SignUpViewController: UITextFieldDelegate{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        
+        let size: CGFloat!
+        
+        switch textField{
+        case nameTextField:
+            size = 80
+            break
+        case nicknameTextField:
+            size = 200
+            break
+        default:
+            return true
+        }
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= size
+        }
+        
+        return true
     }
 }
 

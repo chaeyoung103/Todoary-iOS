@@ -69,6 +69,16 @@ class SettingViewController : UIViewController {
     @objc func backBtnDidTab() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func showDisabledFuncAlert(){
+        let alert = UIAlertController(title: nil, message: "현재 제공하고 있지 않은 기능입니다.\n다음 업데이트에 만나요!", preferredStyle: .alert)
+        
+        let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        alert.addAction(okBtn)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
@@ -82,45 +92,45 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else{
-        return UITableViewCell()
-    }
-    
-    switch indexPath.row{
-    case 0:
-        cell.title.text = "알림"
-        cell.img.image = UIImage(named: "alarm")
-        return cell
-    case 1:
-        cell.title.text = "화면"
-        cell.img.image = UIImage(named: "screen")
-        return cell
-    case 2:
-        cell.title.text = "계정"
-        cell.img.image = UIImage(named: "account")
-        return cell
-    case 3:
-        cell.title.text = "암호"
-        cell.img.image = UIImage(named: "lock")
-        return cell
-    case 4:
-        cell.title.text = "Todoary 가이드"
-        cell.img.image = UIImage(named: "help")
-        return cell
-    case 5:
-        cell.title.text = "약관 및 정책"
-        cell.img.image = UIImage(named: "document")
-        return cell
-    case 6:
-        cell.title.text = "문의하기"
-        cell.img.image = UIImage(named: "feedback")
-        return cell
-    case 7:
-        cell.title.text = "리뷰 남기기 "
-        cell.img.image = UIImage(named: "review")
-        return cell
-    default:
-        fatalError("TableViewCell Error")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else{
+            return UITableViewCell()
+        }
+        
+        switch indexPath.row{
+        case 0:
+            cell.title.text = "알림"
+            cell.img.image = UIImage(named: "alarm")
+            return cell
+        case 1:
+            cell.title.text = "화면"
+            cell.img.image = UIImage(named: "screen")
+            return cell
+        case 2:
+            cell.title.text = "계정"
+            cell.img.image = UIImage(named: "account")
+            return cell
+        case 3:
+            cell.title.text = "암호"
+            cell.img.image = UIImage(named: "lock")
+            return cell
+        case 4:
+            cell.title.text = "Todoary 가이드"
+            cell.img.image = UIImage(named: "help")
+            return cell
+        case 5:
+            cell.title.text = "약관 및 정책"
+            cell.img.image = UIImage(named: "document")
+            return cell
+        case 6:
+            cell.title.text = "문의하기"
+            cell.img.image = UIImage(named: "feedback")
+            return cell
+        case 7:
+            cell.title.text = "리뷰 남기기 "
+            cell.img.image = UIImage(named: "review")
+            return cell
+        default:
+            fatalError("TableViewCell Error")
         }
 
     }
@@ -131,6 +141,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(AlarmSettingViewController(), animated: true)
             return
         case 1:
+            showDisabledFuncAlert()
             self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
             return
         case 2:
@@ -149,6 +160,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(AskViewController(), animated: true)
             return
         case 7:
+            showDisabledFuncAlert()
             //self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
             return
         default:

@@ -138,9 +138,11 @@ class TodoListTableViewCell: UITableViewCell {
         pinImage.removeFromSuperview()
         alarmImage.removeFromSuperview()
         timeLabel.removeFromSuperview()
-        categoryButton.removeFromSuperview()
         titleLabel.text = ""
         checkBox.isSelected = false
+        
+        titleLabel.snp.removeConstraints()
+        categoryButton.snp.removeConstraints()
     }
     
     //MARK: - Method
@@ -172,7 +174,7 @@ extension TodoListTableViewCell{
         
         if(recognizer.state == .began){
             originalCenter = center
-            hiddenSettingViewShow(translation.x)
+            hiddenSettingViewShow()
         }
         if (recognizer.state == .changed){
             
@@ -181,7 +183,7 @@ extension TodoListTableViewCell{
             if(frame.origin.x > 0){ //왼쪽 view
                 isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth * 1.2 && isViewAdd != .left
+                isClamp = frame.origin.x < -rightWidth * 1.2   && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {
@@ -194,6 +196,7 @@ extension TodoListTableViewCell{
                 
                 let clampFrame : CGRect!
                 if(frame.origin.x < 0){
+                    isViewAdd = .right
                     clampFrame = CGRect(x: -rightWidth,
                                         y: frame.origin.y,
                                         width: bounds.size.width,
@@ -202,6 +205,7 @@ extension TodoListTableViewCell{
                     superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
                     UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }else{
+                    isViewAdd = .left
                     clampFrame = CGRect(x: leftWidth,
                                         y: frame.origin.y,
                                         width: bounds.size.width,
@@ -293,11 +297,12 @@ extension TodoListTableViewCell{
         return (self.superview as? UITableView)?.indexPath(for: self)
     }
     
-    func hiddenSettingViewShow(_ translation: CGFloat){
+//    func hiddenSettingViewShow(_ translation: CGFloat){
+    func hiddenSettingViewShow(){
 
         if(isViewAdd == .none && !isClamp){
             
-            isViewAdd = translation < 0 ? .right : .left
+//            isViewAdd = translation < 0 ? .right : .left
             
             self.superview?.superview?.addSubview(hiddenView)
             self.superview?.superview?.addSubview(hiddenRightView)

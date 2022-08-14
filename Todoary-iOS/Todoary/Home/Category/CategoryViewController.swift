@@ -50,6 +50,8 @@ class CategoryViewController: UIViewController {
             $0.delegate = self
             $0.dataSource = self
             $0.showsHorizontalScrollIndicator = false
+            
+            $0.contentInset = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: 0)
 
             $0.register(CategoryPlusButtonCell.self, forCellWithReuseIdentifier: CategoryPlusButtonCell.cellIdentifier)
             $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
