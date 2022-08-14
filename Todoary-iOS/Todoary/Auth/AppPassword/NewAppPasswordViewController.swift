@@ -16,9 +16,9 @@ class NewAppPasswordViewController : UIViewController {
     
     var passwordArr : [String] = []
     
-    var password : String = "1234"
-    
     let defaults = UserDefaults.standard
+    
+//    let appPassword = defaults.stringArray(forKey: "passwordArr") ?? [String]()
 
     //text
 
@@ -214,13 +214,13 @@ class NewAppPasswordViewController : UIViewController {
                 && inputPw3.isHidden == false
                 && inputPw4.isHidden == false {
                 
-                defaults.set(passwordArr, forKey: "SavedPasswordArr")
+                defaults.set(pw, forKey: "SavedPasswordArr")
                 print(UserDefaults.standard)
                 
                 //이미지 보이기 위한 딜레이
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                     
-//                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }
             } else {
                 passwordArr.removeAll()
