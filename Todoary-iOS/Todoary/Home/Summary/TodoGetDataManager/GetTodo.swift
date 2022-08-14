@@ -63,4 +63,21 @@ struct GetTodoInfo: Decodable, Equatable{
         
         return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }
+    
+    var categoryWidth: UInt{
+        switch self.categoryTitle.count{
+        case 1:
+            return 7*2
+        case 2:
+            return 12*2
+        case 3:
+            return 10*2
+        case 4:
+            return 8*2
+        case 5:
+            return 6*2
+        default:
+            return 0
+        }
+    }
 }

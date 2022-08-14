@@ -23,6 +23,8 @@ class AccountViewController : UIViewController {
     
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "profile")
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.layer.cornerRadius = 85/2
         $0.clipsToBounds = true
     }
@@ -37,6 +39,7 @@ class AccountViewController : UIViewController {
     let introduce = UILabel().then{
         $0.text = "가가가가가가가가가가가가가가가가가가가가각가ㅏ가가가가가가가가ㅏ가"
         $0.textColor = .black
+        $0.numberOfLines = 2
         $0.addLetterSpacing(spacing: 0.28)
         $0.font = UIFont.nbFont(type: .body1)
     }

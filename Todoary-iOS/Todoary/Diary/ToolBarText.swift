@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension DiaryViewController{
     
@@ -16,10 +17,17 @@ extension DiaryViewController{
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(alignLeftBtnDidClicked), for: .touchUpInside)
         self.toolbar.ailgnCenterBtn.addTarget(self, action: #selector(alignCenterBtnDidClicked), for: .touchUpInside)
         self.toolbar.alignRightBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-        self.toolbar.fontBtn.addTarget(self, action: #selector(fontBtnDidClicked), for: .touchUpInside)
+
         self.toolbar.strikeLineBtn.addTarget(self, action: #selector(strikeBtnDidClicked), for: .touchUpInside)
         self.toolbar.underLineBtn.addTarget(self, action: #selector(underLineBtnDidClicked), for: .touchUpInside)
         self.toolbar.boldBtn.addTarget(self, action: #selector(boldBtnDidClicked), for: .touchUpInside)
+        
+        self.toolbar.fontBtn1.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        self.toolbar.fontBtn2.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        self.toolbar.fontBtn3.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        self.toolbar.fontBtn4.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        self.toolbar.fontBtn5.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        
     }
     
     @objc
@@ -39,15 +47,43 @@ extension DiaryViewController{
         self.textView.textAlignment = .right
     }
     
+    /*
     @objc
-    func fontBtnDidClicked(){
+    func convertNSAttributeToHtml(){
         let text = NSAttributedString(attributedString: textView.attributedText)
         print(text.attributedString2Html)
     }
+     */
     
     @objc
-    func fontChange(){
-//        self.textView.font =
+    func fontChange(_ sender: UIButton){
+        
+        //TODO: - 현재 폰트와 동일할 경우 함수 종료시키기
+        
+        let font: DiaryFontType!
+        
+        switch sender{
+        case self.toolbar.fontBtn1:
+            font = .font1
+            break
+        case self.toolbar.fontBtn2:
+            font = .font2
+            break
+        case self.toolbar.fontBtn3:
+            font = .font3
+            break
+        case self.toolbar.fontBtn4:
+            font = .font4
+            break
+        case self.toolbar.fontBtn5:
+            font = .font5
+            break
+        default:
+            return
+        }
+        
+        self.currentFont.fontName = font
+        self.textView.font = currentFont.returnFont(.normal)
     }
     
     @objc
@@ -125,17 +161,17 @@ extension DiaryViewController{
         let attribute = textView.attributedText.attribute(.font,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange) as? UIFont
-
-        var fontWeight: NBWeight!
+        
+        var fontStyle: styleType!
         
         if let fontName = attribute?.fontName{
-            fontWeight = fontName == "AppleSDGothicNeo-Bold" ? NBWeight.medium : .bold
+            fontStyle = fontName == currentFont.normal ? .bold : .normal
         }
         
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
         
         attributedString.addAttribute(.font,
-                                      value: UIFont.nbFont(ofSize: 15, weight: fontWeight),
+                                      value: currentFont.returnFont(fontStyle),
                                       range: selectedRange)
         
         textView.attributedText = attributedString

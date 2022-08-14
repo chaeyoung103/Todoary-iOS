@@ -77,14 +77,14 @@
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
 		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
 		57DF45F428A60B310002D66C /* IM_Hyemin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */; };
-		57DF45F528A60B310002D66C /* IBMPlexSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */; };
 		57DF45F628A60B310002D66C /* NotoSerifKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */; };
 		57DF45F728A60B310002D66C /* GangwonEduAll-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */; };
 		57DF45F828A60B310002D66C /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F028A60B310002D66C /* NotoSerifKR-SemiBold.otf */; };
-		57DF45F928A60B310002D66C /* IBMPlexSans-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */; };
 		57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */; };
 		57DF45FB28A60B310002D66C /* IM_Hyemin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */; };
 		57DF45FD28A60DB90002D66C /* DiaryFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF45FC28A60DB90002D66C /* DiaryFont.swift */; };
+		57DF460328A64A9E0002D66C /* IBMPlexSansKR-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF460228A64A9E0002D66C /* IBMPlexSansKR-Text.otf */; };
+		57DF460528A64AA60002D66C /* IBMPlexSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF460428A64AA60002D66C /* IBMPlexSansKR-Medium.otf */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -306,14 +306,14 @@
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
 		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
 		57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Regular.ttf"; sourceTree = "<group>"; };
-		57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
 		57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Regular.otf"; sourceTree = "<group>"; };
 		57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GangwonEduAll-Light.ttf"; sourceTree = "<group>"; };
 		57DF45F028A60B310002D66C /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; };
-		57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Text.otf"; sourceTree = "<group>"; };
 		57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GangwonEduAll-Bold.ttf"; sourceTree = "<group>"; };
 		57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Bold.ttf"; sourceTree = "<group>"; };
 		57DF45FC28A60DB90002D66C /* DiaryFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFont.swift; sourceTree = "<group>"; };
+		57DF460228A64A9E0002D66C /* IBMPlexSansKR-Text.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Text.otf"; sourceTree = "<group>"; };
+		57DF460428A64AA60002D66C /* IBMPlexSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Medium.otf"; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -728,8 +728,8 @@
 			children = (
 				57DF45F228A60B310002D66C /* GangwonEduAll-Bold.ttf */,
 				57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */,
-				57DF45ED28A60B2F0002D66C /* IBMPlexSans-Medium.otf */,
-				57DF45F128A60B310002D66C /* IBMPlexSans-Text.otf */,
+				57DF460228A64A9E0002D66C /* IBMPlexSansKR-Text.otf */,
+				57DF460428A64AA60002D66C /* IBMPlexSansKR-Medium.otf */,
 				57DF45F328A60B310002D66C /* IM_Hyemin-Bold.ttf */,
 				57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */,
 				57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */,
@@ -1322,14 +1322,14 @@
 				57DF45F828A60B310002D66C /* NotoSerifKR-SemiBold.otf in Resources */,
 				57DF45FB28A60B310002D66C /* IM_Hyemin-Bold.ttf in Resources */,
 				E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */,
+				57DF460328A64A9E0002D66C /* IBMPlexSansKR-Text.otf in Resources */,
 				572E5AE6286EBDCE00D1FAA0 /* LaunchScreen.storyboard in Resources */,
 				E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
+				57DF460528A64AA60002D66C /* IBMPlexSansKR-Medium.otf in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
 				57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */,
-				57DF45F528A60B310002D66C /* IBMPlexSans-Medium.otf in Resources */,
 				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
-				57DF45F928A60B310002D66C /* IBMPlexSans-Text.otf in Resources */,
 				57DF45F628A60B310002D66C /* NotoSerifKR-Regular.otf in Resources */,
 				574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */,
 				57DF45F428A60B310002D66C /* IM_Hyemin-Regular.ttf in Resources */,
