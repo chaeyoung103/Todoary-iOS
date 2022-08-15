@@ -133,6 +133,8 @@
 		ACCD87D22897DB9E00C34CE7 /* CategoryDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */; };
 		ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */; };
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
+		ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */; };
+		ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
@@ -365,6 +367,8 @@
 		ACCD87D12897DB9E00C34CE7 /* CategoryDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteModel.swift; sourceTree = "<group>"; };
 		ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendataManager.swift; sourceTree = "<group>"; };
 		ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarModel.swift; sourceTree = "<group>"; };
+		ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNumberSettingViewController.swift; sourceTree = "<group>"; };
+		ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinNumberSettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 		574913B5287ADEF300381BCD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				ACE7D5F828A819780093854A /* PinNumberSetting */,
 				E0AB9EBF287B1C290064CADA /* SettingAgreement */,
 				E0F998A9288A68B70051C7AA /* AlarmDataManager */,
 				57B36ECB287AFA9D00378E16 /* Cell */,
@@ -968,6 +973,15 @@
 				ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */,
 			);
 			path = GetCalendarDataManager;
+			sourceTree = "<group>";
+		};
+		ACE7D5F828A819780093854A /* PinNumberSetting */ = {
+			isa = PBXGroup;
+			children = (
+				ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */,
+				ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */,
+			);
+			path = PinNumberSetting;
 			sourceTree = "<group>";
 		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
@@ -1544,6 +1558,7 @@
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
+				ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
 				E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
@@ -1560,6 +1575,7 @@
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
+				ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */,
 				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */,

@@ -28,7 +28,7 @@ class ProfileViewController : UIViewController {
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "profile")
         $0.contentMode = .scaleAspectFill
-        $0.layer.borderWidth = 1
+        $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.layer.cornerRadius = 85/2
         $0.clipsToBounds = true
@@ -54,7 +54,7 @@ class ProfileViewController : UIViewController {
     }
     
     let nickNameTf = UITextField().then{
-        $0.text = "닉네임을 적어주세요!"
+        $0.placeholder = "닉네임을 입력해주세요"
         $0.textFieldTypeSetting(type: .tableCell)
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.addLeftPadding()
@@ -85,7 +85,7 @@ class ProfileViewController : UIViewController {
     }
     
     let introduceTf = UITextView().then{
-        $0.text = "한줄소개를 적어주세요!"
+        $0.text = "소개글을 입력해주세요"
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.addLeftPadding()
         $0.textViewTypeSetting()

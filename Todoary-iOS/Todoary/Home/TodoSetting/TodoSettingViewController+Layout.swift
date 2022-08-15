@@ -123,7 +123,7 @@ extension TodoSettingViewController {
             make.top.equalTo(category.snp.bottom).offset(22)
             make.leading.equalToSuperview().offset(28)
             make.trailing.equalToSuperview().offset(-28)
-            make.height.equalTo(26)
+            make.height.equalTo(275)
         }
         
         categoryBorderLine.snp.makeConstraints{ make in

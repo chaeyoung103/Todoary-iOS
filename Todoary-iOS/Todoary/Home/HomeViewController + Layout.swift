@@ -50,7 +50,7 @@ extension HomeViewController {
         
         //profile
         profileImage.snp.makeConstraints{ make in
-            make.top.equalTo(logo.snp.bottom).offset(29)
+            make.top.equalTo(logo.snp.bottom).offset(19)
             make.leading.equalToSuperview().offset(41)
             make.width.equalTo(40)
             make.height.equalTo(40)
@@ -69,7 +69,7 @@ extension HomeViewController {
         }
         
         year_Month.snp.makeConstraints{ make in
-            make.top.equalTo(profileImage.snp.bottom).offset(25)
+            make.top.equalTo(profileImage.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(45)
             make.width.equalTo(100)
             make.height.equalTo(22)
@@ -87,10 +87,10 @@ extension HomeViewController {
         
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(year_Month.snp.bottom).offset(17)
-            make.height.equalTo(297)
             make.centerX.equalToSuperview()
-            make.width.equalTo(322)
-            make.bottom.equalToSuperview().offset(-325)
+            make.leading.equalToSuperview().offset(28)
+            make.trailing.equalToSuperview().offset(-28)
+            make.bottom.equalToSuperview()
         }
         
         

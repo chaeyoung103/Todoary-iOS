@@ -23,7 +23,7 @@ class AccountViewController : UIViewController {
     
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "profile")
-        $0.layer.borderWidth = 1
+        $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1).cgColor
         $0.layer.cornerRadius = 85/2
         $0.clipsToBounds = true
