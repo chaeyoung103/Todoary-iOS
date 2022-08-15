@@ -15,6 +15,7 @@ extension TodoListTableViewCell{
         
         self.backView.addSubview(checkBox)
         self.backView.addSubview(titleLabel)
+        self.backView.addSubview(categoryButton)
     
         self.selectedBackgroundView = selectedBackView
     }
@@ -39,148 +40,106 @@ extension TodoListTableViewCell{
             make.top.equalToSuperview().offset(18)
             make.bottom.equalToSuperview().offset(-18)
         }
+
+    }
+
+    //TODO: - 레이아웃 수정
+    /**
+        1. 카테고리 5글자인 경우 offset 6*2로 지정
+        2. 카테고리 5글자인 경우만 아이콘 간격 줄이기
+     
+     
+        카테고리 -> 5글자 : 6*2 offset
+     이외 -> 핀, 알람 모두 있을 경우 글자수별 사이즈 적용
+     그외 -> 24로 통일
+     */
+    func setUpViewByCase(){
         
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
-            make.centerY.equalTo(checkBox)
-            make.width.equalTo(106)
+            make.centerY.equalToSuperview().offset(1.4)
+            
+            
+//            make.width.equalTo(106)
+            make.trailing.equalToSuperview().offset(-177)
         }
-        
-    }
-    
-    //default 아닌 view
-    func setUpViewByCase(){
-        
-        self.backView.addSubview(categoryButton)
-        
-        categoryButton.snp.removeConstraints()
-        
+
         categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
             make.height.equalTo(21)
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(1)
         }
         
-        //time
-        if(cellData.targetTime != nil){
+        
+        if(cellData.isAlarmEnabled){
             
             self.backView.addSubview(timeLabel)
             
             timeLabel.snp.makeConstraints{ make in
                 make.trailing.equalToSuperview().offset(-18)
-                make.top.equalToSuperview().offset(24)
-                make.bottom.equalToSuperview().offset(-21)
+                make.centerY.equalToSuperview().offset(2)
                 make.height.equalTo(15)
             }
             
-            //alarm
-            if(cellData.isAlarmEnabled){
-                
-                alarmImageConstraint()
+            alarmImageConstraint()
+            
+            
+            if(cellData.isPinned!){
                 
                 alarmImage.snp.makeConstraints{ make in
-                    make.trailing.equalTo(timeLabel.snp.leading).offset(-4.33)
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-2)
                 }
                 
-                //pin
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-7.25)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-5.92)
-//                        make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
-                    }
-                    categoryButton.snp.updateConstraints{ make in
-                        make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(cellData.categoryWidth)
-                    }
-                    
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-9.33)
-                    }
+                pinImageConstraint()
+                
+                pinImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
                 }
-                
-                
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-3)
+                }
+ 
+                titleLabel.snp.updateConstraints{ make in
+                    make.leading.equalTo(checkBox.snp.trailing).offset(7)
+                }
             }else{
-                //pin
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(timeLabel.snp.leading).offset(-5)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                    
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
-                    }
+                
+                alarmImage.snp.makeConstraints{ make in
+                    make.trailing.equalTo(timeLabel.snp.leading).offset(-4)
+                }
+                
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(alarmImage.snp.leading).offset(-7)
                 }
             }
         }else{
-            
-            //alarm
-            if(cellData.isAlarmEnabled){
+            if(cellData.isPinned!){
                 
-                alarmImageConstraint()
+                pinImageConstraint()
                 
-                alarmImage.snp.makeConstraints{ make in
+                pinImage.snp.makeConstraints{ make in
                     make.trailing.equalToSuperview().offset(-18)
                 }
-                
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalTo(alarmImage.snp.leading).offset(-2)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalTo(pinImage.snp.leading).offset(-7)
                 }
-                
             }else{
-                
-                if(cellData.isPinned!){
-                    
-                    pinImageConstraint()
-                    
-                    pinImage.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalTo(pinImage.snp.leading).offset(-7)
-                    }
-                }else{
-                    categoryButton.snp.makeConstraints{ make in
-                        make.trailing.equalToSuperview().offset(-18)
-                    }
+                categoryButton.snp.makeConstraints{ make in
+                    make.trailing.equalToSuperview().offset(-18)
                 }
             }
         }
     }
+
     
     func pinImageConstraint(){
         
         self.backView.addSubview(pinImage)
         
         pinImage.snp.makeConstraints{ make in
-            make.width.equalTo(8.17)
-            make.height.equalTo(11)
-            make.top.equalToSuperview().offset(26.44)
-            make.bottom.equalToSuperview().offset(-22.56)
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.centerY.equalToSuperview().offset(1)
         }
     }
     
@@ -189,10 +148,9 @@ extension TodoListTableViewCell{
         self.backView.addSubview(alarmImage)
         
         alarmImage.snp.makeConstraints{ make in
-            make.width.equalTo(9.33)
-            make.height.equalTo(10.73)
-            make.top.equalToSuperview().offset(25.77)
-            make.bottom.equalToSuperview().offset(-23.5)
+            make.width.equalTo(14)
+            make.height.equalTo(13.2)
+            make.centerY.equalToSuperview().offset(0.6)
         }
     }
 

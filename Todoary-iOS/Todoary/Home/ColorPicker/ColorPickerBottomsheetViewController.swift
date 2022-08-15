@@ -92,6 +92,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
         setUpView()
         setUpConstraint()
         setupGestureRecognizer()
+        
+        categoryTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -302,6 +304,26 @@ class ColorPickerBottomsheetViewController : UIViewController {
         
     }
 
+}
+
+//MARK: - Keyboard
+extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= 80
+        }
+        
+        return true
+    }
 }
 
 //MARK: - UICollectionViewDataSource

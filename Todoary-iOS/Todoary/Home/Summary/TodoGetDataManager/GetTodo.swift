@@ -65,19 +65,24 @@ struct GetTodoInfo: Decodable, Equatable{
     }
     
     var categoryWidth: UInt{
-        switch self.categoryTitle.count{
-        case 1:
-            return 7*2
-        case 2:
-            return 12*2
-        case 3:
-            return 10*2
-        case 4:
-            return 8*2
-        case 5:
-            return 6*2
-        default:
-            return 0
+        
+        if(isPinned! && isAlarmEnabled){
+            switch self.categoryTitle.count{
+            case 1:
+                return 7*2
+            case 2:
+                return 12*2
+            case 3:
+                return 10*2
+            case 4:
+                return 8*2
+            case 5:
+                return 6*2
+            default:
+                return 0
+            }
+        }else{
+            return self.categoryTitle.count < 5 ? 24 : 6*2
         }
     }
 }
