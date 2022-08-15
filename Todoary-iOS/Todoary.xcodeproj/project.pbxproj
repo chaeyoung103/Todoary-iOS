@@ -626,6 +626,7 @@
 		574913B5287ADEF300381BCD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				ACE7D5F828A819780093854A /* PinNumberSetting */,
 				E0AB9EBF287B1C290064CADA /* SettingAgreement */,
 				E0F998A9288A68B70051C7AA /* AlarmDataManager */,
 				57B36ECB287AFA9D00378E16 /* Cell */,
@@ -817,7 +818,6 @@
 		AC5E27E82890EBF90056EC69 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				ACE7D5F828A819780093854A /* PinNumberSetting */,
 				AC9128CE287B34830056932A /* Profile */,
 				AC9128C7287AD5830056932A /* Account */,
 			);
