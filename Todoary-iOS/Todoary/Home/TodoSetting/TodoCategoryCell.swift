@@ -58,7 +58,7 @@ class TodoCategoryCell: UICollectionViewCell {
 }
 
 class cellPaddingLabel: UILabel {
-    var padding = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
+    var padding = UIEdgeInsets(top: 5, left: 10, bottom: 4, right:10)
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: padding))
