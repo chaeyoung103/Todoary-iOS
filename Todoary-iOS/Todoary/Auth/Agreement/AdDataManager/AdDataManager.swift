@@ -10,11 +10,11 @@ import Alamofire
 
 class AdDataManager{
     
-    func adDataManager(viewController: AgreementViewController, isChecked: Bool)
+    func adDataManager(viewController: AdTextSettingViewController, isChecked: Bool)
     {
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/users/service/terms)",
+        AF.request("https://todoary.com/users/service/terms",
                 method: .patch,
                 parameters: ["isChecked":isChecked],
                 encoder: JSONParameterEncoder.default,

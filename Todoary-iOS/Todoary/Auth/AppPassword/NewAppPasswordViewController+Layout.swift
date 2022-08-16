@@ -127,76 +127,66 @@ extension NewAppPasswordViewController {
         
         
     
-        //button
-        numBtn1.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(452)
-            make.width.equalTo(10)
-            make.height.equalTo(31)
-            make.leading.equalToSuperview().offset(87)
-        }
-        
-        numBtn2.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn1.snp.trailing).offset(93)
-            make.width.equalTo(14)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn1)
-        }
-        
-        numBtn3.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn2.snp.trailing).offset(88)
-            make.width.equalTo(14)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn2)
-        }
-        
-        numBtn4.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn1.snp.bottom).offset(51)
-            make.width.equalTo(16)
-            make.height.equalTo(31)
-            make.centerX.equalTo(numBtn1)
-        }
-        
-        numBtn5.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn4.snp.trailing).offset(89)
-            make.width.equalTo(14)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn4)
-        }
-        
-        numBtn6.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn5.snp.trailing).offset(87)
-            make.width.equalTo(16)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn5)
-        }
-        
-        numBtn7.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn4.snp.bottom).offset(51)
-            make.width.equalTo(14)
-            make.height.equalTo(31)
-            make.centerX.equalTo(numBtn4)
-        }
-        
-        numBtn8.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn7.snp.trailing).offset(88)
-            make.width.equalTo(16)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn7)
-        }
-        
-        numBtn9.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn8.snp.trailing).offset(87)
-            make.width.equalTo(16)
-            make.height.equalTo(31)
-            make.centerY.equalTo(numBtn8)
-        }
-        
-        numBtn0.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn8.snp.bottom).offset(51)
-            make.width.equalTo(15)
-            make.height.equalTo(31)
-            make.centerX.equalTo(numBtn8)
-        }
+            //button
+            numBtn1.snp.makeConstraints{ make in
+                make.top.equalToSuperview().offset(465)
+                make.width.height.equalTo(43)
+                make.leading.equalToSuperview().offset(71)
+            }
+            
+            numBtn2.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn1.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn1)
+            }
+            
+            numBtn3.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn2.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn2)
+            }
+            
+            numBtn4.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn1.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalTo(numBtn1)
+            }
+            
+            numBtn5.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn4.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn4)
+            }
+            
+            numBtn6.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn5.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn5)
+            }
+            
+            numBtn7.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn4.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalTo(numBtn4)
+            }
+            
+            numBtn8.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn7.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn7)
+            }
+            
+            numBtn9.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn8.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn8)
+            }
+            
+            numBtn0.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn8.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalTo(numBtn8)
+            }
             
             blueCharacter.snp.makeConstraints{ make in
                 make.width.height.equalTo(40)
