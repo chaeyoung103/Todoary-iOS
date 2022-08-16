@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import IRSticker_swift
 
-class DiaryStickerView : UIView {
+class DiaryStickerView : UIView{
 
     //MARK: - Properties
 
-    private var DiaryStickerCollectionViewCellid = "DiaryStickerCollectionViewCellid"
+    var DiaryStickerCollectionViewCellid = "DiaryStickerCollectionViewCellid"
     
-    private var DiaryStickerCollectionView: DiaryStickerCollectionView!
+    var collectionView: UICollectionView!
     
     //MARK: - Lifecycles
     
@@ -36,41 +37,40 @@ class DiaryStickerView : UIView {
     }
     
     //컬렉션뷰 layout
-    private func configure() {
+    func configure() {
         
         let collectionViewLayer = UICollectionViewFlowLayout()
         collectionViewLayer.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        DiaryStickerCollectionView = Todoary.DiaryStickerCollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
-        DiaryStickerCollectionView.isScrollEnabled = true
-        DiaryStickerCollectionView.backgroundColor = UIColor (
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
+        collectionView.isScrollEnabled = true
+        collectionView.backgroundColor = UIColor (
             red: 230/255,
             green: 230/255,
             blue: 230/255,
             alpha: 1
         )
         
-        self.addSubview(DiaryStickerCollectionView)
+        self.addSubview(collectionView)
         
-        DiaryStickerCollectionView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview().offset(0)
-            make.width.equalTo(0)
-            make.height.equalTo(0)
             make.centerX.equalToSuperview()
         }
     }
     
-    private func setupCollectionView() {
+    func setupCollectionView() {
         
-        DiaryStickerCollectionView.delegate = self
-        DiaryStickerCollectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     
         //CollectionView 등록
-        DiaryStickerCollectionView.register(DiaryStickerCollectionViewCell.self, forCellWithReuseIdentifier: DiaryStickerCollectionViewCellid)
+        collectionView.register(DiaryStickerCollectionViewCell.self, forCellWithReuseIdentifier: DiaryStickerCollectionViewCellid)
     }
 }
         
 //MARK: - Helpers
+
 
 extension DiaryStickerView : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 

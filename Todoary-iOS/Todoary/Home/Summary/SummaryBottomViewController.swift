@@ -151,6 +151,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         let vc = DiaryViewController()
         vc.todaysDate.text = todoDate.dateUsedDiary
         vc.sendApiDate = todoDate.dateSendServer
+        vc.todoDataList = self.todoDataList
 
         homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -238,13 +239,34 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         todoEasyTitle = todoTf.text!
         
-        let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
-                                                targetDate: todoDate!.dateSendServer,
-                                                isAlarmEnabled: false,
-                                                targetTime: "",
-                                                categoryId: selectCategory)
-        
-        TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+        //제목을 입력하지 않았을 경우
+        if todoEasyTitle == "" {
+            
+            let toast = ToastMessageView()
+            toast.toastMessageLabel.text = "제목을 입력해주세요."
+            
+            self.view.addSubview(toast)
+            
+            toast.snp.makeConstraints{ make in
+                make.leading.equalToSuperview().offset(81)
+                make.trailing.equalToSuperview().offset(-81)
+                make.bottom.equalTo(todoEasySettingView.snp.top).offset(-10)
+            }
+            
+            UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+                toast.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toast.removeFromSuperview()
+            })
+        }else {
+            let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
+                                                    targetDate: todoDate!.dateSendServer,
+                                                    isAlarmEnabled: false,
+                                                    targetTime: "",
+                                                    categoryId: selectCategory)
+            
+            TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+        }
         
         
         return true
