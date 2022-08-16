@@ -16,7 +16,7 @@ class NewAppPasswordViewController : UIViewController {
     
     var passwordArr : [String] = []
     
-    let defaults = UserDefaults.standard
+//    let defaults = UserDefaults.standard
     
 //    let appPassword = defaults.stringArray(forKey: "passwordArr") ?? [String]()
 
@@ -214,8 +214,8 @@ class NewAppPasswordViewController : UIViewController {
                 && inputPw3.isHidden == false
                 && inputPw4.isHidden == false {
                 
-                defaults.set(pw, forKey: "SavedPasswordArr")
-                print(UserDefaults.standard)
+//                defaults.set(pw, forKey: "SavedPasswordArr")
+//                print(UserDefaults.standard)
                 
                 //이미지 보이기 위한 딜레이
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {

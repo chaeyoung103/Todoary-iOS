@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct AdInput: Encodable{
+    var isChecked: Bool
+}

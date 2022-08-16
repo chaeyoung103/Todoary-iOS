@@ -20,6 +20,8 @@ class AgreementViewController : UIViewController {
     
     //MARK: - UIComponenets
     
+    var navigation: UINavigationController!
+    
     
     //MARK: - navigationView
     
@@ -205,6 +207,7 @@ class AgreementViewController : UIViewController {
     }
         
     @objc func ADdidCheck() {
+        AdDataManager().adDataManager(viewController: self, isChecked: self.adCheckBtn.isSelected == true)
         if adCheckBtn.isSelected{ adCheckBtn.isSelected = false
             } else {adCheckBtn.isSelected = true}
     }
@@ -281,6 +284,21 @@ class AgreementViewController : UIViewController {
     @objc func backBtnDidTab() {
         self.navigationController?.popViewController(animated: true)
         }
+    
+    func checkAdagreement(_ code: Int){
+        switch code{
+        case 1000:
+            print("광고성 동의 체크")
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            navigation.present(alert, animated: true, completion: {
+                self.adCheckBtn.isSelected = false
+            })
+        }
     }
+
+    }
+
 
 
