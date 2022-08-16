@@ -78,8 +78,8 @@ class PinNumberSettingViewController : UIViewController {
     //다음 버튼 누르기 -> 암호변경 화면
     
     @objc func nextBtnDidTap(sender: UITapGestureRecognizer) {
-        let appPasswordViewController = AppPasswordViewController()
-        self.navigationController?.pushViewController(appPasswordViewController, animated: true)
+        let newAppPasswordViewController = NewAppPasswordViewController()
+        self.navigationController?.pushViewController(newAppPasswordViewController, animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
     
