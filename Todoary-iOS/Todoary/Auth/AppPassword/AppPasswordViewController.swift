@@ -86,6 +86,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -94,6 +95,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -103,6 +105,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
         
@@ -111,6 +114,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
 
@@ -119,6 +123,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -127,6 +132,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -135,6 +141,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -143,6 +150,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -151,6 +159,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -159,6 +168,7 @@ class AppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     

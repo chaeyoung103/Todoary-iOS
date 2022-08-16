@@ -16,7 +16,7 @@ class NewAppPasswordViewController : UIViewController {
     
     var passwordArr : [String] = []
     
-    var password : String = "1234"
+    let defaults = UserDefaults.standard
 
     //text
 
@@ -86,6 +86,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -94,6 +95,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -103,6 +105,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
         
@@ -111,6 +114,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
 
@@ -119,6 +123,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -127,6 +132,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -135,6 +141,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -143,6 +150,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -151,6 +159,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -159,6 +168,7 @@ class NewAppPasswordViewController : UIViewController {
         $0.backgroundColor = .numberBtnColor
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(type: .numberBtn)
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
@@ -178,6 +188,8 @@ class NewAppPasswordViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
 
         setUpView()
         setUpConstraint()
@@ -206,11 +218,16 @@ class NewAppPasswordViewController : UIViewController {
             inputPw4.isHidden = false
             
             let pw = passwordArr.joined(separator: "")
-            if password == pw
-                && inputPw1.isHidden == false
+            if inputPw1.isHidden == false
                 && inputPw2.isHidden == false
                 && inputPw3.isHidden == false
                 && inputPw4.isHidden == false {
+                
+                let appPassword = defaults.stringArray(forKey: "passwordArr") ?? [String]()
+                
+                defaults.set(appPassword, forKey: "SavedPasswordArr")
+                print(UserDefaults.standard.dictionaryRepresentation())
+                print(passwordArr)
                 
                 //이미지 보이기 위한 딜레이
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
