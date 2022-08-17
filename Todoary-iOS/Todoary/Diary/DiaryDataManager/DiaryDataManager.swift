@@ -55,13 +55,12 @@ class DiaryDataManager {
     
     //다이어리 조회
     func gets(_ date: String){
-
-        let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/todo/date/\(date)", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetTodoModel.self) { response in
+        AF.request("https://todoary.com/diary?createdDate=\(date)", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetDiaryModel.self) { response in
             switch response.result {
             case .success(let result):
-                HomeViewController.bottomSheetVC.checkGetTodoApiResultCode(result)
+                print("isSuccess")
+//                HomeViewController.bottomSheetVC.checkGetTodoApiResultCode(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
