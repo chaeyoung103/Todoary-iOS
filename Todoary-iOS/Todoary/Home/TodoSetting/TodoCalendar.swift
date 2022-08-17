@@ -96,6 +96,7 @@ extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICo
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todoCalendarCell", for: indexPath) as! TodoCalendarCell
+            
             cell.dateLabel.text = days[indexPath.row]
             cell.dateLabel.layer.backgroundColor = UIColor.transparent.cgColor
             cell.dateLabel.textColor = .black
@@ -103,6 +104,12 @@ extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICo
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
             
+            if today != -1 && today == indexPath.row - emptyDay {
+                collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
+                cell.isSelected = true
+            }else {
+                cell.dateLabel.textColor = .black
+            }
             return cell
         }
     }
@@ -138,12 +145,14 @@ extension TodoCalendarBottomSheetViewController : UICollectionViewDelegate, UICo
     
     @objc func prevBtnDidTap() {
         components.month = components.month! - 1
+        today = -1
         self.calculation()
         self.collectionView.reloadData()
     }
     
     @objc func nextBtnDidTap() {
         components.month = components.month! + 1
+        today = -1
         self.calculation()
         self.collectionView.reloadData()
     }
