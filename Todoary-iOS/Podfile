@@ -17,6 +17,11 @@ target 'Todoary' do
 
   pod 'IRSticker-swift'
 
+  # firebase 
+  pod 'Firebase/Analytics' # Google Analytics
+
+  pod 'Firebase/Messaging'
+
   target 'TodoaryTests' do
     inherit! :search_paths
     # Pods for testing
