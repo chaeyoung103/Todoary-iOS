@@ -58,8 +58,6 @@ extension DiaryViewController {
         diaryTitle.snp.makeConstraints{ make in
             make.top.equalTo(diaryLine.snp.bottom).offset(25)
             make.leading.equalToSuperview().offset(31)
-            make.width.equalTo(85)
-            make.height.equalTo(22)
         }
         
         //diaryText

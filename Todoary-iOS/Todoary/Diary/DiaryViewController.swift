@@ -74,9 +74,9 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
     
     //다이어리 제목
     let diaryTitle = UITextField().then{
-        $0.placeholder = "오늘의 일기"
+        $0.placeholder = "오늘의 일기 제목"
         $0.font = UIFont.nbFont(ofSize: 18, weight: .bold)
-        $0.setPlaceholderColor(.black)
+        $0.setPlaceholderColor(.silver_225)
         $0.addLeftPadding(padding: 0)
         $0.addLetterSpacing(spacing: 0.32)
         $0.borderStyle = .none
