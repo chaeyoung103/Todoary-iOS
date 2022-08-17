@@ -10,8 +10,6 @@ import UIKit
 
 extension DiaryViewController{
     
-    
-    
     func setTextToolBarAction(){
     
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(alignLeftBtnDidClicked), for: .touchUpInside)
@@ -203,6 +201,11 @@ extension DiaryViewController{
                 textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
             }
         }
+    }
+    
+    @objc
+    func registerBtnDidClicked(){
+        
     }
 }
 

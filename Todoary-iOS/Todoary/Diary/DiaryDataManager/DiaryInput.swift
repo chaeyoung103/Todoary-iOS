@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DiaryInput{
+struct DiaryInput: Encodable{
     let title: String
     let content: String
 }
