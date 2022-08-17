@@ -71,6 +71,7 @@
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
 		577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BF28A4EBFE004B2575 /* ToolBarText.swift */; };
+		578B7AA428ACCA0C00E7B4F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
@@ -141,6 +142,7 @@
 		E0218B2928A54C0700E48618 /* AdTextSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */; };
 		E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */; };
 		E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */; };
+		E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E732228ACFF1300A6A0C5 /* HighlightText .swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -301,6 +303,8 @@
 		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
 		577A01BD28A4EB21004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
 		577A01BF28A4EBFE004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
+		578B7AA228ACC75600E7B4F4 /* Todoary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todoary.entitlements; sourceTree = "<group>"; };
+		578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 		E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextSettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingScreenViewController+Layout.swift"; sourceTree = "<group>"; };
+		E02E732228ACFF1300A6A0C5 /* HighlightText .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighlightText .swift"; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -568,6 +573,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				578B7AA228ACC75600E7B4F4 /* Todoary.entitlements */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
 				AC5E27E72890EAFA0056EC69 /* Auth */,
 				AC5E27E82890EBF90056EC69 /* User */,
@@ -1067,6 +1073,7 @@
 		E05C0BF228851B7100812099 /* SupportingFile */ = {
 			isa = PBXGroup;
 			children = (
+				578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */,
 				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
 				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
 				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
@@ -1128,6 +1135,7 @@
 				E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */,
 				E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */,
 				577A01BF28A4EBFE004B2575 /* ToolBarText.swift */,
+				E02E732228ACFF1300A6A0C5 /* HighlightText .swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1238,6 +1246,8 @@
 			dependencies = (
 			);
 			name = Todoary;
+			packageProductDependencies = (
+			);
 			productName = Todoary;
 			productReference = 572E5AD6286EBDCC00D1FAA0 /* Todoary.app */;
 			productType = "com.apple.product-type.application";
@@ -1313,6 +1323,9 @@
 				Base,
 			);
 			mainGroup = 572E5ACD286EBDCC00D1FAA0;
+			packageReferences = (
+				578B7A9F28ACC3F000E7B4F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 572E5AD7286EBDCC00D1FAA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1338,6 +1351,7 @@
 				E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				57DF460528A64AA60002D66C /* IBMPlexSansKR-Medium.otf in Resources */,
+				578B7AA428ACCA0C00E7B4F4 /* GoogleService-Info.plist in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
 				57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */,
 				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
@@ -1592,6 +1606,7 @@
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
+				E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
@@ -1828,6 +1843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todoary/Todoary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1862,6 +1878,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todoary/Todoary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1882,7 +1899,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.todoary.ms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Todoary Ad Hoc";
+				PROVISIONING_PROFILE_SPECIFIER = "Ad Hoc";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Todoary/Home/Summary/CustomSPCDetent-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2010,6 +2027,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		578B7A9F28ACC3F000E7B4F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 572E5ACE286EBDCC00D1FAA0 /* Project object */;
 }

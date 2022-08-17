@@ -103,12 +103,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             $0.addGestureRecognizer(tapGesture)
         }
         
-        for fontFamily in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print(fontName)
-            }
-        }
-        
         GetCategoryDataManager().getCategoryDataManager(self)
         
         let flowLayout = UICollectionViewFlowLayout()

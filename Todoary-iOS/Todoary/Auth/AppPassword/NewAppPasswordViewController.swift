@@ -225,7 +225,8 @@ class NewAppPasswordViewController : UIViewController {
                 
                 let appPassword = defaults.stringArray(forKey: "passwordArr") ?? [String]()
                 
-                defaults.set(appPassword, forKey: "SavedPasswordArr")
+                defaults.set(appPassword, forKey: "passwordArr")
+                defaults.object(forKey: "passwordArr")
                 print(UserDefaults.standard.dictionaryRepresentation())
                 print(passwordArr)
                 
