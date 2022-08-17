@@ -41,6 +41,11 @@ class NewAppPasswordViewController : UIViewController {
     }
     
     //MARK: - input not password
+    
+    let inputNotPw = UIStackView().then{
+        $0.axis = .horizontal
+        
+    }
     let inputNotPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }

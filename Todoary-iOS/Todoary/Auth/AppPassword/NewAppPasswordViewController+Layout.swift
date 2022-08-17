@@ -17,6 +17,7 @@ extension NewAppPasswordViewController {
         self.view.addSubview(newAppPwtext)
         self.view.addSubview(newAppPwtext2)
         
+        self.view.addSubview(inputNotPw)
         self.view.addSubview(inputNotPw1)
         self.view.addSubview(inputNotPw2)
         self.view.addSubview(inputNotPw3)
@@ -65,11 +66,24 @@ extension NewAppPasswordViewController {
         }
         
         //inputNotPassword img
-        inputNotPw1.snp.makeConstraints{ make in
+        
+        inputNotPw.snp.makeConstraints{ make in
+            make.width.equalTo(208)
+            make.height.equalTo(40)
             make.top.equalTo(newAppPwtext.snp.bottom).offset(92)
+            make.centerX.equalToSuperview()
+        }
+        
+        inputNotPw.addSubview(inputNotPw1)
+        inputNotPw.addSubview(inputNotPw2)
+        inputNotPw.addSubview(inputNotPw3)
+        inputNotPw.addSubview(inputNotPw4)
+        
+        inputNotPw1.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.left.equalToSuperview().offset(91)
+            make.leading.equalToSuperview()
+            make.centerY.equalTo(inputNotPw)
 
         }
         
@@ -77,7 +91,7 @@ extension NewAppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw1.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPw1)
+            make.centerY.equalTo(inputNotPw)
 
         }
         
@@ -85,15 +99,14 @@ extension NewAppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw2.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPw2)
+            make.centerY.equalTo(inputNotPw)
         }
         
         inputNotPw4.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw3.snp.trailing).offset(16)
-            make.trailing.equalToSuperview().offset(-91)
-            make .centerY.equalTo(inputNotPw3)
+            make.centerY.equalTo(inputNotPw)
         }
         
         //inputPassword img
