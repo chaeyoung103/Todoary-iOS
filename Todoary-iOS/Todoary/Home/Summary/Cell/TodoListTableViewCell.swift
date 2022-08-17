@@ -297,12 +297,9 @@ extension TodoListTableViewCell{
         return (self.superview as? UITableView)?.indexPath(for: self)
     }
     
-//    func hiddenSettingViewShow(_ translation: CGFloat){
     func hiddenSettingViewShow(){
 
         if(isViewAdd == .none && !isClamp){
-            
-//            isViewAdd = translation < 0 ? .right : .left
             
             self.superview?.superview?.addSubview(hiddenView)
             self.superview?.superview?.addSubview(hiddenRightView)
