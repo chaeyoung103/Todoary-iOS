@@ -125,6 +125,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
         animator = UIDynamicAnimator.init(referenceView: view)
         
         setTextToolBarAction()
+        setHighlightToolBarAction()
             
         }
     
