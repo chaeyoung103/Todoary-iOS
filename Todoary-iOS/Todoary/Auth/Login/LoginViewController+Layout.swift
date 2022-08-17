@@ -69,16 +69,16 @@ extension LoginViewController {
 
         idTf.snp.makeConstraints{ make in
             make.top.equalTo(idTitle.snp.bottom).offset(16)
-            make.width.equalTo(200)
+            make.trailing.equalToSuperview().offset(-39)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
         }
         
         idBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(314)
             make.height.equalTo(1)
             make.leading.equalTo(idTf.snp.leading)
-            make.bottom.equalTo(idTf.snp.bottom).offset(3)
+            make.trailing.equalTo(idTf.snp.trailing)
+            make.top.equalTo(idTf.snp.bottom).offset(3)
         }
      
         
@@ -93,14 +93,14 @@ extension LoginViewController {
             make.top.equalTo(pwTitle.snp.bottom).offset(16)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(196)
+            make.trailing.equalTo(idTf.snp.trailing)
         }
         
         pwBorderLine.snp.makeConstraints{ make in
-            make.width.equalTo(idBorderLine)
+            make.trailing.equalTo(idTf.snp.trailing)
             make.height.equalTo(1)
             make.leading.equalTo(idTf.snp.leading)
-            make.bottom.equalTo(pwTf.snp.bottom).offset(3)
+            make.top.equalTo(pwTf.snp.bottom).offset(3)
         }
         
         //autologin
@@ -123,21 +123,24 @@ extension LoginViewController {
         loginBtn.snp.makeConstraints{ make in
             make.top.equalTo(pwBorderLine).offset(65)
             make.centerX.equalToSuperview()
-            make.width.equalTo(324)
+            make.leading.equalToSuperview().offset(33)
+            make.trailing.equalToSuperview().offset(-33)
             make.height.equalTo(51)
         }
         
         appleBtn.snp.makeConstraints{ make in
             make.top.equalTo(loginBtn.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
-            make.width.equalTo(324)
+            make.leading.equalToSuperview().offset(33)
+            make.trailing.equalToSuperview().offset(-33)
             make.height.equalTo(51)
         }
         
         signUpBtn.snp.makeConstraints{ make in
             make.top.equalTo(appleBtn.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
-            make.width.equalTo(324)
+            make.leading.equalToSuperview().offset(33)
+            make.trailing.equalToSuperview().offset(-33)
             make.height.equalTo(51)
         }
         
@@ -145,7 +148,8 @@ extension LoginViewController {
             make.top.equalTo(signUpBtn.snp.bottom).offset(24)
             make.bottom.equalToSuperview().offset(-33.67)
             make.centerX.equalToSuperview()
-            make.width.equalTo(131)
+            make.leading.equalToSuperview().offset(130)
+            make.trailing.equalToSuperview().offset(-130)
             make.height.equalTo(25)
         }
     }

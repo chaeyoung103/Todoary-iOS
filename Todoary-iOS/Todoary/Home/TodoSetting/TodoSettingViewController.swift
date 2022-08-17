@@ -176,7 +176,17 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         let todoCalendarBottomSheetVC = TodoCalendarBottomSheetViewController()
         todoCalendarBottomSheetVC.modalPresentationStyle = .overFullScreen
         todoCalendarBottomSheetVC.delegate = self
-//        todoCalendarBottomSheetVC.todoYear =
+        //날짜 형식에 맞게 변경 -> 바텀시트 캘린더 열때 적용
+        let result = todoSettingData.targetDate.components(separatedBy: "-")
+        
+        let year : Int? = Int(result[0])
+        let month  : Int? = Int(result[1])
+        let day : Int? = Int(result[2])
+        
+        todoCalendarBottomSheetVC.todoYear = year!
+        todoCalendarBottomSheetVC.todoMonth = month!
+        todoCalendarBottomSheetVC.todoDay = day!
+        
         self.present(todoCalendarBottomSheetVC, animated: false, completion: nil)
     }
     
@@ -450,9 +460,9 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         
         switch categoryData[indexPath.row].title.count {
         case 2:
-            return CGSize(width: 48, height: 26)
+            return CGSize(width: 53, height: 26)
         case 3:
-            return CGSize(width: 54, height: 26)
+            return CGSize(width: 66, height: 26)
         case 4:
             return CGSize(width: 79, height: 26)
         case 5:

@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import IRSticker_swift
 
 
-class DiaryViewController : UIViewController {
+class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRStickerViewDelegate{
     
     static let stickerData = [UIImage(named: "sticker1"),
                                UIImage(named: "sticker2"),
@@ -32,6 +33,12 @@ class DiaryViewController : UIViewController {
     
     var currentFont: DiaryFont = DiaryFont(fontName: .font1)
     
+    var todoDataList : [GetTodoInfo]! = []
+    
+    var selectedSticker = false
+
+    var animator: UIDynamicAnimator?
+    
     //MARK: - UIComponenets
 
 
@@ -44,7 +51,7 @@ class DiaryViewController : UIViewController {
     }
     
     var DiarySticker = DiaryStickerView().then{
-        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 406.0)
+        $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 291)
         }
     
     let contentView = UIView().then{
@@ -108,16 +115,14 @@ class DiaryViewController : UIViewController {
         
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
-        
-        //Sticker뷰 넣어주기
-//        textView.inputView = DiarySticker
-//        DiarySticker.isHidden = true
 
         setUpView()
         setUpConstraint()
         
         configure()
         setupCollectionView()
+        
+        animator = UIDynamicAnimator.init(referenceView: view)
         
         setTextToolBarAction()
         setHighlightToolBarAction()
@@ -140,6 +145,7 @@ class DiaryViewController : UIViewController {
         toolbar.textToolbar.isHidden = true
         toolbar.colorToolbar.isHidden = true
         textView.reloadInputViews()
+        setupGestureRecognizerOnCollection()
     }
     
     @objc func highlightBtnTab() {
@@ -179,23 +185,92 @@ class DiaryViewController : UIViewController {
     private func setupCollectionView() {
         DiaryTableView.delegate = self
         DiaryTableView.dataSource = self
+        DiaryTableView.showsVerticalScrollIndicator = false
         
         //cell 등록
         DiaryTableView.register(DiaryTabelViewCell.self, forCellReuseIdentifier: DiaryTabelViewCell.cellIdentifier)
     }
+    
+    //스티커뷰 선택 제스쳐
+    func setupGestureRecognizerOnCollection() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSticker(gestureRecognizer:)))
+        tapGesture.delegate = self
+        DiarySticker.collectionView?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapSticker(gestureRecognizer: UIGestureRecognizer) {
+
+        let p = gestureRecognizer.location(in: DiarySticker.collectionView)
+        
+        if let indexPath = DiarySticker.collectionView?.indexPathForItem(at: p) {
+            
+            let sticker1 = IRStickerView.init(frame: CGRect.init(x: 0, y: 0, width: 150, height: 150), contentImage: DiaryViewController.stickerData[indexPath.row]!)
+            sticker1.center = self.view.center
+            sticker1.enabledControl = false
+            sticker1.enabledBorder = false
+            sticker1.tag = 1
+            sticker1.delegate = self
+            self.textView.addSubview(sticker1)
+            
+            sticker1.performTapOperation()
+        }
+    }
+    
+    // MARK: - StickerViewDelegate
+    func ir_StickerView(stickerView: IRStickerView, imageForRightTopControl recommendedSize: CGSize) -> UIImage? {
+        return UIImage(named: "email")
+    }
+    
+    func ir_StickerView(stickerView: IRStickerView, imageForLeftBottomControl recommendedSize: CGSize) -> UIImage? {
+        return nil
+    }
+    
+    func ir_StickerViewDidTapContentView(stickerView: IRStickerView) {
+        if selectedSticker {
+            stickerView.enabledBorder = false
+            stickerView.enabledControl = false
+            selectedSticker.toggle()
+        }else{
+            stickerView.enabledBorder = true
+            stickerView.enabledControl = true
+            selectedSticker.toggle()
+        }
+    }
+    
 }
-        //MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
+
+//MARK: - Helpers_UITableViewDelegate, UITableViewDataSource
 
 extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //그 날짜에 있는 todo 개수만큼으로 설정하기
-        2
+        if todoDataList.isEmpty{
+            return 1
+        }else {
+            return todoDataList.count
+        }
     }
     
     func tableView(_ DiaryTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = DiaryTableView.dequeueReusableCell(withIdentifier: DiaryTabelViewCell.cellIdentifier, for: indexPath) as? DiaryTabelViewCell else{
             fatalError()
         }
+        
+        if todoDataList.isEmpty{
+            cell.titleLabel.text = "오늘은 투두가 없는 널널한 날이네요 *^^*"
+            cell.titleLabel.textColor = UIColor(red: 94/255, green: 94/255, blue: 94/255, alpha: 1)
+            cell.categoryButton.isHidden = true
+            cell.timeLabel.isHidden = true
+        }else {
+            cell.titleLabel.text = todoDataList[indexPath.row].title
+            cell.timeLabel.text = todoDataList[indexPath.row].convertTime
+            cell.checkBox.isSelected = todoDataList[indexPath.row].isChecked ?? false
+            
+            cell.categoryButton.setTitle(todoDataList[indexPath.row].categoryTitle, for: .normal)
+            cell.categoryButton.layer.borderColor = UIColor.categoryColor[todoDataList[indexPath.row].color].cgColor
+            cell.categoryButton.setTitleColor(UIColor.categoryColor[todoDataList[indexPath.row].color], for: .normal)
+        }
+        
+        
         return cell
     }
 

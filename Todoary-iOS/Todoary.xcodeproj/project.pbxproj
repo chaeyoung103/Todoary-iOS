@@ -71,6 +71,10 @@
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
 		577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BF28A4EBFE004B2575 /* ToolBarText.swift */; };
+		578B7AA428ACCA0C00E7B4F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */; };
+		578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */; };
+		578B7AA928AD114400E7B4F4 /* DiaryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA828AD114400E7B4F4 /* DiaryInput.swift */; };
+		578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AAA28AD116400E7B4F4 /* GetDiary.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
@@ -302,6 +306,11 @@
 		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
 		577A01BD28A4EB21004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
 		577A01BF28A4EBFE004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
+		578B7AA228ACC75600E7B4F4 /* Todoary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todoary.entitlements; sourceTree = "<group>"; };
+		578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataManager.swift; sourceTree = "<group>"; };
+		578B7AA828AD114400E7B4F4 /* DiaryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInput.swift; sourceTree = "<group>"; };
+		578B7AAA28AD116400E7B4F4 /* GetDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiary.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
@@ -570,6 +579,7 @@
 		572E5AD8286EBDCC00D1FAA0 /* Todoary */ = {
 			isa = PBXGroup;
 			children = (
+				578B7AA228ACC75600E7B4F4 /* Todoary.entitlements */,
 				E02E7FA1287461760006F6FA /* CommonSource */,
 				AC5E27E72890EAFA0056EC69 /* Auth */,
 				AC5E27E82890EBF90056EC69 /* User */,
@@ -716,6 +726,16 @@
 				57503666288BEA80006A9070 /* CategoryViewController+Layout.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		578B7AA528AD10E600E7B4F4 /* DiaryDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */,
+				578B7AA828AD114400E7B4F4 /* DiaryInput.swift */,
+				578B7AAA28AD116400E7B4F4 /* GetDiary.swift */,
+			);
+			path = DiaryDataManager;
 			sourceTree = "<group>";
 		};
 		57B36ECB287AFA9D00378E16 /* Cell */ = {
@@ -1069,6 +1089,7 @@
 		E05C0BF228851B7100812099 /* SupportingFile */ = {
 			isa = PBXGroup;
 			children = (
+				578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */,
 				572E5AE4286EBDCE00D1FAA0 /* LaunchScreen.storyboard */,
 				572E5ADD286EBDCC00D1FAA0 /* ViewController.swift */,
 				572E5ADB286EBDCC00D1FAA0 /* SceneDelegate.swift */,
@@ -1119,6 +1140,7 @@
 		E0F3CDC22895000200A74AB7 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				578B7AA528AD10E600E7B4F4 /* DiaryDataManager */,
 				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
 				E0BF9626289B69C000895111 /* DiaryToolbarViewController.swift */,
 				E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */,
@@ -1241,6 +1263,8 @@
 			dependencies = (
 			);
 			name = Todoary;
+			packageProductDependencies = (
+			);
 			productName = Todoary;
 			productReference = 572E5AD6286EBDCC00D1FAA0 /* Todoary.app */;
 			productType = "com.apple.product-type.application";
@@ -1316,6 +1340,9 @@
 				Base,
 			);
 			mainGroup = 572E5ACD286EBDCC00D1FAA0;
+			packageReferences = (
+				578B7A9F28ACC3F000E7B4F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 572E5AD7286EBDCC00D1FAA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1341,6 +1368,7 @@
 				E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */,
 				572E5AE3286EBDCE00D1FAA0 /* Assets.xcassets in Resources */,
 				57DF460528A64AA60002D66C /* IBMPlexSansKR-Medium.otf in Resources */,
+				578B7AA428ACCA0C00E7B4F4 /* GoogleService-Info.plist in Resources */,
 				572E5AE1286EBDCC00D1FAA0 /* Main.storyboard in Resources */,
 				57DF45FA28A60B310002D66C /* GangwonEduAll-Bold.ttf in Resources */,
 				E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */,
@@ -1521,6 +1549,7 @@
 				57503665288BE42C006A9070 /* CategoryColor.swift in Sources */,
 				57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */,
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
+				578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */,
 				AC5E27DC288FC0DA0056EC69 /* TodoAlarmBottomSheetViewController.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
@@ -1530,6 +1559,7 @@
 				ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */,
 				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
 				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
+				578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */,
@@ -1642,6 +1672,7 @@
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,
+				578B7AA928AD114400E7B4F4 /* DiaryInput.swift in Sources */,
 				57DF45FD28A60DB90002D66C /* DiaryFont.swift in Sources */,
 				E0F3CDD12895841A00A74AB7 /* DiaryTableView.swift in Sources */,
 				57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */,
@@ -1832,6 +1863,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todoary/Todoary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1866,6 +1898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todoary/Todoary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2014,6 +2047,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		578B7A9F28ACC3F000E7B4F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 572E5ACE286EBDCC00D1FAA0 /* Project object */;
 }
