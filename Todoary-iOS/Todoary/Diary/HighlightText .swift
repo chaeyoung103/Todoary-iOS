@@ -13,45 +13,219 @@ extension DiaryViewController{
     func setHighlightToolBarAction(){
     
         self.toolbar.yellowBtn.addTarget(self, action: #selector(yellowBtnDidClicked), for: .touchUpInside)
-        self.toolbar.orangeBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-        self.toolbar.redBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-        self.toolbar.greenBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-        self.toolbar.blueBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-        self.toolbar.grayBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
+        self.toolbar.orangeBtn.addTarget(self, action: #selector(orangeBtnDidClicked), for: .touchUpInside)
+        self.toolbar.redBtn.addTarget(self, action: #selector(redBtnDidClicked), for: .touchUpInside)
+        self.toolbar.greenBtn.addTarget(self, action: #selector(greenBtnDidClicked), for: .touchUpInside)
+        self.toolbar.blueBtn.addTarget(self, action: #selector(blueBtnDidClicked), for: .touchUpInside)
+        self.toolbar.grayBtn.addTarget(self, action: #selector(grayBtnDidClicked), for: .touchUpInside)
     }
     
-    @objc
-    func yellowBtnDidClicked(){
-        
-        /*
-         무조건 첫 번째 글자 기준으로 적용시키기
-         첫 번째 글자 -> 볼드 -> 볼드 취소
-         첫 번째 글자 -> 기본 -> 볼드
-         */
-        
+    @objc func yellowBtnDidClicked(){
+
         let selectedRange = self.textView.selectedRange
         let selectedTextRange = self.textView.selectedTextRange
-        
+
         let start = selectedRange.lowerBound
 
-        let attribute = textView.attributedText.attribute(.underlineColor,
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange) as? UIFont
-        
-        
+
+
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-        
+
         if let value = attribute as? Int{
             if(value == 1){
-                attributedString.removeAttribute(.underlineColor, range: selectedRange)
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
-            attributedString.addAttribute(.underlineColor,
-                                          value: NSUnderlineStyle.single.rawValue,
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 254/255,
+                                            green: 210/255,
+                                            blue: 90/255,
+                                            alpha: 0.5
+                                        ),
                                           range: selectedRange)
-        
+
         textView.attributedText = attributedString
-        
+
+        moveCursorEndOfSelection(selectedTextRange)
+        }
+    }
+    
+    @objc func orangeBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 255/255,
+                                            green: 143/255,
+                                            blue: 84/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+        }
+    }
+    
+    @objc func redBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 234/255,
+                                            green: 44/255,
+                                            blue: 4/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+        }
+    }
+    
+    @objc func greenBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 172/255,
+                                            green: 215/255,
+                                            blue: 134/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+        }
+    }
+    
+    @objc func blueBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 86/255,
+                                            green: 152/255,
+                                            blue: 255/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+        }
+    }
+    
+    @objc func grayBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? Int{
+            if(value == 1){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 184/255,
+                                            green: 184/255,
+                                            blue: 184/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+
+        textView.attributedText = attributedString
+
         moveCursorEndOfSelection(selectedTextRange)
         }
     }
