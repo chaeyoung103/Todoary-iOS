@@ -126,7 +126,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             cell.img.image = UIImage(named: "feedback")
             return cell
         case 7:
-            cell.title.text = "리뷰 남기기 "
+            cell.title.text = "리뷰 남기기"
             cell.img.image = UIImage(named: "review")
             return cell
         default:

@@ -47,7 +47,7 @@ extension NewAppPasswordViewController {
         //text
         appPwTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(140)
-            make.leading.equalToSuperview().offset(161)
+            make.centerX.equalToSuperview()
         }
         
         newAppPwtext.snp.makeConstraints{ make in
@@ -92,6 +92,7 @@ extension NewAppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw3.snp.trailing).offset(16)
+            make.trailing.equalToSuperview().offset(-91)
             make .centerY.equalTo(inputNotPw3)
         }
         
