@@ -206,7 +206,6 @@
 		E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C5288A6B010051C7AA /* SignoutInput.swift */; };
 		E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998C8288A6B310051C7AA /* AdDataManager.swift */; };
 		E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CA288A6B460051C7AA /* AdModel.swift */; };
-		E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F998CC288A6B590051C7AA /* AdInput.swift */; };
 		E54C4D9FA6602FAE88B10C99 /* Pods_Todoary_TodoaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1B412CC301CC2E570F1921 /* Pods_Todoary_TodoaryUITests.framework */; };
 		FE8D4ADF330D2D49EAEDF342 /* Pods_Todoary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */; };
 /* End PBXBuildFile section */
@@ -442,7 +441,6 @@
 		E0F998C5288A6B010051C7AA /* SignoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutInput.swift; sourceTree = "<group>"; };
 		E0F998C8288A6B310051C7AA /* AdDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDataManager.swift; sourceTree = "<group>"; };
 		E0F998CA288A6B460051C7AA /* AdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdModel.swift; sourceTree = "<group>"; };
-		E0F998CC288A6B590051C7AA /* AdInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInput.swift; sourceTree = "<group>"; };
 		E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1218,7 +1216,6 @@
 			children = (
 				E0F998C8288A6B310051C7AA /* AdDataManager.swift */,
 				E0F998CA288A6B460051C7AA /* AdModel.swift */,
-				E0F998CC288A6B590051C7AA /* AdInput.swift */,
 			);
 			path = AdDataManager;
 			sourceTree = "<group>";
@@ -1624,7 +1621,6 @@
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
 				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
-				E0F998CD288A6B590051C7AA /* AdInput.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,
