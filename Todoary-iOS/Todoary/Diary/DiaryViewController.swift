@@ -120,6 +120,7 @@ class DiaryViewController : UIViewController {
         setupCollectionView()
         
         setTextToolBarAction()
+        setHighlightToolBarAction()
             
         }
     
