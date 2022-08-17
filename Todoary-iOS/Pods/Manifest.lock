@@ -1,11 +1,13 @@
 PODS:
   - Alamofire (5.6.1)
+  - IRSticker-swift (1.0.1)
   - skpsmtpmessage (0.0.1)
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - IRSticker-swift
   - skpsmtpmessage
   - SnapKit (~> 5.6.0)
   - Then
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IRSticker-swift
     - skpsmtpmessage
     - SnapKit
     - Then
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  IRSticker-swift: 35ab14c73ce4625ed0ea638b070e35c379ea409b
   skpsmtpmessage: f6e913380c784dd8d4a9f83c8790a302445a5e05
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 99cc0a53a84bb83fa3e90debf6b4fcba53abb4f8
+PODFILE CHECKSUM: 743318a3d797b5a6254cebc4007153393613c36e
 
 COCOAPODS: 1.11.3

@@ -15,6 +15,8 @@ target 'Todoary' do
 
   pod 'Alamofire'
 
+  pod 'IRSticker-swift'
+
   target 'TodoaryTests' do
     inherit! :search_paths
     # Pods for testing
