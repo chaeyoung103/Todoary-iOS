@@ -450,9 +450,9 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         
         switch categoryData[indexPath.row].title.count {
         case 2:
-            return CGSize(width: 48, height: 26)
+            return CGSize(width: 53, height: 26)
         case 3:
-            return CGSize(width: 54, height: 26)
+            return CGSize(width: 66, height: 26)
         case 4:
             return CGSize(width: 79, height: 26)
         case 5:
