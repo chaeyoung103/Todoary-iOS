@@ -205,7 +205,7 @@ extension DiaryViewController{
 
         let attribute = textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
+                                                          effectiveRange: &self.textView.selectedRange)
 
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
