@@ -178,14 +178,19 @@ class ColorPickerBottomsheetViewController : UIViewController {
         
         guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else { return }
         
-        let color = select[0].row
-        
         guard let categoryText = categoryTextField.text else{ return }
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
-        if(select.isEmpty || categoryText == ""){
+        if(select.isEmpty){
+            
             return
+        }else if(categoryText.count > 5){
+            //TODO: 카테고리 글자 제한 토스트 뷰 띄우기
+        }else if(categoryText == ""){
+            
         }
+        
+        let color = select[0].row
         
         if(currentData != nil){ //카테고리 수정 API 호출
             let parameter = CategoryModifyInput(title: categoryText, color: color)
@@ -212,7 +217,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         //버튼: 삭제일 경우
         
         if(currentCategoryCount == 1){
-            let alert = UIAlertController(title: nil, message: "1개 이상의 카테고리가 존재해야 합니다.", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
             
             let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
                 self.dismiss(animated: true)
