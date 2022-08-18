@@ -7,6 +7,12 @@
 
 import UIKit
 
+//투두, 다이어리 토스트 뷰 메시지 구분
+enum DeleteType: String{
+    case Todo = "투두가 삭제되었습니다."
+    case Diary = "일기가 삭제되었습니다."
+}
+
 class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //MARK: - UI
@@ -244,9 +250,8 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         //제목을 입력하지 않았을 경우
         if todoEasyTitle == "" {
-            /*
-            let toast = ToastMessageView()
-            toast.toastMessageLabel.text = "제목을 입력해주세요."
+            
+            let toast = ToastMessageView(message: "제목을 입력해주세요.")
             
             self.view.addSubview(toast)
             
@@ -261,7 +266,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             }, completion: {(isCompleted) in
                 toast.removeFromSuperview()
             })
-             */
+             
         }else {
             let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
                                                     targetDate: todoDate!.dateSendServer,
@@ -276,10 +281,13 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         return true
     }
     
-    func showDeleteCompleteToastMessage(){
-        /*
-        let toast = ToastMessageView()
-        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+    func showDeleteCompleteToastMessage(type: DeleteType){
+        
+        print("실행?")
+        
+        let toast = ToastMessageView(message: type.rawValue)
+        
+        print(type.rawValue)
         
         self.view.addSubview(toast)
         
@@ -294,7 +302,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
           }, completion: {(isCompleted) in
               toast.removeFromSuperview()
           })
-         */
+         
     }
 }
 //MARK: - Delegate
@@ -370,11 +378,11 @@ extension SummaryBottomViewController{
             if(todoDataList.count == 1){
                 todoDataList = []
                 tableView.reloadData()
-                return
+            }else{
+                todoDataList.remove(at: indexPath.row-1)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            todoDataList.remove(at: indexPath.row-1)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            showDeleteCompleteToastMessage()
+            showDeleteCompleteToastMessage(type: .Todo)
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -404,8 +412,7 @@ extension SummaryBottomViewController{
         case 1000:
             isDiaryExist = false
             tableView.reloadData()
-            
-            //TODO: - toast message view 추가
+            showDeleteCompleteToastMessage(type: .Diary)
             return
         default:
             let alert = DataBaseErrorAlert()

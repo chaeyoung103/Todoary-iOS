@@ -135,9 +135,8 @@ class CategoryViewController: UIViewController {
     }
     
     func showDeleteCompleteToastMessage(){
-        /*
-        let toast = ToastMessageView()
-        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+        
+        let toast = ToastMessageView(message: DeleteType.Todo.rawValue)
         
         self.view.addSubview(toast)
         
@@ -151,7 +150,7 @@ class CategoryViewController: UIViewController {
               toast.alpha = 0.0
           }, completion: {(isCompleted) in
               toast.removeFromSuperview()
-          }) */
+          })
     }
 
 }
@@ -233,8 +232,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath)
-                    as? CategoryButtonCollectionViewCell else { fatalError() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError() }
             
             cell.viewController = self
             cell.categoryData = categories[indexPath.row]
