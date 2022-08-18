@@ -14,6 +14,7 @@ struct SignUpInput: Encodable{
     var nickname: String?
     var password: String?
     var isTermsEnable: Bool?
+    var fcm_token : String?
     
     //email 유효성 검사용 생성자
     init(email: String) {
@@ -27,6 +28,7 @@ struct SignUpInput: Encodable{
         self.nickname = nickname
         self.password = password
         self.isTermsEnable = isTermsEnable
+        self.fcm_token = UserDefaults.standard.string(forKey: "firebaseToken")
     }
     
 }

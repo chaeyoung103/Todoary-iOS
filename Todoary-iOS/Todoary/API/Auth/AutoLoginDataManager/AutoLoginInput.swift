@@ -10,4 +10,5 @@ import Foundation
 struct AutoLoginInput: Encodable{
     var email: String?
     var password: String?
+    var fcm_token : String?
 }

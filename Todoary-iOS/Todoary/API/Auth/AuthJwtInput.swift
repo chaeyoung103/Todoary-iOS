@@ -6,5 +6,6 @@
 //
 
 struct AuthJwtInput : Encodable {
-    var refreshToken : String
+    var refreshToken : String?
+    var fcm_token : String?
 }
