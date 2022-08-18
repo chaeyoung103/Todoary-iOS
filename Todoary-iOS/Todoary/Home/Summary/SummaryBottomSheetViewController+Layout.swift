@@ -9,6 +9,55 @@ import UIKit
 
 extension SummaryBottomViewController{
     
+    func setInitView(){
+        
+        tableView = UITableView().then{
+            
+            $0.delegate = self
+            $0.dataSource = self
+            
+            $0.separatorStyle = .none
+            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+            
+            $0.register(TodoListTitleCell.self, forCellReuseIdentifier: TodoListTitleCell.cellIdentifier)
+            $0.register(TodoBannerCell.self, forCellReuseIdentifier: TodoBannerCell.cellIdentifier)
+            $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
+            $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
+            $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier)
+            $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellWillMoveToOriginalPosition))
+            $0.addGestureRecognizer(tapGesture)
+        }
+        
+        //카테고리 컬렉션뷰 (투두간단설정화면)
+        collectionView = UICollectionView(frame: .init(), collectionViewLayout: .init()).then{
+            
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumInteritemSpacing = CGFloat(8)
+            
+            $0.collectionViewLayout = flowLayout
+            $0.isHidden = true
+            $0.delegate = self
+            $0.dataSource = self
+            $0.showsHorizontalScrollIndicator = false
+            $0.isUserInteractionEnabled = true
+            $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
+        }
+        
+        self.todoTf.delegate = self
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didShowKeyboardNotification(_:)),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didHideKeyboardNotification(_:)),
+                                               name: UIResponder.keyboardWillHideNotification ,
+                                               object: nil)
+    }
+    
     func setUpView(){
         self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)

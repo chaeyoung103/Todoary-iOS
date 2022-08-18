@@ -156,6 +156,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         HomeViewController.bottomSheetVC.todoDate = convertDate
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
+        DiaryDataManager().gets(convertDate.dateSendServer)
     }
     
     //셀 선택x
