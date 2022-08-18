@@ -45,32 +45,8 @@ extension DiaryViewController{
         self.textView.textAlignment = .right
     }
     
-    //NSAttributedString -> html
-    @objc
-    func convertNSAttributeToHtml(){
-        let text = NSAttributedString(attributedString: textView.attributedText)
-        print(text.attributedString2Html)
-    }
-    
-    //html -> NSAttributedString
-    func convertHtmlToNSAttributeString(){
-        
-        let text = Optional("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n<title></title>\n<meta name=\"Generator\" content=\"Cocoa HTML Writer\">\n<style type=\"text/css\">\np.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.0px; font: 15.0px \'Apple SD Gothic Neo\'; color: #000000}\nspan.s1 {font-family: \'AppleSDGothicNeo-SemiBold\'; font-weight: bold; font-style: normal; font-size: 15.00px; text-decoration: underline}\nspan.s2 {font-family: \'AppleSDGothicNeo-Medium\'; font-weight: normal; font-style: normal; font-size: 15.00px; text-decoration: underline}\nspan.s3 {font-family: \'AppleSDGothicNeo-Medium\'; font-weight: normal; font-style: normal; font-size: 15.00px; text-decoration: line-through}\n</style>\n</head>\n<body>\n<p class=\"p1\"><span class=\"s1\">&#xAC00;&#xB098;</span><span class=\"s2\">&#xB2E4;&#xB77C;</span><span class=\"s3\">&#xB9C8;&#xBC14;&#xC0AC;&#xC544;</span></p>\n</body>\n</html>\n")
-        
-        if let string = text{
-            let data = Data(string.utf8)
-            
-            if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
-                textView.attributedText = attributedString
-            }
-        }
-        
-    }
-    
     @objc
     func fontChange(_ sender: UIButton){
-        
-        //TODO: - 현재 폰트와 동일할 경우 함수 종료시키기
         
         let font: DiaryFontType!
         
@@ -91,6 +67,10 @@ extension DiaryViewController{
             font = .font5
             break
         default:
+            return
+        }
+        
+        if(currentFont.fontName == font){
             return
         }
         
@@ -206,6 +186,35 @@ extension DiaryViewController{
     @objc
     func registerBtnDidClicked(){
         
+        let text = NSAttributedString(attributedString: textView.attributedText)
+        
+        let input = DiaryInput(title: diaryTitle.text!,
+                               content: text.attributedString2Html!)
+        
+        DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
+    }
+    
+    /*
+    //NSAttributedString -> html
+    @objc
+    func convertNSAttributeToHtml(){
+        let text = NSAttributedString(attributedString: textView.attributedText)
+        print(text.attributedString2Html)
+    }*/
+    
+    //html -> NSAttributedString
+    
+    func convertHtmlToNSAttributeString(){
+        
+        let text = Optional("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n<title></title>\n<meta name=\"Generator\" content=\"Cocoa HTML Writer\">\n<style type=\"text/css\">\np.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.0px; font: 15.0px \'Apple SD Gothic Neo\'; color: #000000}\nspan.s1 {font-family: \'AppleSDGothicNeo-SemiBold\'; font-weight: bold; font-style: normal; font-size: 15.00px; text-decoration: underline}\nspan.s2 {font-family: \'AppleSDGothicNeo-Medium\'; font-weight: normal; font-style: normal; font-size: 15.00px; text-decoration: underline}\nspan.s3 {font-family: \'AppleSDGothicNeo-Medium\'; font-weight: normal; font-style: normal; font-size: 15.00px; text-decoration: line-through}\n</style>\n</head>\n<body>\n<p class=\"p1\"><span class=\"s1\">&#xAC00;&#xB098;</span><span class=\"s2\">&#xB2E4;&#xB77C;</span><span class=\"s3\">&#xB9C8;&#xBC14;&#xC0AC;&#xC544;</span></p>\n</body>\n</html>\n")
+        
+        if let string = text{
+            let data = Data(string.utf8)
+            
+            if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+                textView.attributedText = attributedString
+            }
+        }
     }
 }
 

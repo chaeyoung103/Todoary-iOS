@@ -65,10 +65,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     //투두간단설정 프로퍼티
     var todoEasyTitle : String!
     
-    //for 다이어리 작성했을 때 view 구성
-    let isDiaryExist = false
-    
     var todoDataList : [GetTodoInfo]! = []
+    
+    //for 다이어리 작성했을 때 view 구성
+    var isDiaryExist = false
+    
+    var diaryData: GetDiaryInfo?
     
     var todoDate : ConvertDate!
     
@@ -207,6 +209,13 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         self.collectionView.isHidden = true
     }
     
+    @objc func diaryDeleteBtnDidClicked(){
+        if(isDiaryExist){
+            DiaryDataManager().delete(createdDate: todoDate.dateSendServer)
+        }else{
+            return
+        }
+    }
     
     //MARK: - Helper
  
@@ -288,6 +297,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
 }
 //MARK: - Delegate
 extension SummaryBottomViewController: MoveViewController{
+    
     func moveToViewController() {
         HomeViewController.dismissBottomSheet()
         let vc = TodoSettingViewController()
@@ -352,7 +362,7 @@ extension SummaryBottomViewController{
         }
     }
     
-    func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
+    func checkTodoDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
             if(todoDataList.count == 1){
@@ -370,6 +380,37 @@ extension SummaryBottomViewController{
             return
         }
     }
+    
+    func checkGetDiaryApiResultCode(_ result: GetDiaryModel){
+        switch result.code{
+        case 1000:
+            isDiaryExist = true
+            diaryData = result.result
+            tableView.reloadData()
+            return
+        case 2402:
+            isDiaryExist = false
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func checkDeleteDiaryApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            isDiaryExist = false
+            tableView.reloadData()
+            
+            //TODO: - toast message view 추가
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.homeNavigaiton.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
 }
 
 //MARK: - TableView
@@ -383,8 +424,6 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
         
         let rowCount = tableView.numberOfRows(inSection: 0)
         
-        let cell: UITableViewCell!
-        
         switch indexPath.row{
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
@@ -393,11 +432,24 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             cell.delegate = self
             return cell
         case rowCount - 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath) as? DiaryTitleCell else{ fatalError() }
+            cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            return cell
         case rowCount - 1:
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
-            let identifier = isDiaryExist ? DiaryCell.cellIdentifier : DiaryBannerCell.cellIdentifier
-            cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            
+            if(isDiaryExist){
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
+                cell.diaryTitle.text = diaryData?.title
+                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+                
+                return cell
+                
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: DiaryBannerCell.cellIdentifier, for: indexPath)
+                return cell
+            }
+
         default:
             if(todoDataList.count != 0){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
@@ -420,8 +472,6 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 return cell
             }
         }
-
-        return cell
     }
 
 }

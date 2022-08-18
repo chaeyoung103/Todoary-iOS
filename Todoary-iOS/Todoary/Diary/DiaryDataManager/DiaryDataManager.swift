@@ -33,7 +33,7 @@ class DiaryDataManager {
     }
     
     //다이어리 삭제
-    func delete(viewController: DiaryViewController, createdDate: String){
+    func delete(createdDate: String){
         
         AF.request("https://todoary.com/diary/\(createdDate)",
                    method: .delete,
@@ -43,9 +43,7 @@ class DiaryDataManager {
             .responseDecodable(of: ApiModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    if(result.code == 1000){
-                        viewController.navigationController?.popViewController(animated: true)
-                    }
+                    HomeViewController.bottomSheetVC.checkDeleteDiaryApiResultCode(result.code)
                     return
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -53,14 +51,11 @@ class DiaryDataManager {
         }
     }
     
-    //다이어리 조회
     func gets(_ date: String){
-        
-        AF.request("https://todoary.com/diary?createdDate=\(date)", method: .get, parameters: nil, headers: headers).validate().responseDecodable(of: GetDiaryModel.self) { response in
+        AF.request("https://todoary.com/diary", method: .get, parameters: ["createdDate":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: GetDiaryModel.self) { response in
             switch response.result {
             case .success(let result):
-                print("isSuccess")
-//                HomeViewController.bottomSheetVC.checkGetTodoApiResultCode(result)
+                HomeViewController.bottomSheetVC.checkGetDiaryApiResultCode(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }

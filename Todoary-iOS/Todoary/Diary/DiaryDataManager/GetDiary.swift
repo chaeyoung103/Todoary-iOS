@@ -8,10 +8,10 @@
 import Foundation
 
 struct GetDiaryModel: Decodable{
-    let isSuccess: Bool?
-    let code: Int?
-    let message: String?
-    let result: [GetTodoInfo]?
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: GetDiaryInfo?
 }
 
 struct GetDiaryInfo: Decodable{
@@ -19,4 +19,15 @@ struct GetDiaryInfo: Decodable{
     var title: String
     var content: String
     var createdTime: String
+    
+    var contentAttributedString: NSAttributedString?{
+    
+            let data = Data(content.utf8)
+            
+            if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+                return attributedString
+            }
+        return nil
+    }
 }
+
