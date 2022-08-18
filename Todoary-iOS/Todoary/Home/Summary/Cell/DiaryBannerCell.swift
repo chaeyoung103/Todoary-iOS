@@ -55,14 +55,15 @@ class DiaryBannerCell: UITableViewCell {
         }
         
         backView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(3)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-30)
         }
         
         titleBackgroundView.snp.makeConstraints{ make in
-            make.leading.trailing.top.bottom.equalToSuperview()
+            make.height.equalTo(46)
+            make.top.leading.trailing.equalToSuperview()
         }
         
         writeDiaryBanner.snp.makeConstraints{ make in

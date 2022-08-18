@@ -39,6 +39,7 @@ class DiaryTitleCell: UITableViewCell {
     lazy var deleteBtn = UIButton().then{
         $0.setImage(UIImage(named: "summery_trash"), for: .normal)
     }
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -57,7 +58,8 @@ class DiaryTitleCell: UITableViewCell {
         
         //set constraint
         self.contentView.snp.makeConstraints{ make in
-            make.height.equalTo(60.5)
+            make.height.equalTo(73.5) //60.5
+            make.leading.trailing.top.bottom.equalToSuperview()
         }
         
         backView.snp.makeConstraints{ make in
@@ -66,7 +68,7 @@ class DiaryTitleCell: UITableViewCell {
         
         titleBackgroundView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(35)
-            make.top.equalToSuperview().offset(36.5)
+            make.bottom.equalToSuperview().offset(-13)
             make.width.equalTo(60)
             make.height.equalTo(24)
         }
@@ -81,7 +83,7 @@ class DiaryTitleCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-27)
             make.width.equalTo(54)
             make.height.equalTo(52)
-            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     

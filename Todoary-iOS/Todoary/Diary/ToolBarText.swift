@@ -12,7 +12,11 @@ extension DiaryViewController{
     
     func setTextToolBarAction(){
     
-        self.toolbar.alignLeftBtn.addTarget(self, action: #selector(alignLeftBtnDidClicked), for: .touchUpInside)
+        //임시 함수
+        self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
+        
+//        self.toolbar.alignLeftBtn.addTarget(self, action: #selector(alignLeftBtnDidClicked), for: .touchUpInside)
+        
         self.toolbar.ailgnCenterBtn.addTarget(self, action: #selector(alignCenterBtnDidClicked), for: .touchUpInside)
         self.toolbar.alignRightBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
 
@@ -185,12 +189,12 @@ extension DiaryViewController{
     
     @objc
     func registerBtnDidClicked(){
-        
+        print("눌림?")
         let text = NSAttributedString(attributedString: textView.attributedText)
-        
+
         let input = DiaryInput(title: diaryTitle.text!,
                                content: text.attributedString2Html!)
-        
+        print(input)
         DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
     }
     

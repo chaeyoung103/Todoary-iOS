@@ -13,6 +13,8 @@ import Then
 class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
     var currentData : GetCategoryResult?
+    
+    var currentCategoryCount: Int?
 
     //바텀시트 높이
     let bottomHeight : CGFloat = 342
@@ -181,7 +183,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
         guard let categoryText = categoryTextField.text else{ return }
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
-        if(select == [] || categoryText == ""){
+        if(select.isEmpty || categoryText == ""){
             return
         }
         
@@ -201,12 +203,25 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     @objc
     func deleteCancelBtnDidClicked(){
-        if(currentData != nil){
-            guard let data = currentData else { return }
-            
-            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
-        }else{
+        
+        guard let data = currentData else {
+            //버튼: 취소일 경우
             hideBottomSheetAndGoBack()
+            return
+        }
+        //버튼: 삭제일 경우
+        
+        if(currentCategoryCount == 1){
+            let alert = UIAlertController(title: nil, message: "1개 이상의 카테고리가 존재해야 합니다.", preferredStyle: .alert)
+            
+            let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
+                self.dismiss(animated: true)
+            })
+            alert.addAction(okBtn)
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
         }
     }
 

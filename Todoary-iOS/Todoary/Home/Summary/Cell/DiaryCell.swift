@@ -79,7 +79,7 @@ class DiaryCell: UITableViewCell {
         
         backView.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(3)
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(diaryTextView.snp.height).offset(63)
