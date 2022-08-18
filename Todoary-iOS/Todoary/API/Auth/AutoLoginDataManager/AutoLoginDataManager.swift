@@ -8,7 +8,7 @@
 import Alamofire
 
 class AutoLoginDataManager {
-    func autologin(_ veiwController : LoginViewController,
+    func autologin(_ viewController : LoginViewController,
               _ parameter : AutoLoginInput) {
         
         //통신
@@ -24,13 +24,18 @@ class AutoLoginDataManager {
                     UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
                     print(UserDefaults.standard.string(forKey: "refreshToken"))
                     print("자동로그인 성공")
-                    let homeViewController = HomeViewController()
-                    veiwController.navigationController?.pushViewController(homeViewController, animated: true)
-                    veiwController.navigationController?.isNavigationBarHidden = true
+                    if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
+                        let appPasswordViewController = AppPasswordViewController()
+                        viewController.navigationController?.pushViewController(appPasswordViewController, animated: true)
+                        viewController.navigationController?.isNavigationBarHidden = true
+                    }else {
+                        let homeViewController = HomeViewController()
+                        viewController.navigationController?.pushViewController(homeViewController, animated: true)
+                        viewController.navigationController?.isNavigationBarHidden = true
+                    }
                 case 4000 :
                     let alert = DataBaseErrorAlert()
-                    veiwController.present(alert, animated: true, completion: nil)
-                    print("왜?")
+                    viewController.present(alert, animated: true, completion: nil)
                 default:
                     print(result.message)
                 }
