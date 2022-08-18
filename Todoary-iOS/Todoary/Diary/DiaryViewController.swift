@@ -206,7 +206,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
             
             let sticker1 = IRStickerView.init(frame: CGRect.init(x: 0, y: 0, width: 150, height: 150), contentImage: DiaryViewController.stickerData[indexPath.row]!)
             sticker1.center = self.view.center
-            sticker1.enabledControl = false
+            sticker1.enabledControl = true
             sticker1.enabledBorder = false
             sticker1.tag = 1
             sticker1.delegate = self
@@ -218,7 +218,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
     
     // MARK: - StickerViewDelegate
     func ir_StickerView(stickerView: IRStickerView, imageForRightTopControl recommendedSize: CGSize) -> UIImage? {
-        return UIImage(named: "email")
+        return nil
     }
     
     func ir_StickerView(stickerView: IRStickerView, imageForLeftBottomControl recommendedSize: CGSize) -> UIImage? {
