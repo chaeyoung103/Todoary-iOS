@@ -41,6 +41,11 @@ class AppPasswordViewController : UIViewController {
     }
     
     //MARK: - input not password
+    
+    let inputNotPw = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
     let inputNotPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
@@ -58,6 +63,11 @@ class AppPasswordViewController : UIViewController {
     }
     
     //MARK: - input password
+    
+    let inputPw = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
     let inputPw1 = UIImageView().then{
         $0.image = UIImage(named: "password1")
         $0.isHidden = true

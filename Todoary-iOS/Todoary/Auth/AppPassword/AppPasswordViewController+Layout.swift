@@ -9,17 +9,20 @@ import UIKit
 import SnapKit
 
 extension AppPasswordViewController {
+    
     func setUpView(){
         
         self.view.addSubview(appPwTitle)
         self.view.addSubview(appPwtext)
         self.view.addSubview(pwnotcorrect)
         
+        self.view.addSubview(inputNotPw)
         self.view.addSubview(inputNotPw1)
         self.view.addSubview(inputNotPw2)
         self.view.addSubview(inputNotPw3)
         self.view.addSubview(inputNotPw4)
         
+        self.view.addSubview(inputPw)
         self.view.addSubview(inputPw1)
         self.view.addSubview(inputPw2)
         self.view.addSubview(inputPw3)
@@ -45,29 +48,38 @@ extension AppPasswordViewController {
         //text
         appPwTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(140)
-            make.leading.equalToSuperview().offset(161)
+            make.centerX.equalToSuperview()
         }
         
         appPwtext.snp.makeConstraints{ make in
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
-            make.width.equalTo(120)
-            make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
         
         pwnotcorrect.snp.makeConstraints{ make in
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
-            make.width.equalTo(107)
-            make.height.equalTo(17)
             make.centerX.equalTo(appPwTitle)
         }
         
         //inputNotPassword img
-        inputNotPw1.snp.makeConstraints{ make in
+        
+        inputNotPw.snp.makeConstraints{ make in
+            make.width.equalTo(208)
+            make.height.equalTo(40)
             make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.centerX.equalToSuperview()
+        }
+        
+        inputNotPw.addSubview(inputNotPw1)
+        inputNotPw.addSubview(inputNotPw2)
+        inputNotPw.addSubview(inputNotPw3)
+        inputNotPw.addSubview(inputNotPw4)
+        
+        inputNotPw1.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.left.equalToSuperview().offset(91)
+            make.leading.equalToSuperview()
+            make.centerY.equalToSuperview()
 
         }
         
@@ -75,7 +87,7 @@ extension AppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw1.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPw1)
+            make.centerY.equalToSuperview()
 
         }
         
@@ -83,30 +95,42 @@ extension AppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw2.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPw2)
+            make.centerY.equalToSuperview()
         }
         
         inputNotPw4.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputNotPw3.snp.trailing).offset(16)
-            make .centerY.equalTo(inputNotPw3)
+            make.centerY.equalToSuperview()
         }
         
         //inputPassword img
         
-        inputPw1.snp.makeConstraints{ make in
+        inputPw.snp.makeConstraints{ make in
+            make.width.equalTo(208)
+            make.height.equalTo(40)
             make.top.equalTo(appPwtext.snp.bottom).offset(92)
+            make.centerX.equalToSuperview()
+        }
+        
+        inputNotPw.addSubview(inputPw1)
+        inputNotPw.addSubview(inputPw2)
+        inputNotPw.addSubview(inputPw3)
+        inputNotPw.addSubview(inputPw4)
+        
+        inputPw1.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
-            make.left.equalToSuperview().offset(91)
+            make.leading.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
         
         inputPw2.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputPw1.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPw1)
+            make.centerY.equalToSuperview()
 
         }
         
@@ -114,77 +138,77 @@ extension AppPasswordViewController {
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputPw2.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPw2)
+            make.centerY.equalToSuperview()
         }
         
         inputPw4.snp.makeConstraints{ make in
             make.width.equalTo(40)
             make.height.equalTo(40)
             make.leading.equalTo(inputPw3.snp.trailing).offset(16)
-            make .centerY.equalTo(inputPw3)
+            make.centerY.equalToSuperview()
         
         
     
-        //button
-        numBtn1.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(465)
-            make.width.height.equalTo(43)
-            make.leading.equalToSuperview().offset(71)
-        }
-        
-        numBtn2.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn1.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn1)
-        }
-        
-        numBtn3.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn2.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn2)
-        }
-        
-        numBtn4.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn1.snp.bottom).offset(40)
-            make.width.height.equalTo(43)
-            make.centerX.equalTo(numBtn1)
-        }
-        
-        numBtn5.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn4.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn4)
-        }
-        
-        numBtn6.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn5.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn5)
-        }
-        
-        numBtn7.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn4.snp.bottom).offset(40)
-            make.width.height.equalTo(43)
-            make.centerX.equalTo(numBtn4)
-        }
-        
-        numBtn8.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn7.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn7)
-        }
-        
-        numBtn9.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn8.snp.trailing).offset(60)
-            make.width.height.equalTo(43)
-            make.centerY.equalTo(numBtn8)
-        }
-        
-        numBtn0.snp.makeConstraints{ make in
-            make.top.equalTo(numBtn8.snp.bottom).offset(40)
-            make.width.height.equalTo(43)
-            make.centerX.equalTo(numBtn8)
-        }
+            //button
+            numBtn1.snp.makeConstraints{ make in
+                make.trailing.equalTo(numBtn2.snp.leading).offset(-60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn2)
+            }
+            
+            numBtn2.snp.makeConstraints{ make in
+                make.top.equalToSuperview().offset(465)
+                make.width.height.equalTo(43)
+                make.centerX.equalToSuperview()
+            }
+            
+            numBtn3.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn2.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn2)
+            }
+            
+            numBtn4.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn1.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalTo(numBtn1)
+            }
+            
+            numBtn5.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn2.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalToSuperview()
+            }
+            
+            numBtn6.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn5.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn5)
+            }
+            
+            numBtn7.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn4.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalTo(numBtn4)
+            }
+            
+            numBtn8.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn5.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalToSuperview()
+            }
+            
+            numBtn9.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn8.snp.trailing).offset(60)
+                make.width.height.equalTo(43)
+                make.centerY.equalTo(numBtn8)
+            }
+            
+            numBtn0.snp.makeConstraints{ make in
+                make.top.equalTo(numBtn8.snp.bottom).offset(40)
+                make.width.height.equalTo(43)
+                make.centerX.equalToSuperview()
+            }
             
             blueCharacter.snp.makeConstraints{ make in
                 make.width.height.equalTo(40)
@@ -192,13 +216,12 @@ extension AppPasswordViewController {
                 make.centerX.equalTo(numBtn7)
             }
         
-        deletBtn.snp.makeConstraints{ make in
-            make.leading.equalTo(numBtn0.snp.trailing).offset(81)
-            make.width.equalTo(28)
-            make.height.equalTo(26.13)
-            make.centerY.equalTo(numBtn0)
+            deletBtn.snp.makeConstraints{ make in
+                make.leading.equalTo(numBtn0.snp.trailing).offset(81)
+                make.width.equalTo(28)
+                make.height.equalTo(26.13)
+                make.centerY.equalTo(numBtn0)
             }
         }
     }
 }
-
