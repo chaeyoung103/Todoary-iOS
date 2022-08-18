@@ -319,6 +319,7 @@ class NewAppPasswordViewController : UIViewController {
                     
                     //이미지 보이기 위해 딜레이
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+
                         //비밀번호 같다면 설정화면으로 넘어가기
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -381,7 +382,7 @@ class NewAppPasswordViewController : UIViewController {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                         
                         self.navigationController?.popViewController(animated: true)
-                    }
+   }
                     
                     
                 } else {
