@@ -227,10 +227,9 @@ extension NewAppPasswordViewController {
             }
         
             deletBtn.snp.makeConstraints{ make in
-                make.leading.equalTo(numBtn0.snp.trailing).offset(81)
-                make.width.equalTo(28)
-                make.height.equalTo(26.13)
-                make.centerY.equalTo(numBtn0)
+                make.width.height.equalTo(25)
+                make.top.equalTo(numBtn9.snp.bottom).offset(53)
+                make.centerX.equalTo(numBtn9)
             }
         }
     }

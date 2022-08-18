@@ -189,7 +189,7 @@ class AppPasswordViewController : UIViewController {
  
     //MARK: - UIComponenets_deletBtn
     let deletBtn = UIButton().then{
-        $0.setImage(UIImage(systemName: "delete.backward"), for: .normal)
+        $0.setImage(UIImage(named: "backspace"), for: .normal)
         $0.tintColor = .black
         $0.contentMode = .scaleToFill
         $0.addTarget(self, action: #selector(deletBtndidtab), for: .touchUpInside)
