@@ -44,8 +44,8 @@ class NewAppPasswordViewController : UIViewController {
     
     let inputNotPw = UIStackView().then{
         $0.axis = .horizontal
-        
     }
+    
     let inputNotPw1 = UIImageView().then{
         $0.image = UIImage(named: "inputNotPassword")
     }
@@ -63,6 +63,11 @@ class NewAppPasswordViewController : UIViewController {
     }
     
     //MARK: - input password
+    
+    let inputPw = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
     let inputPw1 = UIImageView().then{
         $0.image = UIImage(named: "password1")
         $0.isHidden = true
@@ -232,7 +237,7 @@ class NewAppPasswordViewController : UIViewController {
                 
                 defaults.set(appPassword, forKey: "passwordArr")
                 defaults.object(forKey: "passwordArr")
-                print(UserDefaults.standard.dictionaryRepresentation())
+                print(UserDefaults.standard.stringArray(forKey: "passwordArr"))
                 print(passwordArr)
                 
                 //이미지 보이기 위한 딜레이
