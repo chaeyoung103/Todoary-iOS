@@ -92,6 +92,7 @@ class ColorPickerViewController : UIViewController {
         //데이터가 없는 경우, 있는 경우에 따라 생성, 수정 api로 변경
         //제목이나 컬러값을 유저가 넣지 않았을때 팝업 띄우기
         if categoryData != nil {
+            /*
             if categoryTitle.text != "" {
                 print(selectColor!)
                 let categoryModifyInput = CategoryModifyInput(title: categoryTitle.text!, color: selectColor)
@@ -105,32 +106,59 @@ class ColorPickerViewController : UIViewController {
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }
-        }else {
-            if selectColor != nil && categoryTitle.text != ""{
-                print(selectColor!)
-                let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
-                CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
-                
-                self.navigationController?.popViewController(animated: true)
-            }else if selectColor == nil && categoryTitle.text != "" {
-                let alert = UIAlertController(title: "색상을 선택해주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }else if selectColor == nil &&  categoryTitle.text == "" {
-                let alert = UIAlertController(title: "제목과 색상을 넣어주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }else {
+             */
+            
+            //수정본
+            if(categoryTitle.text == "" ){
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default)
                     
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
+            }else if(categoryTitle.text!.count > 5){
+                let alert = UIAlertController(title: nil, message: "카테고리명을 5글자 이하로 설정해주세요.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                print(selectColor!)
+                let categoryModifyInput = CategoryModifyInput(title: categoryTitle.text!, color: selectColor)
+                CategoryModifyDataManager().categoryModifyDataManager(self,categoryModifyInput,categoryId: categoryId)
+                
+                self.navigationController?.popViewController(animated: true)
             }
+            
+            
+        }else {
+
+            if(selectColor == nil){
+                let alert = UIAlertController(title: "색상을 선택해주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else if(categoryTitle.text == ""){
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else if(categoryTitle.text!.count > 5){
+                let alert = UIAlertController(title: nil, message: "카테고리명을 5글자 이하로 설정해주세요", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default)
+                    
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                print(selectColor!)
+                let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
+                CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+
         }
     }
     
