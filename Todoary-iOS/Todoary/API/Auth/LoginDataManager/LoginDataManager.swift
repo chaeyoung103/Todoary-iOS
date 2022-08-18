@@ -16,12 +16,17 @@ class LoginDataManager{
                 switch result.code{
                 case 1000:
                     UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
-                    print("accessToken: \(result.result?.token?.accessToken)")
                     print("로그인 성공")
+                    if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
+                        let appPasswordViewController = AppPasswordViewController()
+                        viewController.navigationController?.pushViewController(appPasswordViewController, animated: true)
+                        viewController.navigationController?.isNavigationBarHidden = true
+                    }else {
+                        let homeViewController = HomeViewController()
+                        viewController.navigationController?.pushViewController(homeViewController, animated: true)
+                        viewController.navigationController?.isNavigationBarHidden = true
+                    }
                     
-                    let homeViewController = HomeViewController()
-                    viewController.navigationController?.pushViewController(homeViewController, animated: true)
-                    viewController.navigationController?.isNavigationBarHidden = true
                 case 2005:
                     print(result.message)
                 case 2011:

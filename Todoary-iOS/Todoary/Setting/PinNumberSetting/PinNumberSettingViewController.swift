@@ -68,9 +68,16 @@ class PinNumberSettingViewController : UIViewController {
         
         backView.addGestureRecognizer(tapGesture)
         
-        
         setUpView()
         setUpConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
+            pinSwitch.isOn = true
+        }else {
+            pinSwitch.isOn = false
+        }
     }
     
     //MARK: - Actions
@@ -86,9 +93,15 @@ class PinNumberSettingViewController : UIViewController {
     //알람 uiswitch 변경 제스쳐
     @objc func onClickSwitch(sender: UISwitch) {
         if sender.isOn {
+            if UserDefaults.standard.stringArray(forKey: "newPasswordArr") == nil{
+                let newAppPasswordViewController = NewAppPasswordViewController()
+                self.navigationController?.pushViewController(newAppPasswordViewController, animated: true)
+                self.navigationController?.isNavigationBarHidden = true
+            }
             UserDefaults.standard.set(true, forKey: "appPasswordCheck")
         }else {
-            UserDefaults.standard.removeObject(forKey: "appPasswordCheck")
+            UserDefaults.standard.set(false,forKey: "appPasswordCheck")
+            print("되니?")
         }
     }
 }
