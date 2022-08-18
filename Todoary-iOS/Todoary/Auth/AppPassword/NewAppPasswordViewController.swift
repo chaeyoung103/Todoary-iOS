@@ -317,15 +317,32 @@ class NewAppPasswordViewController : UIViewController {
 //                    defaults.object(forKey: "newPasswordArr")
                     print(UserDefaults.standard.stringArray(forKey: "newPasswordArr"))
                     
+                    let toast = ToastMessageView(message: "암호가 설정 되었습니다.")
+                    let PinNumberSettingViewController = PinNumberSettingViewController()
+                    
+                    self.view.addSubview(toast)
+                    
+                    toast.snp.makeConstraints{ make in
+                        make.leading.equalToSuperview().offset(81)
+                        make.trailing.equalToSuperview().offset(-81)
+                        make.bottom.equalToSuperview().offset(-20)
+                    }
+                    
+                    UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+                        toast.alpha = 0.0
+                    }, completion: {(isCompleted) in
+                        toast.removeFromSuperview()
+                    })
+     
+                    
                     //이미지 보이기 위해 딜레이
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                         //비밀번호 같다면 설정화면으로 넘어가기
                         self.navigationController?.popViewController(animated: true)
                     }
                     
                 } else {
-                    //같지 않다면 배열 지워주고, 다시 입력 페이지로 넘어가기
+                    //같지 않다면 배열 지워주고, 다시 입력 페이지로 돌아가기
                     
                     //이미지 보이기 위한 딜레이
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [self] in
@@ -381,6 +398,7 @@ class NewAppPasswordViewController : UIViewController {
                     
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                         
+                        //비밀번호 같다면 설정화면으로 돌아가기
                         self.navigationController?.popViewController(animated: true)
    }
                     
