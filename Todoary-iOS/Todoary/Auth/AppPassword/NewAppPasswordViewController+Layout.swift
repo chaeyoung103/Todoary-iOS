@@ -16,6 +16,7 @@ extension NewAppPasswordViewController {
         self.view.addSubview(appPwTitle)
         self.view.addSubview(newAppPwtext)
         self.view.addSubview(newAppPwtext2)
+        self.view.addSubview(pwnotcorrect)
         
         self.view.addSubview(inputNotPw)
         self.view.addSubview(inputNotPw1)
@@ -63,6 +64,10 @@ extension NewAppPasswordViewController {
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
             make.width.equalTo(128)
             make.height.equalTo(17)
+            make.centerX.equalTo(appPwTitle)
+        }
+        pwnotcorrect.snp.makeConstraints{ make in
+            make.top.equalTo(appPwTitle.snp.bottom).offset(16)
             make.centerX.equalTo(appPwTitle)
         }
         
@@ -222,10 +227,9 @@ extension NewAppPasswordViewController {
             }
         
             deletBtn.snp.makeConstraints{ make in
-                make.leading.equalTo(numBtn0.snp.trailing).offset(81)
-                make.width.equalTo(28)
-                make.height.equalTo(26.13)
-                make.centerY.equalTo(numBtn0)
+                make.width.height.equalTo(25)
+                make.top.equalTo(numBtn9.snp.bottom).offset(53)
+                make.centerX.equalTo(numBtn9)
             }
         }
     }
