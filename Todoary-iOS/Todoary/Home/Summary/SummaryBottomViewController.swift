@@ -179,6 +179,16 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
+    @objc func diaryCellDidClicked(){
+        let vc = DiaryViewController()
+        vc.diaryTitle.text = diaryData?.title
+        vc.textView.text = diaryData?.content //임시 세팅
+        vc.todaysDate.text = diaryData?.created_at
+        
+        HomeViewController.dismissBottomSheet()
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+    }
+    
     //MARK: - Helper
  
     func getPinnedCount() -> Int{
@@ -409,6 +419,10 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             
             if(isDiaryExist){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
+                
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(diaryCellDidClicked))
+                cell.addGestureRecognizer(tapGesture)
+                
                 cell.diaryTitle.text = diaryData?.title
                 
                 //TODO: - Diary 데이터 서버 수정 시 주석 풀기
@@ -444,6 +458,19 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("눌림??")
+//        let rowCount = tableView.numberOfRows(inSection: 0)
+//        if(isDiaryExist && indexPath.row == rowCount - 1){
+//            let vc = DiaryViewController()
+//            vc.diaryTitle.text = diaryData?.title
+//            vc.textView.text = diaryData?.content //임시 세팅
+//            vc.todaysDate.text = diaryData?.created_at
+//
+//            self.homeNavigaiton.pushViewController(vc, animated: true)
+//        }
+//    }
 
 }
 
