@@ -14,9 +14,9 @@ class AppPasswordViewController : UIViewController {
     
     //MARK: - UIComponenets
     
-    var passwordArr : [String] = []
+    let defaults = UserDefaults.standard
     
-    var password : String = "1234"
+    var passwordArr : [String] = []
 
     //text
 
@@ -210,6 +210,8 @@ class AppPasswordViewController : UIViewController {
         let numdigit = sender.currentTitle!
         passwordArr.append(numdigit)
         
+        print(UserDefaults.standard.stringArray(forKey: "newPasswordArr"))
+        
         let pwarraycount = passwordArr.count
         
         switch pwarraycount {
@@ -225,8 +227,8 @@ class AppPasswordViewController : UIViewController {
         case 4 :
             inputPw4.isHidden = false
             
-            let pw = passwordArr.joined(separator: "")
-            if password == pw
+            let pw = defaults.object(forKey: "newPasswordArr")
+            if passwordArr == pw as! [String]
                 && inputPw1.isHidden == false
                 && inputPw2.isHidden == false
                 && inputPw3.isHidden == false
@@ -237,6 +239,7 @@ class AppPasswordViewController : UIViewController {
                     
                     self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }
+                
             } else {
                 passwordArr.removeAll()
                 appPwtext.isHidden = true
