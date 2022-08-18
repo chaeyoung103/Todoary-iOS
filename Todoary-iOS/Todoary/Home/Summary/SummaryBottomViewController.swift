@@ -244,7 +244,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         //제목을 입력하지 않았을 경우
         if todoEasyTitle == "" {
-            
+            /*
             let toast = ToastMessageView()
             toast.toastMessageLabel.text = "제목을 입력해주세요."
             
@@ -261,6 +261,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             }, completion: {(isCompleted) in
                 toast.removeFromSuperview()
             })
+             */
         }else {
             let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
                                                     targetDate: todoDate!.dateSendServer,
@@ -276,7 +277,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     func showDeleteCompleteToastMessage(){
-        
+        /*
         let toast = ToastMessageView()
         toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
         
@@ -293,6 +294,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
           }, completion: {(isCompleted) in
               toast.removeFromSuperview()
           })
+         */
     }
 }
 //MARK: - Delegate

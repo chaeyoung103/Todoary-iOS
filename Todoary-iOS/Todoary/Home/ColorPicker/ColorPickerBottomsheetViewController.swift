@@ -182,12 +182,17 @@ class ColorPickerBottomsheetViewController : UIViewController {
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
         if(select.isEmpty){
-            
+            //TODO: 카테고리 색상 선택 안한 경우의 토스트 뷰 띄우기
+            showToastMessageView("카테고리 색상을 선택해주세요.")
+            return
+        }else if(categoryText == ""){
+            //TODO: 카테고리 제목 입력 토스트 뷰 띄우기
+            showToastMessageView("카테고리명을 입력해주세요.")
             return
         }else if(categoryText.count > 5){
             //TODO: 카테고리 글자 제한 토스트 뷰 띄우기
-        }else if(categoryText == ""){
-            
+            showToastMessageView("카테고리명을 5글자 이하로 설정해주세요.")
+            return
         }
         
         let color = select[0].row
@@ -229,7 +234,28 @@ class ColorPickerBottomsheetViewController : UIViewController {
             CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
         }
     }
-
+    
+    //MARK: - Helper
+    func showToastMessageView(_ message: String){
+        
+        let toast = ToastMessageView(message: message)
+        
+        self.view.addSubview(toast)
+        
+        toast.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(81)
+            make.trailing.equalToSuperview().offset(-81)
+            make.bottom.equalToSuperview().offset(-39)
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+              toast.alpha = 0.0
+          }, completion: {(isCompleted) in
+              toast.removeFromSuperview()
+          })
+        
+    }
+    
     
     //MARK: - Helpers_BottomSheet
     

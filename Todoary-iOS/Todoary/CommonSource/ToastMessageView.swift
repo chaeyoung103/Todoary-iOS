@@ -14,7 +14,8 @@ class ToastMessageView: UIView {
         $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
     }
     
-    override init(frame: CGRect) {
+
+    init(message: String) {
         super.init(frame: .zero)
         
         self.backgroundColor = UIColor(red: 88/255, green: 88/255, blue: 88/255, alpha: 1)
@@ -35,6 +36,8 @@ class ToastMessageView: UIView {
         toastMessageLabel.snp.makeConstraints{ make in
             make.centerY.centerX.equalToSuperview()
         }
+        
+        self.toastMessageLabel.text = message
     }
     
     required init?(coder: NSCoder) {

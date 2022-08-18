@@ -135,7 +135,7 @@ class CategoryViewController: UIViewController {
     }
     
     func showDeleteCompleteToastMessage(){
-        
+        /*
         let toast = ToastMessageView()
         toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
         
@@ -151,7 +151,7 @@ class CategoryViewController: UIViewController {
               toast.alpha = 0.0
           }, completion: {(isCompleted) in
               toast.removeFromSuperview()
-          })
+          }) */
     }
 
 }
