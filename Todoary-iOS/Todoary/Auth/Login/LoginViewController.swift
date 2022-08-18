@@ -192,7 +192,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func loginBtnDidTab() {
         if validateAutoLogin == false {
             let loginInput = LoginInput(email: idTf.text, password: pwTf.text, fcm_token: UserDefaults.standard.string(forKey: "firebaseToken"))
-            print(UserDefaults.standard.string(forKey: "firebaseToken"))
             LoginDataManager().loginDataManager(self,loginInput)
         } else {
             // 자동로그인을 눌렀을 때
