@@ -161,7 +161,10 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        GetCategoryDataManager().getCategoryDataManager(self)
+        let time = DispatchTime.now() + .milliseconds(50)
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            GetCategoryDataManager().getCategoryDataManager(self)
+        }
     }
     
     //아무데나 누르기 -> 키보드 내리기
@@ -468,7 +471,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         case 5:
             return CGSize(width: 92, height: 26)
         default:
-            return CGSize(width: 27, height: 26)
+            return CGSize(width: 40, height: 26)
         }
     }
 }

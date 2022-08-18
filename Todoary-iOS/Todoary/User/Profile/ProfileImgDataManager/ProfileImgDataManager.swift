@@ -28,13 +28,12 @@ class profileImgDataManager {
                 case 1000 :
                     print("프로필이미지변경성공")
                 case 5001 :
-                    let alert = DataBaseErrorAlert()
-                    viewController.present(alert, animated: true, completion: nil)
+                    print("프로필이미지실패")
                 default:
-                    print(result.message)
+                    print("프로필이미지실패: " + result.message)
                 }
             case .failure(let error) :
-                print(error.localizedDescription)
+                print("프로필이미지실패: " + error.localizedDescription)
             }
         }
         
