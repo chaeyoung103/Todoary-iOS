@@ -111,6 +111,7 @@ class CategoryViewController: UIViewController {
         vc.categoryVC = self
         vc.currentData = categories[index.row]
         vc.categoryTextField.text = categories[index.row].title
+        vc.currentCategoryCount = categories.count
         
         self.present(vc, animated: false, completion: nil)
     }
@@ -131,8 +132,7 @@ class CategoryViewController: UIViewController {
     
     func showDeleteCompleteToastMessage(){
         
-        let toast = ToastMessageView()
-        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+        let toast = ToastMessageView(message: DeleteType.Todo.rawValue)
         
         self.view.addSubview(toast)
         
@@ -228,13 +228,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row != categories.count){
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath)
-                    as? CategoryButtonCollectionViewCell else { fatalError() }
-            
-            let categoryData = categories[indexPath.row]
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier, for: indexPath) as? CategoryButtonCollectionViewCell else { fatalError() }
             
             cell.viewController = self
-            cell.categoryData = categoryData
+            cell.categoryData = categories[indexPath.row]
             cell.setBtnAttribute()
             
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(categoryDidPressedLong))
@@ -245,6 +242,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                 currentCategory = cell
                 cell.buttonIsSelected()
             }
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryPlusButtonCell.cellIdentifier, for: indexPath)
@@ -293,7 +291,18 @@ extension CategoryViewController{
         self.categories = result
         collectionView.reloadData()
         
-        let categoryId = self.categories.count == 0 ? categories[0].id : categories[currentCategoryIndex.row].id
+        if(currentCategoryIndex.row == categories.count){
+            currentCategoryIndex = [0,categories.count - 1]
+            collectionView.reloadData()
+        }
+        
+        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
+        /*
+         //1. 카테고리 0개인 상태에서 VC 오픈시 오류 발생 -> 디폴트 값 하나 줘야 함
+         //2. 카테고리 선택한 걸 지울 때 오류 발생
+         //3. 카테고리 마지막 하나 남았을 때 삭제 못하게 막아야 됨
+         */
+        
         TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }
     

@@ -9,6 +9,8 @@ import UIKit
 
 class DiaryTitleCell: UITableViewCell {
     
+    static let cellIdentifier = "diaryTitleCell"
+    
     let backView = UIView().then{
         $0.backgroundColor = .transparent
     }
@@ -34,7 +36,10 @@ class DiaryTitleCell: UITableViewCell {
         $0.layer.masksToBounds = false
     }
     
-    static let cellIdentifier = "diaryTitleCell"
+    lazy var deleteBtn = UIButton().then{
+        $0.setImage(UIImage(named: "summery_trash"), for: .normal)
+    }
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -47,11 +52,14 @@ class DiaryTitleCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         backView.addSubview(titleBackgroundView)
+        backView.addSubview(deleteBtn)
+        
         titleBackgroundView.addSubview(diaryTitle)
         
         //set constraint
         self.contentView.snp.makeConstraints{ make in
-            make.height.equalTo(60.5)
+            make.height.equalTo(73.5) //60.5
+            make.leading.trailing.top.bottom.equalToSuperview()
         }
         
         backView.snp.makeConstraints{ make in
@@ -60,7 +68,7 @@ class DiaryTitleCell: UITableViewCell {
         
         titleBackgroundView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(35)
-            make.top.equalToSuperview().offset(36.5)
+            make.bottom.equalToSuperview().offset(-13)
             make.width.equalTo(60)
             make.height.equalTo(24)
         }
@@ -69,6 +77,13 @@ class DiaryTitleCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(12)
             make.trailing.equalToSuperview().offset(-12)
+        }
+        
+        deleteBtn.snp.makeConstraints{ make in
+            make.trailing.equalToSuperview().offset(-27)
+            make.width.equalTo(54)
+            make.height.equalTo(52)
+            make.bottom.equalToSuperview()
         }
     }
     

@@ -195,7 +195,10 @@ class HomeViewController : UIViewController {
         
         HomeViewController.bottomSheetVC.loadViewIfNeeded()
         
-        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
+        let pickDate = HomeViewController.bottomSheetVC.todoDate.dateSendServer
+        
+        GetTodoDataManager().gets(pickDate)
+        DiaryDataManager().gets(pickDate)
         
         present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }

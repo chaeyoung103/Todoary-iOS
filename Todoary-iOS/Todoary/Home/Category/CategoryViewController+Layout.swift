@@ -34,7 +34,6 @@ extension CategoryViewController{
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(navigationView.snp.bottom).offset(20)
             make.leading.equalToSuperview()
-//                .offset(42)
             make.trailing.equalToSuperview()
             make.height.equalTo(26)
         }

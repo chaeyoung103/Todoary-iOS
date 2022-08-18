@@ -42,7 +42,7 @@ class TodoDeleteDataManager{
             .responseDecodable(of: UserDeleteModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    HomeViewController.bottomSheetVC.checkDeleteApiResultCode(result.code, indexPath)
+                    HomeViewController.bottomSheetVC.checkTodoDeleteApiResultCode(result.code, indexPath)
                     return
                 case .failure(let error):
                     print(error.localizedDescription)

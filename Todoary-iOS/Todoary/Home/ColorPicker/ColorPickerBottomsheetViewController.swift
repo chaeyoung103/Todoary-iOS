@@ -13,6 +13,8 @@ import Then
 class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
     var currentData : GetCategoryResult?
+    
+    var currentCategoryCount: Int?
 
     //바텀시트 높이
     let bottomHeight : CGFloat = 342
@@ -42,7 +44,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     let categoryTextField = UITextField().then {
         $0.placeholder = "카테고리 이름을 입력해주세요"
         $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
-        $0.setPlaceholderColor(.black)
+        $0.setPlaceholderColor(.todoaryGrey)
         $0.addLeftPadding(padding: 17)
         //그림자
         $0.backgroundColor = .white
@@ -176,14 +178,21 @@ class ColorPickerBottomsheetViewController : UIViewController {
         
         guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else { return }
         
-        let color = select[0].row
-        
         guard let categoryText = categoryTextField.text else{ return }
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
-        if(select == [] || categoryText == ""){
+        if(select.isEmpty){
+            showToastMessageView("카테고리 색상을 선택해주세요.")
+            return
+        }else if(categoryText == ""){
+            showToastMessageView("카테고리명을 입력해주세요.")
+            return
+        }else if(categoryText.count > 5){
+            showToastMessageView("카테고리명을 5글자 이하로 설정해주세요.")
             return
         }
+        
+        let color = select[0].row
         
         if(currentData != nil){ //카테고리 수정 API 호출
             let parameter = CategoryModifyInput(title: categoryText, color: color)
@@ -201,15 +210,49 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     @objc
     func deleteCancelBtnDidClicked(){
-        if(currentData != nil){
-            guard let data = currentData else { return }
-            
-            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
-        }else{
+        
+        guard let data = currentData else {
+            //버튼: 취소일 경우
             hideBottomSheetAndGoBack()
+            return
+        }
+        //버튼: 삭제일 경우
+        
+        if(currentCategoryCount == 1){
+            let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
+            
+            let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
+                self.dismiss(animated: true)
+            })
+            alert.addAction(okBtn)
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
         }
     }
-
+    
+    //MARK: - Helper
+    func showToastMessageView(_ message: String){
+        
+        let toast = ToastMessageView(message: message)
+        
+        self.view.addSubview(toast)
+        
+        toast.snp.makeConstraints{ make in
+            make.leading.equalToSuperview().offset(81)
+            make.trailing.equalToSuperview().offset(-81)
+            make.bottom.equalToSuperview().offset(-39)
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+              toast.alpha = 0.0
+          }, completion: {(isCompleted) in
+              toast.removeFromSuperview()
+          })
+        
+    }
+    
     
     //MARK: - Helpers_BottomSheet
     

@@ -7,6 +7,12 @@
 
 import UIKit
 
+//투두, 다이어리 토스트 뷰 메시지 구분
+enum DeleteType: String{
+    case Todo = "투두가 삭제되었습니다."
+    case Diary = "일기가 삭제되었습니다."
+}
+
 class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //MARK: - UI
@@ -65,10 +71,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     //투두간단설정 프로퍼티
     var todoEasyTitle : String!
     
-    //for 다이어리 작성했을 때 view 구성
-    let isDiaryExist = false
-    
     var todoDataList : [GetTodoInfo]! = []
+    
+    //for 다이어리 작성했을 때 view 구성
+    var isDiaryExist = false
+    
+    var diaryData: GetDiaryInfo?
     
     var todoDate : ConvertDate!
     
@@ -83,57 +91,13 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
-
-        tableView = UITableView().then{
-            
-            $0.delegate = self
-            $0.dataSource = self
-            
-            $0.separatorStyle = .none
-            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-            
-            $0.register(TodoListTitleCell.self, forCellReuseIdentifier: TodoListTitleCell.cellIdentifier)
-            $0.register(TodoBannerCell.self, forCellReuseIdentifier: TodoBannerCell.cellIdentifier)
-            $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
-            $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
-            //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
-            isDiaryExist ? $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier) : $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
-            
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellWillMoveToOriginalPosition))
-            $0.addGestureRecognizer(tapGesture)
-        }
         
         GetCategoryDataManager().getCategoryDataManager(self)
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = CGFloat(8)
-        
-        
-        //카테고리 컬렉션뷰 (투두간단설정화면)
-        collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
-            $0.isHidden = true
-            $0.delegate = self
-            $0.dataSource = self
-            $0.showsHorizontalScrollIndicator = false
-            $0.isUserInteractionEnabled = true
-            $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
-        }
-        
-        self.todoTf.delegate = self
-        
+        setInitView()
         setUpView()
         setUpConstraint()
         setUpSheetVC()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didShowKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillShowNotification ,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didHideKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillHideNotification ,
-                                               object: nil)
     }
     
     //MARK: - Action
@@ -207,6 +171,23 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         self.collectionView.isHidden = true
     }
     
+    @objc func diaryDeleteBtnDidClicked(){
+        if(isDiaryExist){
+            DiaryDataManager().delete(createdDate: todoDate.dateSendServer)
+        }else{
+            return
+        }
+    }
+    
+    @objc func diaryCellDidClicked(){
+        let vc = DiaryViewController()
+        vc.diaryTitle.text = diaryData?.title
+        vc.textView.text = diaryData?.content //임시 세팅
+        vc.todaysDate.text = diaryData?.created_at
+        
+        HomeViewController.dismissBottomSheet()
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+    }
     
     //MARK: - Helper
  
@@ -236,8 +217,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         //제목을 입력하지 않았을 경우
         if todoEasyTitle == "" {
             
-            let toast = ToastMessageView()
-            toast.toastMessageLabel.text = "제목을 입력해주세요."
+            let toast = ToastMessageView(message: "제목을 입력해주세요.")
             
             self.view.addSubview(toast)
             
@@ -252,6 +232,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             }, completion: {(isCompleted) in
                 toast.removeFromSuperview()
             })
+             
         }else {
             let todoSettingInput = TodoSettingInput(title: todoEasyTitle,
                                                     targetDate: todoDate!.dateSendServer,
@@ -266,10 +247,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         return true
     }
     
-    func showDeleteCompleteToastMessage(){
+    func showDeleteCompleteToastMessage(type: DeleteType){
         
-        let toast = ToastMessageView()
-        toast.toastMessageLabel.text = "투두가 삭제되었습니다." //"일기가 삭제되었습니다."
+        let toast = ToastMessageView(message: type.rawValue)
+        
+        print(type.rawValue)
         
         self.view.addSubview(toast)
         
@@ -284,10 +266,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
           }, completion: {(isCompleted) in
               toast.removeFromSuperview()
           })
+         
     }
 }
 //MARK: - Delegate
 extension SummaryBottomViewController: MoveViewController{
+    
     func moveToViewController() {
         HomeViewController.dismissBottomSheet()
         let vc = TodoSettingViewController()
@@ -352,21 +336,57 @@ extension SummaryBottomViewController{
         }
     }
     
-    func checkDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
+    func checkTodoDeleteApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
             if(todoDataList.count == 1){
                 todoDataList = []
                 tableView.reloadData()
-                return
+            }else{
+                todoDataList.remove(at: indexPath.row-1)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            todoDataList.remove(at: indexPath.row-1)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            showDeleteCompleteToastMessage()
+            showDeleteCompleteToastMessage(type: .Todo)
             return
         default:
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
+    
+    func checkGetDiaryApiResultCode(_ result: GetDiaryModel){
+        print("여기 옴?")
+        switch result.code{
+        case 1000:
+            isDiaryExist = true
+            diaryData = result.result
+            tableView.reloadData()
+            return
+//        case 2402: //TODO: - 임시 4000 설정, 서버 수정 완료되면 2402로 전환
+        case 4000:
+            print("다이어리 없음?")
+            isDiaryExist = false
+            tableView.reloadData()
+            return
+        default:
+            print(result.code)
+            print(result.message)
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func checkDeleteDiaryApiResultCode(_ code: Int){
+        switch code{
+        case 1000:
+            isDiaryExist = false
+            tableView.reloadData()
+            showDeleteCompleteToastMessage(type: .Diary)
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            self.homeNavigaiton.present(alert, animated: true, completion: nil)
             return
         }
     }
@@ -383,8 +403,6 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
         
         let rowCount = tableView.numberOfRows(inSection: 0)
         
-        let cell: UITableViewCell!
-        
         switch indexPath.row{
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTitleCell.cellIdentifier, for: indexPath)
@@ -393,11 +411,30 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             cell.delegate = self
             return cell
         case rowCount - 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath) as? DiaryTitleCell else{ fatalError() }
+            cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            return cell
         case rowCount - 1:
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
-            let identifier = isDiaryExist ? DiaryCell.cellIdentifier : DiaryBannerCell.cellIdentifier
-            cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            
+            if(isDiaryExist){
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
+                
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(diaryCellDidClicked))
+                cell.addGestureRecognizer(tapGesture)
+                
+                cell.diaryTitle.text = diaryData?.title
+                
+                //TODO: - Diary 데이터 서버 수정 시 주석 풀기
+//                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+                
+                return cell
+                
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: DiaryBannerCell.cellIdentifier, for: indexPath)
+                return cell
+            }
+
         default:
             if(todoDataList.count != 0){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoListTableViewCell.cellIdentifier, for: indexPath)
@@ -420,9 +457,20 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 return cell
             }
         }
-
-        return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("눌림??")
+//        let rowCount = tableView.numberOfRows(inSection: 0)
+//        if(isDiaryExist && indexPath.row == rowCount - 1){
+//            let vc = DiaryViewController()
+//            vc.diaryTitle.text = diaryData?.title
+//            vc.textView.text = diaryData?.content //임시 세팅
+//            vc.todaysDate.text = diaryData?.created_at
+//
+//            self.homeNavigaiton.pushViewController(vc, animated: true)
+//        }
+//    }
 
 }
 
