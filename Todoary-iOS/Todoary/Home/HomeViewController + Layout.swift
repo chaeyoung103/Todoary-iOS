@@ -50,7 +50,7 @@ extension HomeViewController {
         
         //profile
         profileImage.snp.makeConstraints{ make in
-            make.top.equalTo(logo.snp.bottom).offset(19)
+            make.top.equalTo(logo.snp.bottom).offset(29)
             make.leading.equalToSuperview().offset(41)
             make.width.equalTo(40)
             make.height.equalTo(40)
