@@ -336,7 +336,7 @@ class NewAppPasswordViewController : UIViewController {
      
                     
                     //이미지 보이기 위해 딜레이
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                         //비밀번호 같다면 설정화면으로 넘어가기
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -396,7 +396,25 @@ class NewAppPasswordViewController : UIViewController {
                     defaults.object(forKey: "newPasswordArr")
                     print(UserDefaults.standard.stringArray(forKey: "newPasswordArr"))
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                    let toast = ToastMessageView(message: "암호가 설정 되었습니다.")
+                    let PinNumberSettingViewController = PinNumberSettingViewController()
+                    
+                    self.view.addSubview(toast)
+                    
+                    toast.snp.makeConstraints{ make in
+                        make.leading.equalToSuperview().offset(81)
+                        make.trailing.equalToSuperview().offset(-81)
+                        make.bottom.equalToSuperview().offset(-20)
+                    }
+                    
+                    UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
+                        toast.alpha = 0.0
+                    }, completion: {(isCompleted) in
+                        toast.removeFromSuperview()
+                    })
+     
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                         
                         //비밀번호 같다면 설정화면으로 돌아가기
                         self.navigationController?.popViewController(animated: true)
