@@ -24,10 +24,6 @@ class CategoryViewController: UIViewController {
     
     var isEditingMode = false
     
-    //TODO: -
-    /*
-     1. 카테고리 선택한 걸 삭제했을 때 오류 발생
-     */
     var currentCategory : CategoryButtonCollectionViewCell!
     var currentCategoryIndex : IndexPath = [0,0]
 
