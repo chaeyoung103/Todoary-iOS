@@ -91,57 +91,13 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
-
-        tableView = UITableView().then{
-            
-            $0.delegate = self
-            $0.dataSource = self
-            
-            $0.separatorStyle = .none
-            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-            
-            $0.register(TodoListTitleCell.self, forCellReuseIdentifier: TodoListTitleCell.cellIdentifier)
-            $0.register(TodoBannerCell.self, forCellReuseIdentifier: TodoBannerCell.cellIdentifier)
-            $0.register(TodoListTableViewCell.self, forCellReuseIdentifier: TodoListTableViewCell.cellIdentifier)
-            $0.register(DiaryTitleCell.self, forCellReuseIdentifier: DiaryTitleCell.cellIdentifier)
-            //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
-            isDiaryExist ? $0.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.cellIdentifier) : $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
-            
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellWillMoveToOriginalPosition))
-            $0.addGestureRecognizer(tapGesture)
-        }
         
         GetCategoryDataManager().getCategoryDataManager(self)
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = CGFloat(8)
-        
-        
-        //카테고리 컬렉션뷰 (투두간단설정화면)
-        collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
-            $0.isHidden = true
-            $0.delegate = self
-            $0.dataSource = self
-            $0.showsHorizontalScrollIndicator = false
-            $0.isUserInteractionEnabled = true
-            $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
-        }
-        
-        self.todoTf.delegate = self
-        
+        setInitView()
         setUpView()
         setUpConstraint()
         setUpSheetVC()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didShowKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillShowNotification ,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didHideKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillHideNotification ,
-                                               object: nil)
     }
     
     //MARK: - Action
@@ -283,8 +239,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     func showDeleteCompleteToastMessage(type: DeleteType){
         
-        print("실행?")
-        
         let toast = ToastMessageView(message: type.rawValue)
         
         print(type.rawValue)
@@ -392,16 +346,22 @@ extension SummaryBottomViewController{
     }
     
     func checkGetDiaryApiResultCode(_ result: GetDiaryModel){
+        print("여기 옴?")
         switch result.code{
         case 1000:
             isDiaryExist = true
             diaryData = result.result
             tableView.reloadData()
             return
-        case 2402:
+//        case 2402: //TODO: - 임시 4000 설정, 서버 수정 완료되면 2402로 전환
+        case 4000:
+            print("다이어리 없음?")
             isDiaryExist = false
+            tableView.reloadData()
             return
         default:
+            print(result.code)
+            print(result.message)
             let alert = DataBaseErrorAlert()
             self.present(alert, animated: true, completion: nil)
         }
@@ -450,7 +410,9 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             if(isDiaryExist){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
                 cell.diaryTitle.text = diaryData?.title
-                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+                
+                //TODO: - Diary 데이터 서버 수정 시 주석 풀기
+//                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
                 
                 return cell
                 

@@ -18,7 +18,7 @@ struct GetDiaryInfo: Decodable{
     let diaryId: Int
     var title: String
     var content: String
-    var createdTime: String
+    var created_at: String
     
     var contentAttributedString: NSAttributedString?{
     

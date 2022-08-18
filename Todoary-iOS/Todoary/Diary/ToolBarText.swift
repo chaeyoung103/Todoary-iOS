@@ -189,12 +189,13 @@ extension DiaryViewController{
     
     @objc
     func registerBtnDidClicked(){
-        print("눌림?")
+        
         let text = NSAttributedString(attributedString: textView.attributedText)
 
         let input = DiaryInput(title: diaryTitle.text!,
-                               content: text.attributedString2Html!)
-        print(input)
+//                               content: text.attributedString2Html!) //TODO: - API 테스트
+                               content: textView.text) //임시 테스트용
+        
         DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
     }
     

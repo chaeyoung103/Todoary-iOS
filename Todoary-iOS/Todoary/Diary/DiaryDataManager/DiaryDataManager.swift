@@ -19,7 +19,7 @@ class DiaryDataManager {
             switch response.result {
             case .success(let result):
                 if(result.code == 1000){
-                    print("성공")
+                    print("다이어리 생성 성공")
                     viewController.exitBtnDidTab()
                     viewController.navigationController?.popViewController(animated: true)
                 }else{
@@ -56,7 +56,9 @@ class DiaryDataManager {
     }
     
     func gets(_ date: String){
-        AF.request("https://todoary.com/diary", method: .get, parameters: ["createdDate":date], encoding: URLEncoding.queryString).validate().responseDecodable(of: GetDiaryModel.self) { response in
+        print("왔니?", date)
+        AF.request("https://todoary.com/diary", method: .get, parameters: ["createdDate":date],
+                   encoding: URLEncoding.queryString, headers: headers).validate().responseDecodable(of: GetDiaryModel.self) { response in
             switch response.result {
             case .success(let result):
                 HomeViewController.bottomSheetVC.checkGetDiaryApiResultCode(result)
