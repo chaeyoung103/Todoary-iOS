@@ -242,6 +242,7 @@ class AppPasswordViewController : UIViewController {
                     self.navigationController?.pushViewController(HomeViewController(), animated: true)
                 }
                 
+                
             } else {
                 passwordArr.removeAll()
                 appPwtext.isHidden = true
