@@ -10,12 +10,14 @@ import UIKit
 
 extension DiaryViewController{
     
+    func setUpDiaryData(){
+        
+    }
+    
     func setTextToolBarAction(){
     
         //임시 함수
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
-        
-        
         
         
         let alignBtnArray = [

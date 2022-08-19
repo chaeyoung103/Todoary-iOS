@@ -296,13 +296,12 @@ extension CategoryViewController{
             collectionView.reloadData()
         }
         
-        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
-        /*
-         //1. 카테고리 0개인 상태에서 VC 오픈시 오류 발생 -> 디폴트 값 하나 줘야 함
-         //2. 카테고리 선택한 걸 지울 때 오류 발생
-         //3. 카테고리 마지막 하나 남았을 때 삭제 못하게 막아야 됨
-         */
+        if(currentCategoryIndex != [0,0]){
+            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
+        }
         
+        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
+
         TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }
     

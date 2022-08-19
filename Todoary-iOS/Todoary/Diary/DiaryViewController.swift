@@ -14,6 +14,7 @@ import IRSticker_swift
 
 class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRStickerViewDelegate{
     
+    //MARK: - Properties
     static let stickerData = [UIImage(named: "sticker1"),
                                UIImage(named: "sticker2"),
                                UIImage(named: "sticker3"),
@@ -34,6 +35,10 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
     var currentFont: DiaryFont = DiaryFont(fontName: .font1)
     
     var todoDataList : [GetTodoInfo]! = []
+    
+    var diaryData: GetDiaryInfo?
+    
+    var pickDate: ConvertDate?
     
     var selectedSticker = false
 
@@ -70,7 +75,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
         $0.textColor = .black
     }
     
-    var sendApiDate: String!
+    var sendApiDate: String! //나중에 지우기
     
     //다이어리 제목
     let diaryTitle = UITextField().then{
