@@ -15,7 +15,7 @@ extension UITextView {
 
         if let labelText = text, labelText.isEmpty == false {
             
-            var attributedString = NSMutableAttributedString(string: labelText)
+            var attributedString = NSMutableAttributedString(attributedString: attributedText!)
             
             attributedString = addLetterSpacing(attributedString: attributedString)
             attributedString = setTextWithLineHeight(attributedString: attributedString)
@@ -62,7 +62,7 @@ extension UITextView {
         
         if let labelText = text, labelText.isEmpty == false {
             
-            let attributedString = NSMutableAttributedString(string: labelText)
+            let attributedString = NSMutableAttributedString(attributedString: attributedText!)
             
             attributedString.addAttribute(.kern,
                                           value: spacing,
@@ -76,7 +76,7 @@ extension UITextView {
         
         if let labelText = text, labelText.isEmpty == false {
             
-            let attributedString = NSMutableAttributedString(string: labelText)
+            let attributedString = NSMutableAttributedString(attributedString: attributedText!)
             
             let lineHeight: CGFloat = spaing
             

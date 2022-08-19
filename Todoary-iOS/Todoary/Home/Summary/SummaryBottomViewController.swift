@@ -62,21 +62,17 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //MARK: - Properties
     
-    //카테고리 정보 받아오는 struct
-    var categoryData : [GetCategoryResult]! = []
+    var categoryData : [GetCategoryResult]! = [] //카테고리 정보 받아오는 struct
     
     //선택된 카테고리
     var selectCategory: Int = -1
-    
     var selectCategoryCell: TodoCategoryCell!
     
-    //투두간단설정 프로퍼티
-    var todoEasyTitle : String!
+    var todoEasyTitle : String! //투두간단설정 프로퍼티
     
     var todoDataList : [GetTodoInfo]! = []
     
-    //for 다이어리 작성했을 때 view 구성
-    var isDiaryExist = false
+    var isDiaryExist = false //for 다이어리 작성했을 때 view 구성
     
     var diaryData: GetDiaryInfo?
     
@@ -426,14 +422,11 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(diaryCellDidClicked))
                 cell.addGestureRecognizer(tapGesture)
                 
-                cell.diaryTitle.text = diaryData?.title
-                
-                //TODO: - Diary 데이터 서버 수정 시 주석 풀기
-                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
-//                cell.diaryTextView.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
+                if let diaryData = self.diaryData {
+                    cell.setUpDataBinding(diaryData)
+                }
                 
                 return cell
-                
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: DiaryBannerCell.cellIdentifier, for: indexPath)
                 return cell
