@@ -10,6 +10,10 @@ import UIKit
 
 extension DiaryViewController{
     
+    func setUpDiaryData(){
+        
+    }
+    
     func setTextToolBarAction(){
     
         //임시 함수
