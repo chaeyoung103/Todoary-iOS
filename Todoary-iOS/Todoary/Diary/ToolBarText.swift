@@ -10,7 +10,11 @@ import UIKit
 
 extension DiaryViewController{
     
-    func setUpDiaryData(){
+    func setUpDiaryData(_ data: GetDiaryInfo){
+        
+        self.diaryData = data
+        self.diaryTitle.text = diaryData?.title
+        self.textView.text = diaryData?.content
         
     }
     
@@ -202,10 +206,12 @@ extension DiaryViewController{
     func registerBtnDidClicked(){
         
         let text = NSAttributedString(attributedString: textView.attributedText)
+        
+        print(text.attributedString2Html!)
 
         let input = DiaryInput(title: diaryTitle.text!,
-//                               content: text.attributedString2Html!) //TODO: - API 테스트
-                               content: textView.text) //임시 테스트용
+                               content: text.attributedString2Html!) //TODO: - API 테스트
+//                               content: textView.text) //임시 테스트용
         
         DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
     }

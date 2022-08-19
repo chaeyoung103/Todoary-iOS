@@ -179,6 +179,8 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func diaryCellDidClicked(){
         let vc = DiaryViewController()
+        vc.setUpDiaryData(diaryData!)
+        
         vc.diaryTitle.text = diaryData?.title
         vc.textView.text = diaryData?.content //임시 세팅
         vc.todaysDate.text = diaryData?.created_at
@@ -425,7 +427,7 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.diaryTitle.text = diaryData?.title
                 
                 //TODO: - Diary 데이터 서버 수정 시 주석 풀기
-//                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
                 
                 return cell
                 
