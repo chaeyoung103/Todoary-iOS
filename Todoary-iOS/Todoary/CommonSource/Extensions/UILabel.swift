@@ -28,7 +28,6 @@ extension UILabel {
         
         if let labelText = text, labelText.isEmpty == false {
             var attributedString = NSMutableAttributedString(attributedString: attributedText!)
-//            NSMutableAttributedString(attributedString: <#T##NSAttributedString#>)
             
             if(letterSpacing != nil){
                 attributedString = addLetterSpacing(spacing: letterSpacing!, attributedString: attributedString)

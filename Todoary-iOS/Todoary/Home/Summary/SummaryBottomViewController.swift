@@ -106,6 +106,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         vc.todaysDate.text = todoDate.dateUsedDiary
         vc.sendApiDate = todoDate.dateSendServer
         vc.todoDataList = self.todoDataList
+        vc.pickDate = todoDate
 
         homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -176,12 +177,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func diaryCellDidClicked(){
-        let vc = DiaryViewController()
-        vc.setUpDiaryData(diaryData!)
         
-        vc.diaryTitle.text = diaryData?.title
-        vc.textView.text = diaryData?.content //임시 세팅
-        vc.todaysDate.text = diaryData?.created_at
+        let vc = DiaryViewController()
+        
+        vc.pickDate = HomeViewController.bottomSheetVC.todoDate
+        vc.setUpDiaryData(diaryData!)
         
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)

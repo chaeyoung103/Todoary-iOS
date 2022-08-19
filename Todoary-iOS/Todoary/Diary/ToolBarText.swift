@@ -14,7 +14,9 @@ extension DiaryViewController{
         
         self.diaryData = data
         self.diaryTitle.text = diaryData?.title
-        self.textView.text = diaryData?.content
+        self.textView.attributedText = diaryData?.content15AttributedString
+//        self.textView.setTextWithLineHeight(spaing: 25)
+        self.todaysDate.text = pickDate?.dateUsedDiary//
         
     }
     
