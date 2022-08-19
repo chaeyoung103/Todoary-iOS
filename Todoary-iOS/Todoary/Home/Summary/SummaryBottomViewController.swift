@@ -92,8 +92,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
         
-        GetCategoryDataManager().getCategoryDataManager(self)
-        
         setInitView()
         setUpView()
         setUpConstraint()
