@@ -10,6 +10,11 @@ import UIKit
 
 extension DiaryViewController{
     
+    //TODO: - 다이어리 커스텀 오류
+    /*
+     1. 드래그 안했는데 커스텀 설정하면 오류
+     */
+    
     func setTextToolBarAction(){
     
         //임시 함수
@@ -86,6 +91,12 @@ extension DiaryViewController{
     func strikeBtnDidClicked(){
 
         let selectedRange = self.textView.selectedRange
+        print("selectedRange", selectedRange,selectedRange.length )
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
         let selectedTextRange = self.textView.selectedTextRange
         
         let start = selectedRange.lowerBound
@@ -115,6 +126,11 @@ extension DiaryViewController{
     func underLineBtnDidClicked(){
         
         let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
         let selectedTextRange = self.textView.selectedTextRange
         
         let start = selectedRange.lowerBound
@@ -150,6 +166,11 @@ extension DiaryViewController{
          */
         
         let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
         let selectedTextRange = self.textView.selectedTextRange
         
         let start = selectedRange.lowerBound
