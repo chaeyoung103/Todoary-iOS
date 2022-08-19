@@ -37,7 +37,7 @@ class DiaryCell: UITableViewCell {
         $0.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elitut aliquam, purus sit amet luctus venenatis, lectusmagna fringilla urna, porttitor rhoncus dolor purusnon enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam ... (본문)"
         $0.numberOfLines = 0
         $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
-        $0.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
+//        $0.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
         
     }
     

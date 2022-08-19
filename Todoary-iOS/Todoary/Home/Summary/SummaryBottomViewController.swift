@@ -428,6 +428,7 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 
                 //TODO: - Diary 데이터 서버 수정 시 주석 풀기
                 cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+//                cell.diaryTextView.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
                 
                 return cell
                 
