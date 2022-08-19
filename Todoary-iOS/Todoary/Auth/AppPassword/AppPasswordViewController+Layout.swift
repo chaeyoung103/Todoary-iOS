@@ -22,11 +22,18 @@ extension AppPasswordViewController {
         self.view.addSubview(inputNotPw3)
         self.view.addSubview(inputNotPw4)
         
-        self.view.addSubview(inputPw)
+        self.view.addSubview(inputPw) //StackView
         self.view.addSubview(inputPw1)
         self.view.addSubview(inputPw2)
         self.view.addSubview(inputPw3)
         self.view.addSubview(inputPw4)
+        
+        
+        self.view.addSubview(numbutton)//StackView
+        numbutton.addArrangedSubview(numbuttonStackView1)
+        numbutton.addArrangedSubview(numbuttonStackView2)
+        numbutton.addArrangedSubview(numbuttonStackView3)
+        numbutton.addArrangedSubview(numbuttonStackView4)
         
         self.view.addSubview(numBtn1)
         self.view.addSubview(numBtn2)

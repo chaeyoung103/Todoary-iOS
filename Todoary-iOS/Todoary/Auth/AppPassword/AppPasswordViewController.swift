@@ -91,6 +91,26 @@ class AppPasswordViewController : UIViewController {
     //MARK: - numbutton
     //button
     
+    let numbutton = UIStackView().then{
+        $0.axis = .vertical
+    }
+    
+    let numbuttonStackView1 = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
+    let numbuttonStackView2 = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
+    let numbuttonStackView3 = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
+    let numbuttonStackView4 = UIStackView().then{
+        $0.axis = .horizontal
+    }
+    
     let numBtn1 =  UIButton().then{
         $0.setTitle( "1", for: .normal)
         $0.backgroundColor = .numberBtnColor
