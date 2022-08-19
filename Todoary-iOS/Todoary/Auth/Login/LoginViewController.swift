@@ -102,6 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let appleBtn = UIButton().then{
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
+        $0.imageView?.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 51/2
         $0.addTarget(self, action: #selector(appleBtnDidTab), for: .touchUpInside)
     }

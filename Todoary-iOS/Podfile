@@ -17,6 +17,8 @@ target 'Todoary' do
 
   pod 'IRSticker-swift'
 
+  pod 'StickerView'
+
   # firebase 
   pod 'Firebase/Analytics' # Google Analytics
 

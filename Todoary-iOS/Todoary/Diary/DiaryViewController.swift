@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
-import IRSticker_swift
+import StickerView
 
 
-class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRStickerViewDelegate{
+class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
     
     //MARK: - Properties
     static let stickerData = [UIImage(named: "sticker1"),
@@ -39,10 +39,29 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
     var diaryData: GetDiaryInfo?
     
     var pickDate: ConvertDate?
-    
-    var selectedSticker = false
 
     var animator: UIDynamicAnimator?
+    
+    var _selectedStickerView:StickerView?
+        var selectedStickerView:StickerView? {
+            get {
+                return _selectedStickerView
+            }
+            set {
+                // if other sticker choosed then resign the handler
+                if _selectedStickerView != newValue {
+                    if let selectedStickerView = _selectedStickerView {
+                        selectedStickerView.showEditingHandlers = false
+                    }
+                    _selectedStickerView = newValue
+                }
+                // assign handler to new sticker added
+                if let selectedStickerView = _selectedStickerView {
+                    selectedStickerView.showEditingHandlers = true
+                    selectedStickerView.superview?.bringSubviewToFront(selectedStickerView)
+                }
+            }
+        }
     
     //MARK: - UIComponenets
 
@@ -209,37 +228,56 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, IRSt
         
         if let indexPath = DiarySticker.collectionView?.indexPathForItem(at: p) {
             
-            let sticker1 = IRStickerView.init(frame: CGRect.init(x: 0, y: 0, width: 150, height: 150), contentImage: DiaryViewController.stickerData[indexPath.row]!)
-            sticker1.center = self.view.center
-            sticker1.enabledControl = true
-            sticker1.enabledBorder = false
-            sticker1.tag = 1
-            sticker1.delegate = self
-            self.textView.addSubview(sticker1)
-            
-            sticker1.performTapOperation()
+            let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
+            testImage.image = DiaryViewController.stickerData[indexPath.row]
+            testImage.contentMode = .scaleAspectFit
+            let stickerView3 = StickerView.init(contentView: testImage)
+            stickerView3.center = CGPoint.init(x: 150, y: 150)
+            stickerView3.delegate = self
+            stickerView3.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
+            stickerView3.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+            stickerView3.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
+            stickerView3.showEditingHandlers = false
+            stickerView3.layer.borderColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1).cgColor
+            stickerView3.tag = 999
+            self.textView.addSubview(stickerView3)
+            self.selectedStickerView = stickerView3
         }
     }
     
     // MARK: - StickerViewDelegate
-    func ir_StickerView(stickerView: IRStickerView, imageForRightTopControl recommendedSize: CGSize) -> UIImage? {
-        return nil
+    
+    func stickerViewDidTap(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
     }
     
-    func ir_StickerView(stickerView: IRStickerView, imageForLeftBottomControl recommendedSize: CGSize) -> UIImage? {
-        return nil
+    func stickerViewDidBeginMoving(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
     }
     
-    func ir_StickerViewDidTapContentView(stickerView: IRStickerView) {
-        if selectedSticker {
-            stickerView.enabledBorder = false
-            stickerView.enabledControl = false
-            selectedSticker.toggle()
-        }else{
-            stickerView.enabledBorder = true
-            stickerView.enabledControl = true
-            selectedSticker.toggle()
-        }
+    /// Other delegate methods which we not used currently but choose method according to your event and requirements.
+    func stickerViewDidChangeMoving(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidEndMoving(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidBeginRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidChangeRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidEndRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidClose(_ stickerView: StickerView) {
+        
     }
     
 }
