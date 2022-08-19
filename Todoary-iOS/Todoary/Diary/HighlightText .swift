@@ -8,6 +8,51 @@
 import Foundation
 import UIKit
 
+extension UIColor{
+    
+    static let yellowHighlight = UIColor(
+        red: 254/255,
+        green: 210/255,
+        blue: 90/255,
+        alpha: 0.5
+    )
+    
+    static let orangeHighlight = UIColor(
+        red: 255/255,
+        green: 143/255,
+        blue: 84/255,
+        alpha: 0.5
+    )
+    
+    static let redHighlight = UIColor(
+        red: 234/255,
+        green: 44/255,
+        blue: 4/255,
+        alpha: 0.5
+    )
+    
+    static let greenHighlight = UIColor(
+        red: 172/255,
+        green: 215/255,
+        blue: 134/255,
+        alpha: 0.5
+    )
+    
+    static let blueHighlight = UIColor(
+        red: 86/255,
+        green: 152/255,
+        blue: 255/255,
+        alpha: 0.5
+    )
+    
+    static let grayHighlight = UIColor(
+        red: 184/255,
+        green: 184/255,
+        blue: 184/255,
+        alpha: 0.5
+    )
+}
+
 extension DiaryViewController{
     
     func setHighlightToolBarAction(){
@@ -40,22 +85,25 @@ extension DiaryViewController{
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.yellowHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.yellowHighlight,
+                                              range: selectedRange)
+            }
+        }
+        
         if let value = attribute as? UIColor{
-            if(value == UIColor(
-                red: 254/255,
-                green: 210/255,
-                blue: 90/255,
-                alpha: 0.5)) {
+            if(value == UIColor.yellowHighlight) {
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 254/255,
-                                            green: 210/255,
-                                            blue: 90/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.yellowHighlight,
                                           range: selectedRange)
         }
         
@@ -84,23 +132,25 @@ extension DiaryViewController{
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.orangeHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.orangeHighlight,
+                                              range: selectedRange)
+            }
+        }
+        
         if let value = attribute as? UIColor{
-            if(value == UIColor(
-                red: 255/255,
-                green: 143/255,
-                blue: 84/255,
-                alpha: 0.5
-            )){
+            if(value == UIColor.orangeHighlight){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 255/255,
-                                            green: 143/255,
-                                            blue: 84/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.orangeHighlight,
                                           range: selectedRange)
         }
         
@@ -128,24 +178,27 @@ extension DiaryViewController{
 
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.redHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.redHighlight,
+                                              range: selectedRange)
+            }
+        }
 
         if let value = attribute as? UIColor{
-            if(value == UIColor(
-                red: 234/255,
-                green: 44/255,
-                blue: 4/255,
-                alpha: 0.5
-            )){
+            if(value == UIColor.redHighlight){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 234/255,
-                                            green: 44/255,
-                                            blue: 4/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.redHighlight,
                                           range: selectedRange)
         }
         
@@ -173,24 +226,27 @@ extension DiaryViewController{
 
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.greenHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.greenHighlight,
+                                              range: selectedRange)
+            }
+        }
+
 
         if let value = attribute as? UIColor{
-            if(value ==  UIColor(
-                red: 172/255,
-                green: 215/255,
-                blue: 134/255,
-                alpha: 0.5
-            )){
+            if(value ==  UIColor.greenHighlight){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 172/255,
-                                            green: 215/255,
-                                            blue: 134/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.greenHighlight,
                                           range: selectedRange)
         }
         
@@ -218,24 +274,26 @@ extension DiaryViewController{
 
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.blueHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.blueHighlight,
+                                              range: selectedRange)
+            }
+        }
 
         if let value = attribute as? UIColor{
-            if(value == UIColor(
-                red: 86/255,
-                green: 152/255,
-                blue: 255/255,
-                alpha: 0.5
-            )){
+            if(value == UIColor.blueHighlight){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 86/255,
-                                            green: 152/255,
-                                            blue: 255/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.blueHighlight,
                                           range: selectedRange)
         }
         
@@ -263,24 +321,26 @@ extension DiaryViewController{
 
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        if let change = attribute as? UIColor{
+            
+            if(change == UIColor.grayHighlight){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }else{
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+                attributedString.addAttribute(.backgroundColor,
+                                              value: UIColor.grayHighlight,
+                                              range: selectedRange)
+            }
+        }
 
         if let value = attribute as? UIColor{
-            if(value == UIColor(
-                red: 184/255,
-                green: 184/255,
-                blue: 184/255,
-                alpha: 0.5
-            )){
+            if(value == UIColor.grayHighlight){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
             attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 184/255,
-                                            green: 184/255,
-                                            blue: 184/255,
-                                            alpha: 0.5
-                                        ),
+                                          value: UIColor.grayHighlight,
                                           range: selectedRange)
 
         }
