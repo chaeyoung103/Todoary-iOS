@@ -27,7 +27,7 @@ extension UILabel {
     func labelAttributeSetting(letterSpacing: Double? = nil, lineHeight: Double? = nil){
         
         if let labelText = text, labelText.isEmpty == false {
-            var attributedString = NSMutableAttributedString(string: labelText)
+            var attributedString = NSMutableAttributedString(attributedString: attributedText!)
             
             if(letterSpacing != nil){
                 attributedString = addLetterSpacing(spacing: letterSpacing!, attributedString: attributedString)
