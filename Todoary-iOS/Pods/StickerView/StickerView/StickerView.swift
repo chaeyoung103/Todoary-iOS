@@ -355,6 +355,17 @@ public class StickerView: UIView {
             self.deltaAngle = CGFloat(atan2f(Float(touchLocation.y - center.y), Float(touchLocation.x - center.x))) - CGAffineTransformGetAngle(self.transform)
             self.initialBounds = self.bounds
             self.initialDistance = CGPointGetDistance(point1: center, point2: touchLocation)
+            
+            var scale = CGPointGetDistance(point1: center, point2: touchLocation) / self.initialDistance
+            let minimumScale = 0.5
+            scale = max(scale, minimumScale)
+            var scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: scale)
+            if (scale > 2.0 ){
+                scale = max(2.0, minimumScale)
+                scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: scale)
+                self.bounds = scaledBounds
+            }
+            
             if let delegate = self.delegate {
                 delegate.stickerViewDidBeginRotating(self)
             }
@@ -364,9 +375,13 @@ public class StickerView: UIView {
             self.transform = CGAffineTransform(rotationAngle: CGFloat(-angleDiff))
             
             var scale = CGPointGetDistance(point1: center, point2: touchLocation) / self.initialDistance
-            let minimumScale = CGFloat(self.minimumSize) / min(self.initialBounds.size.width, self.initialBounds.size.height)
+            let minimumScale = 0.5
             scale = max(scale, minimumScale)
-            let scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: scale)
+            var scaledBounds = CGRectScale(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0), wScale: scale, hScale: scale)
+            if (scale > 2.5 ){
+                scale = max(2.5, minimumScale)
+                scaledBounds = CGRectScale(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0), wScale: scale, hScale: scale)
+            }
             self.bounds = scaledBounds
             self.setNeedsDisplay()
             

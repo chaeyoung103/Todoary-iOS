@@ -193,12 +193,14 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     @objc
     func registerBtnDidTap(){
-        
+
         let text = NSAttributedString(attributedString: textView.attributedText)
+        
+        print(text.attributedString2Html!)
 
         let input = DiaryInput(title: diaryTitle.text!,
-//                               content: text.attributedString2Html!) //TODO: - API 테스트
-                               content: textView.text) //임시 테스트용
+                               content: text.attributedString2Html!) //TODO: - API 테스트
+//                               content: textView.text) //임시 테스트용
         
         DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
     }
@@ -312,39 +314,14 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     }
     
     func stickerViewDidBeginRotating(_ stickerView: StickerView) {
-//        if stickerView.frame.origin.x <= 0 {
-//            stickerView.frame.origin.x = 0
-//        }
-//        if stickerView.frame.origin.x >= 210{
-//            stickerView.frame.origin.x = 210
-//        }
-//        if stickerView.frame.origin.y <= 0 {
-//            stickerView.frame.origin.y = 0
-//        }
     }
     
     func stickerViewDidChangeRotating(_ stickerView: StickerView) {
-//        if stickerView.frame.origin.x <= 0 {
-//            stickerView.frame.origin.x = 0
-//        }
-//        if stickerView.frame.origin.x >= 210{
-//            stickerView.frame.origin.x = 210
-//        }
-//        if stickerView.frame.origin.y <= 0 {
-//            stickerView.frame.origin.y = 0
-//        }
+
     }
     
     func stickerViewDidEndRotating(_ stickerView: StickerView) {
-//        if stickerView.frame.origin.x <= 0 {
-//            stickerView.frame.origin.x = 0
-//        }
-//        if stickerView.frame.origin.x >= 210{
-//            stickerView.frame.origin.x = 210
-//        }
-//        if stickerView.frame.origin.y <= 0 {
-//            stickerView.frame.origin.y = 0
-//        }
+ 
     }
     
     func stickerViewDidClose(_ stickerView: StickerView) {
