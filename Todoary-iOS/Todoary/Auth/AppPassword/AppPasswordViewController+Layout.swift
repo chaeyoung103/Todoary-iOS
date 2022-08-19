@@ -16,7 +16,7 @@ extension AppPasswordViewController {
         self.view.addSubview(appPwtext)
         self.view.addSubview(pwnotcorrect)
         
-        self.view.addSubview(inputNotPw)
+        self.view.addSubview(inputNotPw) //StackView
         self.view.addSubview(inputNotPw1)
         self.view.addSubview(inputNotPw2)
         self.view.addSubview(inputNotPw3)
@@ -29,7 +29,7 @@ extension AppPasswordViewController {
         self.view.addSubview(inputPw4)
         
         
-        self.view.addSubview(numbutton)//StackView
+        self.view.addSubview(numbutton) //StackView
         numbutton.addArrangedSubview(numbuttonStackView1)
         numbutton.addArrangedSubview(numbuttonStackView2)
         numbutton.addArrangedSubview(numbuttonStackView3)
@@ -71,10 +71,9 @@ extension AppPasswordViewController {
         //inputNotPassword img
         
         inputNotPw.snp.makeConstraints{ make in
-//            make.width.equalTo(208)
-//            make.height.equalTo(40)
+            make.width.equalTo(208)
+            make.height.equalTo(40)
             make.top.equalTo(appPwtext.snp.bottom).offset(92)
-//            make.bottom.equalTo(numbutton.s)
             make.centerX.equalToSuperview()
         }
         
