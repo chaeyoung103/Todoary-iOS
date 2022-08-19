@@ -15,6 +15,9 @@ extension DiaryViewController{
         //임시 함수
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
         
+        
+        
+        
         let alignBtnArray = [
 //            self.toolbar.alignLeftBtn,
             self.toolbar.ailgnCenterBtn, self.toolbar.alignRightBtn]
@@ -22,12 +25,6 @@ extension DiaryViewController{
         alignBtnArray.forEach{ each in
             each.addTarget(self, action: #selector(alignBtnDidClicked), for: .touchUpInside)
         }
-
-        /*
-        self.toolbar.strikeLineBtn.addTarget(self, action: #selector(strikeBtnDidClicked), for: .touchUpInside)
-        self.toolbar.underLineBtn.addTarget(self, action: #selector(underLineBtnDidClicked), for: .touchUpInside)
-        self.toolbar.boldBtn.addTarget(self, action: #selector(boldBtnDidClicked), for: .touchUpInside)
-        */
         
         let lineOrBoldBtnArray = [self.toolbar.strikeLineBtn, self.toolbar.underLineBtn, self.toolbar.boldBtn]
         
