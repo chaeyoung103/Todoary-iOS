@@ -199,6 +199,7 @@ class HomeViewController : UIViewController {
         
         GetTodoDataManager().gets(pickDate)
         DiaryDataManager().gets(pickDate)
+        GetCategoryDataManager().getCategoryDataManager(HomeViewController.bottomSheetVC)
         
         present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }

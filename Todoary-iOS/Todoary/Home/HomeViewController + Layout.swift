@@ -88,8 +88,10 @@ extension HomeViewController {
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(year_Month.snp.bottom).offset(17)
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(28)
-            make.trailing.equalToSuperview().offset(-28)
+            make.leading.equalToSuperview()
+                .offset(28)
+            make.trailing.equalToSuperview()
+                .offset(-28)
             make.bottom.equalToSuperview()
         }
         

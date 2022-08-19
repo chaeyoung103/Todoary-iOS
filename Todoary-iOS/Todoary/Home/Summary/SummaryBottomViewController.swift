@@ -92,8 +92,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         self.view.backgroundColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1)
         
-        GetCategoryDataManager().getCategoryDataManager(self)
-        
         setInitView()
         setUpView()
         setUpConstraint()
@@ -292,6 +290,7 @@ extension SummaryBottomViewController{
             todoDataList = result.result
             dataArraySortByPin()
             tableView.reloadData()
+            todoTf.text = ""
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -458,19 +457,6 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("눌림??")
-//        let rowCount = tableView.numberOfRows(inSection: 0)
-//        if(isDiaryExist && indexPath.row == rowCount - 1){
-//            let vc = DiaryViewController()
-//            vc.diaryTitle.text = diaryData?.title
-//            vc.textView.text = diaryData?.content //임시 세팅
-//            vc.todaysDate.text = diaryData?.created_at
-//
-//            self.homeNavigaiton.pushViewController(vc, animated: true)
-//        }
-//    }
 
 }
 
