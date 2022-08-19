@@ -9,7 +9,13 @@ import UIKit
 
 class DiaryCell: UITableViewCell {
     
+    //MARK: - Properties
+    
     static let cellIdentifier = "diaryCell"
+    
+    var diaryData: GetDiaryInfo!
+    
+    //MARK: - UI
     
     let backView = UIView().then{
         $0.backgroundColor = .white
@@ -34,11 +40,7 @@ class DiaryCell: UITableViewCell {
     }
     
     let diaryTextView = UILabel().then{
-        $0.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elitut aliquam, purus sit amet luctus venenatis, lectusmagna fringilla urna, porttitor rhoncus dolor purusnon enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam ... (본문)"
         $0.numberOfLines = 0
-        $0.font = UIFont.nbFont(ofSize: 12, weight: .medium)
-        $0.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
-        
     }
     
     lazy var diaryImage = UIImageView().then{
@@ -101,6 +103,16 @@ class DiaryCell: UITableViewCell {
             make.top.equalTo(diaryTitle.snp.bottom).offset(5)
             make.bottom.equalToSuperview().offset(-23)
         }
+    }
+    
+    func setUpDataBinding(_ data: GetDiaryInfo){
+        
+        self.diaryData = data
+        
+        self.diaryTitle.text = diaryData?.title
+        self.diaryTextView.attributedText = diaryData?.content12AttributedString ?? NSAttributedString(string: "")
+        
+        self.diaryTextView.labelAttributeSetting(letterSpacing: 0.24, lineHeight: 14.4)
     }
     
     /*
