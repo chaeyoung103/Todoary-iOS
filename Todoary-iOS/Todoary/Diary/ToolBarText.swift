@@ -16,8 +16,6 @@ extension DiaryViewController{
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
         
         
-        
-        
         let alignBtnArray = [
 //            self.toolbar.alignLeftBtn,
             self.toolbar.ailgnCenterBtn, self.toolbar.alignRightBtn]
