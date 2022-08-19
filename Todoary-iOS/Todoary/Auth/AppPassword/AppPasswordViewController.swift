@@ -93,22 +93,27 @@ class AppPasswordViewController : UIViewController {
     
     let numbutton = UIStackView().then{
         $0.axis = .vertical
+        $0.spacing = 39
     }
     
     let numbuttonStackView1 = UIStackView().then{
         $0.axis = .horizontal
+        $0.spacing = 60
     }
     
     let numbuttonStackView2 = UIStackView().then{
         $0.axis = .horizontal
+        $0.spacing = 60
     }
     
     let numbuttonStackView3 = UIStackView().then{
         $0.axis = .horizontal
+        $0.spacing = 60
     }
     
     let numbuttonStackView4 = UIStackView().then{
         $0.axis = .horizontal
+        $0.spacing = 60
     }
     
     let numBtn1 =  UIButton().then{
@@ -202,6 +207,10 @@ class AppPasswordViewController : UIViewController {
         $0.addTarget(self, action: #selector(numBtndidtab), for: .touchUpInside)
     }
     
+    let blueCharacterView = UIView().then{
+        $0.backgroundColor = nil
+    }
+    
     let blueCharacter = UIImageView().then{
         $0.image = UIImage(named: "password5")
     }
@@ -210,8 +219,8 @@ class AppPasswordViewController : UIViewController {
     //MARK: - UIComponenets_deletBtn
     let deletBtn = UIButton().then{
         $0.setImage(UIImage(named: "backspace"), for: .normal)
-        $0.tintColor = .black
-        $0.contentMode = .scaleToFill
+//        $0.tintColor = .black
+        $0.setBackgroundImage(UIImage(named: "home_profile"), for: UIControl.State.highlighted)
         $0.addTarget(self, action: #selector(deletBtndidtab), for: .touchUpInside)
     }
     
@@ -238,15 +247,19 @@ class AppPasswordViewController : UIViewController {
         
         switch pwarraycount {
         case 1 :
+            inputNotPw1.isHidden = true
             inputPw1.isHidden = false
 
         case 2 :
+            inputNotPw2.isHidden = true
             inputPw2.isHidden = false
 
         case 3 :
+            inputNotPw3.isHidden = true
             inputPw3.isHidden = false
      
         case 4 :
+            inputNotPw4.isHidden = true
             inputPw4.isHidden = false
             
             let pw = defaults.object(forKey: "newPasswordArr")
@@ -272,6 +285,11 @@ class AppPasswordViewController : UIViewController {
 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [self] in
                     
+                    inputNotPw1.isHidden = false
+                    inputNotPw2.isHidden = false
+                    inputNotPw3.isHidden = false
+                    inputNotPw4.isHidden = false
+                    
                     inputPw1.isHidden = true
                     inputPw2.isHidden = true
                     inputPw3.isHidden = true
@@ -292,24 +310,28 @@ class AppPasswordViewController : UIViewController {
         if deletBtn.isTouchInside {
             switch pwarraycount {
             case 4 :
+                inputNotPw4.isHidden = false
                 inputPw4.isHidden = true
                 passwordArr.removeLast()
                 print(passwordArr)
             case 3 :
+                inputNotPw3.isHidden = false
                 inputPw3.isHidden = true
                 passwordArr.removeLast()
                 print(passwordArr)
-        case 2 :
-            inputPw2.isHidden = true
-            passwordArr.removeLast()
+            case 2 :
+                inputNotPw2.isHidden = false
+                inputPw2.isHidden = true
+                passwordArr.removeLast()
                 print(passwordArr)
-        case 1 :
-            inputPw1.isHidden = true
-            passwordArr.removeLast()
+            case 1 :
+                inputNotPw1.isHidden = false
+                inputPw1.isHidden = true
+                passwordArr.removeLast()
                 print(passwordArr)
-
-        default :
-            return
+                
+            default :
+                return
             }
         }
     }
