@@ -23,181 +23,11 @@ extension DiaryViewController{
     @objc func yellowBtnDidClicked(){
 
         let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-
-        let start = selectedRange.lowerBound
-
-
-        let attribute = textView.attributedText.attribute(.backgroundColor,
-                                                          at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
-
-
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-
-        if let value = attribute as? Int{
-            if(value == 1){
-                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
-            }
-        }else{
-            attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 254/255,
-                                            green: 210/255,
-                                            blue: 90/255,
-                                            alpha: 0.5
-                                        ),
-                                          range: selectedRange)
-
-        textView.attributedText = attributedString
-
-        moveCursorEndOfSelection(selectedTextRange)
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
         }
-    }
-    
-    @objc func orangeBtnDidClicked(){
-
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-
-        let start = selectedRange.lowerBound
-
-
-        let attribute = textView.attributedText.attribute(.backgroundColor,
-                                                          at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
-
-
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-
-        if let value = attribute as? Int{
-            if(value == 1){
-                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
-            }
-        }else{
-            attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 255/255,
-                                            green: 143/255,
-                                            blue: 84/255,
-                                            alpha: 0.5
-                                        ),
-                                          range: selectedRange)
-
-        textView.attributedText = attributedString
-
-        moveCursorEndOfSelection(selectedTextRange)
-        }
-    }
-    
-    @objc func redBtnDidClicked(){
-
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-
-        let start = selectedRange.lowerBound
-
-
-        let attribute = textView.attributedText.attribute(.backgroundColor,
-                                                          at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
-
-
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-
-        if let value = attribute as? Int{
-            if(value == 1){
-                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
-            }
-        }else{
-            attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 234/255,
-                                            green: 44/255,
-                                            blue: 4/255,
-                                            alpha: 0.5
-                                        ),
-                                          range: selectedRange)
-
-        textView.attributedText = attributedString
-
-        moveCursorEndOfSelection(selectedTextRange)
-        }
-    }
-    
-    @objc func greenBtnDidClicked(){
-
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-
-        let start = selectedRange.lowerBound
-
-
-        let attribute = textView.attributedText.attribute(.backgroundColor,
-                                                          at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
-
-
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-
-        if let value = attribute as? Int{
-            if(value == 1){
-                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
-            }
-        }else{
-            attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 172/255,
-                                            green: 215/255,
-                                            blue: 134/255,
-                                            alpha: 0.5
-                                        ),
-                                          range: selectedRange)
-
-        textView.attributedText = attributedString
-
-        moveCursorEndOfSelection(selectedTextRange)
-        }
-    }
-    
-    @objc func blueBtnDidClicked(){
-
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-
-        let start = selectedRange.lowerBound
-
-
-        let attribute = textView.attributedText.attribute(.backgroundColor,
-                                                          at: start,
-                                                          effectiveRange: &self.textView.selectedRange) as? UIFont
-
-
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-
-        if let value = attribute as? Int{
-            if(value == 1){
-                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
-            }
-        }else{
-            attributedString.addAttribute(.backgroundColor,
-                                          value: UIColor(
-                                            red: 86/255,
-                                            green: 152/255,
-                                            blue: 255/255,
-                                            alpha: 0.5
-                                        ),
-                                          range: selectedRange)
-
-        textView.attributedText = attributedString
-
-        moveCursorEndOfSelection(selectedTextRange)
-        }
-    }
-    
-    @objc func grayBtnDidClicked(){
-
-        let selectedRange = self.textView.selectedRange
+        
         let selectedTextRange = self.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
@@ -210,8 +40,237 @@ extension DiaryViewController{
 
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
-        if let value = attribute as? Int{
-            if(value == 1){
+        if let value = attribute as? UIColor{
+            if(value == UIColor(
+                red: 254/255,
+                green: 210/255,
+                blue: 90/255,
+                alpha: 0.5)) {
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 254/255,
+                                            green: 210/255,
+                                            blue: 90/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+        }
+        
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+    }
+    
+    @objc func orangeBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? UIColor{
+            if(value == UIColor(
+                red: 255/255,
+                green: 143/255,
+                blue: 84/255,
+                alpha: 0.5
+            )){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 255/255,
+                                            green: 143/255,
+                                            blue: 84/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+        }
+        
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+    }
+    
+    @objc func redBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? UIColor{
+            if(value == UIColor(
+                red: 234/255,
+                green: 44/255,
+                blue: 4/255,
+                alpha: 0.5
+            )){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 234/255,
+                                            green: 44/255,
+                                            blue: 4/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+        }
+        
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+    }
+    
+    @objc func greenBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? UIColor{
+            if(value ==  UIColor(
+                red: 172/255,
+                green: 215/255,
+                blue: 134/255,
+                alpha: 0.5
+            )){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 172/255,
+                                            green: 215/255,
+                                            blue: 134/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+        }
+        
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+    }
+    
+    @objc func blueBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? UIColor{
+            if(value == UIColor(
+                red: 86/255,
+                green: 152/255,
+                blue: 255/255,
+                alpha: 0.5
+            )){
+                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+            }
+        }else{
+            attributedString.addAttribute(.backgroundColor,
+                                          value: UIColor(
+                                            red: 86/255,
+                                            green: 152/255,
+                                            blue: 255/255,
+                                            alpha: 0.5
+                                        ),
+                                          range: selectedRange)
+        }
+        
+        textView.attributedText = attributedString
+
+        moveCursorEndOfSelection(selectedTextRange)
+    }
+    
+    @objc func grayBtnDidClicked(){
+
+        let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
+        let selectedTextRange = self.textView.selectedTextRange
+
+        let start = selectedRange.lowerBound
+
+
+        let attribute = textView.attributedText.attribute(.backgroundColor,
+                                                          at: start,
+                                                          effectiveRange: &self.textView.selectedRange)
+
+
+        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+
+        if let value = attribute as? UIColor{
+            if(value == UIColor(
+                red: 184/255,
+                green: 184/255,
+                blue: 184/255,
+                alpha: 0.5
+            )){
                 attributedString.removeAttribute(.backgroundColor, range: selectedRange)
             }
         }else{
@@ -224,9 +283,10 @@ extension DiaryViewController{
                                         ),
                                           range: selectedRange)
 
+        }
+        
         textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
-        }
     }
 }
