@@ -15,38 +15,47 @@ extension DiaryViewController{
         //임시 함수
         self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
         
-//        self.toolbar.alignLeftBtn.addTarget(self, action: #selector(alignLeftBtnDidClicked), for: .touchUpInside)
         
-        self.toolbar.ailgnCenterBtn.addTarget(self, action: #selector(alignCenterBtnDidClicked), for: .touchUpInside)
-        self.toolbar.alignRightBtn.addTarget(self, action: #selector(alignRightBtnDidClicked), for: .touchUpInside)
-
-        self.toolbar.strikeLineBtn.addTarget(self, action: #selector(strikeBtnDidClicked), for: .touchUpInside)
-        self.toolbar.underLineBtn.addTarget(self, action: #selector(underLineBtnDidClicked), for: .touchUpInside)
-        self.toolbar.boldBtn.addTarget(self, action: #selector(boldBtnDidClicked), for: .touchUpInside)
         
-        self.toolbar.fontBtn1.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
-        self.toolbar.fontBtn2.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
-        self.toolbar.fontBtn3.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
-        self.toolbar.fontBtn4.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
-        self.toolbar.fontBtn5.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        
+        let alignBtnArray = [
+//            self.toolbar.alignLeftBtn,
+            self.toolbar.ailgnCenterBtn, self.toolbar.alignRightBtn]
+        
+        alignBtnArray.forEach{ each in
+            each.addTarget(self, action: #selector(alignBtnDidClicked), for: .touchUpInside)
+        }
+        
+        let lineOrBoldBtnArray = [self.toolbar.strikeLineBtn, self.toolbar.underLineBtn, self.toolbar.boldBtn]
+        
+        lineOrBoldBtnArray.forEach{ each in
+            each.addTarget(self, action: #selector(lineOrBoldBtnDidClicked), for: .touchUpInside)
+        }
+        
+        let fontBtnArray = [self.toolbar.fontBtn1, self.toolbar.fontBtn2, self.toolbar.fontBtn3, self.toolbar.fontBtn4, self.toolbar.fontBtn5]
+        
+        fontBtnArray.forEach{ each in
+            each.addTarget(self, action: #selector(fontChange(_:)), for: .touchUpInside)
+        }
         
     }
     
-    @objc
-    func alignLeftBtnDidClicked(){
-        self.textView.textAlignment = .left
-    }
-    
-    
-    @objc
-    func alignCenterBtnDidClicked(){
-        self.textView.textAlignment = .center
-    }
-    
-    
-    @objc
-    func alignRightBtnDidClicked(){
-        self.textView.textAlignment = .right
+    @objc func alignBtnDidClicked(_ sender: UIButton){
+        
+        let alignment: NSTextAlignment!
+        
+        switch sender{
+//        case self.toolbar.alignLeftBtn:
+//            alignment = .left
+        case self.toolbar.ailgnCenterBtn:
+            alignment = .center
+        case self.toolbar.alignRightBtn:
+            alignment = .right
+        default:
+            return
+        }
+        
+        self.textView.textAlignment = alignment
     }
     
     @objc
@@ -82,19 +91,44 @@ extension DiaryViewController{
         self.textView.font = currentFont.returnFont(.normal)
     }
     
-    @objc
-    func strikeBtnDidClicked(){
-
+    @objc func lineOrBoldBtnDidClicked(_ sender: UIButton){
+        
         let selectedRange = self.textView.selectedRange
+        
+        if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
+            return
+        }
+        
         let selectedTextRange = self.textView.selectedTextRange
         
         let start = selectedRange.lowerBound
+        
+        
+        var attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        switch sender{
+        case self.toolbar.strikeLineBtn:
+            attributedString = strikeWillCustom(attributedString: attributedString, start: start, selectedRange: selectedRange)
+        case self.toolbar.underLineBtn:
+            attributedString = underLineWillCustom(attributedString: attributedString, start: start, selectedRange: selectedRange)
+        case self.toolbar.boldBtn:
+            attributedString = boldWillCustom(attributedString: attributedString, start: start, selectedRange: selectedRange)
+        default:
+            return
+        }
+        
+        textView.attributedText = attributedString
+        
+        moveCursorEndOfSelection(selectedTextRange)
+        
+    }
+    
+    @objc
+    func strikeWillCustom(attributedString: NSMutableAttributedString, start: Int, selectedRange: NSRange) -> NSMutableAttributedString{
 
         let attribute = textView.attributedText.attribute(.strikethroughStyle,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange)
-        
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
         if let value = attribute as? Int{
             if(value == 1){
@@ -106,24 +140,16 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
-        
-        moveCursorEndOfSelection(selectedTextRange)
+        return attributedString
+    
     }
     
     @objc
-    func underLineBtnDidClicked(){
-        
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-        
-        let start = selectedRange.lowerBound
+    func underLineWillCustom(attributedString: NSMutableAttributedString, start: Int, selectedRange: NSRange) -> NSMutableAttributedString{
 
         let attribute = textView.attributedText.attribute(.underlineStyle,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange)
-        
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
 
         if let value = attribute as? Int{
             if(value == 1){
@@ -135,25 +161,12 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
-        
-        moveCursorEndOfSelection(selectedTextRange)
+        return attributedString
     }
     
     @objc
-    func boldBtnDidClicked(){
+    func boldWillCustom(attributedString: NSMutableAttributedString, start: Int, selectedRange: NSRange) -> NSMutableAttributedString{
         
-        /*
-         무조건 첫 번째 글자 기준으로 적용시키기
-         첫 번째 글자 -> 볼드 -> 볼드 취소
-         첫 번째 글자 -> 기본 -> 볼드
-         */
-        
-        let selectedRange = self.textView.selectedRange
-        let selectedTextRange = self.textView.selectedTextRange
-        
-        let start = selectedRange.lowerBound
-
         let attribute = textView.attributedText.attribute(.font,
                                                           at: start,
                                                           effectiveRange: &self.textView.selectedRange) as? UIFont
@@ -164,24 +177,20 @@ extension DiaryViewController{
             fontStyle = fontName == currentFont.normal ? .bold : .normal
         }
         
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-        
         attributedString.addAttribute(.font,
                                       value: currentFont.returnFont(fontStyle),
                                       range: selectedRange)
         
-        textView.attributedText = attributedString
-        
-        moveCursorEndOfSelection(selectedTextRange)
+        return attributedString
     }
     
     //Attribute 추가 후 커서 마지막 드래그 위치로 이동
     func moveCursorEndOfSelection(_ selectedTextRange: UITextRange?){
-        // only if there is a currently selected range
+
         if let selectedRange = selectedTextRange {
-            // and only if the new position is valid
+
             if let newPosition = textView.position(from: selectedRange.end, offset: 0) {
-                // set the new position
+
                 textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
             }
         }

@@ -43,6 +43,8 @@ extension SummaryBottomViewController{
             $0.dataSource = self
             $0.showsHorizontalScrollIndicator = false
             $0.isUserInteractionEnabled = true
+            $0.contentInset = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
+            
             $0.register(TodoCategoryCell.self, forCellWithReuseIdentifier: TodoCategoryCell.cellIdentifier)
         }
         
@@ -89,7 +91,8 @@ extension SummaryBottomViewController{
         collectionView.snp.makeConstraints{ make in
             make.height.equalTo(26)
             make.top.equalTo(todoTf.snp.bottom).offset(14)
-            make.leading.equalTo(todoEasySettingView).offset(32)
+            make.leading.equalTo(todoEasySettingView)
+//                .offset(32)
             make.trailing.equalTo(todoEasySettingView.snp.trailing)
             make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-16)
         }
