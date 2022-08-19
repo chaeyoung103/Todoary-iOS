@@ -68,6 +68,8 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     //선택된 카테고리
     var selectCategory: Int = -1
     
+    var selectCategoryCell: TodoCategoryCell!
+    
     //투두간단설정 프로퍼티
     var todoEasyTitle : String!
     
@@ -511,6 +513,8 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
 
 extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    //TODO: 컬렉션 뷰 셀 selectCategory에 셀 저장
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryData.isEmpty ? 0 : categoryData.count
     }
@@ -524,6 +528,7 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
         if selectCategory == categoryData[indexPath.row].id {
+            selectCategoryCell = cell
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
             cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
@@ -543,19 +548,18 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
             fatalError()
         }
         selectCategory = categoryData[indexPath.row].id
+        selectCategoryCell = cell
         cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
         cell.categoryLabel.isUserInteractionEnabled = true
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at:indexPath)
-                as? TodoCategoryCell else{ fatalError() }
         
-        cell.categoryLabel.backgroundColor = .white
-        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
-        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
-        cell.categoryLabel.isUserInteractionEnabled = true
+        selectCategoryCell.categoryLabel.backgroundColor = .white
+        selectCategoryCell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+        selectCategoryCell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        selectCategoryCell.categoryLabel.isUserInteractionEnabled = true
         
     }
     
