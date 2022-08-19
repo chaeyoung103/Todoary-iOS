@@ -44,9 +44,9 @@ extension AdTextViewController {
         
     //약관내용
         contentScrollView.snp.makeConstraints{ make in
-            make.width.equalTo(318)
-            make.height.equalTo(651)
-            make.top.equalToSuperview().offset(104)
+            make.top.equalTo(navigationView.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(36)
+            make.bottom.equalToSuperview().offset(-79)
             make.centerX.equalToSuperview()
         }
         

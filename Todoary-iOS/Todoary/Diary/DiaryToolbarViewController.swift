@@ -24,6 +24,7 @@ class DiaryToolbar : UIView {
     
     let cameraBtn = UIButton().then{
         $0.setImage(UIImage(named: "camera"), for: .normal)
+        $0.backgroundColor = .red
     }
     
     let textBtn = UIButton().then{
@@ -44,6 +45,11 @@ class DiaryToolbar : UIView {
     
     let exitBtn = UIButton().then{
         $0.setImage(UIImage(named: "x"), for: .normal)
+    }
+    
+    let firstStackView = UIStackView().then{
+        $0.axis = .horizontal
+        $0.distribution = .equalCentering
     }
     
     let firstToolbar = UIView().then{

@@ -1131,8 +1131,8 @@
 				E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */,
 				E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */,
 				E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */,
-				E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */,
 				E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */,
+				E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */,
 			);
 			path = AgreementText;
 			sourceTree = "<group>";
