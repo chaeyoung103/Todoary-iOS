@@ -106,6 +106,7 @@ PODS:
   - PromisesObjC (2.1.1)
   - skpsmtpmessage (0.0.1)
   - SnapKit (5.6.0)
+  - StickerView (1.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
@@ -115,6 +116,7 @@ DEPENDENCIES:
   - IRSticker-swift
   - skpsmtpmessage
   - SnapKit (~> 5.6.0)
+  - StickerView
   - Then
 
 SPEC REPOS:
@@ -135,6 +137,7 @@ SPEC REPOS:
     - PromisesObjC
     - skpsmtpmessage
     - SnapKit
+    - StickerView
     - Then
 
 SPEC CHECKSUMS:
@@ -154,8 +157,9 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   skpsmtpmessage: f6e913380c784dd8d4a9f83c8790a302445a5e05
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  StickerView: c486fbc722bddaff4f521afd9028ea4dc3e25a62
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 96926bfe0e16f3871a7df4ffda6ba46ad7378fc9
+PODFILE CHECKSUM: 496a879348aa74328a1a7fbc9fd68bfbd56ad80e
 
 COCOAPODS: 1.11.3
