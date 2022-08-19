@@ -16,6 +16,7 @@ extension DiaryViewController {
         self.view.addSubview(contentView)
         
         self.view.addSubview(navigationView)
+        self.view.addSubview(registerBtn)
         self.view.addSubview(todaysDate)
         
         self.view.addSubview(diaryLine)
@@ -39,6 +40,13 @@ extension DiaryViewController {
             make.width.equalToSuperview()
         }
         
+        registerBtn.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(58)
+            make.trailing.equalToSuperview().offset(-21)
+            make.width.equalTo(35)
+            make.height.equalTo(22)
+        }
+        
         todaysDate.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(101)
             make.leading.equalToSuperview().offset(32)
@@ -57,15 +65,15 @@ extension DiaryViewController {
         
         diaryTitle.snp.makeConstraints{ make in
             make.top.equalTo(diaryLine.snp.bottom).offset(25)
-            make.leading.equalToSuperview().offset(31)
+            make.leading.equalToSuperview().offset(29)
         }
         
         //diaryText
         textView.snp.makeConstraints{ make in
             make.top.equalTo(diaryTitle.snp.bottom).offset(17)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(328)
-            make.height.equalTo(456)
+            make.leading.equalToSuperview().offset(29)
+            make.trailing.equalToSuperview().offset(-29)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     

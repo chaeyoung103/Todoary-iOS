@@ -39,8 +39,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     var diaryData: GetDiaryInfo?
     
     var pickDate: ConvertDate?
-
-    var animator: UIDynamicAnimator?
     
     var _selectedStickerView:StickerView?
         var selectedStickerView:StickerView? {
@@ -64,6 +62,15 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         }
     
     //MARK: - UIComponenets
+    
+    let registerBtn = UIButton().then{
+        $0.setTitle("저장", for: .normal)
+        $0.addLetterSpacing(spacing: 0.36)
+        $0.backgroundColor = .white
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
+        $0.addTarget(self, action: #selector(registerBtnDidTap), for: .touchUpInside)
+    }
 
 
     var toolbar = DiaryToolbar().then{
@@ -101,7 +108,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         $0.placeholder = "오늘의 일기 제목"
         $0.font = UIFont.nbFont(ofSize: 18, weight: .bold)
         $0.setPlaceholderColor(.silver_225)
-        $0.addLeftPadding(padding: 0)
+        $0.addLeftPadding(padding: 5.3)
         $0.addLetterSpacing(spacing: 0.32)
         $0.borderStyle = .none
     }
@@ -146,8 +153,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         configure()
         setupCollectionView()
         
-        animator = UIDynamicAnimator.init(referenceView: view)
-        
         setTextToolBarAction()
         setHighlightToolBarAction()
             
@@ -184,6 +189,18 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         textView.inputView = nil
         textView.endEditing(true)
         textView.reloadInputViews()
+    }
+    
+    @objc
+    func registerBtnDidTap(){
+        
+        let text = NSAttributedString(attributedString: textView.attributedText)
+
+        let input = DiaryInput(title: diaryTitle.text!,
+//                               content: text.attributedString2Html!) //TODO: - API 테스트
+                               content: textView.text) //임시 테스트용
+        
+        DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
     }
     
     
@@ -231,53 +248,107 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
             let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
             testImage.image = DiaryViewController.stickerData[indexPath.row]
             testImage.contentMode = .scaleAspectFit
-            let stickerView3 = StickerView.init(contentView: testImage)
-            stickerView3.center = CGPoint.init(x: 150, y: 150)
-            stickerView3.delegate = self
-            stickerView3.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
-            stickerView3.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
-            stickerView3.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
-            stickerView3.showEditingHandlers = false
-            stickerView3.layer.borderColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1).cgColor
-            stickerView3.tag = 999
-            self.textView.addSubview(stickerView3)
-            self.selectedStickerView = stickerView3
+            let stickerView = StickerView.init(contentView: testImage)
+            stickerView.center = CGPoint.init(x: 150, y: 150)
+            stickerView.delegate = self
+            stickerView.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
+            stickerView.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+            stickerView.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
+            stickerView.showEditingHandlers = false
+            stickerView.layer.borderColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1).cgColor
+            stickerView.tag = 1
+            self.textView.addSubview(stickerView)
+            self.selectedStickerView = stickerView
         }
     }
     
     // MARK: - StickerViewDelegate
     
     func stickerViewDidTap(_ stickerView: StickerView) {
-        self.selectedStickerView = stickerView
+        if stickerView.showEditingHandlers == false {
+            self.selectedStickerView = stickerView
+            stickerView.showEditingHandlers = true
+        }else {
+            stickerView.showEditingHandlers = false
+        }
     }
     
     func stickerViewDidBeginMoving(_ stickerView: StickerView) {
+        if stickerView.frame.origin.x <= 0 {
+            stickerView.frame.origin.x = 0
+        }
+        if stickerView.frame.origin.x >= 210{
+            stickerView.frame.origin.x = 210
+        }
+        if stickerView.frame.origin.y <= 0 {
+            stickerView.frame.origin.y = 0
+        }
         self.selectedStickerView = stickerView
     }
     
     /// Other delegate methods which we not used currently but choose method according to your event and requirements.
     func stickerViewDidChangeMoving(_ stickerView: StickerView) {
-        
+        if stickerView.frame.origin.x <= 0 {
+            stickerView.frame.origin.x = 0
+        }
+        if stickerView.frame.origin.x >= 210{
+            stickerView.frame.origin.x = 210
+        }
+        if stickerView.frame.origin.y <= 0 {
+            stickerView.frame.origin.y = 0
+        }
     }
     
     func stickerViewDidEndMoving(_ stickerView: StickerView) {
-        
+        if stickerView.frame.origin.x <= 0 {
+            stickerView.frame.origin.x = 0
+        }
+        if stickerView.frame.origin.x >= 210{
+            stickerView.frame.origin.x = 210
+        }
+        if stickerView.frame.origin.y <= 0 {
+            stickerView.frame.origin.y = 0
+        }
     }
     
     func stickerViewDidBeginRotating(_ stickerView: StickerView) {
-        
+//        if stickerView.frame.origin.x <= 0 {
+//            stickerView.frame.origin.x = 0
+//        }
+//        if stickerView.frame.origin.x >= 210{
+//            stickerView.frame.origin.x = 210
+//        }
+//        if stickerView.frame.origin.y <= 0 {
+//            stickerView.frame.origin.y = 0
+//        }
     }
     
     func stickerViewDidChangeRotating(_ stickerView: StickerView) {
-        
+//        if stickerView.frame.origin.x <= 0 {
+//            stickerView.frame.origin.x = 0
+//        }
+//        if stickerView.frame.origin.x >= 210{
+//            stickerView.frame.origin.x = 210
+//        }
+//        if stickerView.frame.origin.y <= 0 {
+//            stickerView.frame.origin.y = 0
+//        }
     }
     
     func stickerViewDidEndRotating(_ stickerView: StickerView) {
-        
+//        if stickerView.frame.origin.x <= 0 {
+//            stickerView.frame.origin.x = 0
+//        }
+//        if stickerView.frame.origin.x >= 210{
+//            stickerView.frame.origin.x = 210
+//        }
+//        if stickerView.frame.origin.y <= 0 {
+//            stickerView.frame.origin.y = 0
+//        }
     }
     
     func stickerViewDidClose(_ stickerView: StickerView) {
-        
+        print(stickerView.frame.origin.y)
     }
     
 }
