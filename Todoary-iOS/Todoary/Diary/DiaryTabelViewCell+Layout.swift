@@ -43,6 +43,7 @@ extension DiaryTabelViewCell{
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalTo(checkBox)
+            make.trailing.equalToSuperview().offset(-160)
         }
         
         timeLabel.snp.makeConstraints{ make in
