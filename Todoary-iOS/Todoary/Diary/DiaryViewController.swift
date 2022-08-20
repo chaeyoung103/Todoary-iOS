@@ -69,7 +69,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
-        $0.addTarget(self, action: #selector(registerBtnDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
     }
 
 
@@ -100,8 +100,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         $0.addLetterSpacing(spacing: 0.32)
         $0.textColor = .black
     }
-    
-    var sendApiDate: String! //나중에 지우기
     
     //다이어리 제목
     let diaryTitle = UITextField().then{
@@ -192,19 +190,27 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     }
     
     @objc
-    func registerBtnDidTap(){
-
-        let text = NSAttributedString(attributedString: textView.attributedText)
-        
-        print(text.attributedString2Html!)
-
-        let input = DiaryInput(title: diaryTitle.text!,
-                               content: text.attributedString2Html!) //TODO: - API 테스트
-//                               content: textView.text) //임시 테스트용
-        
-        DiaryDataManager().posts(viewController: self, createdDate: self.sendApiDate, parameter: input)
-    }
+    func registerBtnDidClicked(){
     
+        //TODO: 타이틀, 내용 글자 수 제한 걸기
+        
+        if(textView.text == textViewPlaceHolder || diaryTitle.text!.isEmpty){
+            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
+            
+            let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            
+            alert.addAction(okBtn)
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let text = NSAttributedString(attributedString: textView.attributedText)
+            
+            let input = DiaryInput(title: diaryTitle.text!,
+                                   content: text.attributedString2Html!)
+            
+            DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
+        }
+    }
     
     
     //MARK: - Helpers
