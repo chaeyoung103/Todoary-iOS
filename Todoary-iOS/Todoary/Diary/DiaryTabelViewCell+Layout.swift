@@ -43,7 +43,7 @@ extension DiaryTabelViewCell{
         titleLabel.snp.makeConstraints{ make in
             make.leading.equalTo(checkBox.snp.trailing).offset(13)
             make.centerY.equalTo(checkBox)
-            make.trailing.equalToSuperview().offset(-160)
+            make.trailing.equalToSuperview().offset(-145)
         }
         
         timeLabel.snp.makeConstraints{ make in
@@ -54,7 +54,7 @@ extension DiaryTabelViewCell{
         }
         
         categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+//            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
             make.centerY.equalToSuperview()
             make.trailing.equalTo(timeLabel.snp.leading).offset(-7)

@@ -363,6 +363,10 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
             cell.categoryButton.setTitle(todoDataList[indexPath.row].categoryTitle, for: .normal)
             cell.categoryButton.layer.borderColor = UIColor.categoryColor[todoDataList[indexPath.row].color].cgColor
             cell.categoryButton.setTitleColor(UIColor.categoryColor[todoDataList[indexPath.row].color], for: .normal)
+            cell.categoryButton.snp.makeConstraints{ make in
+                let offset = todoDataList[indexPath.row].categoryTitle.count == 5 ? 12 : 24
+                make.width.equalTo(cell.categoryButton.titleLabel!).offset(offset)
+            }
         }
         
         
