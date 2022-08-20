@@ -120,6 +120,8 @@ class CategoryViewController: UIViewController {
     
     func initTodoCellConstraint(){
         
+        isEditingMode = false
+        
         for i in 0..<tableView.numberOfRows(inSection: 0)-1{
             guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
             cell.contentView.snp.updateConstraints{ make in
@@ -301,7 +303,7 @@ extension CategoryViewController{
 //            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
 //        }
         
-        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
+        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id
 
         TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }
