@@ -362,7 +362,7 @@ extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         
         UIView.animate(withDuration: 0.3){
-            self.view.window?.frame.origin.y -= 80
+            self.view.window?.frame.origin.y -= 130
         }
         
         return true

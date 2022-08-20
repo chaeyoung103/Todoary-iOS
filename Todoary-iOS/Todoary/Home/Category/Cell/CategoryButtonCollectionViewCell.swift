@@ -76,6 +76,8 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         categoryBtn.setTitleColor(.white, for: .selected)
         
         buttonIsNotSelected()
+        
+        print("버튼 글자수", categoryBtn.title(for: .normal), categoryBtn.title(for: .normal)!.count)
     }
     
     func buttonIsSelected(){
