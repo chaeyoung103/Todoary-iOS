@@ -292,34 +292,31 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     // GestureRecognizer 세팅 작업
     private func setupGestureRecognizer() {
-        // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
-        let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-        dimmedBackView.addGestureRecognizer(dimmedTap)
-        dimmedBackView.isUserInteractionEnabled = true
         
         // 스와이프 했을 때, 바텀시트를 내리는 swipeGesture
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
         swipeGesture.direction = .down
         view.addGestureRecognizer(swipeGesture)
     }
-    
-    
-    // UITapGestureRecognizer 연결 함수 부분
-    @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
-        
-        if(isKeyboardOpen){
-            return
-        }else{
-            hideBottomSheetAndGoBack()
-        }
-    }
+
     
     // UISwipeGestureRecognizer 연결 함수 부분
     @objc func panGesture(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
             switch recognizer.direction {
             case .down:
-                hideBottomSheetAndGoBack()
+                //keyboard 올라와 있을 때, bottomsheet는 종료시키지 않고 키보드만 내리기
+                if(isKeyboardOpen){
+                    self.view.endEditing(true)
+
+                    UIView.animate(withDuration: 0.3){
+                        self.view.window?.frame.origin.y = 0
+                        self.isKeyboardOpen = false
+                    }
+                }else{
+                    // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
+                    hideBottomSheetAndGoBack()
+                }
             default:
                 break
             }
@@ -364,12 +361,20 @@ extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        self.view.endEditing(true)
-        
-        UIView.animate(withDuration: 0.3){
-            self.view.window?.frame.origin.y = 0
+        //keyboard 올라와 있을 때, bottomsheet는 종료시키지 않고 키보드만 내리기
+        if(isKeyboardOpen){
+            self.view.endEditing(true)
+
+            UIView.animate(withDuration: 0.3){
+                self.view.window?.frame.origin.y = 0
+                self.isKeyboardOpen = false
+            }
+        }else{
+            // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
+            hideBottomSheetAndGoBack()
         }
     }
+
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         
