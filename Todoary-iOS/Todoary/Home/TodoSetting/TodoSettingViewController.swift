@@ -206,8 +206,30 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     //완료버튼 누르기 -> 투두생성api 호출 및 성공 시 홈화면 이동
     @objc func todocompleteBtnDidTap() {
         
+        //TODO: 투두 글자수 20자 이하 제한 걸기
         if todoSettingData.todoId != -1 {
-            if todo.text != ""{
+            
+            if(todo.text!.isEmpty){
+                
+                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "확인", style: .default)
+                
+                alert.addAction(ok)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }else if(todo.text!.count > 20){
+                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "확인", style: .default)
+                
+                alert.addAction(ok)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+
                 todoSettingData.title = todo.text!
                 let todoModifyInput = TodoModifyInput(title: todoSettingData.title,
                                                       targetDate: todoSettingData.targetDate,
@@ -216,21 +238,33 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                                       categoryId: selectCategory)
                 
                 TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
-            }else{
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
             }
+
+            
         }else {
-            //카테고리 선택 여부 코드 -> 기본 값 적용시킬 거여서 제거해야 됨 -> 제거 완료
-            todoSettingData.title = todo.text!
-            if todoSettingData.title == ""{
+            
+            if(todo.text!.isEmpty){
+                
                 let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                
                 let ok = UIAlertAction(title: "확인", style: .default)
+                
                 alert.addAction(ok)
+                
                 self.present(alert, animated: true, completion: nil)
-            }else {
+                
+            }else if(todo.text!.count > 20){
+                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "확인", style: .default)
+                
+                alert.addAction(ok)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }else{
+                todoSettingData.title = todo.text!
+                
                 let todoSettingInput = TodoSettingInput(title: todoSettingData.title,
                                                         targetDate: todoSettingData.targetDate,
                                                         isAlarmEnabled: todoSettingData.isAlarmEnabled,
