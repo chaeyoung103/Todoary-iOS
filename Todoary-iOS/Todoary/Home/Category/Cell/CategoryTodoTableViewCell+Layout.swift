@@ -53,10 +53,11 @@ extension CategoryTodoTableViewCell{
         
         todoTitle.snp.makeConstraints{ make in
             make.width.equalTo(177)
-            make.top.equalTo(categoryLabel.snp.bottom).offset(14)
+            make.top.equalTo(checkBox).offset(-2)
             make.bottom.equalToSuperview().offset(-19)
             make.leading.equalTo(checkBox.snp.trailing).offset(9)
         }
+        
         
         timeStack.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-18)

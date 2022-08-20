@@ -62,19 +62,17 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //MARK: - Properties
     
-    //카테고리 정보 받아오는 struct
-    var categoryData : [GetCategoryResult]! = []
+    var categoryData : [GetCategoryResult]! = [] //카테고리 정보 받아오는 struct
     
     //선택된 카테고리
     var selectCategory: Int = -1
+    var selectCategoryCell: TodoCategoryCell!
     
-    //투두간단설정 프로퍼티
-    var todoEasyTitle : String!
+    var todoEasyTitle : String! //투두간단설정 프로퍼티
     
     var todoDataList : [GetTodoInfo]! = []
     
-    //for 다이어리 작성했을 때 view 구성
-    var isDiaryExist = false
+    var isDiaryExist = false //for 다이어리 작성했을 때 view 구성
     
     var diaryData: GetDiaryInfo?
     
@@ -102,12 +100,20 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc
     func addButtonDidClicked(){
-        HomeViewController.dismissBottomSheet()
+        
+        if(isDiaryExist) {
+            willMoveDiaryViewController()
+            return
+        }
 
+        //TODO: - 아래 // 부분 이후 삭제하기
+        HomeViewController.dismissBottomSheet()
+        
         let vc = DiaryViewController()
-        vc.todaysDate.text = todoDate.dateUsedDiary
-        vc.sendApiDate = todoDate.dateSendServer
+        vc.todaysDate.text = todoDate.dateUsedDiary  //
+        vc.sendApiDate = todoDate.dateSendServer //
         vc.todoDataList = self.todoDataList
+        vc.pickDate = todoDate
 
         homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -177,11 +183,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
-    @objc func diaryCellDidClicked(){
+    @objc func willMoveDiaryViewController(){
+        
         let vc = DiaryViewController()
-        vc.diaryTitle.text = diaryData?.title
-        vc.textView.text = diaryData?.content //임시 세팅
-        vc.todaysDate.text = diaryData?.created_at
+        
+        vc.pickDate = HomeViewController.bottomSheetVC.todoDate
+        vc.setUpDiaryData(diaryData!)
         
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
@@ -355,7 +362,6 @@ extension SummaryBottomViewController{
     }
     
     func checkGetDiaryApiResultCode(_ result: GetDiaryModel){
-        print("여기 옴?")
         switch result.code{
         case 1000:
             isDiaryExist = true
@@ -411,7 +417,12 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         case rowCount - 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath) as? DiaryTitleCell else{ fatalError() }
-            cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            if(isDiaryExist){
+                cell.deleteBtn.isHidden = false
+                cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            }else{
+                cell.deleteBtn.isHidden = true
+            }
             return cell
         case rowCount - 1:
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
@@ -419,16 +430,14 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             if(isDiaryExist){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
                 
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(diaryCellDidClicked))
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveDiaryViewController))
                 cell.addGestureRecognizer(tapGesture)
                 
-                cell.diaryTitle.text = diaryData?.title
-                
-                //TODO: - Diary 데이터 서버 수정 시 주석 풀기
-//                cell.diaryTextView.attributedText = diaryData?.contentAttributedString ?? NSAttributedString(string: "")
+                if let diaryData = self.diaryData {
+                    cell.setUpDataBinding(diaryData)
+                }
                 
                 return cell
-                
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: DiaryBannerCell.cellIdentifier, for: indexPath)
                 return cell
@@ -508,6 +517,8 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
 
 extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    //TODO: 컬렉션 뷰 셀 selectCategory에 셀 저장
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryData.isEmpty ? 0 : categoryData.count
     }
@@ -521,6 +532,7 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
         if selectCategory == categoryData[indexPath.row].id {
+            selectCategoryCell = cell
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
             cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
@@ -540,19 +552,18 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
             fatalError()
         }
         selectCategory = categoryData[indexPath.row].id
+        selectCategoryCell = cell
         cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
         cell.categoryLabel.isUserInteractionEnabled = true
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at:indexPath)
-                as? TodoCategoryCell else{ fatalError() }
         
-        cell.categoryLabel.backgroundColor = .white
-        cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
-        cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
-        cell.categoryLabel.isUserInteractionEnabled = true
+        selectCategoryCell.categoryLabel.backgroundColor = .white
+        selectCategoryCell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
+        selectCategoryCell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
+        selectCategoryCell.categoryLabel.isUserInteractionEnabled = true
         
     }
     
