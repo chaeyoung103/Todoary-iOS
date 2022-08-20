@@ -193,8 +193,8 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     func registerBtnDidClicked(){
         
         if(textView.text == textViewPlaceHolder || diaryTitle.text!.isEmpty){
-            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
             
+            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
             let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             
             alert.addAction(okBtn)

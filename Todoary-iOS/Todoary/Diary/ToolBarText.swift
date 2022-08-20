@@ -11,7 +11,6 @@ import UIKit
 extension DiaryViewController{
     
     func setUpDiaryData(_ data: GetDiaryInfo){
-        
         self.diaryData = data
         self.diaryTitle.text = diaryData?.title
         self.textView.attributedText = diaryData?.content15AttributedString
