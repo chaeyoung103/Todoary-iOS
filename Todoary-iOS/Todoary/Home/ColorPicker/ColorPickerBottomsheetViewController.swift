@@ -99,8 +99,9 @@ class ColorPickerBottomsheetViewController : UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if (currentData != nil){
-            ColorPickerBottomsheetCollectionView.selectItem(at: [0,currentData!.color], animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
+        
+        if let currentData = currentData {
+            ColorPickerBottomsheetCollectionView.selectItem(at: [0,currentData.color], animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
         }
     }
     
