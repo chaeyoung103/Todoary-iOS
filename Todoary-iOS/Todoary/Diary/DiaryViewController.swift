@@ -191,8 +191,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     @objc
     func registerBtnDidClicked(){
-    
-        //TODO: 타이틀, 내용 글자 수 제한 걸기
         
         if(textView.text == textViewPlaceHolder || diaryTitle.text!.isEmpty){
             let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)

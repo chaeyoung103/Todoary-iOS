@@ -33,7 +33,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(addButtonDidClicked), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(willMoveDiaryViewController), for: .touchUpInside)
     }
     
     let todoEasySettingView = UIView().then{
@@ -97,24 +97,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     //MARK: - Action
-    
-    @objc
-    func addButtonDidClicked(){
-        
-        if(isDiaryExist) {
-            willMoveDiaryViewController()
-            return
-        }
-        
-        HomeViewController.dismissBottomSheet()
-        
-        let vc = DiaryViewController()
-        vc.todaysDate.text = todoDate.dateUsedDiary
-        vc.todoDataList = self.todoDataList
-        vc.pickDate = todoDate
-
-        homeNavigaiton.pushViewController(vc, animated: true)
-    }
     
     @objc
     func cellWillMoveToOriginalPosition(){
@@ -186,7 +168,12 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         let vc = DiaryViewController()
         
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
-        vc.setUpDiaryData(diaryData!)
+        vc.todoDataList = self.todoDataList
+        vc.todaysDate.text = vc.pickDate?.dateUsedDiary
+        
+        if(isDiaryExist){
+            vc.setUpDiaryData(diaryData!)
+        }
         
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)

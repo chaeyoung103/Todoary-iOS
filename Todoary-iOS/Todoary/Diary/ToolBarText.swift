@@ -16,8 +16,6 @@ extension DiaryViewController{
         self.diaryTitle.text = diaryData?.title
         self.textView.attributedText = diaryData?.content15AttributedString
         self.textView.setTextWithLineHeight(spaing: 25)
-        self.todaysDate.text = pickDate?.dateUsedDiary//
-        
     }
     
     func setTextToolBarAction(){
