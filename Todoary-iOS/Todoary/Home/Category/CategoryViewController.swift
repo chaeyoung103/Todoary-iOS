@@ -200,7 +200,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
+        if(!todoData.isEmpty && indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
             let vc = TodoSettingViewController()
             vc.todoSettingData = todoData[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
