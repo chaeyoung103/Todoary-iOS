@@ -105,13 +105,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             willMoveDiaryViewController()
             return
         }
-
-        //TODO: - 아래 // 부분 이후 삭제하기
+        
         HomeViewController.dismissBottomSheet()
         
         let vc = DiaryViewController()
-        vc.todaysDate.text = todoDate.dateUsedDiary  //
-        vc.sendApiDate = todoDate.dateSendServer //
+        vc.todaysDate.text = todoDate.dateUsedDiary
         vc.todoDataList = self.todoDataList
         vc.pickDate = todoDate
 
