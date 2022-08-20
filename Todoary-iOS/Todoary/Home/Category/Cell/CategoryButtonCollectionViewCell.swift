@@ -28,7 +28,7 @@ class CategoryButtonCollectionViewCell: UICollectionViewCell {
         $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.addTarget(self, action: #selector(categoryButtonDidClicked(_:)), for: .touchUpInside)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 4, right:16)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 4, right: 0)
         $0.layer.cornerRadius = 26/2
     }
    

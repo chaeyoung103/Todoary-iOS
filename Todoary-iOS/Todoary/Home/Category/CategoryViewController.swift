@@ -255,18 +255,19 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if(indexPath.row != categories.count){
-            let categoryTitle = categories[indexPath.row].title
             
-            let tmpLabel = UILabel()
-            tmpLabel.text = categoryTitle
-            
-            if(categoryTitle.count > 2){
-                tmpLabel.then{
-                    $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
-                    $0.addLetterSpacing(spacing: 0.28)
-                }
+            switch categories[indexPath.row].title.count {
+            case 2:
+                return CGSize(width: 57, height: 26)
+            case 3:
+                return CGSize(width: 69, height: 26)
+            case 4:
+                return CGSize(width: 82, height: 26)
+            case 5:
+                return CGSize(width: 92, height: 26)
+            default:
+                return CGSize(width: 40, height: 26)
             }
-            return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
         }else{
             return CGSize(width: 50, height: 26)
         }

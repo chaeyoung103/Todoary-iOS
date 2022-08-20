@@ -194,6 +194,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
         
         let color = select[0].row
         
+        //TODO: - Code Refactor
+        
         if(currentData != nil){ //카테고리 수정 API 호출
             let parameter = CategoryModifyInput(title: categoryText, color: color)
             
