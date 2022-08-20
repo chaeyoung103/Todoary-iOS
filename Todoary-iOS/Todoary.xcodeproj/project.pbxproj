@@ -626,8 +626,8 @@
 			children = (
 				57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */,
 				57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */,
-				573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */,
 				57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */,
+				573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */,
 				57468A69289BCDE800056691 /* NoTodoTableViewCell.swift */,
 			);
 			path = Cell;

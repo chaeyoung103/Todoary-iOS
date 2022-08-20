@@ -83,7 +83,7 @@ class NoTodoTableViewCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(35)
+            make.top.equalTo(checkBox).offset(-3)
             make.bottom.equalToSuperview().offset(-33)
             make.leading.equalTo(checkBox.snp.trailing).offset(9)
         }
