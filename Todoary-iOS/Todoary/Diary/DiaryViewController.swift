@@ -367,6 +367,9 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
                 let offset = todoDataList[indexPath.row].categoryTitle.count == 5 ? 12 : 24
                 make.width.equalTo(cell.categoryButton.titleLabel!).offset(offset)
             }
+            cell.titleLabel.snp.makeConstraints{ make in
+                make.trailing.equalToSuperview().offset(-145)
+            }
         }
         
         
