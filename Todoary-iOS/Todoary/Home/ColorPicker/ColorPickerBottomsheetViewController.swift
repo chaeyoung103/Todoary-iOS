@@ -14,7 +14,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
     // MARK: - Properties
     var currentData : GetCategoryResult?
     
-    var currentCategoryCount: Int?
+    var currentCategoryCount: Int? //현재 1개의 카테고리만 존재할 경우 삭제 금지시키기 위한 프로퍼ㅣ
     
     var isKeyboardOpen = false
 

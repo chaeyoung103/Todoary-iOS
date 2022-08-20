@@ -64,8 +64,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var categoryData : [GetCategoryResult]! = [] //카테고리 정보 받아오는 struct
     
-    //선택된 카테고리
-    var selectCategory: Int = -1
+    var selectCategory: Int = -1 //선택된 카테고리
     var selectCategoryCell: TodoCategoryCell!
     
     var todoEasyTitle : String! //투두간단설정 프로퍼티
@@ -241,8 +240,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         let toast = ToastMessageView(message: type.rawValue)
         
-        print(type.rawValue)
-        
         self.view.addSubview(toast)
         
         toast.snp.makeConstraints{ make in
@@ -252,10 +249,10 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         }
         
         UIView.animate(withDuration: 1.0, delay: 1.8, options: .curveEaseOut, animations: {
-              toast.alpha = 0.0
-          }, completion: {(isCompleted) in
-              toast.removeFromSuperview()
-          })
+            toast.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toast.removeFromSuperview()
+        })
          
     }
 }
@@ -263,7 +260,9 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
 extension SummaryBottomViewController: MoveViewController{
     
     func moveToViewController() {
+        
         HomeViewController.dismissBottomSheet()
+        
         let vc = TodoSettingViewController()
         vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
         vc.todoDate = todoDate
@@ -282,7 +281,7 @@ extension SummaryBottomViewController{
             todoDataList = result.result
             dataArraySortByPin()
             tableView.reloadData()
-            todoTf.text = ""
+            todoTf.text = "" //빠른생성 이후 텍스트 필드 초기화
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -294,7 +293,7 @@ extension SummaryBottomViewController{
     func checkSendPinApiResultCode(_ code: Int, _ indexPath: IndexPath){
         switch code{
         case 1000:
-            print("성공")
+            print("핀 고정 성공")
             //pin 고정 또는 pin 고정 아니며 핀 고정 개수 초과하지 않은 케이스
             var willChangeData = todoDataList[indexPath.row-1]
             
@@ -410,10 +409,11 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             }
             return cell
         case rowCount - 1:
-            //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
             
+            //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
             if(isDiaryExist){
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath)
+                        as? DiaryCell else{ fatalError()}
                 
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveDiaryViewController))
                 cell.addGestureRecognizer(tapGesture)
@@ -472,6 +472,7 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
             let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             
             alert.addAction(alertAction)
+            
             self.present(alert, animated: true, completion: nil)
             
             return

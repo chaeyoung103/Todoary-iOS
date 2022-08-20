@@ -92,7 +92,6 @@ extension SummaryBottomViewController{
             make.height.equalTo(26)
             make.top.equalTo(todoTf.snp.bottom).offset(14)
             make.leading.equalTo(todoEasySettingView)
-//                .offset(32)
             make.trailing.equalTo(todoEasySettingView.snp.trailing)
             make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-16)
         }
