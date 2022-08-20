@@ -15,6 +15,8 @@ class ColorPickerBottomsheetViewController : UIViewController {
     var currentData : GetCategoryResult?
     
     var currentCategoryCount: Int?
+    
+    var isKeyboardOpen = false
 
     //바텀시트 높이
     let bottomHeight : CGFloat = 342
@@ -304,7 +306,12 @@ class ColorPickerBottomsheetViewController : UIViewController {
     
     // UITapGestureRecognizer 연결 함수 부분
     @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
-        hideBottomSheetAndGoBack()
+        
+        if(isKeyboardOpen){
+            return
+        }else{
+            hideBottomSheetAndGoBack()
+        }
     }
     
     // UISwipeGestureRecognizer 연결 함수 부분
@@ -356,7 +363,9 @@ class ColorPickerBottomsheetViewController : UIViewController {
 extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         self.view.endEditing(true)
+        
         UIView.animate(withDuration: 0.3){
             self.view.window?.frame.origin.y = 0
         }
@@ -367,6 +376,8 @@ extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
         UIView.animate(withDuration: 0.3){
             self.view.window?.frame.origin.y -= 130
         }
+        
+        isKeyboardOpen = true
         
         return true
     }
