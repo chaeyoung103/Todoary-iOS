@@ -296,9 +296,10 @@ extension CategoryViewController{
             collectionView.reloadData()
         }
         
-        if(currentCategoryIndex != [0,0]){
-            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
-        }
+        //TODO: - 카테고리 생성할 때만 마지막에 포커스 가도록 수정
+//        if(currentCategoryIndex != [0,0]){
+//            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
+//        }
         
         let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
 

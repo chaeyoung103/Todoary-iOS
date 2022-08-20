@@ -21,13 +21,9 @@ extension DiaryViewController{
     }
     
     func setTextToolBarAction(){
-    
-        //임시 함수
-        self.toolbar.alignLeftBtn.addTarget(self, action: #selector(registerBtnDidClicked), for: .touchUpInside)
-        
         
         let alignBtnArray = [
-//            self.toolbar.alignLeftBtn,
+            self.toolbar.alignLeftBtn,
             self.toolbar.ailgnCenterBtn, self.toolbar.alignRightBtn]
         
         alignBtnArray.forEach{ each in
@@ -53,8 +49,8 @@ extension DiaryViewController{
         let alignment: NSTextAlignment!
         
         switch sender{
-//        case self.toolbar.alignLeftBtn:
-//            alignment = .left
+        case self.toolbar.alignLeftBtn:
+            alignment = .left
         case self.toolbar.ailgnCenterBtn:
             alignment = .center
         case self.toolbar.alignRightBtn:
@@ -204,6 +200,7 @@ extension DiaryViewController{
         }
     }
     
+    /*
     @objc
     func registerBtnDidClicked(){
         
@@ -214,6 +211,7 @@ extension DiaryViewController{
         
         DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
     }
+     */
 
 }
 
