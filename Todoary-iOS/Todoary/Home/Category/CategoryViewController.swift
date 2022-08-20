@@ -120,6 +120,8 @@ class CategoryViewController: UIViewController {
     
     func initTodoCellConstraint(){
         
+        isEditingMode = false
+        
         for i in 0..<tableView.numberOfRows(inSection: 0)-1{
             guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
             cell.contentView.snp.updateConstraints{ make in
@@ -198,7 +200,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
+        if(!todoData.isEmpty && indexPath.row != tableView.numberOfRows(inSection: 0) - 1){
             let vc = TodoSettingViewController()
             vc.todoSettingData = todoData[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
@@ -253,18 +255,19 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if(indexPath.row != categories.count){
-            let categoryTitle = categories[indexPath.row].title
             
-            let tmpLabel = UILabel()
-            tmpLabel.text = categoryTitle
-            
-            if(categoryTitle.count > 2){
-                tmpLabel.then{
-                    $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
-                    $0.addLetterSpacing(spacing: 0.28)
-                }
+            switch categories[indexPath.row].title.count {
+            case 2:
+                return CGSize(width: 57, height: 26)
+            case 3:
+                return CGSize(width: 69, height: 26)
+            case 4:
+                return CGSize(width: 82, height: 26)
+            case 5:
+                return CGSize(width: 92, height: 26)
+            default:
+                return CGSize(width: 40, height: 26)
             }
-            return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
         }else{
             return CGSize(width: 50, height: 26)
         }
@@ -296,11 +299,12 @@ extension CategoryViewController{
             collectionView.reloadData()
         }
         
-        if(currentCategoryIndex != [0,0]){
-            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
-        }
+        //TODO: - 카테고리 생성할 때만 마지막에 포커스 가도록 수정
+//        if(currentCategoryIndex != [0,0]){
+//            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
+//        }
         
-        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id //오류 부분
+        let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id
 
         TodoGetByCategoryDataManager().get(viewController: self, categoryId: categoryId)
     }

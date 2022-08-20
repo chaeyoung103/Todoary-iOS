@@ -100,11 +100,18 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc
     func addButtonDidClicked(){
-        HomeViewController.dismissBottomSheet()
+        
+        if(isDiaryExist) {
+            willMoveDiaryViewController()
+            return
+        }
 
+        //TODO: - 아래 // 부분 이후 삭제하기
+        HomeViewController.dismissBottomSheet()
+        
         let vc = DiaryViewController()
-        vc.todaysDate.text = todoDate.dateUsedDiary
-        vc.sendApiDate = todoDate.dateSendServer
+        vc.todaysDate.text = todoDate.dateUsedDiary  //
+        vc.sendApiDate = todoDate.dateSendServer //
         vc.todoDataList = self.todoDataList
         vc.pickDate = todoDate
 
@@ -176,7 +183,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
-    @objc func diaryCellDidClicked(){
+    @objc func willMoveDiaryViewController(){
         
         let vc = DiaryViewController()
         
@@ -355,7 +362,6 @@ extension SummaryBottomViewController{
     }
     
     func checkGetDiaryApiResultCode(_ result: GetDiaryModel){
-        print("여기 옴?")
         switch result.code{
         case 1000:
             isDiaryExist = true
@@ -411,7 +417,12 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         case rowCount - 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryTitleCell.cellIdentifier, for: indexPath) as? DiaryTitleCell else{ fatalError() }
-            cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            if(isDiaryExist){
+                cell.deleteBtn.isHidden = false
+                cell.deleteBtn.addTarget(self, action: #selector(diaryDeleteBtnDidClicked), for: .touchUpInside)
+            }else{
+                cell.deleteBtn.isHidden = true
+            }
             return cell
         case rowCount - 1:
             //선택한 날짜에 다이어리 존재 여부에 따른 table cell 구성 differ
@@ -419,7 +430,7 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
             if(isDiaryExist){
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.cellIdentifier, for: indexPath) as? DiaryCell else{ fatalError()}
                 
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(diaryCellDidClicked))
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(willMoveDiaryViewController))
                 cell.addGestureRecognizer(tapGesture)
                 
                 if let diaryData = self.diaryData {
