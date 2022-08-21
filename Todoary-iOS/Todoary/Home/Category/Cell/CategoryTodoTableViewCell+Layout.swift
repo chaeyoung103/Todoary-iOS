@@ -47,7 +47,8 @@ extension CategoryTodoTableViewCell{
         
         checkBox.snp.makeConstraints{ make in
             make.width.height.equalTo(22)
-            make.top.equalTo(categoryLabel.snp.bottom).offset(12)
+//            make.top.equalTo(categoryLabel.snp.bottom).offset(12)
+            make.top.equalToSuperview().offset(44.36)
             make.leading.equalToSuperview().offset(19)
         }
         

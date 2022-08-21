@@ -29,7 +29,7 @@ class TodoCheckboxDataManager{
             }
     }
     
-    func patch(cell: TodoListTableViewCell, parameter: TodoCheckboxInput){
+    func patch(indexPath: IndexPath, parameter: TodoCheckboxInput){
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
@@ -41,7 +41,7 @@ class TodoCheckboxDataManager{
             .validate().responseDecodable(of: ApiModel.self) { response in
                 switch response.result {
                 case .success(let result):
-                    cell.checkSendCheckboxApiResultCode(result.code)
+                    HomeViewController.bottomSheetVC.checkSendCheckboxApiResultCode(indexPath: indexPath, code: result.code)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

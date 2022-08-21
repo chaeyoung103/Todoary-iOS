@@ -30,6 +30,7 @@ class DiaryTabelViewCell: UITableViewCell {
     lazy var categoryButton = UIButton().then{
         $0.setTitle("운동", for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
+        $0.titleLabel?.textAlignment = .center
         $0.addLetterSpacing(spacing: 0.24)
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 21/2

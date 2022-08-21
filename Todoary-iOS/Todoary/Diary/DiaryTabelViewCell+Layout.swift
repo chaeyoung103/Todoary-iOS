@@ -53,7 +53,7 @@ extension DiaryTabelViewCell{
         }
         
         categoryButton.snp.makeConstraints{ make in
-            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
+//            make.width.equalTo(categoryButton.titleLabel!.snp.width).offset(24)
             make.height.equalTo(21)
             make.centerY.equalToSuperview()
             make.trailing.equalTo(timeLabel.snp.leading).offset(-7)
