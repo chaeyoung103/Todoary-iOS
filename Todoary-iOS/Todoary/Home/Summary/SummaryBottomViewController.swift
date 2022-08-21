@@ -274,6 +274,19 @@ extension SummaryBottomViewController: MoveViewController{
 //MARK: - API
 extension SummaryBottomViewController{
     
+    func checkSendCheckboxApiResultCode(indexPath: IndexPath, code: Int){
+        switch code{
+        case 1000:
+            print("체크박스 API 성공")
+            todoDataList[indexPath.row - 1].isChecked?.toggle()
+            tableView.reloadData()
+            return
+        default:
+            let alert = DataBaseErrorAlert()
+            homeNavigaiton.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func checkGetTodoApiResultCode(_ result: GetTodoModel){
 
         switch result.code{
