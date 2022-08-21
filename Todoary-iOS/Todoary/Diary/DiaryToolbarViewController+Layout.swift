@@ -32,56 +32,56 @@ extension DiaryToolbar {
             make.bottom.equalToSuperview()
         }
         
-        firstToolbar.addSubview(firstStackView)
+//        firstToolbar.addSubview(firstStackView)
+//
+//        firstToolbar.snp.makeConstraints{ make in
+//            make.width.equalToSuperview()
+//            make.height.equalToSuperview()
+//            make.centerX.equalToSuperview()
+//            make.centerY.equalToSuperview()
+//
+//        }
         
-        firstToolbar.snp.makeConstraints{ make in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            
-        }
-        
-        firstStackView.addArrangedSubview(cameraBtn)
-        firstStackView.addArrangedSubview(textBtn)
-        firstStackView.addArrangedSubview(stickerBtn)
-        firstStackView.addArrangedSubview(highlightBtn)
-        firstStackView.addArrangedSubview(exitBtn)
+        firstToolbar.addSubview(cameraBtn)
+        firstToolbar.addSubview(textBtn)
+        firstToolbar.addSubview(stickerBtn)
+        firstToolbar.addSubview(highlightBtn)
+        firstToolbar.addSubview(exitBtn)
         
         cameraBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-//            make.centerY.equalToSuperview()
-//            make.leading.equalTo(firstToolbar.snp.leading).offset(27)
-//            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-339)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(firstToolbar.snp.leading).offset(27)
+            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-339)
         }
         
         textBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-//            make.centerY.equalToSuperview()
-//            make.leading.equalTo(firstToolbar.snp.leading).offset(105)
-//            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-261)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(firstToolbar.snp.leading).offset(105)
+            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-261)
 
         }
         
         stickerBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-//            make.centerY.equalToSuperview()
-//            make.leading.equalTo(firstToolbar.snp.leading).offset(183)
-//            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-183)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(firstToolbar.snp.leading).offset(183)
+            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-183)
         }
         
         highlightBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-//            make.centerY.equalToSuperview()
-//            make.leading.equalTo(firstToolbar.snp.leading).offset(261)
-//            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-105)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(firstToolbar.snp.leading).offset(261)
+            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-105)
         }
         
         exitBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-//            make.centerY.equalToSuperview()
-//            make.leading.equalTo(firstToolbar.snp.leading).offset(339)
-//            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-27)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(firstToolbar.snp.leading).offset(339)
+            make.trailing.equalTo(firstToolbar.snp.trailing).offset(-27)
         }
         
         backToolbar.addSubview(colorToolbar)
