@@ -22,11 +22,11 @@ class CategoryTodoTableViewCell: UITableViewCell {
     var viewController: CategoryViewController!
     
     lazy var categoryLabel = UIButton().then{
-        $0.titleEdgeInsets = UIEdgeInsets(top: 4, left: 11, bottom: 3, right: 11)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 3, right: 0)
         $0.titleLabel?.textAlignment = .center
         $0.layer.borderWidth = 1
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
-        $0.layer.cornerRadius = 24/2
+        $0.layer.cornerRadius = 21/2
     }
     
     lazy var checkBox = UIButton().then{

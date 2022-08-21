@@ -191,12 +191,10 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     @objc
     func registerBtnDidClicked(){
-    
-        //TODO: 타이틀, 내용 글자 수 제한 걸기
         
         if(textView.text == textViewPlaceHolder || diaryTitle.text!.isEmpty){
-            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
             
+            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
             let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             
             alert.addAction(okBtn)
@@ -365,6 +363,13 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
             cell.categoryButton.setTitle(todoDataList[indexPath.row].categoryTitle, for: .normal)
             cell.categoryButton.layer.borderColor = UIColor.categoryColor[todoDataList[indexPath.row].color].cgColor
             cell.categoryButton.setTitleColor(UIColor.categoryColor[todoDataList[indexPath.row].color], for: .normal)
+            cell.categoryButton.snp.makeConstraints{ make in
+                let offset = todoDataList[indexPath.row].categoryTitle.count == 5 ? 12 : 24
+                make.width.equalTo(cell.categoryButton.titleLabel!).offset(offset)
+            }
+            cell.titleLabel.snp.makeConstraints{ make in
+                make.trailing.equalToSuperview().offset(-145)
+            }
         }
         
         

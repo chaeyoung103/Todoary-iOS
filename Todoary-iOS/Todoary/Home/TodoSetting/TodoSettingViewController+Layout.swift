@@ -30,8 +30,6 @@ extension TodoSettingViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(categoryBorderLine)
 
-
-    
     }
     
     func setUpConstraint(){
@@ -52,6 +50,7 @@ extension TodoSettingViewController {
         todo.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(111)
             make.leading.equalToSuperview().offset(31)
+            make.trailing.equalToSuperview().offset(-31)
         }
         
         todoBorderLine.snp.makeConstraints{ make in

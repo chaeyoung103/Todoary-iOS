@@ -9,6 +9,19 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     
+    //MARK: - Properties
+    
+    var isCategoryAdd = false //카테고리 새로 생성했을 때, collectionView 끝으로 스크롤 위한 프로퍼티
+    
+    var isEditingMode = false
+    
+    var currentCategory : CategoryButtonCollectionViewCell!
+    var currentCategoryIndex : IndexPath = [0,0]
+
+    var todoData: [GetTodoInfo]! = []
+    
+    var categories : [GetCategoryResult] = []
+    
     //MARK: - UI
     
     var navigationView : NavigationView!
@@ -21,15 +34,6 @@ class CategoryViewController: UIViewController {
     var collectionView : UICollectionView!
 
     var tableView : UITableView!
-    
-    var isEditingMode = false
-    
-    var currentCategory : CategoryButtonCollectionViewCell!
-    var currentCategoryIndex : IndexPath = [0,0]
-
-    var todoData: [GetTodoInfo]! = []
-    
-    var categories : [GetCategoryResult] = []
     
     //MARK: - LifeCycle
 
@@ -291,6 +295,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
 extension CategoryViewController{
     
     func checkGetCategoryApiResultCode(_ result: [GetCategoryResult]){
+        
         self.categories = result
         collectionView.reloadData()
         
@@ -300,9 +305,10 @@ extension CategoryViewController{
         }
         
         //TODO: - 카테고리 생성할 때만 마지막에 포커스 가도록 수정
-//        if(currentCategoryIndex != [0,0]){
-//            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
-//        }
+        if(isCategoryAdd){
+            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
+            isCategoryAdd = false
+        }
         
         let categoryId = self.categories.count == 1 ? categories[0].id : categories[currentCategoryIndex.row].id
 
