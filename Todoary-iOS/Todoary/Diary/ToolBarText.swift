@@ -199,19 +199,7 @@ extension DiaryViewController{
             }
         }
     }
-    
-    /*
-    @objc
-    func registerBtnDidClicked(){
-        
-        let text = NSAttributedString(attributedString: textView.attributedText)
 
-        let input = DiaryInput(title: diaryTitle.text!,
-                               content: text.attributedString2Html!)
-        
-        DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
-    }
-     */
 
 }
 
