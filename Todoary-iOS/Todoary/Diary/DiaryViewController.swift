@@ -171,6 +171,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         textView.inputView = DiarySticker
         toolbar.textToolbar.isHidden = true
         toolbar.colorToolbar.isHidden = true
+        toolbar.fontToolbar.isHidden = true
         textView.reloadInputViews()
         setupGestureRecognizerOnCollection()
     }
