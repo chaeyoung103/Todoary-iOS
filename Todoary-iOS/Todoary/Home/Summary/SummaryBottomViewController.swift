@@ -365,9 +365,7 @@ extension SummaryBottomViewController{
             diaryData = result.result
             tableView.reloadData()
             return
-//        case 2402: //TODO: - 임시 4000 설정, 서버 수정 완료되면 2402로 전환
-        case 4000:
-            print("다이어리 없음?")
+        case 2402:
             isDiaryExist = false
             tableView.reloadData()
             return

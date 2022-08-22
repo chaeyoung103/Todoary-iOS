@@ -338,18 +338,6 @@ extension TodoListTableViewCell{
         TodoCheckboxDataManager().patch(indexPath: getCellIndexPath()!, parameter: parameter)
     }
     
-//    func checkSendCheckboxApiResultCode(_ code: Int){
-//        switch code{
-//        case 1000:
-//            print("성공")
-//            checkBox.isSelected.toggle()
-//            return
-//        default:
-//            let alert = DataBaseErrorAlert()
-//            navigation.present(alert, animated: true, completion: nil)
-//        }
-//    }
-    
     @objc
     func settingButtonDidClicked(_ sender : UIButton){
         
