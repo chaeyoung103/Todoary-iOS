@@ -139,6 +139,7 @@
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */; };
 		ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */; };
+		E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015059828B3F3E500E83157 /* OnboardingViewController.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
@@ -161,7 +162,6 @@
 		E06F1AC928A605930066B824 /* AdTextSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */; };
 		E06F1ACB28A61E710066B824 /* NewAppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1ACA28A61E710066B824 /* NewAppPasswordViewController.swift */; };
 		E06F1ACD28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1ACC28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift */; };
-		E06FA3C328B2A1CB00409CF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06FA3C228B2A1CB00409CF1 /* OnboardingViewController.swift */; };
 		E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */; };
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
@@ -383,6 +383,7 @@
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
+		E015059828B3F3E500E83157 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionView.swift; sourceTree = "<group>"; };
 		E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryStickerViewController + Layout.swift"; sourceTree = "<group>"; };
@@ -405,7 +406,6 @@
 		E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextSettingViewController.swift; sourceTree = "<group>"; };
 		E06F1ACA28A61E710066B824 /* NewAppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppPasswordViewController.swift; sourceTree = "<group>"; };
 		E06F1ACC28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewAppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
-		E06FA3C228B2A1CB00409CF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = ../../../../../Documents/OnboardingViewController.swift; sourceTree = "<group>"; };
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
 		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -1040,7 +1040,7 @@
 			children = (
 				E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */,
 				E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */,
-				E06FA3C228B2A1CB00409CF1 /* OnboardingViewController.swift */,
+				E015059828B3F3E500E83157 /* OnboardingViewController.swift */,
 			);
 			path = Etc;
 			sourceTree = "<group>";
@@ -1590,6 +1590,7 @@
 				E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */,
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
+				E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
 				ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
@@ -1647,7 +1648,6 @@
 				E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
 				ACCD87D22897DB9E00C34CE7 /* CategoryDeleteModel.swift in Sources */,
-				E06FA3C328B2A1CB00409CF1 /* OnboardingViewController.swift in Sources */,
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
