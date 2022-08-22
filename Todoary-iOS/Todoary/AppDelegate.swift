@@ -61,7 +61,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     public func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         let firebaseToken = fcmToken ?? ""
         print("firebase token: \(firebaseToken)")
-        UserDefaults.standard.set(firebaseToken, forKey: "firebaseToken")
+        UserDefaults.standard.set(firebaseToken, forKey: "fcmToken")
     }
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

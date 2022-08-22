@@ -195,11 +195,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func loginBtnDidTab() {
         if validateAutoLogin == false {
-            let loginInput = LoginInput(email: idTf.text, password: pwTf.text, fcm_token: UserDefaults.standard.string(forKey: "firebaseToken"))
+            let loginInput = LoginInput(email: idTf.text, password: pwTf.text)
             LoginDataManager().loginDataManager(self,loginInput)
         } else {
             // 자동로그인을 눌렀을 때
-            let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text, fcm_token: UserDefaults.standard.string(forKey: "firebaseToken"))
+            let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
             AutoLoginDataManager() .autologin(self,autoLoginInput)
         }
       
@@ -214,7 +214,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func setupData() {
         if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"), fcm_token: UserDefaults.standard.string(forKey: "firebaseToken"))
+            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
             AuthJwtDataManager().authJwtDataManager(self,authJwt)
         }else {
             print("자동로그인 아님")

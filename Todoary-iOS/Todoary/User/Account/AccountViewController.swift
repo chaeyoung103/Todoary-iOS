@@ -87,6 +87,7 @@ class AccountViewController : UIViewController {
         }
         
         tableView = UITableView().then{
+            $0.isScrollEnabled = false
             $0.separatorStyle = .none
             $0.register(AccountTableViewCell.self, forCellReuseIdentifier: "accountTableViewCell")
             $0.delegate = self

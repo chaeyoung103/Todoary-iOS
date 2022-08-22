@@ -143,6 +143,10 @@ class HomeViewController : UIViewController {
         
         GetProfileDataManager().getProfileDataManger(self)
         
+        let fcmToken = FcmTokenInput(fcm_token: UserDefaults.standard.string(forKey: "fcmToken"))
+        
+        FcmTokendataManager().fcmTokendataManager(self, fcmToken)
+        
         showBottomSheet()
     }
 
