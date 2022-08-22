@@ -143,6 +143,7 @@ class SignUpViewController: UIViewController {
     }
 
     let pwCertificationTextField = UITextField().then{
+        $0.placeholder = "비밀번호 재입력"
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
     }
@@ -354,8 +355,9 @@ class SignUpViewController: UIViewController {
 
         if(isValidEmail){
             //이메일 중복 여부 확인
-            SignUpDataManager().posts(self, email: self.email)
+            SignUpDataManager().gets(self, email: self.email)
             print("API - email 중복 검사 요청")
+
         }else{
             idCanUseLabel.text = "*이메일 형식이 올바르지 않습니다."
             idCanUseLabel.textColor = .noticeRed
@@ -431,8 +433,11 @@ extension SignUpViewController{
             self.navigationController?.popToRootViewController(animated: true)
             return
         case 2017:
+            nextButton.isEnabled = false
+            idCanUseLabel.isHidden = false
+            idCanUseLabel.text = "중복된 이메일입니다."
             return
-        case 2032: //닉네임 중복 오류
+        case 2032:
             nextButton.isEnabled = false
             nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
@@ -468,8 +473,8 @@ extension SignUpViewController{
             return
             
         case 2017:
-            
-            idCanUseLabel.text = "*이미 사용중인 이메일입니다."
+            idCanUseLabel.isHidden = false
+            idCanUseLabel.text = "*중복된 이메일 입니다."
             idCanUseLabel.textColor = .noticeRed
             isValidEmail = false
             

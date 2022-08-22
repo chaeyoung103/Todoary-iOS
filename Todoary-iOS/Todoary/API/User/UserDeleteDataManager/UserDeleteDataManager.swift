@@ -19,6 +19,8 @@ class UserDeleteDataManager{
             case .success(let result):
                 print("계정삭제성공")
                 viewController.deleteApiResultCode(result.code)
+                UserDefaults.standard.removeObject(forKey: "accessToken")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
                 return
             case .failure(let error):
                 print(error.localizedDescription)
