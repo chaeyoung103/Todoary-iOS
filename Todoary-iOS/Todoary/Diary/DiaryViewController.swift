@@ -407,5 +407,22 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
         
         diaryLine.isHidden = false
     }
+    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+//        {
+//            if(text == "\n")
+//            {
+//                
+//                let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+//                
+//                let selectedRange = self.textView.selectedRange
+//                
+//                attributedString.removeAttribute(.backgroundColor, range: selectedRange)
+//            } else {
+//                return true
+//            }
+//            return true
+//        }
+    
 }
 
