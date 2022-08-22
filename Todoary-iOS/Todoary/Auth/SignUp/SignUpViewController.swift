@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController{
     
     //MARK: - Properties
     
@@ -72,6 +72,8 @@ class SignUpViewController: UIViewController {
     let idTextField = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let idBorderLine = UIView().then{
@@ -103,6 +105,8 @@ class SignUpViewController: UIViewController {
 
     let certificationTextField = UITextField().then{
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let certificationBorderLine = UIView().then{
@@ -129,6 +133,8 @@ class SignUpViewController: UIViewController {
         $0.placeholder = "영문, 숫자 포함 8자리 이상"
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let pwBorderLine = UIView().then{
@@ -146,6 +152,8 @@ class SignUpViewController: UIViewController {
         $0.placeholder = "비밀번호 재입력"
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let pwCertificationBorderLine = UIView().then{
@@ -169,6 +177,8 @@ class SignUpViewController: UIViewController {
     let nameTextField = UITextField().then{
         $0.placeholder = "이름을 입력해주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let nameBorderLine = UIView().then{
@@ -191,6 +201,8 @@ class SignUpViewController: UIViewController {
     let nicknameTextField = UITextField().then{
         $0.placeholder = "Todoary에서 사용하실 닉네임을 알려주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .done
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let nicknameBorderLine = UIView().then{
@@ -224,6 +236,13 @@ class SignUpViewController: UIViewController {
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "회원가입"
         }
+        
+        self.idTextField.delegate = self
+        self.certificationTextField.delegate = self
+        self.pwTextField.delegate = self
+        self.pwCertificationTextField.delegate = self
+        self.nameTextField.delegate = self
+        self.nicknameTextField.delegate = self
 
         setUpView()
         setUpConstraint()
@@ -422,6 +441,26 @@ extension SignUpViewController: UITextFieldDelegate{
         
         return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTextField {
+            certificationTextField.becomeFirstResponder()
+            } else if textField == certificationTextField {
+                pwTextField.becomeFirstResponder()
+            }else if textField == pwTextField {
+                pwCertificationTextField.becomeFirstResponder()
+            }else if textField == pwCertificationTextField {
+                nameTextField.becomeFirstResponder()
+            }else if textField == nameTextField {
+                nicknameTextField.becomeFirstResponder()
+            }else if textField == nicknameTextField {
+                nicknameTextField.resignFirstResponder()
+                UIView.animate(withDuration: 0.3){
+                    self.view.window?.frame.origin.y = 0
+                }
+            }
+            return true
+        }
 }
 
 //MARK: - API
