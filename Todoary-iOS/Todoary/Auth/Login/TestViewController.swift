@@ -69,6 +69,7 @@ class TestViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         
         print("변경?")
         if keyPath == #keyPath(WKWebView.url) {
+            
             guard let url = self.webView.url?.absoluteString else {
                 return
             }

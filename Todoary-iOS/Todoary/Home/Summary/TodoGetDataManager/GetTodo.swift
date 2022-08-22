@@ -64,25 +64,39 @@ struct GetTodoInfo: Decodable, Equatable{
         return "\(Int(dateArr[1])!)월 \(Int(dateArr[2])!)일"
     }
     
-    var categoryWidth: UInt{
+    var categoryWidth: Int{
         
         if(isPinned! && isAlarmEnabled){
             switch self.categoryTitle.count{
             case 1:
-                return 7*2
+                return 11 + 7*2
             case 2:
-                return 12*2
+                return 22 + 12*2
             case 3:
-                return 10*2
+                return 32 + 10*2
             case 4:
-                return 8*2
+                return 43 + 8*2
             case 5:
-                return 6*2
+                return 53 + 6*2
             default:
                 return 0
             }
         }else{
-            return self.categoryTitle.count < 5 ? 24 : 6*2
+            switch self.categoryTitle.count{
+            case 1:
+                return 11 + 24
+            case 2:
+                return 22 + 24
+            case 3:
+                return 32 + 24
+            case 4:
+                return 43 + 24
+            case 5:
+                return 53 + 6*2
+            default:
+                return 0
+            }
+//            return self.categoryTitle.count < 5 ? 24 : 6*2
         }
     }
 }
