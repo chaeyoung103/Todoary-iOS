@@ -89,6 +89,10 @@
 		57DF45FD28A60DB90002D66C /* DiaryFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF45FC28A60DB90002D66C /* DiaryFont.swift */; };
 		57DF460328A64A9E0002D66C /* IBMPlexSansKR-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF460228A64A9E0002D66C /* IBMPlexSansKR-Text.otf */; };
 		57DF460528A64AA60002D66C /* IBMPlexSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF460428A64AA60002D66C /* IBMPlexSansKR-Medium.otf */; };
+		57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */; };
+		57E6516828B2F969006CB053 /* AppleLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */; };
+		57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516928B31910006CB053 /* AppleLoginInput.swift */; };
+		57E6516C28B325DC006CB053 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516B28B325DC006CB053 /* TestViewController.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -328,6 +332,10 @@
 		57DF45FC28A60DB90002D66C /* DiaryFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFont.swift; sourceTree = "<group>"; };
 		57DF460228A64A9E0002D66C /* IBMPlexSansKR-Text.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Text.otf"; sourceTree = "<group>"; };
 		57DF460428A64AA60002D66C /* IBMPlexSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Medium.otf"; sourceTree = "<group>"; };
+		57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginModel.swift; sourceTree = "<group>"; };
+		57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDataManager.swift; sourceTree = "<group>"; };
+		57E6516928B31910006CB053 /* AppleLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginInput.swift; sourceTree = "<group>"; };
+		57E6516B28B325DC006CB053 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -710,6 +718,9 @@
 				57503651288A3FB7006A9070 /* LoginInput.swift */,
 				57503653288A3FC9006A9070 /* LoginModel.swift */,
 				57503655288A3FD4006A9070 /* LoginDataManager.swift */,
+				57E6516928B31910006CB053 /* AppleLoginInput.swift */,
+				57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */,
+				57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */,
 			);
 			path = LoginDataManager;
 			sourceTree = "<group>";
@@ -930,6 +941,7 @@
 			children = (
 				ACACD00F28749F520029D5CE /* LoginViewController.swift */,
 				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
+				57E6516B28B325DC006CB053 /* TestViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1555,6 +1567,7 @@
 				E06F1ACD28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift in Sources */,
 				E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */,
 				E06F1AC928A605930066B824 /* AdTextSettingViewController.swift in Sources */,
+				57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */,
 				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
 				57503667288BEA81006A9070 /* CategoryViewController+Layout.swift in Sources */,
@@ -1596,6 +1609,7 @@
 				E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */,
 				ACCD87C628965B7700C34CE7 /* TodoCategoryCell.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
+				57E6516828B2F969006CB053 /* AppleLoginDataManager.swift in Sources */,
 				5750364E288A3ECE006A9070 /* SignUpModel.swift in Sources */,
 				E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */,
 				E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */,
@@ -1612,6 +1626,7 @@
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
 				ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */,
+				57E6516C28B325DC006CB053 /* TestViewController.swift in Sources */,
 				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
@@ -1654,6 +1669,7 @@
 				ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
+				57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,

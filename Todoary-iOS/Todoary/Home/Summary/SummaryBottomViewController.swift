@@ -109,30 +109,18 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         self.todoTf.becomeFirstResponder()
     }
     
-    @objc func changeKeyboardNotification(_ notification: Notification) {
-        var keyboardHeight = 0.0
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardRectangle = keyboardFrame.cgRectValue
-                keyboardHeight = keyboardRectangle.height
-            }
-    }
-    
     //키보드가 올라오는 순간 -> todo간단설정 뷰 보이게
     @objc func didShowKeyboardNotification(_ notification: Notification) {
         var keyboardHeight = 0.0
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let keyboardRectangle = keyboardFrame.cgRectValue
                 keyboardHeight = keyboardRectangle.height
-        }
-        
-
+            }
         
         //constraint 다시 잡아주기
         self.todoEasySettingView.snp.makeConstraints{ make in
             make.height.equalTo(118)
-            make.top.equalTo(view.snp.bottom).offset(-(keyboardHeight+118))
             make.bottom.equalToSuperview().offset(-keyboardHeight)
-            print("아")
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
@@ -153,10 +141,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
             make.bottom.equalTo(todoEasySettingView.snp.bottom).offset(-16)
         }
         
-        self.view.addSubview(todoEasySettingView)
-        self.view.addSubview(todoTf)
-        self.view.addSubview(collectionView)
-        
         self.todoEasySettingView.isHidden = false
         self.todoTf.isHidden = false
         self.collectionView.isHidden = false
@@ -165,7 +149,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     //키보드 내려갈때 todo간단 설정 뷰 안보이게
     @objc func didHideKeyboardNotification(_ notification: Notification) {
-        
         self.todoEasySettingView.isHidden = true
         self.todoTf.isHidden = true
         self.collectionView.isHidden = true
@@ -383,7 +366,6 @@ extension SummaryBottomViewController{
             tableView.reloadData()
             return
         case 2402:
-            print("다이어리 없음")
             isDiaryExist = false
             tableView.reloadData()
             return
