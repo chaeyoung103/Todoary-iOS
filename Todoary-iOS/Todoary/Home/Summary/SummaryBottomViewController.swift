@@ -230,6 +230,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
                                                     categoryId: selectCategory)
             
             TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
+            self.todoTf.text = ""
+            self.selectCategory = categoryData[0].id
+            
+            GetCalendataManager().getCalendataManager(self, yearMonth: todoDate!.yearMonthSendServer)
+            GetDiaryDataManager().getDiaryDataManager(self, yearMonth: todoDate!.yearMonthSendServer)
         }
         
         
@@ -350,6 +355,10 @@ extension SummaryBottomViewController{
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             showDeleteCompleteToastMessage(type: .Todo)
+            
+            GetCalendataManager().getCalendataManager(self, yearMonth: todoDate!.yearMonthSendServer)
+            GetDiaryDataManager().getDiaryDataManager(self, yearMonth: todoDate!.yearMonthSendServer)
+            
             return
         default:
             let alert = DataBaseErrorAlert()

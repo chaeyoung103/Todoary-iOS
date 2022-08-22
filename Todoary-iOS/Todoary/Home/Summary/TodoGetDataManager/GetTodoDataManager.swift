@@ -39,6 +39,13 @@ struct ConvertDate{
         return "\(year!)-\(monthString)-\(dateString)"
     }
     
+    var yearMonthSendServer: String{
+        
+        let monthString = self.month! < 10 ? "0\(month!)" : "\(month!)"
+        
+        return "\(year!)-\(monthString)"
+    }
+    
     var dateUsedDiary: String{
         
         let monthString = self.month! < 10 ? "0\(month!)" : "\(month!)"

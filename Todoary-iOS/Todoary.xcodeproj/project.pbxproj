@@ -146,6 +146,8 @@
 		ACFBEC9528B3777C00B9D66F /* FcmTokendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */; };
 		ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */; };
 		ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */; };
+		ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */; };
+		ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
@@ -392,6 +394,8 @@
 		ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokendataManager.swift; sourceTree = "<group>"; };
 		ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenModel.swift; sourceTree = "<group>"; };
 		ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenInput.swift; sourceTree = "<group>"; };
+		ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiaryDataManager.swift; sourceTree = "<group>"; };
+		ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiaryExistenceModel.swift; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -928,6 +932,7 @@
 		AC9859C72882909F009FC2F8 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				ACFBEC9A28B3DB6900B9D66F /* GetDiaryDataManager */,
 				ACCD87D32897E35B00C34CE7 /* GetCalendarDataManager */,
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				AC9859CA288334AC009FC2F8 /* CalendarCell.swift */,
@@ -1031,6 +1036,15 @@
 				ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */,
 			);
 			path = FcmTokenDataManager;
+			sourceTree = "<group>";
+		};
+		ACFBEC9A28B3DB6900B9D66F /* GetDiaryDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */,
+				ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */,
+			);
+			path = GetDiaryDataManager;
 			sourceTree = "<group>";
 		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
@@ -1597,6 +1611,7 @@
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
+				ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
@@ -1671,6 +1686,7 @@
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
+				ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,

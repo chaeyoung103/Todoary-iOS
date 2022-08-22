@@ -20,11 +20,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
         components.day = 1
-        component_select.day = -1
+        select = -1
 
         self.calculation()
         
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: now))-\(dateFormatterMonth.string(from: now))")
+        GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: now))-\(dateFormatterMonth.string(from: now))")
         
         HomeViewController.bottomSheetVC.todoDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
     }
@@ -97,13 +98,18 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.layer.shadowRadius = 0
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
+            cell.diary.isHidden = true
             
             if (indexPath.row - emptyDay) >= 1 && (indexPath.row - emptyDay) < 32 {
-                if calendarRecord[indexPath.row-emptyDay] != 0{
+                if HomeViewController.calendarRecord[indexPath.row-emptyDay] != 0{
                     cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
                     cell.dateLabel.textColor = .black
                 }
+                if HomeViewController.diaryRecord[indexPath.row-emptyDay] != 0{
+                    cell.diary.isHidden = false
+                }
             }
+            
             
             if select == -1 {
                 if self.year == year_component && self.month == month_component {
@@ -165,7 +171,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             fatalError()
         }
         
-        if calendarRecord[indexPath.row-emptyDay] != 0 {
+        if HomeViewController.calendarRecord[indexPath.row-emptyDay] != 0 {
             cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
             cell.dateLabel.textColor = .black
             cell.dateLabel.layer.shadowRadius = 0
@@ -178,6 +184,13 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.dateLabel.layer.shadowColor = UIColor.transparent.cgColor
             cell.dateLabel.layer.shadowOpacity = 0
         }
+        
+        if HomeViewController.diaryRecord[indexPath.row-emptyDay] != 0 {
+            cell.diary.isHidden = false
+        }else {
+            cell.diary.isHidden = true
+        }
+        
     }
     
     
@@ -188,9 +201,11 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = components.month! - 1
         self.calculation()
         let date = cal.date(from: components)
-        calendarRecord = [Int](repeating: 0, count: 32)
+        HomeViewController.calendarRecord = [Int](repeating: 0, count: 32)
+        HomeViewController.diaryRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
-        self.collectionView.reloadData()
+        GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
+        HomeViewController.collectionView.reloadData()
         
         requestTodoFirstDayOfMonth()
     }
@@ -201,18 +216,30 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         components.month = components.month! + 1
         self.calculation()
         let date = cal.date(from: components)
-        calendarRecord = [Int](repeating: 0, count: 32)
+        HomeViewController.calendarRecord = [Int](repeating: 0, count: 32)
+        HomeViewController.diaryRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
-        self.collectionView.reloadData()
+        GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
+        HomeViewController.collectionView.reloadData()
         
         requestTodoFirstDayOfMonth()
     }
     
     func requestTodoFirstDayOfMonth(){
-        let convertDate = ConvertDate(year: year_component, month: month_component, date: "1")
-        HomeViewController.bottomSheetVC.todoDate = convertDate
-                                                      
-        GetTodoDataManager().gets(convertDate.dateSendServer)
+        
+        if self.year == year_component && self.month == month_component {
+            let convertDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
+            HomeViewController.bottomSheetVC.todoDate = convertDate
+                                                          
+            GetTodoDataManager().gets(convertDate.dateSendServer)
+            DiaryDataManager().gets(convertDate.dateSendServer)
+        }else {
+            let convertDate = ConvertDate(year: year_component, month: month_component, date: "1")
+            HomeViewController.bottomSheetVC.todoDate = convertDate
+                                                          
+            GetTodoDataManager().gets(convertDate.dateSendServer)
+            DiaryDataManager().gets(convertDate.dateSendServer)
+        }
     }
     
     
