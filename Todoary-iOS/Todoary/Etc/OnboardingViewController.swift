@@ -65,13 +65,11 @@ class OnboardingViewController : UIViewController {
         onboardingPagecontrol.numberOfPages = onboardingImg.count
 
         onboardingImgScrollView.delegate = self
+        onboardingImgScrollView.isPagingEnabled = true
+        onboardingImgScrollView.isScrollEnabled = true
 
         setupScreens()
-
-      
-//        onboardingImgScrollView.isPagingEnabled = true
-//        onboardingImgScrollView.isScrollEnabled = true
-
+        setbtn()
     }
     
     private func setupScreens() {
@@ -82,7 +80,7 @@ class OnboardingViewController : UIViewController {
             let positionX = self.view.frame.width * CGFloat(index)
             
             imgView.frame = CGRect(x: positionX, y: 0, width: onboardingImgScrollView.bounds.width, height: onboardingImgScrollView.bounds.height)
-            imgView.image = onboardingImg[index]
+            imgView.image = UIImage(named: "onboarding1")
             onboardingImgScrollView.addSubview(imgView)
             onboardingImgScrollView.contentSize.width = imgView.frame.width * CGFloat(index + 1)
             
@@ -98,6 +96,16 @@ extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ onboardingImgScrollView: UIScrollView) {
         let value = onboardingImgScrollView.contentOffset.x/onboardingImgScrollView.frame.size.width
         selectedPage(currentPage: Int(round(value)))
+        
+        setbtn()
+    }
+    
+    func setbtn() {
+        if onboardingPagecontrol.currentPage == 3 {
+            confirmBtn.isHidden = false
+        } else {
+            confirmBtn.isHidden = true
+        }
     }
 }
 
