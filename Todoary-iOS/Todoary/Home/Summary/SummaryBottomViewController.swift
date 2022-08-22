@@ -357,7 +357,6 @@ extension SummaryBottomViewController{
             showDeleteCompleteToastMessage(type: .Todo)
             
             GetCalendataManager().getCalendataManager(self, yearMonth: todoDate!.yearMonthSendServer)
-            GetDiaryDataManager().getDiaryDataManager(self, yearMonth: todoDate!.yearMonthSendServer)
             
             return
         default:
@@ -373,6 +372,7 @@ extension SummaryBottomViewController{
             isDiaryExist = true
             diaryData = result.result
             tableView.reloadData()
+            
             return
         case 2402:
             isDiaryExist = false
@@ -392,6 +392,7 @@ extension SummaryBottomViewController{
             isDiaryExist = false
             tableView.reloadData()
             showDeleteCompleteToastMessage(type: .Diary)
+            GetDiaryDataManager().getDiaryDataManager(self, yearMonth: todoDate!.yearMonthSendServer)
             return
         default:
             let alert = DataBaseErrorAlert()
