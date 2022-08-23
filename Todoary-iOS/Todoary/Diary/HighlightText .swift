@@ -55,33 +55,32 @@ extension UIColor{
 
 extension DiaryViewController{
     
-//    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if text == "\n" {
-//            //TODO: - 현재 커서 정보 가져와서 attribute remove 시키기
-//            print(self.textView.selectedRange)
-//            print(self.textView.text)
-//
-//
-//            let selectedRange = self.textView.selectedRange
-//
-//            let range: NSRange = NSRange(location: selectedRange.lowerBound, length: 1)
-//
-//            print(range)
-//
-//            print(selectedRange.lowerBound)
-//            print(selectedRange.upperBound)
-////            let start = selectedRange.lowerBound
-//
-//            let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-//
-//            attributedString.removeAttribute(.backgroundColor, range: range)
-//
-//            textView.attributedText = attributedString
-//
-//
-//        }
-//        return true
-//    }
+    func textViewDidChange(_ textView: UITextView) {
+        if(isEnterPressed){
+            
+            let selectedRange = self.textView.selectedRange
+            let selectedTextRange = self.textView.selectedTextRange
+
+            let customRange: NSRange = NSRange(location: selectedRange.lowerBound-1, length: 1)
+            
+            let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+            
+            attributedString.removeAttribute(.backgroundColor, range: customRange)
+            
+            textView.attributedText = attributedString
+            
+            moveCursorEndOfSelection(selectedTextRange)
+            
+            isEnterPressed = false
+        }
+    }
+    
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            isEnterPressed = true
+        }
+        return true
+    }
     
     func setHighlightToolBarAction(){
     
