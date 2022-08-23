@@ -33,7 +33,7 @@ extension  SettingViewController{
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(versionBorderLine1.snp.top).offset(-200)
+            make.bottom.equalTo(versionBorderLine1.snp.top)
         }
         
         //version
