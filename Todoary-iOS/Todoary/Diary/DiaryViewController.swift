@@ -77,6 +77,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
 
     var toolbar = DiaryToolbar().then{
         $0.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 92.0)
+        $0.cameraBtn.addTarget(self, action: #selector(cameraBtnTab), for: .touchUpInside)
         $0.textBtn.addTarget(self, action: #selector(textBtnTab), for: .touchUpInside)
         $0.stickerBtn.addTarget(self, action: #selector(stickerBtnTab), for: .touchUpInside)
         $0.highlightBtn.addTarget(self, action: #selector(highlightBtnTab), for: .touchUpInside)
@@ -164,6 +165,22 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     //MARK: - ToolbarBtnDidTab
     
+    @objc func cameraBtnTab() {
+        
+        textView.inputView = nil
+        textView.endEditing(true)
+        textView.reloadInputViews()
+        
+        let alert = UIAlertController(title: nil, message: "현재 제공하고 있지 않은 기능입니다.\n다음 업데이트에 만나요!", preferredStyle: .alert)
+
+        let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        alert.addAction(okBtn)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     @objc func textBtnTab() {
         textView.inputView = nil
         textView.reloadInputViews()
@@ -173,6 +190,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         textView.inputView = DiarySticker
         toolbar.textToolbar.isHidden = true
         toolbar.colorToolbar.isHidden = true
+        toolbar.fontToolbar.isHidden = true
         textView.reloadInputViews()
         setupGestureRecognizerOnCollection()
     }

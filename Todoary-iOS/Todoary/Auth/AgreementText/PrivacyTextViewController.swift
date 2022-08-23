@@ -29,6 +29,7 @@ class PrivacyTextViewController : UIViewController {
         $0.showsVerticalScrollIndicator = true
         $0.isScrollEnabled = true
         $0.indicatorStyle = .black
+        $0.scrollIndicatorInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -3)
     }
     
     let privacyText = UILabel().then{

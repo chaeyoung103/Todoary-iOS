@@ -32,40 +32,37 @@ extension DiaryToolbar {
             make.bottom.equalToSuperview()
         }
         
-        firstToolbar.addSubview(cameraBtn)
-        firstToolbar.addSubview(textBtn)
-        firstToolbar.addSubview(stickerBtn)
-        firstToolbar.addSubview(highlightBtn)
-        firstToolbar.addSubview(exitBtn)
+        firstToolbar.addSubview(firstStackView)
+
+        firstStackView.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        firstStackView.addArrangedSubview(cameraBtn)
+        firstStackView.addArrangedSubview(textBtn)
+        firstStackView.addArrangedSubview(stickerBtn)
+        firstStackView.addArrangedSubview(highlightBtn)
+        firstStackView.addArrangedSubview(exitBtn)
         
         cameraBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(firstToolbar)
-            make.leading.equalTo(firstToolbar.snp.leading).offset(32)
         }
         
         textBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(firstToolbar)
-            make.leading.equalTo(firstToolbar.snp.leading).offset(110)
         }
         
         stickerBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(firstToolbar)
-            make.leading.equalTo(firstToolbar.snp.leading).offset(188)
         }
         
         highlightBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(firstToolbar)
-            make.leading.equalTo(firstToolbar.snp.leading).offset(266)
         }
         
         exitBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(firstToolbar)
-            make.leading.equalTo(firstToolbar.snp.leading).offset(344)
         }
         
         backToolbar.addSubview(colorToolbar)
@@ -76,47 +73,54 @@ extension DiaryToolbar {
             make.top.equalToSuperview()
         }
         
-        colorToolbar.addSubview(yellowBtn)
-        colorToolbar.addSubview(orangeBtn)
-        colorToolbar.addSubview(redBtn)
-        colorToolbar.addSubview(greenBtn)
-        colorToolbar.addSubview(blueBtn)
-        colorToolbar.addSubview(grayBtn)
+        colorToolbar.addSubview(colorStackView)
+        
+        colorStackView.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        colorStackView.addArrangedSubview(yellowBtn)
+        colorStackView.addArrangedSubview(orangeBtn)
+        colorStackView.addArrangedSubview(redBtn)
+        colorStackView.addArrangedSubview(greenBtn)
+        colorStackView.addArrangedSubview(blueBtn)
+        colorStackView.addArrangedSubview(grayBtn)
         
         yellowBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(colorToolbar.snp.leading).offset(36)
+//            make.centerY.equalTo(colorToolbar)
+//            make.trailing.equalTo(orangeBtn.snp.leading).offset(-30)
         }
         
         orangeBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(yellowBtn.snp.trailing).offset(30)
+//            make.centerY.equalTo(colorToolbar)
+//            make.trailing.equalTo(redBtn.snp.leading).offset(-30)
         }
         
         redBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(orangeBtn.snp.trailing).offset(30)
+//            make.centerY.equalTo(colorToolbar)
+//            make.centerX.equalToSuperview().offset(-29)
         }
         
         greenBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(redBtn.snp.trailing).offset(30)
+//            make.centerY.equalToSuperview()
+//            make.centerX.equalToSuperview().offset(29)
         }
         
         blueBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(greenBtn.snp.trailing).offset(30)
+//            make.centerY.equalTo(colorToolbar)
+//            make.leading.equalTo(greenBtn.snp.trailing).offset(30)
         }
         
         grayBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
-            make.centerY.equalTo(colorToolbar)
-            make.leading.equalTo(blueBtn.snp.trailing).offset(30)
+//            make.centerY.equalTo(colorToolbar)
+//            make.leading.equalTo(blueBtn.snp.trailing).offset(30)
         }
         
         backToolbar.addSubview(textToolbar)
@@ -126,60 +130,48 @@ extension DiaryToolbar {
             make.height.equalTo(46)
             make.top.equalToSuperview()
         }
+        
+        textToolbar.addSubview(textStackView)
+        
+        textStackView.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
 
-        textToolbar.addSubview(alignLeftBtn)
-        textToolbar.addSubview(ailgnCenterBtn)
-        textToolbar.addSubview(alignRightBtn)
-        textToolbar.addSubview(fontBtn)
-        textToolbar.addSubview(strikeLineBtn)
-        textToolbar.addSubview(underLineBtn)
-        textToolbar.addSubview(boldBtn)
+        textStackView.addArrangedSubview(alignLeftBtn)
+        textStackView.addArrangedSubview(ailgnCenterBtn)
+        textStackView.addArrangedSubview(alignRightBtn)
+        textStackView.addArrangedSubview(fontBtn)
+        textStackView.addArrangedSubview(strikeLineBtn)
+        textStackView.addArrangedSubview(underLineBtn)
+        textStackView.addArrangedSubview(boldBtn)
 
         alignLeftBtn.snp.makeConstraints{make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(textToolbar)
-            make.leading.equalTo(textToolbar.snp.leading).offset(33)
         }
 
         ailgnCenterBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(textToolbar)
-            make.leading.equalTo(alignLeftBtn.snp.trailing).offset(32)
         }
 
         alignRightBtn.snp.makeConstraints{make in
             make.width.height.equalTo(24)
-            make.centerY.equalTo(textToolbar)
-            make.leading.equalTo(ailgnCenterBtn.snp.trailing).offset(32)
         }
         
         fontBtn.snp.makeConstraints{make in
             make.width.equalTo(19)
-            make.height.equalTo(22)
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(alignRightBtn.snp.trailing).offset(32)
-            
         }
 
         strikeLineBtn.snp.makeConstraints{make in
             make.width.equalTo(14)
-            make.height.equalTo(22)
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(fontBtn.snp.trailing).offset(32)
         }
 
         underLineBtn.snp.makeConstraints{make in
             make.width.equalTo(13)
-            make.height.equalTo(22)
-            make.centerY.equalTo(textToolbar)
-            make.leading.equalTo(strikeLineBtn.snp.trailing).offset(32)
         }
 
         boldBtn.snp.makeConstraints{make in
             make.width.equalTo(14)
-            make.height.equalTo(22)
-            make.centerY.equalTo(textToolbar)
-            make.leading.equalTo(underLineBtn.snp.trailing).offset(32)
         }
         
         backToolbar.addSubview(fontToolbar)
@@ -190,45 +182,42 @@ extension DiaryToolbar {
             make.top.equalToSuperview()
         }
         
-        fontToolbar.addSubview(fontBtn1)
-        fontToolbar.addSubview(fontBtn2)
-        fontToolbar.addSubview(fontBtn3)
-        fontToolbar.addSubview(fontBtn4)
-        fontToolbar.addSubview(fontBtn5)
+        fontToolbar.addSubview(fontStackView)
+        
+        fontStackView.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        fontStackView.addArrangedSubview(fontBtn1)
+        fontStackView.addArrangedSubview(fontBtn2)
+        fontStackView.addArrangedSubview(fontBtn3)
+        fontStackView.addArrangedSubview(fontBtn4)
+        fontStackView.addArrangedSubview(fontBtn5)
         
         fontBtn1.snp.makeConstraints{make in
             make.width.equalTo(58)
             make.height.equalTo(22)
-            make.centerY.equalTo(fontToolbar)
-            make.leading.equalTo(fontToolbar.snp.leading).offset(23)
         }
         
         fontBtn2.snp.makeConstraints{make in
             make.width.equalTo(63)
             make.height.equalTo(22)
-            make.centerY.equalTo(fontToolbar)
-            make.leading.equalTo(fontBtn1.snp.trailing).offset(13)
         }
         
         fontBtn3.snp.makeConstraints{make in
             make.width.equalTo(63)
             make.height.equalTo(22)
-            make.centerY.equalTo(fontToolbar)
-            make.leading.equalTo(fontBtn2.snp.trailing).offset(11)
         }
         
         fontBtn4.snp.makeConstraints{make in
             make.width.equalTo(57)
             make.height.equalTo(22)
-            make.centerY.equalTo(fontToolbar)
-            make.leading.equalTo(fontBtn3.snp.trailing).offset(14)
         }
         
         fontBtn5.snp.makeConstraints{make in
             make.width.equalTo(55)
             make.height.equalTo(22)
-            make.centerY.equalTo(fontToolbar)
-            make.leading.equalTo(fontBtn4.snp.trailing).offset(13)
         }
     }
 }

@@ -30,6 +30,12 @@ extension NewAppPasswordViewController {
         self.view.addSubview(inputPw3)
         self.view.addSubview(inputPw4)
         
+        self.view.addSubview(numbutton) //StackView
+        numbutton.addArrangedSubview(numbuttonStackView1)
+        numbutton.addArrangedSubview(numbuttonStackView2)
+        numbutton.addArrangedSubview(numbuttonStackView3)
+        numbutton.addArrangedSubview(numbuttonStackView4)
+        
         self.view.addSubview(numBtn1)
         self.view.addSubview(numBtn2)
         self.view.addSubview(numBtn3)
@@ -70,6 +76,8 @@ extension NewAppPasswordViewController {
             make.top.equalTo(appPwTitle.snp.bottom).offset(16)
             make.centerX.equalTo(appPwTitle)
         }
+        
+        //inputNotPassword img
         
         //inputNotPassword img
         
@@ -160,76 +168,105 @@ extension NewAppPasswordViewController {
         
     
             //button
+            
+            numbutton.snp.makeConstraints{ make in
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-95)
+            }
+            
+            numbuttonStackView1.snp.makeConstraints{ make in
+                make.centerX.equalToSuperview()
+            }
+            
+            numbuttonStackView1.addArrangedSubview(numBtn1)
+            numbuttonStackView1.addArrangedSubview(numBtn2)
+            numbuttonStackView1.addArrangedSubview(numBtn3)
+            
             numBtn1.snp.makeConstraints{ make in
-                make.trailing.equalTo(numBtn2.snp.leading).offset(-60)
                 make.width.height.equalTo(43)
-                make.centerY.equalTo(numBtn2)
             }
             
             numBtn2.snp.makeConstraints{ make in
-                make.top.equalToSuperview().offset(465)
                 make.width.height.equalTo(43)
-                make.centerX.equalToSuperview()
             }
             
             numBtn3.snp.makeConstraints{ make in
-                make.leading.equalTo(numBtn2.snp.trailing).offset(60)
                 make.width.height.equalTo(43)
-                make.centerY.equalTo(numBtn2)
             }
             
+            numbuttonStackView2.snp.makeConstraints{ make in
+                make.width.equalTo(249)
+                make.height.equalTo(44)
+                make.centerX.equalToSuperview()
+            }
+            
+            numbuttonStackView2.addArrangedSubview(numBtn4)
+            numbuttonStackView2.addArrangedSubview(numBtn5)
+            numbuttonStackView2.addArrangedSubview(numBtn6)
+            
             numBtn4.snp.makeConstraints{ make in
-                make.top.equalTo(numBtn1.snp.bottom).offset(40)
                 make.width.height.equalTo(43)
-                make.centerX.equalTo(numBtn1)
             }
             
             numBtn5.snp.makeConstraints{ make in
-                make.top.equalTo(numBtn2.snp.bottom).offset(40)
                 make.width.height.equalTo(43)
-                make.centerX.equalToSuperview()
             }
             
             numBtn6.snp.makeConstraints{ make in
-                make.leading.equalTo(numBtn5.snp.trailing).offset(60)
                 make.width.height.equalTo(43)
-                make.centerY.equalTo(numBtn5)
             }
             
+            numbuttonStackView3.snp.makeConstraints{ make in
+//                make.width.equalTo(249)
+//                make.height.equalTo(44)
+                make.centerX.equalToSuperview()
+            }
+            
+            numbuttonStackView3.addArrangedSubview(numBtn7)
+            numbuttonStackView3.addArrangedSubview(numBtn8)
+            numbuttonStackView3.addArrangedSubview(numBtn9)
+            
             numBtn7.snp.makeConstraints{ make in
-                make.top.equalTo(numBtn4.snp.bottom).offset(40)
                 make.width.height.equalTo(43)
-                make.centerX.equalTo(numBtn4)
             }
             
             numBtn8.snp.makeConstraints{ make in
-                make.top.equalTo(numBtn5.snp.bottom).offset(40)
                 make.width.height.equalTo(43)
-                make.centerX.equalToSuperview()
             }
             
             numBtn9.snp.makeConstraints{ make in
-                make.leading.equalTo(numBtn8.snp.trailing).offset(60)
                 make.width.height.equalTo(43)
-                make.centerY.equalTo(numBtn8)
             }
             
-            numBtn0.snp.makeConstraints{ make in
-                make.top.equalTo(numBtn8.snp.bottom).offset(40)
-                make.width.height.equalTo(43)
+            numbuttonStackView4.snp.makeConstraints{ make in
+//                make.width.equalTo(249)
+//                make.height.equalTo(43)
                 make.centerX.equalToSuperview()
             }
             
+            numbuttonStackView4.addArrangedSubview(blueCharacterView)
+            numbuttonStackView4.addArrangedSubview(numBtn0)
+            numbuttonStackView4.addArrangedSubview(deletBtn)
+            
+            numBtn0.snp.makeConstraints{ make in
+                make.width.height.equalTo(43)
+            }
+            
+            blueCharacterView.addSubview(blueCharacter)
+            
+            blueCharacterView.snp.makeConstraints{ make in
+                make.width.height.equalTo(43)
+            }
+            
+            
             blueCharacter.snp.makeConstraints{ make in
                 make.width.height.equalTo(40)
-                make.top.equalTo(numBtn7.snp.bottom).offset(42)
-                make.centerX.equalTo(numBtn7)
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
             }
         
             deletBtn.snp.makeConstraints{ make in
-                make.width.height.equalTo(25)
-                make.top.equalTo(numBtn9.snp.bottom).offset(53)
-                make.centerX.equalTo(numBtn9)
+                make.width.height.equalTo(43)
             }
         }
     }

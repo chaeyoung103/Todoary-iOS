@@ -97,6 +97,32 @@ class NewAppPasswordViewController : UIViewController {
     }
     
     //MARK: - numbutton
+    
+    let numbutton = UIStackView().then{
+        $0.axis = .vertical
+        $0.spacing = 39
+    }
+    
+    let numbuttonStackView1 = UIStackView().then{
+        $0.axis = .horizontal
+        $0.spacing = 60
+    }
+    
+    let numbuttonStackView2 = UIStackView().then{
+        $0.axis = .horizontal
+        $0.spacing = 60
+    }
+    
+    let numbuttonStackView3 = UIStackView().then{
+        $0.axis = .horizontal
+        $0.spacing = 60
+    }
+    
+    let numbuttonStackView4 = UIStackView().then{
+        $0.axis = .horizontal
+        $0.spacing = 60
+    }
+    
     //button
     
     let numBtn1 =  UIButton().then{
@@ -214,6 +240,10 @@ class NewAppPasswordViewController : UIViewController {
         $0.addTarget(self, action: #selector(wrongPwInput), for: .touchUpInside)
     }
     
+    let blueCharacterView = UIView().then{
+        $0.backgroundColor = nil
+    }
+    
     let blueCharacter = UIImageView().then{
         $0.image = UIImage(named: "password5")
     }
@@ -255,15 +285,19 @@ class NewAppPasswordViewController : UIViewController {
             
             switch pwarraycount {
             case 1 :
+                inputNotPw1.isHidden = true
                 inputPw1.isHidden = false
                 
             case 2 :
+                inputNotPw2.isHidden = true
                 inputPw2.isHidden = false
                 
             case 3 :
+                inputNotPw3.isHidden = true
                 inputPw3.isHidden = false
                 
             case 4 :
+                inputNotPw4.isHidden = true
                 inputPw4.isHidden = false
                 print(passwordArr)
                 
@@ -273,6 +307,12 @@ class NewAppPasswordViewController : UIViewController {
                     newAppPwtext.isHidden = true
                     //비밀번호를 4자리 설정했다면, 비밀번화 확인 입력 문구 보이게 만들어주기
                     newAppPwtext2.isHidden = false
+                    
+                    inputNotPw1.isHidden = false
+                    inputNotPw2.isHidden = false
+                    inputNotPw3.isHidden = false
+                    inputNotPw4.isHidden = false
+                    
                     inputPw1.isHidden = true
                     inputPw2.isHidden = true
                     inputPw3.isHidden = true
@@ -298,15 +338,19 @@ class NewAppPasswordViewController : UIViewController {
             
             switch pwarraycount {
             case 1 :
+                inputNotPw1.isHidden = true
                 inputPw1.isHidden = false
                 
             case 2 :
+                inputNotPw2.isHidden = true
                 inputPw2.isHidden = false
                 
             case 3 :
+                inputNotPw3.isHidden = true
                 inputPw3.isHidden = false
                 
             case 4 :
+                inputNotPw4.isHidden = true
                 inputPw4.isHidden = false
                 print(passwordArr)
                 print(passwordArr2)
@@ -351,6 +395,12 @@ class NewAppPasswordViewController : UIViewController {
                         newAppPwtext.isHidden = true
                         newAppPwtext2.isHidden = true
                         pwnotcorrect.isHidden = false
+                        
+                        inputNotPw1.isHidden = false
+                        inputNotPw2.isHidden = false
+                        inputNotPw3.isHidden = false
+                        inputNotPw4.isHidden = false
+                        
                         inputPw1.isHidden = true
                         inputPw2.isHidden = true
                         inputPw3.isHidden = true
@@ -378,15 +428,19 @@ class NewAppPasswordViewController : UIViewController {
             
             switch pwarraycount {
             case 1 :
+                inputNotPw1.isHidden = true
                 inputPw1.isHidden = false
                 
             case 2 :
+                inputNotPw2.isHidden = true
                 inputPw2.isHidden = false
                 
             case 3 :
+                inputNotPw3.isHidden = true
                 inputPw3.isHidden = false
                 
             case 4 :
+                inputNotPw4.isHidden = true
                 inputPw4.isHidden = false
                 print(passwordArr)
                 print(passwordArr2)
@@ -430,6 +484,11 @@ class NewAppPasswordViewController : UIViewController {
                     //이미지 보이기 위한 딜레이
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) { [self] in
                         
+                        inputNotPw1.isHidden = false
+                        inputNotPw2.isHidden = false
+                        inputNotPw3.isHidden = false
+                        inputNotPw4.isHidden = false
+
                         inputPw1.isHidden = true
                         inputPw2.isHidden = true
                         inputPw3.isHidden = true
@@ -455,18 +514,22 @@ class NewAppPasswordViewController : UIViewController {
             if deletBtn.isTouchInside {
                 switch pwarraycount {
                 case 4 :
+                    inputNotPw4.isHidden = false
                     inputPw4.isHidden = true
                     passwordArr.removeLast()
                     
                 case 3 :
+                    inputNotPw3.isHidden = false
                     inputPw3.isHidden = true
                     passwordArr.removeLast()
                     
                 case 2 :
+                    inputNotPw2.isHidden = false
                     inputPw2.isHidden = true
                     passwordArr.removeLast()
                     
                 case 1 :
+                    inputNotPw1.isHidden = false
                     inputPw1.isHidden = true
                     passwordArr.removeLast()
                     
@@ -491,21 +554,24 @@ class NewAppPasswordViewController : UIViewController {
             if deletBtn.isTouchInside {
                 switch pwarraycount {
                 case 4 :
+                    inputNotPw4.isHidden = false
                     inputPw4.isHidden = true
-                    passwordArr2.removeLast()
+                    passwordArr.removeLast()
                     
                 case 3 :
+                    inputNotPw3.isHidden = false
                     inputPw3.isHidden = true
-                    passwordArr2.removeLast()
+                    passwordArr.removeLast()
                     
                 case 2 :
+                    inputNotPw2.isHidden = false
                     inputPw2.isHidden = true
-                    passwordArr2.removeLast()
+                    passwordArr.removeLast()
                     
                 case 1 :
+                    inputNotPw1.isHidden = false
                     inputPw1.isHidden = true
-                    passwordArr2.removeLast()
-                    
+                    passwordArr.removeLast()
                     
                 default :
                     return
