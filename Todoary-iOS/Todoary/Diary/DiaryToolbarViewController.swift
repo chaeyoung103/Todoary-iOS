@@ -24,6 +24,7 @@ class DiaryToolbar : UIView {
     
     let cameraBtn = UIButton().then{
         $0.setImage(UIImage(named: "camera"), for: .normal)
+        $0.addTarget(self, action: #selector(cameraBtnDidTab), for: .touchUpInside)
     }
     
     let textBtn = UIButton().then{
@@ -241,22 +242,14 @@ class DiaryToolbar : UIView {
     
     //MARK: - BtnDidTab
     
-//    @objc func cameraBtnDidTab() {
-////        사진 기능 추가시 코드 넣어주기
-//        if cameraBtn.isTouchInside == true {
-//            colorToolbar.isHidden = true
-//            textToolbar.isHidden = true
-//            fontToolbar.isHidden = true
-//
-//            let alert = UIAlertController(title: nil, message: "현재 제공하고 있지 않은 기능입니다.\n다음 업데이트에 만나요!", preferredStyle: .alert)
-//
-//            let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
-//            
-//            alert.addAction(okBtn)
-//
-//        } else {
-//        }
-//    }
+    @objc func cameraBtnDidTab() {
+//        사진 기능 추가시 코드 넣어주기
+        if cameraBtn.isTouchInside == true {
+            colorToolbar.isHidden = true
+            textToolbar.isHidden = true
+            fontToolbar.isHidden = true
+        }
+    }
     
     @objc func textBtnDidTab() {
         if textBtn.isTouchInside == true {

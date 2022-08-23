@@ -36,6 +36,7 @@ class OnboardingViewController : UIViewController {
         self.view.backgroundColor = .white
 
         self.view.addSubview(onboardingImgScrollView)
+        onboardingImgScrollView.backgroundColor = .black
         
         onboardingImgScrollView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(102)
@@ -45,6 +46,7 @@ class OnboardingViewController : UIViewController {
         }
         
         self.view.addSubview(onboardingPagecontrol)
+        onboardingPagecontrol.backgroundColor = .black
         
         onboardingPagecontrol.snp.makeConstraints{ make in
             make.bottom.equalToSuperview().offset(-119)
