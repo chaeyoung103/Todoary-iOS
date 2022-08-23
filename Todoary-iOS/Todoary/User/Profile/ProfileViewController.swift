@@ -53,10 +53,10 @@ class ProfileViewController : UIViewController {
         $0.font = UIFont.nbFont(type: .body2)
     }
     
-    let nickNameTf = UITextView().then{
+    let nickNameTf = UITextField().then{
         $0.font = UIFont.nbFont(type: .tableCell)
         $0.addLeftPadding()
-        $0.textViewTypeSetting()
+        $0.addLetterSpacing(spacing: 0.28)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.silver_217.cgColor
         $0.layer.cornerRadius = 10
@@ -303,7 +303,9 @@ extension ProfileViewController {
         nickNameTf.text = result.nickname
         introduceTf.text = result.introduce
         nickNameCount.text = "\(result.nickname!.count)/10"
-        introduceCount.text = "\(result.introduce!.count)/30"
+        if ((result.introduce != nil)){
+            introduceCount.text = "\(result.introduce!.count)/30"
+        }
         let url = URL(string: result.profileImgUrl!)
         profileImage.load(url: url!)
     }
@@ -312,8 +314,7 @@ extension ProfileViewController {
 //텍스트뷰에 패딩 넣기
 extension UITextView {
     func addLeftPadding() {
-        
-        self.textContainerInset = UIEdgeInsets(top: 14, left: 4.7, bottom: 0, right: 10)
+        self.textContainerInset = UIEdgeInsets(top: 14, left: 5, bottom: 0, right: 10)
         self.scrollIndicatorInsets = self.textContainerInset
     }
 }

@@ -66,8 +66,8 @@ extension ProfileViewController {
         
         nickNameCount.snp.makeConstraints{ make in
             make.centerY.equalTo(nickNameTitle)
-            make.trailing.equalToSuperview().offset(-289)
-            make.width.equalTo(25)
+            make.leading.equalTo(nickNameTitle.snp.trailing).offset(8)
+            make.width.equalTo(40)
         }
         
         nickNameNotice.snp.makeConstraints{ make in
@@ -90,8 +90,8 @@ extension ProfileViewController {
         
         introduceCount.snp.makeConstraints{ make in
             make.centerY.equalTo(introduceTitle)
-            make.trailing.equalToSuperview().offset(-67)
-            make.width.equalTo(234)
+            make.leading.equalTo(introduceTitle.snp.trailing).offset(8)
+            make.width.equalTo(40)
         }
         
         //button

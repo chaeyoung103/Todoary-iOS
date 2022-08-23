@@ -39,6 +39,12 @@ class CalendarCell : UICollectionViewCell {
         $0.layer.cornerRadius = 12
     }
     
+    let diary = UIView().then{
+        $0.isHidden = true
+        $0.backgroundColor = UIColor(red: 95/255, green: 158/255, blue: 252/255, alpha: 1)
+        $0.layer.cornerRadius = 7/2
+    }
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -48,6 +54,7 @@ class CalendarCell : UICollectionViewCell {
     
     private func setUpView(){
         addSubview(dateLabel)
+        addSubview(diary)
     }
     
     private func setConstraint() {
@@ -55,6 +62,13 @@ class CalendarCell : UICollectionViewCell {
             make.center.equalToSuperview()
             make.width.equalTo(40)
             make.height.equalTo(40)
+        }
+        
+        diary.snp.makeConstraints{ make in
+            make.centerX.equalTo(dateLabel)
+            make.bottom.equalTo(dateLabel.snp.bottom).offset(-4)
+            make.width.equalTo(7)
+            make.height.equalTo(7)
         }
       }
     

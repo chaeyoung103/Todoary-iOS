@@ -34,7 +34,8 @@ class HomeViewController : UIViewController {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
-    var calendarRecord = [Int](repeating: 0, count: 32)
+    static var calendarRecord = [Int](repeating: 0, count: 32)
+    static var diaryRecord = [Int](repeating: 0, count: 32)
     
     static let bottomSheetVC = SummaryBottomViewController()
     
@@ -101,7 +102,7 @@ class HomeViewController : UIViewController {
         $0.addTarget(self, action: #selector(nextBtnDidTap), for: .touchUpInside)
     }
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    static let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
@@ -123,10 +124,10 @@ class HomeViewController : UIViewController {
         setUpView()
         setUpConstraint()
         
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
-        self.collectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "calendarCell")
+        HomeViewController.collectionView.delegate = self
+        HomeViewController.collectionView.dataSource = self
+        HomeViewController.collectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
+        HomeViewController.collectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "calendarCell")
         
         self.initView()
        
@@ -137,11 +138,18 @@ class HomeViewController : UIViewController {
         
         self.calculation()
         let component = cal.date(from: components)
+        
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
         
-        collectionView.reloadData()
+        GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
+        
+        HomeViewController.collectionView.reloadData()
         
         GetProfileDataManager().getProfileDataManger(self)
+        
+        let fcmToken = FcmTokenInput(fcm_token: UserDefaults.standard.string(forKey: "fcmToken"))
+        
+        FcmTokendataManager().fcmTokendataManager(self, fcmToken)
         
         showBottomSheet()
     }
@@ -164,6 +172,11 @@ class HomeViewController : UIViewController {
     // 년,월 누르기 -> 오늘로 돌아가기
     @objc func settingInit(){
         self.initView()
+        
+        let convertDate = ConvertDate(year: self.year, month: self.month, date: String(self.today))
+        
+        GetTodoDataManager().gets(convertDate.dateSendServer)
+        DiaryDataManager().gets(convertDate.dateSendServer)
     }
     
     //MARK: - Helpers
@@ -174,7 +187,7 @@ class HomeViewController : UIViewController {
         let url = URL(string: result.profileImgUrl!)
         profileImage.load(url: url!)
     }
-    func successAPI_calendar(_ result : [Int]) {
+    static func successAPI_calendar(_ result : [Int]) {
         
         calendarRecord = [Int](repeating: 0, count: 32)
         
@@ -183,7 +196,19 @@ class HomeViewController : UIViewController {
                 calendarRecord[result[i]] = result[i]
             }
         }
-        collectionView.reloadData()
+        HomeViewController.collectionView.reloadData()
+    }
+    
+    static func successAPI_diary(_ result : [Int]) {
+        
+        diaryRecord = [Int](repeating: 0, count: 32)
+        
+        if !result.isEmpty{
+            for i in 0...result.count-1{
+                diaryRecord[result[i]] = result[i]
+            }
+        }
+        HomeViewController.collectionView.reloadData()
     }
     
     static func dismissBottomSheet(){

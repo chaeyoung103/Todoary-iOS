@@ -123,24 +123,21 @@ extension LoginViewController {
         loginBtn.snp.makeConstraints{ make in
             make.top.equalTo(pwBorderLine).offset(65)
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(33)
-            make.trailing.equalToSuperview().offset(-33)
+            make.width.equalTo(324)
             make.height.equalTo(51)
         }
         
         appleBtn.snp.makeConstraints{ make in
             make.top.equalTo(loginBtn.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(33)
-            make.trailing.equalToSuperview().offset(-33)
+            make.width.equalTo(324)
             make.height.equalTo(51)
         }
         
         signUpBtn.snp.makeConstraints{ make in
             make.top.equalTo(appleBtn.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(33)
-            make.trailing.equalToSuperview().offset(-33)
+            make.width.equalTo(324)
             make.height.equalTo(51)
         }
         

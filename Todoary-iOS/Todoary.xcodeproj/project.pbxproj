@@ -143,6 +143,11 @@
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */; };
 		ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */; };
+		ACFBEC9528B3777C00B9D66F /* FcmTokendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */; };
+		ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */; };
+		ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */; };
+		ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */; };
+		ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
@@ -386,6 +391,11 @@
 		ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarModel.swift; sourceTree = "<group>"; };
 		ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNumberSettingViewController.swift; sourceTree = "<group>"; };
 		ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinNumberSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokendataManager.swift; sourceTree = "<group>"; };
+		ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenModel.swift; sourceTree = "<group>"; };
+		ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenInput.swift; sourceTree = "<group>"; };
+		ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiaryDataManager.swift; sourceTree = "<group>"; };
+		ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiaryExistenceModel.swift; sourceTree = "<group>"; };
 		C3C8A11142F88041A453AA57 /* Pods-TodoaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.debug.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D54D487D3B3177B28D4A4FBE /* Pods-Todoary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.release.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.release.xcconfig"; sourceTree = "<group>"; };
 		E005DE79287019BD00814C79 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -807,6 +817,7 @@
 		AC5E27DD28901EBE0056EC69 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				ACFBEC9328B3775B00B9D66F /* FcmTokenDataManager */,
 				E0F998BF288A6A9C0051C7AA /* SignoutDataManager */,
 				E0F9987F288A57070051C7AA /* PwFindDataManager */,
 				AC5E27D6288C68980056EC69 /* EmailCheckDataManager */,
@@ -921,6 +932,7 @@
 		AC9859C72882909F009FC2F8 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				ACFBEC9A28B3DB6900B9D66F /* GetDiaryDataManager */,
 				ACCD87D32897E35B00C34CE7 /* GetCalendarDataManager */,
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				AC9859CA288334AC009FC2F8 /* CalendarCell.swift */,
@@ -1014,6 +1026,25 @@
 				ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */,
 			);
 			path = PinNumberSetting;
+			sourceTree = "<group>";
+		};
+		ACFBEC9328B3775B00B9D66F /* FcmTokenDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */,
+				ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */,
+				ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */,
+			);
+			path = FcmTokenDataManager;
+			sourceTree = "<group>";
+		};
+		ACFBEC9A28B3DB6900B9D66F /* GetDiaryDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */,
+				ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */,
+			);
+			path = GetDiaryDataManager;
 			sourceTree = "<group>";
 		};
 		E005DE72287018EA00814C79 /* AppPassword */ = {
@@ -1580,9 +1611,11 @@
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
+				ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
+				ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */,
 				E0F3CDC92895696E00A74AB7 /* DiaryTabelViewCell.swift in Sources */,
 				AC5E27F028914E930056EC69 /* TodoSettingInput.swift in Sources */,
 				AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */,
@@ -1615,6 +1648,7 @@
 				572E5ADE286EBDCC00D1FAA0 /* ViewController.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
 				ACCD87CB2897BB4C00C34CE7 /* CategoryModifyInput.swift in Sources */,
+				ACFBEC9528B3777C00B9D66F /* FcmTokendataManager.swift in Sources */,
 				AC9128D0287B34B30056932A /* ProfileViewController.swift in Sources */,
 				AC67C2DC2892904C00071763 /* SetKeboard.swift in Sources */,
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
@@ -1652,6 +1686,7 @@
 				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
+				ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
 				E0439AC3288C5E570075CBF0 /* ColorPickerCollectionView.swift in Sources */,
 				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
@@ -1671,6 +1706,7 @@
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
 				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
+				ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,

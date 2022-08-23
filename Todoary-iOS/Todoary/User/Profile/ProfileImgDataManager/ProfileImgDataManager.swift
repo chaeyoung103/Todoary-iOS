@@ -18,7 +18,7 @@ class profileImgDataManager {
                 multipartFormData.append(image, withName: "profile-img", fileName: "\(image).jpeg", mimeType: "image/ipeg")
             }
             
-        }, to: "https://todoary.com/users/profile-img", usingThreshold: UInt64.init(), method: .patch, headers: headers).validate().responseDecodable(of: ProfileImgModel.self)
+        }, to: "https://test.todoary.com/users/profile-img", usingThreshold: UInt64.init(), method: .patch, headers: headers).validate().responseDecodable(of: ProfileImgModel.self)
         { response in
             
             switch response.result {
@@ -28,7 +28,7 @@ class profileImgDataManager {
                 case 1000 :
                     print("프로필이미지변경성공")
                 case 5001 :
-                    print("프로필이미지실패")
+                    print("접근권한이 없습니다")
                 default:
                     print("프로필이미지실패: " + result.message)
                 }

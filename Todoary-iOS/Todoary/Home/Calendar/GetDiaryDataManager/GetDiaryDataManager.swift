@@ -1,30 +1,30 @@
 //
-//  GetCalendataManager.swift
+//  GetDiaryDataManager.swift
 //  Todoary
 //
-//  Created by 송채영 on 2022/08/01.
+//  Created by 송채영 on 2022/08/23.
 //
 
 import Alamofire
 
-class GetCalendataManager {
+class GetDiaryDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func getCalendataManager(_ viewController : UIViewController , yearMonth : String) {
+    func getDiaryDataManager(_ viewController : UIViewController , yearMonth : String) {
         
-        AF.request("https://todoary.com/todo/days/\(yearMonth)",
+        AF.request("https://todoary.com/diary/days/\(yearMonth)",
                    method: .get,
                    parameters: nil,
                    headers: headers)
             .validate()
-            .responseDecodable(of: GetCalendarModel.self) { response in
+            .responseDecodable(of: GetDiaryExistenceModel.self) { response in
                 switch response.result {
                 case .success(let result):
                     switch result.code {
                     case 1000:
-                        print("캘린더조회성공")
-                        HomeViewController.successAPI_calendar(result.result)
+                        print("다이어리존재여부조회 성공")
+                        HomeViewController.successAPI_diary(result.result)
                     case 2005:
                         print("유효하지 않은 회원정보입니다")
                     case 2010:
