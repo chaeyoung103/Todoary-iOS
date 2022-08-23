@@ -323,6 +323,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     }
     
     func stickerViewDidClose(_ stickerView: StickerView) {
+        
     }
     
 }

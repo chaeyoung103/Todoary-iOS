@@ -60,7 +60,7 @@ extension ProfileViewController {
         nickNameTf.snp.makeConstraints{ make in
             make.top.equalTo(nickNameTitle.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(32)
-            make.width.equalTo(327)
+            make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(45)
         }
         
@@ -84,7 +84,7 @@ extension ProfileViewController {
         introduceTf.snp.makeConstraints{ make in
             make.top.equalTo(introduceTitle.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(32)
-            make.width.equalTo(327)
+            make.trailing.equalToSuperview().offset(-31)
             make.height.equalTo(67)
         }
         
