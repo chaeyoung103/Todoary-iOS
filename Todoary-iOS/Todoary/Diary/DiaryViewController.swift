@@ -14,6 +14,8 @@ import StickerView
 
 class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
     
+    
+    
     //MARK: - Properties
     static let stickerData = [UIImage(named: "sticker1"),
                                UIImage(named: "sticker2"),
@@ -296,58 +298,31 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
             stickerView.showEditingHandlers = false
         }
     }
-    
-    func stickerViewDidBeginMoving(_ stickerView: StickerView) {
-        if stickerView.frame.origin.x <= 0 {
-            stickerView.frame.origin.x = 0
-        }
-        if stickerView.frame.origin.x >= 210{
-            stickerView.frame.origin.x = 210
-        }
-        if stickerView.frame.origin.y <= 0 {
-            stickerView.frame.origin.y = 0
-        }
-        self.selectedStickerView = stickerView
-    }
-    
-    /// Other delegate methods which we not used currently but choose method according to your event and requirements.
     func stickerViewDidChangeMoving(_ stickerView: StickerView) {
-        if stickerView.frame.origin.x <= 0 {
-            stickerView.frame.origin.x = 0
-        }
-        if stickerView.frame.origin.x >= 210{
-            stickerView.frame.origin.x = 210
-        }
-        if stickerView.frame.origin.y <= 0 {
-            stickerView.frame.origin.y = 0
-        }
+        
     }
     
     func stickerViewDidEndMoving(_ stickerView: StickerView) {
-        if stickerView.frame.origin.x <= 0 {
-            stickerView.frame.origin.x = 0
-        }
-        if stickerView.frame.origin.x >= 210{
-            stickerView.frame.origin.x = 210
-        }
-        if stickerView.frame.origin.y <= 0 {
-            stickerView.frame.origin.y = 0
-        }
+        
     }
     
     func stickerViewDidBeginRotating(_ stickerView: StickerView) {
+        
     }
     
     func stickerViewDidChangeRotating(_ stickerView: StickerView) {
-
+        
     }
     
     func stickerViewDidEndRotating(_ stickerView: StickerView) {
- 
+        
+    }
+    
+    func stickerViewDidBeginMoving(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
     }
     
     func stickerViewDidClose(_ stickerView: StickerView) {
-        print(stickerView.frame.origin.y)
     }
     
 }

@@ -24,7 +24,7 @@ extension HomeViewController {
         self.view.addSubview(previousMonthBtn)
         self.view.addSubview(nextMonthBtn)
         
-        self.view.addSubview(collectionView)
+        self.view.addSubview(HomeViewController.collectionView)
 
        
     }
@@ -85,7 +85,7 @@ extension HomeViewController {
             make.trailing.equalToSuperview().offset(-33)
         }
         
-        collectionView.snp.makeConstraints{ make in
+        HomeViewController.collectionView.snp.makeConstraints{ make in
             make.top.equalTo(year_Month.snp.bottom).offset(17)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview()

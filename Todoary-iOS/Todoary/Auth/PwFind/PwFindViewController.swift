@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class PwFindViewController: UIViewController {
+class PwFindViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
     
     var password: String = ""
@@ -57,6 +57,8 @@ class PwFindViewController: UIViewController {
         $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
         $0.textFieldTypeSetting(type: .body1)
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let idNoticeLb = UILabel().then{
@@ -91,6 +93,8 @@ class PwFindViewController: UIViewController {
 
     let certificationTf = UITextField().then{
         $0.font = UIFont.nbFont(type: .body2)
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let certificationBorderLine = UIView().then{
@@ -121,6 +125,8 @@ class PwFindViewController: UIViewController {
         $0.setPlaceholderColor()
         $0.font = UIFont.nbFont(type: .body2)
         $0.textFieldTypeSetting(type: .body1)
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
 
@@ -142,6 +148,8 @@ class PwFindViewController: UIViewController {
         $0.isSecureTextEntry = true
         $0.font = UIFont.nbFont(type: .body2)
         $0.textFieldTypeSetting(type: .body1)
+        $0.returnKeyType = .done
+        $0.enablesReturnKeyAutomatically = true
         $0.addTarget(self, action: #selector(tfDidChange), for: .editingChanged)
     }
 
@@ -178,9 +186,22 @@ class PwFindViewController: UIViewController {
             $0.navigationTitle.text = "비밀번호 재설정"
         }
         self.view.backgroundColor = .white
+        
+        self.idTf.delegate = self
+        self.certificationTf.delegate = self
+        self.pwTf.delegate = self
+        self.pwCertificationTf.delegate = self
+
 
         setUpView()
         setUpConstraint()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
     }
     
     //MARK: - Actions
@@ -261,6 +282,19 @@ class PwFindViewController: UIViewController {
     }
     
     //MARK: - Helpers
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTf {
+            certificationTf.becomeFirstResponder()
+            } else if textField == certificationTf {
+                pwTf.becomeFirstResponder()
+            }else if textField == pwTf {
+                pwCertificationTf.becomeFirstResponder()
+            }else if textField == pwCertificationTf {
+                pwCertificationTf.resignFirstResponder()
+            }
+            return true
+        }
     
     func validateUserInput(){
         if isValidPw
