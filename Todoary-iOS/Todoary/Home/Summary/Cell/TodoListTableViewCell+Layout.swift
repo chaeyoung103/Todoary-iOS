@@ -91,7 +91,7 @@ extension TodoListTableViewCell{
                 }
                 
                 titleLabel.snp.makeConstraints{ make in
-                    make.trailing.equalToSuperview().offset( -(titleTrailing + 100)) 
+                    make.trailing.equalToSuperview().offset( -(titleTrailing + 100))
                 }
             }else{
                 

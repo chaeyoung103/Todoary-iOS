@@ -44,7 +44,6 @@ struct GetTodoInfo: Decodable, Equatable{
             endIndex = time.endIndex
             
             return "AM \(time[startIndex..<endIndex])"
-            
         }else if(time < "13:00"){
             return "PM \(time)"
         }else{
