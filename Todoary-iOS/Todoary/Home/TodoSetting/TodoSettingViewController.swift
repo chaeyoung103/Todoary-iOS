@@ -161,10 +161,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let time = DispatchTime.now() + .milliseconds(50)
-        DispatchQueue.main.asyncAfter(deadline: time) {
-            GetCategoryDataManager().getCategoryDataManager(self)
-        }
+        GetCategoryDataManager().getCategoryDataManager(self)
     }
     
     //아무데나 누르기 -> 키보드 내리기

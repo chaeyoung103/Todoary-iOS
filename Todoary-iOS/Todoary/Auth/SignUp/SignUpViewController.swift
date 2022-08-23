@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController{
     
     //MARK: - Properties
     
@@ -72,6 +72,8 @@ class SignUpViewController: UIViewController {
     let idTextField = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let idBorderLine = UIView().then{
@@ -103,6 +105,8 @@ class SignUpViewController: UIViewController {
 
     let certificationTextField = UITextField().then{
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let certificationBorderLine = UIView().then{
@@ -129,6 +133,8 @@ class SignUpViewController: UIViewController {
         $0.placeholder = "영문, 숫자 포함 8자리 이상"
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let pwBorderLine = UIView().then{
@@ -143,8 +149,11 @@ class SignUpViewController: UIViewController {
     }
 
     let pwCertificationTextField = UITextField().then{
+        $0.placeholder = "비밀번호 재입력"
         $0.textFieldTypeSetting()
         $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let pwCertificationBorderLine = UIView().then{
@@ -168,6 +177,8 @@ class SignUpViewController: UIViewController {
     let nameTextField = UITextField().then{
         $0.placeholder = "이름을 입력해주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let nameBorderLine = UIView().then{
@@ -190,6 +201,8 @@ class SignUpViewController: UIViewController {
     let nicknameTextField = UITextField().then{
         $0.placeholder = "Todoary에서 사용하실 닉네임을 알려주세요"
         $0.textFieldTypeSetting()
+        $0.returnKeyType = .done
+        $0.enablesReturnKeyAutomatically = true
     }
 
     let nicknameBorderLine = UIView().then{
@@ -223,6 +236,13 @@ class SignUpViewController: UIViewController {
         navigationView = NavigationView(frame: .zero, self.navigationController!).then{
             $0.navigationTitle.text = "회원가입"
         }
+        
+        self.idTextField.delegate = self
+        self.certificationTextField.delegate = self
+        self.pwTextField.delegate = self
+        self.pwCertificationTextField.delegate = self
+        self.nameTextField.delegate = self
+        self.nicknameTextField.delegate = self
 
         setUpView()
         setUpConstraint()
@@ -354,8 +374,9 @@ class SignUpViewController: UIViewController {
 
         if(isValidEmail){
             //이메일 중복 여부 확인
-            SignUpDataManager().posts(self, email: self.email)
+            SignUpDataManager().gets(self, email: self.email)
             print("API - email 중복 검사 요청")
+
         }else{
             idCanUseLabel.text = "*이메일 형식이 올바르지 않습니다."
             idCanUseLabel.textColor = .noticeRed
@@ -420,6 +441,26 @@ extension SignUpViewController: UITextFieldDelegate{
         
         return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTextField {
+            certificationTextField.becomeFirstResponder()
+            } else if textField == certificationTextField {
+                pwTextField.becomeFirstResponder()
+            }else if textField == pwTextField {
+                pwCertificationTextField.becomeFirstResponder()
+            }else if textField == pwCertificationTextField {
+                nameTextField.becomeFirstResponder()
+            }else if textField == nameTextField {
+                nicknameTextField.becomeFirstResponder()
+            }else if textField == nicknameTextField {
+                nicknameTextField.resignFirstResponder()
+                UIView.animate(withDuration: 0.3){
+                    self.view.window?.frame.origin.y = 0
+                }
+            }
+            return true
+        }
 }
 
 //MARK: - API
@@ -431,8 +472,11 @@ extension SignUpViewController{
             self.navigationController?.popToRootViewController(animated: true)
             return
         case 2017:
+            nextButton.isEnabled = false
+            idCanUseLabel.isHidden = false
+            idCanUseLabel.text = "중복된 이메일입니다."
             return
-        case 2032: //닉네임 중복 오류
+        case 2032:
             nextButton.isEnabled = false
             nicknameCanUseLabel.isHidden = false
             nicknameCanUseLabel.text = "중복된 닉네임입니다."
@@ -468,8 +512,8 @@ extension SignUpViewController{
             return
             
         case 2017:
-            
-            idCanUseLabel.text = "*이미 사용중인 이메일입니다."
+            idCanUseLabel.isHidden = false
+            idCanUseLabel.text = "*중복된 이메일 입니다."
             idCanUseLabel.textColor = .noticeRed
             isValidEmail = false
             

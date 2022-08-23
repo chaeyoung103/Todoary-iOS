@@ -100,7 +100,7 @@ extension SignUpViewController {
             make.top.equalTo(certificationTitle.snp.bottom).offset(16)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
-            make.width.equalTo(idTextField)
+            make.leading.trailing.equalTo(idBorderLine)
         }
         
         certificationBorderLine.snp.makeConstraints{ make in
@@ -127,7 +127,7 @@ extension SignUpViewController {
             make.top.equalTo(pwTitle.snp.bottom).offset(17)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(idTextField)
+            make.leading.trailing.equalTo(idBorderLine)
         }
         
         pwBorderLine.snp.makeConstraints{ make in
@@ -146,7 +146,7 @@ extension SignUpViewController {
             make.top.equalTo(pwCanUseLabel.snp.bottom).offset(13)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(idTextField)
+            make.leading.trailing.equalTo(idBorderLine)
         }
         
         pwCertificationBorderLine.snp.makeConstraints{ make in
@@ -198,7 +198,7 @@ extension SignUpViewController {
             make.top.equalTo(nicknameTitle.snp.bottom).offset(16)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(idTextField)
+            make.leading.trailing.equalTo(idBorderLine)
         }
         
         nicknameBorderLine.snp.makeConstraints{ make in

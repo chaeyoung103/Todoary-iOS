@@ -38,7 +38,6 @@ class GetCategoryDataManager {
                 switch result.code {
                 case 1000:
                     print("카테고리조회성공")
-                    print(result.result)
                     if let vc = viewController as? TodoSettingViewController {
                         vc.successAPI_category(result.result)
                     }else if let vc = viewController as? SummaryBottomViewController {

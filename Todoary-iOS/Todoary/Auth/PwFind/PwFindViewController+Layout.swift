@@ -55,7 +55,7 @@ extension PwFindViewController {
 
         idTf.snp.makeConstraints{ make in
             make.top.equalTo(idTitle.snp.bottom).offset(16)
-            make.width.equalTo(152)
+            make.width.equalTo(idBorderLine)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
         }
@@ -89,7 +89,7 @@ extension PwFindViewController {
             make.top.equalTo(certificationTitle.snp.bottom).offset(16)
             make.height.equalTo(20)
             make.leading.equalTo(idTitle)
-            make.width.equalTo(261)
+            make.width.equalTo(idBorderLine)
         }
         
         certificationBorderLine.snp.makeConstraints{ make in
@@ -116,7 +116,7 @@ extension PwFindViewController {
             make.top.equalTo(pwTitle.snp.bottom).offset(17)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.width.equalTo(idBorderLine)
         }
         
         pwBorderLine.snp.makeConstraints{ make in
@@ -135,7 +135,7 @@ extension PwFindViewController {
             make.top.equalTo(pwBorderLine.snp.bottom).offset(41)
             make.leading.equalTo(idTitle)
             make.height.equalTo(20)
-            make.width.equalTo(261)
+            make.width.equalTo(idBorderLine)
         }
         
         pwCertificationBorderLine.snp.makeConstraints{ make in

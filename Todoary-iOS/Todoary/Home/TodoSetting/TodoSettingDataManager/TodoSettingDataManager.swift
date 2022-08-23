@@ -26,14 +26,7 @@ class TodoSettingDataManager {
                         vc.todoTf.isHidden = true
                         vc.collectionView.isHidden = true
                         
-                        let result = parameter.targetDate.components(separatedBy: "-")
-                        
-                        let year = result[0]
-                        let month = result[1]
-                        
-                        GetCalendataManager().getCalendataManager(HomeViewController(), yearMonth: "\(year)-\(month)")
-                        
-                        HomeViewController().collectionView.reloadData()
+                        HomeViewController.collectionView.reloadData()
                         
                         GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
                     }

@@ -54,6 +54,7 @@ extension SummaryBottomViewController{
                                                selector: #selector(didShowKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillShowNotification ,
                                                object: nil)
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didHideKeyboardNotification(_:)),
                                                name: UIResponder.keyboardWillHideNotification ,
