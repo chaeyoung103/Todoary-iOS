@@ -42,6 +42,8 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     var pickDate: ConvertDate?
     
+    var isEnterPressed = false
+    
     var _selectedStickerView:StickerView?
         var selectedStickerView:StickerView? {
             get {
@@ -323,6 +325,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     }
     
     func stickerViewDidClose(_ stickerView: StickerView) {
+        
     }
     
 }

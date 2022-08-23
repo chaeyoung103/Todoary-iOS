@@ -55,6 +55,33 @@ extension UIColor{
 
 extension DiaryViewController{
     
+    func textViewDidChange(_ textView: UITextView) {
+        if(isEnterPressed){
+            
+            let selectedRange = self.textView.selectedRange
+            let selectedTextRange = self.textView.selectedTextRange
+
+            let customRange: NSRange = NSRange(location: selectedRange.lowerBound-1, length: 1)
+            
+            let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+            
+            attributedString.removeAttribute(.backgroundColor, range: customRange)
+            
+            textView.attributedText = attributedString
+            
+            moveCursorEndOfSelection(selectedTextRange)
+            
+            isEnterPressed = false
+        }
+    }
+    
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            isEnterPressed = true
+        }
+        return true
+    }
+    
     func setHighlightToolBarAction(){
     
         self.toolbar.yellowBtn.addTarget(self, action: #selector(yellowBtnDidClicked), for: .touchUpInside)
@@ -64,6 +91,7 @@ extension DiaryViewController{
         self.toolbar.blueBtn.addTarget(self, action: #selector(blueBtnDidClicked), for: .touchUpInside)
         self.toolbar.grayBtn.addTarget(self, action: #selector(grayBtnDidClicked), for: .touchUpInside)
     }
+    
     
     @objc func yellowBtnDidClicked(){
 

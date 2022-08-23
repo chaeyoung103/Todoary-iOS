@@ -54,20 +54,26 @@ class CategoryTodoTableViewCell: UITableViewCell {
     
     lazy var timeLabel = UILabel().then{
         $0.text = "AM 7:00"
-        $0.textAlignment = .right
+        $0.textAlignment = .center
         $0.textColor = .timeColor
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
     }
     
     lazy var alarmImage = UIImageView().then{
         $0.image = UIImage(named: "notifications")
+        $0.contentMode = .scaleAspectFit
     }
     
-    let timeView = UIView()
+    let timeView = UIStackView().then{
+        $0.spacing = 4
+        $0.axis = .horizontal
+        $0.alignment = .top
+    }
     
     let timeStack = UIStackView().then{
         $0.axis = .vertical
         $0.spacing = 7.86
+        $0.alignment = .trailing
     }
     
     let backView = UIView().then{

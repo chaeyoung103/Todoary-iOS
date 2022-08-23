@@ -53,7 +53,8 @@ extension CategoryTodoTableViewCell{
         }
         
         todoTitle.snp.makeConstraints{ make in
-            make.width.equalTo(177)
+//            make.width.equalTo(177)
+            make.trailing.equalToSuperview().offset(-101)
             make.top.equalTo(checkBox).offset(-2)
             make.bottom.equalToSuperview().offset(-19)
             make.leading.equalTo(checkBox.snp.trailing).offset(9)
@@ -62,7 +63,7 @@ extension CategoryTodoTableViewCell{
         
         timeStack.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-18)
-            make.leading.equalTo(todoTitle.snp.trailing).offset(12)
+//            make.leading.equalTo(todoTitle.snp.trailing).offset(12)
             make.bottom.equalToSuperview().offset(-23)
         }
         
@@ -82,27 +83,17 @@ extension CategoryTodoTableViewCell{
     func setUpTimeStack(){
         
         if(todoData.isAlarmEnabled){
-            timeView.addSubview(timeLabel)
-            timeView.addSubview(alarmImage)
+            
+            timeView.addArrangedSubview(alarmImage)
+            timeView.addArrangedSubview(timeLabel)
             
             timeStack.addArrangedSubview(timeView)
             
-            timeView.snp.makeConstraints{ make in
-                make.width.equalTo(71)
-                make.height.equalTo(14.14)
-            }
-            
-            timeLabel.snp.makeConstraints{ make in
-                make.top.bottom.leading.trailing.equalToSuperview()
-            }
-            
             alarmImage.snp.makeConstraints{ make in
                 make.width.equalTo(14)
-                make.height.equalTo(13.2)
-                make.leading.equalToSuperview().offset(6)
-                make.top.equalToSuperview()
+//                make.height.equalTo(13)
+//                make.height.equalToSuperview()
             }
         }
-        
     }
 }

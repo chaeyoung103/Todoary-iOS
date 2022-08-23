@@ -27,6 +27,7 @@ class profileImgDataManager {
                     
                 case 1000 :
                     print("프로필이미지변경성공")
+                    viewController.navigationController?.popViewController(animated: true)
                 case 5001 :
                     print("접근권한이 없습니다")
                 default:
