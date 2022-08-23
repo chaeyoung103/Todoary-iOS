@@ -24,6 +24,7 @@ class DiaryToolbar : UIView {
     
     let cameraBtn = UIButton().then{
         $0.setImage(UIImage(named: "camera"), for: .normal)
+        $0.addTarget(self, action: #selector(cameraBtnDidTab), for: .touchUpInside)
     }
     
     let textBtn = UIButton().then{
@@ -44,6 +45,12 @@ class DiaryToolbar : UIView {
     
     let exitBtn = UIButton().then{
         $0.setImage(UIImage(named: "x"), for: .normal)
+    }
+    
+    let firstStackView = UIStackView().then{
+        $0.axis = .horizontal
+        $0.distribution = .equalCentering
+        $0.spacing = 54
     }
     
     let firstToolbar = UIView().then{
@@ -124,6 +131,12 @@ class DiaryToolbar : UIView {
         $0.layer.cornerRadius = 28/2
     }
     
+    let colorStackView = UIStackView().then{
+        $0.axis = .horizontal
+        $0.distribution = .equalCentering
+        $0.spacing = 30
+    }
+    
     let colorToolbar = UIView().then{
         $0.isHidden = true
         $0.backgroundColor = .white
@@ -162,6 +175,12 @@ class DiaryToolbar : UIView {
         $0.setImage(UIImage(named: "B"), for: .normal)
     }
     
+    let textStackView = UIStackView().then{
+        $0.axis = .horizontal
+        $0.distribution = .equalCentering
+        $0.spacing = 32
+    }
+    
     let textToolbar = UIView().then{
         $0.isHidden = true
         $0.backgroundColor = .white
@@ -191,6 +210,12 @@ class DiaryToolbar : UIView {
         $0.setImage(UIImage(named: "abcd5"), for: .normal)
     }
     
+    let fontStackView = UIStackView().then{
+        $0.axis = .horizontal
+        $0.distribution = .equalCentering
+        $0.spacing = 13
+    }
+    
     let fontToolbar = UIView().then{
         $0.isHidden = true
         $0.backgroundColor = .white
@@ -218,12 +243,12 @@ class DiaryToolbar : UIView {
     //MARK: - BtnDidTab
     
     @objc func cameraBtnDidTab() {
-        //사진 기능 추가시 코드 넣어주기
-//        if cameraBtn.isTouchInside == true {
-//            colorToolbar.isHidden = false
-//        } else {
-//            colorToolbar.isHidden = true
-//        }
+//        사진 기능 추가시 코드 넣어주기
+        if cameraBtn.isTouchInside == true {
+            colorToolbar.isHidden = true
+            textToolbar.isHidden = true
+            fontToolbar.isHidden = true
+        }
     }
     
     @objc func textBtnDidTab() {

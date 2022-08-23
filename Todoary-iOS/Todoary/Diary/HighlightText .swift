@@ -76,6 +76,8 @@ extension DiaryViewController{
         let selectedTextRange = self.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
+        
+        let text = textView.text
 
 
         let attribute = textView.attributedText.attribute(.backgroundColor,
@@ -350,3 +352,4 @@ extension DiaryViewController{
         moveCursorEndOfSelection(selectedTextRange)
     }
 }
+
