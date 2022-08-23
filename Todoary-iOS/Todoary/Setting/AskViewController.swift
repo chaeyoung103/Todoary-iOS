@@ -100,7 +100,7 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row{
         case 1:
             
-            guard let url = URL(string: "https://www.instagram.com/Todoary_official/"), UIApplication.shared.canOpenURL(url) else { return }
+            guard let url = URL(string: "https://www.instagram.com/todoary__official"), UIApplication.shared.canOpenURL(url) else { return }
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
             
             //인스타그램 주소 갔다가 다시 돌아왔을 때 클릭(select) 표시 제거

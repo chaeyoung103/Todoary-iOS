@@ -55,6 +55,34 @@ extension UIColor{
 
 extension DiaryViewController{
     
+//    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+//            //TODO: - 현재 커서 정보 가져와서 attribute remove 시키기
+//            print(self.textView.selectedRange)
+//            print(self.textView.text)
+//
+//
+//            let selectedRange = self.textView.selectedRange
+//
+//            let range: NSRange = NSRange(location: selectedRange.lowerBound, length: 1)
+//
+//            print(range)
+//
+//            print(selectedRange.lowerBound)
+//            print(selectedRange.upperBound)
+////            let start = selectedRange.lowerBound
+//
+//            let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+//
+//            attributedString.removeAttribute(.backgroundColor, range: range)
+//
+//            textView.attributedText = attributedString
+//
+//
+//        }
+//        return true
+//    }
+    
     func setHighlightToolBarAction(){
     
         self.toolbar.yellowBtn.addTarget(self, action: #selector(yellowBtnDidClicked), for: .touchUpInside)
@@ -64,6 +92,7 @@ extension DiaryViewController{
         self.toolbar.blueBtn.addTarget(self, action: #selector(blueBtnDidClicked), for: .touchUpInside)
         self.toolbar.grayBtn.addTarget(self, action: #selector(grayBtnDidClicked), for: .touchUpInside)
     }
+    
     
     @objc func yellowBtnDidClicked(){
 
