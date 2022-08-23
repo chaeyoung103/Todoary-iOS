@@ -58,6 +58,7 @@ class CategoryModifyDataManager {
                     switch result.code {
                     case 1000:
                         print("카테고리수정성공")
+                        viewController.navigationController?.popViewController(animated: true)
                     case 2010:
                         print("유저 아이디값을 확인해주세요")
                     case 2104:
