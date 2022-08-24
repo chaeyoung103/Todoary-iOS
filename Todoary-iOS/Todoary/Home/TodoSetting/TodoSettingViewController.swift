@@ -372,6 +372,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 dateFormatter.dateFormat = "dd"
                 let day = Int(dateFormatter.string(from: now))
                 
+                TodoSettingViewController.selectCategory = categoryData[0].id
+                
                 //날짜 초기값 설정(오늘)
                 self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
             }
