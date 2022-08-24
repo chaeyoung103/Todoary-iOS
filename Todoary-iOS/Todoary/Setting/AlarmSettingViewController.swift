@@ -42,6 +42,7 @@ class AlarmSettingViewController: UIViewController {
             $0.delegate = self
             $0.dataSource = self
             $0.isScrollEnabled = false
+            $0.allowsSelection = false
         }
         
         setUpView()
