@@ -9,8 +9,7 @@
 import UIKit
 import SnapKit
 import Then
-import SafariServices
-import WebKit
+import AuthenticationServices
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -101,6 +100,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.isEnabled = false
         $0.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
     }
+    
+//    let appleStackView = UIStackView().then{
+//        $0.layer.cornerRadius = 51/2
+//    }
     
     let appleBtn = UIButton().then{
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
@@ -209,6 +212,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func appleBtnDidTab() {
         
+        if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleIdentifier) {
+            //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
+            
+        }else{
+            //userIdentifier값 nil인 경우 -> 회원가입 필요
+            
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        }
         
     }
         
@@ -248,5 +266,127 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
+    
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    //TODO: -
+    /*
+     email, userName 정보 -> 키체인에 바로 저장
+     userIdentifier 정보 -> 프로퍼티에 임시 저장
+     이후 회원가입 완료시 userIndentifier 정보도 키체인에 저장
+     
+     => userIdentifier가 키체인에 있을 경우 유저 정보가 있다는 걸로..
+     */
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+            
+            let identityToken = String(data: appleIDCredential.identityToken!, encoding: .ascii)!
+            
+            let email: String!
+            let userName: String!
+//            let userIdentifier = appleIDCredential.user
+            
+            if let emailData = appleIDCredential.email, let name =  appleIDCredential.fullName{
+                //email 값 nil 아닌 경우 -> 키체인에 값 저장하기
+                email = emailData
+                userName = "\(name.familyName!)\(name.givenName!)"
+                KeyChain.create(key: Const.UserDefaults.email, value: email)
+                KeyChain.create(key: Const.UserDefaults.userName, value: userName)
+            }else{
+                //email 값 nil인 경우 -> 키체인에서 값 가져오기
+                
+                email = KeyChain.read(key: Const.UserDefaults.email)
+                userName = KeyChain.read(key: Const.UserDefaults.userName)
+            }
+        
+            let userInfo = AppleUserInfo(name: userName, email: email)
+            
+            let userInput = AppleLoginInput(appleUserInfo: userInfo, code: authorizationCode!, idToken: identityToken)
+            
+            let vc = AgreementViewController()
+            
+            vc.appleUserInfo = userInput
+            vc.userIdentifier = appleIDCredential.user
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+    
+}
+
+import Foundation
+import Security
+
+class Const{
+    class UserDefaults{
+        static let appleIdentifier = "APPLE_IDENTIFIER"
+        static let email = "APPLE_EMAIL"
+        static let userName = "APPLE_USERNAME"
+    }
+}
+
+class KeyChain {
+    // Create
+    class func create(key: String, value: String) {
+        let query: NSDictionary = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key,   // 저장할 Account
+            kSecValueData: value.data(using: .utf8, allowLossyConversion: false) as Any   // 저장할 Token
+        ]
+        SecItemDelete(query)    // Keychain은 Key값에 중복이 생기면, 저장할 수 없기 때문에 먼저 Delete해줌
+
+        let status = SecItemAdd(query, nil)
+        assert(status == noErr, "failed to save Token")
+    }
+    
+    // Read
+    class func read(key: String) -> String? {
+        let query: NSDictionary = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key,
+            kSecReturnData: kCFBooleanTrue as Any,  // CFData 타입으로 불러오라는 의미
+            kSecMatchLimit: kSecMatchLimitOne       // 중복되는 경우, 하나의 값만 불러오라는 의미
+        ]
+        
+        var dataTypeRef: AnyObject?
+        let status = SecItemCopyMatching(query, &dataTypeRef)
+        
+        if status == errSecSuccess {
+            if let retrievedData: Data = dataTypeRef as? Data {
+                let value = String(data: retrievedData, encoding: String.Encoding.utf8)
+                return value
+            } else { return nil }
+        } else {
+            print("failed to loading, status code = \(status)")
+            return nil
+        }
+    }
+    
+    // Delete
+    class func delete(key: String) {
+        let query: NSDictionary = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: key
+        ]
+        let status = SecItemDelete(query)
+        assert(status == noErr, "failed to delete the value, status code = \(status)")
+    }
 }
 

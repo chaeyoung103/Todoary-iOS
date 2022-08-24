@@ -13,5 +13,5 @@ struct CategoryMakeModel : Decodable {
 }
 
 struct CategoryMakeResult : Decodable {
-    var categoryId : CLong?
+    var categoryId : Int?
 }
