@@ -469,7 +469,13 @@ extension SignUpViewController{
     func checkSignUpResultCode(_ code: Int){
         switch(code){
         case 1000:
-            self.navigationController?.popToRootViewController(animated: true)
+            let alert = UIAlertController(title: "회원가입 성공", message: "회원가입을 축하합니다!\n이제 Todoary 서비스를 자유롭게 이용해보세요", preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: "확인", style: .default, handler: { _ in
+                
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            alert.addAction(okBtn)
+            self.present(alert, animated: true, completion: nil)
             return
         case 2017:
             nextButton.isEnabled = false
