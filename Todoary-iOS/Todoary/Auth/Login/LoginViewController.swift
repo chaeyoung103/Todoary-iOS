@@ -151,9 +151,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         setUpView()
         setUpConstraint()
-        setupData()
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -234,14 +231,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Helpers
     
-    private func setupData() {
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
-            AuthJwtDataManager().authJwtDataManager(self,authJwt)
-        }else {
-            print("자동로그인 아님")
-        }
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == idTf {
