@@ -92,7 +92,6 @@
 		57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */; };
 		57E6516828B2F969006CB053 /* AppleLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */; };
 		57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516928B31910006CB053 /* AppleLoginInput.swift */; };
-		57E6516C28B325DC006CB053 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516B28B325DC006CB053 /* TestViewController.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -143,12 +142,12 @@
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */; };
 		ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */; };
-		E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015059828B3F3E500E83157 /* OnboardingViewController.swift */; };
 		ACFBEC9528B3777C00B9D66F /* FcmTokendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */; };
 		ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */; };
 		ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */; };
 		ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9B28B3DB8100B9D66F /* GetDiaryDataManager.swift */; };
 		ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9D28B3DBB200B9D66F /* GetDiaryExistenceModel.swift */; };
+		E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015059828B3F3E500E83157 /* OnboardingViewController.swift */; };
 		E0218B1C28A4D5C600E48618 /* DiaryStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1B28A4D5C600E48618 /* DiaryStickerCollectionView.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
@@ -338,7 +337,6 @@
 		57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginModel.swift; sourceTree = "<group>"; };
 		57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDataManager.swift; sourceTree = "<group>"; };
 		57E6516928B31910006CB053 /* AppleLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginInput.swift; sourceTree = "<group>"; };
-		57E6516B28B325DC006CB053 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -948,7 +946,6 @@
 			children = (
 				ACACD00F28749F520029D5CE /* LoginViewController.swift */,
 				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
-				57E6516B28B325DC006CB053 /* TestViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1645,7 +1642,6 @@
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
 				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
 				ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */,
-				57E6516C28B325DC006CB053 /* TestViewController.swift in Sources */,
 				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
@@ -1930,8 +1926,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1965,8 +1963,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
