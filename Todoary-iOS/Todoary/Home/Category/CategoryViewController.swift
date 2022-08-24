@@ -217,7 +217,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource, Mo
     
     func moveToViewController() {
         let vc = TodoSettingViewController()
-        vc.selectCategory = categories[currentCategoryIndex.row].id
+        TodoSettingViewController.selectCategory = categories[currentCategoryIndex.row].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

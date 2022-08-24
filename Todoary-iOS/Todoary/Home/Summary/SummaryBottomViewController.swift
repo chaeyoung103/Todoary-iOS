@@ -576,16 +576,17 @@ extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let tmpLabel = UILabel()
-        tmpLabel.text = categoryData[indexPath.row].title
-        
-        if(categoryData[indexPath.row].title.count > 2){
-            tmpLabel.then{
-                $0.font = UIFont.nbFont(ofSize: 14, weight: .bold)
-                $0.addLetterSpacing(spacing: 0.28)
-            }
+        switch categoryData[indexPath.row].title.count {
+        case 2:
+            return CGSize(width: 53, height: 26)
+        case 3:
+            return CGSize(width: 66, height: 26)
+        case 4:
+            return CGSize(width: 79, height: 26)
+        case 5:
+            return CGSize(width: 92, height: 26)
+        default:
+            return CGSize(width: 40, height: 26)
         }
-        
-        return CGSize(width: Int(tmpLabel.intrinsicContentSize.width+32), height: 26)
     }
 }
