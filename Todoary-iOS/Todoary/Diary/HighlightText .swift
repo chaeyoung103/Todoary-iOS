@@ -55,6 +55,14 @@ extension UIColor{
 
 extension DiaryViewController{
     
+    //엔터키 클릭시 하이라이트 취소 설정 메서드
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            isEnterPressed = true
+        }
+        return true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         if(isEnterPressed){
             
@@ -73,13 +81,6 @@ extension DiaryViewController{
             
             isEnterPressed = false
         }
-    }
-    
-    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            isEnterPressed = true
-        }
-        return true
     }
     
     func setHighlightToolBarAction(){

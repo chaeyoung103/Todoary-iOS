@@ -116,7 +116,7 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
 extension AskViewController: MFMailComposeViewControllerDelegate{
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func sendAskEmail(category: String){
@@ -132,7 +132,6 @@ extension AskViewController: MFMailComposeViewControllerDelegate{
         
         composeVC.setToRecipients(["feedback@todoary.com"])
         composeVC.setSubject(category)
-        composeVC.setMessageBody("BODY", isHTML: false)
         
         self.present(composeVC, animated: true, completion: nil)
         
@@ -144,4 +143,22 @@ extension AskViewController: MFMailComposeViewControllerDelegate{
         sendMailErrorAlert.addAction(confirmAction)
         self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
+
+
+        switch result{
+        case .sent, .cancelled, .saved:
+            controller.dismiss(animated: true, completion: nil)
+            return
+        case .failed:
+            let alert = UIAlertController(title: "메일 전송 오류", message: "메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", preferredStyle: .actionSheet)
+            let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alert.addAction(okBtn)
+            controller.present(alert, animated: true)
+            return
+        }
+    }
+    
 }
