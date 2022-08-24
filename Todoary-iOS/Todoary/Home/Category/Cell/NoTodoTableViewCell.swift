@@ -16,7 +16,7 @@ class NoTodoTableViewCell: UITableViewCell {
     }
     
     let titleLabel = UILabel().then{
-        $0.text  = "오늘의 할일은 무엇인가요?"
+        $0.text  = "카테고리에 새로운 투두를 추가해보세요"
         $0.numberOfLines = 1
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
@@ -86,6 +86,7 @@ class NoTodoTableViewCell: UITableViewCell {
             make.top.equalTo(checkBox).offset(-3)
             make.bottom.equalToSuperview().offset(-33)
             make.leading.equalTo(checkBox.snp.trailing).offset(9)
+            make.trailing.equalToSuperview().offset(-18)
         }
         
     }
