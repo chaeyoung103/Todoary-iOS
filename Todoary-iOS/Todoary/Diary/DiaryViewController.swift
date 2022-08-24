@@ -15,6 +15,13 @@ import StickerView
 class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
     
     
+    var create : [Sticker] = []
+    var modify : [Sticker] = []
+    var delete : [Int] = []
+    var createdApi : [CreatedDiarySticker] = []
+    var modifiedApi : [ModifiedDiarySticker] = []
+    var tag = 3000
+    
     
     //MARK: - Properties
     static let stickerData = [UIImage(named: "sticker1"),
@@ -158,11 +165,14 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         
         setTextToolBarAction()
         setHighlightToolBarAction()
+        
+        DiaryDataManager().getDiarySticker(viewController: self, createdDate: self.pickDate!.dateSendServer)
             
         }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        self.selectedStickerView = nil
     }
     
     //MARK: - ToolbarBtnDidTab
@@ -230,10 +240,65 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
             
             DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
         }
+        
+        if create.isEmpty == false {
+            for i in 0...create.count - 1 {
+                
+                let new = CreatedDiarySticker(stickerId: create[i].stickerType, locationX: Double(create[i].sticker.center.x), locationY: Double(create[i].sticker.center.y), width: create[i].sticker.contentView.frame.height, height: create[i].sticker.contentView.frame.height, rotation: atan2(create[i].sticker.transform.b,create[i].sticker.transform.a) , flipped: create[i].flip)
+                
+                createdApi.append(new)
+            }
+        }
+        
+        if modify.isEmpty == false {
+            for i in 0...modify.count - 1 {
+                
+                let old = ModifiedDiarySticker(id:modify[i].sticker.tag ,stickerId: modify[i].stickerType, locationX: Double(modify[i].sticker.center.x), locationY: Double(modify[i].sticker.center.y), width: modify[i].sticker.contentView.frame.height, height: modify[i].sticker.contentView.frame.height, rotation: atan2(modify[i].sticker.transform.b,modify[i].sticker.transform.a) , flipped: modify[i].flip)
+                
+                modifiedApi.append(old)
+            }
+        }
+        
+        let diaryStickerInput = DiaryStickerInput(created: createdApi, modified: modifiedApi, deleted: delete)
+        
+        DiaryDataManager().diaryStickerDataManager(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: diaryStickerInput)
+        
     }
     
     
     //MARK: - Helpers
+    
+    func successAPI_sticker(_ result : [DiarySticker]) {
+        
+        if result.isEmpty == false {
+            for i in 0...result.count - 1 {
+                
+                let image = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: result[i].width, height: result[i].height))
+                image.image = DiaryViewController.stickerData[result[i].stickerId]
+                image.contentMode = .scaleAspectFit
+                
+                if result[i].flipped == true {
+                    image.transform = image.transform.scaledBy(x: -1, y: 1)
+                }
+                
+                let sticker = StickerView.init(contentView: image)
+                sticker.center = CGPoint.init(x: result[i].locationX, y: result[i].locationY)
+                sticker.transform = sticker.transform.rotated(by: result[i].rotation)
+                sticker.delegate = self
+                sticker.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
+                sticker.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+                sticker.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
+                sticker.showEditingHandlers = false
+                sticker.tag = result[i].id
+                self.textView.addSubview(sticker)
+                
+                let stickerInfo = Sticker(stickerType: result[i].stickerId, sticker: sticker, flip: result[i].flipped)
+                
+                modify.append(stickerInfo)
+                
+            }
+        }
+    }
     
     private func configure() {
         
@@ -273,20 +338,26 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         
         if let indexPath = DiarySticker.collectionView?.indexPathForItem(at: p) {
             
+            tag += 1
+            
             let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
             testImage.image = DiaryViewController.stickerData[indexPath.row]
             testImage.contentMode = .scaleAspectFit
-            let stickerView = StickerView.init(contentView: testImage)
-            stickerView.center = CGPoint.init(x: 150, y: 150)
-            stickerView.delegate = self
-            stickerView.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
-            stickerView.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
-            stickerView.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
-            stickerView.showEditingHandlers = false
-            stickerView.layer.borderColor = UIColor(red: 134/255, green: 182/255, blue: 255/255, alpha: 1).cgColor
-            stickerView.tag = 1
-            self.textView.addSubview(stickerView)
-            self.selectedStickerView = stickerView
+            
+            let sticker = StickerView.init(contentView: testImage)
+            sticker.center = CGPoint.init(x: 150, y: 150)
+            sticker.delegate = self
+            sticker.setImage(UIImage.init(named: "close")!, forHandler: StickerViewHandler.close)
+            sticker.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+            sticker.setImage(UIImage.init(named: "flip")!, forHandler: StickerViewHandler.flip)
+            sticker.showEditingHandlers = false
+            sticker.tag = tag
+            self.textView.addSubview(sticker)
+            self.selectedStickerView = sticker
+            
+            let stickerInfo = Sticker(stickerType: indexPath.row, sticker: sticker, flip: false)
+            
+            create.append(stickerInfo)
         }
     }
     
@@ -305,7 +376,7 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     }
     
     func stickerViewDidEndMoving(_ stickerView: StickerView) {
-        
+
     }
     
     func stickerViewDidBeginRotating(_ stickerView: StickerView) {
@@ -326,6 +397,46 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
     
     func stickerViewDidClose(_ stickerView: StickerView) {
         
+        if create.isEmpty == false{
+            for i in 0...create.count - 1 {
+                if create[i].sticker.tag == stickerView.tag{
+                    create.remove(at: i)
+                    break
+                }
+            }
+        }
+        
+        if modify.isEmpty == false {
+            for i in 0...modify.count - 1 {
+                if modify[i].sticker.tag == stickerView.tag{
+                    modify.remove(at: i)
+                    delete.append(stickerView.tag)
+                    break
+                }
+            }
+        }
+    }
+    
+    func stickerViewDidFlip(_ stickerView: StickerView) {
+        
+        
+        if create.isEmpty == false {
+            for i in 0...create.count - 1 {
+                if create[i].sticker.tag == stickerView.tag{
+                    create[i].flip.toggle()
+                    break
+                }
+            }
+        }
+        
+        if modify.isEmpty == false {
+            for i in 0...modify.count - 1 {
+                if modify[i].sticker.tag == stickerView.tag{
+                    modify[i].flip.toggle()
+                    break
+                }
+            }
+        }
     }
     
 }
@@ -375,6 +486,7 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
     //MARK: - Helpers_UITextViewDelegate
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        self.selectedStickerView = nil
         if textView.text == textViewPlaceHolder {
             textView.text = nil
             textView.setTextWithLineHeight(spaing: 25)
@@ -402,5 +514,11 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
         
         diaryLine.isHidden = false
     }
+}
+
+struct Sticker {
+    let stickerType: Int
+    let sticker : StickerView
+    var flip : Bool
 }
 

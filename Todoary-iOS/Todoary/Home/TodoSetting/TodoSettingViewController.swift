@@ -25,7 +25,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     var categoryData : [GetCategoryResult]! = []
     
     //선택된 카테고리
-    var selectCategory: Int = -1
+    static var selectCategory: Int = -1
     
     var dateFormatter = DateFormatter()
     
@@ -232,7 +232,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                                       targetDate: todoSettingData.targetDate,
                                                       isAlarmEnabled: todoSettingData.isAlarmEnabled,
                                                       targetTime: todoSettingData.targetTime ?? "",
-                                                      categoryId: selectCategory)
+                                                      categoryId: TodoSettingViewController.selectCategory)
                 
                 TodoModifyDataManager().todoModifyDataManager(self, todoModifyInput, todoId: todoSettingData.todoId)
             }
@@ -266,7 +266,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                                         targetDate: todoSettingData.targetDate,
                                                         isAlarmEnabled: todoSettingData.isAlarmEnabled,
                                                         targetTime: todoSettingData.targetTime ?? "",
-                                                        categoryId: selectCategory)
+                                                        categoryId: TodoSettingViewController.selectCategory)
                 TodoSettingDataManager().todoSettingDataManager(self, todoSettingInput)
             }
         }
@@ -329,7 +329,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 dateFormatter.locale = Locale(identifier: "en_US")
                 time.setTitle(dateFormatter.string(from: initTime!), for: .normal)
                 
-                selectCategory = todoSettingData.categoryId
+                TodoSettingViewController.selectCategory = todoSettingData.categoryId
                 
             }
             
@@ -384,8 +384,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         }else {
             categoryData = result
             //카테고리 초기값 설정
-            if selectCategory == -1{
-                selectCategory = categoryData[0].id
+            if TodoSettingViewController.selectCategory == -1{
+                TodoSettingViewController.selectCategory = categoryData[0].id
             }
             collectionView.reloadData()
         }
@@ -423,6 +423,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             
             let colorPickerViewController = ColorPickerViewController()
             
+            colorPickerViewController.currentCategoryCount = categoryData.count
+            
             colorPickerViewController.categoryData = CategoryData(id: categoryData[indexPath.row].id, title: categoryData[indexPath.row].title, color: categoryData[indexPath.row].color)
             
             self.navigationController?.pushViewController(colorPickerViewController, animated: true)
@@ -453,7 +455,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .categoryColor[ categoryData[indexPath.row].color])
         cell.categoryLabel.layer.borderColor = UIColor.categoryColor[ categoryData[indexPath.row].color].cgColor
         
-        if selectCategory == categoryData[indexPath.row].id {
+        if TodoSettingViewController.selectCategory == categoryData[indexPath.row].id {
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
             cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
@@ -472,7 +474,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.cellForItem(at:indexPath) as? TodoCategoryCell else{
             fatalError()
         }
-        selectCategory = categoryData[indexPath.row].id
+        TodoSettingViewController.selectCategory = categoryData[indexPath.row].id
         cell.categoryLabel.backgroundColor = .categoryColor[categoryData[indexPath.row].color]
         cell.setBtnAttribute(title: categoryData[indexPath.row].title, color: .white)
         cell.categoryLabel.isUserInteractionEnabled = true
