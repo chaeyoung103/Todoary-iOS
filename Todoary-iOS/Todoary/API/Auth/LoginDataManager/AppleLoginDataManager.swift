@@ -10,13 +10,9 @@ import Alamofire
 
 class AppleLoginDataManager{
     
-    func get(_ viewController: LoginViewController){
+    func post(_ viewController: LoginViewController, parameter: AppleLoginInput){
         
-        let url = "https://appleid.apple.com/auth/authorize?client_id=com.todoary.ms.services&redirect_uri=https://todoary.com/auth/apple/redirect&response_type=code id_token&scope=name email&response_mode=form_post"
-        
-        guard let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else{ return }
-        
-            AF.request(encoded, method: .get, parameters: nil).validate().responseDecodable(of: AppleLoginModel.self) { response in
+            AF.request("https://todoary.com/auth/apple/token", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).validate().responseDecodable(of: AppleLoginModel.self) { response in
                 
                 switch response.result {
                 case .success(let result):
@@ -24,9 +20,29 @@ class AppleLoginDataManager{
                     switch result.code{
                     case 1000:
                         print("성공")
-                        viewController.navigationController?.pushViewController(AgreementViewController(), animated: true)
                     default:
                         print(result.message)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    
+    func post(_ viewController: AgreementViewController, parameter: AppleLoginInput, userIdentifier: String){
+        
+            AF.request("https://todoary.com/auth/apple/token", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).validate().responseDecodable(of: AppleLoginModel.self) { response in
+                
+                switch response.result {
+                case .success(let result):
+                    switch result.code{
+                    case 1000:
+                        print("성공")
+                        KeyChain.create(key: Const.UserDefaults.appleIdentifier, value: userIdentifier)
+                        viewController.navigationController?.pushViewController(HomeViewController(), animated: true)
+                    default:
+                        let alert = DataBaseErrorAlert()
+                        viewController.present(alert, animated: true, completion: nil)
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

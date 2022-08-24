@@ -10,6 +10,7 @@ import Firebase
 
 import FirebaseAnalytics
 import FirebaseMessaging
+import AuthenticationServices
 
 //@main
 @UIApplicationMain
@@ -37,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
+        
+        
         return true
     }
     
@@ -57,6 +60,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    //애플 로그인
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//        appleIDProvider.getCredentialState(forUserID: /* 로그인에 사용한 User Identifier */) { (credentialState, error) in
+//            switch credentialState {
+//            case .authorized:
+//                // The Apple ID credential is valid.
+//                print("해당 ID는 연동되어있습니다.")
+//            case .revoked:
+//                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+//                print("해당 ID는 연동되어있지않습니다.")
+//            case .notFound:
+//                // The Apple ID credential is either was not found, so show the sign-in UI.
+//                print("해당 ID를 찾을 수 없습니다.")
+//            default:
+//                break
+//            }
+//        }
+//        return true
+//    }
 
 }
 

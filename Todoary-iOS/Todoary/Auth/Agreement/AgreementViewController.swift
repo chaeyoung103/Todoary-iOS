@@ -18,12 +18,15 @@ class AgreementViewController : UIViewController {
         }
     }
     
+    var appleUserInfo: AppleLoginInput?
+    var userIdentifier : String?
+    
     //MARK: - UIComponenets
     
     
     //MARK: - navigationView
     
-    var navigationView:NavigationView!
+    var navigationView: NavigationView!
 
     //MARK: - 텍스트
 
@@ -258,14 +261,27 @@ class AgreementViewController : UIViewController {
             }
         }
     
+    //TODO: -
+    /*
+     appleUserInfo nil일 경우 -> pop root로
+                    아닌 경우 -> signup
+     */
     @objc func confirmBtnDidTab() {
         
-        let vc = SignUpViewController()
-        vc.isMarketingAgree = adCheckBtn.isSelected
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-        navigationController?.isNavigationBarHidden = true
+        if let appleInfo = appleUserInfo{
+            //애플 소셜 회원가입 로직
+            print(appleInfo)
+            print(self.userIdentifier)
+            AppleLoginDataManager().post(self, parameter: appleInfo, userIdentifier: self.userIdentifier!)
+        }else{
+            //일반 회원가입 로직
+            let vc = SignUpViewController()
+            vc.isMarketingAgree = adCheckBtn.isSelected
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            navigationController?.isNavigationBarHidden = true
+        }
     }
     
     @objc func essentialCheckBtnDidTab() {
