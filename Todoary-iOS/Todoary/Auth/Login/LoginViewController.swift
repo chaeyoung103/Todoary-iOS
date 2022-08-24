@@ -210,23 +210,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func appleBtnDidTab() {
         
         
-//        AppleLoginDataManager().get(self)
-        
-//        let url = "https://appleid.apple.com/auth/authorize?client_id=com.todoary.ms.services&redirect_uri=https://todoary.com/auth/apple/redirect&response_type=code id_token&scope=name email&response_mode=form_post"
-//
-//        if let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let myURL = URL(string: encoded) {
-//               print(myURL)
-//
-//            let urlSafariView: SFSafariViewController = SFSafariViewController(url: myURL)
-//
-//            self.present(urlSafariView, animated: true, completion: nil)
-//        }
-        
-        let vc = TestViewController()
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-        
     }
         
         

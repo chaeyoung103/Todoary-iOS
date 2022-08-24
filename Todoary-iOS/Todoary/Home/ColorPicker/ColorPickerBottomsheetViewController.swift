@@ -223,18 +223,29 @@ class ColorPickerBottomsheetViewController : UIViewController {
         }
         //버튼: 삭제일 경우
         
-        if(currentCategoryCount == 1){
-            let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
-            
-            let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
-                self.dismiss(animated: true)
-            })
-            alert.addAction(okBtn)
-            
-            self.present(alert, animated: true, completion: nil)
-        }else{
-            CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: categoryVC)
-        }
+        let deleteInfo = UIAlertController(title: "카테고리 삭제", message: "카테고리를 삭제할 경우 해당 카테고리와 관련된 투두가 전부 삭제됩니다.", preferredStyle: .alert)
+        
+        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okBtn = UIAlertAction(title: "삭제", style: .default, handler: { _ in
+            if(self.currentCategoryCount == 1){
+                let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
+                
+                let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
+                    self.dismiss(animated: true)
+                })
+                alert.addAction(okBtn)
+                
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: self.categoryVC)
+            }
+        })
+        okBtn.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        deleteInfo.addAction(cancelBtn)
+        deleteInfo.addAction(okBtn)
+        
+        self.present(deleteInfo, animated: true, completion: nil)
     }
     
     //MARK: - Helper
