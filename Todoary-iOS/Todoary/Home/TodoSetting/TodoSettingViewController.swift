@@ -355,7 +355,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryId: -1,
                                           categoryTitle: "",
                                           color: -1)
-            TodoSettingViewController.selectCategory = categoryData[0].id
+            
+            TodoSettingViewController.selectCategory = -1
             
             if(todoDate != nil){ //요약화면에서 투두 생성할 경우, 타겟 날짜 존재
                 date.setTitle(todoDate!.dateUsedTodo, for: .normal)
