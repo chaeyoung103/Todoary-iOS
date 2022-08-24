@@ -82,7 +82,7 @@ class OnboardingViewController : UIViewController {
             let positionX = self.view.frame.width * CGFloat(index)
             
             imgView.frame = CGRect(x: positionX, y: 0, width: onboardingImgScrollView.bounds.width, height: onboardingImgScrollView.bounds.height)
-            imgView.image = UIImage(named: "onboarding1")
+            imgView.image = onboardingImg[index]
             onboardingImgScrollView.addSubview(imgView)
             onboardingImgScrollView.contentSize.width = imgView.frame.width * CGFloat(index + 1)
             

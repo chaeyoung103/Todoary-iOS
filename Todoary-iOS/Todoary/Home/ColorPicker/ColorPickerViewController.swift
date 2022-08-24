@@ -126,7 +126,6 @@ class ColorPickerViewController : UIViewController {
                 let categoryModifyInput = CategoryModifyInput(title: categoryTitle.text!, color: selectColor)
                 CategoryModifyDataManager().categoryModifyDataManager(self,categoryModifyInput,categoryId: categoryId)
                 
-                self.navigationController?.popViewController(animated: true)
             }
             
             
@@ -154,8 +153,6 @@ class ColorPickerViewController : UIViewController {
                 print(selectColor!)
                 let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
                 CategoryMakeDataManager().categoryMakeDataManager(self,categoryMakeInput)
-                
-                self.navigationController?.popViewController(animated: true)
             }
             
 
