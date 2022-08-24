@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 extension LoginViewController {
     
@@ -27,7 +28,8 @@ extension LoginViewController {
         self.view.addSubview(autoLoginTitle)
         
         self.view.addSubview(loginBtn)
-        self.view.addSubview(appleBtn)
+//        self.view.addSubview(appleStackView)
+        self.view.addSubview(appleBtn) //
         self.view.addSubview(signUpBtn)
         
         self.view.addSubview(pwSearchBtn)
@@ -127,10 +129,18 @@ extension LoginViewController {
             make.height.equalTo(51)
         }
         
+//        appleStackView.snp.makeConstraints{ make in
+//            make.top.equalTo(loginBtn.snp.bottom).offset(13)
+//            make.centerX.equalToSuperview()
+//            make.leading.equalToSuperview().offset(33)
+//            make.height.equalTo(51)
+//        }
+        
+        
         appleBtn.snp.makeConstraints{ make in
             make.top.equalTo(loginBtn.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
-            make.width.equalTo(324)
+            make.leading.equalToSuperview().offset(33)
             make.height.equalTo(51)
         }
         
@@ -150,5 +160,11 @@ extension LoginViewController {
             make.height.equalTo(25)
         }
     }
+    
+//    func setUpAppleLogin(){
+//        let authorizationButton = ASAuthorizationAppleIDButton()
+//        authorizationButton.addTarget(self, action: #selector(appleBtnDidTab), for: .touchUpInside)
+//         self.appleStackView.addArrangedSubview(authorizationButton)
+//    }
 }
 

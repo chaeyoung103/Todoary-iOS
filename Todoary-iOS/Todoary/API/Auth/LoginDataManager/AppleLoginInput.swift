@@ -8,10 +8,13 @@
 import Foundation
     
 struct AppleLoginInput: Encodable{
+    var appleUserInfo: AppleUserInfo
+    var code: String //authorizationCode
+    var idToken: String
+}
+
+struct AppleUserInfo: Encodable{
     var name: String
     var email: String
-    var provider: String
-    var providerId: String
-    var isTermsEnable: Bool
-    var fcm_token: String
+//    var userIdentifier: String
 }

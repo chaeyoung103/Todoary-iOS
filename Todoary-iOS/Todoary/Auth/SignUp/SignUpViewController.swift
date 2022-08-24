@@ -217,7 +217,7 @@ class SignUpViewController: UIViewController{
 
     let nextButton = UIButton().then{
         $0.isEnabled = false
-        $0.setTitle("다음", for: .normal)
+        $0.setTitle("회원가입", for: .normal)
         $0.backgroundColor = .buttonColor
         $0.setTitleColor(.white, for: .normal)
         $0.buttonTypeSetting(type: .button1)
