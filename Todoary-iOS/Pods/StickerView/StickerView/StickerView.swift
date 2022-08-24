@@ -47,6 +47,7 @@ public enum StickerViewPosition:Int {
     @objc func stickerViewDidEndRotating(_ stickerView: StickerView)
     @objc func stickerViewDidClose(_ stickerView: StickerView)
     @objc func stickerViewDidTap(_ stickerView: StickerView)
+    @objc func stickerViewDidFlip(_ stickerView: StickerView)
 }
 
 public class StickerView: UIView {
@@ -360,8 +361,8 @@ public class StickerView: UIView {
             let minimumScale = 0.5
             scale = max(scale, minimumScale)
             var scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: scale)
-            if (scale > 2.0 ){
-                scale = max(2.0, minimumScale)
+            if (scale > 2.5){
+                scale = max(2.5, minimumScale)
                 scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: scale)
                 self.bounds = scaledBounds
             }
@@ -407,6 +408,9 @@ public class StickerView: UIView {
     
     @objc
     func handleFlipGesture(_ recognizer: UITapGestureRecognizer) {
+        if let delegate = self.delegate {
+            delegate.stickerViewDidFlip(self)
+        }
         UIView.animate(withDuration: 0.3) {
             self.contentView.transform = self.contentView.transform.scaledBy(x: -1, y: 1)
         }
