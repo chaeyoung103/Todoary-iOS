@@ -11,3 +11,22 @@ struct DiaryStickerModel : Decodable {
     var message : String
     var result : [Int]
 }
+
+struct GetDiaryStickerModel : Decodable {
+    var isSuccess : Bool
+    var code : Int
+    var message : String
+    var result : [DiarySticker]
+}
+
+struct DiarySticker: Decodable{
+    let id : Int
+    let diaryId : Int
+    let stickerId: Int
+    let locationX: Double
+    let locationY: Double
+    let width: Double
+    let height: Double
+    let rotation: Double
+    let flipped: Bool
+}

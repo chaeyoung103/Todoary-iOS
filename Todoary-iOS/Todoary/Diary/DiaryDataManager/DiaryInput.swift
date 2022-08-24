@@ -20,19 +20,22 @@ struct DiaryStickerInput: Encodable{
 
 struct CreatedDiarySticker: Encodable{
     let stickerId: Int
-    let locationX: Float
-    let locationY: Float
-    let width: Float
-    let height: Float
+    let locationX: Double
+    let locationY: Double
+    let width: Double
+    let height: Double
+    let rotation: Double
     let flipped: Bool
 }
 
 struct ModifiedDiarySticker: Encodable{
+    let id: Int
     let stickerId: Int
-    let locationX: Float
-    let locationY: Float
-    let width: Float
-    let height: Float
+    let locationX: Double
+    let locationY: Double
+    let width: Double
+    let height: Double
+    let rotation: Double
     let flipped: Bool
 }
 
