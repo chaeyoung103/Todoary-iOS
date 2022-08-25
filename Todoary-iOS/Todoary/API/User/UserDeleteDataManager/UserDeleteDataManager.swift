@@ -27,4 +27,40 @@ class UserDeleteDataManager{
             }
         }
     }
+    
+    func postAppleUserDelete(_ viewController: AccountViewController){
+        
+        guard let appleToken = KeyChain.read(key: Const.UserDefaults.appleRefreshToken) else{ return }
+        
+        print(appleToken)
+        
+        AF.request("https://todoary.com/auth/revoke/apple", method: .post, parameters: ["appleRefreshToken":appleToken], encoder: JSONParameterEncoder.default).validate().responseDecodable(of: ApiModel.self) { response in
+            
+            switch response.result {
+            case .success(let result):
+                switch result.code{
+                case 1000:
+                    print("성공")
+                    
+                    KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+                    KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
+                    KeyChain.delete(key: Const.UserDefaults.email)
+                    KeyChain.delete(key: Const.UserDefaults.userName)
+                    
+                    UserDefaults.standard.removeObject(forKey: "accessToken")
+                    UserDefaults.standard.removeObject(forKey: "refreshToken")
+//                    UserDefaults.standard.removeObject(forKey: "appleRefreshToken")
+                    
+                    viewController.navigationController?.popToRootViewController(animated: true)
+                default:
+                    print(result.code)
+                    print(result.messsage)
+                    let alert = DataBaseErrorAlert()
+                    viewController.present(alert, animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

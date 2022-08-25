@@ -93,6 +93,10 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         setUpView()
         setUpConstraint()
         setUpSheetVC()
+        
+        print("token check")
+        print(KeyChain.read(key: Const.UserDefaults.appleIdentifier))
+        print(KeyChain.read(key: Const.UserDefaults.appleRefreshToken))
     }
     
     //MARK: - Action
