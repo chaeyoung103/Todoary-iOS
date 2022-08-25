@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sleep(2)
         // Override point for customization after application launch.
         
-        }
         
         if (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
             moveHomeViewController()
