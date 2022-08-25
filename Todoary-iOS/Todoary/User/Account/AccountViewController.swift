@@ -31,14 +31,14 @@ class AccountViewController : UIViewController {
     }
     
     let nickName = UILabel().then{
-        $0.text = "일이삼사오육칠팔구십"
+        $0.text = ""
         $0.textColor = .black
         $0.addLetterSpacing(spacing: 0.36)
         $0.font = UIFont.nbFont(type: .header)
     }
     
     let introduce = UILabel().then{
-        $0.text = "가가가가가가가가가가가가가가가가가가가가각가ㅏ가가가가가가가가ㅏ가"
+        $0.text = ""
         $0.textColor = .black
         $0.numberOfLines = 2
         $0.addLetterSpacing(spacing: 0.28)
@@ -66,7 +66,7 @@ class AccountViewController : UIViewController {
     
     //account
     let userAccount = UILabel().then{
-        $0.text = "asdf@naver.com"
+        $0.text = ""
         $0.textColor = .black
         $0.addLetterSpacing(spacing: 0.32)
         $0.font = UIFont.nbFont(type: .tableCell)

@@ -23,20 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sleep(2)
         // Override point for customization after application launch.
         
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        
-        appleIDProvider.getCredentialState(forUserID: KeyChain.read(key: Const.UserDefaults.appleIdentifier) ?? "") { (credentialState, error) in
-            switch credentialState {
-            case .authorized:
-                print("해당 ID는 연동되어있습니다.")
-            case .revoked:
-                print("해당 ID는 연동되어있지않습니다.")
-            case .notFound:
-                print("해당 ID를 찾을 수 없습니다.")
-            default:
-                break
-                
-            }
         }
         
         if (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
