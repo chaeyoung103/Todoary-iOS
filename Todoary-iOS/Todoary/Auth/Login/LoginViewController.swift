@@ -149,7 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        UserDefaults.standard.removeObject(forKey: "accessToken")
 //        UserDefaults.standard.removeObject(forKey: "refreshToken")
 //        KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
-//        KeyChain.delete(key: Const.UserDefaults.appleRefreshToekn)
+//        KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
         
     
         
@@ -272,41 +272,35 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             
             let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
-            
             let identityToken = String(data: appleIDCredential.identityToken!, encoding: .ascii)!
+            let userIdentifier = appleIDCredential.user
             
             let email: String!
             let userName: String!
-            
-            let userIdentifier = appleIDCredential.user
             
             if let emailData = appleIDCredential.email, let name =  appleIDCredential.fullName{
                 //email 값 nil 아닌 경우 -> 키체인에 값 저장하기
                 email = emailData
                 userName = "\(name.familyName!)\(name.givenName!)"
+                
                 KeyChain.create(key: Const.UserDefaults.email, value: email)
                 KeyChain.create(key: Const.UserDefaults.userName, value: userName)
             }else{
                 //email 값 nil인 경우 -> 키체인에서 값 가져오기
-                
                 email = KeyChain.read(key: Const.UserDefaults.email)
                 userName = KeyChain.read(key: Const.UserDefaults.userName)
             }
             
             let userInput = AppleLoginInput(code: authorizationCode!, idToken: identityToken, name: userName, email: email, userIdentifier: userIdentifier)
             
-            ///* 임시 테스트 코드 //TODO: - 애플 삭제 API 연결 후 코드 삭제
-//            KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
-            //*/
-            
-            if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleRefreshToken) {
+            if KeyChain.read(key: Const.UserDefaults.appleRefreshToken) != nil {
                 //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
                 KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
                 KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
+                
                 AppleLoginDataManager().post(self, parameter: userInput)
             }else{
                 //userIdentifier값 nil인 경우 -> 회원가입 필요
-                
                 let vc = AgreementViewController()
                 
                 vc.appleUserInfo = userInput

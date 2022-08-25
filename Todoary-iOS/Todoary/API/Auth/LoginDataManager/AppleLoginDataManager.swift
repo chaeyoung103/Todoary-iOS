@@ -21,10 +21,9 @@ class AppleLoginDataManager{
                     case 1000:
                         print("성공")
                         
-                        print("애플 리프레시 토큰 get", result.result?.appleRefreshToken)
                         KeyChain.create(key: Const.UserDefaults.appleIdentifier, value: parameter.userIdentifier)
                         KeyChain.create(key: Const.UserDefaults.appleRefreshToken, value: (result.result?.appleRefreshToken)!)
-                        
+
                         UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
                         UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
  
