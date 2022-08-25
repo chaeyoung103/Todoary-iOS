@@ -101,10 +101,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
     }
     
-//    let appleStackView = UIStackView().then{
-//        $0.layer.cornerRadius = 51/2
-//    }
-    
     let appleBtn = UIButton().then{
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
         $0.contentMode = .scaleToFill
@@ -206,13 +202,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func appleBtnDidTab() {
-        
-//        if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleIdentifier) {
-//            //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
-//
-//        }else{
-//            //userIdentifier값 nil인 경우 -> 회원가입 필요
-            
+
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             let request = appleIDProvider.createRequest()
             request.requestedScopes = [.fullName, .email]
@@ -221,7 +211,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             authorizationController.delegate = self
             authorizationController.presentationContextProvider = self
             authorizationController.performRequests()
-//        }
         
     }
         
@@ -262,7 +251,6 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
         return self.view.window!
     }
     
-    //TODO: -
     /*
      email, userName 정보 -> 키체인에 바로 저장
      userIdentifier 정보 -> 프로퍼티에 임시 저장
@@ -299,16 +287,20 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
             
             let userInput = AppleLoginInput(code: authorizationCode!, idToken: identityToken, name: userName, email: email, userIdentifier: userIdentifier)
             
+            /* 임시 테스트 코드 //TODO: - 애플 삭제 API 연결 후 코드 삭제
+            KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+            */
+            
             if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleIdentifier) {
                 //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
-                
+                KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+                AppleLoginDataManager().post(self, parameter: userInput)
             }else{
                 //userIdentifier값 nil인 경우 -> 회원가입 필요
                 
                 let vc = AgreementViewController()
                 
                 vc.appleUserInfo = userInput
-                vc.userIdentifier = appleIDCredential.user
                 
                 self.navigationController?.pushViewController(vc, animated: true)
             }

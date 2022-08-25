@@ -7,29 +7,11 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class AppleLoginDataManager{
     
-    func post(_ viewController: LoginViewController, parameter: AppleLoginInput){
-        
-            AF.request("https://todoary.com/auth/apple/token", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).validate().responseDecodable(of: AppleLoginModel.self) { response in
-                
-                switch response.result {
-                case .success(let result):
-                    
-                    switch result.code{
-                    case 1000:
-                        print("성공")
-                    default:
-                        print(result.message)
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    
-    func post(_ viewController: AgreementViewController, parameter: AppleLoginInput, userIdentifier: String){
+    func post(_ viewController: UIViewController, parameter: AppleLoginInput){
         
             AF.request("https://todoary.com/auth/apple/token", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).validate().responseDecodable(of: AppleLoginModel.self) { response in
                 
@@ -38,7 +20,10 @@ class AppleLoginDataManager{
                     switch result.code{
                     case 1000:
                         print("성공")
-                        KeyChain.create(key: Const.UserDefaults.appleIdentifier, value: userIdentifier)
+                        KeyChain.create(key: Const.UserDefaults.appleIdentifier, value: parameter.userIdentifier)
+                        UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
+                        UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
+                        UserDefaults.standard.set(result.result?.appleRefreshToken, forKey: "appleRefreshToken")
                         viewController.navigationController?.pushViewController(HomeViewController(), animated: true)
                     default:
                         let alert = DataBaseErrorAlert()
