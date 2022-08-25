@@ -268,8 +268,9 @@ class AgreementViewController : UIViewController {
      */
     @objc func confirmBtnDidTab() {
         
-        if let appleInfo = appleUserInfo{
+        if var appleInfo = appleUserInfo{
             //애플 소셜 회원가입 로직
+            appleInfo.isTermsEnable = adCheckBtn.isSelected
             print(appleInfo)
             print(self.userIdentifier)
             AppleLoginDataManager().post(self, parameter: appleInfo, userIdentifier: self.userIdentifier!)
