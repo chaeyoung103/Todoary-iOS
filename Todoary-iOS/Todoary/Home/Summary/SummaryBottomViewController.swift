@@ -106,7 +106,14 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     //아무런 todo 없는경우 배너 누르기-> 키보드 올리기
     @objc
     func tapBannerCell(){
-        self.todoTf.becomeFirstResponder()
+        HomeViewController.dismissBottomSheet()
+        
+        let vc = TodoSettingViewController()
+        vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
+        vc.todoDate = todoDate
+        
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+//        self.todoTf.becomeFirstResponder()
     }
     
     //키보드가 올라오는 순간 -> todo간단설정 뷰 보이게
