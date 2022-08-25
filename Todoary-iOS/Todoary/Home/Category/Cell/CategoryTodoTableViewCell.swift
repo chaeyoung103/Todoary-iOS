@@ -46,14 +46,12 @@ class CategoryTodoTableViewCell: UITableViewCell {
     }
     
     let dateLabel = UILabel().then{
-        $0.text = "7월 21일"
         $0.textAlignment = .right
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
         $0.textColor = .timeColor
     }
     
     lazy var timeLabel = UILabel().then{
-        $0.text = "AM 7:00"
         $0.textAlignment = .center
         $0.textColor = .timeColor
         $0.font = UIFont.nbFont(ofSize: 13, weight: .medium)
