@@ -328,6 +328,7 @@ class NewAppPasswordViewController : UIViewController {
     
     @objc func secondPwInput(sender : UIButton) {
         
+        
         if newAppPwtext2.isHidden == false {
             
             let numdigit = sender.currentTitle!
@@ -556,22 +557,30 @@ class NewAppPasswordViewController : UIViewController {
                 case 4 :
                     inputNotPw4.isHidden = false
                     inputPw4.isHidden = true
-                    passwordArr.removeLast()
+                    passwordArr2.removeLast()
+                    print(passwordArr2)
+
                     
                 case 3 :
                     inputNotPw3.isHidden = false
                     inputPw3.isHidden = true
-                    passwordArr.removeLast()
+                    passwordArr2.removeLast()
+                    print(passwordArr2)
+
                     
                 case 2 :
                     inputNotPw2.isHidden = false
                     inputPw2.isHidden = true
-                    passwordArr.removeLast()
+                    passwordArr2.removeLast()
+                    print(passwordArr2)
+
                     
                 case 1 :
                     inputNotPw1.isHidden = false
                     inputPw1.isHidden = true
-                    passwordArr.removeLast()
+                    passwordArr2.removeLast()
+                    print(passwordArr2)
+
                     
                 default :
                     return
