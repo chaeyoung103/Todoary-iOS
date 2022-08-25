@@ -109,8 +109,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.setImage(UIImage(named: "appleid_button 1"), for: .normal)
         $0.contentMode = .scaleToFill
         $0.imageView?.contentMode = .scaleToFill
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.buttonColor.cgColor
         $0.layer.cornerRadius = 51/2
         $0.addTarget(self, action: #selector(appleBtnDidTab), for: .touchUpInside)
     }
@@ -151,9 +149,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         setUpView()
         setUpConstraint()
-        setupData()
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -234,14 +229,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Helpers
     
-    private func setupData() {
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
-            AuthJwtDataManager().authJwtDataManager(self,authJwt)
-        }else {
-            print("자동로그인 아님")
-        }
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == idTf {

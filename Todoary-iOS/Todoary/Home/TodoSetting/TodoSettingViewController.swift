@@ -356,6 +356,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryTitle: "",
                                           color: -1)
             
+            TodoSettingViewController.selectCategory = -1
+            
             if(todoDate != nil){ //요약화면에서 투두 생성할 경우, 타겟 날짜 존재
                 date.setTitle(todoDate!.dateUsedTodo, for: .normal)
                 todoSettingData.targetDate = todoDate!.dateSendServer
@@ -371,6 +373,8 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                 let month = Int(dateFormatter.string(from: now))
                 dateFormatter.dateFormat = "dd"
                 let day = Int(dateFormatter.string(from: now))
+                
+                
                 
                 //날짜 초기값 설정(오늘)
                 self.date.setTitle("\(year)년 \(month!)월 \(day!)일", for: .normal)
