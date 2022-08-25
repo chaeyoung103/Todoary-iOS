@@ -19,7 +19,7 @@ class AgreementViewController : UIViewController {
     }
     
     var appleUserInfo: AppleLoginInput?
-    var userIdentifier : String?
+//    var userIdentifier : String?
     
     //MARK: - UIComponenets
     
@@ -268,11 +268,11 @@ class AgreementViewController : UIViewController {
      */
     @objc func confirmBtnDidTab() {
         
-        if let appleInfo = appleUserInfo{
+        if var appleInfo = appleUserInfo{
             //애플 소셜 회원가입 로직
+            appleInfo.isTermsEnable = adCheckBtn.isSelected
             print(appleInfo)
-            print(self.userIdentifier)
-            AppleLoginDataManager().post(self, parameter: appleInfo, userIdentifier: self.userIdentifier!)
+            AppleLoginDataManager().post(self, parameter: appleInfo)
         }else{
             //일반 회원가입 로직
             let vc = SignUpViewController()
