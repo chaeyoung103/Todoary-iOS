@@ -70,21 +70,21 @@ class HomeViewController : UIViewController {
         $0.layer.backgroundColor = UIColor.calendarExistColor.cgColor
         $0.layer.cornerRadius = 6
         $0.textAlignment = .center
-        $0.text = "베어"
+        $0.text = ""
         $0.textColor = .black
         $0.addLetterSpacing(spacing: 0.28)
         $0.font = UIFont.nbFont(ofSize: 14, weight: .semibold)
     }
     
     let introduce = UILabel().then{
-        $0.text = "J가 되고 싶은 P"
+        $0.text = ""
         $0.textColor = .black
         $0.addLetterSpacing(spacing: 0.24)
         $0.font = UIFont.nbFont(type: .sub1)
     }
     
     lazy var year_Month = UIButton().then{
-        $0.setTitle("1999년 7월", for: .normal)
+        $0.setTitle("2022년 8월", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .bold)
         $0.titleLabel?.textAlignment = .left
@@ -123,6 +123,9 @@ class HomeViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
+        
+        let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
+        AuthJwtDataManager().authJwtDataManager(self, authJwt)
         
         HomeViewController.collectionView.delegate = self
         HomeViewController.collectionView.dataSource = self
