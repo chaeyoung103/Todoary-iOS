@@ -25,7 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
             self.window = UIWindow(frame: UIScreen.main.bounds)
-            navigationController = UINavigationController(rootViewController: HomeViewController())
+            
+            
+            if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
+                navigationController = UINavigationController(rootViewController: AppPasswordViewController())
+            }else {
+                navigationController = UINavigationController(rootViewController: HomeViewController())
+            }
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
             self.window?.backgroundColor = .white
