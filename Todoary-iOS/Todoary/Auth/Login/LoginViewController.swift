@@ -145,6 +145,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         setUpView()
         setUpConstraint()
+        
+//        UserDefaults.standard.removeObject(forKey: "accessToken")
+//        UserDefaults.standard.removeObject(forKey: "refreshToken")
+//        KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+//        KeyChain.delete(key: Const.UserDefaults.appleRefreshToekn)
+        
+    
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -287,13 +295,14 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
             
             let userInput = AppleLoginInput(code: authorizationCode!, idToken: identityToken, name: userName, email: email, userIdentifier: userIdentifier)
             
-            /* 임시 테스트 코드 //TODO: - 애플 삭제 API 연결 후 코드 삭제
-            KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
-            */
+            ///* 임시 테스트 코드 //TODO: - 애플 삭제 API 연결 후 코드 삭제
+//            KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+            //*/
             
-            if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleIdentifier) {
+            if let userIdentifier = KeyChain.read(key: Const.UserDefaults.appleRefreshToken) {
                 //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
                 KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+                KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
                 AppleLoginDataManager().post(self, parameter: userInput)
             }else{
                 //userIdentifier값 nil인 경우 -> 회원가입 필요
@@ -321,6 +330,7 @@ import Security
 
 class Const{
     class UserDefaults{
+        static let appleRefreshToken = "APPLE_REFRESH_TOKEN"
         static let appleIdentifier = "APPLE_IDENTIFIER"
         static let email = "APPLE_EMAIL"
         static let userName = "APPLE_USERNAME"

@@ -137,16 +137,24 @@ class AccountViewController : UIViewController {
 
     
     @objc func accountDeleteCellDidTab() {
+        
         let alert = UIAlertController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.", preferredStyle: .alert)
+        
         let yes = UIAlertAction(title: "네", style: .cancel){ _ in
-            UserDeleteDataManager().patch(self)
+            
+            if KeyChain.read(key: Const.UserDefaults.appleIdentifier) != nil{
+                UserDeleteDataManager().postAppleUserDelete(self)
+            }else{
+                UserDeleteDataManager().patch(self)
+            }
         }
+        
         let no = UIAlertAction(title: "아니오", style: .default)
+        
         alert.addAction(yes)
         alert.addAction(no)
         
         self.present(alert, animated: true, completion: nil)
-                
     }
     
     //MARK: - Helpers
