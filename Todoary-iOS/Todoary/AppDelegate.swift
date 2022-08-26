@@ -39,12 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
             self.window?.backgroundColor = .white
         }else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            navigationController = UINavigationController(rootViewController: LoginViewController())
-            self.window?.rootViewController = navigationController
-            self.window?.makeKeyAndVisible()
+            moveLoginViewController()
         }
-        
         
         if #available(iOS 12.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(
@@ -62,9 +58,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
-        
-        
         return true
+    }
+    
+    func moveHomeViewController(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        navigationController = UINavigationController(rootViewController: HomeViewController())
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        self.window?.backgroundColor = .white
+    }
+    
+    func moveLoginViewController(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        navigationController = UINavigationController(rootViewController: LoginViewController())
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

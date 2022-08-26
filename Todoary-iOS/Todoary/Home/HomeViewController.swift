@@ -123,7 +123,7 @@ class HomeViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
-        
+      
         
         HomeViewController.collectionView.delegate = self
         HomeViewController.collectionView.dataSource = self

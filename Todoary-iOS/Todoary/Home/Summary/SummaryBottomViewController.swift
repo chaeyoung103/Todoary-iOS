@@ -94,9 +94,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         setUpConstraint()
         setUpSheetVC()
         
-        print("token check")
-        print(KeyChain.read(key: Const.UserDefaults.appleIdentifier))
-        print(KeyChain.read(key: Const.UserDefaults.appleRefreshToken))
+//        UserDefaults.standard.removeObject(forKey: "accessToken")
+//        UserDefaults.standard.removeObject(forKey: "refreshToken")
+//        KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+//        KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
+                
     }
     
     //MARK: - Action
