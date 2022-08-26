@@ -13,6 +13,8 @@ extension NewAppPasswordViewController {
     
     func setUpView(){
         
+        self.view.addSubview(navigatonView)
+        
         self.view.addSubview(appPwTitle)
         self.view.addSubview(newAppPwtext)
         self.view.addSubview(newAppPwtext2)
@@ -52,6 +54,10 @@ extension NewAppPasswordViewController {
     }
 
     func setUpConstraint(){
+        
+        navigatonView.snp.makeConstraints{ make in
+            make.top.leading.trailing.equalToSuperview()
+        }
         
         //text
         appPwTitle.snp.makeConstraints{ make in

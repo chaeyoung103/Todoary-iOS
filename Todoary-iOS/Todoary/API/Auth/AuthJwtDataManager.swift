@@ -9,7 +9,7 @@ import Alamofire
 
 class AuthJwtDataManager{
     
-    func authJwtDataManager(_ viewController: HomeViewController, _ parameter: AuthJwtInput){
+    func authJwtDataManager( _ parameter: AuthJwtInput){
         AF.request("https://todoary.com/auth/jwt", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil, interceptor: Interceptor()).validate().responseDecodable(of: AuthJwtModel.self) { response in
             switch response.result {
             case .success(let result):
@@ -29,9 +29,7 @@ class AuthJwtDataManager{
 //                        viewController.navigationController?.isNavigationBarHidden = true
 //                    }
                 default:
-                    let alert = DataBaseErrorAlert()
-                    viewController.present(alert, animated: true, completion: nil)
-                    print(result.message)
+                    print("데이터베이스에러")
                 }
             case .failure(let error):
                 print(error.localizedDescription)

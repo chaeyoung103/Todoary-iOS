@@ -23,9 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sleep(2)
         // Override point for customization after application launch.
         
-        
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil) {
-            moveHomeViewController()
+        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
+            AuthJwtDataManager().authJwtDataManager(authJwt)
+            
+            
+            if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
+                navigationController = UINavigationController(rootViewController: AppPasswordViewController())
+            }else {
+                navigationController = UINavigationController(rootViewController: HomeViewController())
+            }
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+            self.window?.backgroundColor = .white
         }else {
             moveLoginViewController()
         }
