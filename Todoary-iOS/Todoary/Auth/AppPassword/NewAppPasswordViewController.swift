@@ -18,6 +18,8 @@ class NewAppPasswordViewController : UIViewController {
     var passwordArr2 : [String] = []
     
     let defaults = UserDefaults.standard
+    
+    var navigatonView : NavigationView!
 
     //text
 
@@ -261,6 +263,8 @@ class NewAppPasswordViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigatonView = NavigationView(frame: .zero, self.navigationController!)
         
         self.view.backgroundColor = .white
 

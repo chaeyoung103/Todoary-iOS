@@ -101,7 +101,6 @@ class PinNumberSettingViewController : UIViewController {
             UserDefaults.standard.set(true, forKey: "appPasswordCheck")
         }else {
             UserDefaults.standard.set(false,forKey: "appPasswordCheck")
-            print("되니?")
         }
     }
 }

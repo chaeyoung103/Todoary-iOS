@@ -123,9 +123,7 @@ class HomeViewController : UIViewController {
         
         setUpView()
         setUpConstraint()
-        
-        let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
-        AuthJwtDataManager().authJwtDataManager(self, authJwt)
+      
         
         HomeViewController.collectionView.delegate = self
         HomeViewController.collectionView.dataSource = self
