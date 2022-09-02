@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722461128C1A223009B7C78 /* BaseViewController.swift */; };
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
 		57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* GetTodo.swift */; };
@@ -244,6 +245,7 @@
 /* Begin PBXFileReference section */
 		0869569AF164AFEE9666A08A /* Pods-Todoary-TodoaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DBA94F04064FB8CCFC3F4D6 /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.debug.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
+		5722461128C1A223009B7C78 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
 		57294AB12891161D00DA2F31 /* GetTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodo.swift; sourceTree = "<group>"; };
@@ -1095,6 +1097,7 @@
 				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */,
 				577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */,
+				5722461128C1A223009B7C78 /* BaseViewController.swift */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
 			);
 			path = CommonSource;
@@ -1568,6 +1571,7 @@
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
+				5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0BF9629289B69D900895111 /* DiaryToolbarViewController+Layout.swift in Sources */,
