@@ -50,10 +50,10 @@ extension SignUpViewController {
     
     func setUpConstraint(){
         
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
+//        navigationView.snp.makeConstraints{ make in
+//            make.top.equalToSuperview()
+//            make.leading.trailing.equalToSuperview()
+//        }
 
         //id
         idTitle.snp.makeConstraints{ make in
