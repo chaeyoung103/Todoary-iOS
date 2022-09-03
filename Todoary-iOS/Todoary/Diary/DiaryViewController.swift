@@ -463,6 +463,7 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
             cell.categoryButton.isHidden = true
             cell.timeLabel.isHidden = true
         }else {
+            cell.cellData = todoDataList[indexPath.row]
             cell.titleLabel.text = todoDataList[indexPath.row].title
             cell.timeLabel.text = todoDataList[indexPath.row].convertTime
             cell.checkBox.isSelected = todoDataList[indexPath.row].isChecked ?? false
