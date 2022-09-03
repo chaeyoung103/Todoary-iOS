@@ -229,13 +229,7 @@ class SignUpViewController: BaseViewController{
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .white
-        
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "회원가입"
-        }
+        navigationTitle.text = "회원가입"
         
         self.idTextField.delegate = self
         self.certificationTextField.delegate = self
