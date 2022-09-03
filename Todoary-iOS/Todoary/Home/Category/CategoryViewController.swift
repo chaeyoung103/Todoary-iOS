@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -23,8 +23,6 @@ class CategoryViewController: UIViewController {
     var categories : [GetCategoryResult] = []
     
     //MARK: - UI
-    
-    var navigationView : NavigationView!
 
     lazy var trashButton = UIButton().then{
         $0.setImage(UIImage(named: "category_trash"), for: .normal)
@@ -40,11 +38,6 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
-        
-        navigationView = NavigationView(frame: .zero, self.navigationController!)
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal

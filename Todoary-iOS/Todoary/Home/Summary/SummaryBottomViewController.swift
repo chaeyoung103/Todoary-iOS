@@ -179,11 +179,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         alert.addAction(okBtn)
         
         self.present(alert, animated: true, completion: nil)
-//        if(isDiaryExist){
-//            DiaryDataManager().delete(createdDate: todoDate.dateSendServer)
-//        }else{
-//            return
-//        }
     }
     
     @objc func willMoveDiaryViewController(){
