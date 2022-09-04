@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlarmSettingViewController: UIViewController {
+class AlarmSettingViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -24,17 +24,13 @@ class AlarmSettingViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        navigationTitle.text = "알림"
         
         //for view 터치시, 도움말 팝업 제거
         let viewTapGesture = UITapGestureRecognizer()
         viewTapGesture.delegate = self
         
         self.view.addGestureRecognizer(viewTapGesture)
-
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "알림"
-        }
         
         tableView = UITableView().then{
             $0.separatorStyle = .none
