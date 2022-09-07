@@ -10,18 +10,13 @@ import UIKit
 extension AlarmSettingViewController {
 
     func setUpView(){
-        self.view.addSubview(navigationView)
         self.view.addSubview(tableView)
     }
     
     func setUpConstraint(){
         
-        navigationView.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        
         tableView.snp.makeConstraints{ make in
-            make.top.equalTo(navigationView.snp.bottom).offset(38)
+            make.top.equalToSuperview().offset(138)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

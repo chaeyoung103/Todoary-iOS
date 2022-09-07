@@ -7,9 +7,7 @@
 
 import UIKit
 
-class FontSettingViewController: UIViewController {
-    
-    var navigationView: NavigationView!
+class FontSettingViewController: BaseViewController {
     
     var tableView: UITableView!
     
@@ -24,9 +22,7 @@ class FontSettingViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "글꼴"
-        }
+        navigationTitle.text = "글꼴"
         
         tableView = UITableView().then{
             $0.delegate = self
