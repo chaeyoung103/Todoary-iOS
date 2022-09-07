@@ -32,8 +32,6 @@ class AlarmSettingViewController: BaseViewController {
         viewTapGesture.delegate = self
         
         self.view.addGestureRecognizer(viewTapGesture)
-
-        
         
         tableView = UITableView().then{
             $0.separatorStyle = .none

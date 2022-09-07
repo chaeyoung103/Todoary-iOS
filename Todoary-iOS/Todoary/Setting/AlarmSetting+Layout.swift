@@ -14,9 +14,8 @@ extension AlarmSettingViewController {
     }
     
     func setUpConstraint(){
-        
         tableView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(138)
+            make.top.equalToSuperview().offset(122)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

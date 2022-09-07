@@ -7,28 +7,30 @@
 
 import Foundation
 import SnapKit
+import UIKit
 
 class DiaryTabelViewCell: UITableViewCell {
+    
     static let cellIdentifier = "DiaryTabelViewCell"
     
-    
     var cellData : GetTodoInfo!
+    
+    var navigationController: UINavigationController!
     
     //tableCell UI
     lazy var checkBox = UIButton().then{
         $0.setImage(UIImage(named: "todo_check_empty"), for: .normal)
         $0.setImage(UIImage(named: "todo_check"), for: .selected)
+        $0.addTarget(self, action: #selector(checkBoxBtnDidClicked), for: .touchUpInside)
     }
     
     let titleLabel = UILabel().then{
-        $0.text = "아침 산책"
         $0.textColor = .black
         $0.font = UIFont.nbFont(ofSize: 15, weight: .bold)
         $0.addLetterSpacing(spacing: 0.3)
     }
     
     lazy var categoryButton = UIButton().then{
-        $0.setTitle("운동", for: .normal)
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 12, weight: .bold)
         $0.titleLabel?.textAlignment = .center
         $0.addLetterSpacing(spacing: 0.24)
@@ -58,6 +60,7 @@ class DiaryTabelViewCell: UITableViewCell {
         $0.layer.shadowOpacity = 1
         $0.layer.masksToBounds = false
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,5 +75,20 @@ class DiaryTabelViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func checkBoxBtnDidClicked(){
+        let parameter = TodoCheckboxInput(todoId: cellData.todoId, isChecked: !self.checkBox.isSelected)
+        
+        TodoCheckboxDataManager().patch(cell: self, parameter: parameter)
+    }
+    
+    func checkCheckBoxApiResultCode(code: Int){
+        if(code == 1000){
+            self.checkBox.isSelected.toggle()
+        }else{
+            let alert = DataBaseErrorAlert()
+            self.navigationController.present(alert, animated: true, completion: nil)
+        }
     }
 }

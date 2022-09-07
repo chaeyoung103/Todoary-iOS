@@ -168,11 +168,17 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func diaryDeleteBtnDidClicked(){
-        if(isDiaryExist){
-            DiaryDataManager().delete(createdDate: todoDate.dateSendServer)
-        }else{
-            return
-        }
+        
+        let alert = UIAlertController(title: nil, message: "다이어리를 삭제하시겠습니까?", preferredStyle: .alert)
+        let okBtn = UIAlertAction(title: "네", style: .default, handler: { _ in
+            DiaryDataManager().delete(createdDate: self.todoDate.dateSendServer)
+        })
+        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(cancelBtn)
+        alert.addAction(okBtn)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func willMoveDiaryViewController(){

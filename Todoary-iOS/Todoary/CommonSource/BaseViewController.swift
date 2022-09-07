@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         
         navigationTitle.snp.makeConstraints{ make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(backBtn)
+            make.top.equalToSuperview().offset(59)
         }
         
     }
