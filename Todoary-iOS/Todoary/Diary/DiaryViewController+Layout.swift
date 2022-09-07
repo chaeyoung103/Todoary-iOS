@@ -15,7 +15,6 @@ extension DiaryViewController {
     func setUpView(){
         self.view.addSubview(contentView)
         
-        self.view.addSubview(navigationView)
         self.view.addSubview(registerBtn)
         self.view.addSubview(todaysDate)
         
@@ -32,12 +31,6 @@ extension DiaryViewController {
             make.top.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview()
-        }
-        
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
         }
         
         registerBtn.snp.makeConstraints{ make in

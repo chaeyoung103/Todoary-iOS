@@ -206,6 +206,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
             AutoLoginDataManager() .autologin(self,autoLoginInput)
         }
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
       
     }
     

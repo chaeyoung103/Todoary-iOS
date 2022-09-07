@@ -10,8 +10,6 @@ extension PwFindViewController {
 
     
     func setUpView(){
-        
-        self.view.addSubview(navigationView)
 
         self.view.addSubview(idTitle)
         self.view.addSubview(idTf)
@@ -41,12 +39,6 @@ extension PwFindViewController {
     
     func setUpConstraint(){
         
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
-
         //id
         idTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(156)

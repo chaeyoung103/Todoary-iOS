@@ -10,9 +10,7 @@ import UIKit
 extension AccountViewController {
     
     func setUpView(){
-        
-        self.view.addSubview(navigationView)
-        
+
         self.view.addSubview(profileImage)
         self.view.addSubview(nickName)
         self.view.addSubview(introduce)
@@ -29,12 +27,6 @@ extension AccountViewController {
     }
     
     func setUpConstraint(){
-        
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
 
         //profile
         profileImage.snp.makeConstraints{ make in

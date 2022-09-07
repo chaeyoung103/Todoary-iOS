@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class PwFindViewController: UIViewController, UITextFieldDelegate {
+class PwFindViewController: BaseViewController, UITextFieldDelegate {
     //MARK: - Properties
     
     var password: String = ""
@@ -40,9 +40,6 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView:NavigationView!
     
     //id
     let idTitle = UILabel().then{
@@ -182,9 +179,7 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "비밀번호 재설정"
-        }
+        navigationTitle.text = "비밀번호 재설정"
         self.view.backgroundColor = .white
         
         self.idTf.delegate = self

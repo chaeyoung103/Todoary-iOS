@@ -9,12 +9,9 @@ import UIKit
 import SnapKit
 import Then
 
-class AccountViewController : UIViewController {
+class AccountViewController : BaseViewController {
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //tableView
     var tableView : UITableView!
@@ -82,9 +79,7 @@ class AccountViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "계정"
-        }
+        navigationTitle.text = "계정"
         
         tableView = UITableView().then{
             $0.isScrollEnabled = false

@@ -12,7 +12,7 @@ import Then
 import StickerView
 
 
-class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
+class DiaryViewController : BaseViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
     
     
     var create : [Sticker] = []
@@ -101,9 +101,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         $0.backgroundColor = .white
     }
     
-    //navigation bar
-    var navigationView:NavigationView!
-    
     private var DiaryTableView : DiaryTableView!
     
     //오늘 날짜
@@ -152,7 +149,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!)
         
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
