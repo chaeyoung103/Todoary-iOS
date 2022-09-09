@@ -9,9 +9,8 @@ import UIKit
 import MessageUI
 import AVFAudio
 
-class AskViewController: UIViewController {
+class AskViewController: BaseViewController {
     
-    var navigationView: NavigationView!
     
     var tableView : UITableView!
     
@@ -24,9 +23,7 @@ class AskViewController: UIViewController {
         
         self.view.backgroundColor = .white
 
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "문의하기"
-        }
+        navigationTitle.text = "문의하기"
         
         tableView = UITableView().then{
             $0.delegate = self

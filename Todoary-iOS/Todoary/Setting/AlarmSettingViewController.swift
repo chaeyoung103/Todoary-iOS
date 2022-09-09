@@ -11,8 +11,6 @@ class AlarmSettingViewController: BaseViewController {
     
     //MARK: - Properties
     
-    var navigationView : NavigationView!
-    
     var tableView : UITableView!
     
     var currentInfoView: UIView?
@@ -24,7 +22,10 @@ class AlarmSettingViewController: BaseViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         navigationTitle.text = "알림"
+        
+        self.view.backgroundColor = .white
         
         //for view 터치시, 도움말 팝업 제거
         let viewTapGesture = UITapGestureRecognizer()

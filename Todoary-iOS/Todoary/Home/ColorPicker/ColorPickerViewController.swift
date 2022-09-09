@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ColorPickerViewController : UIViewController {
+class ColorPickerViewController : BaseViewController {
     
     //MARK: - Properties
     
@@ -30,8 +30,6 @@ class ColorPickerViewController : UIViewController {
     //카테고리 마지막 하나 남았을때 삭제막기용
     var currentCategoryCount: Int?
 
-    var navigationView:NavigationView!
-    
     //MARK: - UIComponenets
     
     let categoryTitle = UITextField().then{
@@ -74,7 +72,6 @@ class ColorPickerViewController : UIViewController {
     
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!)
         self.view.backgroundColor = .white
         
         setUpView()

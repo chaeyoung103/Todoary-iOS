@@ -19,7 +19,7 @@ import Then
  */
 
     
-class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
+class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
     
     //카테고리 정보 받아오는 struct
     var categoryData : [GetCategoryResult]! = []
@@ -53,9 +53,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
         $0.addTarget(self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
     }
-    
-    //navigation bar
-    var navigationView : NavigationView!
+
     
     let todo = UITextField().then{
         $0.placeholder = "투두이름"
@@ -137,8 +135,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!)
-
         self.view.backgroundColor = .white
         
         let flowLayout = LeftAlignedCollectionViewFlowLayout()

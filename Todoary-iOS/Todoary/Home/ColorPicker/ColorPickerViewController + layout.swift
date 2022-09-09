@@ -11,8 +11,7 @@ extension ColorPickerViewController {
     
     func setUpView(){
         
-        self.view.addSubview(navigationView)
-        
+        self.view.addSubview(deleteBtn)
         self.view.addSubview(categoryTitle)
         self.view.addSubview(colorview)
         self.view.addSubview(completeBtn)
@@ -20,13 +19,6 @@ extension ColorPickerViewController {
     
     
     func setUpConstraint(){
-        
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
-        
-        navigationView.addSubview(deleteBtn)
         
         deleteBtn.snp.makeConstraints{ make in
             make.width.equalTo(61)

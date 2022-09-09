@@ -10,12 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingViewController : UIViewController {
+class SettingViewController : BaseViewController {
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //tableView
     var tableView : UITableView!
@@ -49,9 +46,7 @@ class SettingViewController : UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "설정"
-        }
+        navigationTitle.text = "설정"
         
         tableView = UITableView().then{
             $0.separatorStyle = .none

@@ -9,12 +9,9 @@ import UIKit
 import SnapKit
 import Then
 
-class PinNumberSettingViewController : UIViewController {
+class PinNumberSettingViewController : BaseViewController {
     
     //MARK: - UIComponents
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     let pinTitle = UILabel().then{
         $0.text = "암호 설정"
@@ -57,9 +54,7 @@ class PinNumberSettingViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "암호"
-        }
+        navigationTitle.text = "암호"
 
         self.view.backgroundColor = .white
         

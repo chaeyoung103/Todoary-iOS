@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import Photos
 
-class ProfileViewController : UIViewController {
+class ProfileViewController : BaseViewController {
     
     //MARK: - Properties
     
@@ -19,9 +19,6 @@ class ProfileViewController : UIViewController {
     var isPhoto = false
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //profile
     
@@ -114,9 +111,7 @@ class ProfileViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "계정"
-        }
+        navigationTitle.text = "계정"
         
         self.view.backgroundColor = .white
         

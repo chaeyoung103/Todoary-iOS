@@ -44,8 +44,9 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         $0.backgroundColor = .white
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.font = UIFont.nbFont(ofSize: 16, weight: .semibold )
         $0.addLetterSpacing(spacing: 0.28)
-        $0.titleLabel?.font = UIFont.nbFont(type: .body2)
         $0.addTarget(self, action: #selector(timecompleteBtnDidTap), for: .touchUpInside)
     }
     
@@ -111,10 +112,10 @@ class TodoAlarmBottomSheetViewController: UIViewController {
         }
         
         completeBtn.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(19)
-            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-25)
-            make.width.equalTo(29)
-            make.height.equalTo(19)
+            make.top.equalTo(bottomSheetView.snp.top)
+            make.trailing.equalTo(bottomSheetView.snp.trailing)
+            make.width.equalTo(80)
+            make.height.equalTo(60)
         }
         
     }

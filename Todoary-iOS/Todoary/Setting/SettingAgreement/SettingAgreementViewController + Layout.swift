@@ -12,17 +12,10 @@ extension  SettingAgreementViewController{
     
     func setUpView(){
         
-        self.view.addSubview(navigationView)
         self.view.addSubview(tableView)
     }
     
     func setUpConstraint(){
-        
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
         
         //tableView
         tableView.snp.makeConstraints{ make in
