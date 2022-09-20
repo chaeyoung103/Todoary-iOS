@@ -183,6 +183,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func willMoveDiaryViewController(){
         
+        let alert = CancelAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
+        
+        /*
         let vc = DiaryViewController()
         
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
@@ -195,6 +200,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
         
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
+         */
     }
     
     //MARK: - Helper

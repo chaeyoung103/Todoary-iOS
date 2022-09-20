@@ -9,11 +9,27 @@ import UIKit
 
 class ConfirmAlertViewController: BaseAlertViewController {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        confirmBtn.setTitle("확인", for: .normal)
     }
-    */
+    
+    override func setUpConstraint() {
+        
+        super.setUpConstraint()
+        
+        titleLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(25)
+        }
+        
+        btnStackView.snp.makeConstraints{
+            $0.top.equalTo(titleLabel.snp.bottom).offset(23)
+        }
+        
+        confirmBtn.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+    }
 }
