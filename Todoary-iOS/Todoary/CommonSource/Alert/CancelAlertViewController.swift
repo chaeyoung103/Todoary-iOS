@@ -9,6 +9,9 @@ import UIKit
 
 class CancelAlertViewController: BaseAlertViewController {
     
+    //MARK: - Properties
+    var alertHandler: (() -> ())!
+    
     lazy var cancelBtn = UIButton().then{
         $0.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
         $0.setTitle("아니오", for: .normal)
@@ -58,5 +61,10 @@ class CancelAlertViewController: BaseAlertViewController {
     
     @objc func cancelBtnDidClicked(){
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    override func confirmBtnDidClicked() {
+        self.alertHandler()
+        super.confirmBtnDidClicked()
     }
 }

@@ -14,9 +14,6 @@ class CancelMessageAlertViewController: CancelAlertViewController {
         super.init(title: title)
     }
     
-    //MARK: - Properties
-    var alertHandler: (() -> ())!
-    
     //MARK: - UI
     
     let messageLabel = UILabel().then{
@@ -63,10 +60,5 @@ class CancelMessageAlertViewController: CancelAlertViewController {
             $0.leading.equalToSuperview().offset(17)
             $0.trailing.equalToSuperview().offset(-17)
         }
-    }
-    
-    override func confirmBtnDidClicked() {
-        self.alertHandler()
-        super.confirmBtnDidClicked()
     }
 }
