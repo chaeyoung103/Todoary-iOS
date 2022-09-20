@@ -77,6 +77,9 @@
 		578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AAA28AD116400E7B4F4 /* GetDiary.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
+		57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */; };
+		57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */; };
+		57B9F71328D94F7500ACEC94 /* CancelAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
 		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
@@ -323,6 +326,9 @@
 		578B7AAA28AD116400E7B4F4 /* GetDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiary.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
+		57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertViewController.swift; sourceTree = "<group>"; };
+		57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAlertViewController.swift; sourceTree = "<group>"; };
+		57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAlertViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
 		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -772,6 +778,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		57B9F70D28D94F0300ACEC94 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */,
+				57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */,
+				57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		57DF45EB28A60AFB0002D66C /* UIFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,14 +1107,15 @@
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
-				57DF45EB28A60AFB0002D66C /* UIFont */,
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
 				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */,
 				577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */,
 				5722461128C1A223009B7C78 /* BaseViewController.swift */,
+				57B9F70D28D94F0300ACEC94 /* Alert */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
+				57DF45EB28A60AFB0002D66C /* UIFont */,
 			);
 			path = CommonSource;
 			sourceTree = "<group>";
@@ -1626,6 +1643,7 @@
 				AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				57468A6A289BCDE800056691 /* NoTodoTableViewCell.swift in Sources */,
+				57B9F71328D94F7500ACEC94 /* CancelAlertViewController.swift in Sources */,
 				E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */,
 				ACCD87C628965B7700C34CE7 /* TodoCategoryCell.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
@@ -1660,6 +1678,7 @@
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
 				ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */,
+				57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */,
 				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */,
@@ -1703,6 +1722,7 @@
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
+				57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */,
 				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
 				ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */,
 				57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */,
