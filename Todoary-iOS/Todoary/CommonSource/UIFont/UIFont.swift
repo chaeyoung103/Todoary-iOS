@@ -26,12 +26,22 @@ enum NBWeight: String {
     case bold = "Bold"
     case semibold = "SemiBold"
     case medium = "Medium"
+    case regular = "Regular"
     case extraBold = "EB00"
+
 }
 
 enum FontType: String {
     case apple = "AppleSDGothicNeo"
 }
+
+/* 폰트 출력 코드
+    for fontFamily in UIFont.familyNames {
+        for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+            print(fontName)
+        }
+    }
+ */
 
 extension UIFont {
     
