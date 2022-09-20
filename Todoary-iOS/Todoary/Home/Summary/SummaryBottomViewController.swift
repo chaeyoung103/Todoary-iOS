@@ -183,7 +183,10 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func willMoveDiaryViewController(){
         
-        let alert = CancelAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
+        let alert = CancelMessageAlertViewController(title: "인증코드가 메일로 발송되었습니다.", message: "정말 계정을 삭제하시겠습니까?")
+        alert.alertHandler = {
+            print("'네' 버튼 클릭")
+        }
         alert.modalPresentationStyle = .overFullScreen
         self.present(alert, animated: false, completion: nil)
         

@@ -9,6 +9,14 @@ import UIKit
 
 class BaseAlertViewController: UIViewController {
     
+    init(title: String){
+        self.titleLabel.text = title
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    //MARK: - UI
+    
     let titleLabel = UILabel().then{
         $0.font = UIFont.nbFont(ofSize: 17, weight: .bold, type: .apple)
         $0.textAlignment = .center
@@ -35,15 +43,7 @@ class BaseAlertViewController: UIViewController {
         $0.spacing = 10
     }
     
-    init(title: String){
-        self.titleLabel.text = title
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,10 @@ class BaseAlertViewController: UIViewController {
         setUpInitSetting()
         setUpView()
         setUpConstraint()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
