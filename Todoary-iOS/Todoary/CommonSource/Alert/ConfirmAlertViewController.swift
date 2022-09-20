@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConfirmAlertViewController: UIView {
+class ConfirmAlertViewController: BaseAlertViewController {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -16,5 +16,4 @@ class ConfirmAlertViewController: UIView {
         // Drawing code
     }
     */
-
 }

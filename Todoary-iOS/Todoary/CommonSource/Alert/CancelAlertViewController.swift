@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CancelAlertViewController: UIView {
+class CancelAlertViewController: BaseAlertViewController {
 
     /*
     // Only override draw() if you perform custom drawing.
