@@ -18,6 +18,7 @@ class AuthJwtDataManager{
                     UserDefaults.standard.set(result.result?.token?.accessToken, forKey: "accessToken")
                     UserDefaults.standard.set(result.result?.token?.refreshToken, forKey: "refreshToken")
                     print("토큰재발급 성공")
+                    AppDelegate.authJwt = true
                     
 //                    if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
 //                        let appPasswordViewController = AppPasswordViewController()
