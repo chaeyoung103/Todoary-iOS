@@ -27,7 +27,6 @@ class CancelMessageAlertViewController: CancelAlertViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     required init?(coder: NSCoder) {
