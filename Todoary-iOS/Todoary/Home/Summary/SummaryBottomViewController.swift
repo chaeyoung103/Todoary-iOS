@@ -472,6 +472,7 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.delegate = self
                 cell.cellData = todoDataList[indexPath.row-1]
                 cell.cellWillSettingWithData()
+                
                 return cell
             }else{
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath)
@@ -504,7 +505,6 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
             let alert = ConfirmAlertViewController(title: "고정은 2개까지만 가능합니다.")
             alert.modalPresentationStyle = .overFullScreen
             self.present(alert, animated: false, completion: nil)
-            
             return
         }
         
@@ -527,10 +527,25 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
         clampCell = indexPath
     }
+    
+    func cellDidTapped(_ indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? TodoListTableViewCell else { return }
+        
+        if(!cell.isClamp){
+            HomeViewController.dismissBottomSheet()
+            
+            let vc = TodoSettingViewController()
+            vc.todoSettingData = cell.cellData
+            TodoSettingViewController.selectCategory = cell.cellData.categoryId
+            
+            self.homeNavigaiton.pushViewController(vc, animated: true)
+        }else{
+            cell.cellWillMoveOriginalPosition()
+        }
+    }
 }
 
 //MARK: - collectionViewDelegate
-
 extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     //TODO: 컬렉션 뷰 셀 selectCategory에 셀 저장
