@@ -28,13 +28,11 @@ class UserDeleteDataManager{
         }
     }
     
-    func postAppleUserDelete(_ viewController: AccountViewController){
+    func postAppleUserDelete(_ viewController: AccountViewController, authorizationCode: String){
         
-        guard let appleToken = KeyChain.read(key: Const.UserDefaults.appleRefreshToken) else { return }
-
-        print(appleToken)
+        guard let email = KeyChain.read(key: Const.UserDefaults.email) else { return }
         
-        AF.request("https://todoary.com/auth/revoke/apple", method: .post, parameters: ["appleRefreshToken":appleToken], encoder: JSONParameterEncoder.default).validate().responseDecodable(of: ApiModel.self) { response in
+        AF.request("https://todoary.com/auth/revoke/apple", method: .post, parameters: ["code":authorizationCode, "email": email], encoder: JSONParameterEncoder.default).validate().responseDecodable(of: ApiModel.self) { response in
             
             switch response.result {
             case .success(let result):
@@ -50,7 +48,14 @@ class UserDeleteDataManager{
                     UserDefaults.standard.removeObject(forKey: "accessToken")
                     UserDefaults.standard.removeObject(forKey: "refreshToken")
                     
-                    viewController.navigationController?.popToRootViewController(animated: true)
+                    let alert = ConfirmAlertViewController(title: "계정이 삭제되었습니다.")
+                    alert.alertHandler = {
+                        let vc = LoginViewController()
+                        viewController.navigationController?.pushViewController(vc, animated: false)
+                    }
+                    alert.modalPresentationStyle = .overFullScreen
+                    viewController.present(alert, animated: false, completion: nil)
+                
                 default:
                     print(result.code)
                     

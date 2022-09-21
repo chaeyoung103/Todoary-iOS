@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import AuthenticationServices
 
 class AccountViewController : BaseViewController {
     
@@ -133,23 +134,25 @@ class AccountViewController : BaseViewController {
     
     @objc func accountDeleteCellDidTab() {
         
-        let alert = UIAlertController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.", preferredStyle: .alert)
-        
-        let yes = UIAlertAction(title: "네", style: .cancel){ _ in
+        let alert = CancelMessageAlertViewController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.")
+        alert.alertHandler = {
             
             if KeyChain.read(key: Const.UserDefaults.appleIdentifier) != nil{
-                UserDeleteDataManager().postAppleUserDelete(self)
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                let request = appleIDProvider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.delegate = self
+                authorizationController.presentationContextProvider = self
+                authorizationController.performRequests()
             }else{
                 UserDeleteDataManager().patch(self)
             }
         }
-        
-        let no = UIAlertAction(title: "아니오", style: .default)
-        
-        alert.addAction(yes)
-        alert.addAction(no)
-        
-        self.present(alert, animated: true, completion: nil)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
+
     }
     
     //MARK: - Helpers
@@ -219,4 +222,76 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("TableViewCell Error")
         }
     }
+}
+
+extension AccountViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    /*
+     email, userName 정보 -> 키체인에 바로 저장
+     userIdentifier 정보 -> 프로퍼티에 임시 저장
+     이후 회원가입 완료시 userIndentifier 정보도 키체인에 저장
+     
+     => userIdentifier가 키체인에 있을 경우 유저 정보가 있다는 걸로..
+     */
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)!
+            
+            print(authorizationCode)
+            
+//            UserDeleteDataManager().postAppleUserDelete(self, authorizationCode: authorizationCode)
+            /*
+            let identityToken = String(data: appleIDCredential.identityToken!, encoding: .ascii)!
+            let userIdentifier = appleIDCredential.user
+            
+            let email: String!
+            let userName: String!
+            
+            if let emailData = appleIDCredential.email, let name =  appleIDCredential.fullName{
+                //email 값 nil 아닌 경우 -> 키체인에 값 저장하기
+                email = emailData
+                userName = "\(name.familyName!)\(name.givenName!)"
+                
+                KeyChain.create(key: Const.UserDefaults.email, value: email)
+                KeyChain.create(key: Const.UserDefaults.userName, value: userName)
+            }else{
+                //email 값 nil인 경우 -> 키체인에서 값 가져오기
+                email = KeyChain.read(key: Const.UserDefaults.email)
+                userName = KeyChain.read(key: Const.UserDefaults.userName)
+            }
+            
+            let userInput = AppleLoginInput(code: authorizationCode!, idToken: identityToken, name: userName, email: email, userIdentifier: userIdentifier)
+            
+            if KeyChain.read(key: Const.UserDefaults.appleRefreshToken) != nil {
+                //userIdentifier값 nil이 아닌 경우 -> 로그인 진행
+                KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
+                KeyChain.delete(key: Const.UserDefaults.appleRefreshToken)
+                
+                AppleLoginDataManager().post(self, parameter: userInput)
+            }else{
+                //userIdentifier값 nil인 경우 -> 회원가입 필요
+                let vc = AgreementViewController()
+                
+                vc.appleUserInfo = userInput
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+             */
+            
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+    
 }
