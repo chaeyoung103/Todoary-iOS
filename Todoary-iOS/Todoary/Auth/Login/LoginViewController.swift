@@ -146,6 +146,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUpView()
         setUpConstraint()
         
+        
+        //로그인VC 접근시 기존 스택VC들 제거
+        let endIndex = (self.navigationController?.viewControllers.endIndex)!
+        
+        self.navigationController?.viewControllers.removeSubrange(0..<endIndex - 1)
+        
 //        UserDefaults.standard.removeObject(forKey: "accessToken")
 //        UserDefaults.standard.removeObject(forKey: "refreshToken")
 //        KeyChain.delete(key: Const.UserDefaults.appleIdentifier)

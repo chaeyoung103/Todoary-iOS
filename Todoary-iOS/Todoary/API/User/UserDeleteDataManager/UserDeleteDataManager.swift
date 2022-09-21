@@ -47,11 +47,10 @@ class UserDeleteDataManager{
                     
                     UserDefaults.standard.removeObject(forKey: "accessToken")
                     UserDefaults.standard.removeObject(forKey: "refreshToken")
-                    
+    
                     let alert = ConfirmAlertViewController(title: "계정이 삭제되었습니다.")
                     alert.alertHandler = {
-                        let vc = LoginViewController()
-                        viewController.navigationController?.pushViewController(vc, animated: false)
+                        viewController.navigationController?.pushViewController(LoginViewController(), animated: false)
                     }
                     alert.modalPresentationStyle = .overFullScreen
                     viewController.present(alert, animated: false, completion: nil)
