@@ -28,8 +28,12 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-    lazy var leftWidth : CGFloat = 58
-    lazy var rightWidth : CGFloat = 105
+//    lazy var leftWidth : CGFloat = 58
+//    lazy var rightWidth : CGFloat = 105
+    
+    //new ver.
+    lazy var leftWidth : CGFloat = 105
+    lazy var rightWidth : CGFloat = 58
     
     //hiddenView addSubView 되었는지 아닌지 확인 용도
     lazy var isViewAdd : CurrentHidden = .none
@@ -183,7 +187,7 @@ extension TodoListTableViewCell{
             if(frame.origin.x > 0){ //왼쪽 view
                 isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth * 1.2   && isViewAdd != .left
+                isClamp = frame.origin.x < -rightWidth * 1.2 && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {

@@ -222,30 +222,21 @@ class ColorPickerBottomsheetViewController : UIViewController {
             return
         }
         //버튼: 삭제일 경우
-        
-        let deleteInfo = UIAlertController(title: "카테고리 삭제", message: "카테고리를 삭제할 경우 해당 카테고리와 관련된 투두가 전부 삭제됩니다.", preferredStyle: .alert)
-        
-        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let okBtn = UIAlertAction(title: "삭제", style: .default, handler: { _ in
+        let deleteAlert = CancelMessageAlertViewController(title: "카테고리를 삭제하시겠습니까?", message: "카테고리를 삭제할 경우 해당 카테고리와 관련된 투두가 전부 삭제됩니다.")
+        deleteAlert.alertHandler = {
             if(self.currentCategoryCount == 1){
-                let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
-                
-                let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: { _ in
-                    self.dismiss(animated: true)
-                })
-                alert.addAction(okBtn)
-                
+                deleteAlert.dismiss(animated: false, completion: nil)
+                let alert = ConfirmAlertViewController(title: "카테고리는 최소 1개가 존재해야 합니다")
+                alert.modalPresentationStyle = .overFullScreen
                 self.present(alert, animated: true, completion: nil)
+                
             }else{
                 CategoryDeleteDataManager().delete(categoryId: data.id, viewController: self, categoryViewController: self.categoryVC)
             }
-        })
-        okBtn.setValue(UIColor.red, forKey: "titleTextColor")
+        }
         
-        deleteInfo.addAction(cancelBtn)
-        deleteInfo.addAction(okBtn)
-        
-        self.present(deleteInfo, animated: true, completion: nil)
+        deleteAlert.modalPresentationStyle = .overFullScreen
+        self.present(deleteAlert, animated: false, completion: nil)
     }
     
     //MARK: - Helper

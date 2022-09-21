@@ -135,10 +135,10 @@ extension AskViewController: MFMailComposeViewControllerDelegate{
     }
     
     func showSendMailErrorAlert(){
-        let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "기기 내 메일 앱 설정을 확인해주세요.", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default)
-        sendMailErrorAlert.addAction(confirmAction)
-        self.present(sendMailErrorAlert, animated: true, completion: nil)
+        
+        let alert = ConfirmAlertViewController(title: "메일 앱에서 문의 메일 작성이 불가능합니다.") //기기 내 메일 앱 설정 및 계정을 확인해주세요
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
@@ -149,11 +149,9 @@ extension AskViewController: MFMailComposeViewControllerDelegate{
             controller.dismiss(animated: true, completion: nil)
             return
         case .failed:
-            let alert = UIAlertController(title: "메일 전송 오류", message: "메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", preferredStyle: .actionSheet)
-            let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
             
-            alert.addAction(okBtn)
-            controller.present(alert, animated: true)
+            let alert = DataBaseErrorAlert()
+            self.present(alert, animated: true, completion: nil)
             return
         }
     }
