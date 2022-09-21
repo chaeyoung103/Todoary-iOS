@@ -96,6 +96,7 @@
 		57E6516828B2F969006CB053 /* AppleLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */; };
 		57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516928B31910006CB053 /* AppleLoginInput.swift */; };
 		57F97DD728D9566F00D4697C /* CancelMessageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */; };
+		57FFEDBA28DAD9BE0041719B /* ConfirmMessageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -346,6 +347,7 @@
 		57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDataManager.swift; sourceTree = "<group>"; };
 		57E6516928B31910006CB053 /* AppleLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginInput.swift; sourceTree = "<group>"; };
 		57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMessageAlertViewController.swift; sourceTree = "<group>"; };
+		57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMessageAlertViewController.swift; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -785,6 +787,7 @@
 			children = (
 				57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */,
 				57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */,
+				57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */,
 				57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */,
 				57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */,
 			);
@@ -1750,6 +1753,7 @@
 				ACCD87C92897BB3800C34CE7 /* CategoryModifyDataManager.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */,
+				57FFEDBA28DAD9BE0041719B /* ConfirmMessageAlertViewController.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,

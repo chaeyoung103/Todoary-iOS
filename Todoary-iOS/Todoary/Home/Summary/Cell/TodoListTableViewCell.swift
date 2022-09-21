@@ -28,8 +28,12 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-    lazy var leftWidth : CGFloat = 58
-    lazy var rightWidth : CGFloat = 105
+//    lazy var leftWidth : CGFloat = 58
+//    lazy var rightWidth : CGFloat = 105
+    
+    //new ver.
+    lazy var leftWidth : CGFloat = 105
+    lazy var rightWidth : CGFloat = 58
     
     //hiddenView addSubView 되었는지 아닌지 확인 용도
     lazy var isViewAdd : CurrentHidden = .none
@@ -88,10 +92,10 @@ class TodoListTableViewCell: UITableViewCell {
     
     lazy var hiddenLeftView = HiddenLeftButtonView().then{
         $0.pinButton.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
+        $0.settingButton.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
     }
     
     lazy var hiddenRightView = HiddenRightButtonView().then{
-        $0.settingButton.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
         $0.deleteButton.addTarget(self, action: #selector(deleteButtonDidClicked(_:)), for: .touchUpInside)
     }
     
@@ -180,10 +184,11 @@ extension TodoListTableViewCell{
             
             center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
     
+            //기존: 왼: 1.5, 오: 1.2 -> new: 왼: 1.2, 오: 1.5
             if(frame.origin.x > 0){ //왼쪽 view
-                isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
+                isClamp = frame.origin.x > leftWidth * 1.2 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth * 1.2   && isViewAdd != .left
+                isClamp = frame.origin.x < -rightWidth * 1.5 && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {
@@ -203,7 +208,7 @@ extension TodoListTableViewCell{
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenRightView)
                     superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
-                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
+                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame}) //0.32 -> 0.4
                 }else{
                     isViewAdd = .left
                     clampFrame = CGRect(x: leftWidth,
@@ -211,7 +216,7 @@ extension TodoListTableViewCell{
                                         width: bounds.size.width,
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenLeftView)
-                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
+                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame}) //0.4 -> 0.32
                 }
                 
             }

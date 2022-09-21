@@ -169,30 +169,25 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func diaryDeleteBtnDidClicked(){
         
-        let alert = UIAlertController(title: nil, message: "다이어리를 삭제하시겠습니까?", preferredStyle: .alert)
-        let okBtn = UIAlertAction(title: "네", style: .default, handler: { _ in
+        let alert = CancelAlertViewController(title: "다이어리를 삭제하시겠습니까?")
+        alert.alertHandler = {
             DiaryDataManager().delete(createdDate: self.todoDate.dateSendServer)
-        })
-        let cancelBtn = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-        alert.addAction(cancelBtn)
-        alert.addAction(okBtn)
-        
-        self.present(alert, animated: true, completion: nil)
+        }
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
     
     @objc func willMoveDiaryViewController(){
-        
         let vc = DiaryViewController()
-        
+
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList
         vc.todaysDate.text = vc.pickDate?.dateUsedDiary
-        
+
         if(isDiaryExist){
             vc.setUpDiaryData(diaryData!)
         }
-        
+
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -505,15 +500,10 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         let currentPin = willChangeData.isPinned!
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
-            //기본 팝업 띄우기
-            let alertTitle = "고정은 2개까지만 가능합니다."
             
-            let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            
-            alert.addAction(alertAction)
-            
-            self.present(alert, animated: true, completion: nil)
+            let alert = ConfirmAlertViewController(title: "고정은 2개까지만 가능합니다.")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             
             return
         }
