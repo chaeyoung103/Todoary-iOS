@@ -530,18 +530,27 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
     }
     
     func cellDidTapped(_ indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TodoListTableViewCell else { return }
+
+        /*
+         1. clampCell indexPath 통해 셀 clamp 여부 점검
+         2. if clamp 상태 -> originalPosition
+         3. if clamp 상태 X -> todoSettingVC 이동
+         */
         
-        if(!cell.isClamp){
+        guard let clampCell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
+        
+        if(!clampCell.isClamp){
             HomeViewController.dismissBottomSheet()
             
+            guard let tapCell = tableView.cellForRow(at: indexPath) as? TodoListTableViewCell else { return }
+            
             let vc = TodoSettingViewController()
-            vc.todoSettingData = cell.cellData
-            TodoSettingViewController.selectCategory = cell.cellData.categoryId
+            vc.todoSettingData = tapCell.cellData
+            TodoSettingViewController.selectCategory = tapCell.cellData.categoryId
             
             self.homeNavigaiton.pushViewController(vc, animated: true)
         }else{
-            cell.cellWillMoveOriginalPosition()
+            clampCell.cellWillMoveOriginalPosition()
         }
     }
 }
