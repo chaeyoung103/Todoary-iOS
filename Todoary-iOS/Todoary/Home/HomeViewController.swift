@@ -139,20 +139,21 @@ class HomeViewController : UIViewController {
         
         self.calculation()
         let component = cal.date(from: components)
-        
+
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
-        
+
         GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: component!))-\(dateFormatterMonth.string(from: component!))")
-        
+
         HomeViewController.collectionView.reloadData()
-        
+
         GetProfileDataManager().getProfileDataManger(self)
-        
+
         let fcmToken = FcmTokenInput(fcm_token: UserDefaults.standard.string(forKey: "fcmToken"))
-        
+
         FcmTokendataManager().fcmTokendataManager(self, fcmToken)
-        
+
         showBottomSheet()
+        
     }
 
     

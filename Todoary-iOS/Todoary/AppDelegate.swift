@@ -32,11 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
                 navigationController = UINavigationController(rootViewController: AppPasswordViewController())
+                self.window?.rootViewController = navigationController
+                self.window?.makeKeyAndVisible()
             }else {
-                navigationController = UINavigationController(rootViewController: HomeViewController())
+                moveHomeViewController()
             }
-            self.window?.rootViewController = navigationController
-            self.window?.makeKeyAndVisible()
             self.window?.backgroundColor = .white
         }else {
             moveLoginViewController()

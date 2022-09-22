@@ -204,22 +204,16 @@ class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarCom
             
             if(todo.text!.isEmpty){
                 
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
                 
             }else if(todo.text!.count > 20){
-                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
                 
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "투두를 20자 이하로 설정해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else{
 
@@ -238,22 +232,14 @@ class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarCom
             
             if(todo.text!.isEmpty){
                 
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else if(todo.text!.count > 20){
-                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
-                
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "투두를 20자 이하로 설정해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else{
                 todoSettingData.title = todo.text!

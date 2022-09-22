@@ -280,15 +280,14 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func AuthSettingOpen(AuthString: String) {
         let AppName = "Todoary"
         let message = "\(AppName)이(가) \(AuthString)에 접근할 수 없습니다.\r\n 설정화면으로 가시겠습니까?"
-        let alert = UIAlertController(title: "권한 설정하기", message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .destructive)
-        // 권한이 없는 경우 설정 화면으로 갈 수있는 팝업 띄우기
-        let confirm = UIAlertAction(title: "확인", style: .default) { (UIAlertAction) in
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)}
-        alert.addAction(cancel)
-        alert.addAction(confirm)
         
-        self.present(alert, animated: true, completion: nil)
+        let alert = CancelMessageAlertViewController(title: "권한 설정하기", message: message)
+        alert.alertHandler = { 
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)}
+        
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
+     
     }
 }
 
