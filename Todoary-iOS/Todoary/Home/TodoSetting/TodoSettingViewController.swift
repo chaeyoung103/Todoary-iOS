@@ -338,8 +338,6 @@ class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarCom
                                           categoryTitle: "",
                                           color: -1)
             
-            TodoSettingViewController.selectCategory = -1
-            
             if(todoDate != nil){ //요약화면에서 투두 생성할 경우, 타겟 날짜 존재
                 date.setTitle(todoDate!.dateUsedTodo, for: .normal)
                 todoSettingData.targetDate = todoDate!.dateSendServer
@@ -368,6 +366,7 @@ class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarCom
     func successAPI_category(_ result : [GetCategoryResult]) {
         if(result.isEmpty){
         }else {
+            print("카테고리 목록", result)
             categoryData = result
             //카테고리 초기값 설정
             if TodoSettingViewController.selectCategory == -1{
@@ -433,7 +432,7 @@ extension TodoSettingViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print("현재 카테고리",TodoSettingViewController.selectCategory )
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCategoryCell.cellIdentifier, for: indexPath) as? TodoCategoryCell else{
             fatalError()
         }
