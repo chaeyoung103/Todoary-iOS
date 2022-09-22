@@ -11,7 +11,6 @@ class BaseAlertViewController: UIViewController {
     
     init(title: String){
         self.titleLabel.text = title
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -130,7 +129,7 @@ class BaseAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
-        self.alertHandler()
+        self.alertHandler?()
         self.dismiss(animated: false, completion: nil)
     }
 

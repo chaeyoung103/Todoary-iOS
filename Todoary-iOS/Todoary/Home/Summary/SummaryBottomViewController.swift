@@ -178,6 +178,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func willMoveDiaryViewController(){
+
         let vc = DiaryViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
