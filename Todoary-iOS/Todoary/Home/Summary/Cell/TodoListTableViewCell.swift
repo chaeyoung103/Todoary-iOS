@@ -132,6 +132,10 @@ class TodoListTableViewCell: UITableViewCell {
         
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
+        tapGesture.delegate = self
+        backView.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -163,6 +167,13 @@ class TodoListTableViewCell: UITableViewCell {
         
         setUpViewByCase()
         
+    }
+    
+    @objc func cellDidTapped(){
+        
+        guard let indexPath = getCellIndexPath() else { fatalError("indexPath casting error") }
+        
+        delegate?.cellDidTapped(indexPath)
     }
     
 }
@@ -224,13 +235,23 @@ extension TodoListTableViewCell{
     }
 
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-
         if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
             let translation = panGestureRecognizer.translation(in: superview)
             if abs(translation.x) > abs(translation.y) {
                 return true
             }
             return false
+        }
+        
+        if let tapGesture = gestureRecognizer as? UITapGestureRecognizer{
+            return true
+        }
+        return false
+    }
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isDescendant(of: self.backView) == true {
+            return true
         }
         return false
     }
@@ -377,6 +398,7 @@ extension TodoListTableViewCell{
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
+    func cellDidTapped(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }
