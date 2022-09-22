@@ -15,6 +15,8 @@ class BaseAlertViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    var alertHandler: (() -> ())!
+    
     //MARK: - UI
     
     let titleLabel = UILabel().then{
@@ -128,6 +130,7 @@ class BaseAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
+        self.alertHandler()
         self.dismiss(animated: false, completion: nil)
     }
 
