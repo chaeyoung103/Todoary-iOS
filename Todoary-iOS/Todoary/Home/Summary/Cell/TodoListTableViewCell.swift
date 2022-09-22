@@ -28,9 +28,6 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-//    lazy var leftWidth : CGFloat = 58
-//    lazy var rightWidth : CGFloat = 105
-    
     //new ver.
     lazy var leftWidth : CGFloat = 105
     lazy var rightWidth : CGFloat = 58
