@@ -162,6 +162,8 @@ class TodoListTableViewCell: UITableViewCell {
         self.categoryButton.layer.borderColor = UIColor.categoryColor[cellData.color].cgColor
         self.categoryButton.setTitleColor(UIColor.categoryColor[cellData.color], for: .normal)
         
+        hiddenLeftView.pinButton.isSelected = cellData.isPinned! ? true : false
+        
         setUpViewByCase()
         
     }
