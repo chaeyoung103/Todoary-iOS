@@ -117,17 +117,14 @@ class AccountViewController : BaseViewController {
                 }
     
     @objc func logoutCellDidTab() {
-        let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
-        let no = UIAlertAction(title: "아니오", style: .default)
-        let yes = UIAlertAction(title: "네", style: .cancel){(_) in
+        
+        let alert = CancelAlertViewController(title: "로그아웃 하시겠습니까?")
+        alert.alertHandler = {
             SignoutDataManager().signout(self)
         }
-            
-        alert.addAction(yes)
-        alert.addAction(no)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
         
-        
-        self.present(alert, animated: true, completion: nil)
     }
 
 

@@ -269,11 +269,10 @@ class PwFindViewController: BaseViewController, UITextFieldDelegate {
             alertTitle = "인증코드가 일치하지 않습니다."
         }
         
-        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let alert = ConfirmAlertViewController(title: alertTitle)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
         
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Helpers
@@ -315,10 +314,9 @@ class PwFindViewController: BaseViewController, UITextFieldDelegate {
             MailSender.shared.sendEmail(self.email)
             
             //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
-            let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            let alert = ConfirmAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             
         }else if(code == 2017){
             idNoticeLb.text = "*유효하지 않은 이메일입니다. 다시 입력해 주세요."

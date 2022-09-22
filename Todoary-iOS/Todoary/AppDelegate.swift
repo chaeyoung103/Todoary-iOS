@@ -15,8 +15,6 @@ import AuthenticationServices
 //@main
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    static var authJwt = false 
 
     var window: UIWindow?
     var navigationController : UINavigationController?
@@ -37,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = navigationController
                 self.window?.makeKeyAndVisible()
             }else {
-                refreshTokenCheck()
+                moveHomeViewController()
             }
             self.window?.backgroundColor = .white
         }else {
@@ -61,14 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         return true
-    }
-    
-    func refreshTokenCheck(){
-        if AppDelegate.authJwt == true {
-            moveHomeViewController()
-        }else {
-            refreshTokenCheck()
-        }
     }
     
     func moveHomeViewController(){

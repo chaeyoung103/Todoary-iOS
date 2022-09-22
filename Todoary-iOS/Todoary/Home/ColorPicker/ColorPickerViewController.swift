@@ -95,17 +95,16 @@ class ColorPickerViewController : BaseViewController {
             
             //수정본
             if(categoryTitle.text == "" ){
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
+                
             }else if(categoryTitle.text!.count > 5){
-                let alert = UIAlertController(title: nil, message: "카테고리명을 5글자 이하로 설정해주세요.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                
+                let alert = ConfirmAlertViewController(title: "카테고리명을 5글자 이하로 설정해주세요.")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
+                
             }else{
                 print(selectColor!)
                 let categoryModifyInput = CategoryModifyInput(title: categoryTitle.text!, color: selectColor)
@@ -117,23 +116,22 @@ class ColorPickerViewController : BaseViewController {
         }else {
 
             if(selectColor == nil){
-                let alert = UIAlertController(title: "색상을 선택해주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                
+                let alert = ConfirmAlertViewController(title: "색상을 선택해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
+                
             }else if(categoryTitle.text == ""){
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
+                
             }else if(categoryTitle.text!.count > 5){
-                let alert = UIAlertController(title: nil, message: "카테고리명을 5글자 이하로 설정해주세요", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default)
-                    
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "카테고리명을 5글자 이하로 설정해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
+                
             }else{
                 print(selectColor!)
                 let categoryMakeInput = CategoryMakeInput(title: categoryTitle.text!, color: selectColor)
@@ -148,12 +146,11 @@ class ColorPickerViewController : BaseViewController {
     @objc func deleteBtnDidTap(){
         
         if(currentCategoryCount == 1){
-            let alert = UIAlertController(title: nil, message: "카테고리는 최소 1개가 존재해야 합니다", preferredStyle: .alert)
             
-            let okBtn = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okBtn)
+            let alert = ConfirmAlertViewController(title: "카테고리는 최소 1개가 존재해야 합니다")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             
-            self.present(alert, animated: true, completion: nil)
         }else{
             CategoryDeleteDataManager().categoryDeleteDataManager(self, categoryId: categoryId)
         }
