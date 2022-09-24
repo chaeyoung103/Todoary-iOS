@@ -84,6 +84,7 @@ class HiddenLeftButtonView: UIView{
     
     lazy var pinButton = UIButton().then{
         $0.setImage(UIImage(named: "push_pin_big"), for: .normal)
+        $0.setImage(UIImage(named: "push_pin_big_fill"), for: .selected)
     }
     
     lazy var settingButton = UIButton().then{

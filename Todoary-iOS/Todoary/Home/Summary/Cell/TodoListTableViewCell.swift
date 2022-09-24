@@ -28,9 +28,6 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-//    lazy var leftWidth : CGFloat = 58
-//    lazy var rightWidth : CGFloat = 105
-    
     //new ver.
     lazy var leftWidth : CGFloat = 105
     lazy var rightWidth : CGFloat = 58
@@ -164,6 +161,8 @@ class TodoListTableViewCell: UITableViewCell {
         self.categoryButton.setTitle(cellData.categoryTitle, for: .normal)
         self.categoryButton.layer.borderColor = UIColor.categoryColor[cellData.color].cgColor
         self.categoryButton.setTitleColor(UIColor.categoryColor[cellData.color], for: .normal)
+        
+        hiddenLeftView.pinButton.isSelected = cellData.isPinned! ? true : false
         
         setUpViewByCase()
         

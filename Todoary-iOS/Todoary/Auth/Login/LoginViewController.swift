@@ -332,15 +332,6 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 import Foundation
 import Security
 
-class Const{
-    class UserDefaults{
-        static let appleRefreshToken = "APPLE_REFRESH_TOKEN"
-        static let appleIdentifier = "APPLE_IDENTIFIER"
-        static let email = "APPLE_EMAIL"
-        static let userName = "APPLE_USERNAME"
-    }
-}
-
 class KeyChain {
     // Create
     class func create(key: String, value: String) {
