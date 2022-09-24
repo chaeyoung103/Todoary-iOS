@@ -134,7 +134,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             return
         case 1:
             showDisabledFuncAlert()
-            self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
+//            self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
             return
         case 2:
             self.navigationController?.pushViewController(AccountViewController(), animated: true)
