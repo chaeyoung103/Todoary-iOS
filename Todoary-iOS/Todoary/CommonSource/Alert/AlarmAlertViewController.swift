@@ -11,6 +11,8 @@ class AlarmAlertViewController: UIViewController {
     
 //    var pickerHandler: (() -> ())!
     
+    var pickTime = [0,0,0] //0: hour, 1: minute, 2: am/pm
+    
     let containerView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 14
@@ -113,7 +115,9 @@ class AlarmAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
-
+        //TODO: - pickTime 데이터 변환해 api 연결
+        
+        print(pickTime)
         self.dismiss(animated: false, completion: nil)
     }
 
@@ -170,9 +174,9 @@ extension AlarmAlertViewController: UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        <#code#>
-//    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickTime[component] = row
+    }
 }
 
 extension AlarmAlertViewController: UIGestureRecognizerDelegate {
