@@ -113,6 +113,7 @@ class AlarmAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
+
         self.dismiss(animated: false, completion: nil)
     }
 
@@ -168,6 +169,10 @@ extension AlarmAlertViewController: UIPickerViewDelegate, UIPickerViewDataSource
             return nil
         }
     }
+    
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        <#code#>
+//    }
 }
 
 extension AlarmAlertViewController: UIGestureRecognizerDelegate {
