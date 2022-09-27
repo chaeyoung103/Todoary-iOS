@@ -178,12 +178,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func willMoveDiaryViewController(){
-        
-        let alert = AlarmAlertViewController()
-        alert.modalPresentationStyle = .overFullScreen
-        self.present(alert, animated: false, completion: nil)
 
-        /*
         let vc = DiaryViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
@@ -196,7 +191,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
 
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
-         */
     }
     
     //MARK: - Helper
@@ -558,6 +552,15 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         }else{
             clampCell.cellWillMoveOriginalPosition()
         }
+    }
+    
+    func cellWillAlarmEnabled(_ indexPath: IndexPath) {
+        
+        let alert = AlarmAlertViewController()
+        alert.todoData = todoDataList[indexPath.row - 1]
+        alert.modalPresentationStyle = .overFullScreen
+        
+        self.present(alert, animated: false, completion: nil)
     }
 }
 

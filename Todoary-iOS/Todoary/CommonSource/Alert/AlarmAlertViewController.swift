@@ -9,7 +9,15 @@ import UIKit
 
 class AlarmAlertViewController: UIViewController {
     
-//    var pickerHandler: (() -> ())!
+    //MARK: - Properties
+    
+    var pickTime = [0,0,0] //0: hour, 1: minute, 2: am/pm
+    
+    var todoData: GetTodoInfo!
+    
+    var targetTime: String!
+    
+    //MARK: - UI
     
     let containerView = UIView().then{
         $0.backgroundColor = .white
@@ -113,7 +121,42 @@ class AlarmAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
+        
+        //TODO: - pickTime 데이터 변환해 api 연결
+        
+        var hour: String {
+            if(pickTime[2] == 1){
+                return "\(pickTime[0] + 13)"
+            }else if(pickTime[0] < 9){
+                return "0\(pickTime[0] + 1)"
+            }else if(pickTime[0] < 11){
+                return "\(pickTime[0] + 1)"
+            }else{
+                return "00"
+            }
+        }
+        
+        let minute = pickTime[1] < 10 ? String("0\(pickTime[1])") : String(pickTime[1])
+        
+        self.targetTime = "\(hour):\(minute)"
+        
+        let parameter = TodoSettingInput(title: nil,
+                                         targetDate: todoData.targetDate,
+                                         isAlarmEnabled: true,
+                                         targetTime: targetTime,
+                                         categoryId: nil)
 
+        TodoAlarmDataManager().patch(viewController: self, todoId: todoData.todoId, parameter: parameter)
+    }
+    
+    func successApiAlarmPatch(){
+        
+        guard let index = HomeViewController.bottomSheetVC.todoDataList.firstIndex(of: todoData) else { return }
+        HomeViewController.bottomSheetVC.todoDataList[index].targetTime = self.targetTime
+        HomeViewController.bottomSheetVC.todoDataList[index].isAlarmEnabled = true
+        HomeViewController.bottomSheetVC.dataArraySortByPin()
+        HomeViewController.bottomSheetVC.tableView.reloadData()
+        
         self.dismiss(animated: false, completion: nil)
     }
 
@@ -170,9 +213,9 @@ extension AlarmAlertViewController: UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        <#code#>
-//    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickTime[component] = row
+    }
 }
 
 extension AlarmAlertViewController: UIGestureRecognizerDelegate {

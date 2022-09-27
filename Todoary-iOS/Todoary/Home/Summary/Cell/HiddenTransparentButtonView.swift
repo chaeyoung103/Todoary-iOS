@@ -87,8 +87,9 @@ class HiddenLeftButtonView: UIView{
         $0.setImage(UIImage(named: "push_pin_big_fill"), for: .selected)
     }
     
-    lazy var settingButton = UIButton().then{
-        $0.setImage(UIImage(named: "settings"), for: .normal)
+    lazy var alarmBtn = UIButton().then{
+        $0.setImage(UIImage(named: "alarm"), for: .normal)
+        $0.setImage(UIImage(named: "alarm_activate"), for: .selected)
     }
     
     let borderLine = UIView().then{
@@ -106,7 +107,7 @@ class HiddenLeftButtonView: UIView{
         self.addSubview(transparentView)
     
         transparentView.addSubview(pinButton)
-        transparentView.addSubview(settingButton)
+        transparentView.addSubview(alarmBtn)
         transparentView.addSubview(borderLine)
         
         self.snp.makeConstraints{ make in
@@ -133,7 +134,7 @@ class HiddenLeftButtonView: UIView{
             make.leading.equalTo(pinButton.snp.trailing).offset(10)
         }
         
-        settingButton.snp.makeConstraints{ make in
+        alarmBtn.snp.makeConstraints{ make in
             make.width.height.equalTo(28)
             make.leading.equalTo(borderLine.snp.trailing).offset(11)
             make.centerY.equalToSuperview()
