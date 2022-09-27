@@ -69,11 +69,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var todoEasyTitle : String! //투두간단설정 프로퍼티
     
-    var todoDataList : [GetTodoInfo]! = []{
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var todoDataList : [GetTodoInfo]! = []
     
     var isDiaryExist = false //for 다이어리 작성했을 때 view 구성
     
