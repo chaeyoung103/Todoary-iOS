@@ -117,6 +117,12 @@ class AlarmAlertViewController: UIViewController {
     @objc func confirmBtnDidClicked(){
         //TODO: - pickTime 데이터 변환해 api 연결
         
+//        let parameter = TodoSettingInput(title: <#T##String#>,
+//                                         targetDate: <#T##String#>,
+//                                         isAlarmEnabled: <#T##Bool#>,
+//                                         targetTime: <#T##String#>,
+//                                         categoryId: <#T##Int#>)
+//
         print(pickTime)
         self.dismiss(animated: false, completion: nil)
     }
