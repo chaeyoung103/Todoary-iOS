@@ -15,6 +15,8 @@ class AlarmAlertViewController: UIViewController {
     
     var todoData: GetTodoInfo!
     
+    var targetTime: String!
+    
     //MARK: - UI
     
     let containerView = UIView().then{
@@ -136,7 +138,7 @@ class AlarmAlertViewController: UIViewController {
         
         let minute = pickTime[1] < 10 ? String("0\(pickTime[1])") : String(pickTime[1])
         
-        let targetTime = "\(hour):\(minute)"
+        self.targetTime = "\(hour):\(minute)"
         
         let parameter = TodoSettingInput(title: nil,
                                          targetDate: todoData.targetDate,
@@ -144,7 +146,14 @@ class AlarmAlertViewController: UIViewController {
                                          targetTime: targetTime,
                                          categoryId: nil)
 
-        TodoAlarmDataManager().patch(parameter: parameter, todoId: todoData.todoId)
+        TodoAlarmDataManager().patch(viewController: self, todoId: todoData.todoId, parameter: parameter)
+    }
+    
+    func successApiAlarmPatch(){
+        
+        guard let index = HomeViewController.bottomSheetVC.todoDataList.firstIndex(of: todoData) else { return }
+        HomeViewController.bottomSheetVC.todoDataList[index].targetTime = self.targetTime
+        HomeViewController.bottomSheetVC.todoDataList[index].isAlarmEnabled = true
         
         self.dismiss(animated: false, completion: nil)
     }

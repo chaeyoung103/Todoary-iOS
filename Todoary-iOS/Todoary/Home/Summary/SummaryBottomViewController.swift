@@ -69,7 +69,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var todoEasyTitle : String! //투두간단설정 프로퍼티
     
-    var todoDataList : [GetTodoInfo]! = []
+    var todoDataList : [GetTodoInfo]! = []{
+        didSet{
+            tableView.reloadData()
+        }
+    }
     
     var isDiaryExist = false //for 다이어리 작성했을 때 view 구성
     
@@ -178,12 +182,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func willMoveDiaryViewController(){
-        
-        let alert = AlarmAlertViewController()
-        alert.modalPresentationStyle = .overFullScreen
-        self.present(alert, animated: false, completion: nil)
 
-        /*
         let vc = DiaryViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
@@ -196,7 +195,6 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
 
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
-         */
     }
     
     //MARK: - Helper

@@ -89,7 +89,7 @@ class TodoListTableViewCell: UITableViewCell {
     
     lazy var hiddenLeftView = HiddenLeftButtonView().then{
         $0.pinButton.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
-        $0.settingButton.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
+        $0.alarmBtn.addTarget(self, action: #selector(alarmBtnDidClicked(_:)), for: .touchUpInside)
     }
     
     lazy var hiddenRightView = HiddenRightButtonView().then{
@@ -163,6 +163,7 @@ class TodoListTableViewCell: UITableViewCell {
         self.categoryButton.setTitleColor(UIColor.categoryColor[cellData.color], for: .normal)
         
         hiddenLeftView.pinButton.isSelected = cellData.isPinned! ? true : false
+        hiddenLeftView.alarmBtn.isSelected = cellData.isAlarmEnabled ? true : false
         
         setUpViewByCase()
         
@@ -218,7 +219,7 @@ extension TodoListTableViewCell{
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenRightView)
                     superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
-                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame}) //0.32 -> 0.4
+                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
                 }else{
                     isViewAdd = .left
                     clampFrame = CGRect(x: leftWidth,
@@ -226,7 +227,7 @@ extension TodoListTableViewCell{
                                         width: bounds.size.width,
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenLeftView)
-                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame}) //0.4 -> 0.32
+                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }
                 
             }
@@ -364,17 +365,16 @@ extension TodoListTableViewCell{
     }
     
     @objc
-    func settingButtonDidClicked(_ sender : UIButton){
+    func alarmBtnDidClicked(_ sender : UIButton){
         
         cellWillMoveOriginalPosition()
         
         HomeViewController.dismissBottomSheet()
         
-        let vc = TodoSettingViewController()
-        vc.todoSettingData = cellData
-        TodoSettingViewController.selectCategory = cellData.categoryId
-        
-        navigation.pushViewController(vc, animated: true)
+        let alert = AlarmAlertViewController()
+        alert.todoData = cellData
+        alert.modalPresentationStyle = .overFullScreen
+        navigation.present(alert, animated: false, completion: nil)
     }
     
     @objc

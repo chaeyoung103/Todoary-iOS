@@ -12,7 +12,7 @@ class TodoAlarmDataManager{
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func patch(parameter: TodoSettingInput, todoId: Int){
+    func patch(viewController: AlarmAlertViewController,todoId: Int, parameter: TodoSettingInput){
     
         AF.request("https://todoary.com/todo/\(todoId)/alarm",
                    method: .patch,
@@ -23,6 +23,7 @@ class TodoAlarmDataManager{
                 switch response.result {
                 case .success(let result):
                     print("alarm patch success")
+                    viewController.successApiAlarmPatch()
 //                    HomeViewController.bottomSheetVC.checkSendPinApiResultCode(result.code, indexPath)
                 case .failure(let error):
                     print(error.localizedDescription)
