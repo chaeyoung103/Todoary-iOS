@@ -79,7 +79,8 @@ class AddButtonViewController: UIViewController{
             $0.height.equalTo(120)
             $0.width.equalTo(50)
             $0.trailing.equalToSuperview().offset(-61)
-            $0.bottom.equalToSuperview().offset(-(307-41))
+            let bottomHeight = Const.Device.DEVICE_HEIGHT - (519 + 41)
+            $0.bottom.equalToSuperview().offset(-(bottomHeight))
         }
     }
     
