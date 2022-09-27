@@ -553,6 +553,15 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
             clampCell.cellWillMoveOriginalPosition()
         }
     }
+    
+    func cellWillAlarmEnabled(_ indexPath: IndexPath) {
+        
+        let alert = AlarmAlertViewController()
+        alert.todoData = todoDataList[indexPath.row - 1]
+        alert.modalPresentationStyle = .overFullScreen
+        
+        self.present(alert, animated: false, completion: nil)
+    }
 }
 
 //MARK: - collectionViewDelegate

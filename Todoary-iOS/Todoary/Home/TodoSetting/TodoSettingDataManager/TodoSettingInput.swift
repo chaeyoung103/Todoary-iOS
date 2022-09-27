@@ -6,9 +6,9 @@
 //
 
 struct TodoSettingInput : Encodable {
-    var title : String
-    var targetDate : String
-    var isAlarmEnabled : Bool
-    var targetTime : String
-    var categoryId : Int
+    var title : String?
+    var targetDate : String?
+    var isAlarmEnabled : Bool?
+    var targetTime : String?
+    var categoryId : Int?
 }
