@@ -367,14 +367,11 @@ extension TodoListTableViewCell{
     @objc
     func alarmBtnDidClicked(_ sender : UIButton){
         
+        guard let indexPath = getCellIndexPath() else { return }
+        
+        delegate?.cellWillAlarmEnabled(indexPath)
+        
         cellWillMoveOriginalPosition()
-        
-        HomeViewController.dismissBottomSheet()
-        
-        let alert = AlarmAlertViewController()
-        alert.todoData = cellData
-        alert.modalPresentationStyle = .overFullScreen
-        navigation.present(alert, animated: false, completion: nil)
     }
     
     @objc
@@ -398,6 +395,7 @@ extension TodoListTableViewCell{
 
 protocol SelectedTableViewCellDeliver: AnyObject{
     func cellDidTapped(_ indexPath: IndexPath)
+    func cellWillAlarmEnabled(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }

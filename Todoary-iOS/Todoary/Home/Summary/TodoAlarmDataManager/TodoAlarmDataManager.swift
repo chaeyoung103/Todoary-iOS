@@ -24,7 +24,6 @@ class TodoAlarmDataManager{
                 case .success(let result):
                     print("alarm patch success")
                     viewController.successApiAlarmPatch()
-//                    HomeViewController.bottomSheetVC.checkSendPinApiResultCode(result.code, indexPath)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
