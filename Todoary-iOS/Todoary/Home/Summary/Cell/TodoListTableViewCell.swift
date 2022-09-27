@@ -218,7 +218,7 @@ extension TodoListTableViewCell{
                                         width: bounds.size.width,
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenRightView)
-                    superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
+//                    superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
                     UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
                 }else{
                     isViewAdd = .left

@@ -64,7 +64,7 @@ extension SummaryBottomViewController{
     func setUpView(){
         self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
-        self.view.addSubview(addButton)
+//        self.view.addSubview(addButton)
         
         self.view.addSubview(todoEasySettingView)
         self.view.addSubview(todoTf)
@@ -110,12 +110,12 @@ extension SummaryBottomViewController{
             make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview()
         }
-        
-        addButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(70)
-            make.bottom.equalToSuperview().offset(-52.52)
-            make.trailing.equalToSuperview().offset(-27)
-        }
+//
+//        addButton.snp.makeConstraints{ make in
+//            make.width.height.equalTo(70)
+//            make.bottom.equalToSuperview().offset(-52.52)
+//            make.trailing.equalToSuperview().offset(-27)
+//        }
     }
 }
 
@@ -145,4 +145,3 @@ extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
     }
     
 }
-

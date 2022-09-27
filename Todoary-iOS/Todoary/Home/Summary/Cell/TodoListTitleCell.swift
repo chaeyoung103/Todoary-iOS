@@ -121,6 +121,7 @@ class TodoListTitleCell: UITableViewCell {
         
         buttonStackView.snp.makeConstraints{ make in
             make.trailing.equalToSuperview().offset(-23)
+            make.top.bottom.equalToSuperview()
         }
         
         addPlanButton.snp.makeConstraints{ make in
