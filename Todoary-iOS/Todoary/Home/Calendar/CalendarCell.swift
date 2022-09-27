@@ -12,13 +12,12 @@ class CalendarCell : UICollectionViewCell {
     override var isSelected: Bool{
             didSet{
                 if isSelected{
-                    dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
+                    dateLabel.layer.backgroundColor = UIColor.white.cgColor
+//                    UIColor.calendarSelectColor.cgColor
                     dateLabel.textColor = .white
-                    dateLabel.layer.shadowRadius = 4.0
-                    dateLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-                    dateLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
-                    dateLabel.layer.shadowOpacity = 1
-                    dateLabel.layer.masksToBounds = false
+                    
+                    select.isHidden = false
+                    
                 }
                 else{
                     dateLabel.textAlignment = .center
@@ -26,6 +25,8 @@ class CalendarCell : UICollectionViewCell {
                     dateLabel.font = UIFont.nbFont(ofSize: 14, weight: .bold)
                     dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
                     dateLabel.layer.cornerRadius = 12
+                    
+                    select.isHidden = true
                 }
             }
         }
@@ -41,8 +42,21 @@ class CalendarCell : UICollectionViewCell {
     
     let diary = UIView().then{
         $0.isHidden = true
-        $0.backgroundColor = UIColor(red: 95/255, green: 158/255, blue: 252/255, alpha: 1)
+        $0.backgroundColor = UIColor(red: 49/255, green: 131/255, blue: 255/255, alpha: 1)
         $0.layer.cornerRadius = 7/2
+    }
+    
+    let select = UIImageView().then{
+        $0.isHidden = true
+        $0.image = UIImage(named: "today_character")
+        $0.contentMode = .scaleToFill
+        $0.layer.cornerRadius = 7/2
+        $0.clipsToBounds = true
+        $0.layer.shadowRadius = 4.0
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 0)
+        $0.layer.shadowOpacity = 1
+        $0.layer.masksToBounds = false
     }
     
     override init(frame: CGRect){
@@ -55,6 +69,7 @@ class CalendarCell : UICollectionViewCell {
     private func setUpView(){
         addSubview(dateLabel)
         addSubview(diary)
+        addSubview(select)
     }
     
     private func setConstraint() {
@@ -70,6 +85,13 @@ class CalendarCell : UICollectionViewCell {
             make.width.equalTo(7)
             make.height.equalTo(7)
         }
+        
+        select.snp.makeConstraints{ make in
+            make.center.equalToSuperview()
+            make.width.equalTo(55)
+            make.height.equalTo(55)
+        }
+        
       }
     
     required init?(coder: NSCoder) {
