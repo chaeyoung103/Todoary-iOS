@@ -24,17 +24,17 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var tableView : UITableView!
     
-    let addButton = UIButton().then{
-        $0.backgroundColor = .summaryTitle
-        $0.setImage(UIImage(named: "pencil"), for: .normal)
-        $0.layer.cornerRadius = 70/2
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(willMoveDiaryViewController), for: .touchUpInside)
-    }
+//    let addButton = UIButton().then{
+//        $0.backgroundColor = .summaryTitle
+//        $0.setImage(UIImage(named: "pencil"), for: .normal)
+//        $0.layer.cornerRadius = 70/2
+//        $0.layer.shadowRadius = 10.0
+//        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        $0.layer.shadowOpacity = 1
+//        $0.layer.masksToBounds = false
+//        $0.addTarget(self, action: #selector(willMoveDiaryViewController), for: .touchUpInside)
+//    }
     
     let todoEasySettingView = UIView().then{
         $0.isHidden = true
@@ -80,6 +80,8 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     var clampCell : IndexPath = [0,-1] //clamp cell default 값
     
     var homeNavigaiton : UINavigationController!
+    
+    let addButtonView = AddButtonViewController()
     
     //MARK: - LifeCycle
     
@@ -277,9 +279,19 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
 }
 //MARK: - Delegate
-extension SummaryBottomViewController: MoveViewController{
+extension SummaryBottomViewController: MoveViewController, AddButtonClickProtocol{
     
     func moveToViewController() {
+        
+        addButtonView.delegate = self
+        addButtonView.modalPresentationStyle = .overFullScreen
+        
+        self.present(addButtonView, animated: false, completion: nil)
+    }
+    
+    func willMoveAddTodo(){
+        
+        addButtonView.dismiss(animated: false, completion: nil)
         
         HomeViewController.dismissBottomSheet()
         
@@ -287,6 +299,24 @@ extension SummaryBottomViewController: MoveViewController{
         vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
         vc.todoDate = todoDate
         
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+    }
+    
+    func willMoveAddDiary(){
+        
+        addButtonView.dismiss(animated: false, completion: nil)
+        
+        let vc = DiaryViewController()
+
+        vc.pickDate = HomeViewController.bottomSheetVC.todoDate
+        vc.todoDataList = self.todoDataList
+        vc.todaysDate.text = vc.pickDate?.dateUsedDiary
+
+        if(isDiaryExist){
+            vc.setUpDiaryData(diaryData!)
+        }
+
+        HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
     }
 }
