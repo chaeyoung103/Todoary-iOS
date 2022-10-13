@@ -10,16 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingAgreementViewController : UIViewController {
+class SettingAgreementViewController : BaseViewController {
     
     //MARK: - UIComponenets
 
     let contentView = UIView().then{
         $0.backgroundColor = .white
     }
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //tableView
     var tableView : UITableView!
@@ -32,9 +29,7 @@ class SettingAgreementViewController : UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "약관 및 정책"
-        }
+        navigationTitle.text = "약관 및 정책"
         
         tableView = UITableView().then{
             $0.separatorStyle = .none

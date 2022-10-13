@@ -13,28 +13,22 @@ extension CategoryViewController{
 
         self.view.addSubview(collectionView)
         self.view.addSubview(tableView)
-        self.view.addSubview(navigationView)
         
-        navigationView.addSubview(trashButton)
+        self.view.addSubview(trashButton)
     }
     
     func setUpConstraint(){
         
-        navigationView.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        
         trashButton.snp.makeConstraints{ make in
             make.width.equalTo(61)
             make.height.equalTo(55)
-            make.bottom.equalToSuperview().offset(2)
-            make.trailing.equalToSuperview().offset(-19)
+            make.top.equalToSuperview().offset(42)
+            make.trailing.equalToSuperview().offset(-18.95)
         }
         
         collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(navigationView.snp.bottom).offset(20)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(106)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(26)
         }
         

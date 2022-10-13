@@ -11,7 +11,6 @@ extension PinNumberSettingViewController {
     
     func setUpView(){
         
-        self.view.addSubview(navigationView)
         self.view.addSubview(pinTitle)
         self.view.addSubview(pinSwitch)
         self.view.addSubview(pinBorderLine)
@@ -28,11 +27,6 @@ extension PinNumberSettingViewController {
     
     func setUpConstraint(){
 
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
         
         pinTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(138)

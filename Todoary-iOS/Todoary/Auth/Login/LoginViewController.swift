@@ -146,6 +146,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUpView()
         setUpConstraint()
         
+        
+        //로그인VC 접근시 기존 스택VC들 제거
+        let endIndex = (self.navigationController?.viewControllers.endIndex)!
+        
+        self.navigationController?.viewControllers.removeSubrange(0..<endIndex - 1)
+        
 //        UserDefaults.standard.removeObject(forKey: "accessToken")
 //        UserDefaults.standard.removeObject(forKey: "refreshToken")
 //        KeyChain.delete(key: Const.UserDefaults.appleIdentifier)
@@ -205,6 +211,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // 자동로그인을 눌렀을 때
             let autoLoginInput = AutoLoginInput(email: idTf.text, password: pwTf.text)
             AutoLoginDataManager() .autologin(self,autoLoginInput)
+        }
+        
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
         }
       
     }
@@ -321,15 +331,6 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 
 import Foundation
 import Security
-
-class Const{
-    class UserDefaults{
-        static let appleRefreshToken = "APPLE_REFRESH_TOKEN"
-        static let appleIdentifier = "APPLE_IDENTIFIER"
-        static let email = "APPLE_EMAIL"
-        static let userName = "APPLE_USERNAME"
-    }
-}
 
 class KeyChain {
     // Create

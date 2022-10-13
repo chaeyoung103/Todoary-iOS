@@ -24,17 +24,17 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var tableView : UITableView!
     
-    let addButton = UIButton().then{
-        $0.backgroundColor = .summaryTitle
-        $0.setImage(UIImage(named: "pencil"), for: .normal)
-        $0.layer.cornerRadius = 70/2
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(willMoveDiaryViewController), for: .touchUpInside)
-    }
+//    let addButton = UIButton().then{
+//        $0.backgroundColor = .summaryTitle
+//        $0.setImage(UIImage(named: "pencil"), for: .normal)
+//        $0.layer.cornerRadius = 70/2
+//        $0.layer.shadowRadius = 10.0
+//        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        $0.layer.shadowOpacity = 1
+//        $0.layer.masksToBounds = false
+//        $0.addTarget(self, action: #selector(willMoveDiaryViewController), for: .touchUpInside)
+//    }
     
     let todoEasySettingView = UIView().then{
         $0.isHidden = true
@@ -80,6 +80,8 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     var clampCell : IndexPath = [0,-1] //clamp cell default 값
     
     var homeNavigaiton : UINavigationController!
+    
+    let addButtonView = AddButtonViewController()
     
     //MARK: - LifeCycle
     
@@ -168,25 +170,27 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func diaryDeleteBtnDidClicked(){
-        if(isDiaryExist){
-            DiaryDataManager().delete(createdDate: todoDate.dateSendServer)
-        }else{
-            return
+        
+        let alert = CancelAlertViewController(title: "다이어리를 삭제하시겠습니까?")
+        alert.alertHandler = {
+            DiaryDataManager().delete(createdDate: self.todoDate.dateSendServer)
         }
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
     
     @objc func willMoveDiaryViewController(){
-        
+
         let vc = DiaryViewController()
-        
+
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList
         vc.todaysDate.text = vc.pickDate?.dateUsedDiary
-        
+
         if(isDiaryExist){
             vc.setUpDiaryData(diaryData!)
         }
-        
+
         HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
     }
@@ -275,9 +279,19 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     }
 }
 //MARK: - Delegate
-extension SummaryBottomViewController: MoveViewController{
+extension SummaryBottomViewController: MoveViewController, AddButtonClickProtocol{
     
     func moveToViewController() {
+        
+        addButtonView.delegate = self
+        addButtonView.modalPresentationStyle = .overFullScreen
+        
+        self.present(addButtonView, animated: false, completion: nil)
+    }
+    
+    func willMoveAddTodo(){
+        
+        addButtonView.dismiss(animated: false, completion: nil)
         
         HomeViewController.dismissBottomSheet()
         
@@ -285,6 +299,24 @@ extension SummaryBottomViewController: MoveViewController{
         vc.date.setTitle(todoDate.dateUsedTodo, for: .normal)
         vc.todoDate = todoDate
         
+        self.homeNavigaiton.pushViewController(vc, animated: true)
+    }
+    
+    func willMoveAddDiary(){
+        
+        addButtonView.dismiss(animated: false, completion: nil)
+        
+        let vc = DiaryViewController()
+
+        vc.pickDate = HomeViewController.bottomSheetVC.todoDate
+        vc.todoDataList = self.todoDataList
+        vc.todaysDate.text = vc.pickDate?.dateUsedDiary
+
+        if(isDiaryExist){
+            vc.setUpDiaryData(diaryData!)
+        }
+
+        HomeViewController.dismissBottomSheet()
         self.homeNavigaiton.pushViewController(vc, animated: true)
     }
 }
@@ -471,6 +503,7 @@ extension SummaryBottomViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.delegate = self
                 cell.cellData = todoDataList[indexPath.row-1]
                 cell.cellWillSettingWithData()
+                
                 return cell
             }else{
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoBannerCell.cellIdentifier, for: indexPath)
@@ -499,16 +532,10 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         let currentPin = willChangeData.isPinned!
     
         if(!currentPin && pinnedCount >= 2){ //pin 상태가 아니지만, 핀 고정 개수 초과
-            //기본 팝업 띄우기
-            let alertTitle = "고정은 2개까지만 가능합니다."
             
-            let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            
-            alert.addAction(alertAction)
-            
-            self.present(alert, animated: true, completion: nil)
-            
+            let alert = ConfirmAlertViewController(title: "고정은 2개까지만 가능합니다.")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             return
         }
         
@@ -531,10 +558,43 @@ extension SummaryBottomViewController: SelectedTableViewCellDeliver{
         //row 값 -1일 때와, row 값 -1 아닐 때 공통 코드(즉, 자기 자신 아닐 때만 제외)
         clampCell = indexPath
     }
+    
+    func cellDidTapped(_ indexPath: IndexPath) {
+
+        /*
+         1. clampCell indexPath 통해 셀 clamp 여부 점검
+         2. if clamp 상태 -> originalPosition
+         3. if clamp 상태 X -> todoSettingVC 이동
+         */
+        
+        guard let clampCell = tableView.cellForRow(at: clampCell) as? TodoListTableViewCell else { return }
+        
+        if(!clampCell.isClamp){
+            HomeViewController.dismissBottomSheet()
+            
+            guard let tapCell = tableView.cellForRow(at: indexPath) as? TodoListTableViewCell else { return }
+            
+            let vc = TodoSettingViewController()
+            vc.todoSettingData = tapCell.cellData
+            TodoSettingViewController.selectCategory = tapCell.cellData.categoryId
+            
+            self.homeNavigaiton.pushViewController(vc, animated: true)
+        }else{
+            clampCell.cellWillMoveOriginalPosition()
+        }
+    }
+    
+    func cellWillAlarmEnabled(_ indexPath: IndexPath) {
+        
+        let alert = AlarmAlertViewController()
+        alert.todoData = todoDataList[indexPath.row - 1]
+        alert.modalPresentationStyle = .overFullScreen
+        
+        self.present(alert, animated: false, completion: nil)
+    }
 }
 
 //MARK: - collectionViewDelegate
-
 extension SummaryBottomViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     //TODO: 컬렉션 뷰 셀 selectCategory에 셀 저장

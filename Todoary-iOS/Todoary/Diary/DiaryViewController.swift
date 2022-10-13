@@ -12,7 +12,7 @@ import Then
 import StickerView
 
 
-class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
+class DiaryViewController : BaseViewController , UIGestureRecognizerDelegate, StickerViewDelegate{
     
     
     var create : [Sticker] = []
@@ -101,9 +101,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         $0.backgroundColor = .white
     }
     
-    //navigation bar
-    var navigationView:NavigationView!
-    
     private var DiaryTableView : DiaryTableView!
     
     //오늘 날짜
@@ -152,7 +149,6 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!)
         
         //tool바 넣어주기
         textView.inputAccessoryView = toolbar
@@ -183,13 +179,9 @@ class DiaryViewController : UIViewController , UIGestureRecognizerDelegate, Stic
         textView.endEditing(true)
         textView.reloadInputViews()
         
-        let alert = UIAlertController(title: nil, message: "현재 제공하고 있지 않은 기능입니다.\n다음 업데이트에 만나요!", preferredStyle: .alert)
-
-        let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
-        alert.addAction(okBtn)
-        
-        self.present(alert, animated: true, completion: nil)
+        let alert = ConfirmMessageAlertViewController(title: "다음 업데이트에 만나요!", message: "현재 버전에서는 제공하고 있지 않은 기능입니다.")
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
     
     
@@ -463,6 +455,8 @@ extension DiaryViewController: UITableViewDelegate, UITableViewDataSource, UITex
             cell.categoryButton.isHidden = true
             cell.timeLabel.isHidden = true
         }else {
+            cell.cellData = todoDataList[indexPath.row]
+            cell.navigationController = self.navigationController
             cell.titleLabel.text = todoDataList[indexPath.row].title
             cell.timeLabel.text = todoDataList[indexPath.row].convertTime
             cell.checkBox.isSelected = todoDataList[indexPath.row].isChecked ?? false

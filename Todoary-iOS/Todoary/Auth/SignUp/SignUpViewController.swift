@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SignUpViewController: UIViewController{
+class SignUpViewController: BaseViewController{
     
     //MARK: - Properties
     
@@ -229,13 +229,7 @@ class SignUpViewController: UIViewController{
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .white
-        
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "회원가입"
-        }
+        navigationTitle.text = "회원가입"
         
         self.idTextField.delegate = self
         self.certificationTextField.delegate = self
@@ -394,13 +388,10 @@ class SignUpViewController: UIViewController{
         }else{
             alertTitle = "인증코드가 일치하지 않습니다."
         }
-
-        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-
-        alert.addAction(alertAction)
         
-        self.present(alert, animated: true, completion: nil)
+        let alert = ConfirmAlertViewController(title: alertTitle)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
     
     @objc
@@ -469,13 +460,9 @@ extension SignUpViewController{
     func checkSignUpResultCode(_ code: Int){
         switch(code){
         case 1000:
-            let alert = UIAlertController(title: "회원가입 성공", message: "회원가입을 축하합니다!\n이제 Todoary 서비스를 자유롭게 이용해보세요", preferredStyle: .alert)
-            let okBtn = UIAlertAction(title: "확인", style: .default, handler: { _ in
-                
-                self.navigationController?.popToRootViewController(animated: true)
-            })
-            alert.addAction(okBtn)
-            self.present(alert, animated: true, completion: nil)
+            let alert = ConfirmMessageAlertViewController(title: "회원가입을 축하합니다!", message: "이제 Todoary 서비스를 자유롭게 이용해보세요.")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             return
         case 2017:
             nextButton.isEnabled = false
@@ -508,12 +495,9 @@ extension SignUpViewController{
             MailSender.shared.sendEmail(self.email)
             
             //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
-            let alert = UIAlertController(title: "인증코드가 메일로 발송되었습니다.", message: "", preferredStyle: .alert)
-            
-            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            
-            alert.addAction(alertAction)
-            self.present(alert, animated: true, completion: nil)
+            let alert = ConfirmAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
             
             return
             

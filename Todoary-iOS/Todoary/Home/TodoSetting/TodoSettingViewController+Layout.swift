@@ -11,7 +11,6 @@ extension TodoSettingViewController {
     
     func setUpView(){
         
-        self.view.addSubview(navigationView)
         self.view.addSubview(completeBtn)
         self.view.addSubview(todo)
         self.view.addSubview(todoBorderLine)
@@ -33,12 +32,6 @@ extension TodoSettingViewController {
     }
     
     func setUpConstraint(){
-
-        //navigation bar
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
         
         completeBtn.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(58)

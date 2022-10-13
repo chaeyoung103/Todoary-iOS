@@ -28,8 +28,9 @@ class TodoListTableViewCell: UITableViewCell {
     
     //MARK: - Properties(for swipe)
     
-    lazy var leftWidth : CGFloat = 58
-    lazy var rightWidth : CGFloat = 105
+    //new ver.
+    lazy var leftWidth : CGFloat = 105
+    lazy var rightWidth : CGFloat = 58
     
     //hiddenView addSubView 되었는지 아닌지 확인 용도
     lazy var isViewAdd : CurrentHidden = .none
@@ -88,10 +89,10 @@ class TodoListTableViewCell: UITableViewCell {
     
     lazy var hiddenLeftView = HiddenLeftButtonView().then{
         $0.pinButton.addTarget(self, action: #selector(pinButtonDidClicked(_:)), for: .touchUpInside)
+        $0.alarmBtn.addTarget(self, action: #selector(alarmBtnDidClicked(_:)), for: .touchUpInside)
     }
     
     lazy var hiddenRightView = HiddenRightButtonView().then{
-        $0.settingButton.addTarget(self, action: #selector(settingButtonDidClicked(_:)), for: .touchUpInside)
         $0.deleteButton.addTarget(self, action: #selector(deleteButtonDidClicked(_:)), for: .touchUpInside)
     }
     
@@ -128,6 +129,10 @@ class TodoListTableViewCell: UITableViewCell {
         
         swipeGesture.delegate = self
         backView.addGestureRecognizer(swipeGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
+        tapGesture.delegate = self
+        backView.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -157,8 +162,18 @@ class TodoListTableViewCell: UITableViewCell {
         self.categoryButton.layer.borderColor = UIColor.categoryColor[cellData.color].cgColor
         self.categoryButton.setTitleColor(UIColor.categoryColor[cellData.color], for: .normal)
         
+        hiddenLeftView.pinButton.isSelected = cellData.isPinned! ? true : false
+        hiddenLeftView.alarmBtn.isSelected = cellData.isAlarmEnabled ? true : false
+        
         setUpViewByCase()
         
+    }
+    
+    @objc func cellDidTapped(){
+        
+        guard let indexPath = getCellIndexPath() else { fatalError("indexPath casting error") }
+        
+        delegate?.cellDidTapped(indexPath)
     }
     
 }
@@ -180,10 +195,11 @@ extension TodoListTableViewCell{
             
             center = CGPoint(x: originalCenter.x + translation.x, y: originalCenter.y)
     
+            //기존: 왼: 1.5, 오: 1.2 -> new: 왼: 1.2, 오: 1.5
             if(frame.origin.x > 0){ //왼쪽 view
-                isClamp = frame.origin.x > leftWidth * 1.5 && isViewAdd != .right
+                isClamp = frame.origin.x > leftWidth * 1.2 && isViewAdd != .right
             }else{  //오른쪽 view
-                isClamp = frame.origin.x < -rightWidth * 1.2   && isViewAdd != .left
+                isClamp = frame.origin.x < -rightWidth * 1.5 && isViewAdd != .left
             }
         }
         if recognizer.state == .ended {
@@ -202,8 +218,8 @@ extension TodoListTableViewCell{
                                         width: bounds.size.width,
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenRightView)
-                    superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
-                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
+//                    superView?.bringSubviewToFront(HomeViewController.bottomSheetVC.addButton)
+                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
                 }else{
                     isViewAdd = .left
                     clampFrame = CGRect(x: leftWidth,
@@ -211,7 +227,7 @@ extension TodoListTableViewCell{
                                         width: bounds.size.width,
                                         height: bounds.size.height)
                     superView?.bringSubviewToFront(hiddenLeftView)
-                    UIView.animate(withDuration: 0.4, animations: {self.frame = clampFrame})
+                    UIView.animate(withDuration: 0.32, animations: {self.frame = clampFrame})
                 }
                 
             }
@@ -219,13 +235,23 @@ extension TodoListTableViewCell{
     }
 
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-
         if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
             let translation = panGestureRecognizer.translation(in: superview)
             if abs(translation.x) > abs(translation.y) {
                 return true
             }
             return false
+        }
+        
+        if let tapGesture = gestureRecognizer as? UITapGestureRecognizer{
+            return true
+        }
+        return false
+    }
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isDescendant(of: self.backView) == true {
+            return true
         }
         return false
     }
@@ -339,17 +365,13 @@ extension TodoListTableViewCell{
     }
     
     @objc
-    func settingButtonDidClicked(_ sender : UIButton){
+    func alarmBtnDidClicked(_ sender : UIButton){
+        
+        guard let indexPath = getCellIndexPath() else { return }
+        
+        delegate?.cellWillAlarmEnabled(indexPath)
         
         cellWillMoveOriginalPosition()
-        
-        HomeViewController.dismissBottomSheet()
-        
-        let vc = TodoSettingViewController()
-        vc.todoSettingData = cellData
-        TodoSettingViewController.selectCategory = cellData.categoryId
-        
-        navigation.pushViewController(vc, animated: true)
     }
     
     @objc
@@ -372,6 +394,8 @@ extension TodoListTableViewCell{
 }
 
 protocol SelectedTableViewCellDeliver: AnyObject{
+    func cellDidTapped(_ indexPath: IndexPath)
+    func cellWillAlarmEnabled(_ indexPath: IndexPath)
     func cellWillPin(_ indexPath: IndexPath)
     func cellWillClamp(_ indexPath: IndexPath)
 }

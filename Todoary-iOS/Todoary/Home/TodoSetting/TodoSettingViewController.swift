@@ -19,7 +19,7 @@ import Then
  */
 
     
-class TodoSettingViewController : UIViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
+class TodoSettingViewController : BaseViewController, AlarmComplete, CalendarComplete , UIGestureRecognizerDelegate{
     
     //카테고리 정보 받아오는 struct
     var categoryData : [GetCategoryResult]! = []
@@ -53,9 +53,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
         $0.titleLabel?.font = UIFont.nbFont(ofSize: 18, weight: .medium)
         $0.addTarget(self, action: #selector(todocompleteBtnDidTap), for: .touchUpInside)
     }
-    
-    //navigation bar
-    var navigationView : NavigationView!
+
     
     let todo = UITextField().then{
         $0.placeholder = "투두이름"
@@ -137,8 +135,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!)
-
         self.view.backgroundColor = .white
         
         let flowLayout = LeftAlignedCollectionViewFlowLayout()
@@ -208,22 +204,16 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             
             if(todo.text!.isEmpty){
                 
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
                 
             }else if(todo.text!.count > 20){
-                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
                 
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "투두를 20자 이하로 설정해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else{
 
@@ -242,22 +232,14 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
             
             if(todo.text!.isEmpty){
                 
-                let alert = UIAlertController(title: "제목을 넣어주세요", message: nil, preferredStyle: .alert)
-                
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "제목을 넣어주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else if(todo.text!.count > 20){
-                let alert = UIAlertController(title: "투두를 20자 이하로 설정해주세요", message: nil, preferredStyle: .alert)
-                
-                let ok = UIAlertAction(title: "확인", style: .default)
-                
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
+                let alert = ConfirmAlertViewController(title: "투두를 20자 이하로 설정해주세요")
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert, animated: false, completion: nil)
                 
             }else{
                 todoSettingData.title = todo.text!
@@ -356,8 +338,6 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
                                           categoryTitle: "",
                                           color: -1)
             
-            TodoSettingViewController.selectCategory = -1
-            
             if(todoDate != nil){ //요약화면에서 투두 생성할 경우, 타겟 날짜 존재
                 date.setTitle(todoDate!.dateUsedTodo, for: .normal)
                 todoSettingData.targetDate = todoDate!.dateSendServer
@@ -386,6 +366,7 @@ class TodoSettingViewController : UIViewController, AlarmComplete, CalendarCompl
     func successAPI_category(_ result : [GetCategoryResult]) {
         if(result.isEmpty){
         }else {
+            print("카테고리 목록", result)
             categoryData = result
             //카테고리 초기값 설정
             if TodoSettingViewController.selectCategory == -1{

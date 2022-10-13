@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722461128C1A223009B7C78 /* BaseViewController.swift */; };
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
 		57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AB12891161D00DA2F31 /* GetTodo.swift */; };
@@ -76,6 +77,9 @@
 		578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AAA28AD116400E7B4F4 /* GetDiary.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
+		57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */; };
+		57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */; };
+		57B9F71328D94F7500ACEC94 /* CancelAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
 		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
@@ -91,6 +95,13 @@
 		57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */; };
 		57E6516828B2F969006CB053 /* AppleLoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */; };
 		57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6516928B31910006CB053 /* AppleLoginInput.swift */; };
+		57E75EB228E1B7D700AC24B2 /* AlarmAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E75EB128E1B7D700AC24B2 /* AlarmAlertViewController.swift */; };
+		57E75EB528E2731100AC24B2 /* TodoAlarmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E75EB428E2731100AC24B2 /* TodoAlarmDataManager.swift */; };
+		57E75EB728E276B600AC24B2 /* TodoAlarmInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E75EB628E276B600AC24B2 /* TodoAlarmInput.swift */; };
+		57E75EB928E33AD400AC24B2 /* AddButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */; };
+		57F97DD728D9566F00D4697C /* CancelMessageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */; };
+		57FFEDBA28DAD9BE0041719B /* ConfirmMessageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */; };
+		57FFEDBC28DC1C230041719B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FFEDBB28DC1C230041719B /* Const.swift */; };
 		653C013BA7F152A065BBDC7B /* Pods_TodoaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8C0E6CB0EA8691D12EEB0 /* Pods_TodoaryTests.framework */; };
 		AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C6288C37C80056EC69 /* TodoSettingViewController.swift */; };
 		AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E27C8288C37E60056EC69 /* TodoSettingViewController+Layout.swift */; };
@@ -244,6 +255,7 @@
 /* Begin PBXFileReference section */
 		0869569AF164AFEE9666A08A /* Pods-Todoary-TodoaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DBA94F04064FB8CCFC3F4D6 /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.debug.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
+		5722461128C1A223009B7C78 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
 		57294AB12891161D00DA2F31 /* GetTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodo.swift; sourceTree = "<group>"; };
@@ -321,6 +333,9 @@
 		578B7AAA28AD116400E7B4F4 /* GetDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiary.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
+		57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertViewController.swift; sourceTree = "<group>"; };
+		57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAlertViewController.swift; sourceTree = "<group>"; };
+		57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAlertViewController.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
 		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -336,6 +351,13 @@
 		57E6516528B2F0E4006CB053 /* AppleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginModel.swift; sourceTree = "<group>"; };
 		57E6516728B2F969006CB053 /* AppleLoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginDataManager.swift; sourceTree = "<group>"; };
 		57E6516928B31910006CB053 /* AppleLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginInput.swift; sourceTree = "<group>"; };
+		57E75EB128E1B7D700AC24B2 /* AlarmAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAlertViewController.swift; sourceTree = "<group>"; };
+		57E75EB428E2731100AC24B2 /* TodoAlarmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlarmDataManager.swift; sourceTree = "<group>"; };
+		57E75EB628E276B600AC24B2 /* TodoAlarmInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlarmInput.swift; sourceTree = "<group>"; };
+		57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonViewController.swift; sourceTree = "<group>"; };
+		57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMessageAlertViewController.swift; sourceTree = "<group>"; };
+		57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMessageAlertViewController.swift; sourceTree = "<group>"; };
+		57FFEDBB28DC1C230041719B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7C3B169714F99FD99E7D25E7 /* Pods_Todoary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6204C3C47428F7085399D8 /* Pods-Todoary-TodoaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.release.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB0EF046833AE19A057D847 /* Pods-TodoaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoaryTests.release.xcconfig"; path = "Target Support Files/Pods-TodoaryTests/Pods-TodoaryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -677,12 +699,14 @@
 		574A6FEA28826CDD003C8F99 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				57E75EB328E272E400AC24B2 /* TodoAlarmDataManager */,
 				57294ACD2894F70100DA2F31 /* TodoPinDataManager */,
 				57294ABE289116DF00DA2F31 /* TodoCheckboxDataManager */,
 				57294AB72891165400DA2F31 /* TodoGetByCategoryDataManager */,
 				57294AB0289115F100DA2F31 /* TodoGetDataManager */,
 				57294AAB2891155600DA2F31 /* TodoDeleteDataManager */,
 				574A70432885250D003C8F99 /* Cell */,
+				57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */,
 				574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */,
 				57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */,
 				574A704C28853C36003C8F99 /* UISheetPresentationControllerDetent+Private.h */,
@@ -770,6 +794,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		57B9F70D28D94F0300ACEC94 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */,
+				57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */,
+				57FFEDB928DAD9BE0041719B /* ConfirmMessageAlertViewController.swift */,
+				57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */,
+				57F97DD628D9566F00D4697C /* CancelMessageAlertViewController.swift */,
+				57E75EB128E1B7D700AC24B2 /* AlarmAlertViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		57DF45EB28A60AFB0002D66C /* UIFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +823,15 @@
 				57DF45FC28A60DB90002D66C /* DiaryFont.swift */,
 			);
 			path = UIFont;
+			sourceTree = "<group>";
+		};
+		57E75EB328E272E400AC24B2 /* TodoAlarmDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				57E75EB428E2731100AC24B2 /* TodoAlarmDataManager.swift */,
+				57E75EB628E276B600AC24B2 /* TodoAlarmInput.swift */,
+			);
+			path = TodoAlarmDataManager;
 			sourceTree = "<group>";
 		};
 		AC5E27C5288C359E0056EC69 /* TodoSetting */ = {
@@ -1089,13 +1135,16 @@
 		E02E7FA1287461760006F6FA /* CommonSource */ = {
 			isa = PBXGroup;
 			children = (
-				57DF45EB28A60AFB0002D66C /* UIFont */,
+				57FFEDBB28DC1C230041719B /* Const.swift */,
 				572E5B0A286EC06100D1FAA0 /* UIColor.swift */,
 				576ED6AF28748FFA007389CD /* NavigationView.swift */,
 				57503664288BE42C006A9070 /* CategoryColor.swift */,
 				57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */,
 				577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */,
+				5722461128C1A223009B7C78 /* BaseViewController.swift */,
+				57B9F70D28D94F0300ACEC94 /* Alert */,
 				E02E7FA2287462ED0006F6FA /* Extensions */,
+				57DF45EB28A60AFB0002D66C /* UIFont */,
 			);
 			path = CommonSource;
 			sourceTree = "<group>";
@@ -1553,6 +1602,7 @@
 				E0218B2928A54C0700E48618 /* AdTextSettingViewController+Layout.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
 				ACAE1D432898D9EC00B34DCC /* TodoModifyModel.swift in Sources */,
+				57E75EB728E276B600AC24B2 /* TodoAlarmInput.swift in Sources */,
 				AC5E27EE28914E810056EC69 /* TodoSettingDataManager.swift in Sources */,
 				AC5E27D5288C68920056EC69 /* EmailCheckDataManager.swift in Sources */,
 				57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */,
@@ -1568,9 +1618,11 @@
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
 				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
+				5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
 				E0BF9629289B69D900895111 /* DiaryToolbarViewController+Layout.swift in Sources */,
+				57E75EB528E2731100AC24B2 /* TodoAlarmDataManager.swift in Sources */,
 				E0F9989D288A591D0051C7AA /* GetProfileDataManager.swift in Sources */,
 				E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */,
 				5750365F288BE33F006A9070 /* CategoryViewController.swift in Sources */,
@@ -1588,6 +1640,7 @@
 				ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */,
 				57503656288A3FD4006A9070 /* LoginDataManager.swift in Sources */,
 				E0F9988A288A57D60051C7AA /* ProfileInput.swift in Sources */,
+				57E75EB928E33AD400AC24B2 /* AddButtonViewController.swift in Sources */,
 				E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */,
 				E0F998A4288A59A80051C7AA /* UserDeleteDataManager.swift in Sources */,
 				57503665288BE42C006A9070 /* CategoryColor.swift in Sources */,
@@ -1613,6 +1666,8 @@
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
 				ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */,
+				57E75EB228E1B7D700AC24B2 /* AlarmAlertViewController.swift in Sources */,
+				57FFEDBC28DC1C230041719B /* Const.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
@@ -1622,6 +1677,7 @@
 				AC5E27F228914EAE0056EC69 /* TodoSettingModel.swift in Sources */,
 				576ED6B42874902A007389CD /* UITextField.swift in Sources */,
 				57468A6A289BCDE800056691 /* NoTodoTableViewCell.swift in Sources */,
+				57B9F71328D94F7500ACEC94 /* CancelAlertViewController.swift in Sources */,
 				E0F99896288A58650051C7AA /* ProfileImgDeleteDataManager.swift in Sources */,
 				ACCD87C628965B7700C34CE7 /* TodoCategoryCell.swift in Sources */,
 				572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */,
@@ -1656,6 +1712,7 @@
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
 				ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */,
+				57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */,
 				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
 				ACCD87C02895930500C34CE7 /* GetCategoryDataManager.swift in Sources */,
@@ -1663,6 +1720,7 @@
 				ACAE1D412898D9DD00B34DCC /* TodoModifyInput.swift in Sources */,
 				AC5E27DF28901EEF0056EC69 /* AuthInterceptor.swift in Sources */,
 				E03856BD28914D8F00CEEFBA /* ColorPickerBottomsheetCollectionView.swift in Sources */,
+				57F97DD728D9566F00D4697C /* CancelMessageAlertViewController.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
@@ -1699,6 +1757,7 @@
 				E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */,
 				E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */,
 				AC9859C9288290C8009FC2F8 /* Calendar.swift in Sources */,
+				57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */,
 				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
 				ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */,
 				57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */,
@@ -1722,6 +1781,7 @@
 				ACCD87C92897BB3800C34CE7 /* CategoryModifyDataManager.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */,
+				57FFEDBA28DAD9BE0041719B /* ConfirmMessageAlertViewController.swift in Sources */,
 				572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */,
 				AC5E27D8288C68DB0056EC69 /* EmailCheckModel.swift in Sources */,
 				ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */,

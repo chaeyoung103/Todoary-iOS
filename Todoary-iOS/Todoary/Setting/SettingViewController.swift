@@ -10,12 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingViewController : UIViewController {
+class SettingViewController : BaseViewController {
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //tableView
     var tableView : UITableView!
@@ -49,9 +46,7 @@ class SettingViewController : UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "설정"
-        }
+        navigationTitle.text = "설정"
         
         tableView = UITableView().then{
             $0.separatorStyle = .none
@@ -72,13 +67,9 @@ class SettingViewController : UIViewController {
     }
     
     func showDisabledFuncAlert(){
-        let alert = UIAlertController(title: nil, message: "현재 제공하고 있지 않은 기능입니다.\n다음 업데이트에 만나요!", preferredStyle: .alert)
-        
-        let okBtn = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
-        alert.addAction(okBtn)
-        
-        self.present(alert, animated: true, completion: nil)
+        let alert = ConfirmMessageAlertViewController(title: "다음 업데이트에 만나요!", message: "현재 버전에서는 제공하고 있지 않은 기능입니다.")
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
     }
 }
 
@@ -143,7 +134,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             return
         case 1:
             showDisabledFuncAlert()
-            self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
+//            self.navigationController?.pushViewController(ScreenSettingViewController(), animated: true)
             return
         case 2:
             self.navigationController?.pushViewController(AccountViewController(), animated: true)

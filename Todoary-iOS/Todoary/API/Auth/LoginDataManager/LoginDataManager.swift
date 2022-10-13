@@ -30,15 +30,15 @@ class LoginDataManager{
                 case 2005:
                     print(result.message)
                 case 2011:
-                    let alert = UIAlertController(title: "회원정보가 존재하지 않습니다.", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    alert.addAction(action)
-                    viewController.present(alert, animated: true, completion: nil)
+                    let alert = ConfirmAlertViewController(title: "회원정보가 존재하지 않습니다.")
+                    alert.modalPresentationStyle = .overFullScreen
+                    viewController.present(alert, animated: false, completion: nil)
+                    
                 case 2112:
-                    let alert = UIAlertController(title: "로그인 정보가 일치하지 않습니다.", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    alert.addAction(action)
-                    viewController.present(alert, animated: true, completion: nil)
+                    let alert = ConfirmAlertViewController(title: "로그인 정보가 일치하지 않습니다.")
+                    alert.modalPresentationStyle = .overFullScreen
+                    viewController.present(alert, animated: false, completion: nil)
+                    
                 default:
                     let alert = DataBaseErrorAlert()
                     viewController.present(alert, animated: true, completion: nil)

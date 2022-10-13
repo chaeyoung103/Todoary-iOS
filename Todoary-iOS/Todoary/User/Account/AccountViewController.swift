@@ -8,13 +8,11 @@
 import UIKit
 import SnapKit
 import Then
+import AuthenticationServices
 
-class AccountViewController : UIViewController {
+class AccountViewController : BaseViewController {
     
     //MARK: - UIComponenets
-    
-    //navigation bar
-    var navigationView : NavigationView!
     
     //tableView
     var tableView : UITableView!
@@ -82,9 +80,7 @@ class AccountViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationView = NavigationView(frame: .zero , self.navigationController!).then{
-            $0.navigationTitle.text = "계정"
-        }
+        navigationTitle.text = "계정"
         
         tableView = UITableView().then{
             $0.isScrollEnabled = false
@@ -121,40 +117,39 @@ class AccountViewController : UIViewController {
                 }
     
     @objc func logoutCellDidTab() {
-        let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
-        let no = UIAlertAction(title: "아니오", style: .default)
-        let yes = UIAlertAction(title: "네", style: .cancel){(_) in
+        
+        let alert = CancelAlertViewController(title: "로그아웃 하시겠습니까?")
+        alert.alertHandler = {
             SignoutDataManager().signout(self)
         }
-            
-        alert.addAction(yes)
-        alert.addAction(no)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
         
-        
-        self.present(alert, animated: true, completion: nil)
     }
 
 
     
     @objc func accountDeleteCellDidTab() {
         
-        let alert = UIAlertController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.", preferredStyle: .alert)
-        
-        let yes = UIAlertAction(title: "네", style: .cancel){ _ in
+        let alert = CancelMessageAlertViewController(title: "정말 계정을 삭제하시겠습니까?", message: "삭제된 데이터는 복구할 수 없습니다.")
+        alert.alertHandler = {
             
             if KeyChain.read(key: Const.UserDefaults.appleIdentifier) != nil{
-                UserDeleteDataManager().postAppleUserDelete(self)
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                let request = appleIDProvider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.delegate = self
+                authorizationController.presentationContextProvider = self
+                authorizationController.performRequests()
             }else{
                 UserDeleteDataManager().patch(self)
             }
         }
-        
-        let no = UIAlertAction(title: "아니오", style: .default)
-        
-        alert.addAction(yes)
-        alert.addAction(no)
-        
-        self.present(alert, animated: true, completion: nil)
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false, completion: nil)
+
     }
     
     //MARK: - Helpers
@@ -224,4 +219,37 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("TableViewCell Error")
         }
     }
+}
+
+extension AccountViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    /*
+     email, userName 정보 -> 키체인에 바로 저장
+     userIdentifier 정보 -> 프로퍼티에 임시 저장
+     이후 회원가입 완료시 userIndentifier 정보도 키체인에 저장
+     
+     => userIdentifier가 키체인에 있을 경우 유저 정보가 있다는 걸로..
+     */
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)!
+            
+            UserDeleteDataManager().postAppleUserDelete(self, authorizationCode: authorizationCode)
+            
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+    
 }

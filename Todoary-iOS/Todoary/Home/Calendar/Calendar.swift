@@ -114,6 +114,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             if select == -1 {
                 if self.year == year_component && self.month == month_component {
                     if today == (indexPath.row - emptyDay) {
+                        cell.dateLabel.textColor = UIColor(red: 49/255, green: 131/255, blue: 255/255, alpha: 1)
                         collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
                         cell.isSelected = true
                     }else {
@@ -149,11 +150,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.dateLabel.layer.backgroundColor = UIColor.calendarSelectColor.cgColor
         cell.dateLabel.textColor = .white
-        cell.dateLabel.layer.shadowRadius = 4.0
-        cell.dateLabel.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        cell.dateLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.dateLabel.layer.shadowOpacity = 1
-        cell.dateLabel.layer.masksToBounds = false
+        cell.select.isHidden = false
         
         //선택한 날짜에 맞는 투두 리스트 불러오기
         
@@ -163,6 +160,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                                                       
         GetTodoDataManager().gets(convertDate.dateSendServer)
         DiaryDataManager().gets(convertDate.dateSendServer)
+        
+        if self.year == year_component && self.month == month_component {
+            if today == (indexPath.row - emptyDay) {
+                cell.dateLabel.textColor = UIColor(red: 49/255, green: 131/255, blue: 255/255, alpha: 1)
+            }
+        }
     }
     
     //셀 선택x
@@ -170,6 +173,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCell else{
             fatalError()
         }
+        
+        cell.select.isHidden = true
         
         if HomeViewController.calendarRecord[indexPath.row-emptyDay] != 0 {
             cell.dateLabel.layer.backgroundColor = UIColor.calendarExistColor.cgColor
@@ -189,6 +194,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.diary.isHidden = false
         }else {
             cell.diary.isHidden = true
+        }
+        
+        if self.year == year_component && self.month == month_component {
+            if today == (indexPath.row - emptyDay) {
+                cell.dateLabel.textColor = UIColor(red: 49/255, green: 131/255, blue: 255/255, alpha: 1)
+            }
         }
         
     }

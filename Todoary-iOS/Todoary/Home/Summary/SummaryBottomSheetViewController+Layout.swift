@@ -64,7 +64,7 @@ extension SummaryBottomViewController{
     func setUpView(){
         self.view.addSubview(sheetLine)
         self.view.addSubview(tableView)
-        self.view.addSubview(addButton)
+//        self.view.addSubview(addButton)
         
         self.view.addSubview(todoEasySettingView)
         self.view.addSubview(todoTf)
@@ -110,12 +110,12 @@ extension SummaryBottomViewController{
             make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview()
         }
-        
-        addButton.snp.makeConstraints{ make in
-            make.width.height.equalTo(70)
-            make.bottom.equalToSuperview().offset(-52.52)
-            make.trailing.equalToSuperview().offset(-27)
-        }
+//
+//        addButton.snp.makeConstraints{ make in
+//            make.width.height.equalTo(70)
+//            make.bottom.equalToSuperview().offset(-52.52)
+//            make.trailing.equalToSuperview().offset(-27)
+//        }
     }
 }
 
@@ -125,10 +125,8 @@ extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
         
         let controller: UISheetPresentationController = .init(presentedViewController: presented, presenting: presenting)
         
-        let height = UIScreen.main.bounds.size.height
-        
-        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: height - 519 - 41)
-        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: height - 95 - 41 ) //790 - 41
+        let detent1: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test1", constant: Const.Device.DEVICE_HEIGHT - (519 + 41)) //519 + 41
+        let detent2: UISheetPresentationController.Detent = ._detent(withIdentifier: "Test2", constant: Const.Device.DEVICE_HEIGHT - (95 + 41) ) //790 - 41
         
         let detentIdentifier :UISheetPresentationController.Detent.Identifier = UISheetPresentationController.Detent.Identifier(rawValue: "Test2")
         
@@ -147,4 +145,3 @@ extension SummaryBottomViewController: UIViewControllerTransitioningDelegate{
     }
     
 }
-
