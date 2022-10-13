@@ -13,7 +13,11 @@ class AlarmAlertViewController: UIViewController {
     
     var pickTime = [0,0,0] //0: hour, 1: minute, 2: am/pm
     
-    var todoData: GetTodoInfo!
+    var todoData: GetTodoInfo!{
+        didSet{
+            setPickerTime()
+        }
+    }
     
     var targetTime: String!
     
@@ -48,6 +52,10 @@ class AlarmAlertViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        timePicker.selectRow(pickTime[0], inComponent: 0, animated: true)
+        timePicker.selectRow(pickTime[1], inComponent: 1, animated: true)
+        timePicker.selectRow(pickTime[2], inComponent: 2, animated: true)
 
         // curveEaseOut: 시작은 천천히, 끝날 땐 빠르게
         UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut) { [weak self] in
@@ -114,6 +122,18 @@ class AlarmAlertViewController: UIViewController {
         
     }
     
+    func setPickerTime(){
+        
+        guard let time = todoData.targetTime else { return }
+        
+        let timeArray = time.components(separatedBy: ":").map({ Int($0)! })
+        
+        let firstComponent = timeArray[0] % 12 != 0 ? timeArray[0] % 12 - 1 : 11
+        let thirdComponent = time < "12:00" ? 0 : 1
+        
+        pickTime = [firstComponent, timeArray[1], thirdComponent]
+    }
+    
     //MARK: - Action
     
     @objc func dismissAlertController(){
@@ -121,8 +141,6 @@ class AlarmAlertViewController: UIViewController {
     }
     
     @objc func confirmBtnDidClicked(){
-        
-        //TODO: - pickTime 데이터 변환해 api 연결
         
         var hour: String {
             if(pickTime[2] == 1){
