@@ -12,6 +12,13 @@ class AddButtonViewController: UIViewController{
     //MARK: - Properties
     var delegate: AddButtonClickProtocol!
     
+    var detent: DetentIdentifier!
+    
+    enum DetentIdentifier{
+        case low
+        case high
+    }
+    
     //MARK: - UI
     
     let buttonView = UIView().then{
@@ -79,8 +86,15 @@ class AddButtonViewController: UIViewController{
             $0.height.equalTo(120)
             $0.width.equalTo(50)
             $0.trailing.equalToSuperview().offset(-61)
-            let bottomHeight = Const.Device.DEVICE_HEIGHT - (519 + 41)
-            $0.bottom.equalToSuperview().offset(-(bottomHeight))
+            
+            if(detent == DetentIdentifier.low){
+                let bottomHeight = Const.Device.DEVICE_HEIGHT - (519 + 41) //519 + 41
+                $0.bottom.equalToSuperview().offset(-(bottomHeight))
+            }else{
+                let bottomHeight = 95 + 41 + 40 //519 + 41
+                $0.top.equalToSuperview().offset((bottomHeight))
+            }
+        
         }
     }
     
