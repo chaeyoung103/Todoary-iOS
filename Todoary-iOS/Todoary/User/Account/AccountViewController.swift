@@ -158,8 +158,10 @@ class AccountViewController : BaseViewController {
         nickName.text = result.nickname
         introduce.text = result.introduce
         userAccount.text = result.email
-        let url = URL(string: result.profileImgUrl!)
-        profileImage.load(url: url!)
+        if (result.profileImgUrl != nil){
+            let url = URL(string: result.profileImgUrl!)
+            profileImage.load(url: url!)
+        }
     }
     
     func deleteApiResultCode(_ result: Int){
