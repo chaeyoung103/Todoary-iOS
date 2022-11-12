@@ -462,7 +462,7 @@ extension SignUpViewController{
         case 1000:
             let alert = ConfirmMessageAlertViewController(title: "회원가입을 축하합니다!", message: "이제 Todoary 서비스를 자유롭게 이용해보세요.")
             alert.alertHandler = {
-                self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
             alert.modalPresentationStyle = .overFullScreen
             self.present(alert, animated: false, completion: nil)
