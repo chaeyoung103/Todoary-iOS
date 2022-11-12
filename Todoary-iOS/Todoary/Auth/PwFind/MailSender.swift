@@ -6,6 +6,7 @@
 //
 
 import skpsmtpmessage
+import UIKit
 
 class MailSender: NSObject, SKPSMTPMessageDelegate {
     static let shared = MailSender()
@@ -20,13 +21,18 @@ class MailSender: NSObject, SKPSMTPMessageDelegate {
     
     var random_num = Int.random(in: 1000...9999)
     
+    var viewController: UIViewController!
+    
     
     func randomGenerate() {
         var num = random_num
         UserDefaults.standard.set(num, forKey: "key")
         }
 
-    func sendEmail(_ email: String) {
+    func sendEmail(email: String, viewController: UIViewController) {
+        
+        self.viewController = viewController
+        
         let message = SKPSMTPMessage()
         message.relayHost = "smtp.gmail.com"
         message.login = TODOARY_EMAIL
@@ -47,9 +53,17 @@ class MailSender: NSObject, SKPSMTPMessageDelegate {
 
     func messageSent(_ message: SKPSMTPMessage!) {
         print("Successfully sent email!")
+        
+        let alert = ConfirmAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
+        alert.modalPresentationStyle = .overFullScreen
+        self.viewController.present(alert, animated: false, completion: nil)
     }
 
     func messageFailed(_ message: SKPSMTPMessage!, error: Error!) {
         print("Sending email failed!")
+        
+        let alert = ConfirmAlertViewController(title: "인증코드 메일 발송을 실패했습니다.")
+        alert.modalPresentationStyle = .overFullScreen
+        self.viewController.present(alert, animated: false, completion: nil)
     }
 }

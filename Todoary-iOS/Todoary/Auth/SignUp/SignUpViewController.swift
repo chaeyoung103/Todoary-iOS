@@ -495,12 +495,7 @@ extension SignUpViewController{
             idCanUseLabel.text = "*사용 가능한 이메일입니다."
             idCanUseLabel.textColor = .todoaryGrey
             
-            MailSender.shared.sendEmail(self.email)
-            
-            //이메일 사용 가능한 경우, 메일 발송 팝업 띄우기
-            let alert = ConfirmAlertViewController(title: "인증코드가 메일로 발송되었습니다.")
-            alert.modalPresentationStyle = .overFullScreen
-            self.present(alert, animated: false, completion: nil)
+            MailSender.shared.sendEmail(email: self.email, viewController: self)
             
             return
             
