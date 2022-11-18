@@ -144,6 +144,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             return
         case 4:
             showDisabledFuncAlert()
+            
            // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
             return
         case 5:
