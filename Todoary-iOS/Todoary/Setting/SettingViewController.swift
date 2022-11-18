@@ -143,6 +143,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(PinNumberSettingViewController(), animated: true)
             return
         case 4:
+            showDisabledFuncAlert()
            // self.navigationController?.pushViewController(SettingAgreementViewController(), animated: true)
             return
         case 5:
