@@ -81,7 +81,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     var homeNavigaiton : UINavigationController!
     
-    let addButtonView = AddButtonViewController()
+    var addButtonView: AddButtonViewController?
     
     //MARK: - LifeCycle
     
@@ -282,16 +282,26 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
 extension SummaryBottomViewController: MoveViewController, AddButtonClickProtocol{
     
     func moveToViewController() {
+
+        addButtonView = AddButtonViewController().then{
+            $0.delegate = self
+            $0.modalPresentationStyle = .overFullScreen
+        }
         
-        addButtonView.delegate = self
-        addButtonView.modalPresentationStyle = .overFullScreen
+        guard let addButtonView = addButtonView else { return }
+        
+        if(self.sheetPresentationController?.selectedDetentIdentifier == nil || self.sheetPresentationController?.selectedDetentIdentifier?.rawValue == "Test1"){
+            addButtonView.detent = .low
+        }else{
+            addButtonView.detent = .high
+        }
         
         self.present(addButtonView, animated: false, completion: nil)
     }
     
     func willMoveAddTodo(){
         
-        addButtonView.dismiss(animated: false, completion: nil)
+        addButtonView!.dismiss(animated: false, completion: nil)
         
         HomeViewController.dismissBottomSheet()
         
@@ -304,7 +314,7 @@ extension SummaryBottomViewController: MoveViewController, AddButtonClickProtoco
     
     func willMoveAddDiary(){
         
-        addButtonView.dismiss(animated: false, completion: nil)
+        addButtonView!.dismiss(animated: false, completion: nil)
         
         let vc = DiaryViewController()
 

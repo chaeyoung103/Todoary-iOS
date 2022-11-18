@@ -300,8 +300,10 @@ extension ProfileViewController {
         if ((result.introduce != nil)){
             introduceCount.text = "\(result.introduce!.count)/30"
         }
-        let url = URL(string: result.profileImgUrl!)
-        profileImage.load(url: url!)
+        if (result.profileImgUrl != nil){
+            let url = URL(string: result.profileImgUrl!)
+            profileImage.load(url: url!)
+        }
     }
 }
 

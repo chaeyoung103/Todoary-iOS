@@ -186,8 +186,10 @@ class HomeViewController : UIViewController {
     func successAPI_home(_ result : GetProfileResult) {
         nickname.text = result.nickname
         introduce.text = result.introduce
-        let url = URL(string: result.profileImgUrl!)
-        profileImage.load(url: url!)
+        if (result.profileImgUrl != nil){
+            let url = URL(string: result.profileImgUrl!)
+            profileImage.load(url: url!)
+        }
     }
     static func successAPI_calendar(_ result : [Int]) {
         
