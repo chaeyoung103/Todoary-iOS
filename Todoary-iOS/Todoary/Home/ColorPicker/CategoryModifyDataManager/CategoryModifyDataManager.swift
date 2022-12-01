@@ -50,7 +50,8 @@ class CategoryModifyDataManager {
                    method: .patch,
                    parameters: parameter,
                    encoder: JSONParameterEncoder.default,
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate()
             .responseDecodable(of: CategoryModifyModel.self) { response in
                 switch response.result {

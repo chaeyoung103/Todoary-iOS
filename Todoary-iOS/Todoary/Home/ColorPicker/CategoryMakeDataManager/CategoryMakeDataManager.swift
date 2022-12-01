@@ -39,7 +39,7 @@ class CategoryMakeDataManager {
     }
     
     func categoryMakeDataManager( _ viewController : ColorPickerViewController , _ parameter: CategoryMakeInput) {
-        AF.request("https://todoary.com/category", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: CategoryMakeModel.self) { response in
+        AF.request("https://todoary.com/category", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers, interceptor: Interceptor()).validate().responseDecodable(of: CategoryMakeModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code {

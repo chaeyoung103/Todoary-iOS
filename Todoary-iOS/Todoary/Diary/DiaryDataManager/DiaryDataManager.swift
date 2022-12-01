@@ -93,7 +93,7 @@ class DiaryDataManager {
     
     func getDiarySticker(viewController: DiaryViewController, createdDate: String){
         
-        AF.request("https://todoary.com/diary/\(createdDate)/sticker", method: .get, parameters: nil,  headers: self.headers).validate().responseDecodable(of: GetDiaryStickerModel.self) { response in
+        AF.request("https://todoary.com/diary/\(createdDate)/sticker", method: .get, parameters: nil,  headers: self.headers, interceptor: Interceptor()).validate().responseDecodable(of: GetDiaryStickerModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code {

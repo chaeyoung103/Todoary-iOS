@@ -18,7 +18,8 @@ class AdDataManager{
                 method: .patch,
                 parameters: ["isChecked":isChecked],
                 encoder: JSONParameterEncoder.default,
-                headers: headers)
+                headers: headers,
+                interceptor: Interceptor())
          .validate().responseDecodable(of: AdModel.self) { response in
              switch response.result {
              case .success(let result):

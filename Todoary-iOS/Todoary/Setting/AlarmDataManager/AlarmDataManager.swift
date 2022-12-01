@@ -23,7 +23,7 @@ class AlarmDataManager {
         AF.request("https://todoary.com/users/alarm",
                    method: .get,
                    parameters: nil,
-                   headers: headers)
+                   headers: headers, interceptor: Interceptor())
             .validate().responseDecodable(of: GetAlarmCheckModel.self) { response in
                 switch response.result {
                 case .success(let result):

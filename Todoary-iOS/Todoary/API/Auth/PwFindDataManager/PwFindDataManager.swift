@@ -12,7 +12,7 @@ class PwFindDataManager{
     
     func pwFindDataManager(_ viewController: PwFindViewController, _ parameter: PwFindInput){
         
-        AF.request("https://todoary.com/auth/password", method: .patch, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: PwFindModel.self) { response in
+        AF.request("https://todoary.com/auth/password", method: .patch, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil, interceptor: Interceptor()).validate().responseDecodable(of: PwFindModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code{

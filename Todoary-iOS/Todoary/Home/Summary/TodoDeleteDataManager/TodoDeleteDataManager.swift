@@ -17,7 +17,8 @@ class TodoDeleteDataManager{
         AF.request("https://todoary.com/todo/\(todoId)",
                    method: .delete,
                    parameters: [:],
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate()
             .responseDecodable(of: UserDeleteModel.self) { response in
                 switch response.result {

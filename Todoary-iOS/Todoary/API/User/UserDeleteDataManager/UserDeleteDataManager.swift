@@ -14,7 +14,7 @@ class UserDeleteDataManager{
         
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         
-        AF.request("https://todoary.com/users/status", method: .patch, parameters: [:], headers: headers).validate().responseDecodable(of: UserDeleteModel.self) { response in
+        AF.request("https://todoary.com/users/status", method: .patch, parameters: [:], headers: headers, interceptor: Interceptor()).validate().responseDecodable(of: UserDeleteModel.self) { response in
             switch response.result {
             case .success(let result):
                 print("계정삭제성공")
