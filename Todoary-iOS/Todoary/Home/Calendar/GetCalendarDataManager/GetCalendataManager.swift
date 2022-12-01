@@ -16,7 +16,8 @@ class GetCalendataManager {
         AF.request("https://todoary.com/todo/days/\(yearMonth)",
                    method: .get,
                    parameters: nil,
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate()
             .responseDecodable(of: GetCalendarModel.self) { response in
                 switch response.result {

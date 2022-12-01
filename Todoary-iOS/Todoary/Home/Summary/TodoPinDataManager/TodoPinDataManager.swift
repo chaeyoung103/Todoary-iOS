@@ -18,7 +18,8 @@ class TodoPinDataManager {
                    method: .patch,
                    parameters: parameter,
                    encoder: JSONParameterEncoder.default,
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate().responseDecodable(of: ApiModel.self) { response in
                 switch response.result {
                 case .success(let result):

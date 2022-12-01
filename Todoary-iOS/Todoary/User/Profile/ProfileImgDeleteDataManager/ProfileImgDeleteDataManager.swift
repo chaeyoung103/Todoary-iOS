@@ -16,7 +16,8 @@ class ProfileImgDeleteDataManager {
         AF.request("http://todoary.com/users/profile-img",
                    method: .delete,
                    encoding: URLEncoding(destination: .queryString),
-                   headers: headers).validate().responseDecodable(of: ProfileImgDeleteModel.self)
+                   headers: headers,
+                   interceptor: Interceptor()).validate().responseDecodable(of: ProfileImgDeleteModel.self)
         {response in
             switch response.result {
             case .success(let result) :

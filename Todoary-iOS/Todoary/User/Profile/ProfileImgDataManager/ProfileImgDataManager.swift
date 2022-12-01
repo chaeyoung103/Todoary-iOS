@@ -18,7 +18,7 @@ class profileImgDataManager {
                 multipartFormData.append(image, withName: "profile-img", fileName: "\(image).jpeg", mimeType: "image/ipeg")
             }
             
-        }, to: "https://todoary.com/users/profile-img", usingThreshold: UInt64.init(), method: .patch, headers: headers).validate().responseDecodable(of: ProfileImgModel.self)
+        }, to: "https://todoary.com/users/profile-img", usingThreshold: UInt64.init(), method: .patch, headers: headers, interceptor: Interceptor()).validate().responseDecodable(of: ProfileImgModel.self)
         { response in
             
             switch response.result {

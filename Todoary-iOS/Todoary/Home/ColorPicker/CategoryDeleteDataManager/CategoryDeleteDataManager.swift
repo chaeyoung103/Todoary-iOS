@@ -46,7 +46,8 @@ class CategoryDeleteDataManager {
         AF.request("https://todoary.com/category/\(categoryId)",
                    method: .delete,
                    parameters: nil,
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate()
             .responseDecodable(of: CategoryDeleteModel.self) { response in
                 switch response.result {

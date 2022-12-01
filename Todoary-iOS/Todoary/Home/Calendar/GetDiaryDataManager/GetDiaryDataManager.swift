@@ -16,7 +16,7 @@ class GetDiaryDataManager {
         AF.request("https://todoary.com/diary/days/\(yearMonth)",
                    method: .get,
                    parameters: nil,
-                   headers: headers)
+                   headers: headers,interceptor: Interceptor())
             .validate()
             .responseDecodable(of: GetDiaryExistenceModel.self) { response in
                 switch response.result {

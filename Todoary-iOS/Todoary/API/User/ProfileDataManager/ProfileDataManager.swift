@@ -12,7 +12,7 @@ class ProfileDataManager {
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
     func profileDataManager( _ viewController : ProfileViewController , _ parameter: ProfileInput) {
-        AF.request("https://todoary.com/users/profile", method: .patch, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: ProfileModel.self) { response in
+        AF.request("https://todoary.com/users/profile", method: .patch, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers, interceptor: Interceptor()).validate().responseDecodable(of: ProfileModel.self) { response in
             switch response.result {
             case .success(let result):
                 switch result.code {

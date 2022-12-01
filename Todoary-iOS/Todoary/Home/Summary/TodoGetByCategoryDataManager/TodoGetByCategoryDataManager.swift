@@ -17,7 +17,8 @@ class TodoGetByCategoryDataManager{
         AF.request("https://todoary.com/todo/category/\(categoryId)",
                    method: .get,
                    parameters: nil,
-                   headers: headers)
+                   headers: headers,
+                   interceptor: Interceptor())
             .validate().responseDecodable(of: GetTodoModel.self) { response in
                 switch response.result {
                 case .success(let result):
