@@ -79,6 +79,9 @@
 		57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */; };
 		57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */; };
 		57B9F71328D94F7500ACEC94 /* CancelAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */; };
+		57D5B60B29580F4400216C94 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B60A29580F4400216C94 /* BaseTableViewCell.swift */; };
+		57D5B60D29580F6600216C94 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */; };
+		57D5B60F29580F8400216C94 /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B60E29580F8400216C94 /* BaseProtocol.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
 		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
@@ -330,6 +333,9 @@
 		57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertViewController.swift; sourceTree = "<group>"; };
 		57B9F71028D94F6700ACEC94 /* ConfirmAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAlertViewController.swift; sourceTree = "<group>"; };
 		57B9F71228D94F7500ACEC94 /* CancelAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAlertViewController.swift; sourceTree = "<group>"; };
+		57D5B60A29580F4400216C94 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		57D5B60E29580F8400216C94 /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
 		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -645,6 +651,8 @@
 			isa = PBXGroup;
 			children = (
 				5722461128C1A223009B7C78 /* BaseViewController.swift */,
+				57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */,
+				57D5B60A29580F4400216C94 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1482,6 +1490,7 @@
 				57B9F70D28D94F0300ACEC94 /* Alert */,
 				5701EA192956E8D700F21F63 /* Base */,
 				5701EAA22957308400F21F63 /* Loading */,
+				57D5B6102958107700216C94 /* Protocol */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1583,6 +1592,14 @@
 				57E75EB128E1B7D700AC24B2 /* AlarmAlertViewController.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		57D5B6102958107700216C94 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				57D5B60E29580F8400216C94 /* BaseProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		57DF45EB28A60AFB0002D66C /* UIFont */ = {
@@ -1991,6 +2008,7 @@
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */,
+				57D5B60D29580F6600216C94 /* BaseCollectionViewCell.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
 				ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
@@ -2021,6 +2039,7 @@
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmDataManager.swift in Sources */,
 				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
+				57D5B60B29580F4400216C94 /* BaseTableViewCell.swift in Sources */,
 				57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */,
 				57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
@@ -2074,6 +2093,7 @@
 				576ED6B228749021007389CD /* String.swift in Sources */,
 				5750365C288A4007006A9070 /* AutoLoginDataManager.swift in Sources */,
 				ACCD87C92897BB3800C34CE7 /* CategoryModifyDataManager.swift in Sources */,
+				57D5B60F29580F8400216C94 /* BaseProtocol.swift in Sources */,
 				E0F998CB288A6B460051C7AA /* AdModel.swift in Sources */,
 				E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */,
 				57FFEDBA28DAD9BE0041719B /* ConfirmMessageAlertViewController.swift in Sources */,

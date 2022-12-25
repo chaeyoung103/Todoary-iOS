@@ -21,6 +21,10 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        baseConfigure()
+    }
+    
+    func baseConfigure(){
         
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
@@ -39,7 +43,6 @@ class BaseViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(59)
         }
-        
     }
     
     @objc
