@@ -1,5 +1,5 @@
 //
-//  BaseCollectionViewCell.swift
+//  BaseTableViewCell.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/12/25.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class BaseCollectionViewCell: UICollectionViewCell, BaseSourceProtocol {
+class BaseTableViewCell: UITableViewCell, BaseSourceProtocol {
     
     let baseView = UIView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         baseViewConfigure()
     }
     
@@ -25,7 +25,7 @@ class BaseCollectionViewCell: UICollectionViewCell, BaseSourceProtocol {
         self.contentView.addSubview(baseView)
         
         baseView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

@@ -29,7 +29,6 @@
 		572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0A286EC06100D1FAA0 /* UIColor.swift */; };
 		572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0D286EC10500D1FAA0 /* UIFont.swift */; };
 		572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */; };
-		572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */; };
 		572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */; };
 		572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB8287BC4AC00F915DF /* ScreenSettingViewController.swift */; };
 		572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABA287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift */; };
@@ -74,6 +73,7 @@
 		578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */; };
 		578B7AA928AD114400E7B4F4 /* DiaryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA828AD114400E7B4F4 /* DiaryInput.swift */; };
 		578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AAA28AD116400E7B4F4 /* GetDiary.swift */; };
+		57B16855295A8A2600639A15 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B16854295A8A2600639A15 /* SignUpView.swift */; };
 		57B36ECA287AFA9A00378E16 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */; };
 		57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B36ECC287AFAD400378E16 /* AskViewController.swift */; };
 		57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */; };
@@ -280,7 +280,6 @@
 		572E5B0A286EC06100D1FAA0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		572E5B0D286EC10500D1FAA0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AskViewController+Layout.swift"; sourceTree = "<group>"; };
 		572E9AB8287BC4AC00F915DF /* ScreenSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSettingViewController.swift; sourceTree = "<group>"; };
 		572E9ABA287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenSettingViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -328,6 +327,7 @@
 		578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataManager.swift; sourceTree = "<group>"; };
 		578B7AA828AD114400E7B4F4 /* DiaryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInput.swift; sourceTree = "<group>"; };
 		578B7AAA28AD116400E7B4F4 /* GetDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDiary.swift; sourceTree = "<group>"; };
+		57B16854295A8A2600639A15 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		57B36EC9287AFA9A00378E16 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		57B36ECC287AFAD400378E16 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		57B9F70E28D94F4400ACEC94 /* BaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -647,14 +647,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5701EA192956E8D700F21F63 /* Base */ = {
+		5701EA192956E8D700F21F63 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
 				5722461128C1A223009B7C78 /* BaseViewController.swift */,
 				57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */,
 				57D5B60A29580F4400216C94 /* BaseTableViewCell.swift */,
 			);
-			path = Base;
+			path = BaseClass;
 			sourceTree = "<group>";
 		};
 		5701EA312956EDC900F21F63 /* ViewControllers */ = {
@@ -1002,7 +1002,7 @@
 		5701EA6E2956F1CE00F21F63 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				572E5B19286F056800D1FAA0 /* SignUpViewController+Layout.swift */,
+				57B16854295A8A2600639A15 /* SignUpView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1488,7 +1488,7 @@
 				57FFEDBB28DC1C230041719B /* Const.swift */,
 				AC67C2DB2892904C00071763 /* SetKeboard.swift */,
 				57B9F70D28D94F0300ACEC94 /* Alert */,
-				5701EA192956E8D700F21F63 /* Base */,
+				5701EA192956E8D700F21F63 /* BaseClass */,
 				5701EAA22957308400F21F63 /* Loading */,
 				57D5B6102958107700216C94 /* Protocol */,
 			);
@@ -2038,7 +2038,6 @@
 				57F97DD728D9566F00D4697C /* CancelMessageAlertViewController.swift in Sources */,
 				E0F9989A288A589A0051C7AA /* ProfileImgDeleteInput.swift in Sources */,
 				E0F998AB288A69100051C7AA /* AlarmDataManager.swift in Sources */,
-				572E5B1A286F056800D1FAA0 /* SignUpViewController+Layout.swift in Sources */,
 				57D5B60B29580F4400216C94 /* BaseTableViewCell.swift in Sources */,
 				57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */,
 				57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */,
@@ -2081,6 +2080,7 @@
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
 				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
 				ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */,
+				57B16855295A8A2600639A15 /* SignUpView.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
 				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,

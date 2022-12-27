@@ -7,14 +7,18 @@
 
 import Foundation
 
-class Const{
+struct Const{
     
-    class Device{
+    struct Device{
         static let DEVICE_HEIGHT = UIScreen.main.bounds.size.height
         static let DEVICE_WIDTH = UIScreen.main.bounds.size.width
     }
     
-    class UserDefaults{
+    struct Offset{
+        static let top = 84
+    }
+    
+    struct UserDefaults{
         static let appleRefreshToken = "APPLE_REFRESH_TOKEN"
         static let appleIdentifier = "APPLE_IDENTIFIER"
         static let email = "APPLE_EMAIL"

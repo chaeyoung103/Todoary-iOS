@@ -1,56 +1,225 @@
 //
-//  SignUpViewController+Layout.swift
+//  SignUpView.swift
 //  Todoary
 //
-//  Created by 박지윤 on 2022/07/01.
+//  Created by 박지윤 on 2022/12/27.
 //
 
 import UIKit
 
-extension SignUpViewController {
+class SignUpView: UIView, BaseViewProtocol {
     
-    func setUpView(){
+    //id
+    let idTitle = UILabel().then{
+        $0.text = "아이디"
+        $0.textColor = .headline
+        $0.labelTypeSetting(type: .subtitle)
+    }
+    
+    let idTextField = UITextField().then{
+        $0.placeholder = "이메일을 입력해주세요"
+        $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
+    }
+    
+    let idBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let idCertificationButton = UIButton().then{
+        $0.setTitle("인증하기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.buttonTypeSetting(type: .subButton)
+        $0.backgroundColor = .buttonColor
+        $0.layer.cornerRadius = 22/2
+    }
+    
+    let idCanUseLabel = UILabel().then{
+        $0.labelTypeSetting(type: .sub1)
+        $0.isHidden = true
+    }
+    
+    //인증코드
+    let certificationTitle = UILabel().then{
+        $0.text = "인증코드 입력"
+        $0.textColor = .headline
+        $0.labelTypeSetting(type: .subtitle)
+        
+    }
 
-        self.view.addSubview(idTitle)
-        self.view.addSubview(idTextField)
-        self.view.addSubview(idBorderLine)
-        self.view.addSubview(idCanUseLabel)
+    let certificationTextField = UITextField().then{
+        $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
+    }
 
-        self.view.addSubview(idCertificationButton)
+    let certificationBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let certificationOkButton = UIButton().then{
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.buttonTypeSetting(type: .subButton)
+        $0.backgroundColor = .buttonColor
+        $0.layer.cornerRadius = 22/2
+    }
 
-        self.view.addSubview(certificationTitle)
-        self.view.addSubview(certificationTextField)
-        self.view.addSubview(certificationBorderLine)
-        self.view.addSubview(certificationOkButton)
+    //pw
+    let pwTitle = UILabel().then{
+        $0.text = "비밀번호"
+        $0.textColor = .headline
+        $0.labelTypeSetting(type: .subtitle)
+    }
+
+    let pwTextField = UITextField().then{
+        $0.placeholder = "영문, 숫자 포함 8자리 이상"
+        $0.textFieldTypeSetting()
+        $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
+    }
+
+    let pwBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let pwCanUseLabel = UILabel().then{
+        $0.text = "*영문, 숫자 포함 8자리 이상 "
+        $0.textColor = .noticeRed
+        $0.labelTypeSetting(type: .sub1)
+        $0.isHidden = true
+    }
+
+    let pwCertificationTextField = UITextField().then{
+        $0.placeholder = "비밀번호 재입력"
+        $0.textFieldTypeSetting()
+        $0.isSecureTextEntry = true
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
+    }
+
+    let pwCertificationBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+
+    let pwIncorrectLabel = UILabel().then{
+        $0.text = "비밀번호가 일치하지 않습니다."
+        $0.textColor = .noticeRed
+        $0.labelTypeSetting(type: .sub1)
+        $0.isHidden = true
+    }
+
+    //name
+    let nameTitle = UILabel().then{
+        $0.text = "이름"
+        $0.textColor = .headline
+        $0.labelTypeSetting(type: .subtitle)
+    }
+
+    let nameTextField = UITextField().then{
+        $0.placeholder = "이름을 입력해주세요"
+        $0.textFieldTypeSetting()
+        $0.returnKeyType = .next
+        $0.enablesReturnKeyAutomatically = true
+    }
+
+    let nameBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let nameCanUseLabel = UILabel().then{
+        $0.text = "*8자 이하의 한글 또는 영어로만 가능합니다."
+        $0.textColor = .todoaryGrey
+        $0.labelTypeSetting(type: .sub1)
+    }
+
+    //nickname
+    let nicknameTitle = UILabel().then{
+        $0.text = "닉네임"
+        $0.textColor = .headline
+        $0.labelTypeSetting(type: .subtitle)
+    }
+
+    let nicknameTextField = UITextField().then{
+        $0.placeholder = "Todoary에서 사용하실 닉네임을 알려주세요"
+        $0.textFieldTypeSetting()
+        $0.returnKeyType = .done
+        $0.enablesReturnKeyAutomatically = true
+    }
+
+    let nicknameBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let nicknameCanUseLabel = UILabel().then{
+        $0.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
+        $0.textColor = .todoaryGrey
+        $0.labelTypeSetting(type: .sub1)
+    }
+
+    let nextButton = UIButton().then{
+        $0.isEnabled = false
+        $0.setTitle("회원가입", for: .normal)
+        $0.backgroundColor = .buttonColor
+        $0.setTitleColor(.white, for: .normal)
+        $0.buttonTypeSetting(type: .button1)
+        $0.layer.cornerRadius = 52/2
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        self.view.addSubview(pwTitle)
-        self.view.addSubview(pwTextField)
-        self.view.addSubview(pwBorderLine)
-        self.view.addSubview(pwCanUseLabel)
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func hierarchy(){
+
+        self.addSubview(idTitle)
+        self.addSubview(idTextField)
+        self.addSubview(idBorderLine)
+        self.addSubview(idCanUseLabel)
+        self.addSubview(idCertificationButton)
+
+        self.addSubview(certificationTitle)
+        self.addSubview(certificationTextField)
+        self.addSubview(certificationBorderLine)
+        self.addSubview(certificationOkButton)
         
-        self.view.addSubview(pwCertificationTextField)
-        self.view.addSubview(pwCertificationBorderLine)
-        self.view.addSubview(pwIncorrectLabel)
+        self.addSubview(pwTitle)
+        self.addSubview(pwTextField)
+        self.addSubview(pwBorderLine)
+        self.addSubview(pwCanUseLabel)
         
-        self.view.addSubview(nameTitle)
-        self.view.addSubview(nameTextField)
-        self.view.addSubview(nameBorderLine)
-        self.view.addSubview(nameCanUseLabel)
+        self.addSubview(pwCertificationTextField)
+        self.addSubview(pwCertificationBorderLine)
+        self.addSubview(pwIncorrectLabel)
         
-        self.view.addSubview(nicknameTitle)
-        self.view.addSubview(nicknameTextField)
-        self.view.addSubview(nicknameBorderLine)
-        self.view.addSubview(nicknameCanUseLabel)
+        self.addSubview(nameTitle)
+        self.addSubview(nameTextField)
+        self.addSubview(nameBorderLine)
+        self.addSubview(nameCanUseLabel)
         
-        self.view.addSubview(nextButton)
+        self.addSubview(nicknameTitle)
+        self.addSubview(nicknameTextField)
+        self.addSubview(nicknameBorderLine)
+        self.addSubview(nicknameCanUseLabel)
+        
+        self.addSubview(nextButton)
     
     }
     
-    func setUpConstraint(){
+    func layout(){
 
         //id
         idTitle.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(154)
+            make.top.equalToSuperview().offset(70)
             make.leading.equalToSuperview().offset(38)
             make.height.equalTo(20)
         }
@@ -79,8 +248,7 @@ extension SignUpViewController {
             make.width.equalTo(65)
             make.height.equalTo(22)
             make.trailing.equalToSuperview().offset(-40)
-            make.top.equalToSuperview().offset(150)
-//            make.top.equalTo(navigationView.snp.bottom).offset(66)
+            make.top.equalToSuperview().offset(66)
         }
         
         //certification
