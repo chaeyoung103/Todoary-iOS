@@ -123,8 +123,7 @@ class SignUpViewController: BaseViewController, BaseViewControllerProtocol{
     }
     
     //MARK: - Action
-    @objc
-    func initNicknameCanUseLabel(){
+    @objc func initNicknameCanUseLabel(){
         mainView.nicknameCanUseLabel.isHidden = false
         mainView.nicknameCanUseLabel.text = "*10자 이하의 한글,영어,숫자로만 가능합니다."
     }
@@ -198,8 +197,7 @@ class SignUpViewController: BaseViewController, BaseViewControllerProtocol{
         }
     }
     
-    @objc
-    func certificationBtnDidClicked(_ sender: UIButton){
+    @objc func certificationBtnDidClicked(_ sender: UIButton){
         
         mainView.idCanUseLabel.isHidden = false
 
@@ -215,8 +213,7 @@ class SignUpViewController: BaseViewController, BaseViewControllerProtocol{
             
     }
     
-    @objc
-    func certificationOKBtnDidClicked(_ sender: UIButton){
+    @objc func certificationOKBtnDidClicked(_ sender: UIButton){
         
         let alertTitle : String!
 
@@ -231,8 +228,7 @@ class SignUpViewController: BaseViewController, BaseViewControllerProtocol{
         self.present(alert, animated: false, completion: nil)
     }
     
-    @objc
-    func nextButtonDidClicked(_ sender: UIButton){
+    @objc func nextButtonDidClicked(_ sender: UIButton){
         let userData = SignUpInput(email: self.email, name: self.name, nickname: self.nickname, password: self.passwd, isTermsEnable: self.isMarketingAgree)
         SignUpDataManager().posts(self, userData)
     }
