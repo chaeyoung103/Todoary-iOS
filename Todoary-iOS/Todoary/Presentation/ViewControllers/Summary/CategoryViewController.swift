@@ -40,6 +40,10 @@ class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
     
     //MARK: BaseProtocol
     
+    func style() {
+        setRightButtonWithImage(UIImage(named: "category_trash"))
+    }
+    
     func layout() {
         
         self.view.addSubview(mainView)
@@ -58,7 +62,7 @@ class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
         mainView.categoryCollectionView.delegate = self
         mainView.categoryCollectionView.dataSource = self
         
-        mainView.trashButton.addTarget(self, action: #selector(trashButtonDidClicked), for: .touchUpInside)
+        self.rightButton.addTarget(self, action: #selector(trashButtonDidClicked), for: .touchUpInside)
     }
     
     //MARK: - Action

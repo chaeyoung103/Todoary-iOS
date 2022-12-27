@@ -8,10 +8,6 @@
 import UIKit
 
 class CategoryView: UIView, BaseViewProtocol {
-    
-    lazy var trashButton = UIButton().then{
-        $0.setImage(UIImage(named: "category_trash"), for: .normal)
-    }
 
     let categoryCollectionView : UICollectionView = UICollectionView(frame: .init(), collectionViewLayout: .init()).then{
         
@@ -52,20 +48,12 @@ class CategoryView: UIView, BaseViewProtocol {
     func hierarchy() {
         self.addSubview(categoryCollectionView)
         self.addSubview(todoTableView)
-        
-        self.addSubview(trashButton)
     }
     
     func layout() {
-        trashButton.snp.makeConstraints{ make in
-            make.width.equalTo(61)
-            make.height.equalTo(55)
-            make.top.equalToSuperview().offset(42)
-            make.trailing.equalToSuperview().offset(-18.95)
-        }
         
         categoryCollectionView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(106)
+            make.top.equalToSuperview().offset(11)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(26)
         }

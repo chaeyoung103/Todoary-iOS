@@ -15,7 +15,7 @@ struct Const{
     }
     
     struct Offset{
-        static let top = 84
+        static let top = 95
     }
     
     struct UserDefaults{
