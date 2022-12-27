@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: BaseViewController {
+class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
     
     //MARK: - Properties
     
@@ -22,16 +22,7 @@ class CategoryViewController: BaseViewController {
     
     var categories : [GetCategoryResult] = []
     
-    //MARK: - UI
-
-    lazy var trashButton = UIButton().then{
-        $0.setImage(UIImage(named: "category_trash"), for: .normal)
-        $0.addTarget(self, action: #selector(trashButtonDidClicked), for: .touchUpInside)
-    }
-
-    var collectionView : UICollectionView!
-
-    var tableView : UITableView!
+    let mainView = CategoryView()
     
     //MARK: - LifeCycle
 
@@ -39,40 +30,39 @@ class CategoryViewController: BaseViewController {
         
         super.viewDidLoad()
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = CGFloat(8)
-        
-        collectionView = UICollectionView(frame: .init(), collectionViewLayout: flowLayout).then{
-            $0.delegate = self
-            $0.dataSource = self
-            $0.showsHorizontalScrollIndicator = false
-            
-            $0.contentInset = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: 0)
-
-            $0.register(CategoryPlusButtonCell.self, forCellWithReuseIdentifier: CategoryPlusButtonCell.cellIdentifier)
-            $0.register(CategoryButtonCollectionViewCell.self, forCellWithReuseIdentifier: CategoryButtonCollectionViewCell.cellIdentifier)
-        }
-        
-        tableView = UITableView().then{
-            $0.delegate = self
-            $0.dataSource = self
-            
-            $0.separatorStyle = .none
-            $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            
-            $0.register(CategoryTodoTableViewCell.self, forCellReuseIdentifier: CategoryTodoTableViewCell.cellIdentifier)
-            $0.register(NoTodoTableViewCell.self, forCellReuseIdentifier: NoTodoTableViewCell.cellIdentifier)
-            $0.register(NewTodoAddBtnTableViewCell.self, forCellReuseIdentifier: NewTodoAddBtnTableViewCell.cellIdentifier)
-            
-        }
-        
-        setUpView()
-        setUpConstraint()
+        layout()
+        initialize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         GetCategoryDataManager().get(self)
+    }
+    
+    //MARK: BaseProtocol
+    
+    func style() {
+        setRightButtonWithImage(UIImage(named: "category_trash"))
+    }
+    
+    func layout() {
+        
+        self.view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(Const.Offset.top)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    func initialize() {
+        
+        mainView.todoTableView.delegate = self
+        mainView.todoTableView.dataSource = self
+        
+        mainView.categoryCollectionView.delegate = self
+        mainView.categoryCollectionView.dataSource = self
+        
+        self.rightButton.addTarget(self, action: #selector(trashButtonDidClicked), for: .touchUpInside)
     }
     
     //MARK: - Action
@@ -84,7 +74,7 @@ class CategoryViewController: BaseViewController {
         let trailing = isEditingMode ? -30 : -4
         
         for i in 0..<todoData.count{
-            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { fatalError() }
+            guard let cell = mainView.todoTableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { fatalError() }
             
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(leading)
@@ -100,7 +90,7 @@ class CategoryViewController: BaseViewController {
     @objc
     func categoryDidPressedLong(_ gesture : UILongPressGestureRecognizer){ //카테고리 수정
         
-        guard let index = (collectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
+        guard let index = (mainView.categoryCollectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
         
         let vc = ColorPickerBottomsheetViewController()
         vc.modalPresentationStyle = .overFullScreen
@@ -119,8 +109,8 @@ class CategoryViewController: BaseViewController {
         
         isEditingMode = false
         
-        for i in 0..<tableView.numberOfRows(inSection: 0)-1{
-            guard let cell = tableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
+        for i in 0..<mainView.todoTableView.numberOfRows(inSection: 0)-1{
+            guard let cell = mainView.todoTableView.cellForRow(at: [0,i]) as? CategoryTodoTableViewCell else { return }
             cell.contentView.snp.updateConstraints{ make in
                 make.leading.equalToSuperview().offset(32)
                 make.trailing.equalToSuperview().offset(-30)
@@ -290,16 +280,16 @@ extension CategoryViewController{
     func checkGetCategoryApiResultCode(_ result: [GetCategoryResult]){
         
         self.categories = result
-        collectionView.reloadData()
+        mainView.categoryCollectionView.reloadData()
         
         if(currentCategoryIndex.row == categories.count){
             currentCategoryIndex = [0,categories.count - 1]
-            collectionView.reloadData()
+            mainView.categoryCollectionView.reloadData()
         }
         
         //TODO: - 카테고리 생성할 때만 마지막에 포커스 가도록 수정
         if(isCategoryAdd){
-            collectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
+            mainView.categoryCollectionView.scrollToItem(at: [0,categories.count], at: .right, animated: true)
             isCategoryAdd = false
         }
         
@@ -312,7 +302,7 @@ extension CategoryViewController{
         switch result.code{
         case 1000:
             todoData = result.result
-            tableView.reloadData()
+            mainView.todoTableView.reloadData()
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -327,7 +317,7 @@ extension CategoryViewController{
             
             initTodoCellConstraint()
             
-            guard let newCell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
+            guard let newCell = mainView.categoryCollectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
             newCell.buttonIsSelected()
             
             currentCategory.buttonIsNotSelected()
@@ -335,7 +325,7 @@ extension CategoryViewController{
             currentCategoryIndex = indexPath
 
             todoData = result.result
-            tableView.reloadData()
+            mainView.todoTableView.reloadData()
             return
         default:
             let alert = DataBaseErrorAlert()
@@ -348,7 +338,7 @@ extension CategoryViewController{
         switch code{
         case 1000:
             todoData.remove(at: indexPath.row)
-            tableView.reloadData()
+            mainView.todoTableView.reloadData()
             if(todoData.count == 0){
                 isEditingMode = false
             }
