@@ -33,11 +33,23 @@ class SettingViewController : BaseViewController {
     }
     
     override func layout() {
+        
         super.layout()
+        
+        self.view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(Const.Offset.top)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     override func initialize() {
         
+        mainView.tableView.separatorStyle = .none
+        
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
     }
     
     @objc func backBtnDidTab() {
@@ -57,7 +69,7 @@ class SettingViewController : BaseViewController {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 8
+        return 8
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -10,18 +10,13 @@ import UIKit
 
 class SettingView: UIView, BaseViewProtocol{
     
-    //tableView
     let tableView = UITableView().then{
-        $0.separatorStyle = .none
-        $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
         $0.isScrollEnabled = false
         $0.backgroundColor = .white
         
-//        $0.delegate = self
-//        $0.dataSource = self
+        $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
     }
-    
-    //version
+
     let versionBorderLine1 = UIView().then{
         $0.backgroundColor = .silver_225
     }
@@ -66,7 +61,7 @@ class SettingView: UIView, BaseViewProtocol{
     func layout() {
         
         tableView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(122)
+            make.top.equalToSuperview().offset(26)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(versionBorderLine1.snp.top)
         }
