@@ -12,54 +12,32 @@ import Then
 
 class SettingViewController : BaseViewController {
     
-    //MARK: - UIComponenets
-    
-    //tableView
-    var tableView : UITableView!
-    
-    //version
-    let versionBorderLine1 = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
-    
-    let versionText = UILabel().then{
-        $0.text = "버전"
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .tableCell)
-    }
-    
-    let versionNum = UILabel().then{
-        $0.text = "1.0"
-        $0.textColor = .headline
-        $0.font = UIFont.nbFont(type: .tableCell)
-    }
-    
-    let versionBorderLine2 = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
+    let mainView = SettingView()
     
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
-        
+        style()
+        layout()
+        initialize()
+    }
+    
+    //MARK: - Helper
+    
+    
+    override func style() {
+        super.style()
         navigationTitle.text = "설정"
+    }
+    
+    override func layout() {
+        super.layout()
+    }
+    
+    override func initialize() {
         
-        tableView = UITableView().then{
-            $0.separatorStyle = .none
-            $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
-            $0.isScrollEnabled = false
-            $0.backgroundColor = .white
-            
-            $0.delegate = self
-            $0.dataSource = self
-        }
-
-        setUpView()
-        setUpConstraint()
     }
     
     @objc func backBtnDidTab() {

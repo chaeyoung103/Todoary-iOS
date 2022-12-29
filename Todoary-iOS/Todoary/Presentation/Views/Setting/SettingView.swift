@@ -8,28 +8,69 @@
 import Foundation
 import UIKit
 
-extension  SettingViewController{
+class SettingView: UIView, BaseViewProtocol{
     
-    func setUpView(){
-        self.view.addSubview(tableView)
+    //tableView
+    let tableView = UITableView().then{
+        $0.separatorStyle = .none
+        $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
+        $0.isScrollEnabled = false
+        $0.backgroundColor = .white
         
-        self.view.addSubview(versionBorderLine1)
-        self.view.addSubview(versionText)
-        self.view.addSubview(versionNum)
-        self.view.addSubview(versionBorderLine2)
+//        $0.delegate = self
+//        $0.dataSource = self
     }
     
-    func setUpConstraint(){
+    //version
+    let versionBorderLine1 = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
+    
+    let versionText = UILabel().then{
+        $0.text = "버전"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionNum = UILabel().then{
+        $0.text = "1.0"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionBorderLine2 = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
+    
+    override init(frame: CGRect) {
         
-        //tableView
+        super.init(frame: frame)
+        
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func hierarchy() {
+        self.addSubview(tableView)
+        
+        self.addSubview(versionBorderLine1)
+        self.addSubview(versionText)
+        self.addSubview(versionNum)
+        self.addSubview(versionBorderLine2)
+    }
+    
+    func layout() {
+        
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(versionBorderLine1.snp.top)
         }
-        
-        //version
-        
+
         versionBorderLine1.snp.makeConstraints{make in
             make.height.equalTo(1)
             make .width.equalTo(328)
@@ -57,7 +98,5 @@ extension  SettingViewController{
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-70)
         }
-        
-        
     }
 }

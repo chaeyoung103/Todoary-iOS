@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
+class CategoryViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -39,13 +39,16 @@ class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
         GetCategoryDataManager().get(self)
     }
     
-    //MARK: BaseProtocol
-    
-    func style() {
+    override func style() {
+        
+        super.style()
+        
         setRightButtonWithImage(UIImage(named: "category_trash"))
     }
     
-    func layout() {
+    override func layout() {
+        
+        super.layout()
         
         self.view.addSubview(mainView)
         
@@ -55,7 +58,7 @@ class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
         }
     }
     
-    func initialize() {
+    override func initialize() {
         
         mainView.todoTableView.delegate = self
         mainView.todoTableView.dataSource = self
