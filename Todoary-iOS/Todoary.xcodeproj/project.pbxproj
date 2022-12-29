@@ -817,6 +817,7 @@
 		5701EA5B2956F10D00F21F63 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				5701EA672956F16000F21F63 /* Agreement */,
 				E015059828B3F3E500E83157 /* OnboardingViewController.swift */,
 				E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */,
 				ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */,
@@ -856,7 +857,6 @@
 			isa = PBXGroup;
 			children = (
 				5701EA682956F16100F21F63 /* Account */,
-				5701EA672956F16000F21F63 /* Agreement */,
 				5701EA662956F15E00F21F63 /* Login */,
 				5701EA652956F15C00F21F63 /* SignUp */,
 				5701EA642956F13100F21F63 /* Password */,
@@ -868,6 +868,7 @@
 		5701EA5F2956F11700F21F63 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				5701EA702956F1D200F21F63 /* Agreement */,
 				572E9AC2287C643000F915DF /* InfoMessageView.swift */,
 				ACE7D5FB28A819C10093854A /* PinNumberSettingView.swift */,
 				E0AB9EC2287B1C670064CADA /* SettingAgreementView.swift */,
@@ -905,7 +906,6 @@
 			isa = PBXGroup;
 			children = (
 				5701EA712956F1D400F21F63 /* Account */,
-				5701EA702956F1D200F21F63 /* Agreement */,
 				5701EA6F2956F1D000F21F63 /* Login */,
 				5701EA6E2956F1CE00F21F63 /* SignUp */,
 				5701EA6D2956F1CB00F21F63 /* Password */,
