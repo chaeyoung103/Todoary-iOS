@@ -30,6 +30,7 @@ class CategoryViewController: BaseViewController, BaseViewControllerProtocol {
         
         super.viewDidLoad()
         
+        style()
         layout()
         initialize()
     }

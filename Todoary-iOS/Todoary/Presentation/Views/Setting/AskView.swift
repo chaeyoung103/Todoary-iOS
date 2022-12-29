@@ -1,25 +1,20 @@
 //
-//  ScreenSettingViewController+Layout.swift
+//  AskView.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/07/11.
 //
 
-import UIKit
+import Foundation
 
-extension ScreenSettingViewController {
-
+extension AskViewController{
+    
     func setUpView(){
-        self.view.addSubview(navigationView)
+        
         self.view.addSubview(tableView)
     }
     
     func setUpConstraint(){
-        
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
         
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)

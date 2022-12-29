@@ -29,17 +29,17 @@
 		572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0A286EC06100D1FAA0 /* UIColor.swift */; };
 		572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B0D286EC10500D1FAA0 /* UIFont.swift */; };
 		572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */; };
-		572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */; };
+		572E9AB7287BC07A00F915DF /* AskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB6287BC07A00F915DF /* AskView.swift */; };
 		572E9AB9287BC4AC00F915DF /* ScreenSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AB8287BC4AC00F915DF /* ScreenSettingViewController.swift */; };
-		572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABA287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift */; };
+		572E9ABB287BC4BD00F915DF /* ScreenSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABA287BC4BD00F915DF /* ScreenSettingView.swift */; };
 		572E9ABD287BC4DD00F915DF /* FontSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABC287BC4DC00F915DF /* FontSettingViewController.swift */; };
-		572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABE287BC4E600F915DF /* FontSettingViewController+Layout.swift */; };
+		572E9ABF287BC4E600F915DF /* FontSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9ABE287BC4E600F915DF /* FontSettingView.swift */; };
 		572E9AC1287BC90A00F915DF /* FontSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AC0287BC90A00F915DF /* FontSettingTableViewCell.swift */; };
 		572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E9AC2287C643000F915DF /* InfoMessageView.swift */; };
 		573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */; };
 		57468A6A289BCDE800056691 /* NoTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57468A69289BCDE800056691 /* NoTodoTableViewCell.swift */; };
 		574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */; };
-		574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */; };
+		574913B9287ADF6500381BCD /* AlarmSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSettingView.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
 		574A6FEE28826D30003C8F99 /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */; };
 		574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */; };
@@ -153,7 +153,7 @@
 		ACCD87D52897E77E00C34CE7 /* GetCalendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */; };
 		ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */; };
 		ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */; };
-		ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */; };
+		ACE7D5FC28A819C10093854A /* PinNumberSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE7D5FB28A819C10093854A /* PinNumberSettingView.swift */; };
 		ACFBEC9528B3777C00B9D66F /* FcmTokendataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */; };
 		ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */; };
 		ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */; };
@@ -185,11 +185,11 @@
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
 		E0AB9EB7287B1B8E0064CADA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */; };
-		E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */; };
+		E0AB9EB9287B1BA00064CADA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EB8287B1BA00064CADA /* SettingView.swift */; };
 		E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */; };
 		E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */; };
 		E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC0287B1C570064CADA /* SettingAgreementViewController.swift */; };
-		E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC2287B1C670064CADA /* SettingAgreementViewController + Layout.swift */; };
+		E0AB9EC3287B1C670064CADA /* SettingAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC2287B1C670064CADA /* SettingAgreementView.swift */; };
 		E0AB9EC8287B44C90064CADA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9EC7287B44C90064CADA /* SettingTableViewCell.swift */; };
 		E0BAB97B28748FA50055BA67 /* HolaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */; };
 		E0BAB97D28748FBF0055BA67 /* SsoyaStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */; };
@@ -280,17 +280,17 @@
 		572E5B0A286EC06100D1FAA0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		572E5B0D286EC10500D1FAA0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		572E5B11286EC3C800D1FAA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AskViewController+Layout.swift"; sourceTree = "<group>"; };
+		572E9AB6287BC07A00F915DF /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
 		572E9AB8287BC4AC00F915DF /* ScreenSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSettingViewController.swift; sourceTree = "<group>"; };
-		572E9ABA287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		572E9ABA287BC4BD00F915DF /* ScreenSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSettingView.swift; sourceTree = "<group>"; };
 		572E9ABC287BC4DC00F915DF /* FontSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingViewController.swift; sourceTree = "<group>"; };
-		572E9ABE287BC4E600F915DF /* FontSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		572E9ABE287BC4E600F915DF /* FontSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingView.swift; sourceTree = "<group>"; };
 		572E9AC0287BC90A00F915DF /* FontSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingTableViewCell.swift; sourceTree = "<group>"; };
 		572E9AC2287C643000F915DF /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		573844B9288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoAddBtnTableViewCell.swift; sourceTree = "<group>"; };
 		57468A69289BCDE800056691 /* NoTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTodoTableViewCell.swift; sourceTree = "<group>"; };
 		574913B6287ADF5600381BCD /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
-		574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmSetting+Layout.swift"; sourceTree = "<group>"; };
+		574913B8287ADF6500381BCD /* AlarmSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingView.swift; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
 		574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
 		574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryBottomViewController.swift; sourceTree = "<group>"; };
@@ -410,7 +410,7 @@
 		ACCD87D42897E77E00C34CE7 /* GetCalendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendataManager.swift; sourceTree = "<group>"; };
 		ACCD87D62897E79100C34CE7 /* GetCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarModel.swift; sourceTree = "<group>"; };
 		ACE7D5F928A819A70093854A /* PinNumberSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNumberSettingViewController.swift; sourceTree = "<group>"; };
-		ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinNumberSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		ACE7D5FB28A819C10093854A /* PinNumberSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNumberSettingView.swift; sourceTree = "<group>"; };
 		ACFBEC9428B3777C00B9D66F /* FcmTokendataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokendataManager.swift; sourceTree = "<group>"; };
 		ACFBEC9628B3779700B9D66F /* FcmTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenModel.swift; sourceTree = "<group>"; };
 		ACFBEC9828B379E000B9D66F /* FcmTokenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmTokenInput.swift; sourceTree = "<group>"; };
@@ -444,11 +444,11 @@
 		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
 		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController + Layout.swift"; sourceTree = "<group>"; };
+		E0AB9EB8287B1BA00064CADA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController + Layout.swift"; sourceTree = "<group>"; };
 		E0AB9EC0287B1C570064CADA /* SettingAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewController.swift; sourceTree = "<group>"; };
-		E0AB9EC2287B1C670064CADA /* SettingAgreementViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingAgreementViewController + Layout.swift"; sourceTree = "<group>"; };
+		E0AB9EC2287B1C670064CADA /* SettingAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementView.swift; sourceTree = "<group>"; };
 		E0AB9EC7287B44C90064CADA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		E0BAB97A28748FA50055BA67 /* HolaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HolaStoryboard.storyboard; sourceTree = "<group>"; };
 		E0BAB97C28748FBF0055BA67 /* SsoyaStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SsoyaStoryboard.storyboard; sourceTree = "<group>"; };
@@ -869,13 +869,13 @@
 			isa = PBXGroup;
 			children = (
 				572E9AC2287C643000F915DF /* InfoMessageView.swift */,
-				ACE7D5FB28A819C10093854A /* PinNumberSettingViewController+Layout.swift */,
-				E0AB9EC2287B1C670064CADA /* SettingAgreementViewController + Layout.swift */,
-				574913B8287ADF6500381BCD /* AlarmSetting+Layout.swift */,
-				572E9AB6287BC07A00F915DF /* AskViewController+Layout.swift */,
-				572E9ABA287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift */,
-				572E9ABE287BC4E600F915DF /* FontSettingViewController+Layout.swift */,
-				E0AB9EB8287B1BA00064CADA /* SettingViewController + Layout.swift */,
+				ACE7D5FB28A819C10093854A /* PinNumberSettingView.swift */,
+				E0AB9EC2287B1C670064CADA /* SettingAgreementView.swift */,
+				574913B8287ADF6500381BCD /* AlarmSettingView.swift */,
+				572E9AB6287BC07A00F915DF /* AskView.swift */,
+				572E9ABA287BC4BD00F915DF /* ScreenSettingView.swift */,
+				572E9ABE287BC4E600F915DF /* FontSettingView.swift */,
+				E0AB9EB8287B1BA00064CADA /* SettingView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1934,7 +1934,7 @@
 				572E5B12286EC3C800D1FAA0 /* SignUpViewController.swift in Sources */,
 				57B16857295ABAF900639A15 /* CategoryView.swift in Sources */,
 				57294ABD289116C500DA2F31 /* TodoGetByCategoryDataManager.swift in Sources */,
-				574913B9287ADF6500381BCD /* AlarmSetting+Layout.swift in Sources */,
+				574913B9287ADF6500381BCD /* AlarmSettingView.swift in Sources */,
 				5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */,
 				E0AB9EBB287B1BF40064CADA /* HomeViewController.swift in Sources */,
 				574913B7287ADF5600381BCD /* AlarmSettingViewController.swift in Sources */,
@@ -1984,7 +1984,7 @@
 				ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */,
 				57E75EB228E1B7D700AC24B2 /* AlarmAlertViewController.swift in Sources */,
 				57FFEDBC28DC1C230041719B /* Const.swift in Sources */,
-				572E9ABB287BC4BD00F915DF /* ScreenSettingViewController+Layout.swift in Sources */,
+				572E9ABB287BC4BD00F915DF /* ScreenSettingView.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
 				ACFBEC9728B3779700B9D66F /* FcmTokenModel.swift in Sources */,
@@ -2009,14 +2009,14 @@
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */,
 				57D5B60D29580F6600216C94 /* BaseCollectionViewCell.swift in Sources */,
-				572E9ABF287BC4E600F915DF /* FontSettingViewController+Layout.swift in Sources */,
+				572E9ABF287BC4E600F915DF /* FontSettingView.swift in Sources */,
 				ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */,
 				AC9128C9287AD5A80056932A /* AccountViewController.swift in Sources */,
 				E0F99883288A57760051C7AA /* PwFindInput.swift in Sources */,
 				ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */,
-				E0AB9EC3287B1C670064CADA /* SettingAgreementViewController + Layout.swift in Sources */,
+				E0AB9EC3287B1C670064CADA /* SettingAgreementView.swift in Sources */,
 				ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */,
-				572E9AB7287BC07A00F915DF /* AskViewController+Layout.swift in Sources */,
+				572E9AB7287BC07A00F915DF /* AskView.swift in Sources */,
 				AC9128CB287AD5D20056932A /* AccountViewController+Layout.swift in Sources */,
 				E0F998C4288A6AF80051C7AA /* SignoutModel.swift in Sources */,
 				E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */,
@@ -2027,7 +2027,7 @@
 				E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */,
 				E0F998C6288A6B010051C7AA /* SignoutInput.swift in Sources */,
 				E0F99891288A58260051C7AA /* ProfileImgInput.swift in Sources */,
-				ACE7D5FC28A819C10093854A /* PinNumberSettingViewController+Layout.swift in Sources */,
+				ACE7D5FC28A819C10093854A /* PinNumberSettingView.swift in Sources */,
 				57B9F70F28D94F4400ACEC94 /* BaseAlertViewController.swift in Sources */,
 				AC5E27C9288C37E60056EC69 /* TodoSettingViewController+Layout.swift in Sources */,
 				AC5E27E1289020350056EC69 /* AuthJwtInput.swift in Sources */,
@@ -2041,7 +2041,7 @@
 				57D5B60B29580F4400216C94 /* BaseTableViewCell.swift in Sources */,
 				57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */,
 				57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */,
-				E0AB9EB9287B1BA00064CADA /* SettingViewController + Layout.swift in Sources */,
+				E0AB9EB9287B1BA00064CADA /* SettingView.swift in Sources */,
 				574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */,
 				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
 				AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */,

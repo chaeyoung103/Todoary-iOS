@@ -1,13 +1,14 @@
 //
-//  AskViewController+Layout.swift
+//  SettingAgreementView.swift
 //  Todoary
 //
-//  Created by 박지윤 on 2022/07/11.
+//  Created by 예리 on 2022/07/10.
 //
 
 import Foundation
+import UIKit
 
-extension AskViewController{
+extension  SettingAgreementViewController{
     
     func setUpView(){
         
@@ -16,9 +17,11 @@ extension AskViewController{
     
     func setUpConstraint(){
         
+        //tableView
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-572)
         }
     }
 }

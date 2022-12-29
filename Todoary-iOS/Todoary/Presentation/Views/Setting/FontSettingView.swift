@@ -1,14 +1,13 @@
 //
-//  SettingAgreementViewController + Layout.swift
+//  FontSettingView.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/07/10.
+//  Created by 박지윤 on 2022/07/11.
 //
 
 import Foundation
-import UIKit
 
-extension  SettingAgreementViewController{
+extension FontSettingViewController{
     
     func setUpView(){
         
@@ -17,11 +16,9 @@ extension  SettingAgreementViewController{
     
     func setUpConstraint(){
         
-        //tableView
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(122)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-572)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
