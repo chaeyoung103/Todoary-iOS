@@ -7,29 +7,73 @@
 
 import UIKit
 
-extension PinNumberSettingViewController {
+class PinNumberSettingView: UIView, BaseViewProtocol{
     
-    func setUpView(){
-        
-        self.view.addSubview(pinTitle)
-        self.view.addSubview(pinSwitch)
-        self.view.addSubview(pinBorderLine)
-        
-        self.view.addSubview(backView)
-        self.backView.addSubview(pinSetting)
-        self.backView.addSubview(nextBtn)
-        self.view.addSubview(pinSettingBorderLine)
-
-
-
+    //MARK: - UI
     
+    let pinTitle = UILabel().then{
+        $0.text = "암호 설정"
+        $0.textColor = .black
+        $0.addLetterSpacing(spacing: 0.28)
+        $0.font = UIFont.nbFont(type: .body2)
     }
     
-    func setUpConstraint(){
+    let pinSwitch = UISwitch()
+    
+    let pinBorderLine = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
+    
+    let backView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    
+    let pinSetting = UILabel().then{
+        $0.text = "암호 변경"
+        $0.textColor = .black
+        $0.addLetterSpacing(spacing: 0.28)
+        $0.font = UIFont.nbFont(type: .body2)
+    }
+    
+    let nextBtn = UIButton().then{
+        $0.setImage(UIImage(named: "next_btn"), for: .normal)
+    }
+    
+    let pinSettingBorderLine = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
 
+    //MARK: - LifeCycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - BaseProtocol
+    
+    func hierarchy(){
+        
+        self.addSubview(pinTitle)
+        self.addSubview(pinSwitch)
+        self.addSubview(pinBorderLine)
+        
+        self.addSubview(backView)
+        self.backView.addSubview(pinSetting)
+        self.backView.addSubview(nextBtn)
+        self.addSubview(pinSettingBorderLine)
+    }
+    
+    func layout(){
+
         pinTitle.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(138)
+            make.top.equalToSuperview().offset(26)
             make.leading.equalToSuperview().offset(31)
         }
         
