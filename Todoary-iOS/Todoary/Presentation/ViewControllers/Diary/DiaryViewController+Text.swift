@@ -1,59 +1,87 @@
 //
-//  HighlightText .swift
+//  DiaryViewController+Text.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/08/17.
+//  Created by 박지윤 on 2022/12/30.
 //
 
-import Foundation
 import UIKit
 
-extension UIColor{
+extension DiaryViewController: UITableViewDelegate, UITableViewDataSource{
     
-    static let yellowHighlight = UIColor(
-        red: 254/255,
-        green: 210/255,
-        blue: 90/255,
-        alpha: 0.5
-    )
+    func tableView(_ DiaryTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if todoDataList.isEmpty{
+            return 1
+        }else {
+            return todoDataList.count
+        }
+    }
     
-    static let orangeHighlight = UIColor(
-        red: 255/255,
-        green: 143/255,
-        blue: 84/255,
-        alpha: 0.5
-    )
-    
-    static let redHighlight = UIColor(
-        red: 234/255,
-        green: 44/255,
-        blue: 4/255,
-        alpha: 0.5
-    )
-    
-    static let greenHighlight = UIColor(
-        red: 172/255,
-        green: 215/255,
-        blue: 134/255,
-        alpha: 0.5
-    )
-    
-    static let blueHighlight = UIColor(
-        red: 86/255,
-        green: 152/255,
-        blue: 255/255,
-        alpha: 0.5
-    )
-    
-    static let grayHighlight = UIColor(
-        red: 184/255,
-        green: 184/255,
-        blue: 184/255,
-        alpha: 0.5
-    )
+    func tableView(_ DiaryTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = DiaryTableView.dequeueReusableCell(withIdentifier: DiaryTabelViewCell.cellIdentifier, for: indexPath) as? DiaryTabelViewCell else{
+            fatalError()
+        }
+        
+        if todoDataList.isEmpty{
+            cell.titleLabel.text = "오늘은 투두가 없는 널널한 날이네요 *^^*"
+            cell.titleLabel.textColor = UIColor(red: 94/255, green: 94/255, blue: 94/255, alpha: 1)
+            cell.categoryButton.isHidden = true
+            cell.timeLabel.isHidden = true
+        }else {
+            cell.cellData = todoDataList[indexPath.row]
+            cell.navigationController = self.navigationController
+            cell.titleLabel.text = todoDataList[indexPath.row].title
+            cell.timeLabel.text = todoDataList[indexPath.row].convertTime
+            cell.checkBox.isSelected = todoDataList[indexPath.row].isChecked ?? false
+            
+            cell.categoryButton.setTitle(todoDataList[indexPath.row].categoryTitle, for: .normal)
+            cell.categoryButton.layer.borderColor = UIColor.categoryColor[todoDataList[indexPath.row].color].cgColor
+            cell.categoryButton.setTitleColor(UIColor.categoryColor[todoDataList[indexPath.row].color], for: .normal)
+            cell.categoryButton.snp.makeConstraints{ make in
+                let offset = todoDataList[indexPath.row].categoryTitle.count == 5 ? 12 : 24
+                make.width.equalTo(cell.categoryButton.titleLabel!).offset(offset)
+            }
+            cell.titleLabel.snp.makeConstraints{ make in
+                make.trailing.equalToSuperview().offset(-145)
+            }
+        }
+        
+        
+        return cell
+    }
 }
 
-extension DiaryViewController{
+extension DiaryViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.selectedStickerView = nil
+        if textView.text == DiaryView.textViewPlaceHolder {
+            textView.text = nil
+            textView.setTextWithLineHeight(spaing: 25)
+            textView.textColor = .black
+            textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
+        }
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y -= 275
+        }
+        
+        mainView.diaryLine.isHidden = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = DiaryView.textViewPlaceHolder
+            textView.setTextWithLineHeight(spaing: 25)
+            textView.textColor = .silver_225
+            textView.font = UIFont.nbFont(ofSize: 15, weight: .medium)
+        }
+    
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
+        
+        mainView.diaryLine.isHidden = false
+    }
     
     //엔터키 클릭시 하이라이트 취소 설정 메서드
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -66,8 +94,8 @@ extension DiaryViewController{
     func textViewDidChange(_ textView: UITextView) {
         if(isEnterPressed){
             
-            let selectedRange = self.textView.selectedRange
-            let selectedTextRange = self.textView.selectedTextRange
+            let selectedRange = mainView.textView.selectedRange
+            let selectedTextRange = mainView.textView.selectedTextRange
 
             let customRange: NSRange = NSRange(location: selectedRange.lowerBound-1, length: 1)
             
@@ -82,39 +110,58 @@ extension DiaryViewController{
             isEnterPressed = false
         }
     }
+}
+
+extension DiaryViewController{
     
-    func setHighlightToolBarAction(){
+    func checkTextValidationAndRequestApi(){
+        if(mainView.textView.text == DiaryView.textViewPlaceHolder || mainView.diaryTitle.text!.isEmpty){
+            
+            let alert = UIAlertController(title: nil, message: "다이어리 제목과 1자 이상의 내용 입력은 필수입니다.", preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            
+            alert.addAction(okBtn)
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let text = NSAttributedString(attributedString: mainView.textView.attributedText)
+            
+            let input = DiaryInput(title: mainView.diaryTitle.text!,
+                                   content: text.attributedString2Html!)
+            
+            DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
+        }
+    }
     
-        self.toolbar.yellowBtn.addTarget(self, action: #selector(yellowBtnDidClicked), for: .touchUpInside)
-        self.toolbar.orangeBtn.addTarget(self, action: #selector(orangeBtnDidClicked), for: .touchUpInside)
-        self.toolbar.redBtn.addTarget(self, action: #selector(redBtnDidClicked), for: .touchUpInside)
-        self.toolbar.greenBtn.addTarget(self, action: #selector(greenBtnDidClicked), for: .touchUpInside)
-        self.toolbar.blueBtn.addTarget(self, action: #selector(blueBtnDidClicked), for: .touchUpInside)
-        self.toolbar.grayBtn.addTarget(self, action: #selector(grayBtnDidClicked), for: .touchUpInside)
+    func setUpDiaryData(_ data: GetDiaryInfo){
+        self.diaryData = data
+        mainView.diaryTitle.text = diaryData?.title
+        mainView.textView.attributedText = diaryData?.content15AttributedString
+        mainView.textView.setTextWithLineHeight(spaing: 25)
     }
     
     
     @objc func yellowBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
         
-        let text = textView.text
+        let text = mainView.textView.text
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
 
         if let change = attribute as? UIColor{
             
@@ -138,30 +185,30 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc func orangeBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
 
         if let change = attribute as? UIColor{
             
@@ -185,30 +232,30 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc func redBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
         
         
         if let change = attribute as? UIColor{
@@ -233,30 +280,30 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc func greenBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
         
         if let change = attribute as? UIColor{
             
@@ -281,30 +328,30 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc func blueBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
         
         if let change = attribute as? UIColor{
             
@@ -328,30 +375,30 @@ extension DiaryViewController{
                                           range: selectedRange)
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
     
     @objc func grayBtnDidClicked(){
 
-        let selectedRange = self.textView.selectedRange
+        let selectedRange = mainView.textView.selectedRange
         
         if(selectedRange.length == 0){ //글자 드래그로 선택안했을 때 커스텀 불가능 설정
             return
         }
         
-        let selectedTextRange = self.textView.selectedTextRange
+        let selectedTextRange = mainView.textView.selectedTextRange
 
         let start = selectedRange.lowerBound
 
 
-        let attribute = textView.attributedText.attribute(.backgroundColor,
+        let attribute = mainView.textView.attributedText.attribute(.backgroundColor,
                                                           at: start,
-                                                          effectiveRange: &self.textView.selectedRange)
+                                                          effectiveRange: &mainView.textView.selectedRange)
 
 
-        let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let attributedString = NSMutableAttributedString(attributedString: mainView.textView.attributedText)
         
         if let change = attribute as? UIColor{
             
@@ -376,9 +423,8 @@ extension DiaryViewController{
 
         }
         
-        textView.attributedText = attributedString
+        mainView.textView.attributedText = attributedString
 
         moveCursorEndOfSelection(selectedTextRange)
     }
 }
-

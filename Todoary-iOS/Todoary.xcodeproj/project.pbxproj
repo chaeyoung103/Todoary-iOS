@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		570DD833295EC4DB00A0D2A9 /* DiaryTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD832295EC4DB00A0D2A9 /* DiaryTestViewController.swift */; };
-		570DD835295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD834295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift */; };
-		570DD837295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD836295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift */; };
-		570DD83A295EC56500A0D2A9 /* DiaryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD839295EC56500A0D2A9 /* DiaryTestView.swift */; };
-		570DD83C295EC57500A0D2A9 /* DiaryTextTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83B295EC57500A0D2A9 /* DiaryTextTestView.swift */; };
-		570DD83E295EC58000A0D2A9 /* DiaryStickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83D295EC58000A0D2A9 /* DiaryStickerTestView.swift */; };
-		570DD840295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */; };
+		570DD833295EC4DB00A0D2A9 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD832295EC4DB00A0D2A9 /* DiaryViewController.swift */; };
+		570DD835295EC4F700A0D2A9 /* DiaryViewController+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD834295EC4F700A0D2A9 /* DiaryViewController+Text.swift */; };
+		570DD837295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD836295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift */; };
+		570DD83A295EC56500A0D2A9 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD839295EC56500A0D2A9 /* DiaryView.swift */; };
+		570DD840295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83F295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift */; };
 		5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722461128C1A223009B7C78 /* BaseViewController.swift */; };
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
@@ -74,7 +72,6 @@
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
 		577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */; };
-		577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A01BF28A4EBFE004B2575 /* ToolBarText.swift */; };
 		578B7AA428ACCA0C00E7B4F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */; };
 		578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */; };
 		578B7AA928AD114400E7B4F4 /* DiaryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B7AA828AD114400E7B4F4 /* DiaryInput.swift */; };
@@ -173,7 +170,6 @@
 		E0218B2928A54C0700E48618 /* AdvertiseTextSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2828A54C0700E48618 /* AdvertiseTextSettingView.swift */; };
 		E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */; };
 		E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */; };
-		E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E732228ACFF1300A6A0C5 /* HighlightText .swift */; };
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
@@ -208,8 +204,6 @@
 		E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */; };
 		E0C4BD692872127C00FDEA0E /* AdvertiseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdvertiseTextView.swift */; };
 		E0C4BD6B2872128500FDEA0E /* AdvertiseTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdvertiseTextViewController.swift */; };
-		E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */; };
-		E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */; };
 		E0F3CDC92895696E00A74AB7 /* DiaryTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */; };
 		E0F3CDCB2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */; };
 		E0F99881288A57640051C7AA /* PwFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F99880288A57640051C7AA /* PwFindModel.swift */; };
@@ -261,13 +255,11 @@
 		0869569AF164AFEE9666A08A /* Pods-Todoary-TodoaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary-TodoaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-Todoary-TodoaryUITests/Pods-Todoary-TodoaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DBA94F04064FB8CCFC3F4D6 /* Pods-Todoary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoary.debug.xcconfig"; path = "Target Support Files/Pods-Todoary/Pods-Todoary.debug.xcconfig"; sourceTree = "<group>"; };
 		5701EAA3295734CF00F21F63 /* Todoary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Todoary-Bridging-Header.h"; sourceTree = "<group>"; };
-		570DD832295EC4DB00A0D2A9 /* DiaryTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTestViewController.swift; sourceTree = "<group>"; };
-		570DD834295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTestViewController+Text.swift"; sourceTree = "<group>"; };
-		570DD836295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerTestViewController.swift; sourceTree = "<group>"; };
-		570DD839295EC56500A0D2A9 /* DiaryTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTestView.swift; sourceTree = "<group>"; };
-		570DD83B295EC57500A0D2A9 /* DiaryTextTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTextTestView.swift; sourceTree = "<group>"; };
-		570DD83D295EC58000A0D2A9 /* DiaryStickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerTestView.swift; sourceTree = "<group>"; };
-		570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToolBarTestViewController.swift; sourceTree = "<group>"; };
+		570DD832295EC4DB00A0D2A9 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		570DD834295EC4F700A0D2A9 /* DiaryViewController+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Text.swift"; sourceTree = "<group>"; };
+		570DD836295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Sticker.swift"; sourceTree = "<group>"; };
+		570DD839295EC56500A0D2A9 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		570DD83F295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+ToolBar.swift"; sourceTree = "<group>"; };
 		5722461128C1A223009B7C78 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
@@ -334,7 +326,6 @@
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		577A01BB28A4E1A9004B2575 /* ToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageView.swift; sourceTree = "<group>"; };
 		577A01BD28A4EB21004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
-		577A01BF28A4EBFE004B2575 /* ToolBarText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarText.swift; sourceTree = "<group>"; };
 		578B7AA228ACC75600E7B4F4 /* Todoary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todoary.entitlements; sourceTree = "<group>"; };
 		578B7AA328ACCA0C00E7B4F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		578B7AA628AD112400E7B4F4 /* DiaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataManager.swift; sourceTree = "<group>"; };
@@ -441,7 +432,6 @@
 		E0218B2828A54C0700E48618 /* AdvertiseTextSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextSettingView.swift; sourceTree = "<group>"; };
 		E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingScreenViewController+Layout.swift"; sourceTree = "<group>"; };
-		E02E732228ACFF1300A6A0C5 /* HighlightText .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighlightText .swift"; sourceTree = "<group>"; };
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
@@ -474,8 +464,6 @@
 		E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceViewController.swift; sourceTree = "<group>"; };
 		E0C4BD682872127C00FDEA0E /* AdvertiseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextView.swift; sourceTree = "<group>"; };
 		E0C4BD6A2872128500FDEA0E /* AdvertiseTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextViewController.swift; sourceTree = "<group>"; };
-		E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
-		E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTabelViewCell.swift; sourceTree = "<group>"; };
 		E0F3CDCA2895698400A74AB7 /* DiaryTabelViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTabelViewCell+Layout.swift"; sourceTree = "<group>"; };
 		E0F99880288A57640051C7AA /* PwFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindModel.swift; sourceTree = "<group>"; };
@@ -860,10 +848,10 @@
 		5701EA5D2956F11000F21F63 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				57BBA426295EC07500068019 /* DiaryTest */,
-				E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */,
-				577A01BF28A4EBFE004B2575 /* ToolBarText.swift */,
-				E02E732228ACFF1300A6A0C5 /* HighlightText .swift */,
+				570DD832295EC4DB00A0D2A9 /* DiaryViewController.swift */,
+				570DD834295EC4F700A0D2A9 /* DiaryViewController+Text.swift */,
+				570DD836295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift */,
+				570DD83F295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -909,9 +897,8 @@
 		5701EA612956F11B00F21F63 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				570DD838295EC54600A0D2A9 /* DiaryTest */,
+				570DD839295EC56500A0D2A9 /* DiaryView.swift */,
 				E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */,
-				E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */,
 				E0BF9626289B69C000895111 /* DiaryToolbarView.swift */,
 				E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */,
 			);
@@ -1540,16 +1527,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		570DD838295EC54600A0D2A9 /* DiaryTest */ = {
-			isa = PBXGroup;
-			children = (
-				570DD839295EC56500A0D2A9 /* DiaryTestView.swift */,
-				570DD83B295EC57500A0D2A9 /* DiaryTextTestView.swift */,
-				570DD83D295EC58000A0D2A9 /* DiaryStickerTestView.swift */,
-			);
-			path = DiaryTest;
-			sourceTree = "<group>";
-		};
 		572E5ACD286EBDCC00D1FAA0 = {
 			isa = PBXGroup;
 			children = (
@@ -1618,17 +1595,6 @@
 				57E75EB128E1B7D700AC24B2 /* AlarmAlertViewController.swift */,
 			);
 			path = Alert;
-			sourceTree = "<group>";
-		};
-		57BBA426295EC07500068019 /* DiaryTest */ = {
-			isa = PBXGroup;
-			children = (
-				570DD832295EC4DB00A0D2A9 /* DiaryTestViewController.swift */,
-				570DD834295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift */,
-				570DD836295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift */,
-				570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */,
-			);
-			path = DiaryTest;
 			sourceTree = "<group>";
 		};
 		57D5B6102958107700216C94 /* Protocol */ = {
@@ -1984,7 +1950,7 @@
 				57294AD12894F72F00DA2F31 /* TodoPinInput.swift in Sources */,
 				57294AC42891170B00DA2F31 /* TodoCheckboxDataManager.swift in Sources */,
 				577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */,
-				570DD835295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift in Sources */,
+				570DD835295EC4F700A0D2A9 /* DiaryViewController+Text.swift in Sources */,
 				E06F1ACD28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift in Sources */,
 				E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */,
 				E06F1AC928A605930066B824 /* AdvertiseTextSettingViewController.swift in Sources */,
@@ -2002,7 +1968,7 @@
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
 				578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */,
 				AC5E27DC288FC0DA0056EC69 /* TodoAlarmBottomSheetViewController.swift in Sources */,
-				570DD840295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift in Sources */,
+				570DD840295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				ACCD87BD2893C46D00C34CE7 /* CategoryMakeDataManager.swift in Sources */,
@@ -2010,22 +1976,19 @@
 				AC9128D2287B34C80056932A /* ProfileViewController+Layout.swift in Sources */,
 				ACCD87BB2893C45400C34CE7 /* CategoryMakeModel.swift in Sources */,
 				AC5E27CB288C38130056EC69 /* TodoCalendarCell.swift in Sources */,
-				570DD83E295EC58000A0D2A9 /* DiaryStickerTestView.swift in Sources */,
 				57294AB42891162800DA2F31 /* GetTodoDataManager.swift in Sources */,
 				578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
 				574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */,
-				E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */,
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				ACFBECA128B5E05100B9D66F /* DiaryStickerModel.swift in Sources */,
-				570DD837295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift in Sources */,
+				570DD837295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift in Sources */,
 				AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */,
 				57503654288A3FC9006A9070 /* LoginModel.swift in Sources */,
 				ACFBEC9C28B3DB8100B9D66F /* GetDiaryDataManager.swift in Sources */,
 				57E75EB228E1B7D700AC24B2 /* AlarmAlertViewController.swift in Sources */,
 				57FFEDBC28DC1C230041719B /* Const.swift in Sources */,
-				570DD83C295EC57500A0D2A9 /* DiaryTextTestView.swift in Sources */,
 				572E9ABB287BC4BD00F915DF /* ScreenSettingView.swift in Sources */,
 				ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */,
 				57503652288A3FB7006A9070 /* LoginInput.swift in Sources */,
@@ -2050,7 +2013,7 @@
 				57502F47287EA29100C36804 /* UITextView.swift in Sources */,
 				572E9AC3287C643000F915DF /* InfoMessageView.swift in Sources */,
 				E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */,
-				570DD83A295EC56500A0D2A9 /* DiaryTestView.swift in Sources */,
+				570DD83A295EC56500A0D2A9 /* DiaryView.swift in Sources */,
 				57D5B60D29580F6600216C94 /* BaseCollectionViewCell.swift in Sources */,
 				572E9ABF287BC4E600F915DF /* FontSettingView.swift in Sources */,
 				ACE7D5FA28A819A70093854A /* PinNumberSettingViewController.swift in Sources */,
@@ -2091,7 +2054,6 @@
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
-				E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
 				E0C4BD6B2872128500FDEA0E /* AdvertiseTextViewController.swift in Sources */,
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
@@ -2100,7 +2062,6 @@
 				E0BF9627289B69C000895111 /* DiaryToolbarView.swift in Sources */,
 				ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
-				E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */,
 				57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */,
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */,
@@ -2129,7 +2090,6 @@
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,
 				E076E9EB28703CAF001E14E1 /* AgreementView.swift in Sources */,
 				E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */,
-				577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */,
 				ACCD87D02897DB8C00C34CE7 /* CategoryDeleteDataManager.swift in Sources */,
 				574A704728852544003C8F99 /* DiaryTitleCell.swift in Sources */,
 				57294ACF2894F72500DA2F31 /* TodoPinDataManager.swift in Sources */,
@@ -2149,7 +2109,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */,
-				570DD833295EC4DB00A0D2A9 /* DiaryTestViewController.swift in Sources */,
+				570DD833295EC4DB00A0D2A9 /* DiaryViewController.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
 				57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */,

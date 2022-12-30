@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryTestView: UIView, BaseViewProtocol {
+class DiaryView: UIView, BaseViewProtocol {
     
     static let textViewPlaceHolder = "오늘의 일기를 작성해보세요!"
     
@@ -41,7 +41,7 @@ class DiaryTestView: UIView, BaseViewProtocol {
     }
     
     let textView = UITextView().then{
-        $0.text = DiaryTestView.textViewPlaceHolder
+        $0.text = DiaryView.textViewPlaceHolder
         $0.setTextWithLineHeight(spaing: 25)
         $0.textColor = .silver_225
         $0.font = UIFont.nbFont(ofSize: 15, weight: .medium)

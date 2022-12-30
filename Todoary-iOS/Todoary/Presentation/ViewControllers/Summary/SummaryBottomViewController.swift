@@ -181,7 +181,7 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func willMoveDiaryViewController(){
 
-        let vc = DiaryTestViewController()
+        let vc = DiaryViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList
@@ -316,7 +316,7 @@ extension SummaryBottomViewController: MoveViewController, AddButtonClickProtoco
         
         addButtonView!.dismiss(animated: false, completion: nil)
         
-        let vc = DiaryTestViewController()
+        let vc = DiaryViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList

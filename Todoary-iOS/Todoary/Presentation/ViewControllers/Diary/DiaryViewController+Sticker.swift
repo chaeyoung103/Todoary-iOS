@@ -1,5 +1,5 @@
 //
-//  DiaryStickerTestViewController.swift
+//  DiaryViewController+Sticker.swift
 //  Todoary
 //
 //  Created by 박지윤 on 2022/12/30.
@@ -8,14 +8,13 @@
 import UIKit
 import StickerView
 
-
-//struct Sticker {
-//    let stickerType: Int
-//    let sticker : StickerView
-//    var flip : Bool
-//}
-
-extension DiaryTestViewController{
+extension DiaryViewController{
+    
+    struct Sticker {
+        let stickerType: Int
+        let sticker : StickerView
+        var flip : Bool
+    }
     
     func checkStickerStateAndRequestApi(){
         if create.isEmpty == false {
@@ -110,7 +109,7 @@ extension DiaryTestViewController{
     }
 }
 
-extension DiaryTestViewController: StickerViewDelegate{
+extension DiaryViewController: StickerViewDelegate{
     
     func stickerViewDidTap(_ stickerView: StickerView) {
         if stickerView.showEditingHandlers == false {
