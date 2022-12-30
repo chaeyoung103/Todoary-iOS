@@ -9,33 +9,31 @@ import UIKit
 
 class FontSettingViewController: BaseViewController {
     
-    var tableView: UITableView!
+    let mainView = FontSettingView()
     
     var currentFontIndex : IndexPath = [0,0]
-    
     var currentFontCell : FontSettingTableViewCell?
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
-        
+    override func style() {
+        super.style()
         navigationTitle.text = "글꼴"
+    }
+    
+    override func layout() {
+        super.layout()
         
-        tableView = UITableView().then{
-            $0.delegate = self
-            $0.dataSource = self
-            
-            $0.separatorStyle = .none
-            $0.isScrollEnabled = false
-            
-            $0.register(FontSettingTableViewCell.self, forCellReuseIdentifier: "fontSettingCell")
+        self.view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(Const.Offset.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
-        
-        setUpView()
-        setUpConstraint()
+    }
+    
+    override func initialize() {
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.separatorStyle = .none
     }
 
 }
