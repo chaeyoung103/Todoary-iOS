@@ -7,16 +7,32 @@
 
 import UIKit
 
-extension AlarmSettingViewController {
-
-    func setUpView(){
-        self.view.addSubview(tableView)
+class AlarmSettingView: UIView, BaseViewProtocol {
+    
+    let tableView = UITableView().then{
+        $0.register(AlarmSettingTableViewCell.self, forCellReuseIdentifier: "alarmSettingCell")
+        $0.isScrollEnabled = false
+        $0.allowsSelection = false
     }
     
-    func setUpConstraint(){
-        tableView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(122)
-            make.leading.trailing.bottom.equalToSuperview()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func hierarchy() {
+        self.addSubview(tableView)
+    }
+    
+    func layout() {
+        tableView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(26)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
