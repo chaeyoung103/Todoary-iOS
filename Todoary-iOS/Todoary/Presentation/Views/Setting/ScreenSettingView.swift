@@ -7,22 +7,31 @@
 
 import UIKit
 
-extension ScreenSettingViewController {
-
-    func setUpView(){
-        self.view.addSubview(navigationView)
-        self.view.addSubview(tableView)
+class ScreenSettingView: UIView, BaseViewProtocol {
+    
+    let tableView = UITableView().then{
+        $0.isScrollEnabled = false
+        
+        $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "screenSettingCell")
     }
     
-    func setUpConstraint(){
-        
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func hierarchy(){
+        self.addSubview(tableView)
+    }
+    
+    func layout(){
         tableView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(122)
+            make.top.equalToSuperview().offset(26)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

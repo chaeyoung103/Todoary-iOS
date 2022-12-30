@@ -7,34 +7,31 @@
 
 import UIKit
 
-class ScreenSettingViewController: UIViewController {
+class ScreenSettingViewController: BaseViewController {
     
-    var navigationView: NavigationView!
+    let mainView = ScreenSettingView()
     
-    var tableView : UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func style() {
+        super.style()
+        navigationTitle.text = "화면"
+    }
+    
+    override func layout() {
         
-        self.view.backgroundColor = .white
+        super.layout()
         
-        navigationView = NavigationView(frame: .zero, self.navigationController!).then{
-            $0.navigationTitle.text = "화면"
+        self.view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(Const.Offset.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
-
-        tableView = UITableView().then{
-            $0.delegate = self
-            $0.dataSource = self
-            
-            $0.isScrollEnabled = false
-            $0.separatorStyle = .none
-            
-            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "screenSettingCell")
-        }
-        
-        setUpView()
-        setUpConstraint()
-
+    }
+    
+    override func initialize() {
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.separatorStyle = .none
     }
 
 }
@@ -66,11 +63,9 @@ extension ScreenSettingViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row{
         case 0:
-            print("?")
             self.navigationController?.pushViewController(FontSettingViewController(), animated: true)
             return
         case 1:
-            print("!")
             return
         default:
             return
