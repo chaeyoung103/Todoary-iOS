@@ -181,11 +181,11 @@ class SummaryBottomViewController: UIViewController , UITextFieldDelegate{
     
     @objc func willMoveDiaryViewController(){
 
-        let vc = DiaryViewController()
+        let vc = DiaryTestViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList
-        vc.todaysDate.text = vc.pickDate?.dateUsedDiary
+        vc.mainView.todaysDate.text = vc.pickDate?.dateUsedDiary
 
         if(isDiaryExist){
             vc.setUpDiaryData(diaryData!)
@@ -316,11 +316,11 @@ extension SummaryBottomViewController: MoveViewController, AddButtonClickProtoco
         
         addButtonView!.dismiss(animated: false, completion: nil)
         
-        let vc = DiaryViewController()
+        let vc = DiaryTestViewController()
 
         vc.pickDate = HomeViewController.bottomSheetVC.todoDate
         vc.todoDataList = self.todoDataList
-        vc.todaysDate.text = vc.pickDate?.dateUsedDiary
+        vc.mainView.todaysDate.text = vc.pickDate?.dateUsedDiary
 
         if(isDiaryExist){
             vc.setUpDiaryData(diaryData!)

@@ -162,7 +162,7 @@ class DiaryViewController : BaseViewController , UIGestureRecognizerDelegate, St
         setTextToolBarAction()
         setHighlightToolBarAction()
         
-        DiaryDataManager().getDiarySticker(viewController: self, createdDate: self.pickDate!.dateSendServer)
+//        DiaryDataManager().getDiarySticker(viewController: self, createdDate: self.pickDate!.dateSendServer)
             
         }
     
@@ -230,7 +230,7 @@ class DiaryViewController : BaseViewController , UIGestureRecognizerDelegate, St
             let input = DiaryInput(title: diaryTitle.text!,
                                    content: text.attributedString2Html!)
             
-            DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
+//            DiaryDataManager().posts(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: input)
         }
         
         if create.isEmpty == false {
@@ -253,7 +253,7 @@ class DiaryViewController : BaseViewController , UIGestureRecognizerDelegate, St
         
         let diaryStickerInput = DiaryStickerInput(created: createdApi, modified: modifiedApi, deleted: delete)
         
-        DiaryDataManager().diaryStickerDataManager(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: diaryStickerInput)
+//        DiaryDataManager().diaryStickerDataManager(viewController: self, createdDate: self.pickDate!.dateSendServer, parameter: diaryStickerInput)
         
     }
     
