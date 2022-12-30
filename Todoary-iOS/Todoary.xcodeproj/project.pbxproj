@@ -13,6 +13,7 @@
 		570DD83A295EC56500A0D2A9 /* DiaryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD839295EC56500A0D2A9 /* DiaryTestView.swift */; };
 		570DD83C295EC57500A0D2A9 /* DiaryTextTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83B295EC57500A0D2A9 /* DiaryTextTestView.swift */; };
 		570DD83E295EC58000A0D2A9 /* DiaryStickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83D295EC58000A0D2A9 /* DiaryStickerTestView.swift */; };
+		570DD840295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */; };
 		5722461228C1A223009B7C78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5722461128C1A223009B7C78 /* BaseViewController.swift */; };
 		57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */; };
 		57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */; };
@@ -266,6 +267,7 @@
 		570DD839295EC56500A0D2A9 /* DiaryTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTestView.swift; sourceTree = "<group>"; };
 		570DD83B295EC57500A0D2A9 /* DiaryTextTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTextTestView.swift; sourceTree = "<group>"; };
 		570DD83D295EC58000A0D2A9 /* DiaryStickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerTestView.swift; sourceTree = "<group>"; };
+		570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToolBarTestViewController.swift; sourceTree = "<group>"; };
 		5722461128C1A223009B7C78 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		57294AA92890D87E00DA2F31 /* DataBaseErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseErrorAlert.swift; sourceTree = "<group>"; };
 		57294AAE2891159300DA2F31 /* TodoDeleteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDeleteDataManager.swift; sourceTree = "<group>"; };
@@ -1624,6 +1626,7 @@
 				570DD832295EC4DB00A0D2A9 /* DiaryTestViewController.swift */,
 				570DD834295EC4F700A0D2A9 /* DiaryTestViewController+Text.swift */,
 				570DD836295EC53D00A0D2A9 /* DiaryStickerTestViewController.swift */,
+				570DD83F295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift */,
 			);
 			path = DiaryTest;
 			sourceTree = "<group>";
@@ -1999,6 +2002,7 @@
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
 				578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */,
 				AC5E27DC288FC0DA0056EC69 /* TodoAlarmBottomSheetViewController.swift in Sources */,
+				570DD840295ED04B00A0D2A9 /* DiaryToolBarTestViewController.swift in Sources */,
 				574A70492885255B003C8F99 /* DiaryCell.swift in Sources */,
 				574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */,
 				ACCD87BD2893C46D00C34CE7 /* CategoryMakeDataManager.swift in Sources */,
