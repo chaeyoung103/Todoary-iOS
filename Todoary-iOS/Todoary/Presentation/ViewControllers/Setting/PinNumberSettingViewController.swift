@@ -11,6 +11,8 @@ import Then
 
 class PinNumberSettingViewController : BaseViewController {
     
+    //TODO: 비밀번호 설정안하고 백 한 경우에 뭐 알아서 설정되는거 같은디..?
+    
     let mainView = PinNumberSettingView()
     
     //MARK: - Lifecycles
