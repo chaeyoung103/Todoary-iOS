@@ -85,7 +85,7 @@ extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSo
             self.navigationController?.pushViewController(UseServiceViewController(), animated: true)
             return
         case 2:
-            self.navigationController?.pushViewController(AdTextSettingViewController(), animated: true)
+            self.navigationController?.pushViewController(AdvertiseTextSettingViewController(), animated: true)
             return
         default:
             return

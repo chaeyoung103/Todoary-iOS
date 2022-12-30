@@ -1,5 +1,5 @@
 //
-//  PrivacyTextViewController+Layout.swift
+//  AdvertiseTextView.swift
 //  Todoary
 //
 //  Created by 예리 on 2022/07/04.
@@ -12,27 +12,23 @@ extension UIView {
 
 }
 
-extension PrivacyTextViewController {
+extension AdvertiseTextViewController {
     
     func setUpView(){
-        
         
         self.view.addSubview(contentView)
         
         self.view.addSubview(navigationView)
         
         self.view.addSubview(contentScrollView)
-        self.view.addSubview(privacyText)
+        self.view.addSubview(AdText)
         
     }
         
     
     func setUpConstraint(){
-
         
-    //약관내용
-        
-        
+        //navigationView
         contentView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
@@ -44,6 +40,9 @@ extension PrivacyTextViewController {
             make.width.equalToSuperview()
         }
         
+        
+        
+    //약관내용
         contentScrollView.snp.makeConstraints{ make in
             make.top.equalTo(navigationView.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(36)
@@ -51,9 +50,9 @@ extension PrivacyTextViewController {
             make.centerX.equalToSuperview()
         }
         
-        contentScrollView.addSubview(privacyText)
+        contentScrollView.addSubview(AdText)
     
-        privacyText.snp.makeConstraints { (make) in
+        AdText.snp.makeConstraints { make in
             make.top.equalTo(contentScrollView)
             make.width.equalTo(contentScrollView)
             make.centerX.equalTo(contentScrollView)

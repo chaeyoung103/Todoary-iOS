@@ -1,8 +1,8 @@
 //
-//  AdTextSettingViewController.swift
+//  AdvertiseTextViewController.swift
 //  Todoary
 //
-//  Created by 예리 on 2022/08/12.
+//  Created by 예리 on 2022/07/04.
 //
 
 import Foundation
@@ -11,8 +11,8 @@ import SnapKit
 import Then
 
 
-
-class AdTextSettingViewController : UIViewController {
+//AdTextViewController
+class AdvertiseTextViewController : UIViewController {
     
     //MARK: - UIComponenets
     
@@ -21,8 +21,6 @@ class AdTextSettingViewController : UIViewController {
         $0.backgroundColor = .white
         
     }
-    
-    var navigation: UINavigationController!
     
     var navigationView:NavigationView!
     
@@ -33,6 +31,7 @@ class AdTextSettingViewController : UIViewController {
         $0.showsVerticalScrollIndicator = true
         $0.isScrollEnabled = true
         $0.indicatorStyle = .black
+        $0.scrollIndicatorInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -3)
     }
     
     let AdText = UILabel().then{
@@ -41,20 +40,6 @@ class AdTextSettingViewController : UIViewController {
         $0.textAlignment = .left
         $0.textColor = .headline
         $0.labelTypeSetting(type: .acceptTerm)
-    }
-    
-    let adTitle = UIButton().then{
-        $0.setTitle("동의 (선택)", for: .normal)
-        $0.setTitleColor(.headline, for: .normal)
-        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
-        $0.titleLabel?.textAlignment = .left
-        $0.setUnderline()
-    }
-    
-    let adCheckBtn = UIButton().then{
-        $0.setImage(UIImage(named: "check_box"), for: .selected)
-        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
-        $0.addTarget(self, action: #selector(ADdidCheck), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -71,23 +56,5 @@ class AdTextSettingViewController : UIViewController {
     @objc func backBtnDidTab() {
         self.navigationController?.popViewController(animated: true)
         }
-    
-    @objc func ADdidCheck() {
-        AdDataManager().adDataManager(viewController: self, isChecked: self.adCheckBtn.isSelected == true)
-        if adCheckBtn.isSelected { adCheckBtn.isSelected = false
-        }else{adCheckBtn.isSelected = true}
-    }
-    
-    func checkAdagreement(_ code: Int){
-        switch code{
-        case 1000:
-            print("광고성 동의 체크")
-            return
-        default:
-            let alert = DataBaseErrorAlert()
-            navigation.present(alert, animated: true, completion: {
-                self.adCheckBtn.isSelected = (!self.adCheckBtn.isSelected == true)
-            })
-        }
-    }
+
 }

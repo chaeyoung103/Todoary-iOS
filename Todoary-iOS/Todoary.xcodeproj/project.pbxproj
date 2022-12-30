@@ -163,7 +163,7 @@
 		E015059928B3F3E500E83157 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015059828B3F3E500E83157 /* OnboardingViewController.swift */; };
 		E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */; };
 		E0218B2528A4E99600E48618 /* DiaryStickerViewController + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */; };
-		E0218B2928A54C0700E48618 /* AdTextSettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */; };
+		E0218B2928A54C0700E48618 /* AdvertiseTextSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2828A54C0700E48618 /* AdvertiseTextSettingView.swift */; };
 		E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */; };
 		E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */; };
 		E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E732228ACFF1300A6A0C5 /* HighlightText .swift */; };
@@ -177,10 +177,10 @@
 		E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */; };
 		E0439AC0288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */; };
 		E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */; };
-		E06F1AC928A605930066B824 /* AdTextSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */; };
+		E06F1AC928A605930066B824 /* AdvertiseTextSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1AC828A605930066B824 /* AdvertiseTextSettingViewController.swift */; };
 		E06F1ACB28A61E710066B824 /* NewAppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1ACA28A61E710066B824 /* NewAppPasswordViewController.swift */; };
 		E06F1ACD28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F1ACC28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift */; };
-		E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */; };
+		E076E9EB28703CAF001E14E1 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9E9287032C5001E14E1 /* AgreementView.swift */; };
 		E076E9ED28703DEE001E14E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE79287019BD00814C79 /* AgreementViewController.swift */; };
 		E076E9EE28703EA1001E14E1 /* AppPasswordViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E005DE7A287019F900814C79 /* AppPasswordViewController+Layout.swift */; };
 		E076E9F028703ECE001E14E1 /* AppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */; };
@@ -196,11 +196,11 @@
 		E0BF9627289B69C000895111 /* DiaryToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF9626289B69C000895111 /* DiaryToolbarView.swift */; };
 		E0BF9629289B69D900895111 /* DiaryToolbarViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */; };
 		E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */; };
-		E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */; };
-		E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */; };
+		E0C4BD632872100900FDEA0E /* PrivacyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD622872100900FDEA0E /* PrivacyTextView.swift */; };
+		E0C4BD652872114B00FDEA0E /* UseServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD642872114B00FDEA0E /* UseServiceView.swift */; };
 		E0C4BD672872115800FDEA0E /* UseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */; };
-		E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */; };
-		E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */; };
+		E0C4BD692872127C00FDEA0E /* AdvertiseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD682872127C00FDEA0E /* AdvertiseTextView.swift */; };
+		E0C4BD6B2872128500FDEA0E /* AdvertiseTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4BD6A2872128500FDEA0E /* AdvertiseTextViewController.swift */; };
 		E0F3CDC52895007100A74AB7 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */; };
 		E0F3CDC72895008400A74AB7 /* DiaryViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */; };
 		E0F3CDC92895696E00A74AB7 /* DiaryTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */; };
@@ -424,7 +424,7 @@
 		E015059828B3F3E500E83157 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E0218B1D28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0218B2428A4E99600E48618 /* DiaryStickerViewController + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryStickerViewController + Layout.swift"; sourceTree = "<group>"; };
-		E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextSettingViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0218B2828A54C0700E48618 /* AdvertiseTextSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextSettingView.swift; sourceTree = "<group>"; };
 		E0218B2F28A5503000E48618 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		E0218B3128A5504300E48618 /* LoadingScreenViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingScreenViewController+Layout.swift"; sourceTree = "<group>"; };
 		E02E732228ACFF1300A6A0C5 /* HighlightText .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighlightText .swift"; sourceTree = "<group>"; };
@@ -438,10 +438,10 @@
 		E0439ABC288C599A0075CBF0 /* ColorPickerViewController + layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPickerViewController + layout.swift"; sourceTree = "<group>"; };
 		E0439ABE288C5B0F0075CBF0 /* ColorPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E045C66F287BDB8B00D89D62 /* SettingAgreementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAgreementViewCell.swift; sourceTree = "<group>"; };
-		E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextSettingViewController.swift; sourceTree = "<group>"; };
+		E06F1AC828A605930066B824 /* AdvertiseTextSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextSettingViewController.swift; sourceTree = "<group>"; };
 		E06F1ACA28A61E710066B824 /* NewAppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppPasswordViewController.swift; sourceTree = "<group>"; };
 		E06F1ACC28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewAppPasswordViewController+Layout.swift"; sourceTree = "<group>"; };
-		E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgreementViewController+Layout.swift"; sourceTree = "<group>"; };
+		E076E9E9287032C5001E14E1 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
 		E076E9EF28703ECE001E14E1 /* AppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPasswordViewController.swift; sourceTree = "<group>"; };
 		E0AB9EB6287B1B8E0064CADA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E0AB9EB8287B1BA00064CADA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -455,11 +455,11 @@
 		E0BF9626289B69C000895111 /* DiaryToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToolbarView.swift; sourceTree = "<group>"; };
 		E0BF9628289B69D900895111 /* DiaryToolbarViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryToolbarViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextViewController.swift; sourceTree = "<group>"; };
-		E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyTextViewController+Layout.swift"; sourceTree = "<group>"; };
-		E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UseServiceViewController+Layout.swift"; sourceTree = "<group>"; };
+		E0C4BD622872100900FDEA0E /* PrivacyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTextView.swift; sourceTree = "<group>"; };
+		E0C4BD642872114B00FDEA0E /* UseServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceView.swift; sourceTree = "<group>"; };
 		E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseServiceViewController.swift; sourceTree = "<group>"; };
-		E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdTextViewController+Layout.swift"; sourceTree = "<group>"; };
-		E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTextViewController.swift; sourceTree = "<group>"; };
+		E0C4BD682872127C00FDEA0E /* AdvertiseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextView.swift; sourceTree = "<group>"; };
+		E0C4BD6A2872128500FDEA0E /* AdvertiseTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseTextViewController.swift; sourceTree = "<group>"; };
 		E0F3CDC42895007100A74AB7 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		E0F3CDC62895008400A74AB7 /* DiaryViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryViewController+Layout.swift"; sourceTree = "<group>"; };
 		E0F3CDC82895696E00A74AB7 /* DiaryTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTabelViewCell.swift; sourceTree = "<group>"; };
@@ -1019,7 +1019,7 @@
 			isa = PBXGroup;
 			children = (
 				5701EA7729570A4900F21F63 /* AgreementText */,
-				E076E9E9287032C5001E14E1 /* AgreementViewController+Layout.swift */,
+				E076E9E9287032C5001E14E1 /* AgreementView.swift */,
 			);
 			path = Agreement;
 			sourceTree = "<group>";
@@ -1073,10 +1073,10 @@
 		5701EA7729570A4900F21F63 /* AgreementText */ = {
 			isa = PBXGroup;
 			children = (
-				E0C4BD622872100900FDEA0E /* PrivacyTextViewController+Layout.swift */,
-				E0C4BD642872114B00FDEA0E /* UseServiceViewController+Layout.swift */,
-				E0C4BD682872127C00FDEA0E /* AdTextViewController+Layout.swift */,
-				E0218B2828A54C0700E48618 /* AdTextSettingViewController+Layout.swift */,
+				E0C4BD622872100900FDEA0E /* PrivacyTextView.swift */,
+				E0C4BD642872114B00FDEA0E /* UseServiceView.swift */,
+				E0C4BD682872127C00FDEA0E /* AdvertiseTextView.swift */,
+				E0218B2828A54C0700E48618 /* AdvertiseTextSettingView.swift */,
 			);
 			path = AgreementText;
 			sourceTree = "<group>";
@@ -1647,8 +1647,8 @@
 			children = (
 				E0C4BD6028720FBA00FDEA0E /* PrivacyTextViewController.swift */,
 				E0C4BD662872115800FDEA0E /* UseServiceViewController.swift */,
-				E0C4BD6A2872128500FDEA0E /* AdTextViewController.swift */,
-				E06F1AC828A605930066B824 /* AdTextSettingViewController.swift */,
+				E0C4BD6A2872128500FDEA0E /* AdvertiseTextViewController.swift */,
+				E06F1AC828A605930066B824 /* AdvertiseTextSettingViewController.swift */,
 			);
 			path = AgreementText;
 			sourceTree = "<group>";
@@ -1915,7 +1915,7 @@
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
 				57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */,
-				E0218B2928A54C0700E48618 /* AdTextSettingViewController+Layout.swift in Sources */,
+				E0218B2928A54C0700E48618 /* AdvertiseTextSettingView.swift in Sources */,
 				5750365A288A3FF8006A9070 /* AutoLoginModel.swift in Sources */,
 				ACAE1D432898D9EC00B34DCC /* TodoModifyModel.swift in Sources */,
 				57E75EB728E276B600AC24B2 /* TodoAlarmInput.swift in Sources */,
@@ -1949,7 +1949,7 @@
 				577A01BC28A4E1A9004B2575 /* ToastMessageView.swift in Sources */,
 				E06F1ACD28A61EF70066B824 /* NewAppPasswordViewController+Layout.swift in Sources */,
 				E0218B3228A5504300E48618 /* LoadingScreenViewController+Layout.swift in Sources */,
-				E06F1AC928A605930066B824 /* AdTextSettingViewController.swift in Sources */,
+				E06F1AC928A605930066B824 /* AdvertiseTextSettingViewController.swift in Sources */,
 				57E6516A28B31910006CB053 /* AppleLoginInput.swift in Sources */,
 				57294AC62891189700DA2F31 /* ApiModel.swift in Sources */,
 				AC5E27DA288EFCFE0056EC69 /* TodoCalendar.swift in Sources */,
@@ -2043,14 +2043,14 @@
 				57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */,
 				E0AB9EB9287B1BA00064CADA /* SettingView.swift in Sources */,
 				574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */,
-				E0C4BD652872114B00FDEA0E /* UseServiceViewController+Layout.swift in Sources */,
+				E0C4BD652872114B00FDEA0E /* UseServiceView.swift in Sources */,
 				AC5E27D3288C39090056EC69 /* TodoCalendarBottomSheetViewController.swift in Sources */,
 				572E5B0B286EC06100D1FAA0 /* UIColor.swift in Sources */,
 				E0218B3028A5503000E48618 /* LoadingScreenViewController.swift in Sources */,
 				AC9128CD287AFE620056932A /* AccountTableViewCell.swift in Sources */,
 				E02E732328ACFF1300A6A0C5 /* HighlightText .swift in Sources */,
 				E0F998C2288A6AD60051C7AA /* SignoutDataManager.swift in Sources */,
-				E0C4BD6B2872128500FDEA0E /* AdTextViewController.swift in Sources */,
+				E0C4BD6B2872128500FDEA0E /* AdvertiseTextViewController.swift in Sources */,
 				E0F9988F288A58160051C7AA /* ProfileImgDataManager.swift in Sources */,
 				57294ACC28937C2C00DA2F31 /* TodoBannerCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
@@ -2062,7 +2062,7 @@
 				AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */,
 				ACFBEC9E28B3DBB200B9D66F /* GetDiaryExistenceModel.swift in Sources */,
 				E0F99885288A57850051C7AA /* PwFindDataManager.swift in Sources */,
-				E0C4BD692872127C00FDEA0E /* AdTextViewController+Layout.swift in Sources */,
+				E0C4BD692872127C00FDEA0E /* AdvertiseTextView.swift in Sources */,
 				57B36ECD287AFAD400378E16 /* AskViewController.swift in Sources */,
 				E06F1ACB28A61E710066B824 /* NewAppPasswordViewController.swift in Sources */,
 				574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */,
@@ -2082,9 +2082,9 @@
 				ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */,
 				57B16855295A8A2600639A15 /* SignUpView.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,
-				E0C4BD632872100900FDEA0E /* PrivacyTextViewController+Layout.swift in Sources */,
+				E0C4BD632872100900FDEA0E /* PrivacyTextView.swift in Sources */,
 				E0439ABD288C599A0075CBF0 /* ColorPickerViewController + layout.swift in Sources */,
-				E076E9EB28703CAF001E14E1 /* AgreementViewController+Layout.swift in Sources */,
+				E076E9EB28703CAF001E14E1 /* AgreementView.swift in Sources */,
 				E0F99888288A57C70051C7AA /* ProfileDataManager.swift in Sources */,
 				577A01C028A4EBFE004B2575 /* ToolBarText.swift in Sources */,
 				ACCD87D02897DB8C00C34CE7 /* CategoryDeleteDataManager.swift in Sources */,

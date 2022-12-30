@@ -1,5 +1,5 @@
 //
-//  AdTextSettingViewController+Layout.swift
+//  AdvertiseTextSettingView.swift
 //  Todoary
 //
 //  Created by 예리 on 2022/08/11.
@@ -12,7 +12,7 @@ extension UIView {
 
 }
 
-extension AdTextSettingViewController {
+extension AdvertiseTextSettingViewController {
     
     func setUpView(){
         

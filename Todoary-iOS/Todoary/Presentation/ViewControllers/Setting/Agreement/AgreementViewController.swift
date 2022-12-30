@@ -187,7 +187,7 @@ class AgreementViewController : UIViewController {
        }
     
     @objc func ADTitleDIdTab() {
-        let AdTextViewController = AdTextViewController()
+        let AdTextViewController = AdvertiseTextViewController()
         navigationController?.pushViewController(AdTextViewController, animated: true)
         navigationController?.isNavigationBarHidden = true
        }

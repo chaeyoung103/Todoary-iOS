@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sal-EF-XpN">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sal-EF-XpN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AppPasswordViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -29,7 +28,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Ez9-kM-gQk" customClass="AgreementViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gFh-8h-4CN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="WRO-Yi-CcJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,7 +44,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="WZf-Df-MTH" customClass="PrivacyTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ziG-KZ-Mj2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="crF-pc-rMc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -60,7 +59,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="qr5-HT-Dpj" customClass="UseServiceViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yp1-E0-RBo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="8bg-aY-vsd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,12 +69,12 @@
             </objects>
             <point key="canvasLocation" x="2992.753623188406" y="79.6875"/>
         </scene>
-        <!--Ad Text View Controller-->
+        <!--Advertise Text View Controller-->
         <scene sceneID="EsT-bt-zth">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="QaK-hJ-DhZ" customClass="AdTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="QaK-hJ-DhZ" customClass="AdvertiseTextViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cFC-Em-nU9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="YDx-HY-O0x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -108,7 +107,7 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" modalPresentationStyle="fullScreen" id="AbD-HK-2OY" customClass="HomeViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obD-aU-Pce">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="It3-GB-AhP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,7 +123,7 @@
             <objects>
                 <viewController storyboardIdentifier="SettingViewController" id="wBB-H9-0Za" customClass="SettingViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YAF-g5-RrD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vnI-aw-rgl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -140,7 +139,7 @@
             <objects>
                 <viewController storyboardIdentifier="SettingAgreementViewController" id="AwV-Nf-Pu8" customClass="SettingAgreementViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HHr-tZ-7fa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6AP-3C-1HN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -174,7 +173,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="DDA-Nd-iUL" customClass="ColorPickerViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3FJ-xE-GJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="tcL-1I-32o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -244,7 +243,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="deR-gE-q04" customClass="DiaryViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gbQ-2N-KFj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="8Xj-kc-Vud"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -278,7 +277,7 @@
             <objects>
                 <viewController storyboardIdentifier="OnboardingViewController" modalPresentationStyle="fullScreen" id="sal-EF-XpN" customClass="OnboardingViewController" customModule="Todoary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hIb-GM-BTH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zeP-a1-KPp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
