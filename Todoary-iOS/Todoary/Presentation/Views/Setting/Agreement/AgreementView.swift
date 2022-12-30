@@ -9,52 +9,145 @@ import UIKit
 import SnapKit
 
 
-extension AgreementViewController {
+class AgreementView: UIView, BaseViewProtocol {
     
-    func setUpView(){
-        
-        self.view.addSubview(navigationView)
-        
-        self.view.addSubview(agreeTitle)
-        
-        self.view.addSubview(privacyBorderLine)
-        self.view.addSubview(privacyCheckBtn)
-        self.view.addSubview(privacyTitle)
-        
-        self.view.addSubview(useServiceBorderLine)
-        self.view.addSubview(useServiceCheckBtn)
-        self.view.addSubview(useServiceTitle)
+    //MARK: - 텍스트
 
-        self.view.addSubview(adBorderLine)
-        self.view.addSubview(adCheckBtn)
-        self.view.addSubview(adTitle)
+    let agreeTitle = UILabel().then{
+        $0.text = "Todoary 서비스 이용약관에 동의해 주세요."
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .subtitle)
+    }
+    
+    let allCheckText = UILabel().then{
+        $0.text = "전체동의"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .subtitle)
+    }
+    
+    //MARK: - 약관 제목버튼(약관 내용페이지로 연결)
+    
+    let privacyTitle = UIButton().then{
+        $0.setTitle("개인 정보 취급방침 동의 (필수)", for: .normal)
+        $0.setTitleColor(.headline, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
+        $0.setUnderline()
+    }
+    
+    let useServiceTitle = UIButton().then{
+        $0.setTitle("서비스 이용약관 동의 (필수)", for: .normal)
+        $0.setTitleColor(.headline, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
+        $0.setUnderline()
+    }
+    
+    let adTitle = UIButton().then{
+        $0.setTitle("광고성 정보 수신 동의 (선택)", for: .normal)
+        $0.setTitleColor(.headline, for: .normal)
+        $0.titleLabel?.font = UIFont.nbFont(type: .body1)
+        $0.titleLabel?.textAlignment = .left
+        $0.setUnderline()
+    }
+    
+    //MARK: - 약관 체크버튼 (필수 동의를 해야만 확인버튼을 누를수 있음)
+    
+    let allCheckBtn = UIButton().then{
+        $0.setImage(UIImage(named: "check_box"), for: .selected)
+        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+    }
+    
+    let privacyCheckBtn = UIButton().then{
+        $0.setImage(UIImage(named: "check_box"), for: .selected)
+        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+    }
+    
+    let useServiceCheckBtn = UIButton().then{
+        $0.setImage(UIImage(named: "check_box"), for: .selected)
+        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+    }
+    
+    let adCheckBtn = UIButton().then{
+        $0.setImage(UIImage(named: "check_box"), for: .selected)
+        $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
+    }
+
+    //MARK: - BorderLine
+    
+    let privacyBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    let useServiceBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+
+    let adBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+
+    let locationBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+
+    let agreeAllBorderLine = UIView().then{
+        $0.backgroundColor = .todoaryGrey
+    }
+    
+    //MARK: -  확인 버튼(필수 동의를 마치면 활성화)
+    
+    let confirmBtn = UIButton().then{
+        $0.isEnabled = false
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .buttonColor
+        $0.titleLabel?.font = UIFont.nbFont(type: .button1)
+        $0.layer.cornerRadius = 52/2
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        hierarchy()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func hierarchy(){
+        
+        self.addSubview(agreeTitle)
+        
+        self.addSubview(privacyBorderLine)
+        self.addSubview(privacyCheckBtn)
+        self.addSubview(privacyTitle)
+        
+        self.addSubview(useServiceBorderLine)
+        self.addSubview(useServiceCheckBtn)
+        self.addSubview(useServiceTitle)
+
+        self.addSubview(adBorderLine)
+        self.addSubview(adCheckBtn)
+        self.addSubview(adTitle)
    
 
-        self.view.addSubview(locationBorderLine)
-//        self.view.addSubview(locationCheckBtn)
-//        self.view.addSubview(locationTitle)
-        //
+        self.addSubview(locationBorderLine)
         
-        self.view.addSubview(agreeAllBorderLine)
-        self.view.addSubview(allCheckBtn)
-        self.view.addSubview(allCheckText)
+        self.addSubview(agreeAllBorderLine)
+        self.addSubview(allCheckBtn)
+        self.addSubview(allCheckText)
 
-        self.view.addSubview(confirmBtn)
+        self.addSubview(confirmBtn)
         
     }
     
     
-    func setUpConstraint(){
-        
-        navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-        }
-        
+    func layout(){
         //Title
         agreeTitle.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(145)
+            make.top.equalToSuperview().offset(50)
             make.leading.equalToSuperview().offset(56)
+            make.centerX.equalToSuperview()
         }
         
         //약관제목&체크
@@ -127,21 +220,7 @@ extension AgreementViewController {
             make.centerX.equalTo(agreeTitle)
             make.top.equalTo(adTitle.snp.bottom).offset(15)
         }
-        
-//        locationCheckBtn.snp.makeConstraints{make in
-//            make.width.equalTo(20)
-//            make.height.equalTo(20)
-//            make.left.equalTo(privacyBorderLine)
-//            make.top.equalTo(locationBorderLine.snp.bottom).offset(13)
-//        }
-//
-//        locationTitle.snp.makeConstraints{make in
-//            make.height.equalTo(18)
-//            make .width.equalTo(146)
-//            make.centerY.equalTo(locationCheckBtn)
-//            make.leading.equalTo(locationCheckBtn.snp.trailing).offset(8)
-//        }
-        
+     
         agreeAllBorderLine.snp.makeConstraints{make in
             make.height.equalTo(1)
             make .width.equalTo(328)
