@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 import StickerView
 
+
+/*
+ 규칙.
+ DiaryViewController.swift 파일에서는 프로퍼티 선언이나 text, sticker가 공통으로 사용되어야 하는 메서드만 작성합니다.
+ -> DiaryViewController를 수정하는 일은 네이밍 변경 등을 제외하고는 거의 없어야 합니다
+ */
+
 class DiaryViewController: BaseViewController , UIGestureRecognizerDelegate{
     
     let mainView = DiaryView()
