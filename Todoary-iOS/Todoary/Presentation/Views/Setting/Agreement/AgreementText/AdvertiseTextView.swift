@@ -8,7 +8,7 @@
 import Foundation
 import SnapKit
 
-class AdvertiseTextView: UIView, BaseViewProtocol{
+class AdvertiseTextView: BaseView{
     
     let contentScrollView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -25,24 +25,14 @@ class AdvertiseTextView: UIView, BaseViewProtocol{
         $0.textColor = .headline
         $0.labelTypeSetting(type: .acceptTerm)
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(contentScrollView)
         contentScrollView.addSubview(AdText)
     }
         
     
-    func layout(){
+    override func layout(){
         
         contentScrollView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(30)

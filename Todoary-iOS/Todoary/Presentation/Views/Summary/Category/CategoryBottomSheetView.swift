@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryBottomSheetView: UIView, BaseViewProtocol {
+class CategoryBottomSheetView: BaseView {
     
     let categoryTextField = UITextField().then {
         $0.placeholder = "카테고리 이름을 입력해주세요"
@@ -64,19 +64,8 @@ class CategoryBottomSheetView: UIView, BaseViewProtocol {
         
         $0.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerCollectionViewCell.identifier)
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func hierarchy() {
+    override func hierarchy() {
         
         self.addSubview(categoryTextField)
         self.addSubview(colorCollectionView)
@@ -84,7 +73,7 @@ class CategoryBottomSheetView: UIView, BaseViewProtocol {
         self.addSubview(deleteBtn)
     }
     
-    func layout() {
+    override func layout() {
 
         categoryTextField.snp.makeConstraints{
             $0.top.equalToSuperview().offset(30)

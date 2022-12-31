@@ -60,9 +60,7 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func initialize(){
-        
-    }
+    func initialize() { }
     
     final func setRightButtonWithText(_ text: String){
         

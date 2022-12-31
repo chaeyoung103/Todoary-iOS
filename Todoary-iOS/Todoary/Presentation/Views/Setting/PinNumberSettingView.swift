@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PinNumberSettingView: UIView, BaseViewProtocol{
+class PinNumberSettingView: BaseView{
     
     //MARK: - UI
     
@@ -42,23 +42,10 @@ class PinNumberSettingView: UIView, BaseViewProtocol{
     let pinSettingBorderLine = UIView().then{
         $0.backgroundColor = .silver_225
     }
-
-    //MARK: - LifeCycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     //MARK: - BaseProtocol
     
-    func hierarchy(){
+    override func hierarchy(){
         
         self.addSubview(pinTitle)
         self.addSubview(pinSwitch)
@@ -70,7 +57,7 @@ class PinNumberSettingView: UIView, BaseViewProtocol{
         self.addSubview(pinSettingBorderLine)
     }
     
-    func layout(){
+    override func layout(){
 
         pinTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(26)

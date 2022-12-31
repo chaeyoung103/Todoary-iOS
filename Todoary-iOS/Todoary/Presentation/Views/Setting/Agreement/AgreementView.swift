@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class AgreementView: UIView, BaseViewProtocol {
+class AgreementView: BaseView {
     
     //MARK: - 텍스트
 
@@ -103,18 +103,8 @@ class AgreementView: UIView, BaseViewProtocol {
         $0.titleLabel?.font = UIFont.nbFont(type: .button1)
         $0.layer.cornerRadius = 52/2
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+
+    override func hierarchy(){
         
         self.addSubview(agreeTitle)
         
@@ -141,8 +131,7 @@ class AgreementView: UIView, BaseViewProtocol {
         
     }
     
-    
-    func layout(){
+    override func layout(){
         //Title
         agreeTitle.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(50)

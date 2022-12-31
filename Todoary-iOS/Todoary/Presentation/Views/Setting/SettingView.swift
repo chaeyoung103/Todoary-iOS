@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SettingView: UIView, BaseViewProtocol{
+class SettingView: BaseView{
     
     let tableView = UITableView().then{
         $0.isScrollEnabled = false
@@ -37,19 +37,7 @@ class SettingView: UIView, BaseViewProtocol{
         $0.backgroundColor = .silver_225
     }
     
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy() {
+    override func hierarchy() {
         self.addSubview(tableView)
         
         self.addSubview(versionBorderLine1)
@@ -58,7 +46,7 @@ class SettingView: UIView, BaseViewProtocol{
         self.addSubview(versionBorderLine2)
     }
     
-    func layout() {
+    override func layout() {
         
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(26)

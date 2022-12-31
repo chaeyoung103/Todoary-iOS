@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlarmSettingView: UIView, BaseViewProtocol {
+class AlarmSettingView: BaseView{
     
     let tableView = UITableView().then{
         $0.register(AlarmSettingTableViewCell.self, forCellReuseIdentifier: "alarmSettingCell")
@@ -15,21 +15,11 @@ class AlarmSettingView: UIView, BaseViewProtocol {
         $0.allowsSelection = false
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy() {
+    override func hierarchy() {
         self.addSubview(tableView)
     }
     
-    func layout() {
+    override func layout() {
         tableView.snp.makeConstraints{
             $0.top.equalToSuperview().offset(26)
             $0.leading.trailing.bottom.equalToSuperview()

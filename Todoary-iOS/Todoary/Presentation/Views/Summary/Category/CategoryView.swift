@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryView: UIView, BaseViewProtocol {
+class CategoryView: BaseView {
 
     let categoryCollectionView : UICollectionView = UICollectionView(frame: .init(), collectionViewLayout: .init()).then{
         
@@ -34,23 +34,12 @@ class CategoryView: UIView, BaseViewProtocol {
         
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy() {
+    override func hierarchy() {
         self.addSubview(categoryCollectionView)
         self.addSubview(todoTableView)
     }
     
-    func layout() {
+    override func layout() {
         
         categoryCollectionView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(11)

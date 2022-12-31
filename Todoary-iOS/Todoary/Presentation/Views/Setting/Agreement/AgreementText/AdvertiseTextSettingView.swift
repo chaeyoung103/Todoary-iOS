@@ -8,7 +8,7 @@
 import Foundation
 import SnapKit
 
-class AdvertiseTextSettingView: UIView, BaseViewProtocol {
+class AdvertiseTextSettingView: BaseView {
     
     let contentScrollView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -37,18 +37,8 @@ class AdvertiseTextSettingView: UIView, BaseViewProtocol {
         $0.setImage(UIImage(named: "check_box"), for: .selected)
         $0.setImage(UIImage(named: "check_box_outline_blank"), for: .normal)
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(contentScrollView)
         contentScrollView.addSubview(AdText)
         
@@ -57,7 +47,7 @@ class AdvertiseTextSettingView: UIView, BaseViewProtocol {
     }
         
     
-    func layout(){
+    override func layout(){
         contentScrollView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(30)
             make.leading.equalToSuperview().offset(36)

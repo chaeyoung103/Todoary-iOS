@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryView: UIView, BaseViewProtocol {
+class DiaryView: BaseView {
     
     static let textViewPlaceHolder = "오늘의 일기를 작성해보세요!"
     
@@ -47,22 +47,11 @@ class DiaryView: UIView, BaseViewProtocol {
         $0.font = UIFont.nbFont(ofSize: 15, weight: .medium)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        style()
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func style() {
+    override func style() {
         textView.inputAccessoryView = toolbar
     }
     
-    func hierarchy() {
+    override func hierarchy() {
         
         self.addSubview(todoTableView)
         
@@ -73,7 +62,7 @@ class DiaryView: UIView, BaseViewProtocol {
         self.addSubview(textView)
     }
     
-    func layout() {
+    override func layout() {
 
         todoTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(131.5)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FontSettingView: UIView, BaseViewProtocol{
+class FontSettingView: BaseView{
     
     let tableView = UITableView().then{
         $0.isScrollEnabled = false
@@ -15,21 +15,11 @@ class FontSettingView: UIView, BaseViewProtocol{
         $0.register(FontSettingTableViewCell.self, forCellReuseIdentifier: "fontSettingCell")
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(tableView)
     }
     
-    func layout(){
+    override func layout(){
         tableView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(26)
             make.leading.trailing.bottom.equalToSuperview()

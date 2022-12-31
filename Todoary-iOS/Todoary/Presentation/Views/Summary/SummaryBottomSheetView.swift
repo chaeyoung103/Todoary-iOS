@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryBottomSheetView: UIView, BaseViewProtocol{
+class SummaryBottomSheetView: BaseView{
     
     let sheetLine = UIView().then{
         $0.backgroundColor = .white
@@ -25,22 +25,12 @@ class SummaryBottomSheetView: UIView, BaseViewProtocol{
         $0.register(DiaryBannerCell.self, forCellReuseIdentifier: DiaryBannerCell.cellIdentifier)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(sheetLine)
         self.addSubview(summaryTableView)
     }
     
-    func layout(){
+    override func layout(){
         sheetLine.snp.makeConstraints{ make in
             make.width.equalTo(46)
             make.height.equalTo(5)

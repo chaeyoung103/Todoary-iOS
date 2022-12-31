@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpView: UIView, BaseViewProtocol {
+class SignUpView: BaseView {
     
     //id
     let idTitle = UILabel().then{
@@ -167,19 +167,8 @@ class SignUpView: UIView, BaseViewProtocol {
         $0.buttonTypeSetting(type: .button1)
         $0.layer.cornerRadius = 52/2
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
-    func hierarchy(){
+    override func hierarchy(){
 
         self.addSubview(idTitle)
         self.addSubview(idTextField)
@@ -215,7 +204,7 @@ class SignUpView: UIView, BaseViewProtocol {
     
     }
     
-    func layout(){
+    override func layout(){
 
         //id
         idTitle.snp.makeConstraints{ make in

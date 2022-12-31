@@ -9,7 +9,7 @@ import Foundation
 import SnapKit
 
 
-class PrivacyTextView: UIView, BaseViewProtocol {
+class PrivacyTextView: BaseView {
 
     let contentScrollView = UIScrollView().then{
         $0.backgroundColor = .white
@@ -28,24 +28,14 @@ class PrivacyTextView: UIView, BaseViewProtocol {
        // $0.font = UIFont.nbFont(type: .body1)
         $0.labelTypeSetting(type: .acceptTerm)
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        layout()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(contentScrollView)
         contentScrollView.addSubview(privacyText)
     }
         
     
-    func layout(){
+    override func layout(){
         
         contentScrollView.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(30)

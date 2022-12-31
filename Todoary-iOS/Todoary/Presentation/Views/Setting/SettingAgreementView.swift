@@ -8,29 +8,17 @@
 import Foundation
 import UIKit
 
-class  SettingAgreementView: UIView, BaseViewProtocol{
+class SettingAgreementView: BaseView{
     
     let tableView = UITableView().then{
         $0.register(SettingAgreementViewCell.self, forCellReuseIdentifier: "SettingAgreementViewCell")
     }
     
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        hierarchy()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func hierarchy(){
+    override func hierarchy(){
         self.addSubview(tableView)
     }
     
-    func layout(){
+    override func layout(){
         
         //tableView
         tableView.snp.makeConstraints{ make in

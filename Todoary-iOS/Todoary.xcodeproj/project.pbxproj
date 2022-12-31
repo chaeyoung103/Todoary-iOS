@@ -70,6 +70,7 @@
 		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
 		57556A8F295FC93300B67369 /* CategoryBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */; };
 		57556A91295FDCBE00B67369 /* BaseBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */; };
+		57556A932960030400B67369 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A922960030400B67369 /* BaseView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -325,6 +326,7 @@
 		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetView.swift; sourceTree = "<group>"; };
 		57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetViewController.swift; sourceTree = "<group>"; };
+		57556A922960030400B67369 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 		5701EA192956E8D700F21F63 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				57556A922960030400B67369 /* BaseView.swift */,
 				5722461128C1A223009B7C78 /* BaseViewController.swift */,
 				57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */,
 				57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */,
@@ -1996,6 +1999,7 @@
 				57503665288BE42C006A9070 /* CategoryColor.swift in Sources */,
 				57294AAA2890D87E00DA2F31 /* DataBaseErrorAlert.swift in Sources */,
 				E0F998A6288A59B70051C7AA /* UserDeleteModel.swift in Sources */,
+				57556A932960030400B67369 /* BaseView.swift in Sources */,
 				578B7AAB28AD116400E7B4F4 /* GetDiary.swift in Sources */,
 				AC5E27DC288FC0DA0056EC69 /* TodoAlarmBottomSheetViewController.swift in Sources */,
 				570DD840295ED04B00A0D2A9 /* DiaryViewController+ToolBar.swift in Sources */,
