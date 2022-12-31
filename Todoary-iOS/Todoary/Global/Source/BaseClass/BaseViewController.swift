@@ -28,14 +28,17 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        baseConfigure()
+        style()
+        layout()
+        initialize()
     }
     
-    final func baseConfigure(){
-        
+    func style(){
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
-        
+    }
+    
+    func layout(){
         self.view.addSubview(navigationView)
         
         navigationView.addSubview(backBtn)
@@ -56,6 +59,8 @@ class BaseViewController: UIViewController {
             make.centerX.centerY.equalToSuperview()
         }
     }
+    
+    func initialize() { }
     
     final func setRightButtonWithText(_ text: String){
         

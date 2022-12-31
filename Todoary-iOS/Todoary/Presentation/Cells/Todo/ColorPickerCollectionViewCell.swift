@@ -11,8 +11,8 @@ import SnapKit
 import Then
 
 class ColorPickerCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ColorPickerCollectionViewCell"
     
+    static let identifier = "ColorPickerCollectionViewCell"
     
     override var isSelected: Bool{
         didSet{

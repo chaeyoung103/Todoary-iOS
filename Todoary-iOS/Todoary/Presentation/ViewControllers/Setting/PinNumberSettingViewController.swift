@@ -11,68 +11,47 @@ import Then
 
 class PinNumberSettingViewController : BaseViewController {
     
-    //MARK: - UIComponents
+    //TODO: 비밀번호 설정안하고 백 한 경우에 뭐 알아서 설정되는거 같은디..?
     
-    let pinTitle = UILabel().then{
-        $0.text = "암호 설정"
-        $0.textColor = .black
-        $0.addLetterSpacing(spacing: 0.28)
-        $0.font = UIFont.nbFont(type: .body2)
-    }
-    
-    let pinSwitch = UISwitch().then{
-        $0.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
-
-    }
-    
-    let pinBorderLine = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
-    
-    let backView = UIView().then{
-        $0.backgroundColor = .white
-    }
-    
-    let pinSetting = UILabel().then{
-        $0.text = "암호 변경"
-        $0.textColor = .black
-        $0.addLetterSpacing(spacing: 0.28)
-        $0.font = UIFont.nbFont(type: .body2)
-    }
-    
-    let nextBtn = UIButton().then{
-        $0.setImage(UIImage(named: "next_btn"), for: .normal)
-        $0.addTarget(self, action: #selector(nextBtnDidTap), for: .touchUpInside)
-    }
-    
-    let pinSettingBorderLine = UIView().then{
-        $0.backgroundColor = .silver_225
-    }
+    let mainView = PinNumberSettingView()
     
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationTitle.text = "암호"
-
-        self.view.backgroundColor = .white
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nextBtnDidTap(sender:)))
-        
-        
-        backView.addGestureRecognizer(tapGesture)
-        
-        setUpView()
-        setUpConstraint()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "appPasswordCheck") == true {
-            pinSwitch.isOn = true
+            mainView.pinSwitch.isOn = true
         }else {
-            pinSwitch.isOn = false
+            mainView.pinSwitch.isOn = false
         }
+    }
+    
+    override func style() {
+        super.style()
+        navigationTitle.text = "암호"
+    }
+    
+    override func layout(){
+        
+        super.layout()
+        
+        self.view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(Const.Offset.top)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    override func initialize() {
+        
+        mainView.pinSwitch.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
+        mainView.nextBtn.addTarget(self, action: #selector(nextBtnDidTap), for: .touchUpInside)
+        
+        mainView.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextBtnDidTap(sender:))))
     }
     
     //MARK: - Actions

@@ -11,7 +11,7 @@ class CategoryMakeDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func categoryMakeDataManager(parameter: CategoryMakeInput, categoryVC: CategoryViewController, viewController : ColorPickerBottomsheetViewController) {
+    func categoryMakeDataManager(parameter: CategoryMakeInput, categoryVC: CategoryViewController, viewController : CategoryBottomSheetViewController) {
         AF.request("https://todoary.com/category", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: CategoryMakeModel.self) { response in
             switch response.result {
             case .success(let result):
@@ -20,7 +20,8 @@ class CategoryMakeDataManager {
                     print("카테고리생성성공")
                     GetCategoryDataManager().get(categoryVC)
                     categoryVC.isCategoryAdd = true
-                    viewController.hideBottomSheetAndGoBack()
+                    viewController.dismiss(animated: true)
+//                    viewController.hideBottomSheetAndGoBack()
                 case 2010:
                     print("유저 아이디값을 확인해주세요")
                 case 2104:
