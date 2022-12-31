@@ -40,9 +40,10 @@ class GetCategoryDataManager {
                     print("카테고리조회성공")
                     if let vc = viewController as? TodoSettingViewController {
                         vc.successAPI_category(result.result)
-                    }else if let vc = viewController as? SummaryBottomViewController {
-                        vc.successAPI_category(result.result)
                     }
+//                    else if let vc = viewController as? SummaryBottomSheetViewController {
+//                        vc.successAPI_category(result.result)
+//                    }
                 case 4000:
                     let alert = DataBaseErrorAlert()
                     viewController.present(alert, animated: true, completion: nil)

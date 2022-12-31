@@ -20,16 +20,17 @@ class TodoSettingDataManager {
                     print("투두생성성공")
                     if let vc = viewController as? TodoSettingViewController{
                         vc.navigationController?.popViewController(animated: true)
-                    }else if let vc = viewController as? SummaryBottomViewController{
-                        vc.todoTf.resignFirstResponder()
-                        vc.todoEasySettingView.isHidden = true
-                        vc.todoTf.isHidden = true
-                        vc.collectionView.isHidden = true
-                        
-                        HomeViewController.collectionView.reloadData()
-                        
-                        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
                     }
+//                    else if let vc = viewController as? SummaryBottomSheetViewController{
+//                        vc.todoTf.resignFirstResponder()
+//                        vc.todoEasySettingView.isHidden = true
+//                        vc.todoTf.isHidden = true
+//                        vc.collectionView.isHidden = true
+//
+//                        HomeViewController.collectionView.reloadData()
+//
+//                        GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
+//                    }
                 case 2201:
                     print("중복된 닉네임입니다")
                 default:

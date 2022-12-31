@@ -47,7 +47,7 @@
 		574913B9287ADF6500381BCD /* AlarmSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913B8287ADF6500381BCD /* AlarmSettingView.swift */; };
 		574913BB287ADF8E00381BCD /* AlarmSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */; };
 		574A6FEE28826D30003C8F99 /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */; };
-		574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */; };
+		574A6FF028826EB5003C8F99 /* SummaryBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */; };
 		574A70382883C701003C8F99 /* TodoListTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */; };
 		574A703A2883FF10003C8F99 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */; };
 		574A704528852523003C8F99 /* TodoListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A704428852523003C8F99 /* TodoListTitleCell.swift */; };
@@ -300,7 +300,7 @@
 		574913B8287ADF6500381BCD /* AlarmSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingView.swift; sourceTree = "<group>"; };
 		574913BA287ADF8E00381BCD /* AlarmSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingTableViewCell.swift; sourceTree = "<group>"; };
 		574A6FED28826D30003C8F99 /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
-		574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryBottomViewController.swift; sourceTree = "<group>"; };
+		574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryBottomSheetViewController.swift; sourceTree = "<group>"; };
 		574A70372883C701003C8F99 /* TodoListTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		574A70392883FF10003C8F99 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		574A704428852523003C8F99 /* TodoListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTitleCell.swift; sourceTree = "<group>"; };
@@ -1585,7 +1585,7 @@
 			children = (
 				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
 				E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */,
-				574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */,
+				574A6FEF28826EB5003C8F99 /* SummaryBottomSheetViewController.swift */,
 				57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */,
 			);
 			path = Home;
@@ -2007,7 +2007,7 @@
 				578B7AA728AD112400E7B4F4 /* DiaryDataManager.swift in Sources */,
 				576ED6B028748FFA007389CD /* NavigationView.swift in Sources */,
 				AC5E27E52890211C0056EC69 /* AuthJwtModel.swift in Sources */,
-				574A6FF028826EB5003C8F99 /* SummaryBottomViewController.swift in Sources */,
+				574A6FF028826EB5003C8F99 /* SummaryBottomSheetViewController.swift in Sources */,
 				573844BA288CF01D009529CD /* NewTodoAddBtnTableViewCell.swift in Sources */,
 				ACFBECA128B5E05100B9D66F /* DiaryStickerModel.swift in Sources */,
 				570DD837295EC53D00A0D2A9 /* DiaryViewController+Sticker.swift in Sources */,

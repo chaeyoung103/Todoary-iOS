@@ -37,7 +37,7 @@ class HomeViewController : UIViewController {
     static var calendarRecord = [Int](repeating: 0, count: 32)
     static var diaryRecord = [Int](repeating: 0, count: 32)
     
-    static let bottomSheetVC = SummaryBottomViewController()
+    static let bottomSheetVC = SummaryBottomSheetViewController()
     
     //MARK: - UIComponenets
 
