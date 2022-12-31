@@ -96,7 +96,7 @@ class CategoryViewController: BaseViewController {
         
         guard let index = (mainView.categoryCollectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
         
-        let vc = ColorPickerBottomsheetViewController()
+        let vc = CategoryBottomSheetViewController()
         vc.modalPresentationStyle = .overFullScreen
         
         vc.categoryVC = self
@@ -267,7 +267,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if(indexPath.row == categories.count){
-            let vc = ColorPickerBottomsheetViewController()
+            let vc = CategoryBottomSheetViewController()
             
             vc.modalPresentationStyle = .overFullScreen
             vc.categoryVC = self

@@ -1,5 +1,5 @@
 //
-//  ColorPickerBottomsheetViewController.swift
+//  CategoryBottomSheetViewController.swift
 //  Todoary
 //
 //  Created by 예리 on 2022/07/27.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ColorPickerBottomsheetViewController : UIViewController {
+class CategoryBottomSheetViewController : UIViewController {
     // MARK: - Properties
     var currentData : GetCategoryResult?
     
@@ -359,7 +359,7 @@ class ColorPickerBottomsheetViewController : UIViewController {
 }
 
 //MARK: - Keyboard
-extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
+extension CategoryBottomSheetViewController: UITextFieldDelegate{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -394,7 +394,7 @@ extension ColorPickerBottomsheetViewController: UITextFieldDelegate{
 
 
 
-extension ColorPickerBottomsheetViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CategoryBottomSheetViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18

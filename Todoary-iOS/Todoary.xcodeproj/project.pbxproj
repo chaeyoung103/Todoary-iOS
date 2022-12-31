@@ -68,6 +68,7 @@
 		57503661288BE380006A9070 /* CategoryButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */; };
 		57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */; };
 		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
+		57556A8F295FC93300B67369 /* CategoryBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -88,7 +89,7 @@
 		57D5B60F29580F8400216C94 /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B60E29580F8400216C94 /* BaseProtocol.swift */; };
 		57D5D10428975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */; };
 		57D5D1062898D185004A16DA /* GetAlarmCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */; };
-		57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */; };
+		57D5D108289924AC004A16DA /* SummaryBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5D107289924AC004A16DA /* SummaryBottomSheetView.swift */; };
 		57DF45F428A60B310002D66C /* IM_Hyemin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */; };
 		57DF45F628A60B310002D66C /* NotoSerifKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */; };
 		57DF45F728A60B310002D66C /* GangwonEduAll-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */; };
@@ -173,7 +174,7 @@
 		E02E7FA42874631D0006F6FA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA32874631D0006F6FA /* UILabel.swift */; };
 		E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E7FA52874637C0006F6FA /* UIButton.swift */; };
 		E02E7FA828747F1D0006F6FA /* UniStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */; };
-		E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */; };
+		E03856B928913D3E00CEEFBA /* CategoryBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856B828913D3E00CEEFBA /* CategoryBottomSheetViewController.swift */; };
 		E03856BB28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */; };
 		E03DCC4C28929D0F00532180 /* AutoLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03DCC4B28929D0F00532180 /* AutoLoginInput.swift */; };
 		E0439ABB288C598A0075CBF0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */; };
@@ -321,6 +322,7 @@
 		57503660288BE380006A9070 /* CategoryButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodoTableViewCell.swift; sourceTree = "<group>"; };
 		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
+		57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetView.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -343,7 +345,7 @@
 		57D5B60E29580F8400216C94 /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
 		57D5D10328975CE8004A16DA /* CategoryTodoTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTodoTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		57D5D1052898D185004A16DA /* GetAlarmCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmCheckModel.swift; sourceTree = "<group>"; };
-		57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SummaryBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
+		57D5D107289924AC004A16DA /* SummaryBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryBottomSheetView.swift; sourceTree = "<group>"; };
 		57DF45EC28A60B2F0002D66C /* IM_Hyemin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Regular.ttf"; sourceTree = "<group>"; };
 		57DF45EE28A60B300002D66C /* NotoSerifKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Regular.otf"; sourceTree = "<group>"; };
 		57DF45EF28A60B300002D66C /* GangwonEduAll-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GangwonEduAll-Light.ttf"; sourceTree = "<group>"; };
@@ -435,7 +437,7 @@
 		E02E7FA32874631D0006F6FA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E02E7FA52874637C0006F6FA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E02E7FA728747F1D0006F6FA /* UniStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UniStoryboard.storyboard; sourceTree = "<group>"; };
-		E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetViewController.swift; sourceTree = "<group>"; };
+		E03856B828913D3E00CEEFBA /* CategoryBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetViewController.swift; sourceTree = "<group>"; };
 		E03856BA28914D8500CEEFBA /* ColorPickerBottomsheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBottomsheetCollectionViewCell.swift; sourceTree = "<group>"; };
 		E03DCC4B28929D0F00532180 /* AutoLoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginInput.swift; sourceTree = "<group>"; };
 		E0439ABA288C598A0075CBF0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
@@ -883,9 +885,9 @@
 		5701EA602956F11900F21F63 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				57556A8D295FC90700B67369 /* Category */,
 				E0AB9EBC287B1C070064CADA /* HomeViewController + Layout.swift */,
-				57D5D107289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift */,
-				57B16856295ABAF900639A15 /* CategoryView.swift */,
+				57D5D107289924AC004A16DA /* SummaryBottomSheetView.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -1593,7 +1595,16 @@
 			isa = PBXGroup;
 			children = (
 				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
-				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
+				E03856B828913D3E00CEEFBA /* CategoryBottomSheetViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		57556A8D295FC90700B67369 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				57B16856295ABAF900639A15 /* CategoryView.swift */,
+				57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2076,6 +2087,7 @@
 				57294ACC28937C2C00DA2F31 /* TodoBannerCell.swift in Sources */,
 				572E5ADA286EBDCC00D1FAA0 /* AppDelegate.swift in Sources */,
 				E0BF9627289B69C000895111 /* DiaryToolbarView.swift in Sources */,
+				57556A8F295FC93300B67369 /* CategoryBottomSheetView.swift in Sources */,
 				ACCD87CD2897BB6500C34CE7 /* CategoryModifyModel.swift in Sources */,
 				E0AB9EC1287B1C570064CADA /* SettingAgreementViewController.swift in Sources */,
 				57E6516628B2F0E4006CB053 /* AppleLoginModel.swift in Sources */,
@@ -2093,12 +2105,12 @@
 				57B9F71128D94F6700ACEC94 /* ConfirmAlertViewController.swift in Sources */,
 				AC5E27C7288C37C80056EC69 /* TodoSettingViewController.swift in Sources */,
 				ACCD87D72897E79100C34CE7 /* GetCalendarModel.swift in Sources */,
-				57D5D108289924AC004A16DA /* SummaryBottomSheetViewController+Layout.swift in Sources */,
+				57D5D108289924AC004A16DA /* SummaryBottomSheetView.swift in Sources */,
 				E0C4BD6128720FBA00FDEA0E /* PrivacyTextViewController.swift in Sources */,
 				E0AB9EBD287B1C070064CADA /* HomeViewController + Layout.swift in Sources */,
 				E02E7FA62874637C0006F6FA /* UIButton.swift in Sources */,
 				E045C670287BDB8B00D89D62 /* SettingAgreementViewCell.swift in Sources */,
-				E03856B928913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift in Sources */,
+				E03856B928913D3E00CEEFBA /* CategoryBottomSheetViewController.swift in Sources */,
 				ACFBEC9928B379E000B9D66F /* FcmTokenInput.swift in Sources */,
 				57B16855295A8A2600639A15 /* SignUpView.swift in Sources */,
 				57294AAF2891159300DA2F31 /* TodoDeleteDataManager.swift in Sources */,

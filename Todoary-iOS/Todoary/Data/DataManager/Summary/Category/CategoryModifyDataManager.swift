@@ -11,7 +11,7 @@ class CategoryModifyDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func patch(categoryId : Int, parameter: CategoryModifyInput, viewController : ColorPickerBottomsheetViewController, categoryViewController: CategoryViewController) {
+    func patch(categoryId : Int, parameter: CategoryModifyInput, viewController : CategoryBottomSheetViewController, categoryViewController: CategoryViewController) {
         
         AF.request("https://todoary.com/category/\(categoryId)",
                    method: .patch,

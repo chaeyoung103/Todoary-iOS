@@ -11,7 +11,7 @@ class CategoryMakeDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func categoryMakeDataManager(parameter: CategoryMakeInput, categoryVC: CategoryViewController, viewController : ColorPickerBottomsheetViewController) {
+    func categoryMakeDataManager(parameter: CategoryMakeInput, categoryVC: CategoryViewController, viewController : CategoryBottomSheetViewController) {
         AF.request("https://todoary.com/category", method: .post, parameters: parameter,  encoder: JSONParameterEncoder.default , headers: headers).validate().responseDecodable(of: CategoryMakeModel.self) { response in
             switch response.result {
             case .success(let result):
