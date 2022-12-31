@@ -69,6 +69,7 @@
 		57503663288BE3A0006A9070 /* CategoryTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */; };
 		57503665288BE42C006A9070 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57503664288BE42C006A9070 /* CategoryColor.swift */; };
 		57556A8F295FC93300B67369 /* CategoryBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */; };
+		57556A91295FDCBE00B67369 /* BaseBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */; };
 		576ED6B028748FFA007389CD /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6AF28748FFA007389CD /* NavigationView.swift */; };
 		576ED6B228749021007389CD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B128749021007389CD /* String.swift */; };
 		576ED6B42874902A007389CD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576ED6B32874902A007389CD /* UITextField.swift */; };
@@ -323,6 +324,7 @@
 		57503662288BE3A0006A9070 /* CategoryTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodoTableViewCell.swift; sourceTree = "<group>"; };
 		57503664288BE42C006A9070 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		57556A8E295FC93300B67369 /* CategoryBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetView.swift; sourceTree = "<group>"; };
+		57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetViewController.swift; sourceTree = "<group>"; };
 		576ED6AF28748FFA007389CD /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		576ED6B128749021007389CD /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		576ED6B32874902A007389CD /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				5722461128C1A223009B7C78 /* BaseViewController.swift */,
+				57556A90295FDCBE00B67369 /* BaseBottomSheetViewController.swift */,
 				57D5B60C29580F6600216C94 /* BaseCollectionViewCell.swift */,
 				57D5B60A29580F4400216C94 /* BaseTableViewCell.swift */,
 			);
@@ -2137,6 +2140,7 @@
 				E0F9989F288A592E0051C7AA /* GetProfileModel.swift in Sources */,
 				E0F998A8288A683E0051C7AA /* UserDeleteInput.swift in Sources */,
 				ACCD87C42895932500C34CE7 /* GetCategoryModel.swift in Sources */,
+				57556A91295FDCBE00B67369 /* BaseBottomSheetViewController.swift in Sources */,
 				570DD833295EC4DB00A0D2A9 /* DiaryViewController.swift in Sources */,
 				572E5B0E286EC10500D1FAA0 /* UIFont.swift in Sources */,
 				AC5E27CD288C38290056EC69 /* TodoWeekCell.swift in Sources */,
