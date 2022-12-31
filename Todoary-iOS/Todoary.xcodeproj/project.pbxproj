@@ -835,12 +835,8 @@
 		5701EA5C2956F10F00F21F63 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
-				E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */,
-				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
-				57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */,
-				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
-				574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */,
+				57556A8B295FC4E700B67369 /* Home */,
+				57556A8C295FC4EB00B67369 /* Category */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -1582,6 +1578,26 @@
 			path = TodoaryUITests;
 			sourceTree = "<group>";
 		};
+		57556A8B295FC4E700B67369 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AC9859C8288290C8009FC2F8 /* Calendar.swift */,
+				E0AB9EBA287B1BF40064CADA /* HomeViewController.swift */,
+				574A6FEF28826EB5003C8F99 /* SummaryBottomViewController.swift */,
+				57E75EB828E33AD400AC24B2 /* AddButtonViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		57556A8C295FC4EB00B67369 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5750365E288BE33F006A9070 /* CategoryViewController.swift */,
+				E03856B828913D3E00CEEFBA /* ColorPickerBottomsheetViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		57B9F70D28D94F0300ACEC94 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -2222,7 +2238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2277,7 +2293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
