@@ -10,168 +10,60 @@ import UIKit
 import SnapKit
 import Then
 
-class CategoryBottomSheetViewController : UIViewController {
+class CategoryBottomSheetViewController : BaseBottomSheetViewController {
     // MARK: - Properties
     var currentData : GetCategoryResult?
     
     var currentCategoryCount: Int? //현재 1개의 카테고리만 존재할 경우 삭제 금지시키기 위한 프로퍼ㅣ
     
     var isKeyboardOpen = false
-
-    //바텀시트 높이
-    let bottomHeight : CGFloat = 342
-    
-    // bottomSheet가 view의 상단에서 떨어진 거리
-    private var bottomSheetViewTopConstraint: NSLayoutConstraint!
-    
-    private var ColorPickerBottomsheetCollectionViewcellid = "ColorPickerBottomsheetCollectionViewcellid"
-    
-    private var ColorPickerBottomsheetCollectionView: UICollectionView!
     
     var categoryVC: CategoryViewController!
     
-    // MARK: - UIComponents
-    
-    let dimmedBackView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
-    
-    let bottomSheetView = UIView().then {
-        $0.backgroundColor = .calendarSelectColor
-        $0.layer.cornerRadius = 30
-        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        $0.clipsToBounds = true
-    }
-    
-    let categoryTextField = UITextField().then {
-        $0.placeholder = "카테고리 이름을 입력해주세요"
-        $0.font = UIFont.nbFont(ofSize: 13, weight: .bold)
-        $0.setPlaceholderColor(.todoaryGrey)
-        $0.addLeftPadding(padding: 17)
-        //그림자
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-    }
-    
-    lazy var confirmBtn = UIButton().then{
-        $0.backgroundColor = .white
-        $0.setTitle("완료", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.addLetterSpacing(spacing: 0.3)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 15, weight: .bold)
-        $0.layer.cornerRadius = 20
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(confirmBtnDidClicked), for: .touchUpInside)
-    }
-    
-    lazy var deleteBtn = UIButton().then{
-        $0.backgroundColor = .white
-        $0.setTitle("삭제", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.addLetterSpacing(spacing: 0.3)
-        $0.titleLabel?.font = UIFont.nbFont(ofSize: 15, weight: .bold)
-        $0.layer.cornerRadius = 20
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        $0.layer.shadowRadius = 10.0
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowOpacity = 1
-        $0.layer.masksToBounds = false
-        $0.addTarget(self, action: #selector(deleteCancelBtnDidClicked), for: .touchUpInside)
-    }
+    let mainView = CategoryBottomSheetView()
     
     // MARK: - LifeCycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setUpView()
-        setUpConstraint()
-        setupGestureRecognizer()
-        
-        categoryTextField.delegate = self
+    
+    init(){
+        super.init(type: .category)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if let currentData = currentData {
-            ColorPickerBottomsheetCollectionView.selectItem(at: [0,currentData.color], animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
+            mainView.colorCollectionView.selectItem(at: [0,currentData.color], animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredVertically)
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        showBottomSheet()
+    override func style() {
+        super.style()
+        self.view.backgroundColor = .calendarSelectColor
     }
     
-    // MARK: - Layout
-    private func setUpView() {
+    override func layout() {
         
-        view.addSubview(dimmedBackView)
-        view.addSubview(bottomSheetView)
+        self.view.addSubview(mainView)
         
-        view.addSubview(categoryTextField)
-        
-        view.addSubview(confirmBtn)
-        view.addSubview(deleteBtn)
-        
-        dimmedBackView.alpha = 0.0
-        setUpConstraint()
-        
-        configure()
-        setupCollectionView()
+        mainView.snp.makeConstraints{
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
     
-    private func setUpConstraint() {
-        dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
-            dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-            
-        bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
-        let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
-        bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
-        NSLayoutConstraint.activate([
-            bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bottomSheetViewTopConstraint
-        ])
+    override func initialize() {
         
-        categoryTextField.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(30)
-            make.centerX.equalTo(bottomSheetView)
-            make.width.equalTo(328)
-            make.height.equalTo(46)
-            
-        }
+        super.initialize()
         
-        confirmBtn.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(270)
-            make.leading.equalTo(bottomSheetView.snp.leading).offset(66)
-            make.width.equalTo(93)
-            make.height.equalTo(38)
-            
-        }
+        mainView.categoryTextField.delegate = self
+        mainView.confirmBtn.addTarget(self, action: #selector(confirmBtnDidClicked), for: .touchUpInside)
+        mainView.deleteBtn.addTarget(self, action: #selector(deleteCancelBtnDidClicked), for: .touchUpInside)
         
-        deleteBtn.snp.makeConstraints{ make in
-            make.top.equalTo(bottomSheetView.snp.top).offset(270)
-            make.trailing.equalTo(bottomSheetView.snp.trailing).offset(-66)
-            make.width.equalTo(93)
-            make.height.equalTo(38)
-        }
+        mainView.colorCollectionView.delegate = self
+        mainView.colorCollectionView.dataSource = self
     }
     
     //MARK: - Actions
@@ -179,9 +71,9 @@ class CategoryBottomSheetViewController : UIViewController {
     @objc
     func confirmBtnDidClicked(){
         
-        guard let select = ColorPickerBottomsheetCollectionView.indexPathsForSelectedItems else { return }
+        guard let select = mainView.colorCollectionView.indexPathsForSelectedItems else { return }
         
-        guard let categoryText = categoryTextField.text else{ return }
+        guard let categoryText = mainView.categoryTextField.text else{ return }
         
         //카테고리 이름 혹은 색상 선택 안한 경우, 카테고리 생성X
         if(select.isEmpty){
@@ -218,7 +110,8 @@ class CategoryBottomSheetViewController : UIViewController {
         
         guard let data = currentData else {
             //버튼: 취소일 경우
-            hideBottomSheetAndGoBack()
+            self.dismiss(animated: true)
+//            hideBottomSheetAndGoBack()
             return
         }
         //버튼: 삭제일 경우
@@ -259,102 +152,6 @@ class CategoryBottomSheetViewController : UIViewController {
           })
         
     }
-    
-    
-    //MARK: - Helpers_BottomSheet
-    
-    // 바텀 시트 표출 애니메이션
-    private func showBottomSheet() {
-        let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
-        let bottomPadding: CGFloat = view.safeAreaInsets.bottom
-        
-        bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - bottomHeight
-        
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            self.dimmedBackView.alpha = 0.1
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-    
-    // 바텀 시트 사라지는 애니메이션
-    @objc
-    func hideBottomSheetAndGoBack() {
-        let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
-        let bottomPadding = view.safeAreaInsets.bottom
-        bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            self.dimmedBackView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }) { _ in
-            if self.presentingViewController != nil {
-                self.dismiss(animated: false, completion: nil)
-            }
-        }
-    }
-    
-    // GestureRecognizer 세팅 작업
-    private func setupGestureRecognizer() {
-        
-        // 스와이프 했을 때, 바텀시트를 내리는 swipeGesture
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
-        swipeGesture.direction = .down
-        view.addGestureRecognizer(swipeGesture)
-    }
-
-    
-    // UISwipeGestureRecognizer 연결 함수 부분
-    @objc func panGesture(_ recognizer: UISwipeGestureRecognizer) {
-        if recognizer.state == .ended {
-            switch recognizer.direction {
-            case .down:
-                //keyboard 올라와 있을 때, bottomsheet는 종료시키지 않고 키보드만 내리기
-                if(isKeyboardOpen){
-                    self.view.endEditing(true)
-
-                    UIView.animate(withDuration: 0.3){
-                        self.view.window?.frame.origin.y = 0
-                        self.isKeyboardOpen = false
-                    }
-                }else{
-                    // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
-                    hideBottomSheetAndGoBack()
-                }
-            default:
-                break
-            }
-        }
-    }
-    
-    //MARK: - Helpers_ColorPicker
-    
-    private func configure() {
-        let collectionViewLayer = UICollectionViewFlowLayout()
-        collectionViewLayer.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
-
-        ColorPickerBottomsheetCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayer)
-        ColorPickerBottomsheetCollectionView.isScrollEnabled = false
-        ColorPickerBottomsheetCollectionView.backgroundColor = .transparent
-        
-        view.addSubview(ColorPickerBottomsheetCollectionView)
-
-        ColorPickerBottomsheetCollectionView.snp.makeConstraints { make in
-                make.top.equalTo(bottomSheetView).offset(102)
-                make.leading.equalTo(bottomSheetView).offset(45)
-                make.width.equalTo(290)
-                make.height.equalTo(150)
-                make.centerX.equalTo(bottomSheetView)
-           }
-       }
-
-    
-    private func setupCollectionView() {
-        ColorPickerBottomsheetCollectionView.delegate = self
-        ColorPickerBottomsheetCollectionView.dataSource = self
-        
-        //cell 등록
-        ColorPickerBottomsheetCollectionView.register(ColorPickerCollectionViewCell.self, forCellWithReuseIdentifier: ColorPickerBottomsheetCollectionViewcellid)
-        
-    }
 
 }
 
@@ -373,7 +170,7 @@ extension CategoryBottomSheetViewController: UITextFieldDelegate{
             }
         }else{
             // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
-            hideBottomSheetAndGoBack()
+//            hideBottomSheetAndGoBack()
         }
     }
 
@@ -392,8 +189,6 @@ extension CategoryBottomSheetViewController: UITextFieldDelegate{
 
 //MARK: - UICollectionViewDataSource
 
-
-
 extension CategoryBottomSheetViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -402,7 +197,7 @@ extension CategoryBottomSheetViewController : UICollectionViewDelegate, UICollec
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ColorPickerBottomsheetCollectionViewcellid, for : indexPath) as? ColorPickerCollectionViewCell else {
+            withReuseIdentifier: ColorPickerCollectionViewCell.identifier, for : indexPath) as? ColorPickerCollectionViewCell else {
             fatalError("셀 타입 케스팅 실패")
         }
     
@@ -450,8 +245,6 @@ extension CategoryBottomSheetViewController : UICollectionViewDelegate, UICollec
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
     
-    
-
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at:indexPath) as? ColorPickerCollectionViewCell else{
             fatalError()
@@ -462,8 +255,3 @@ extension CategoryBottomSheetViewController : UICollectionViewDelegate, UICollec
         cell.colorBtnpick.isUserInteractionEnabled = true
     }
 }
-
-
-
-
-

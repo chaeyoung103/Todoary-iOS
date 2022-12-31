@@ -26,7 +26,8 @@ class CategoryModifyDataManager {
                     case 1000:
                         print("카테고리수정성공")
                         GetCategoryDataManager().get(categoryViewController)
-                        viewController.hideBottomSheetAndGoBack()
+                        viewController.dismiss(animated: true)
+//                        viewController.hideBottomSheetAndGoBack()
                     case 2010:
                         print("유저 아이디값을 확인해주세요")
                     case 2104:

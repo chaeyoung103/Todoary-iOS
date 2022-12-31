@@ -20,7 +20,8 @@ class CategoryMakeDataManager {
                     print("카테고리생성성공")
                     GetCategoryDataManager().get(categoryVC)
                     categoryVC.isCategoryAdd = true
-                    viewController.hideBottomSheetAndGoBack()
+                    viewController.dismiss(animated: true)
+//                    viewController.hideBottomSheetAndGoBack()
                 case 2010:
                     print("유저 아이디값을 확인해주세요")
                 case 2104:

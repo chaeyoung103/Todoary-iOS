@@ -97,14 +97,12 @@ class CategoryViewController: BaseViewController {
         guard let index = (mainView.categoryCollectionView.indexPath(for: gesture.view! as! UICollectionViewCell)) else { return }
         
         let vc = CategoryBottomSheetViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        
+        vc.loadViewIfNeeded()
         vc.categoryVC = self
         vc.currentData = categories[index.row]
-        vc.categoryTextField.text = categories[index.row].title
+        vc.mainView.categoryTextField.text = categories[index.row].title
         vc.currentCategoryCount = categories.count
-        
-        self.present(vc, animated: false, completion: nil)
+        self.present(vc, animated: true)
     }
     
     //MARK: - Helper
@@ -268,12 +266,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         
         if(indexPath.row == categories.count){
             let vc = CategoryBottomSheetViewController()
-            
-            vc.modalPresentationStyle = .overFullScreen
+            vc.loadViewIfNeeded()
             vc.categoryVC = self
-            vc.deleteBtn.setTitle("취소", for: .normal)
-            
-            self.present(vc, animated: false, completion: nil)
+            vc.mainView.deleteBtn.setTitle("취소", for: .normal)
+            self.present(vc, animated: true)
         }
     }
 }
