@@ -9,7 +9,9 @@ import UIKit
 
 class AlarmSettingViewController: BaseViewController {
     
-    let mainView = AlarmSettingView()
+    //MARK: - Properties
+    
+    var tableView : UITableView!
     
     var currentInfoView: UIView?
     
@@ -21,39 +23,36 @@ class AlarmSettingViewController: BaseViewController {
         
         super.viewDidLoad()
         
-        AlarmDataManager().get(viewController: self)
-    }
-    
-    override func style(){
-        super.style()
         navigationTitle.text = "알림"
-    }
-    
-    override func layout(){
         
-        super.layout()
-        
-        self.view.addSubview(mainView)
-        
-        mainView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(Const.Offset.top)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
-    }
-    
-    override func initialize() {
-        mainView.tableView.separatorStyle = .none
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
+        self.view.backgroundColor = .white
         
         //for view 터치시, 도움말 팝업 제거
         let viewTapGesture = UITapGestureRecognizer()
         viewTapGesture.delegate = self
+        
         self.view.addGestureRecognizer(viewTapGesture)
+        
+        tableView = UITableView().then{
+            $0.separatorStyle = .none
+            $0.register(AlarmSettingTableViewCell.self, forCellReuseIdentifier: "alarmSettingCell")
+            $0.delegate = self
+            $0.dataSource = self
+            $0.isScrollEnabled = false
+            $0.allowsSelection = false
+        }
+        
+        setUpView()
+        setUpConstraint()
+        
+        AlarmDataManager().get(viewController: self)
+        
     }
+    
     //MARK: - Action
     
-    @objc func showInfoMessage(_ sender: CellButtonTapGesture){
+    @objc
+    func showInfoMessage(_ sender: CellButtonTapGesture){
         
         let messageView = InfoMessageView()
         
@@ -149,7 +148,7 @@ extension AlarmSettingViewController{
     func successApiResult(_ resultData: GetAlarmCheckResult){
         print("api 호출 성공")
         self.alarmData = resultData
-        mainView.tableView.reloadData()
+        self.tableView.reloadData()
     }
 }
 

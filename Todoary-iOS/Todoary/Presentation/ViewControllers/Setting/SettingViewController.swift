@@ -12,44 +12,54 @@ import Then
 
 class SettingViewController : BaseViewController {
     
-    let mainView = SettingView()
+    //MARK: - UIComponenets
+    
+    //tableView
+    var tableView : UITableView!
+    
+    //version
+    let versionBorderLine1 = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
+    
+    let versionText = UILabel().then{
+        $0.text = "버전"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionNum = UILabel().then{
+        $0.text = "1.0"
+        $0.textColor = .headline
+        $0.font = UIFont.nbFont(type: .tableCell)
+    }
+    
+    let versionBorderLine2 = UIView().then{
+        $0.backgroundColor = .silver_225
+    }
     
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        style()
-        layout()
-        initialize()
-    }
-    
-    //MARK: - Helper
-    
-    
-    override func style() {
-        super.style()
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+        
         navigationTitle.text = "설정"
-    }
-    
-    override func layout() {
         
-        super.layout()
-        
-        self.view.addSubview(mainView)
-        
-        mainView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(Const.Offset.top)
-            $0.leading.trailing.bottom.equalToSuperview()
+        tableView = UITableView().then{
+            $0.separatorStyle = .none
+            $0.register(SettingTableViewCell.self, forCellReuseIdentifier: "SettingTableViewCell")
+            $0.isScrollEnabled = false
+            $0.backgroundColor = .white
+            
+            $0.delegate = self
+            $0.dataSource = self
         }
-    }
-    
-    override func initialize() {
-        
-        mainView.tableView.separatorStyle = .none
-        
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
+
+        setUpView()
+        setUpConstraint()
     }
     
     @objc func backBtnDidTab() {
@@ -69,7 +79,7 @@ class SettingViewController : BaseViewController {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+    return 8
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

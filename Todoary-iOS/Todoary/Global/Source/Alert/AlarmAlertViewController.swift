@@ -173,7 +173,7 @@ class AlarmAlertViewController: UIViewController {
         HomeViewController.bottomSheetVC.todoDataList[index].targetTime = self.targetTime
         HomeViewController.bottomSheetVC.todoDataList[index].isAlarmEnabled = true
         HomeViewController.bottomSheetVC.dataArraySortByPin()
-        HomeViewController.bottomSheetVC.mainView.summaryTableView.reloadData()
+        HomeViewController.bottomSheetVC.tableView.reloadData()
         
         self.dismiss(animated: false, completion: nil)
     }

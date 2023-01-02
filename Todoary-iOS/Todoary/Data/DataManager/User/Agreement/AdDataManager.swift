@@ -10,7 +10,7 @@ import Alamofire
 
 class AdDataManager{
     
-    func adDataManager(viewController: AdvertiseTextSettingViewController, isChecked: Bool)
+    func adDataManager(viewController: AdTextSettingViewController, isChecked: Bool)
     {
         let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
         

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SignUpViewController: BaseViewController{
+class SignUpViewController: BaseViewController, BaseViewControllerProtocol{
     
     //MARK: - Properties
     
@@ -58,18 +58,13 @@ class SignUpViewController: BaseViewController{
         initialize()
     }
     
-    //MARK: - Override
+    //MARK: - BaseProtocol
     
-    override func style() {
-        
-        super.style()
-        
+    func style() {
         self.navigationTitle.text = "회원가입"
     }
     
-    override func layout() {
-        
-        super.layout()
+    func layout() {
         
         self.view.addSubview(mainView)
         
@@ -79,8 +74,7 @@ class SignUpViewController: BaseViewController{
         }
     }
     
-    override func initialize() {
-        
+    func initialize() {
         addActionToTextFieldByCase()
         setTextFieldDelegate()
         

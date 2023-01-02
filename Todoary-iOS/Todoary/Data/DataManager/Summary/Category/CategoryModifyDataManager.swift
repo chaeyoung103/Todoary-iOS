@@ -11,7 +11,7 @@ class CategoryModifyDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func patch(categoryId : Int, parameter: CategoryModifyInput, viewController : CategoryBottomSheetViewController, categoryViewController: CategoryViewController) {
+    func patch(categoryId : Int, parameter: CategoryModifyInput, viewController : ColorPickerBottomsheetViewController, categoryViewController: CategoryViewController) {
         
         AF.request("https://todoary.com/category/\(categoryId)",
                    method: .patch,
@@ -26,8 +26,7 @@ class CategoryModifyDataManager {
                     case 1000:
                         print("카테고리수정성공")
                         GetCategoryDataManager().get(categoryViewController)
-                        viewController.dismiss(animated: true)
-//                        viewController.hideBottomSheetAndGoBack()
+                        viewController.hideBottomSheetAndGoBack()
                     case 2010:
                         print("유저 아이디값을 확인해주세요")
                     case 2104:

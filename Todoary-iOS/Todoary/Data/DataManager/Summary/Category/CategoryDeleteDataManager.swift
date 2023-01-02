@@ -11,7 +11,7 @@ class CategoryDeleteDataManager {
     
     let headers : HTTPHeaders = [.authorization(UserDefaults.standard.string(forKey: "accessToken")!)]
     
-    func delete(categoryId : Int, viewController : CategoryBottomSheetViewController, categoryViewController: CategoryViewController) {
+    func delete(categoryId : Int, viewController : ColorPickerBottomsheetViewController, categoryViewController: CategoryViewController) {
         
         AF.request("https://todoary.com/category/\(categoryId)",
                    method: .delete,
@@ -25,8 +25,7 @@ class CategoryDeleteDataManager {
                     case 1000:
                         print("카테고리삭제성공")
                         GetCategoryDataManager().get(categoryViewController)
-                        viewController.dismiss(animated: true)
-//                        viewController.hideBottomSheetAndGoBack()
+                        viewController.hideBottomSheetAndGoBack()
                     case 2010:
                         print("유저 아이디값을 확인해주세요")
                     case 4000:

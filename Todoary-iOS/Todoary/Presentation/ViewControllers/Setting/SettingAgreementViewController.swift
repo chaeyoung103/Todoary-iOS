@@ -12,36 +12,39 @@ import Then
 
 class SettingAgreementViewController : BaseViewController {
     
-    let mainView = SettingAgreementView()
+    //MARK: - UIComponenets
 
+    let contentView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    
+    //tableView
+    var tableView : UITableView!
+    
     //MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func style() {
         
-        super.style()
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
         
         navigationTitle.text = "약관 및 정책"
-    }
-    
-    override func layout() {
-        super.layout()
         
-        self.view.addSubview(mainView)
-        
-        mainView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(Const.Offset.top)
-            $0.leading.trailing.bottom.equalToSuperview()
+        tableView = UITableView().then{
+            $0.separatorStyle = .none
+            $0.register(SettingAgreementViewCell.self, forCellReuseIdentifier: "SettingAgreementViewCell")
+            
+            $0.delegate = self
+            $0.dataSource = self
         }
+
+        setUpView()
+        setUpConstraint()
     }
     
-    override func initialize() {
-        mainView.tableView.separatorStyle = .none
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
+    @objc func backBtnDidTab() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -85,7 +88,7 @@ extension SettingAgreementViewController: UITableViewDelegate, UITableViewDataSo
             self.navigationController?.pushViewController(UseServiceViewController(), animated: true)
             return
         case 2:
-            self.navigationController?.pushViewController(AdvertiseTextSettingViewController(), animated: true)
+            self.navigationController?.pushViewController(AdTextSettingViewController(), animated: true)
             return
         default:
             return

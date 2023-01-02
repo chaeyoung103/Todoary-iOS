@@ -11,33 +11,37 @@ import AVFAudio
 
 class AskViewController: BaseViewController {
     
-    let mainView = AskView()
+    
+    var tableView : UITableView!
+    
+    let emailHiddenButton = UIButton().then{
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+    }
 
-    override func style() {
-        super.style()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = .white
+
         navigationTitle.text = "문의하기"
-    }
-    
-    override func layout() {
-        super.layout()
         
-        self.view.addSubview(mainView)
-        
-        mainView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(Const.Offset.top)
-            $0.leading.trailing.bottom.equalToSuperview()
+        tableView = UITableView().then{
+            $0.delegate = self
+            $0.dataSource = self
+            
+            $0.isScrollEnabled = false
+            $0.separatorStyle = .none
+            
+            $0.register(DefaultTableViewCell.self, forCellReuseIdentifier: "askSettingCell")
         }
-    }
-    
-    override func initialize() {
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
-        mainView.tableView.separatorStyle = .none
         
-        menuItemInitialize()
+        setUpView()
+        setUpConstraint()
+        
+        menuItemInit()
     }
     
-    func menuItemInitialize(){
+    func menuItemInit(){
         
         var menuArray: [UIAction] = []
         
@@ -51,12 +55,12 @@ class AskViewController: BaseViewController {
             }))
         }
         
-            mainView.emailHiddenButton.menu = UIMenu(title: "",
+        emailHiddenButton.menu = UIMenu(title: "",
                                         options: .displayInline,
                                         children: menuArray)
         
         //long-touch 아닌 단순 터치시 띄우도록 수정
-            mainView.emailHiddenButton.showsMenuAsPrimaryAction = true
+        emailHiddenButton.showsMenuAsPrimaryAction = true
     }
 
 }
@@ -75,8 +79,8 @@ extension AskViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row{
         case 0:
             cell.cellTitle.text = "이메일"
-            cell.backView.addSubview(mainView.emailHiddenButton)
-            mainView.emailHiddenButton.snp.makeConstraints{ make in
+            cell.backView.addSubview(emailHiddenButton)
+            emailHiddenButton.snp.makeConstraints{ make in
                 make.leading.trailing.top.bottom.equalToSuperview()
             }
             return cell
