@@ -37,6 +37,8 @@ class LoginViewController: UIViewController, BaseViewControllerProtocol {
         
     }
     
+    //MARK: - BaseProtocol
+    
     func style() {
     }
     

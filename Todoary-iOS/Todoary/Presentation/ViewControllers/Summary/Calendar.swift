@@ -40,7 +40,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         self.month_component = Int(dateFormatterMonth.string(from: firstDayOfMonth!))!
         self.year_component = Int(dateFormatterYear.string(from: firstDayOfMonth!))!
-        self.year_Month.setTitle(dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월", for: .normal)
+        mainView.year_Month.setTitle(dateFormatterYear.string(from: firstDayOfMonth!)+"년 "+String(self.month_component)+"월", for: .normal)
         
         
         self.days.removeAll()
@@ -216,7 +216,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         HomeViewController.diaryRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
-        HomeViewController.collectionView.reloadData()
+        mainView.collectionView.reloadData()
         
         requestTodoFirstDayOfMonth()
     }
@@ -231,7 +231,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         HomeViewController.diaryRecord = [Int](repeating: 0, count: 32)
         GetCalendataManager().getCalendataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
         GetDiaryDataManager().getDiaryDataManager(self, yearMonth: "\(dateFormatterYear.string(from: date!))-\(dateFormatterMonth.string(from: date!))")
-        HomeViewController.collectionView.reloadData()
+        mainView.collectionView.reloadData()
         
         requestTodoFirstDayOfMonth()
     }

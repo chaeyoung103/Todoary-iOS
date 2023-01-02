@@ -26,8 +26,6 @@ class TodoSettingDataManager {
                         vc.todoTf.isHidden = true
                         vc.collectionView.isHidden = true
                         
-                        HomeViewController.collectionView.reloadData()
-                        
                         GetTodoDataManager().gets(HomeViewController.bottomSheetVC.todoDate.dateSendServer)
                     }
                 case 2201:

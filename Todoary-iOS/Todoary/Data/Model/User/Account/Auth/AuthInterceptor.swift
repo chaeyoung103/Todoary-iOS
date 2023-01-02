@@ -6,21 +6,6 @@
 //
 import Alamofire
 
-final class JwtInterceptor: RequestInterceptor {
-
-    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
-            completion(.doNotRetryWithError(error))
-            return
-        }
-        if (UserDefaults.standard.string(forKey: "refreshToken") != nil){
-            let authJwt = AuthJwtInput(refreshToken: UserDefaults.standard.string(forKey: "refreshToken"))
-            AuthJwtDataManager().authJwtDataManager(authJwt)
-            completion(.doNotRetryWithError(error))
-        }
-    }
-}
-
 final class Interceptor: RequestInterceptor {
     var window: UIWindow?
     var navigationController : UINavigationController?
