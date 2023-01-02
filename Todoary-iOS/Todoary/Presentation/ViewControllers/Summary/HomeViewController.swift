@@ -37,8 +37,8 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     var weekdayAdding = 0
     let inset = UIEdgeInsets(top: 1, left: 3, bottom: 0, right: 3)
     
-    static var calendarRecord = [Int](repeating: 0, count: 32)
-    static var diaryRecord = [Int](repeating: 0, count: 32)
+    var calendarRecord = [Int](repeating: 0, count: 32)
+    var diaryRecord = [Int](repeating: 0, count: 32)
     
     static let bottomSheetVC = SummaryBottomViewController()
     
@@ -58,6 +58,13 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if ((mainView.nickname.text?.isEmpty) == true) {
+            self.initView()
+            print("하이1")
+        }else {
+            print("하이")
+        }
         
         self.calculation()
         let component = cal.date(from: components)
@@ -144,11 +151,11 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     }
     func successAPI_calendar(_ result : [Int]) {
         
-        HomeViewController.calendarRecord = [Int](repeating: 0, count: 32)
+        calendarRecord = [Int](repeating: 0, count: 32)
         
         if !result.isEmpty{
             for i in 0...result.count-1{
-                HomeViewController.calendarRecord[result[i]] = result[i]
+                calendarRecord[result[i]] = result[i]
             }
         }
         mainView.collectionView.reloadData()
@@ -156,11 +163,11 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     
     func successAPI_diary(_ result : [Int]) {
         
-        HomeViewController.diaryRecord = [Int](repeating: 0, count: 32)
+        diaryRecord = [Int](repeating: 0, count: 32)
         
         if !result.isEmpty{
             for i in 0...result.count-1{
-                HomeViewController.diaryRecord[result[i]] = result[i]
+                diaryRecord[result[i]] = result[i]
             }
         }
         mainView.collectionView.reloadData()
