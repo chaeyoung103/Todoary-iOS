@@ -132,7 +132,7 @@
 		AC9859CB288334AC009FC2F8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CA288334AC009FC2F8 /* CalendarCell.swift */; };
 		AC9859CD288505C5009FC2F8 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CC288505C5009FC2F8 /* WeekCell.swift */; };
 		ACACD01128749F520029D5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD00F28749F520029D5CE /* LoginViewController.swift */; };
-		ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */; };
+		ACACD01228749F520029D5CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01028749F520029D5CE /* LoginView.swift */; };
 		ACACD01628749F880029D5CE /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01428749F880029D5CE /* PwFindViewController.swift */; };
 		ACACD01728749F880029D5CE /* PwFindViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */; };
 		ACAE1D3F2898D9CD00B34DCC /* TodoModifyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAE1D3E2898D9CD00B34DCC /* TodoModifyDataManager.swift */; };
@@ -389,7 +389,7 @@
 		AC9859CA288334AC009FC2F8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		AC9859CC288505C5009FC2F8 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		ACACD00F28749F520029D5CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Layout.swift"; sourceTree = "<group>"; };
+		ACACD01028749F520029D5CE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		ACACD01428749F880029D5CE /* PwFindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
 		ACACD01528749F880029D5CE /* PwFindViewController+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PwFindViewController+Layout.swift"; sourceTree = "<group>"; };
 		ACAE1D3E2898D9CD00B34DCC /* TodoModifyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModifyDataManager.swift; sourceTree = "<group>"; };
@@ -1010,7 +1010,7 @@
 		5701EA6F2956F1D000F21F63 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				ACACD01028749F520029D5CE /* LoginViewController+Layout.swift */,
+				ACACD01028749F520029D5CE /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1911,7 +1911,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0218B1E28A4D5EA00E48618 /* DiaryStickerCollectionViewCell.swift in Sources */,
-				ACACD01228749F520029D5CE /* LoginViewController+Layout.swift in Sources */,
+				ACACD01228749F520029D5CE /* LoginView.swift in Sources */,
 				E0F998C9288A6B310051C7AA /* AdDataManager.swift in Sources */,
 				57294AC0289116F500DA2F31 /* TodoCheckboxInput.swift in Sources */,
 				57294AB22891161D00DA2F31 /* GetTodo.swift in Sources */,
