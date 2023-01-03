@@ -2296,10 +2296,11 @@
 				DEVELOPMENT_TEAM = 65XRT42S6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Todoary가 사진에 접근하려고 합니다. 허용하지 않아도 Todoary를 사용할 수 있지만, 산택하신 기능을 사용할 수 없습니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2333,10 +2334,11 @@
 				DEVELOPMENT_TEAM = 65XRT42S6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoary/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 기능을 사용하려면 '사진/비디오' 접근권한을 허용해야 합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Todoary가 사진에 접근하려고 합니다. 허용하지 않아도 Todoary를 사용할 수 있지만, 산택하신 기능을 사용할 수 없습니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -151,6 +151,7 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
         }else {
             print("하이")
         }
+        viewWillAppear(true)
     }
     
     func successAPI_calendar(_ result : [Int]) {
