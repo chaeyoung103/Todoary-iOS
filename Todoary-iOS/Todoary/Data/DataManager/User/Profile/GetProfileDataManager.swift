@@ -32,6 +32,9 @@ class GetProfileDataManager {
                     print(result.message)
                 }
             case .failure(let error):
+                if let vc = viewController as? HomeViewController{
+                    vc.failureAPI_home()
+                }
                 print(error.localizedDescription)
             }
         }

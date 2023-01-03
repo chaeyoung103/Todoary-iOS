@@ -50,6 +50,7 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
         
         style()
         layout()
@@ -58,13 +59,6 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        if ((mainView.nickname.text?.isEmpty) == true) {
-            self.initView()
-            print("하이1")
-        }else {
-            print("하이")
-        }
         
         self.calculation()
         let component = cal.date(from: components)
@@ -149,6 +143,16 @@ class HomeViewController : UIViewController, BaseViewControllerProtocol {
             mainView.profileImage.load(url: url!)
         }
     }
+    
+    func failureAPI_home() {
+        if ((mainView.nickname.text?.isEmpty) == true) {
+            self.initView()
+            print("하이1")
+        }else {
+            print("하이")
+        }
+    }
+    
     func successAPI_calendar(_ result : [Int]) {
         
         calendarRecord = [Int](repeating: 0, count: 32)
